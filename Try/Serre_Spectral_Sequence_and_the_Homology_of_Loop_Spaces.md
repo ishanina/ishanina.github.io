@@ -1,32 +1,26 @@
-\documentclass[12pt,oneside]{amsart}
-\input{../../Settings/template.tex}
-\addbibresource{../../Settings/ref.bib}
-\title{The Serre Spectral Sequence \& computing Homology of Loop Spaces}
-\author{Ishan Levy}
-\date{12/28/17}
-
-\begin{document}
 \maketitle
-\section{Introduction}
+###  Introduction
+
 
 Using Morse Theory, we were able to get information about a CW-structure on the loop space of a smooth manifold $M$. Namely, we put a complete Riemannian metric on $M$, choose two points that are non-conjugate along any geodesics, and count the geodesics between the points with their index. Then Morse Theory tells us that the loop space $\Omega M$ has the homotopy type of a CW-complex with a $\lambda$-cell for each geodesic of index $\lambda$. In particular cases, such as that of the sphere, we can use this information to compute the homology of the loop space. For $S^n$, we have a geodesic of index $k(n-1)$ for each $k\geq0$, so if $n\geq 3$, then by cellular homology, the ($\ZZ$) homology of the loop space is $\ZZ$ for dimensions $k(n-1)$, and $0$ elsewhere.
 
 The Serre spectral sequence gives an algebraic way of computing this. Given a fibration $F \hookrightarrow E \to B$, the Serre spectral sequence allows one (under nice conditions) to compute the homology of the total space $E$ in terms of the homology of the fibre $F$ and base space $B$. The particular fibration that we are interested in is the path space fibration: if $X$ is a pointed space, with $PX$ the path space, and $\Omega X$ the loop space, then we have a fibration $\Omega X \hookrightarrow PX \to X$, given by sending a path $\gamma$ to its end point $\gamma(1)$. The Serre spectral sequence would give us a way of computing the homology of $PX$ from that of $\Omega X$ and $X$, but we already know the homology of $PX$, since it is contractible. Thus we would like to work backwards through the Serre spectral sequence, and do some detective work to figure out the homology of $\Omega X$ in terms of that of $X$.
 
-\section{Spectral sequences on homology}
+###  Spectral sequences on homology
+
 
 I will now say some generalities about spectral sequences on the homology of spaces. First some remarks: everything here can be dualized to cohomology, and homology here will be with coefficients in an arbitrary group $G$.
 
-Given a space $X$ that is \textbf{filtered}, meaning that it is the union of spaces $X_p, p \in \ZZ$ with $X_p \subset X_{p+1}$, we would like to compute its homology using this filtration. First, the filtration on $X$ yields a filtration on its homology, namely $H_{n,p}(X) = \im(i^*:H_n(X_p) \to H_n(X))$. This filtration of $H_n(X)$ yields the \textbf{associated graded group} $\bigoplus H_{n,p}(X)/H_{n,p-1}(X)$ which is isomorphic to $H_n(X)$ if for example the coefficients are in a field, $X_p$ is empty for small enough $p$, and $X_p$ induces isomorphism on $H_n$ for sufficiently large $p$. The last two conditions are satisfied if $X$ is a CW-complex, and $X_p$ is the $p$-skeleton, which is an example of a filtered space we want to keep in mind. If the coefficients are not in a field, the associated graded group is isomorphic to homology\ ``modulo extensions" meaning that differences that arise are due to $H_n(X)$ being a nontrivial extension of the $H_{n,p}(X)/H_{n,p-1}(X)$. The spectral sequence on the homology of this filtration, will under some conditions be able to compute this associated graded group.
+Given a space $X$ that is **filtered**, meaning that it is the union of spaces $X_p, p \in \ZZ$ with $X_p \subset X_{p+1}$, we would like to compute its homology using this filtration. First, the filtration on $X$ yields a filtration on its homology, namely $H_{n,p}(X) = \im(i^*:H_n(X_p) \to H_n(X))$. This filtration of $H_n(X)$ yields the **associated graded group** $\bigoplus H_{n,p}(X)/H_{n,p-1}(X)$ which is isomorphic to $H_n(X)$ if for example the coefficients are in a field, $X_p$ is empty for small enough $p$, and $X_p$ induces isomorphism on $H_n$ for sufficiently large $p$. The last two conditions are satisfied if $X$ is a CW-complex, and $X_p$ is the $p$-skeleton, which is an example of a filtered space we want to keep in mind. If the coefficients are not in a field, the associated graded group is isomorphic to homology\ ``modulo extensions" meaning that differences that arise are due to $H_n(X)$ being a nontrivial extension of the $H_{n,p}(X)/H_{n,p-1}(X)$. The spectral sequence on the homology of this filtration, will under some conditions be able to compute this associated graded group.
 
 To begin with the construction of the spectral sequence, we first look at the exact sequences of a pair for each of the pairs $(X_p,X_{p-1})$, and put all this data together. Namely, we can let $E$ be $\bigoplus_{p,q} H_{p+q}(X_p,X_{p-1})$, and $A$ be $\bigoplus_{p,q} H_{p+q}(X_p)$. Then for the exact sequence of a pair below:
 \begin{center}
 \begin{tikzcd}
-\ar[r] & H_n(X_{p}) \ar[r,"j_{p,n-p}"] & H_n(X_{p},X_{p-1}) \ar[r,"k_{p,n-p}"] & H_{n-1}(X_{p-1}) \ar[r,"i_{p,n-p-1}"] & H_{n-1}(X_{p}) \ar[r] & \ \\
+\ar[r] & H_n(X_{p}) \ar[r,"j_{p,n-p}"] & H_n(X_{p},X_{p-1}) \ar[r,"k_{p,n-p}"] & H_{n-1}(X_{p-1}) \ar[r,"i_{p,n-p-1}"] & H_{n-1}(X_{p}) \ar[r] & \ \\\\
 \end{tikzcd}
 \end{center}
 
-We can bundle all of the $i,j,k$s together to get an exact triangle called an \textbf{exact couple}.
+We can bundle all of the $i,j,k$s together to get an exact triangle called an **exact couple**.
 \begin{center}
 \begin{tikzcd}[column sep=1.5em]
 A \arrow{rr}{i} && A \arrow{dl}{j}\\
@@ -34,24 +28,25 @@ A \arrow{rr}{i} && A \arrow{dl}{j}\\
 \end{tikzcd}
 \end{center}
 
-An exact couple comes with a natural differential on $E$, namely $d = kj$, which is a differential since $dd = k(jk)j = k(0)j = 0$. Note in the case $X_p$ is the $p$-skeleton, $d$ coincides with the differential on cellular homology. Given an exact triangle, we can produce another exact couple, called the \textbf{derived couple} as follows: $A^2 = i(A)$, and $E^2$ is the homology of $E$ with respect to $E$. $i^2$ and $k^2$ (not to be confused with $ii$ or $kk$) will be the same as $i$ and $k$, and $j^2$ will be defined by $j^2(ia) = j(a)$. A diagram chase shows the derived couple is well-defined and exact. 
+An exact couple comes with a natural differential on $E$, namely $d = kj$, which is a differential since $dd = k(jk)j = k(0)j = 0$. Note in the case $X_p$ is the $p$-skeleton, $d$ coincides with the differential on cellular homology. Given an exact triangle, we can produce another exact couple, called the **derived couple** as follows: $A^2 = i(A)$, and $E^2$ is the homology of $E$ with respect to $E$. $i^2$ and $k^2$ (not to be confused with $ii$ or $kk$) will be the same as $i$ and $k$, and $j^2$ will be defined by $j^2(ia) = j(a)$. A diagram chase shows the derived couple is well-defined and exact. 
 
-Now we can iterate what we have just done. We get a sequence $E^r,d^r$ where $E^r$ is the homology of $E^{r-1}$ with respect to the differential $d^{r-1}$ ($E = E^1,d = d^1$). This is called a \textbf{spectral sequence}. We can think of each $E^r$ as a page in a book, and as we compute the homology of $E^r$, we turn the page and write the result $E^{r+1}$ on the next page.
+Now we can iterate what we have just done. We get a sequence $E^r,d^r$ where $E^r$ is the homology of $E^{r-1}$ with respect to the differential $d^{r-1}$ ($E = E^1,d = d^1$). This is called a **spectral sequence**. We can think of each $E^r$ as a page in a book, and as we compute the homology of $E^r$, we turn the page and write the result $E^{r+1}$ on the next page.
 
 
-\section{Making the spectral sequence converge}
+###  Making the spectral sequence converge
+
 We would like to say that our spectral sequence converges to the associated graded group, meaning that eventually, the differentials will become $0$, and the resulting stable group $E^\infty$ will be the associated graded group. However, in order for this to be true we need some conditions on our spectral sequence. Recall that our $E$ and $A$ are really bigraded as $E_{p,q} = H_{p+q}(X_p,X_{p-1})$ and $A_{p,q} = H_{p+q}(X_p)$. Thus each of the successive $E^r,A^r$ also is bigraded, but because of the definition of the derived couples, the differential $d^r$ changes grading as $r$ changes. In particular, $d^r$ sends $E^r_{p,q}$ to $E^r_{p-r,q+r-1}$.
 
-The first assumption we want to make will be on the $A_{p,q}$. $i$ is a map from $A_{p-1,q+1}$ to $A_{p,q}$, and the condition that we want (\textbf{Condition $1$}) is that for fixed $p+q$, $i$ is an isomorphism on all but finitely many terms (we can say ``almost always an isomorphism"). In terms of homology, this means that for fixed $n$, the inclusion $H_n(X_p) \to H_n(X_{p+1})$ is almost always an isomorphism. By exactness, this is the same as saying that $E_{p,q}$ is nonzero on finitely many terms for a fixed $p+q$. 
+The first assumption we want to make will be on the $A_{p,q}$. $i$ is a map from $A_{p-1,q+1}$ to $A_{p,q}$, and the condition that we want (**Condition $1$**) is that for fixed $p+q$, $i$ is an isomorphism on all but finitely many terms (we can say ``almost always an isomorphism"). In terms of homology, this means that for fixed $n$, the inclusion $H_n(X_p) \to H_n(X_{p+1})$ is almost always an isomorphism. By exactness, this is the same as saying that $E_{p,q}$ is nonzero on finitely many terms for a fixed $p+q$. 
 We see that the differential $d^r$ is then $0$ for large enough $r$ since $E^r_{p,q}$ is a subquotient of $E_{p,q}$ (i.e. a quotient of a subgroup), so we get that each $E^r_{p,q}$ stabilizes to some $E^\infty_{p,q}$. Similarly, the groups $A_{p,q}$ stabilize for fixed $p+q$ as $p$ gets very small or very large. For $n = p+q$, We will call $A_n^+$ the stable group for $p$ very large, and $A_n^-$ the stable group when $p$ gets very small.
 
-The second condition we want (\textbf{Condition $2$}) will guarantee that our spectral sequence converges to the associated graded group. This is the condition that $A_n^- = 0$ for all $n$.
+The second condition we want (**Condition $2$**) will guarantee that our spectral sequence converges to the associated graded group. This is the condition that $A_n^- = 0$ for all $n$.
 
 The exact sequence for the $r^{th}$ derived couple looks like
 
 \begin{center}
 \begin{tikzcd}[column sep = 1.5em]
-E^r_{p+r-1.q-r+2} \ar[r,"k^r"] & A^r_{p+r-2,q-r+2} \ar[r,"i^r"] & A^r_{p+r-1,q-r+1} \ar[r,"j^r"] & E^r_{p.q} \\
+E^r_{p+r-1.q-r+2} \ar[r,"k^r"] & A^r_{p+r-2,q-r+2} \ar[r,"i^r"] & A^r_{p+r-1,q-r+1} \ar[r,"j^r"] & E^r_{p.q} \\\\
 \ \ \ \ \ \ \ \ \ \ \ \  \ar[r,"k^r"]& A^r_{p-1,q} \ar[r,"i^r"] & A^r_{p,q-1} \ar[r,"j^r"] & E^r_{p-r+1,q+r-2}
 \end{tikzcd}
 \end{center}
@@ -64,7 +59,8 @@ If $X_p$ is a filtration of $X$ such that for a fixed $n$, the inclusion $H_n(X_
 
 For an intuitive discussion of where spectral sequences come from see Chow's article \cite{chowss}.
 
-\section{What is the Serre spectral sequence}
+###  What is the Serre spectral sequence
+
 The Serre spectral sequence is what we get when specialize the spectral sequence on homology to a certain filtration on the total space of a fibration. We can see it as the homology (or cohomology) analog of the exact sequence on homotopy groups.
 
 The reason it is nice is that there is an explicit formula for $E^2$, so we can start computing from the second page. In an ideal situation, the computation will be completely formal, and we will be able to deduce $E^\infty$.
@@ -83,7 +79,8 @@ Note that $B$ has not been assumed to be a CW-complex above, this is because one
 
 We can consider the special case $E = B \times F$, with $\pi$ the projection. Here, $B$ does act trivially on the fibre, so we can compare what we get from the Serre spectral sequence and from the K\"unneth formula. The K\"unneth formula with the universal coefficient theorem give $H_n(B \times F;G) \cong \bigoplus_{p+q = n} H_p(B;H_q(F;G))$, which is what the spectral sequence yields when $E^2 = E^\infty$, and all differentials are $0$. Thus for a nontrivial fibration with fibre $F$, $H_n(B\times F)$ is an upper bound for $H_n(E)$, since differentials being nonzero will only make homology smaller, as will nontrivial extensions.
 
-\section{What does the Serre spectral sequence look like}
+###  What does the Serre spectral sequence look like
+
 
 To draw the Serre spectral sequence, first recall how it was described earlier, namely, each $E^r$ a page in a book. For the Serre spectral sequence, the $E_{p,q}$ is only nonzero for $p,q \geq 0$, since $E_{p,q} := H_{p+q}(E_p,E_{p-1})$, which we have already noted is $p-1$-connected. Thus we can write each $E^r$ as a table going infinitely upwards and to the right, where the $p+1^{th}$ column and $q+1^{th}$ row is $E^r_{p,q}$. Since $d^r$ goes from $E^r_{p,q}$ to $E^r_{p-r,q+r-1}$, the differential on the $r^{th}$ page goes $r$ columns left and $r-1$ columns up. For example, part of the $E^2$ page looks like this:
 \begin{center}
@@ -95,7 +92,7 @@ To draw the Serre spectral sequence, first recall how it was described earlier, 
           2     &  E^2_{0,2}  & E^2_{1,2} &  E^2_{2,2}  & E^2_{3,2} & E^2_{4,2}\\
           1     &  E^2_{0,1}  & E^2_{1,1} &  E^2_{2,1}  & E^2_{3,1} & E^2_{4,1}\\
           0     &  E^2_{0,0}  & E^2_{1,0} &  E^2_{2,0}  & E^2_{3,0} & E^2_{4,0}\\
-    \quad\strut &   0  &  1  &  2  & 3 & 4\strut \\};
+    \quad\strut &   0  &  1  &  2  & 3 & 4\strut \\\\};
   \draw[-stealth] (m-3-4.north west) -- (m-2-2.south east);
   \draw[-stealth] (m-3-5.north west) -- (m-2-3.south east);
   \draw[-stealth] (m-3-6.north west) -- (m-2-4.south east);
@@ -120,7 +117,7 @@ Let's try a simple example with $\ZZ$ coefficients to see how the spectral seque
           2     &  0  & 0 &  0  & 0\\
           1     &  \ZZ & 0 &  \ZZ  & 0\\
           0     &  \ZZ  & 0 &  \ZZ  & 0\\
-    \quad\strut &   0  &  1  &  2  & 3\strut \\};
+    \quad\strut &   0  &  1  &  2  & 3\strut \\\\};
   \draw[-stealth] (m-3-4.north west) -- (m-2-2.south east);
 \draw[thick] (m-1-1.north east) -- (m-4-1.south east) ;
 \draw[thick] (m-4-1.north west) -- (m-4-5.north east) ;
@@ -129,7 +126,8 @@ Let's try a simple example with $\ZZ$ coefficients to see how the spectral seque
 Everything on the page not shown above is $0$. Since $E^3 = E^ \infty$ here as there are only two adjacent nonzero rows, and since we already know the homology of $S^3$, we must have that the only possible nonzero differential must be an isomorphism.
 
 Without actually examining the maps, one cannot compute the homology of $S^3$ using this fibration. In fact, from the transitive action of $SO(3) \cong \RR\PP^3$ on $S^2$, we get a similar fibration $S^1 \hookrightarrow SO(3) \rightarrow S^2$, so the $E^2$ page of this fibration looks the same, except in this case, the map $\ZZ \to \ZZ$ is multiplication by $2$.
-\section{More examples}
+###  More examples
+
 
 Here are some examples, a few of which are inspired from Hatcher's notes \cite{hatcherssat}.
 
@@ -141,11 +139,11 @@ Lets try our motivating example: the loop space of a sphere. For $n > 1$, $S^n$ 
     nodes in empty cells,nodes={minimum width=7.5ex,
     minimum height=4ex,outer sep=-4pt},
     column sep=1ex,row sep=1ex]{
-          n     &  H_n(\Omega S^n)  & &  H_n(\Omega S^n) \\
-          n-1     &  H_{n-1}(\Omega S^n)  & &  H_{n-1}(\Omega S^n) \\
-          1     &  H_1(\Omega S^n)  & &  H_1(\Omega S^n) \\
-          0     &  \ZZ  & &  \ZZ \\
-    \quad\strut & 0 &  \cdots  &  n \strut \\};
+          n     &  H_n(\Omega S^n)  & &  H_n(\Omega S^n) \\\\
+          n-1     &  H_{n-1}(\Omega S^n)  & &  H_{n-1}(\Omega S^n) \\\\
+          1     &  H_1(\Omega S^n)  & &  H_1(\Omega S^n) \\\\
+          0     &  \ZZ  & &  \ZZ \\\\
+    \quad\strut & 0 &  \cdots  &  n \strut \\\\};
   \draw[-stealth] (m-4-4.north west) -- (m-2-2.south east);
   \draw[-stealth] (m-3-4.north west) -- (m-1-2.south east);
 \draw[thick] (m-1-1.north east) -- (m-5-1.south east) ;
@@ -163,8 +161,8 @@ In that example, we used the homology of the base space and total space to find 
     minimum height=4ex,outer sep=-4pt},
     column sep=1ex,row sep=1ex]{
           1     &  \ZZ  & H_1(K(\ZZ,2)) &  H_2(K(\ZZ,2))  & H_3(K(\ZZ,2))\\
-          0     &  \ZZ  & H_1(K(\ZZ,2)) &  H_2(K(\ZZ,2))  & H_3(K(\ZZ,2)) \\
-    \quad\strut &   0  &  1  &  2  & 3\strut \\};
+          0     &  \ZZ  & H_1(K(\ZZ,2)) &  H_2(K(\ZZ,2))  & H_3(K(\ZZ,2)) \\\\
+    \quad\strut &   0  &  1  &  2  & 3\strut \\\\};
   \draw[-stealth] (m-2-4.north west) -- (m-1-2.south east);
   \draw[-stealth] (m-2-5.north west) -- (m-1-3.south east);
 \draw[thick] (m-1-1.north east) -- (m-3-1.south east) ;
@@ -188,9 +186,9 @@ Another example to try is $\SOr(4)$, with the fibration $\RR\PP(3) \cong \SOr(3)
     minimum height=4ex,outer sep=-4pt},
     column sep=1ex,row sep=1ex]{
           3     &  \ZZ  & \ZZ\\
-          1     &  \ZZ/2\ZZ  & \ZZ/2\ZZ \\
-          0     &  \ZZ  & \ZZ \\
-    \quad\strut &   0  &  3 \strut \\};
+          1     &  \ZZ/2\ZZ  & \ZZ/2\ZZ \\\\
+          0     &  \ZZ  & \ZZ \\\\
+    \quad\strut &   0  &  3 \strut \\\\};
   \draw[-stealth] (m-2-3.north west) -- (m-1-2.south east);
 \draw[thick] (m-1-1.north east) -- (m-4-1.south east) ;
 \draw[thick] (m-4-1.north west) -- (m-4-3.north east) ;
@@ -200,7 +198,8 @@ But $\ZZ$ is torsion free, so all differentials are $0$, and $H_*(\SOr(4)) = H_*
 
 There are cases in which the conditions of Theorem \ref{serrespecseq} are not satisfied. For example, for a normal covering space, we have the fibration $\Aut(E/B) \hookrightarrow E \to B$, where $\Aut(E/B)$ is the group of deck transformations. If $E$ is a nontrivial cover of $B$, then $E$ corresponds to a subgroup $H$ of $\pi_1(B)$, and the action of the $\pi_1(B)$ on $\Aut(E/B)$ is the action of $\pi_1(B)$ on the left cosets $\pi_1(B)/H$, which is nontrivial. Indeed we should hope that the Serre spectral sequence fails in this case. For example, if $G$ is a discrete group, and we were able to apply the Serre spectral sequence to the fibration $G \hookrightarrow EG \to BG$, where $EG$ is contractible, we would get that $BG$ has trivial homology, whereas group homology and cohomology are known to be quite nontrivial.
 
-\section{The cohomology spectral sequence}
+###  The cohomology spectral sequence
+
 
 One of the reasons cohomology is nicer than homology is its ring structure. The cohomology analog of the Serre spectral sequence is much more powerful than the homology version, as we can deduce more from the cup product. For example, we could have tried to compute the homology of $\SU(n)$ as we did $\SU(3)$, via the fibration $\SU(n-1) \hookrightarrow \SU(n) \to S^{2n-1}$ and induction, but it would have let to issues that don't easily resolve. However the computation for cohomology does go through with the use of the additional cup product structure.
 
@@ -210,11 +209,12 @@ Let $F \hookrightarrow E \xrightarrow{\pi} B$ be a fibration with $B$ path-conne
 
 Moreover, there is a bigraded ring structure on each $E^r$, given by bilinear maps $E^r_{p,q}\times E^r_{s,t} \to E^r_{p+s,q+t}$ satisfying the properties below:
 
-\begin{enumerate}
-    \item Each $d^r$ satisfies $d^r(xy) = d^r(x)y + (-1)^{p+q}xd^r(y)$ for $x \in E^r_{p,q}$. Thus $\im(d^r)$ is an ideal of $\ker(d^r)$, and the quotient ring is $E^{r+1}$.
-    \item The map on $E^2$ is given by $(-1)^{qs}$ times the cup product, where the coefficients are also cupped together.
-    \item The cup product restricts to a product on the filtration $F_{p,q}\times F_{s,t} \to F_{p+s,q+t}$ that makes the associated graded group into an associated graded ring which is isomorphic as a graded ring to $E^\infty$ via the isomorphism of Theorem \ref{serrecohomology}.
-\end{enumerate}
+
+
+1.  Each $d^r$ satisfies $d^r(xy) = d^r(x)y + (-1)^{p+q}xd^r(y)$ for $x \in E^r_{p,q}$. Thus $\im(d^r)$ is an ideal of $\ker(d^r)$, and the quotient ring is $E^{r+1}$.
+1.  The map on $E^2$ is given by $(-1)^{qs}$ times the cup product, where the coefficients are also cupped together.
+1.  The cup product restricts to a product on the filtration $F_{p,q}\times F_{s,t} \to F_{p+s,q+t}$ that makes the associated graded group into an associated graded ring which is isomorphic as a graded ring to $E^\infty$ via the isomorphism of Theorem \ref{serrecohomology}.
+
 
 Notice that the differential's arrows on each page point in the opposite direction for the cohomology spectral sequence. Let's try the example of $\SU(n)$ again. By induction, we want to prove the cohomology ring is the exterior algebra $\Lambda[w_1,w_3,\dots,w_{2n-1}]$ where the subscript of the $w_i$ are the grading. The only columns of $E$ that are nonzero are $p = 0, 2n-1$, so the only page with potentially nonzero differential is the $2n-2$ page. Below is shown the generators for $E^{2n-1}$.
 
@@ -224,11 +224,11 @@ Notice that the differential's arrows on each page point in the opposite directi
     nodes in empty cells,nodes={minimum width=9ex,
     minimum height=4ex,outer sep=-4pt},
     column sep=1ex,row sep=1ex]{
-          2n-3     &  w_{2n-3} &  w_{2n-3}w_{2n-1} \\
-          \vdots     &   &  \\
-          1     &  w_1  &  w_1w_{2n-1} \\
-          0     &  1  &  w_{2n-1} \\
-    \quad\strut &   0  & 2n-1 \strut \\};
+          2n-3     &  w_{2n-3} &  w_{2n-3}w_{2n-1} \\\\
+          \vdots     &   &  \\\\
+          1     &  w_1  &  w_1w_{2n-1} \\\\
+          0     &  1  &  w_{2n-1} \\\\
+    \quad\strut &   0  & 2n-1 \strut \\\\};
 \draw[thick] (m-1-1.north east) -- (m-5-1.south east) ;
 \draw[thick] (m-5-1.north west) -- (m-5-3.north east) ;
 \end{tikzpicture}
@@ -249,8 +249,8 @@ The computation doesn't go through the same way for $\SOr(n-1) \hookrightarrow \
 %    column sep=1ex,row sep=1ex]{
 %          3     &  w_3  &  w_3H^1(B\U(n)) & w_3H^2(B\U(n))\\
 %%          1     &  w_1  &  w_1H^1(B\U(n)) & w_1H^2(B\U(n))\\
-%          0     &  1  & H^1(B\U(n)) &  H^2(B\U(n)) \\
-%    \quad\strut &   0  & 1 & 2\strut \\};
+%          0     &  1  & H^1(B\U(n)) &  H^2(B\U(n)) \\\\
+%    \quad\strut &   0  & 1 & 2\strut \\\\};
 %    \draw[-stealth] (m-2-2.south east) -- (m-3-4.north west);
 %\draw[thick] (m-1-1.north east) -- (m-4-1.south east) ;
 %\draw[thick] (m-4-1.north west) -- (m-4-4.north east) ;
@@ -280,7 +280,7 @@ To see this, when $n$ is even, only the $q = 0,n-1$ rows are nonzero, so only th
     column sep=1ex,row sep=1ex]{
           n-1     &  x_{n-1}  & x_{n-1}H^1(K(\ZZ,2)) &  x_{n-1}H^{n}(K(\ZZ,2))  & x_{n-1}H^{n+1}(K(\ZZ,2))\\
           0     &  1  & H^1(K(\ZZ,n)) &  H^{n}(K(\ZZ,2))  & H^{n+1}(K(\ZZ,2))\\
-    \quad\strut &   0  &  1  &  n  & n+1\strut \\};
+    \quad\strut &   0  &  1  &  n  & n+1\strut \\\\};
   \draw[-stealth] (m-1-2.south east) -- (m-2-4.north west);
 \draw[thick] (m-1-1.north east) -- (m-3-1.south east) ;
 \draw[thick] (m-3-1.north west) -- (m-3-5.north east) ;
@@ -297,11 +297,11 @@ Now let's look at $n$ odd, where we will see why the computation only works over
     nodes in empty cells,nodes={minimum width=9ex,
     minimum height=4ex,outer sep=-4pt},
     column sep=1ex,row sep=1ex]{
-          3n-3     &  x_{n-1}^3 & x_{n-1}^3H^{n}(K(\ZZ,n))& x_{n-1}^3H^{2n}(K(\ZZ,n)) \\
+          3n-3     &  x_{n-1}^3 & x_{n-1}^3H^{n}(K(\ZZ,n))& x_{n-1}^3H^{2n}(K(\ZZ,n)) \\\\
           2n-2    & x_{n-1}^2  & x_{n-1}^2H^{n}(K(\ZZ,n))& x_{n-1}^2H^{2n}(K(\ZZ,n))\\
           n-1     &  x_{n-1}  & x_{n-1}H^{n}(K(\ZZ,n))& x_{n-1}H^{2n}(K(\ZZ,n))\\
           0     &  1  &  H^n(K(\ZZ,n)) & H^{2n}(K(\ZZ,n))\\
-    \quad\strut &   0  & n & 2n\strut \\};
+    \quad\strut &   0  & n & 2n\strut \\\\};
     
   \draw[-stealth] (m-1-2.south east) -- (m-2-3.north west);
   \draw[-stealth] (m-2-2.south east) -- (m-3-3.north west);
@@ -315,9 +315,9 @@ Now let's look at $n$ odd, where we will see why the computation only works over
 \end{center}
 
 By exactness, the map $x_{n-1} \to H^n(K(\ZZ,n))$ must be an isomorphism. We can call $x_n$ the image of $x_{n-1}$. By property $(1)$, $d^{n}(x_{n-1}^k) = k x_{n-1}^{k-1} x_n$, so the maps from each of the $x^k_{n-1}$ are isomorphisms (this is where we would have had trouble with $\ZZ$ coefficients) so apart from $x_n$, the cohomology is $0$ by exactness.
-\section{Closing remarks}
+###  Closing remarks
+
 
 As we have seen, the Serre spectral sequence is a quite powerful computational tool. We were able to compute the homology and cohomology of some spaces, just by knowing that they were part of some fibration, for which we knew the (co)homology of the other two spaces. For homology we had to be lucky in order for the computations to work, but via the cup product we were able to do much more powerful computations for cohomology.
 
 \printbibliography
-\end{document}

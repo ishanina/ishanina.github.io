@@ -15,6 +15,7 @@ find "." -mindepth 1 -maxdepth 1 -type d ! -name ".git"|while read folder; do
         pdflink=$(sed 's/_/%20/g' <<< "$pdflink")
         pdflink=$(sed 's/.html/.pdf/g' <<< "$pdflink")
         echo "$pdflink"
+        echo >> "$outfile"
         echo "[$linkname]($relpath) [(pdf)]($pdflink)" >> "$outfile"
     done
 done

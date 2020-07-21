@@ -1,0 +1,629 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Dimension and Moduli</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Dimension_and_Moduli.css" /> 
+<meta name="src" content="Dimension_and_Moduli.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+DIMENSION AND MODULI
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Various notions of dimension</h3>
+<!--l. 11--><p class="noindent" >Here we will think about irreducible varieties over an algebraically closed field \(k\), although
+many arguments will work in more general settings.
+</p><!--l. 13--><p class="indent" >  We will start with a fundamental result in classical algebraic geometry that is useful in
+proving results about dimension.
+</p>
+  <div class="newtheorem">
+<!--l. 15--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Lemma 1.1 </span>(Noether Normalization)<span 
+class="cmbx-12">.</span>  </span>  <span 
+class="cmti-12">Over  an  infinite  field</span>  \(k\)<span 
+class="cmti-12">,  the  algebra</span>  \(k[x_1,\dots ,x_n]/f\)  <span 
+class="cmti-12">for</span>
+<span 
+class="cmti-12">irreducible</span> \(f\) <span 
+class="cmti-12">is integral over</span> \(k[x_1-\alpha _1 x_n,\dots , x_1-\alpha _{n-1}x_n]\) <span 
+class="cmti-12">for appropriate (generic)</span> \(\alpha _i \in k\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 19--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(f\) might not be monic in \(x_n\), but we can force it to be monic in \(x_n\) by doing a linear
+change of basis. Namely if we change \(x_i\) to \(x_i+\alpha _i x_n\), the condition that the \(x_n\) term is nonzero
+for the highest homogeneous part of the polynomial is satisfied for some \(\alpha _i\) as the field
+is infinite, and the condition that it is \(0\) is a single nonzero polynomial in the \(\alpha _i\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 23--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r1"></a>
+<span 
+class="cmbx-12">Exercise 1.1.1.</span>  </span><span 
+class="cmti-12">Show that this theorem doesn&#8217;t hold for finite fields. Can you find</span>
+<span 
+class="cmti-12">a salvage?</span>
+</p>
+  </div>
+<!--l. 27--><p class="indent" >  This statement has the following nice geometric interpretation: if there is an affine
+variety \(V\) sitting inside some \(\AA ^n\), and we project it to a generic hyperplane, we will get
+a proper map onto its image, which will be a closed subset of \(\AA ^{n-1}\). For example,
+consider the hyperbola \(xy=1\) in \(\AA ^2\). If we project onto the \(x\) axis, the projection map
+will not be proper (the image isn&#8217;t even closed), as \(0\) is missing. If we tilt the
+hyperbola slightly our map will become proper, and \(0\) will no longer be missing in the
+projection.
+</p><!--l. 29--><p class="indent" >  The following is a simple exercise in commutative algebra:
+</p>
+  <div class="newtheorem">
+<!--l. 31--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1003r2"></a>
+<span 
+class="cmbx-12">Exercise 1.1.2.</span>  </span><span 
+class="cmti-12">If</span> \(R \subset S\) <span 
+class="cmti-12">is a finite integral extension, and</span> \(\pp \subset R\) <span 
+class="cmti-12">is a prime ideal, then there</span>
+<span 
+class="cmti-12">are finitely many primes</span> \(\qq _i \subset S\) <span 
+class="cmti-12">whose restriction to</span> \(R\) <span 
+class="cmti-12">is</span> \(\pp \)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 35--><p class="indent" >  Since maximal ideals of the coordinate rings of varieties are the points, the fibres of a
+map of varieties given by an integral extension are finite.
+</p><!--l. 37--><p class="indent" >  Thus we should expect the dimension of the two varieties to be the same. By applying
+the lemma finitely many times, we get that the coordinate ring of any affine variety is
+integral over some \(k[x_1,\dots ,x_n]\). We call \(n\) the <span 
+class="cmbx-12">dimension </span>of the variety. Note that this is equivalent to
+the transcendence degree of the fraction field over \(k\) by Lemma <a 
+href="#x1-1001r1">1.1<!--tex4ht:ref: noethernormalization --></a>. If a variety is not
+irreducible, its dimension is the maximum of the dimension of each irreducible
+component.
+                                                                                  
+
+                                                                                  
+</p><!--l. 39--><p class="indent" >  Here is another characterization of dimension, called the <span 
+class="cmbx-12">Krull dimension</span>, which is
+actually defined for any ring.
+</p>
+  <div class="newtheorem">
+<!--l. 41--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1004r2"></a>
+<span 
+class="cmbx-12">Theorem 1.2.</span>  </span><span 
+class="cmti-12">The dimension is</span> \(1\) <span 
+class="cmti-12">less than the length of the maximal chain of primes</span>
+<span 
+class="cmti-12">(Krull dimension) in</span> \(k[V]\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 45--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By  Lemma  <a 
+href="#x1-1001r1">1.1<!--tex4ht:ref: noethernormalization --></a>,  and  the  fact  from  commutative  algebra  that  integral
+extensions preserve the length of a maximal chain, it suffices to show that \(\dim (k[x_1,\dots ,x_n]) = n\). It is easy
+to construct a chain of length \(n+1\). Now to see that there is no longer chain, first note
+that any irreducible subset of codimension \(1\) is given by a principle ideal generated by
+an irreducible \(f\) since \(k[x_1,\dots ,x_n]\) is a UFD. Then by using Noether normalization on \(k[x_1,\dots ,x_n]/(f)\), induction,
+and the fact that integral extensions preserve the length of a maximal chain, it follows
+that there is no longer chain. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 49--><p class="indent" >  The following is a special case of a result from commutative algebra called Krull&#8217;s
+principle ideal theorem.
+</p>
+  <div class="newtheorem">
+<!--l. 51--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1005r3"></a>
+<span 
+class="cmbx-12">Theorem 1.3.</span>  </span> <span 
+class="cmti-12">If</span> \(k[V]\) <span 
+class="cmti-12">is the coordinate ring of an affine variety, and</span> \(0 \neq f \in k[V]\)<span 
+class="cmti-12">, then the variety</span>
+<span 
+class="cmti-12">cut out by</span> \(f\) <span 
+class="cmti-12">is codimension at most</span> \(1\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+<!--l. 55--><p class="indent" >  Using this, the next thing we can observe about dimension is that it is local. This is
+already suggested by the fact that it only depends on \(k(V)\), not \(k[V]\), as we can invert elements of \(k[V]\),
+effectively removing a proper closed subset from our variety, yet keep the dimension the
+same. Given an affine variety \(k[V]\), and a maximal ideal \(\mm \), we can consider \(\mm /\mm ^2\), the <span 
+class="cmbx-12">cotangent</span>
+<span 
+class="cmbx-12">space </span>of \(V\) at the point \(\mm \). The way to see that this is the right definition is the following:
+suppose \(V\) is embedded in some affine space \(\AA ^n\), so that we can think of functions on it as
+polynomials. Say \(0 \in V\) and \(V\) is given by polynomials \(v_1,\dots , v_n\). At \(0\) we can take the equations \(\sum _i \partial _i v_jx_i = 0\), giving
+some linear subspace, called the <span 
+class="cmbx-12">tangent space </span>at \(0\) (this can be done for any
+point). Now given a polynomial function, \(df = \sum _i\partial _i f x_i\) is a linear form on the tangent space,
+that is clearly well defined on \(k[V]\). It only depends on \(f\) up to a scalar and if \(f \in \mm \), it
+vanishes iff \(f \in \mm ^2\), so defines an isomorphism between the dual of the tangent space and
+\(\mm /\mm ^2\).
+</p><!--l. 57--><p class="indent" >  By Nakayama&#8217;s lemma, the dimension of the cotangent space is also the minimal
+number of generators of the ideal \(\mm \) in the local ring \(k[V]_\mm \) (recall we invert all elements that
+don&#8217;t vanish at \(\mm \)). A local ring is called <span 
+class="cmbx-12">regular </span>if the number of generators of the ring is
+its Krull dimension. We see below that regular is a way of making the notion of
+smoothness of a point intrinsic.
+</p>
+  <div class="newtheorem">
+<!--l. 59--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1006r4"></a>
+<span 
+class="cmbx-12">Theorem 1.4.</span>  </span><span 
+class="cmti-12">The points of a variety</span> \(V \subset \AA ^n\) <span 
+class="cmti-12">with a regular local rings are the smooth</span>
+<span 
+class="cmti-12">ones.</span>
+</p>
+  <div class="proof">
+<!--l. 63--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let the kernel of \(k[\AA ^n] \to k[V]\) be \((f_1,\dots ,f_m)\). Now the rank of the Jacobian is exactly describing the
+common kernel of the elements \(df_i\), and since the generate the ideal, the rank is the
+codimension of the tangent space of \(V\) in \(\AA ^n\). Then the point is smooth iff this rank is
+then the codimension of the variety iff the dimension of the cotangent space is the
+dimension of the variety iff the point is regular. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 67--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1007r5"></a>
+<span 
+class="cmbx-12">Theorem 1.5.</span>  </span><span 
+class="cmti-12">The  dimension  of  the  local  ring  of  any  irreducible  variety  at  a</span>
+<span 
+class="cmti-12">maximal ideal (point) is the dimension of the variety.</span>
+</p>
+  <div class="proof">
+<!--l. 71--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Intersect  generic  hyperplanes  with  the  variety,  so  that  the  irreducible
+component at that point keeps getting smaller by \(1\) dimension by Theorem <a 
+href="#x1-1005r3">1.3<!--tex4ht:ref: prinidealthm --></a>. We
+can invert elements so as to ignore the other components, and so we will eventually
+get an isolated point. Each irreducible component will correspond to a prime in the
+local ring \(1\) dimension smaller than the next. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 75--><p class="indent" >  Combining the last two theorems, we get for example that at smooth points, the
+dimension of the cotangent space is the dimension of the variety.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Lines on surfaces</h3>
+<!--l. 79--><p class="noindent" >Let&#8217;s use the notion of dimension to consider lines on surfaces.
+</p><!--l. 81--><p class="indent" >  We will need the following fact about projective varieties.
+</p>
+  <div class="newtheorem">
+<!--l. 83--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Proposition 2.1.</span>  </span><span 
+class="cmti-12">The image of a projective variety under a morphism is closed.</span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+<!--l. 87--><p class="indent" >  Morally this is true because projective varieties are closed subsets of \(\PP ^n\), hence are
+compact.
+</p><!--l. 89--><p class="indent" >  We will also use the following basic result about dimension:
+</p>
+  <div class="newtheorem">
+<!--l. 91--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+<span 
+class="cmbx-12">Theorem 2.2.</span>  </span><span 
+class="cmti-12">Let</span> \(f:X \to Y\) <span 
+class="cmti-12">be a surjective map of irreducible projective varieties. Then</span> \(\dim f^{-1}(Y) \geq \dim X-\dim Y\) <span 
+class="cmti-12">for</span>
+<span 
+class="cmti-12">any fibre</span> \(F\) <span 
+class="cmti-12">of any point in</span> \(Y\)<span 
+class="cmti-12">. Moreover, the set of points for which equality holds is</span>
+<span 
+class="cmti-12">dense and open.</span>
+</p>
+  <div class="proof">
+<!--l. 95--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>For the first statement, note that on an affine neighborhood of \(Y\) after inverting
+some elements, any point is defined by \(r = \dim (Y)\) equations, \(g_1,\dots g_r\). Then the fibre is given by the
+zero sets of \(f^*(g_i)\), which by Theorem <a 
+href="#x1-1005r3">1.3<!--tex4ht:ref: prinidealthm --></a> is dimension \(\geq \dim X-\dim Y\).
+</p><!--l. 97--><p class="indent" >  For the second, we locally have an inclusion \(k[U] \hookrightarrow k[V]\). Let \(v_1,\dots ,v_{n-m} \in k[V]\) be a transcendence base over \(k[U]\),
+and let \(w_1,\dots ,w_r\) generate the extension of algebras, so that the polynomials \(F_i(w_i,v_j)\) are (not monic)
+minimal polynomials over \(k[U][v_j]\). Now the points where the dimension of the fibre jumps
+are exactly the points where the \(F_i\) become identically \(0\) polynomials, as then the \(w_i\) are
+algebraically independent in the fibre. This condition shows that the points where
+equality doesn&#8217;t hold is a proper closed set. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 101--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r3"></a>
+<span 
+class="cmbx-12">Corollary 2.3.</span>  </span><span 
+class="cmti-12">The subset of points in</span> \(Y\) <span 
+class="cmti-12">for a map</span> \(X \to Y\) <span 
+class="cmti-12">of projective varieties for which</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">the dimension of the fibre is at least</span> \(k\) <span 
+class="cmti-12">is closed.</span>
+</p>
+  <div class="proof">
+<!--l. 105--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The set on which the dimension of the fibre is higher than the difference in
+dimensions is a closed subset of lower dimension by the previous theorem, so by only
+looking at that set of points and using induction, we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 109--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2004r4"></a>
+<span 
+class="cmbx-12">Theorem 2.4.</span>  </span><span 
+class="cmti-12">If</span> \(f:X \to Y\) <span 
+class="cmti-12">is a surjective map of projective varieties,</span> \(Y\) <span 
+class="cmti-12">is irreducible, and all</span>
+<span 
+class="cmti-12">the fibres are irreducible, then</span> \(X\) <span 
+class="cmti-12">is irreducible.</span>
+</p>
+  <div class="proof">
+<!--l. 113--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(X_i\) be the components of \(X\). Let \(U\) be an open subset of \(Y\) for which the dimension
+of the fibres on each \(X_i\) is generic (i.e. empty if \(f\) doesn&#8217;t map \(X_i\) surjectively onto \(Y\). By
+irreducibility of the fibres, each fibre is contained in at least one \(X_i\), and so for some
+\(X_i\), say \(X_0\), the set on which the fibre is contained in \(X_0\) is dense. Then \(f\) restricted to \(X_0\) is
+surjective, and the fibres are at least the same dimension of the fibres on \(X\), so by
+irreducibility, they must be the same, and \(X_0 = X\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 117--><p class="indent" >  If the fibres are irreducible and same dimension Y irreducible, then X is irreducible.
+proof: One irreducible component must hit everything, then apply the previous
+                                                                                  
+
+                                                                                  
+theorem on that, and observe that everything that is missing must have smaller
+dimension.
+</p><!--l. 121--><p class="indent" >  We will try to answer the question: on a general hypersurface in \(\PP ^3\), how many lines are
+there?
+</p><!--l. 123--><p class="indent" >  To do this we will consider moduli spaces, or varieties that parameterize the objects we
+are looking at. For example, we would like to make a variety where the points are the lines
+in \(\PP ^3\). The <span 
+class="cmbx-12">Grassmannian</span> \(G(k,n)\) will be a variety parameterizing the subspaces of dimension \(k\)
+inside an \(n\)-dimensional vector space (it is also denoted \(G(k,V)\) for a vector space \(V\)). In particular, \(G(k,n) \cong G(n-k,n)\)
+and \(G(1,n) = \PP ^n\). To realize it as a projective variety, we note that a \(k\)-plane in \(V\) can be thought of as a
+line in \(\bigwedge ^kV\), by wedging a basis together. However not every element of \(\bigwedge ^kV\) comes from a \(k\)-plane,
+so the Grassmannian will be a closed subset of \(\PP (\bigwedge ^kV)\). For an explicit description of how to
+describe the Grassmannian, we have Plücker coordinates which will not be discussed
+here.
+</p><!--l. 125--><p class="indent" >  For example, lines in \(\PP ^3\) are the same as \(2\)-planes in a \(4\)-dimensional vector space, so are
+parameterized by \(G(2,4)\), which is a hypersurface in \(\PP ^5\). Note that every Grassmannian comes with
+a tautological bundle, namely the subset of \(G(k,n)\times \AA ^n\), where the fibres of the projection to \(G(k,n)\) are all
+the points in the corresponding plane. We can projectivize this bundle to get a closed
+subset of \(G(k,n)\times \PP ^{n-1}\).
+</p><!--l. 127--><p class="indent" >  The other moduli space we will need will parameterize hypersurfaces in \(\PP ^n\) of degree \(m\).
+Since hypersurfaces are given by a homogeneous polynomial up to a scalar multiple, we
+need to parameterize homogeneous polynomials of degree \(m\) in \(n\) variables up to scalar
+multiples. But these form an affine space of dimension \({n+m}\choose m\), so our moduli space will be \(\PP ^{{{n+m}\choose m }-1}\). We
+also have something like the tautological bundle, which is a subset of \(\PP ^n \times \PP ^{{{n+m}\choose m }-1}\), where the fibres on
+the projection to the moduli space are just the hypersurfaces corresponding to the
+point.
+</p><!--l. 129--><p class="indent" >  Now let&#8217;s try to understand lines in the general hypersurface of degree \(m\) in \(\PP ^3\). Lines are
+parameterized by \(G(2,4)\), and hypersurfaces are parameterized by \(\PP ^{{{3+m}\choose m}-1} = \PP ^{c_m}\).
+</p><!--l. 131--><p class="indent" >  Now we can consider the subset \(\Gamma _m\) of \(\PP ^{c_m} \times G(2,4)\) consisting of pairs where the line is contained in the
+hypersurface. We can pullback the diagonal of \(\PP ^3 \times \PP ^3\) to get a subset of \(\PP ^3 \times G(2,4)\times \PP ^3 \times \PP ^{c_m}\) consisting of points
+where the line intersects the hypersurface. Now by projecting to \(G(2,4) \times \PP ^{c_m}\) and applying Corollary
+<a 
+href="#x1-2003r3">2.3<!--tex4ht:ref: fibreclosed --></a>, and then taking the image under the projection, we see that \(\Gamma _m\) is closed. Now we can
+project \(\Gamma _m\) to \(\PP ^{c_m}\). If a line is given by \(l_1=l_2 = 0\), the fibres are exactly the forms of the form \(l_1G+l_2H\). These forms
+form a linear subspace of dimension \(2{m+2\choose 3}-{m+1\choose 3} = c_m-(m+1)\). The fibres are all irreducible, so \(\Gamma _m\) is too, and is
+dimension \(c_m-(m+1)+4 = c_m-m+3\).
+</p><!--l. 133--><p class="indent" >  We can now consider the other projection from \(\Gamma _m\) to \(\PP ^{c_m}\). If \(m &gt; 3\), then the map cannot be
+surjective as the dimension is too small, so the image is a proper irreducible closed subset,
+and so we get:
+                                                                                  
+
+                                                                                  
+</p>
+  <div class="newtheorem">
+<!--l. 135--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2005r5"></a>
+<span 
+class="cmbx-12">Proposition 2.5.</span>  </span><span 
+class="cmti-12">The generic surface of degree</span> \(&gt;3\) <span 
+class="cmti-12">has no lines.</span>
+</p>
+  </div>
+<!--l. 139--><p class="indent" >  Now we can consider surfaces of degree \(\leq 3\). Hypersurfaces of degree \(1\) and \(2\) are
+uninteresting: they are the same up to a linear change of coordinates (in characteristic not
+\(2\)). So we can just consider \(x_0x_1 = x_2x_3\) (this is a Segre embedded \(\PP ^1\times \PP ^1\)). In the affine chart \(x_3 \neq 0\), this is \(x_0x_1 = x_3\). A line
+is parameterized by \(x_i = a_it+b_i\). One of \(x_0,x_1\) must be a constant, so the line is just determined by that
+constant, and is \(1\)-dimensional. For a cubic surface, consider \(x_0x_1x_2=x_3^3\). In the chart \(x_3 \neq 0\), there are no
+affine lines as \(x_0x_1x_2 = 1\) has no solutions as parameterized lines. Thus all the lines are at
+infinity, which is given by \(x_0x_1x_2=0\), so this cubic has \(3\) lines. By Theorem <a 
+href="#x1-2002r2">2.2<!--tex4ht:ref: dimfibre --></a>, the image is
+\(c_3\)-dimensional, so the map is surjective, and the generic fibre is finite. We get the
+following:
+</p>
+  <div class="newtheorem">
+<!--l. 141--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2006r6"></a>
+<span 
+class="cmbx-12">Proposition 2.6.</span>  </span><span 
+class="cmti-12">The generic cubic surface has finitely many lines.</span>
+</p>
+  </div>
+<!--l. 145--><p class="indent" >  With calculation, one can say more. Namely, the projection from \(\Gamma _3\) gives a finite field
+extension of \(k(\PP ^{c_3})\), and the degree of this extension is \(27\), which tells us that in fact the generic
+cubic has exactly \(27\) lines. In fact, any smooth cubic surface has \(27\) lines, but to prove this
+requires different techniques.
+</p>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

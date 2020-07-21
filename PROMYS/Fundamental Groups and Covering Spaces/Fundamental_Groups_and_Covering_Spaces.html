@@ -1,0 +1,602 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Fundamental Groups and Covering Spaces</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Fundamental_Groups_and_Covering_Spaces.css" /> 
+<meta name="src" content="Fundamental_Groups_and_Covering_Spaces.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+FUNDAMENTAL GROUPS AND COVERING SPACES
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+  <div class="date" >
+<!--l. 8--><p class="indent" >  <span 
+class="cmti-12">Date</span>:&#x00A0;7/12/17.</p></div></div></div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>What is the Fundamental Group?</h3>
+<!--l. 10--><p class="noindent" >Note: There may not be a lot of formal proofs in this write-up, due to the proofs requiring
+understanding of topological foundations. However most of the main ideas will be
+presented here. If you&#8217;d like a formal presentation of this material, I&#8217;d highly recommend
+reading the first chapter of Allen Hatcher&#8217;s Algebraic Topology book which is freely
+available on his website.
+</p><!--l. 12--><p class="indent" >  In algebraic topology, people take topological spaces (such as a circle or a sphere) and
+study them by associating to each topological space an algebraic object such as a
+group. The fundamental group is one way to associate a group to a topological
+space.
+</p><!--l. 14--><p class="indent" >  We can describe the fundamental group as follows: given a space, we can consider
+oriented paths on this space (if you like, these are map from the unit interval \([0,1]\) to the
+topological space). If one path ends where another one starts, you can &#8221;multiply&#8221; the
+paths to make a new path that on the first half of the interval does the first path and on
+the second half of the interval does the second path.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 17--><p class="noindent" >
+</p><!--l. 18--><p class="noindent" ><img 
+src="Figure_1.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 22--><p class="indent" >  We would like this multiplication to form a group, and in order to do this, we have to
+make a few restrictions. First we don&#8217;t want to consider paths, but rather paths &#8221;up to
+homotopy&#8221;. What this means is that if two paths can be deformed to each other, the
+should be considered the same.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 25--><p class="noindent" >
+</p><!--l. 26--><p class="noindent" ><img 
+src="Figure_2.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 30--><p class="indent" >  This deformation is called the homotopy (if you like, it is a map from the unit square \([0,1]\times [0,1]\) to
+the space that on one side of the square is the first path and on the other side is the
+second, with the top and bottom being constant). Now, to make sure any two of
+the paths we consider can be multiplied, we can fix a point on our topological
+space and require that our paths start and end from this point. Then, any two
+of these paths can be multiplied together. Up to homotopy, there is inverses,
+associativity, and identity. In particular, inverses come from the taking a path and
+looking at the path that goes backwards relative to it. The identity is just the
+constant path that doesn&#8217;t go anywhere. So indeed the collection of paths up to
+homotopy in this way constitute a group, which we can call the fundamental group!
+If \(X\) is a topological space, and \(x_0\) a point on it, we can denote the fundamental
+group of paths starting and ending at \(x_0\) as \(\pi _1(X,x_0)\). A nice property is that if any two
+points in \(X\) can be connected by paths, the fundamental group doesn&#8217;t depend on
+\(x_0\).
+</p><!--l. 32--><p class="indent" >  Let&#8217;s try to figure out what some fundamental groups are: an easy place to start is \(\RR ^n\). In \(\RR ^n\),
+any path can be smushed (ie homotopied) to a point, so the fundamental group is trivial
+(ie the group with one element). How about the circle, which I will call \(S^1\)? Any conjectures
+as to what its fundamental group is?
+</p><!--l. 34--><p class="indent" >  Maybe you&#8217;ve guessed that the fundamental group is just \(\ZZ \) with addition as the
+operation. After all, the identity is 0, the path going clockwise once can be called 1, the
+one going clockwise twice can be 2, the one going counter clockwise can be -1. But
+are these all of them? How does one go about proving that there aren&#8217;t any
+more?
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 37--><p class="noindent" >
+</p><!--l. 38--><p class="noindent" ><img 
+src="Figure_3.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Covering Spaces</h3>
+<!--l. 42--><p class="noindent" >This problem can be solved using the notion of a covering space. To give an
+example of a covering space, think of the circle as all the complex numbers \(z\) such
+that \(|z|\) is 1. We can define a map from \(\RR \) to the circle say \(f\) that sends \(r \in \RR \) to \(e^{2\pi i r}\). In other
+words, as we move forward in \(\RR \), our map wraps around the circle as in the picture
+below.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 45--><p class="noindent" >
+</p><!--l. 46--><p class="noindent" ><img 
+src="Figure_4.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 50--><p class="indent" >  This map is especially nice because for any point \(x \in S^1\), if you look at any point \(r \in \RR \) that gets
+sent to it, locally it looks the same near \(x\) as it does near \(r\). In this way \(\RR \) is a covering space
+of \(S^1\).
+</p><!--l. 52--><p class="indent" >  Why are covering spaces so nice? Well, once again suppose \(x \in S^1\) and suppose \(r \in \RR \) gets sent to it.
+Now consider a path in \(S^1\) starting and ending at \(x\). This path can be &#8221;lifted&#8221; to a path in \(\RR \)
+meaning the following: There is a path in \(\RR \) starting at \(r\) such that when you send it down
+through \(f\), you get our original path. In fact, this lift is unique (if you require it to
+start at r). Moreover, given any two homotopic paths in \(S^1\), they lift to homotopic
+paths in \(\RR \). Note that the end point of the lift may not be the same as the starting
+point of the lift, even though sending them down through \(f\) will yield the same
+point.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 55--><p class="noindent" >
+</p><!--l. 56--><p class="noindent" ><img 
+src="Figure_5.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 59--><p class="indent" >  The covering map I&#8217;ve described is an especially nice one. In particular, two paths are
+homotopic in \(\RR \) if and only if they have the same starting and ending points, due to the fact
+that \(\RR \) has a trivial fundamental group as we earlier noted. Moreover, this means
+that two paths in \(S^1\) are homotopic if and only if we lift them to \(\RR \) and get two
+paths that have the same end point. A covering space having this property is
+called a &#8221;universal&#8221; covering space. The fact allows us to figure out what the
+fundamental group of \(S^1\) is as follows: say we choose \(x \in S^1 \subset \CC \) to be \(1\), and \(r \in \RR \) to be \(0\). Then
+given a homotopy class of paths in \(S^1\) we lift it uniquely to \(\RR \). Note that the new
+path may not end at \(r\), but it will end at some integer (as those are precisely
+the points getting sent to \(x\)). Then we can identify this homotopy class of paths
+with the integers. And indeed we can check that this identification is compatible
+with the multiplication we have defined earlier between paths. In other words,
+\(\pi _1(S^1) \cong \ZZ \).
+</p><!--l. 62--><p class="indent" >  I can describe now another type of covering space of \(S^1\). In particular, consider the map \(g_n\)
+from \(S^1\) to \(S^1\) sending \(x\) to \(x^n\) (we are viewing \(S^1\) again as a subset of \(\CC \). This is indeed a covering map,
+as you can see below.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 65--><p class="noindent" >
+</p><!--l. 66--><p class="noindent" ><img 
+src="Figure_6.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 69--><p class="indent" >  Now in fact, the two types of covering spaces are all of the covering spaces of \(S^1\): every
+other covering space is (in a precise way) the same as one of the ones I have descibed. Now
+I will hint toward a correspondence between subgroups of the fundamental group of \(S^1\) and
+its covering spaces. In particular, we have:
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 72--><p class="noindent" >
+</p><!--l. 73--><p class="noindent" ><img 
+src="Figure_7.png" alt="pict"  
+ width="406.3575pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 76--><p class="indent" >  This correspondence will be made precise later.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>Construction of Universal Covering Spaces</h3>
+<!--l. 78--><p class="noindent" >Now lets discuss universal covering spaces. Given a space, we would like to be able to
+construct its universal covering space. It turns out that except for exotic examples, we are
+able to do this. I will describe the construction for \(S^1\), and the process is exactly the same for
+any other space. We would like to recreate \(\RR \) the universal covering space, from \(S^1\). Our points
+of the universal covering space \(X\) will be homotopy classes of paths that start at a given
+point (say 1) and end anywhere on \(S^1\). In order to specify the topology, we need to specify
+when two paths in \(X\) are &#8221;close&#8221; to one another. We will do this in the natural way that
+makes sense: two classes of paths \(A\) and \(B\) are &#8221;close&#8221; if you can draw a small circle
+around the end point of a path in \(A\), and there is a path in \(B\) that except for in the
+small circle match (see the picture below). There is a natural map from \(X\) to \(S^1\) that
+takes a homotopy class of maps to the endpoint in \(S^1\). In fact, this is a covering
+map.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 81--><p class="noindent" >
+</p><!--l. 82--><p class="noindent" ><img 
+src="Figure_8.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 85--><p class="indent" >  How does this reconstruct \(\RR \)? Well, we can associate a homotopy class of paths in \(X\) with
+points in \(\RR \) as follows: given a class of paths, lift them to \(\RR \) and look at the end point in \(\RR \).
+This gives a map from \(X\) to \(\RR \) that perfectly preserves the topology, so that \(X\) and \(\RR \) can actually
+be thought of as the same space.
+</p><!--l. 87--><p class="indent" >  In fact, the other examples of covering spaces of \(S^1\) that I described, where the map was
+given by \(g_n\), can actually be reconstructed from the universal covering space \(\RR \) as
+follows: we can take two points in \(\RR \) and identify them if their difference is \(n\) times
+an integer (we fix \(n\) beforehand). Then we note that our new space, \(\RR \) with some
+points identified, is actually a circle, because point is identified with something
+from \(0\) to \(n\), and as soon as we get to \(n\) we wrap around the circle. We also get a
+covering map which is exactly the same one as for \(\RR \): since we identified our points
+carefully, this map is well defined as identified points already got sent to the same
+thing.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 90--><p class="noindent" >
+</p><!--l. 91--><p class="noindent" ><img 
+src="Figure_9.png" alt="pict"  
+ width="277.34825pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-40004"></a>Correspondence</h3>
+<!--l. 95--><p class="noindent" >I haven&#8217;t yet mentioned another property of the fundamental group, which is one of the
+main reason algebraic topologists like it. I now mention as it is now relevant for describing
+the relationship between covering spaces and subgroups of the fundamental group.
+Given two spaces \(X\) and \(Y\), \(x \in X, y \in Y\), and a map \(f\) from \(X\) to \(Y\), the map \(f\) induces a map from \(\pi _1(X,x)\)
+to \(\pi _1(Y,y)\) by taking a class of paths in \(X\) and applying \(f\) to them (When I say map of
+topological spaces I mean a continuous function, whereas for a group \(\pi _1\) I mean a group
+homomorphism). Now if \(Y\) is a covering space of \(X\), we can consider the map from \(Y\) to \(X\)
+covering \(X\). Suppose it sends \(y \in Y\) to \(x \in X\). This induces a map \(\pi _1(Y,y)\) to \(\pi _1(X,x)\). We can associate the
+covering space \(Y\) with the image of this induced map, which is a subgroup of \(\pi _1(X,x)\). In
+the other direction, given a subgroup \(H\) of \(\pi _1(Y,y)\) we can associate it with a covering
+space similarly to how we reconstructed the covering spaces associated with \(g_n\)
+by identifying points in \(\RR \). In particular, we can take two points in the universal
+cover \(Z\), and identify them if their difference (remember that they correspond
+to homotopy classes of paths in \(X\)) is a member of a homotopy class contained
+inside \(H\). In fact going from subgroups to covering spaces in this way are inverse
+processes.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 98--><p class="noindent" >
+</p><!--l. 99--><p class="noindent" ><img 
+src="Figure_10.png" alt="pict"  
+ width="406.3575pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+  <h3 class="sectionHead"><span class="titlemark">5. </span> <a 
+ id="x1-50005"></a>Examples and Remarks</h3>
+<!--l. 103--><p class="noindent" >Lets do a fun example of a covering space. Instead of \(S^1\), we can look at the space of two
+circles &#8221;wedged&#8221; together, which I will call \(S^1\vee S^1\). Below are two examples of its covering spaces.
+To see what the maps from the covering spaces are, I have labelled each circle in \(S^1\vee S^1\) \(a\) and \(b\).
+The map from each covering space is as follows: each vertex goes to the vertex in
+between the circles, and each line labelled \(a\) or \(b\) goes to the corresponding circle in
+\(S^1\vee S^1\).
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 106--><p class="noindent" >
+</p><!--l. 107--><p class="noindent" ><img 
+src="Figure_11.png" alt="pict"  
+ width="406.3575pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 110--><p class="indent" >  What do you think the universal covering space of \(S^1\vee S^1\) looks like? How would you describe
+\(S^1\vee S^1\)&#8217;s fundamental group? What subgroups do the covering spaces above correspond to? These
+are good questions to think about.
+</p><!--l. 112--><p class="indent" >  Another fun example of a covering space is the following: take a sphere with say 9 holes
+as below, and consider rotating it 90, 180, and 270 degrees and identifying points that are
+sent to each other. We will end up with sphere with only three holes, and the map sending
+a point in the sphere with 9 holes to the identified point makes the sphere with 9 holes
+into a covering space over the one with 3 holes. Can you come up with similar such
+examples?
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 115--><p class="noindent" >
+</p><!--l. 116--><p class="noindent" ><img 
+src="Figure_12.png" alt="pict"  
+ width="406.3575pt"  /></p></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

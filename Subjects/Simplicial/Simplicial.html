@@ -1,0 +1,3577 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Simplcial</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Simplicial.css" /> 
+<meta name="src" content="Simplicial.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+SIMPLCIAL
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Introduction</h3>
+<!--l. 11--><p class="noindent" >Simplicial things come up in mathematics a lot. There are at least three (related) places of
+origin. The first is homotopy theory. Simplicial sets give a way of modeling the homotopy
+theory of topological spaces, and are often a convenient model for higher categories. The
+second is in homological algebra. There is the Dold Kan correspondence which
+identifies homotopy theories of chain complexes and simplicial objects, which
+suggests that simplicial objects can be useful for applying homotopical methods in
+nonabelian settings. The third place it arises is when studying monoids. Namely, the
+simplex category classifies monoids in a tensor category, meaning that tensor
+functors from \(\Delta \) coincide with monoid objects. This can be used in the construction
+of canonical resolutions from (co)monads, and in the formalism of monoidal
+\(\infty \)-categories.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Technical Things</h3>
+  <div class="newtheorem">
+<!--l. 14--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Lemma 2.1.</span>  </span>\(\Delta ^{op}\) <span 
+class="cmti-12">is sifted.</span>
+</p>
+                                                                                  
+
+                                                                                  
+  <div class="proof">
+<!--l. 17--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(\Delta \) can be thought of as the full subcategory of categories generated by digraphs
+that are finite paths. Thus we need to show the category of objects over \(\Delta ^n\times \Delta ^m\) is connected.
+But given an object in this over category, we can adjoin a terminal object, which is
+sent to the terminal object of \(\Delta ^n\times \Delta ^m\), But then any two such maps over \(\Delta ^n\times \Delta ^m\) are connected via
+the inclusion of the terminal object. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 21--><p class="noindent" >There is an involutions of \(\Delta \) given by reversing the arrows of the partial orders. The action
+of this on simplicial objects is called the <span 
+class="cmbx-12">opposite</span>.
+</p><!--l. 23--><p class="indent" >  Let \(S,J\) be classes of arrows.
+</p>
+  <div class="newtheorem">
+<!--l. 25--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+<span 
+class="cmbx-12">Definition 2.2.</span>  </span>\(J\) <span 
+class="cmti-12">satisfies the</span> \(2\) <span 
+class="cmti-12">out of</span> \(3\) <span 
+class="cmti-12">property with respect to</span> \(S\) <span 
+class="cmti-12">if in</span> \(\Delta ^2\)<span 
+class="cmti-12">-shaped diagram</span>
+<span 
+class="cmti-12">where the edges are in</span> \(S\)<span 
+class="cmti-12">, if two of the arrows are in</span> \(J\)<span 
+class="cmti-12">, the third is.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 28--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r3"></a>
+<span 
+class="cmbx-12">Definition 2.3.</span>  </span>\(J\) <span 
+class="cmti-12">satisfies the</span> \(3\) <span 
+class="cmti-12">out of</span> \(4\) <span 
+class="cmti-12">property with respect to</span> \(S\) <span 
+class="cmti-12">if in a</span> \(\Delta ^1\times \Delta ^1\)<span 
+class="cmti-12">-shaped diagram</span>
+<span 
+class="cmti-12">where the boundary edges are in</span> \(S\)<span 
+class="cmti-12">, if three of the arrows on the boundary are in</span> \(J\)<span 
+class="cmti-12">, the</span>
+<span 
+class="cmti-12">fourth is.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+                                                                                  
+
+                                                                                  
+<!--l. 31--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2004r4"></a>
+<span 
+class="cmbx-12">Definition 2.4.</span>  </span>\(J\) <span 
+class="cmti-12">satisfies the</span> \(2\) <span 
+class="cmti-12">out of</span> \(6\) <span 
+class="cmti-12">property with respect to</span> \(S\) <span 
+class="cmti-12">if in a</span> \(\Delta ^3\)<span 
+class="cmti-12">-shaped diagram</span>
+<span 
+class="cmti-12">where the boundary edges are in</span> \(S\)<span 
+class="cmti-12">, if the arrows</span> \(0 \to 2,1\to 3\) <span 
+class="cmti-12">are in</span> \(J\)<span 
+class="cmti-12">, the rest are.</span>
+</p>
+  </div>
+<!--l. 35--><p class="indent" >  If \(S\) is all the arrows, we supress it from the terminology. In this case, \(2\) out of \(6\) implies \(2\) out
+of \(3\) which implies \(3\) out of \(4\). \(2\) out of \(6\) is satisfied by isomorphisms.
+</p>
+  <div class="newtheorem">
+<!--l. 37--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2005r5"></a>
+<span 
+class="cmbx-12">Definition 2.5.</span>  </span><span 
+class="cmti-12">A  </span><span 
+class="cmbxti-10x-x-120">weakly  saturated  class  </span><span 
+class="cmti-12">of  morphisms  is  one  containing</span>
+<span 
+class="cmti-12">isomorphism that is closed under transfinite composition, coproducts retracts, and</span>
+<span 
+class="cmti-12">pushouts.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 41--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2006r6"></a>
+<span 
+class="cmbx-12">Definition 2.6.</span>  </span><span 
+class="cmti-12">The class of </span><span 
+class="cmbxti-10x-x-120">(left, right, inner) anodyne extensions </span><span 
+class="cmti-12">is the</span>
+<span 
+class="cmti-12">weakly saturated class of morphisms generated from the inclusions of (left, right,</span>
+<span 
+class="cmti-12">inner) horns</span> \(\Lambda ^n_i \to \Delta ^n\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 44--><p class="indent" >  The adjective \(n\)<span 
+class="cmbx-12">-trivial </span>will mean that we add \(\partial \Delta ^m\to \Delta ^m, m&lt;n\) to the generators of the saturated set.
+When \(n=\infty \), we can just say trivial, and when \(n=-2\), this doesn&#8217;t mean anything.
+</p>
+  <div class="newtheorem">
+<!--l. 46--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2007r7"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Definition 2.7.</span>  </span><span 
+class="cmti-12">A map</span> \(f\) <span 
+class="cmti-12">has the </span><span 
+class="cmbxti-10x-x-120">right lifing property </span><span 
+class="cmti-12">with respect to a morphism</span> \(g\)
+<span 
+class="cmti-12">denoted</span> \(f\oslash g\)<span 
+class="cmti-12">, if we can always find lifts in the diagrams</span> </p>
+<div class="center" 
+>
+<!--l. 48--><p class="noindent" >
+</p><!--l. 51--><p class="noindent" >       <img 
+src="Simplicial0x.svg" alt="  U        Y
+
+
+gf V        Z "  />
+</p></div>
+  </div>
+<!--l. 54--><p class="indent" >  If \(L\) is a class of morphisms in \(C\), define \(L^{\oslash }\) to be the class of morphisms \(\{ f| L\oslash f \}\). Dually define \(\phantom{}^{\oslash }J\). \(\phantom{}^{\oslash }J\) is
+always weakly saturated.
+</p>
+  <div class="newtheorem">
+<!--l. 56--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2008r8"></a>
+<span 
+class="cmbx-12">Lemma 2.8.</span>  </span> \(\phantom{}^{\oslash }(J^{\oslash })^{\oslash } = J^{\oslash }\)
+</p>
+  <div class="proof">
+<!--l. 59--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By definition \(\phantom{}^{\oslash }(J^{\oslash })\oslash J^{\oslash }\), showing \(J^{\oslash } \subset \phantom{}^{\oslash }(J^{\oslash })^{\oslash }\). But \(J \oslash \phantom{}^{\oslash }(J^{\oslash })^{\oslash }\) since \(J \subset \phantom{}^{\oslash }(J^{\oslash })\) giving the other inclusion (this works for
+any binary relation). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 62--><p class="indent" >  \(\phantom{}^{\oslash }(J^{\oslash })\) is like a saturation of \(J\), and often agrees with the weak saturation of \(J\).
+</p>
+  <div class="newtheorem">
+<!--l. 64--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2009r9"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Lemma 2.9.</span>  </span>\(f\oslash f\) <span 
+class="cmti-12">iff</span> \(f\) <span 
+class="cmti-12">is an isomorphism.</span>
+</p>
+  <div class="proof">
+<!--l. 67--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Find a lift for the square \(1\times f\) to get an inverse. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 71--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2010r10"></a>
+<span 
+class="cmbx-12">Lemma 2.10.</span>  </span> <span 
+class="cmti-12">Let</span> \(F\dashv G\) <span 
+class="cmti-12">be an adjunction. Then</span> \(FX \oslash Y\) <span 
+class="cmti-12">iff</span> \(X \oslash GY\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 74--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This is immediate from the definition. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 78--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2011r11"></a>
+<span 
+class="cmbx-12">Definition 2.11.</span>  </span><span 
+class="cmti-12">A map is a </span><span 
+class="cmbxti-10x-x-120">(left, right, inner)</span> \(n\)<span 
+class="cmbxti-10x-x-120">-connected fibration </span><span 
+class="cmti-12">if it</span>
+<span 
+class="cmti-12">satisfies the right lifting property with respect to</span> \(n\)<span 
+class="cmti-12">-trivial (left, right, inner) fibrations.</span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+<!--l. 82--><p class="indent" >  A fibrant simplicial set is sometimes called a <span 
+class="cmbx-12">Kan complex</span>, and an inner fibrant
+simplicial set is sometimes called an \(\infty \)<span 
+class="cmbx-12">-category </span>or \((\infty ,1)\)<span 
+class="cmbx-12">-categor</span>y or <span 
+class="cmbx-12">quasicategory</span>.
+</p><!--l. 84--><p class="indent" >  As \(\SSet \) is a presheaf category, we can get natural adjunctions by left Kan extension
+whenever we have a cosimplicial object in some cocomplete category \(C\). For example, the
+cosimiplicial category where \(\Delta ^n\) gets sent to the category generated by \(n\) morphisms in a row
+(also denoted \(\Delta ^n\)) gives the nerve functor with adjoint the homotopy category. The
+standard simplices in \(\Top \) or \(\CGHaus \) give geometric realization \(|\cdot |\) and the singular set \(S\). Another
+example is a cosimplicial object in \(\SSet \) given by taking an ordered set to the nerve
+its poset of subset. This extends to a functor \(\sd :\SSet \to \SSet \), which is essentially barycentric
+subdivision, and its right adjoint is denoted \(\Ex \). The study of this functor is due to Kan I
+believe. There is a natural map \(h: \sd X \to X\) called the last vertex map that sends a vertex in \(\sd \Delta ^n\)
+to the last vertex of the subset it corresponds to. The adjoint of this is a map
+\(X \to \Ex X\).
+</p>
+  <div class="newtheorem">
+<!--l. 86--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2012r12"></a>
+<span 
+class="cmbx-12">Proposition 2.12.</span>  </span><span 
+class="cmti-12">Geometric realization of simplicial sets preserves finite limits in</span> \(\CGHaus \)<span 
+class="cmti-12">, the</span>
+<span 
+class="cmti-12">category of compactly generated spaces.</span>
+</p>
+  <div class="proof">
+<!--l. 89--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>First let&#8217;s think about products. We can reduce to the case of simplices as
+follows. Let \(K,L\) be simplicial sets. Since products distribute over colimits, we have \[|K \times L| =|\int ^mK_m\cdot \Delta ^m \times \int ^nL_n\cdot \Delta ^n| = |\int ^{m,n}K_m\cdot L_n\cdot \Delta ^m\times \Delta ^n| \]\[= \int ^{m,n}K_m\cdot L_n \cdot |\Delta ^m\times \Delta ^n| = \int ^{m,n}K_m\cdot L_n \cdot |\Delta ^m|\times |\Delta ^n| = \int ^mK_m \cdot |\Delta ^m| \int ^n L_n \cdot |\Delta ^n|\]\[ = |K|\times |L|\]
+</p><!--l. 91--><p class="indent" >  Now the natural map \(|\Delta ^n \times \Delta ^m|\to |\Delta ^n|\times |\Delta ^m|\) is a continuous map of compact Hausdorff spaces, so it
+a homeomorphism iff it is a bijection. Suppose we have an element of \(|\Delta ^n|\times |\Delta ^m|\), given by
+a sequence of numbers \(c_i,d_j\), which are the components for the standard embedding of
+a simplex. Define \(c_i' = \sum _{k\leq i} c_i\) and similarly for \(d'_j\), and order the set consisting of \(c_i',d_j'\). Now define
+a simplex on vertices by going through the ordering and everytime you run into a
+number that is one of the \(c'_i\), increment the index of the \(\Delta ^n\) vertex, and similarly for
+the \(d'_i\) and the \(\Delta ^m\) vertex. It is easy to see that this is the unique nondegenerate simplex
+hitting \(c_i,d_j\), and it hits it in a unique point by taking the linear combination that is the
+incremental differences of the ordered set of numbers.
+</p><!--l. 93--><p class="indent" >  Equalizers are easier. First observe that an inclusion of simplicial sets induces an
+                                                                                  
+
+                                                                                  
+inclusion of a closed set upon realizing. This implies that the comparison map is
+an inclusion. For surjectivity one has to observe that for any point equalized in the
+realization, the nondegenerate simplex whose interior it is in is equalized, so it is in
+the image. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 97--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2013r13"></a>
+<span 
+class="cmbx-12">Lemma 2.13.</span>  </span> <span 
+class="cmti-12">There is a homeomorphism</span> \(|\sd \Delta ^n| \to |\Delta ^n|\)<span 
+class="cmti-12">, which realizes</span> \(|\sd \Delta ^n|\) <span 
+class="cmti-12">as the barycentric</span>
+<span 
+class="cmti-12">subdivision of</span> \(|\Delta ^n|\)<span 
+class="cmti-12">. Moreover, this is naturally homotopic to</span> \(|h|\) <span 
+class="cmti-12">where</span> \(h\) <span 
+class="cmti-12">is the last vertex</span>
+<span 
+class="cmti-12">map.</span>
+</p>
+  <div class="proof">
+<!--l. 100--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>A zero simplex of \(\sd \Delta ^n\) is given by a subset of the vertices \(v_i\) of \(\Delta ^n\), which we can send
+to the barycenter of that set in \(|\Delta ^n|\). We can then extend to \(\sd \Delta ^n\) by linear interpolation.
+Rewrite \(\sum _i \alpha _i v_i = \sum _j t_j X_j\), where the \(t_j\) are in increasing order and \(X_j\) is a sum of \(v_i\)s, so we have just
+regrouped the \(v_i\)s with the same coefficient into one \(X_j\). Define \(N_j = \sum _{k\geq j} (n_j+1)\) where \(n_j\) is the number of
+\(v_i\) in \(X_j\).
+</p><!--l. 102--><p class="indent" >  Then \(\sum _j t_jX_j = \sum _j (t_j-t_{j-1})N_j(\frac{1}{N_j}\sum _{k\geq j} X_k)\). \((\frac{1}{N_j}\sum _{k\geq j} X_k)\) is a barycenter, and \(\sum _j (t_j-t_{j-1})N_j = 1\) so we have written (uniquely) any element of \(\Delta ^n\) as an
+element of \(|\sd X|\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 107--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2014r14"></a>
+<span 
+class="cmbx-12">Lemma 2.14 </span>(Generators of \(n\)-trivial inclusions)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">The</span> \(n\)<span 
+class="cmti-12">-trivial maps are those inclusions</span> \(X\to Y\)<span 
+class="cmti-12">,</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">where</span> \(Y/X\) <span 
+class="cmti-12">has nondegenerate cells in dimensions</span> \(\leq n\)<span 
+class="cmti-12">. .In particular the saturation of the</span>
+<span 
+class="cmti-12">inclusions</span> \(\partial \Delta ^n \subset \Delta ^n\) <span 
+class="cmti-12">is all inclusions of simplicial sets.</span>
+</p>
+  <div class="proof">
+<!--l. 110--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It is easy to see the sets described are saturated. Given any inclusion \(X \subset Y\), let \(Y_n(X)\) denote
+the preimage of the n-skelaton of \(Y/X\) as a pointed simplicial set. Then since \(Y_{-1}(X) = X, Y_n(X) \subset Y_{n+1}(X), \cup _i Y_{i}(X)=Y\), it suffices
+to show that the inclusion \(Y_{n-1}(X) \to Y_{n}(X)\) is generated by \(\partial \Delta ^n \subset \Delta ^n\). But there is a pushout diagram
+</p>
+<div class="center" 
+>
+<!--l. 111--><p class="noindent" >
+</p><!--l. 115--><p class="noindent" >            <img 
+src="Simplicial1x.svg" alt="&#x222A;&#x03B1; &#x2202;&#x0394;n&#x03B1;        Yn-1(X )
+
+
+&#x222A;  &#x0394;n          Y (X )
+ &#x03B1;  &#x03B1;           n "  />
+</p></div>
+<!--l. 117--><p class="noindent" >where alpha runs over all nondegenerate \(n\)-cells in \(Y/X\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 121--><p class="indent" >  <span 
+class="cmbx-12">Note: the inclusions</span> \(\partial \Delta ^n\times \Delta ^m \cup \Delta ^n \times \partial \Delta ^m \subset \Delta ^n\times \Delta ^m\) <span 
+class="cmbx-12">should also generate inclusions.</span>
+</p>
+  <div class="newtheorem">
+<!--l. 123--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2015r15"></a>
+<span 
+class="cmbx-12">Proposition 2.15 </span>(Generators of left anodyne extensions)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">The three classes of maps</span>
+<span 
+class="cmti-12">below generate the left anodyne extensions:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem">\(\Lambda _i^n \subset \Delta ^n\)<span 
+class="cmti-12">,</span> \(0 \leq i &lt;n\)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem">\(\Delta ^1\times \partial \Delta ^n \cup \Lambda _1^1 \times \Delta ^n \subset \Delta ^1\times \Delta ^n\)
+                                                                                  
+
+                                                                                  
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem">\(\Delta ^1\times X \cup \Lambda _1^1 \times Y \subset \Delta ^1\times Y\) <span 
+class="cmti-12">for all</span> \(X \subset Y\)</dd></dl>
+  <div class="proof">
+<!--l. 131--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\((2) \iff (3)\): This follows from Lemma <a 
+href="#x1-2014r14">2.14<!--tex4ht:ref: genincl --></a> after observing that the class of inclusions \(X \to Y\)
+for which \((3)\) is true is saturated.
+</p><!--l. 133--><p class="indent" >  \((2) \implies (1)\): Let \(X_n\) be \(\Delta ^1\times \partial \Delta ^n \cup \Lambda _1^1 \times \Delta ^n\), and consider the map \(X_n \to \Lambda _i^{n+1}\) induced by the endomorphism of \(X_n\) determined on
+vertices by sending \((1,j)\) to \((0,j)\) for \(j \neq i\). The pushout along this map of the inclusion \(X \to \Delta ^1\times \Delta ^n\) contains \(\Delta ^{n+1}\)
+as a retract relative to \(\Lambda _i^{n+1}\).
+</p><!--l. 135--><p class="indent" >  \((1)\implies (2)\): First notice that the \(n-1\) skeleta agree, so there is only need to add \(n+1\)-simplices. Let \(\sigma _i\)
+denote the \(n+1\) simplex of \(\Delta ^1\otimes \Delta ^n\) where the \(\Delta ^1\) component starts being \(1\) on the \(i^{th}\) vertex. Then in
+decreasing order of \(i\), extend along \(\Lambda _i^n\) to \(\sigma _i\) to build up \( \Delta ^1\times \Delta ^n\) out of \(\Delta ^1\times \partial \Delta ^n \cup \Lambda _1^1 \times \Delta ^n\) <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 140--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2019r16"></a>
+<span 
+class="cmbx-12">Corollary 2.16 </span>(Generators of anodyne extensions)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">The three classes of maps below</span>
+<span 
+class="cmti-12">generate the anodyne extensions:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem">\(\Lambda _i^n \subset \Delta ^n\)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem">\(\Delta ^1\times \partial \Delta ^n \cup \Lambda _i^1 \times \Delta ^n \subset \Delta ^1\times \Delta ^n\)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem">\(\Delta ^1\times X \cup \Lambda _i^1 \times Y \subset \Delta ^1\times Y\) <span 
+class="cmti-12">for all</span> \(X \subset Y\)</dd></dl>
+  </div>
+  <div class="newtheorem">
+<!--l. 149--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2023r17"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Proposition 2.17 </span>(Generators of inner anodyne extensions)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">The classes of maps below</span>
+<span 
+class="cmti-12">generate the inner anodyne extensions:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem">\(\Lambda _i^n \subset \Delta ^n\)<span 
+class="cmti-12">,</span> \(0&lt;i&lt;n\)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem">\(\Delta ^2\times \partial \Delta ^n \cup \Lambda _1^2 \times \Delta ^n \subset \Delta ^2\times \Delta ^n\)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem">\(\Delta ^2\times X \cup \Lambda _1^2 \times Y \subset \Delta ^2\times Y\) <span 
+class="cmti-12">for all</span> \(X \subset Y\)</dd></dl>
+  <div class="proof">
+<!--l. 160--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\((1) \implies (2)\):  First  observe  that  the  \(n-1\)-skeleton  agrees  with  that  of  \(\Delta ^2\times \Delta ^n\).  Let  \(\sigma '_i,i&gt;0\)  be  the
+nondegenerate \(n+1\)-simplices projecting onto \(s_i\Delta ^n\), that switches from \(0\) to \(2\) in \(\Delta ^2\) at the \(i^{th}\) vertex.
+Let \(\sigma _{i,0}\) be the nondegenerate \(n+2\)-simplex projecting to \(s_is_i\Delta ^n\), and let \(\sigma _{i,1},i&gt;0\) be the nondegenerate
+\(n+2\)-simplex projecting to \(s_{i}s_{i-1}\Delta ^n\). Then in descending order of \(i\), we can attach \(\sigma '_i\), then \(\sigma _{i,0}\), then \(\sigma _{i,1}\)
+until we have build up \(\Delta ^2\times \Delta ^n\).
+</p><!--l. 162--><p class="indent" >  \((2) \iff (3)\): This follows from Lemma <a 
+href="#x1-2014r14">2.14<!--tex4ht:ref: genincl --></a> after observing that the class of inclusions \(X \to Y\) for
+which \((3)\) is true is saturated.
+</p><!--l. 164--><p class="indent" >  \((2) \implies (1)\): Fix \(0&lt;i&lt;n\), and consider the endomorphism of \(\Delta ^2\times \partial \Delta ^n \cup \Lambda _1^2 \times \Delta ^n \subset \Delta ^2\times \Delta ^n\), with image consisting of the vertices \((0,j), j&lt;i\),
+\((1,i-1)\), and \((2,j)\), for \(j\geq i\), where all the other vertices are sent to \((1,i-1)\). The image is \(\Lambda _i^n\), and the pushout
+of the inclusion into \(\Delta ^2\times \Delta ^n\) along this endomorphism retracts onto the inclusion \(\Lambda _i^n \to \Delta ^n\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 168--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2027r18"></a>
+<span 
+class="cmbx-12">Corollary 2.18.</span>  </span> <span 
+class="cmti-12">If</span> \(K\subset L\) <span 
+class="cmti-12">is (left, right, inner) anodyne and</span> \(Y \subset X\)<span 
+class="cmti-12">, then</span> \(K\times X \cup L\times Y \to L\times X\) <span 
+class="cmti-12">is (left, right, inner)</span>
+<span 
+class="cmti-12">anodyne.</span>
+</p>
+  <div class="proof">
+<!--l. 171--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>Let us do the proof for left anodyne extensions, the proofs in other cases are
+similar. Since the inclusions \(K\subset L\) for which the lemma is true are saturated, we reduce to the
+case when it is \(\Delta ^1\times \partial \Delta ^n \cup \Lambda _1^1 \times \Delta ^n \subset \Delta ^1\times \Delta ^n\). But now there is a commutative square: </p>
+<div class="center" 
+>
+<!--l. 172--><p class="noindent" >
+</p><!--l. 176--><p class="noindent" >                                     <img 
+src="Simplicial2x.svg" alt="(&#x0394;1 &#x00D7; &#x2202; &#x0394;n &#x222A; &#x039B;11 &#x00D7; &#x0394;n ) &#x00D7; X &#x222A; &#x0394;1 &#x00D7; &#x0394;n  &#x00D7; Y&#x0394;1 &#x00D7;  &#x0394;n &#x00D7; X
+
+
+  1     n           n         1      n      1     n
+&#x0394;  &#x00D7; (&#x0394;   &#x00D7; Y &#x222A; &#x2202; &#x0394;  &#x00D7; X ) &#x222A; &#x039B;1 &#x00D7; (&#x0394;  &#x00D7;  X&#x0394;) &#x00D7;  (&#x0394;   &#x00D7; X ) "  />
+</p></div>
+<!--l. 177--><p class="noindent" >The lower map by \((3)\) of Corollary <a 
+href="#x1-2019r16">2.16<!--tex4ht:ref: genanod --></a> is anodyne. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 181--><p class="indent" >  A <span 
+class="cmbx-12">closed monoidal category </span>is one where there are internal homs that are right
+adjoint to tensoring. This makes the category self-enriched. A \(V\)-enriched category with a
+lax monoidal functor to \(C\) has an underlying \(C\)-enriched category, and in this case of self
+enrichment, the underlying category is the original, and one can use an enriched Yoneda
+lemma to upgrade the internal hom adjunction to an enriched adjunction. In a \(V\) enriched
+category \(C\) we can use an underline such as \(\ul{\Hom }(a,b)\) or \(\ul{C}(a,b)\) to denote \(V\)-homs. We say <span 
+class="cmbx-12">cartesian</span>
+<span 
+class="cmbx-12">closed </span>if the monoidal structure comes from products. The presheaf category of a
+category \(C\) is always a cartesian closed symmetric monoidal category by the formula \(\Maps (X,Y)_Z = \Hom (X\times Z,Y)\),
+where \(Z \in C\). In particular this works in \(\SSet \). Moreover, there is a natural \(2\)-equivalence
+between \(\Set ^{C^{op}}\)-enriched categories and functors \(C^{op} \to \Cat \). The internal hom is also denoted
+\(Y^X\).
+</p><!--l. 183--><p class="indent" >  Given a complete and cocomplete cartesial closed symmetric monoidal category \(C\) we can
+form a symmetric monoidal category \(C_+\) of based objects with a map from the terminal
+object. The monoidal structure is the smash product, and the functor of adding a disjoint
+basepoint is strongly symmetric monoidal.
+</p><!--l. 185--><p class="indent" >  Now suppose \(C,D\) are \(V\)-enriched, where \(V\) is concrete, and suppose that we have an adjunction
+\(\adjunction{F}{C}{D}{G}\) on the underlying categories. We would like a situation where this can be upgraded to an
+enriched adjunction.
+                                                                                  
+
+                                                                                  
+</p>
+  <div class="newtheorem">
+<!--l. 187--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2028r19"></a>
+<span 
+class="cmbx-12">Definition 2.19.</span>  </span><span 
+class="cmti-12">Let</span> \(\ul{C}\) <span 
+class="cmti-12">be</span> \(V\)<span 
+class="cmti-12">-enriched.</span> \(\ul{C}\) <span 
+class="cmti-12">is </span><span 
+class="cmbxti-10x-x-120">tensored </span><span 
+class="cmti-12">if there is an isomorphism natural</span>
+<span 
+class="cmti-12">in all</span> \(3\) <span 
+class="cmti-12">variables:</span> \(\ul{C}(a\otimes b,c) \cong \ul{V}(a,\ul{C}(b,c))\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 191--><p class="indent" >  In other words, there is an enriched left adjoint of \(\ul{C}(b,-)\) for every \(b\).
+</p>
+  <div class="newtheorem">
+<!--l. 193--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2029r20"></a>
+<span 
+class="cmbx-12">Definition 2.20.</span>  </span><span 
+class="cmti-12">Let</span> \(\ul{C}\) <span 
+class="cmti-12">be</span> \(V\)<span 
+class="cmti-12">-enriched.</span> \(\ul{C}\) <span 
+class="cmti-12">is </span><span 
+class="cmbxti-10x-x-120">cotensored </span><span 
+class="cmti-12">if there is an isomorphism</span>
+<span 
+class="cmti-12">natural in all</span> \(3\) <span 
+class="cmti-12">variables:</span> \(\ul{C}(b,\hom (a,c)) \cong \ul{V} (a,\ul{C}(b,c))\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 197--><p class="indent" >  In other words, there is an enriched right adjoint of \(\ul{C}(-,c)\) for every \(b\).
+</p><!--l. 199--><p class="indent" >  Sometimes people also say copower and power instead of tensor and cotensor.
+</p>
+  <div class="newtheorem">
+<!--l. 201--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2030r21"></a>
+<span 
+class="cmbx-12">Definition 2.21.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">two-variable adjunction </span><span 
+class="cmti-12">is a triple of functors</span> \(F: M\times N \to P\)<span 
+class="cmti-12">,</span> \(G:M^{op}\times P \to N\)<span 
+class="cmti-12">,</span> \(H: N^{op}\times P \to M\) <span 
+class="cmti-12">so that</span>
+<span 
+class="cmti-12">there are natural isomorphisms</span> \(\Hom (F(a,b),c) = \Hom (b,G(a,c)) = \Hom (a,H(b,c))\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 205--><p class="indent" >  We can think of this as a family of adjunctions parameterized by \(a\) (or symmetrically in \(b,c\)).
+If \(\ul{C}\) is tensored and cotensored, there is a two-variable enriched adjunction \(\ul{C}(b,\hom (a,c)) \cong \ul{C}(a\otimes b,c) \). Moreover \(\otimes \) is
+unital and associative, essentially giving an action of \(\ul{V}\) on \(\ul{C}\).
+</p>
+  <div class="newtheorem">
+                                                                                  
+
+                                                                                  
+<!--l. 207--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2031r1"></a>
+<span 
+class="cmbx-12">Construction 2.21.1.</span>  </span> Suppose that \(F:M\times N \to P\) is a functor, and \(P\) has pushouts. Then the
+<span 
+class="cmbx-12">pushout-product </span>denoted \(\hat{F}\) is a functor on the arrow categories defined on arrows \(i,j\) by the
+diagram below. </p>
+<div class="center" 
+>
+<!--l. 209--><p class="noindent" >
+</p><!--l. 213--><p class="noindent" >                   <img 
+src="Simplicial3x.svg" alt="     F(a, b)        F (a&#x2032;,b)
+
+
+          &#x2032;
+     F(a, b)       Xij
+
+
+FF&#x231C;FFF((((&#x02C6;(ijjii,1,1,1,1,j)))))                             F(a&#x2032;,b&#x2032; "  />
+</p></div>
+  </div>
+<!--l. 217--><p class="indent" >  The pushout-product of the initial map to \(a\) with a map \(b \to c\) is just the map \(F(a,b) \to F(a,c)\). Suppose that
+there is a two-variable adjunction \(F,G,H\) between \(M,N,P\), and suppose that \(M\) has pushouts and \(N,P\) have
+pullbacks. Then Construction <a 
+href="#x1-2031r1">2.21.1<!--tex4ht:ref: leibnizconstruction --></a> applied to \(F,G^{op},H^{op}\) give an induced \(2\)-variable adjunction
+\(\hat{F},\hat{G},\hat{H}\).
+</p>
+  <div class="newtheorem">
+<!--l. 219--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2032r22"></a>
+<span 
+class="cmbx-12">Lemma 2.22.</span>  </span> <span 
+class="cmti-12">If</span> \(F,G,H\) <span 
+class="cmti-12">are a two-variable adjunction, then</span> \(\hat{F}(f,g)\oslash h\) <span 
+class="cmti-12">iff</span> \(g \oslash \hat G(f,h)\) <span 
+class="cmti-12">iff</span> \(f \oslash H(g,h)\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 222--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This follows from construction and Lemma <a 
+href="#x1-2010r10">2.10<!--tex4ht:ref: adjunctionlifting --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+                                                                                  
+
+                                                                                  
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 226--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2033r23"></a>
+<span 
+class="cmbx-12">Lemma 2.23.</span>  </span> <span 
+class="cmti-12">Suppose that</span> \(C,D\) <span 
+class="cmti-12">are tensored and cotensored over</span> \(V\)<span 
+class="cmti-12">, and there is an</span>
+<span 
+class="cmti-12">adjunction</span> \(\adjunction{F}{C}{D}{G}\) <span 
+class="cmti-12">of functors on the underlying categories. Then the following data determine</span>
+<span 
+class="cmti-12">each other:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">An enrichment of the functors and the adjunction</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">An enrichment of</span> \(F\) <span 
+class="cmti-12">and natural isomorphisms</span> \(F(v\otimes m) \cong v\otimes F(m)\)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">An enrichment of</span> \(G\) <span 
+class="cmti-12">and natural isomorphisms</span> \(G(m^v)\cong G(m)^v\)<span 
+class="cmti-12">.</span></dd></dl>
+<!--l. 233--><p class="noindent" ><span 
+class="cmti-12">Moreover, in this case,</span> \(G\) <span 
+class="cmti-12">preserves the cotensoring and</span> \(F\) <span 
+class="cmti-12">preserves the tensoring.</span>
+</p>
+  <div class="proof">
+<!--l. 235--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It suffices to show \((1) \iff (2)\) as \((3)\) is dual to \((2)\). The point is to use the Yoneda lemma. For
+clarity, \(\ul{F}\) will denote enriched functors. If the adjunction is enriched, then \(\ul{D}(v\otimes \ul{F}m,n) = \ul{V}(v,\ul{D}(Fm,n)) = \ul{V}(v,\ul{C}(m,\ul (G)n)) = \ul{C}(v\otimes m,\ul (G)n) = \ul{D}(\ul (F)(v\otimes m),n)\). Conversely,
+if \((2)\) is satisfied, and \(U\) denoted the forgetful functor on \(\ul V\), then we can produce the counit
+via \(V(c,\ul C(Ga,Ga)) = C(c\otimes Ga,Ga) = D(F(c\otimes Ga),a) = D(c\otimes FGa,a) = V(c,\ul D(FGa,a))\) and the unit via \(V(a,\ul D(Fb,Fb)) = D(a\otimes Fb,Fb) = D(F(a\otimes b),Fb) = D(a\otimes b, GFb) = V(a,\ul D(b,GFb))\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 239--><p class="indent" >  We can transport enrichments and the property of being cotensored or tensored over \(V\) to \(V'\)
+provided we have an adjunction \(\adjunction{F}{V}{V'}{G}\) where the left adjoint is strongly monoidal. Moreover the \(V'\)
+enrichments on \(V,V'\) are compatible with the adjunction in this case.
+</p>
+  <div class="newtheorem">
+<!--l. 241--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2037r24"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Lemma 2.24.</span>  </span> \(C^{D^{op]}}\) <span 
+class="cmti-12">is enriched over</span> \(\Set ^{D^{op}}\) <span 
+class="cmti-12">and is tensored if</span> \(C\) <span 
+class="cmti-12">is cocomplete and cotensored if</span> \(C\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">additionally complete.</span>
+</p>
+  <div class="proof">
+<!--l. 244--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>If \(A \in \Set ^{D^{op}}, B \in C^{D^{op}}, d \in D\), define \((A\otimes B)_d = A_d\cdot B_d\), where \(\cdot \) is the copower, and observe that it is the tensoring, if the
+enrichment is given by \(\ul{\Hom }(B,C)_d = \Hom (d\otimes B,C)\). If \(C\) is complete and \(A=\colim _J d_j\), then define \(B^A\) by \(\lim _J B^{d_j}\), where \(B^{d_j}\) is given by the
+power \(B^{d_j}_{d} = \prod _{\Hom (d,d_j)}B\). This is a right adjoint of \(A\otimes (-)\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 252--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2038r25"></a>
+<span 
+class="cmbx-12">Corollary 2.25.</span>  </span> <span 
+class="cmti-12">Let</span> \(K \subset L\) <span 
+class="cmti-12">be an inclusion, and</span> \(X \to Y\) <span 
+class="cmti-12">a (left, right, inner) fibration. Then the</span>
+<span 
+class="cmti-12">natural map</span> \(\Maps (L,X) \to \Maps (K,X)\times _{\Maps (K,Y)}\Maps (L,Y)\) <span 
+class="cmti-12">is a (left, right, inner) fibration.</span>
+</p>
+  <div class="proof">
+<!--l. 255--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By definition \(A \to B\) has the left lifting property with respect to the map above iff \(A\times L \cup B \times K \subset B\times L\)
+has the left lifting property with respect to \(X \to Y\). Thus this follows from Corollary <a 
+href="#x1-2027r18">2.18<!--tex4ht:ref: anodgeneral --></a>.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 259--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2039r26"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Corollary 2.26.</span>  </span> <span 
+class="cmti-12">Let</span> \(K \subset L\) <span 
+class="cmti-12">be a (left, right, inner) anodyne extension, and</span> \(X \to Y\) <span 
+class="cmti-12">a (left, right,</span>
+<span 
+class="cmti-12">inner) fibration. Then the natural map</span> \(\Maps (L,X) \to \Maps (K,X)\times _{\Maps (K,Y)}\Maps (L,Y)\) <span 
+class="cmti-12">is a trivial fibration.</span>
+</p>
+  <div class="proof">
+<!--l. 262--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This has the same proof as Corollary <a 
+href="#x1-2038r25">2.25<!--tex4ht:ref: mapsfibration --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 266--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2040r27"></a>
+<span 
+class="cmbx-12">Lemma 2.27.</span>  </span> <span 
+class="cmti-12">For a (left, right) fibrant simplicial set, simplicial homotopy of verticies is</span>
+<span 
+class="cmti-12">an equivalence relations.</span>
+</p>
+  <div class="proof">
+<!--l. 269--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>If \(g\) is a homotopy \(x\to y\), then \((g,1_y,\cdot ) = \Lambda _0^2\) can be filled into \(\Delta ^2\), giving a homotopy \(y \to x\). \(s_0x\) gives
+reflexivity, and if \(f:x \to y\) and \(g:y \to z\) are homotopies, then by extending \((g,\cdot ,f)\) to \(\Delta ^2\), we get a homotopy \(x \to z\).
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 273--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2041r28"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Corollary 2.28.</span>  </span> <span 
+class="cmti-12">Let</span> \(X\to Y\) <span 
+class="cmti-12">be a (left, right) fibration, and let</span> \(K \to L\) <span 
+class="cmti-12">be a cofibration. Then</span>
+<span 
+class="cmti-12">homotopies of maps from</span> \(L\) <span 
+class="cmti-12">to</span> \(X\) <span 
+class="cmti-12">covering</span> \(Y\) <span 
+class="cmti-12">relative to</span> \(K\) <span 
+class="cmti-12">is an equivalence relation.</span>
+</p>
+  <div class="proof">
+<!--l. 276--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This follows from Lemma <a 
+href="#x1-2040r27">2.27<!--tex4ht:ref: homotopyeqrelation --></a> and Corollary <a 
+href="#x1-2038r25">2.25<!--tex4ht:ref: mapsfibration --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 280--><p class="indent" >  Define \(\pi _0(X)\) to be the connected components of \(X\).
+</p><!--l. 282--><p class="indent" >  Simplicial sets generalize categories.
+</p>
+  <div class="newtheorem">
+<!--l. 284--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2042r29"></a>
+<span 
+class="cmbx-12">Lemma 2.29.</span>  </span><span 
+class="cmti-12">The nerve is fully faithful on</span> \(1\)<span 
+class="cmti-12">-categories. It&#8217;s essential image</span>
+<span 
+class="cmti-12">is</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem">\(2\)<span 
+class="cmti-12">-coskelatal</span> \(\infty \)<span 
+class="cmti-12">-categories</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">Simplicial sets with unique lifts from inner horns</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">Simplicial sets satisfying the Segal condition</span> \(X_n \xrightarrow{\sim } X_1\times _{X_0} X_1\times _{X_0}\dots \times _{X_0}X_1\) <span 
+class="cmti-12">from the inclusion of the spine.</span>
+          </dd></dl>
+  <div class="proof">
+<!--l. 294--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>First we will show that the first two descriptions of the essential image are
+the same. Suppowe we have a \(2\)-coskeletal \(\infty \)-category. Then we immediately get that
+there is a unique lift for inner horns when \(n&gt;3\), since the inclusions of those horns are
+                                                                                  
+
+                                                                                  
+identities on the \(2\)-skelaton. If we have two composites of \(g\circ f\), \(\sigma ,\sigma '\) lifting both \(\Lambda _1^3 = (s_0 g,\cdot ,\sigma ,s_1f)\) and \(\partial \Delta ^3 = (s_0g, \sigma ,\sigma ', s_1f)\) to \(\Delta ^3\), we
+see by uniqueness of the lift on \(\Lambda _1^3\) that \(\sigma = \sigma '\).
+</p><!--l. 296--><p class="indent" >  Conversely given a simplicial set with unique lifts on inner horns, it is certainly an
+\(\infty \)-category, so it suffices to show it is \(2\)-coskelatal. To do this, it suffices to show that
+for \(n&gt;2\), we can always extend maps along \(\partial \Delta ^n \subset \Delta ^n\). Uniqueness will follow from the fact that it
+extends an inner horn. This can be done inductivly on \(n\). Since \(n&gt;2\), we can restrict to
+two different inner horns and extend to \(\Delta ^n\). Then the uniqueness of lifts for smaller \(n\) will
+show that the two extensions agree on the boundary, and are in particular extensions
+on \(\partial \Delta ^n\).
+</p><!--l. 298--><p class="indent" >  Now given such a simplicial set, rebuild the category in the obvious way. Namely,
+the verticies are objects, the \(1\)-simplices arrows (with the identity as the degenerate
+ones). The unique lifting on inner \(2\) horns gives a unique composition, the \(3\)-skelaton
+gives associativity, and the \(2\)-coskelativity says that maps between such simplicial sets
+are determined by preserving \(1\)-categorical structure.
+</p><!--l. 300--><p class="indent" >  Being a category implies the Segal condition, which in turn implies unique lifting
+of inner horns. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 304--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2046r30"></a>
+<span 
+class="cmbx-12">Lemma 2.30.</span>  </span><span 
+class="cmti-12">A category is a Kan complex iff it is a groupoid.</span>
+</p>
+  <div class="proof">
+<!--l. 307--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(n\)-horns for \(n&gt;2\) can always be extended for a category, and \(1\)-horns can be extended
+for any simplicial set. Moreover, we see easily see that extending \(\Lambda _2^2\) and \(\Lambda _0^2\) is equivalent to
+every map having (left and right) inverses. Of course, if every map has a left inverse,
+it is already a groupoid by associativity. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 311--><p class="indent" >  There is an explicit description of the homotopy \(1\)-category of an \(\infty \)-category. Namely, we
+call the \(0\)-simplices objects, \(1\)-simplices arrows. Given simplicial sets \(X,Y\), \(X\star Y\) is the simplicial set
+where its \(n\)-simplices start in \(X\) and end in \(Y\).
+</p><!--l. 314--><p class="indent" >  Let \(x,y\) be objects in an \(\infty \)-category. Then the <span 
+class="cmbx-12">left mapping space </span>from \(\LMaps (x,y)\) is the simplicial
+set whose \(n\)-simplices are the maps \(\Delta ^n\star \Delta ^0\) sending \(\Delta ^n\) to \(x\) and \(\Delta ^0\) to \(y\).
+</p>
+  <div class="newtheorem">
+<!--l. 316--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2047r31"></a>
+<span 
+class="cmbx-12">Lemma 2.31.</span>  </span> \(\LMaps (x,y)\) <span 
+class="cmti-12">is right fibrant.</span>
+</p>
+  <div class="proof">
+<!--l. 319--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Extending \(\Lambda _i^n \to \LMaps (x,y)\) to \(\Delta ^n\) is the same as extending \(\Lambda _i^{n+1} = \Lambda _i^n \star \Delta ^0 \to X\) to \(\Delta ^{n+1}=\Delta ^n\star \Delta ^0\), which is possible when \(0 &lt; i \leq n\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 323--><p class="indent" >  Being left fibrant will be later shown to be equivalent to being a Kan complex. Two
+maps are <span 
+class="cmbx-12">left homotopic </span>if they are the same in \(\pi _0(\LMaps (x,y))\). This is an equivalence relation.
+They are <span 
+class="cmbx-12">homotopic </span>if there is a map \(\Delta ^1\times \Delta ^1\) restricting to identities on \(\partial \Delta ^1\times \Delta ^1\) and \(f,g\) on
+\(\Delta ^1\times \partial \Delta ^1\).
+</p>
+  <div class="newtheorem">
+<!--l. 325--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2048r32"></a>
+<span 
+class="cmbx-12">Lemma 2.32.</span>  </span> <span 
+class="cmti-12">Two maps in an</span> \(\infty \)<span 
+class="cmti-12">-category are left homotopic iff they are right homotopic</span>
+<span 
+class="cmti-12">iff they are homotopic.</span>
+</p>
+  <div class="proof">
+<!--l. 328--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>Let \(\sigma \) be a left homotopy from \(f \to g\), meaning \(\partial \sigma = (g,f,1)\). Then extend the horn \((\sigma ,s_0g,\cdot ,s_0s_0d_1f)\) to \(\Delta ^3\), \(d_2\) of which
+is a right homotopy. Left homotopy clearly implies homotopy by having one of the
+\(2\)-cells be degenerate. Conversely, if \(g,f\) are homotopic, they are both either left or right
+homotopic to the third map in the homotopy, and so by transitivity an the fact that
+left and right homotopies agree, \(g,f\) are left homotopic. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 332--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2049r33"></a>
+<span 
+class="cmbx-12">Lemma 2.33 </span>(Homotopy \(1\)-category of an \(\infty \)-category)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">For an</span> \(\infty \)<span 
+class="cmti-12">-category</span> \(C\)<span 
+class="cmti-12">, the homotopy</span>
+\(1\)<span 
+class="cmti-12">-category is given by the same objects, where</span> \(\pi _0(\LMaps (x,y))\)
+</p>
+  <div class="proof">
+<!--l. 335--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>A map to a \(1\)-category certainly factors through \(\pi _0\LMaps (x,y)\). We will show we can build a
+\(1\)-category out of \(\pi _0(\LMaps (x,y))\) as the Hom sets. By Lemma <a 
+href="#x1-2048r32">2.32<!--tex4ht:ref: leftrightmiddlehomotopy --></a> we can use any notion of homotopy.
+Since \(\Maps (\Delta ^2,X) \to \Maps (\Lambda _2^1)\) is a trivial Kan fibration by Corollary <a 
+href="#x1-2039r26">2.26<!--tex4ht:ref: mapstrivfibration --></a>, any two composites are homotopic,
+so there is a well-defined composite up to homotopy. For associativity, if \(f\) realizes a
+composite \(a \circ b\), \(g\) realizes \(a\circ (b\circ c)\), \(f'\) realizes \(b\circ c\), then consider the map from \(\Lambda _{2}^{3}\) given by \((f,g,\cdot ,f')\). Extending
+to \(\Delta ^{n+1}\) and taking \(d_{n+1}\), we see that \(a\circ (b\circ c)\) is a realized as a composite of \((a\circ b)\circ c\). Any map to a \(1\)-category
+then factors uniquely through this category, so it is \(h(C)\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 339--><p class="indent" >  We define the homotopy \(1\)-category of spaces, denoted \(h(\Space )\) to be the category of Kan
+complexes and homotopy classes of maps between them. This will later be shown to be the
+homotopy \(1\)-category of a suitable \(\infty \)-category of spaces, \(\Space \). Similarly we can define \(h(\Space _*)\) using
+pointed Kan complexes.
+                                                                                  
+
+                                                                                  
+</p><!--l. 341--><p class="indent" >  There is a homotopy category of an \(\infty \)-category that is enriched over \(h(\Space )\), which is a better
+one.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>Kan Fibrations</h3>
+<!--l. 344--><p class="noindent" >Apparently the following proposition, due to Moore, convinced Milnor that simplicial sets
+are the right thing.
+</p>
+  <div class="newtheorem">
+<!--l. 345--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+<span 
+class="cmbx-12">Proposition 3.1.</span>  </span> <span 
+class="cmti-12">A surjective homomorphism</span> \(G \to H\) <span 
+class="cmti-12">of simplicial groups is a Kan</span>
+<span 
+class="cmti-12">fibration.</span>
+</p>
+  <div class="proof">
+<!--l. 348--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose we have a diagram </p>
+<div class="center" 
+>
+<!--l. 349--><p class="noindent" >
+</p><!--l. 353--><p class="noindent" >       <img 
+src="Simplicial4x.svg" alt="&#x039B;n        G
+ i
+
+  n
+&#x0394;         H "  />
+</p></div>
+<!--l. 355--><p class="noindent" >Since \(G \to H\) is surjective, we can lift \(\Delta ^n\) (without making the diagram commute), and divide by the
+lift, reducing to the case where \(\Delta ^n \to H\) is the identity. Thus we can assume \(H\) is trivial, so that it
+amounts to showing that a simplicial group \(G\) is fibrant.
+</p><!--l. 357--><p class="indent" >  Let \(f_j, j \neq i\) denote the boundary components making up \(\Lambda _i^n\). We will show by induction on \(j\neq i\) that
+there is a simplex agreeing with \(\Lambda _i^n\) on the first \(j\) boundary components. For the induction
+step, we can divide by the simplex in the induction hypothesis to reduce to the case that \(f_k\)
+is the identity for \(k&lt;j\).
+</p><!--l. 359--><p class="indent" >  Consider \(s_jf_j\). \(d_js_jf_j=f_j\), and \(i \neq k &lt; j\) we have \(d_ks_jf_j= s_jd_kf_j = s_j 1 = 1\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 363--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3002r2"></a>
+<span 
+class="cmbx-12">Definition 3.2.</span>  </span><span 
+class="cmti-12">Let</span> \(X\) <span 
+class="cmti-12">be a Kan complex. Then</span> \(\pi _n(X,x), n\geq 1\) <span 
+class="cmti-12">is the set of homotopy classes of</span>
+<span 
+class="cmti-12">maps from</span> \(\Delta ^n\) <span 
+class="cmti-12">relative to</span> \(\partial \Delta ^n\) <span 
+class="cmti-12">being sent to</span> \(x\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 367--><p class="indent" >  Given two elements \([a],[b]\) of \(\pi _n(X,Y,x)\) we can multiply them to get \([a]\star [b]\) as follows: consider \(\lambda ^{n+1}_n\) given by \((x,x\dots ,x,a,\cdot ,b)\). By
+filling in the horn, \(d_n\) of the resulting simplex is the composite. By the homotopy extension
+property the homotopy class of the composite is only dependent on the homotopy class of \(a,b\).
+Moreover, one can easily see that there are inverses and identities, and that \(\pi _n(X,Y)\) with the
+operation \(\star \) is functorial.
+</p>
+  <div class="newtheorem">
+<!--l. 369--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3003r3"></a>
+<span 
+class="cmbx-12">Lemma 3.3.</span>  </span>\(\star \) <span 
+class="cmti-12">makes</span> \(\pi _n\) <span 
+class="cmti-12">into a group for</span> \(n\geq 1\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 372--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It remains to check associativity. If \(f = \Delta ^{n+1}\) realizes a composite \(a \star b\), \(g\) realizes \(a\star (b\star c)\), \(f'\) realizes
+\(b\star c\), then consider the map from \(\Lambda _{n+1}^{n+2}\) given by \((x,x,\dots ,f,g,\cdot ,f')\). Extending to \(\Delta ^{n+1}\) and taking \(d_{n+1}\), we see that \(a\star (b\star c)\) is
+a realized as a composite of \((a\star b)\star c\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 376--><p class="indent" >  Note that with another definition of \(\pi _n\) one could also use the homotopy category to prove
+associativity.
+                                                                                  
+
+                                                                                  
+</p>
+  <div class="newtheorem">
+<!--l. 378--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3004r4"></a>
+<span 
+class="cmbx-12">Proposition 3.4.</span>  </span><span 
+class="cmti-12">Given a Kan fibration</span> \(X \to Y\) <span 
+class="cmti-12">where</span> \(Y\) <span 
+class="cmti-12">is fibrant, and</span> \(F\) <span 
+class="cmti-12">is the fibre, there is a</span>
+<span 
+class="cmti-12">natural long exact sequence </span>\[\pi _n(F) \to \pi _n(X) \to \pi _n(Y) \to \pi _{n-1}(F) \to \pi _{n-1}(X)\] <span 
+class="cmti-12">at any basepoint.</span>
+</p>
+  <div class="proof">
+<!--l. 382--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The maps \(\pi _n(F) \to \pi _n(X) \to \pi _n(Y)\) are the obvious ones. The composite is obviously zero, and if
+something  is  in  the  kernel,  then  by  the  homotopy  lifting  property,  the  class  is
+equivalent to something from \(F\).
+</p><!--l. 384--><p class="indent" >  The boundary map \(\partial :\pi _n(Y) \to \pi _{n-1}(F)\) is defined by taking a class \(\alpha : \Delta ^n \to Y\), and extending the diagram
+</p>
+<div class="center" 
+>
+<!--l. 385--><p class="noindent" >
+</p><!--l. 389--><p class="noindent" >       <img 
+src="Simplicial5x.svg" alt="   &#x039B;n        X
+    0
+
+     n
+(&#x03B1;&#x22C5;,x&#x0394;...,x)      Y "  />
+</p></div>
+<!--l. 390--><p class="noindent" >This is well-defined up to homotopy by Corollary <a 
+href="#x1-2039r26">2.26<!--tex4ht:ref: mapstrivfibration --></a>. Something is in its kernel iff there is a
+lift of \(\alpha \) gives a class in \(\pi _n(X)\), showing that \(\pi _n(X) \to \pi _n(Y) \to \pi _{n-1}(F)\) is exact.
+</p><!--l. 392--><p class="indent" >  Clearly the composite \(\pi _{n+1}(Y) \to \pi _n(F) \to \pi _{n}(X)\) is trivial. If a class \(\alpha \) is in the kernel \(\pi _n(F) \to \pi _n(X)\), then there is a homotopy in \(X\)
+relative to the boundary from the trivial map. This homotopy factors through \(\Delta ^{n+1}\) giving a
+map whose boundary is \((x,x,\dots , \alpha )\). But this projects to a class in \(Y\) such that \(\partial \) of it is \(\alpha \).
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+                                                                                  
+
+                                                                                  
+<!--l. 396--><p class="indent" >  The <span 
+class="cmbx-12">free path space </span>of \(X\) is \(\Maps (\Delta ^1,X)\). The <span 
+class="cmbx-12">path space </span>of \(X,x\), denoted \(P(X)\) or \(P_x(X)\) is the pullback (or fibre)
+of the fibration \(\Maps (\Delta ^1,X) \to \Maps (\Delta ^0,X)\) given by \(d_0\) along the inclusion of \(x= \Maps (\Delta ^0,\Delta ^0)\). \(P(X)\) is trivial fibrant since it is the fibre of a
+trivial fibration.
+</p><!--l. 398--><p class="indent" >  By identifying \(P(X)\) with the pullback of the fibration \(\Maps (\Delta ^1,X) \to \Maps (\partial \Delta ^1,X)\) along the inclusion of \(\Maps (\Delta ^0,X)\), we see
+that the projection \(P(X) \to X\) is a fibration. Its fibre \(F\) is called the <span 
+class="cmbx-12">loop space</span> \(\Omega (X)\) or \(\Omega _x(X)\) of
+\(X,x\).
+</p><!--l. 400--><p class="indent" >  The fibration \(\Omega _x(X) \to P_x(X) \to X\) gives an identification \(\pi _n(\Omega _x(X)) = \pi _{n+1}(X)\).
+</p><!--l. 402--><p class="indent" >  For example, if \(G\) is a discrete group, \(\Omega _xBG=G\), so we see \(\pi _1=G\), and the rest of the homotopy groups
+vanish.
+</p>
+  <div class="newtheorem">
+<!--l. 404--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3005r5"></a>
+<span 
+class="cmbx-12">Lemma 3.5.</span>  </span> <span 
+class="cmti-12">Suppose that</span> \(X\) <span 
+class="cmti-12">is a Kan complex and has a homotopy unital multiplication.</span>
+<span 
+class="cmti-12">Then</span> \(\pi _i(X,x)\) <span 
+class="cmti-12">is abelian for</span> \(i\geq 1\)<span 
+class="cmti-12">. Moreover, if it sends the basepoint</span> \(x,x\) <span 
+class="cmti-12">to</span> \(x\)<span 
+class="cmti-12">, the multiplication map agrees</span>
+<span 
+class="cmti-12">with the multiplication on</span> \(\pi _n(X,x)\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 407--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>We can force the multiplication \(\cdot \) to preserve the basepoint \(x\) via the homotopy
+extension property. Now if \(\cdot \) is homotopy unital and basepoint preserving, we are done
+by functoriality of \(\pi _n\) and the Hilton-Eckmann argument: \(b\cdot a = (1\star b)\cdot (a \star 1) = (1\cdot a)\star (b\cdot 1) = a\star b = (a\cdot 1)\star (1\cdot b) = (a\star 1)\cdot (1\star b) = a\cdot b\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 411--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3006r6"></a>
+<span 
+class="cmbx-12">Lemma 3.6.</span>  </span>\(\pi _i(X,x)\) <span 
+class="cmti-12">is abelian for</span> \(i&gt;1\)<span 
+class="cmti-12">.</span> \(\Omega _x(X)\) <span 
+class="cmti-12">has a unital multiplication such that the identification</span> \(\pi _n(\Omega _x(X)) \cong \pi _{n+1}(X)\) <span 
+class="cmti-12">gives</span>
+\(\pi _0(\Omega _x(X))\) <span 
+class="cmti-12">the group structure coming from</span> \(\pi _{1}(X)\)<span 
+class="cmti-12">, which is also the group structure from</span> \(\Hom (x,x)\) <span 
+class="cmti-12">in</span>
+\(\Pi _{\leq 1}(X)\)<span 
+class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
+</p>
+  <div class="proof">
+<!--l. 414--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Consider the trivial Kan fibration \(\Maps (\Delta ^2,X) \to \Maps (\Lambda ^2_1,X)\). on \(\Omega _x(X)\times \cdot \cup \cdot \times \Omega _x(X)\) sits inside of \(\Maps (\Lambda ^2_1,X)\) as pairs for which one
+map is the identity, moreover, there is a natural section on this subset given by
+the degeneracies. Extend this to a section of the whole fibration, and then consider
+the composite \(\Omega _x(X)^2 \to \Maps (\Lambda ^2_1,X) \to \Maps (\Delta ^2,X) \to \Maps (\Delta ^1,X)\) where the last map is the restriction to \(d_1\). This sends two maps to a
+composite, and so factors through a unital multiplication. By Lemma <a 
+href="#x1-3005r5">3.5<!--tex4ht:ref: hspace --></a> \(\pi _i(X,x)\) is abelian
+for \(i&gt;1\), and the addition on \(\pi _i\) is given by the multiplication map, which is composition.
+For \(i=0\), one can directly identify everything. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 418--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3007r7"></a>
+<span 
+class="cmbx-12">Proposition 3.7.</span>  </span> <span 
+class="cmti-12">Let</span> \(f:X \to Y\) <span 
+class="cmti-12">be a fibration, and</span> \(Y\) <span 
+class="cmti-12">fibrant. Then</span> \(f\) <span 
+class="cmti-12">induces a surjection</span> \(\pi _n(X,x) \twoheadrightarrow \pi _n(Y,f(x))\) <span 
+class="cmti-12">and</span>
+<span 
+class="cmti-12">injection</span> \(\pi _{n-1}(X,x) \hookrightarrow \pi _{n-1}(Y,f(x))\) <span 
+class="cmti-12">iff it has the right lifting property with respect to</span> \(\partial \Delta ^n \to \Delta ^n\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 421--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>If we have the lifting property, then \(\partial : \pi _n(Y) \to \pi _{n-1}(F)\) is \(0\), and \(\pi _n(X,x) \twoheadrightarrow \pi _n(Y,x)\) is also clearly surjective.
+</p><!--l. 423--><p class="indent" >  For the converse, we&#8217;d like to show the homotopy extension property with respect
+to \(\partial \Delta ^n \subset \Delta ^n\). By the homotopy lifting property it suffices to lift it after a homotopy of the
+diagram. Now there is a canonical homotopy \(H\) on \(\Delta ^n\) to from the constant \(0\)-map to the
+identity, which moreover restricts to a homotopy on \(\Lambda _0^n\). Applying this homotopy on
+\(\Delta ^n\) and extending over the projection from \(\Lambda _0^n\) to \(\partial \Delta ^n\), we can reduce to the case where \(\Delta ^n\) is
+trivial, and \(\partial ^n\Delta ^n\) is trivial on \(\Lambda _0^n\), i.e it looks like \((f,\cdot ,\cdot ,\dots \cdot )\), where \(\cdot \) denotes constant. \(f \in \pi _{n-1}(X)\) is in the kernel
+of the map to \(\pi _{n}(X)\). Since \(\pi _{n-1}(X) \to \pi _{n-1}(Y)\) is injective, this means there is a homotopy relative to the
+boundary \(H\) from \(f\) to \(\cdot \).
+                                                                                  
+
+                                                                                  
+</p><!--l. 425--><p class="indent" >  Since the map \(X \to Y\) is injective on \(\pi _{n-1}\), we have a homotopy trivializing \(x\). Extending again
+to the whole diagram, we reduce to the case where \(\partial \Delta ^n\) is constant. But then surjectivity
+of \(\pi _n\) guarantees a lift. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 429--><p class="indent" >  The <span 
+class="cmbx-12">fundamental groupoid</span> \(\Pi _{\leq 1}(X)\) of a Kan complex \(X\) is its homotopy \(1\)-category.
+</p>
+  <div class="newtheorem">
+<!--l. 431--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3008r8"></a>
+<span 
+class="cmbx-12">Proposition 3.8.</span>  </span><span 
+class="cmti-12">If</span> \(X\) <span 
+class="cmti-12">is right fibrant, there is a functor</span> \(x\mapsto \pi _n(X,x)\) <span 
+class="cmti-12">from</span> \(\Pi _{\leq 1}(X) \to \Grp \)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 434--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(f\) be a path \(x \to y\). Consider the composite \(\partial \Delta ^n\times \Delta ^1 \to \Delta ^1 \xrightarrow{f} X\). We can extend elements of \(\pi _n(X)\) along
+this to get a map \(\pi _n(X,x) \to \pi _n(X,y)\). By Corollary <a 
+href="#x1-2039r26">2.26<!--tex4ht:ref: mapstrivfibration --></a>, this is well-defined, and only dependent on
+the homotopy class of \(f\).
+</p><!--l. 436--><p class="indent" >  Moreover, by transporting composition maps, we see it respects composition, so is
+a homomorphism. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 440--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3009r9"></a>
+<span 
+class="cmbx-12">Corollary 3.9.</span>  </span>\(\pi _n(X,x)\) <span 
+class="cmti-12">isn&#8217;t dependent on the basepoint.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+                                                                                  
+
+                                                                                  
+<!--l. 444--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3010r10"></a>
+<span 
+class="cmbx-12">Definition 3.10.</span>  </span><span 
+class="cmti-12">A  </span><span 
+class="cmbxti-10x-x-120">minimal  fibration  </span><span 
+class="cmti-12">is  a  fibration  for  which  fibrewise</span>
+<span 
+class="cmti-12">homotopies of</span> \(\Delta ^n\) <span 
+class="cmti-12">relative to</span> \(\partial \Delta ^n\) <span 
+class="cmti-12">are constant.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 448--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3011r11"></a>
+<span 
+class="cmbx-12">Lemma 3.11.</span>  </span> <span 
+class="cmti-12">If two degenerate simplices have the same boundary they are</span>
+<span 
+class="cmti-12">equal.</span>
+</p>
+  <div class="proof">
+<!--l. 451--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(x,y\) be the simplices with equal boundary, such that \(x = s_mz\) and \(y=s_nw\) with \(m\leq n\). If \(m=n\), then \(z=d_mx=d_ny=w\),
+so x=y. If \(m&lt;n\), then \(z=d_mx=d_my=d_ms_nw=s_{n-1}d_mw\), so \(x = s_ms_{n-1}d_mw = s_ns_md_mw\) so \(s_md_mw=d_nx=d_ny=w\) and both \(x,y=s_nw\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 455--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3012r12"></a>
+<span 
+class="cmbx-12">Proposition 3.12.</span>  </span> <span 
+class="cmti-12">Any fibration fibrewise defotmation retracts onto a minimal</span>
+<span 
+class="cmti-12">fibration.</span>
+</p>
+  <div class="proof">
+<!--l. 458--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>Let \(X \to Y\) be the Kan fibration. We will inductively define the \(i\)-skelaton \(Z_i\) as a
+subcomplex of \(X\) such that the inclusions \(X_{i} \subset X\) have compatible fibrewise homotopies that
+retract onto \(Z_i\), and such that \(Z_i \to Y_i\) is a minimal fibration. Taking the limit, we will be done.
+Let \(Z_0\) be a collection of points of \(X\) containing a unique point in every homotopy class
+of each fibre. We can produce a fibrewise homotopy \(H_0\) from \(X_0\) to \(Z_0\) by choosing paths in
+the fibres to \(Z_0\). For anything already in \(Z_0\), choose the constant path.
+</p><!--l. 460--><p class="indent" >  Now suppose we have constructed \(Z_{i-1},H_{i-1}\). Choose a representative simplex for each equivalence
+class of \(i\)-simplex having boundary in \(Z_{i-1}\) via the equivalence relation fibrewise homotopy
+relative to boundary. Attach these to \(Z_{i-1}\) to obtain \(Z_i\). By construction, \(Z_i\) has a unique
+simplex in each fibrewise homotopy class relative to boundary in dimension \(\leq i\) and
+also in dimension \(&gt;i\) by Lemma <a 
+href="#x1-3011r11">3.11<!--tex4ht:ref: degen --></a>, so it is a minimal fibration over \(Y_i\). For any
+nondegenerate \(i\)-simplex \(x\) of \(X\), \(H\) is a fibrewise homotopy on its boundary to \(Z_{i-1}\), so we can
+extend it to a fibrewise homotopy on \(x\), and if it is already in \(Z_i\), we can again choose
+the constant homotopy. If it isn&#8217;t already in \(Z_i\), by construction it will end up
+fibrewise homotopic relative to the boundary to a cell in \(Z_i\), via some homotopy \(H'\).
+We can &#8216;compose&#8217; the homotopies by creating a lift in the following diagram:
+</p>
+<div class="center" 
+>
+<!--l. 461--><p class="noindent" >
+</p><!--l. 465--><p class="noindent" >                       <img 
+src="Simplicial6x.svg" alt="             (&#x2202;&#x0394;n  &#x00D7; &#x0394;2 ) &#x222A; (&#x0394;n &#x00D7; &#x039B;21)      X
+
+
+     &#x2032;         n     2              1
+s&#x03C0;1H,(H ,&#x22C5;,H )   &#x0394;  &#x00D7;  &#x0394;              &#x0394;        Y "  />
+</p></div>
+<!--l. 466--><p class="noindent" >By taking \(d_1\) on the \(\Delta ^2\) component of the homotopy, we get an extension of \(H\) to a fibrewise
+homotopy from \(X_i\) to \(Z_i\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 470--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3013r13"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Lemma 3.13.</span>  </span><span 
+class="cmti-12">A fibrewise homotopy equivalence of minimal fibrations is an</span>
+<span 
+class="cmti-12">isomorphism.</span>
+</p>
+  <div class="proof">
+<!--l. 473--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>if \(f\) is a fibre homotopy equivalence and \(g\) a homotopy inverse, it suffices so
+show that \(g\circ f\) and \(f \circ g\) are isomorphisms. But they are homotopic to the identity, so it
+suffices to show that any fibrewise map \(a\) to a minimal fibration that is homotopic via
+a homotopy \(h\) to an isomorphism \(b\) is also an isomorphism.
+</p><!--l. 475--><p class="indent" >  Let&#8217;s first show that \(a\) is injective. Let \(\alpha \) be an \(n\)-simplex such that \(f(\alpha ) = f(\beta )\). By induction, we
+can assume that \(\partial \alpha = \partial \beta \). Thus \(h\) on the simplices restricts to a map on \(\Delta ^n\times \Lambda _2^2\), that can be extended
+to include \(\partial \Delta ^n \times \Delta ^2\) via \(s_0h\). Then extending this map to \(\Delta ^n\times \Delta ^2\) via Corollary <a 
+href="#x1-2038r25">2.25<!--tex4ht:ref: mapsfibration --></a> and Proposition
+<a 
+href="#x1-2027r18">2.18<!--tex4ht:ref: anodgeneral --></a> and taking the \(d_2\) component gives a fibrewise homotopy from \(\alpha \) to \(\beta \) relative to the
+boundary, which has to be trivial.
+</p><!--l. 477--><p class="indent" >  For surjectivity, let \(\alpha \) be an \(n\)-simplex. We can assume \(\partial \alpha \) is in the image of \(f\) by induction.
+Then by the homotopy extension property we can extend \(h\) on \(\partial \alpha \) to a fibrewise homotopy
+\(h_1\) from a simplex \(z\) to \(\alpha \). \(z=g(z')\) since \(g\) is surjective. So \(h_1\) and \(h|_{z'}\) are homotopies from \(z\) that agree on
+the boundary, so paste them together and extending to include \(\partial \Delta ^n \times \Delta ^2\) via \(s_1h\). Then again via
+Corollary <a 
+href="#x1-2038r25">2.25<!--tex4ht:ref: mapsfibration --></a> and Proposition <a 
+href="#x1-2027r18">2.18<!--tex4ht:ref: anodgeneral --></a> extend to \(\Delta ^n\times \Delta ^2\) and take \(d_0\) to get a fibrewise homotopy
+from \(\alpha \) to whatever \(g(z')\) is sent to by \(h\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 481--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3014r14"></a>
+<span 
+class="cmbx-12">Corollary 3.14.</span>  </span> <span 
+class="cmti-12">A minimal fibration is trivial on each simplex.</span>
+</p>
+  <div class="proof">
+<!--l. 484--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>If \(f:X \to Y\) is a minimal fibration, and \(x=\Delta ^n\) is a simplex in \(X\), then there is a homotopy
+from the constant simplex on the zero vertex of x to the inclusion. The pullbacks of
+\(f\) along these two maps are then fibre homotopy equivalent, but the pullback along
+the constant map is a product. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 488--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3015r15"></a>
+<span 
+class="cmbx-12">Theorem 3.15.</span>  </span><span 
+class="cmti-12">The realization of a Kan fibration</span> \(X \to Y\) <span 
+class="cmti-12">is a Serre fibration.</span>
+</p>
+  <div class="proof">
+<!--l. 491--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By Proposition <a 
+href="#x1-3012r12">3.12<!--tex4ht:ref: minimalfibrationsexist --></a>, the projection \(X \to Y\) factors through \(Z\), where the projection \(Z \to Y\)
+is locally trivial, hence a Serre fibration after realization. Thus it suffices to show \(X \to Z\) is
+also a Serre fibration. To do this, we will show it is a trivial fibration, and that the
+the realization of a trivial fibration is a Serre fibration.
+</p><!--l. 493--><p class="indent" >  The realization of a trivial fibration \(f:A \to B\) is a Serre fibration since we can find a lift in the
+diagram </p>
+<div class="center" 
+>
+<!--l. 494--><p class="noindent" >
+</p><!--l. 497--><p class="noindent" >         <img 
+src="Simplicial7x.svg" alt="    A           A
+
+
+
+1f&#x03C0;A,fA  &#x00D7; B      B "  />
+</p></div>
+<!--l. 498--><p class="noindent" >This shows that \(f\) is a retract of the projection \(A\times B\to B\) which is a Serre fibration after realizing, so it
+is also a Serre fibration.
+</p><!--l. 500--><p class="indent" >  To see that \(p:X \to Z\) is a trivial fibration, Note that it induces an isomorphism on homotopy
+groups since \(Z\) is a deformation retract of \(X\). If we are trying to lift the inclusion \(\partial \Delta ^n \to \Delta ^n=z\) over the
+                                                                                  
+
+                                                                                  
+projection \(X \to Z\), observe that we have a fibrewise homotopy \(H\) from the composite \(X \to Z \to X\) to the
+identity. We can extend this homotopy from the boundary of the simplex over \(Y\) to \(H'\),
+giving a simplex \(y\) in \(X\), and a homotopy \(H'\) from \(z\) to \(y\). \(p(y)\) certainly agrees with \(z\) on
+the boundary, so if they are fibrewise homotopic relative to \(Y\), they are equal by
+minimality.
+</p><!--l. 502--><p class="indent" >  \(pH'\) is a homotopy not relative to the boundary from \(z\) to \(p(y)\), and \(pH\) restricted to \(y\) is a homotopy
+agreeing with \(pH'\) on the boundary but from \(p(y)\) to itself. By pasting these homotopies
+together, we can &#8216;compose&#8217; along the inclusion \((\partial \Delta ^n \times \Delta ^2) \cup (\Delta ^n\times \Lambda _2^2) \subset \Delta ^n\times \Delta ^1\), where on \(\partial \Delta ^n\times \Delta ^2\) we have used \(s_0pH\). Then
+the resulting homotopy from \(p(y)\) to \(z\) on the \(d_2\) edge will be relative to the boundary.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 506--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3016r16"></a>
+<span 
+class="cmbx-12">Proposition 3.16.</span>  </span> <span 
+class="cmti-12">If</span> \(X\) <span 
+class="cmti-12">is a Kan complex, the homotopy groups</span> \(\pi _n(X)\) <span 
+class="cmti-12">and</span> \(\pi _n(|X|)\) <span 
+class="cmti-12">agree.</span>
+</p>
+  <div class="proof">
+<!--l. 509--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>There is clearly a natural map \(\pi _n(X) \to \pi _n(|X|)\) that is compatible with the long exact sequence
+on homotopy groups. Observe that it is an isomorphism for \(\pi _0\) since the realization of
+a simplex is connected. Now consider the fibre sequence \(\Omega _x(X) \to P_x(X) \to X\). Since there is a contracting
+homotopy in \(P_x(X)\), \(|P_x(X)|\) is contractible. Then by induction using the long exact sequence to
+dimension shift, \(\pi _i\) is an isomorphism for all \(i\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 513--><p class="indent" >  It is also true by definition essentially that \(\pi _n(X) = \pi _n(SX)\).
+</p>
+  <div class="newtheorem">
+<!--l. 514--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-3017r17"></a>
+<span 
+class="cmbx-12">Definition 3.17.</span>  </span><span 
+class="cmti-12">A map in</span> \(\CGHaus \) <span 
+class="cmti-12">is a </span><span 
+class="cmbxti-10x-x-120">Serre fibration </span><span 
+class="cmti-12">if it has the right lifting property</span>
+<span 
+class="cmti-12">with respect to all inclusions</span> \(\Lambda ^n_i \subset \Delta ^n\)<span 
+class="cmti-12">. It is a </span><span 
+class="cmbxti-10x-x-120">Serre cofibration </span><span 
+class="cmti-12">if it has the left lifting</span>
+<span 
+class="cmti-12">property with respect to all Serre fibrations.</span>
+</p>
+  </div>
+<!--l. 517--><p class="indent" >  A map is a weak equivalence in either \(\CGHaus \) or Kan complexes if it induces an isomorphims
+on \(\pi _n\).
+</p>
+  <div class="newtheorem">
+<!--l. 519--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3018r18"></a>
+<span 
+class="cmbx-12">Lemma 3.18.</span>  </span> <span 
+class="cmti-12">A Serre fibration is a weak equivalence iff it has the right lifting property</span>
+<span 
+class="cmti-12">with respect to</span> \(|\partial \Delta ^n|\subset |\Delta ^n\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 522--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This has the same proof as Proposition <a 
+href="#x1-3007r7">3.7<!--tex4ht:ref: trivfibrationhomotopygroups --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 526--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3019r19"></a>
+<span 
+class="cmbx-12">Lemma 3.19.</span>  </span><span 
+class="cmti-12">The realization of a cofibration is Serre cofibrant, and the singular set of a</span>
+<span 
+class="cmti-12">Serre fibration is a Kan fibration.</span>
+</p>
+  <div class="proof">
+<!--l. 529--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>This first statement follows from Lemma <a 
+href="#x1-3018r18">3.18<!--tex4ht:ref: trivfibrationhomotopygroupsSerre --></a> and Lemma <a 
+href="#x1-2014r14">2.14<!--tex4ht:ref: genincl --></a>. The second
+is clear from definition. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 533--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3020r20"></a>
+<span 
+class="cmbx-12">Proposition 3.20.</span>  </span><span 
+class="cmti-12">If</span> \(X\) <span 
+class="cmti-12">is a Kan complex,</span> \(X \to S|X|\) <span 
+class="cmti-12">is a weak equivalence to a cofibrant fibrant</span>
+<span 
+class="cmti-12">object and if</span> \(X \in \CGHaus \)<span 
+class="cmti-12">,</span> \(|SX| \to X\) <span 
+class="cmti-12">is a weak equivalence from a cofibrant fibrant object.</span>
+</p>
+  <div class="proof">
+<!--l. 536--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This essentially follows from Proposition <a 
+href="#x1-3016r16">3.16<!--tex4ht:ref: homotopgroupsagree --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-40004"></a>Model Categories</h3>
+<!--l. 545--><p class="noindent" >Model categories are a \(1\)-categorical way to present a homotopy theory (\(\infty \)-category) in a
+computable way.
+</p>
+  <div class="newtheorem">
+<!--l. 547--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4001r1"></a>
+<span 
+class="cmbx-12">Definition 4.1.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">weak factorization system </span><span 
+class="cmti-12">in a category</span> \(C\) <span 
+class="cmti-12">is pair of classes of</span>
+<span 
+class="cmti-12">morphisms</span> \((L,R)\) <span 
+class="cmti-12">such that every morphism factors into</span> \(g\circ f\) <span 
+class="cmti-12">where</span> \(g \in R,f \in L\)<span 
+class="cmti-12">, and</span> \(R = L^{\oslash }\)<span 
+class="cmti-12">,</span> \(L = \phantom{}^\oslash R\)<span 
+class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+<!--l. 551--><p class="indent" >  It follows that \(L\) is saturated, and \(R\) is cosaturated. \((\rightarrow ,\cong ),(\cong ,\rightarrow )\) are always trivial weak factorization
+systems. There is a weakening of the axioms for weak factorization systems that is
+equivalent.
+</p>
+  <div class="newtheorem">
+<!--l. 553--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4002r2"></a>
+<span 
+class="cmbx-12">Lemma 4.2.</span>  </span> <span 
+class="cmti-12">Two classes</span> \(L,R\) <span 
+class="cmti-12">form a weak factorization system iff they satisfy</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+ <span 
+class="cmti-12">(W1)</span> </dt><dd 
+class="enumerate-enumitem">\(L,R\) <span 
+class="cmti-12">are closed under retracts</span>
+          </dd><dt class="enumerate-enumitem">
+ <span 
+class="cmti-12">(W2)</span> </dt><dd 
+class="enumerate-enumitem">\(L,R\) <span 
+class="cmti-12">have the left/right lifting properties with respect to each other</span>
+          </dd><dt class="enumerate-enumitem">
+ <span 
+class="cmti-12">(W3)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">Any morphism factors as</span> \(g\circ f\) <span 
+class="cmti-12">where</span> \(g \in L\)<span 
+class="cmti-12">,</span> \(f \in R\)<span 
+class="cmti-12">.</span></dd></dl>
+  <div class="proof">
+<!--l. 561--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Clearly these are implied by the definition of a weak factorization system.
+Conversely, it will suffice by duality to show that if a morphism \(f\) has the left lifting
+property with respect to all morphisms in \(R\), it is in \(L\). But we can factor \(f = g\circ h\) with \(h \in L, g \in R\). But
+finding a lift in the diagram below shows \(f\) is a retract of \(h\).
+</p>
+<div class="center" 
+>
+<!--l. 563--><p class="noindent" >
+</p><!--l. 566--><p class="noindent" >     <img 
+src="Simplicial8x.svg" alt=" &#x22C5;       &#x22C5;
+
+
+hfg&#x22C5;       &#x22C5; "  />
+</p></div>
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 570--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4006r3"></a>
+<span 
+class="cmbx-12">Definition 4.3.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">homotopical </span><span 
+class="cmti-12">category is a category with a subcategory</span> \(W\) <span 
+class="cmti-12">(weak</span>
+<span 
+class="cmti-12">equivalences) containing all objects and satisfying</span> \(2\) <span 
+class="cmti-12">out of</span> \(6\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 574--><p class="indent" >  It follows that \(W\) contains all isomorphisms. There are two trivial homotopical structures,
+the minimal one, which is just isomorphisms, and the maximal one, which contains all
+morphisms. I think the minimal one is only useful for receiving maps (derived functors),
+and the maximal one is useful because its homotopy category is essentially the homotopy
+type of the nerve. A <span 
+class="cmbx-12">homotopical functor </span>between homotopical categories preserves
+weak equivalences. If \(D\) has the minimal homotopical structure, homotopical functors \(C \to D\) are
+the same as functors \(h(C)\to D\).
+</p><!--l. 576--><p class="indent" >  The <span 
+class="cmbx-12">homotopy (</span>\(\infty \)<span 
+class="cmbx-12">-)category </span>of a homotopical category is its localization under weak
+equivalences. In otherwords, it is the universal \(\infty \)-category receiving a map from it that such
+that the weak equivalences are sent to equivalences. The homotopy \(1\)-category is the
+\(1\)-coskeleton of this, given by \(1\)-categorical localization.
+</p>
+  <div class="newtheorem">
+<!--l. 578--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4007r4"></a>
+<span 
+class="cmbx-12">Definition 4.4.</span>  </span><span 
+class="cmti-12">A homotopical category is </span><span 
+class="cmbxti-10x-x-120">saturated </span><span 
+class="cmti-12">if</span> \(W\) <span 
+class="cmti-12">is exactly the class of</span>
+<span 
+class="cmti-12">morphisms that are inverted in its homotopy</span> \(1\)<span 
+class="cmti-12">-category.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 582--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4008r5"></a>
+<span 
+class="cmbx-12">Definition 4.5.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">(closed) model category</span> \(C\) <span 
+class="cmti-12">is a category equipped with three classes of</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">arrows: </span><span 
+class="cmbxti-10x-x-120">cofibrations </span><span 
+class="cmti-12">(</span>\(\rightarrowtail \)<span 
+class="cmti-12">), </span><span 
+class="cmbxti-10x-x-120">fibrations </span><span 
+class="cmti-12">(</span>\(\twoheadrightarrow \)<span 
+class="cmti-12">) and </span><span 
+class="cmbxti-10x-x-120">weak equivalences </span><span 
+class="cmti-12">(</span>\(\xrightarrow{\sim }\)<span 
+class="cmti-12">) satisfying the</span>
+<span 
+class="cmti-12">following axioms:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+<span 
+class="cmti-12">(CM1)</span> </dt><dd 
+class="enumerate-enumitem">\(C\) <span 
+class="cmti-12">has all finite colimits and colimits</span>
+          </dd><dt class="enumerate-enumitem">
+<span 
+class="cmti-12">(CM2)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">Weak equivalences satisfy</span> \(2\) <span 
+class="cmti-12">out of</span> \(3\)
+          </dd><dt class="enumerate-enumitem">
+<span 
+class="cmti-12">(CM3)</span> </dt><dd 
+class="enumerate-enumitem">\((\overset{\sim }{\rightarrowtail }, \twoheadrightarrow ), (\rightarrowtail ,\overset{\sim }{\twoheadrightarrow })\) <span 
+class="cmti-12">form weak factorization systems.</span></dd></dl>
+  </div>
+<!--l. 591--><p class="indent" >  Note that the definition is self-dual. Observe that for a model category, any pair of
+classes cofibrations, fibrations, weak equivalences determines the third.
+</p>
+  <div class="newtheorem">
+<!--l. 593--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4012r1"></a>
+<span 
+class="cmbx-12">Question 4.5.1.</span>  </span>Are weak equivalences weakly saturated?
+</p>
+  </div>
+<!--l. 597--><p class="indent" >  A main step in producing model categories is in producing factorization systems. The
+following, Quillen&#8217;s small object argument, produces functorial factorizations under
+general conditions from a starting class of morphisms.
+</p>
+  <div class="newtheorem">
+<!--l. 599--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4013r6"></a>
+<span 
+class="cmbx-12">Definition 4.6.</span>  </span><span 
+class="cmti-12">Let</span> \(\kappa \) <span 
+class="cmti-12">be a regular cardinal.</span> \(x \in C\) <span 
+class="cmti-12">is</span> \(\kappa \)<span 
+class="cmti-12">-small if the functor it corepresents</span>
+<span 
+class="cmti-12">preserves</span> \(\alpha \)<span 
+class="cmti-12">-composites for any</span> \(\alpha \geq \kappa \)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 603--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4014r7"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Proposition 4.7 </span>(Small object argument)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">Let</span> \(J\) <span 
+class="cmti-12">be a set of maps in</span> \(C\)<span 
+class="cmti-12">, and suppose</span> \(C\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">cocomplete. If the codomains of elements of</span> \(J\) <span 
+class="cmti-12">are</span> \(\kappa \)<span 
+class="cmti-12">-small, then there is a functorial</span>
+<span 
+class="cmti-12">factorization making</span> \((\phantom{}^\oslash (J^{\oslash }),J^{\oslash })\) <span 
+class="cmti-12">into the smallest weak factorization system containing</span> \(J\)<span 
+class="cmti-12">. Moreover,</span> \(\phantom{}^\oslash (J^{\oslash })\)
+<span 
+class="cmti-12">is the weak saturation of</span> \(J\)<span 
+class="cmti-12">, or alternatively retracts of morphisms coming from this</span>
+<span 
+class="cmti-12">construction.</span>
+</p>
+  <div class="proof">
+<!--l. 606--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(f:X \to Y\) be our map and let \(A_f\) be the set of all commutative squares \(S\) of the form
+       <img 
+src="Simplicial9x.svg" alt="   SA       X
+
+
+SSS&#x03B1;xy SB       Y "  />
+where \(S_\alpha \in J\). Now consider the pushout diagram: </p>
+<div class="center" 
+>
+<!--l. 612--><p class="noindent" >
+</p><!--l. 616--><p class="noindent" >           <img 
+src="Simplicial10x.svg" alt="      &#x2210;
+        S&#x2208;Af SA     X
+
+
+&#x2210;&#x2210;     &#x2210;
+  SSx&#x03B1;    S&#x2208;Af SB     X1 "  />
+</p></div>
+<!--l. 618--><p class="indent" >  There is a canonical projection \(f_1:X_1\to Y\) given by the \(S_y\) and \(f\), and the construction of \(X_1\) is
+functorial. Moreover, \(X \to X_1\) is in \(\phantom{}^\oslash (J^{\oslash })\), and for any diagram in \(A\), there is a canonical lift on \(X_1\). Now we
+can inductively define \(f_\alpha , X_\alpha \) for any limit ordinal. Namely, \(X_{\alpha +1},f_{\alpha +1} = (X_{\alpha })_1,(f_{\alpha })_1\). For a limit ordinal, define it to be
+the limit. of the \(X_i,f_i\) before it. Then \(X \to X_{\kappa }\) is in \(\phantom{}^\oslash (J^{\oslash })\) as it is a transfinite composite of such things, and \(f_{\kappa }:X_{\kappa } \to Y\)
+is in \(J^{\oslash }\) since the codomains are \(\kappa \)-small.
+</p><!--l. 620--><p class="indent" >  This verifies factorization in a functorial way. The lifting property comes from Lemma
+<a 
+href="#x1-2008r8">2.8<!--tex4ht:ref: factorizationsystemsaturation --></a>, so this is a weak factorization system, and it is clearly the minimal one
+containing \(J\) on the left. We have only used the operations in the weak saturation
+of \(J\) to construct the factorization, so by Lemma \(\ref{weakfactorizationrecognition}\), \(\phantom{}^\oslash (J^{\oslash })\) is the weak saturation of \(J\).
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 624--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4015r8"></a>
+<span 
+class="cmbx-12">Definition 4.8.</span>  </span><span 
+class="cmti-12">A   model   category   is   </span><span 
+class="cmbxti-10x-x-120">cofibrantly   generated  </span><span 
+class="cmti-12">if   its   weak</span>
+<span 
+class="cmti-12">factorization systems are generated by a set of morphisms.</span>
+</p>
+  </div>
+<!--l. 628--><p class="indent" >  The factorization systems of a category \(C\) form a poset, where \((L,R) \leq (L',R')\) iff \(L \subset L'\).
+</p>
+  <div class="newtheorem">
+<!--l. 630--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4016r1"></a>
+<span 
+class="cmbx-12">Question 4.8.1.</span>  </span>What are all weak factorization systems in which every arrow is
+in either class?
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 635--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4017r1"></a>
+<span 
+class="cmbx-12">Example 4.8.1.</span>  </span>We can easily classify nontrivial weak factorization systems \((L,R)\) in \(\Set \).
+Let \(\hookrightarrow ',\twoheadrightarrow ,\phi \) denote the classes of injections from a nonempty set, surjections, and maps from
+the empty set respectively, where we additionally include isomorphisms.
+</p><!--l. 638--><p class="indent" >  The first observation is that for any nontrivial map from the empty set \(f\), \(\phantom{}^\oslash f =f^{\oslash } = \hookrightarrow '\cup \twoheadrightarrow \). So the
+model structures on \(\Set \) are just model structures on nonempty sets (temporarily called
+\(C\)) with \(\phi \) attached to either \(L\) or \(R\). So from now on we work in \(C\).
+</p><!--l. 640--><p class="indent" >  Suppose \(f \in L\) that isn&#8217;t injective. Then the map \(\cdot \cdot \to \cdot \) is a pushout of \(f\). The maps with the
+right lifting property with respect to this are the injections. The maps with the left
+lifting property with respect to injections are the surjections, giving \((\twoheadrightarrow ,\hookrightarrow ')\). .
+                                                                                  
+
+                                                                                  
+</p><!--l. 642--><p class="indent" >  If in addition there is a nonempty nontrivial injection in \(L\), then \(R\) has to be just
+isomorphism.
+</p><!--l. 644--><p class="indent" >  If \(L\) has instead a map which isn&#8217;t surjective, \(R\) has all surjections, and we see \(L\) has
+to be injection, giving \((\hookrightarrow ',\twoheadrightarrow )\). Any additional maps in \(L\) would again make it everything.
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 647--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4018r2"></a>
+<span 
+class="cmbx-12">Example 4.8.2.</span>  </span> Consider a poset \(P\) as a category. \(f \oslash g\) iff \(\cod f \leq \dom g\) whenever \(f \leq g\). We can obtain
+a large family of weak factorization systems \((\rightarrowtail ,\twoheadrightarrow )\) by choosing a family of arrows \(A\) such
+that \(a \leq b, a \in A \implies b \in A\), and declaring all arrows of \(A\) along with isomorphisms to be \(\rightarrowtail \), and all other
+nonidentity arrows along with isomorphisms to be \(\twoheadrightarrow \).
+</p><!--l. 650--><p class="indent" >  For example, on \(\Delta ^1\times \Delta ^1\), the only weak factorization system (up to automorphisms) not coming
+from this construction is </p>
+<div class="center" 
+>
+<!--l. 651--><p class="noindent" >
+</p><!--l. 655--><p class="noindent" >     <img 
+src="Simplicial11x.svg" alt="&#x22C5;       &#x22C5;
+
+
+&#x22C5;       &#x22C5; "  />
+</p></div>
+<!--l. 656--><p class="noindent" >\(\Delta ^1\times \Delta ^1\)can be used to construct an example of factorization systems \( (\rightarrowtail ,\overset{\sim }{\twoheadrightarrow }) \leq (\overset{\sim }{\rightarrowtail }, \twoheadrightarrow )\) that don&#8217;t come from a model
+structure. In particular, consider the diagram below: </p>
+<div class="center" 
+>
+<!--l. 657--><p class="noindent" >
+</p><!--l. 661--><p class="noindent" >     <img 
+src="Simplicial12x.svg" alt=" &#x22C5;       &#x22C5;
+
+
+~~~&#x22C5;       &#x22C5; "  />
+</p></div>
+<!--l. 662--><p class="noindent" >Another example comes from the poset \(\Delta ^2\), where we use the following pair of weak
+factorization systems: </p>
+<div class="center" 
+>
+<!--l. 663--><p class="noindent" >
+                                                                                  
+
+                                                                                  
+</p><!--l. 666--><p class="noindent" >     <img 
+src="Simplicial13x.svg" alt="         &#x22C5;
+
+
+~~&#x22C5;       &#x22C5; "  />
+</p></div>
+<!--l. 667--><p class="noindent" >These don&#8217;t come from model structures because the weak equivalences wouldn&#8217;t satisfy \(2\) out
+of \(3\).
+</p>
+  </div>
+<!--l. 670--><p class="indent" >  The last part of Example \(\ref{posetfactorizationsystems}\) shows two obstructions to two factorization systems
+\( (\rightarrowtail ,\overset{\sim }{\twoheadrightarrow }) \leq (\overset{\sim }{\rightarrowtail }, \twoheadrightarrow )\) giving rise to a model structure. These are the only obstructions, as shown
+below.
+</p>
+  <div class="newtheorem">
+<!--l. 672--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4019r9"></a>
+<span 
+class="cmbx-12">Proposition 4.9.</span>  </span><span 
+class="cmti-12">Let</span> \(C\) <span 
+class="cmti-12">have finite limits and colimits.</span> \( (\rightarrowtail ,\overset{\sim }{\twoheadrightarrow }) \leq (\overset{\sim }{\rightarrowtail }, \twoheadrightarrow )\) <span 
+class="cmti-12">are the factorization systems of a</span>
+<span 
+class="cmti-12">model structure iff</span> \(\overset{\sim }{\twoheadrightarrow }\cup \overset{\sim }{\rightarrowtail }\) <span 
+class="cmti-12">satisfies</span> \(3\) <span 
+class="cmti-12">out of</span> \(4\) <span 
+class="cmti-12">with respect to</span> \(\twoheadrightarrow \cup \rightarrowtail \)<span 
+class="cmti-12">, and</span> \(\overset{\sim }{\twoheadrightarrow }, \overset{\sim }{\rightarrowtail }\) <span 
+class="cmti-12">satisfy</span> \(2\) <span 
+class="cmti-12">out of</span> \(3\) <span 
+class="cmti-12">with respect to</span> \(\overset{\sim }{\twoheadrightarrow }, \overset{\sim }{\rightarrowtail }\)
+<span 
+class="cmti-12">respectively.</span>
+</p>
+  <div class="proof">
+<!--l. 675--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Those conditions are necessary for weak equivalences to satisfy \(2\) out of \(3\). In the
+proof of sufficiency, we declare an arrow \(f\) to be a weak equivalence if it factors as \(h \circ f\),
+where \(h\) is a trivial fibration and \(f\) a triival cofibration. Because of \(3\) out of \(4\) and the fact
+that we have a factorization system, this is equivalent to \(f\) factoring as a composite
+of maps that are either trivial fibrations or trivial cofibrations.
+</p><!--l. 677--><p class="indent" >  First we observe that the trivial fibrations are the fibrations that are weak equivalences
+and dually for cofibrations. Indeed, a trivial fibration by assumption is a fibration, and the
+trivial factorization shows it is a weak equivalence. If \(f\) is a trivial fibration and
+a week equivalence, then factoring it as a trivial fibration and cofibration and
+lifting as in the diagram below shows that it is a retract of a trivial fibration.
+</p>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 678--><p class="noindent" >
+</p><!--l. 682--><p class="noindent" >     <img 
+src="Simplicial14x.svg" alt=" &#x22C5;       &#x22C5;
+
+
+~f~&#x22C5;       &#x22C5; "  />
+</p></div>
+<!--l. 684--><p class="indent" >  It remains then to show weak equivalences satisfy \(2\) out of \(3\).
+</p><!--l. 686--><p class="indent" >  First we can observe that any composite of weak equivalences is a weak equivalence
+because it can be factored a composite of trivial fibrations and cofibrations. Now suppose \(h = g\circ f\)
+where \(f,h\) are weak equivalences. We can factor \(g\) into a fibration \(g'\) and trivial cofibration,
+which we can absorb into \(f\). Then factor \(f,h\) as \(f' \circ f'',h'\circ h''\), trivial cofibrations followed by a trivial
+fibration. Because of \(2\) out of \(3\), it suffices to show that \(g \circ f'\) is a trivial fibration. But this follows
+from the \(3\) out of \(4\) property on the square \((g \circ f') \circ f'' = h'\circ h''\). The other part of \(2\) out or \(3\) is dual.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 690--><p class="indent" >  Note that such a model structure is necessarily unique. In practice, we are often
+supplied a notion of weak equivalence satisfying two out of three. This makes it a bit easier
+to check something is a model category. Here are two ways in which that can be
+realized.
+</p>
+  <div class="newtheorem">
+<!--l. 692--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4020r10"></a>
+<span 
+class="cmbx-12">Lemma 4.10.</span>  </span> <span 
+class="cmti-12">Let</span> \(C\) <span 
+class="cmti-12">have finite limits and colimits. Suppose we have two factorization</span>
+<span 
+class="cmti-12">systems</span> \( (\rightarrowtail ,\overset{\sim }{\twoheadrightarrow }) \leq (\overset{\sim }{\rightarrowtail }, \twoheadrightarrow )\) <span 
+class="cmti-12">and a notion</span> \(\xrightarrow{\sim }\) <span 
+class="cmti-12">of weak equivalence satisfying</span> \(2\) <span 
+class="cmti-12">out of</span> \(3\) <span 
+class="cmti-12">and such that</span> \(\overset{\sim }{\twoheadrightarrow } = \xrightarrow{\sim }\cap \twoheadrightarrow \) <span 
+class="cmti-12">and</span> \( \overset{\sim }{\rightarrowtail } \subset \xrightarrow{\sim }\)<span 
+class="cmti-12">. Then</span>
+<span 
+class="cmti-12">this data gives a model structure.</span>
+</p>
+  <div class="proof">
+<!--l. 695--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>It suffices to check that \(\xrightarrow{\sim }\cap \rightarrowtail \subset \overset{\sim }{\rightarrowtail }\). But we can factor a weak equivalence as a triival
+cofibration and trivial fibration, and if it is also a cofibration lift the square of this
+factorization to see that it is a a retract of a trivial cofibration. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 699--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4021r11"></a>
+<span 
+class="cmbx-12">Proposition 4.11.</span>  </span> <span 
+class="cmti-12">Let</span> \(\adjunction{F}{C}{D}{U}\) <span 
+class="cmti-12">be an adjunction, suppose that</span> \(D\) <span 
+class="cmti-12">is bicomplete,</span> \(C\) <span 
+class="cmti-12">has a model</span>
+<span 
+class="cmti-12">structure cofibrantly generated by</span> \(\kappa \)<span 
+class="cmti-12">-small objects that are sent to</span> \(\kappa '\)<span 
+class="cmti-12">-small objects in</span> \(D\)<span 
+class="cmti-12">. We</span>
+<span 
+class="cmti-12">can try to define a model structure by having a map in</span> \(D\) <span 
+class="cmti-12">be a fibration or weak</span>
+<span 
+class="cmti-12">equivalence if it is after applying</span> \(U\)<span 
+class="cmti-12">. Suppose that if</span> \(f \in D\) <span 
+class="cmti-12">has the left lifting property with</span>
+<span 
+class="cmti-12">respect to</span> \(g\) <span 
+class="cmti-12">such that</span> \(Uf\) <span 
+class="cmti-12">is a fibration, then</span> \(Uf\) <span 
+class="cmti-12">is a weak equivalence. Then we get a</span>
+<span 
+class="cmti-12">cofibrantly generated model structure generated by</span> \(Fi\) <span 
+class="cmti-12">where</span> \(i\) <span 
+class="cmti-12">are the generators for</span>
+\(C\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 702--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The condition on fibrations and weak equivalences clearly determines the
+model structure if it exists. We can construct our factorizations via Proposition <a 
+href="#x1-4014r7">4.7<!--tex4ht:ref: smallobjectargument --></a>
+since the generators of the factorization systems for \(D\) are \(F\) applied to the ones for \(C\) by
+the adjunction, and these are sent to \(\kappa \)-small objects. \(2\) out of \(3\) is clear so by Lemma
+<a 
+href="#x1-4020r10">4.10<!--tex4ht:ref: checkonemodelstructure --></a> and the last assumption, we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 706--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4022r1"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Example 4.11.1.</span>  </span>The  <span 
+class="cmbx-12">Serre  model  structure  </span>on  the  category  \(\CGHaus \)  has  the
+cofibrations generated by \(|\Lambda ^n_i|\subset |\Delta ^n|\) and the trivial cofibrations are generated by \(|\partial _n \Delta ^n| \subset |\Delta ^n|\), and a weak
+equivalence to be a weak homotopy equivalence. \((CM1), (CM2)\) are clearly satisfied. By Lemma
+<a 
+href="#x1-3018r18">3.18<!--tex4ht:ref: trivfibrationhomotopygroupsSerre --></a>, a fibration is a trivial fibration iff it is a weak equivalence. Moreover, trivial
+cofibration of the construction in Proposition <a 
+href="#x1-4014r7">4.7<!--tex4ht:ref: smallobjectargument --></a> are weak equivalences since they
+are the inclusion of a deformation retract. Thus any trivial cofibration is since it is
+a retract of the construction. By Lemma <a 
+href="#x1-4020r10">4.10<!--tex4ht:ref: checkonemodelstructure --></a> we are done.
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 710--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4023r2"></a>
+<span 
+class="cmbx-12">Example 4.11.2.</span>  </span>The <span 
+class="cmbx-12">Quillen model structure </span>on \(\SSet \) has cofibrations generated
+by \(\Lambda ^n_i \subset \Delta ^n\), and trivial cofibrations generated by \(\partial \Delta ^n \subset \Delta ^n\). From the Proposition <a 
+href="#x1-4014r7">4.7<!--tex4ht:ref: smallobjectargument --></a>, these give
+factorization systems where the cofibrations are anodyne extensions, and the trivial
+cofibrations are inclusions by Lemma <a 
+href="#x1-2014r14">2.14<!--tex4ht:ref: genincl --></a>. A map \(X \to Y\) is a weak equivalence if it induces
+an  isomorphism  on  \(\pi _n\)  after  passing  to  fibrant  replacements.  This  agrees  with  the
+usual notion of weak equivalence for fibrant things, and \((CM1), (CM2)\) are satisfied. Now given
+a Kan fibration, by Proposition <a 
+href="#x1-3007r7">3.7<!--tex4ht:ref: trivfibrationhomotopygroups --></a> it is an isomorphism on homotopy groups iff
+it is trivial. By Proposition <a 
+href="#x1-3016r16">3.16<!--tex4ht:ref: homotopgroupsagree --></a>, \(X \to Y\) is a weak equivalence iff \(|X| \to |Y|\) is in the Serre model
+structure. Moreover, the realization of a cofibration is a cofibration, so since \(|\Lambda ^n_i| \subset |\Delta ^n|\) is a
+weak equivalence, and the set of cofibrations such that \(|X|\to |Y|\) is an equivalence is weakly
+saturated, all trivial cofibrations are weak equivalences. Thus by Lemma <a 
+href="#x1-4020r10">4.10<!--tex4ht:ref: checkonemodelstructure --></a> we are
+done.
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 720--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4024r1"></a>
+<span 
+class="cmbx-12">Question 4.11.1.</span>  </span>What natural model structures are there on a slice category or
+over category?
+</p>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 724--><p class="indent" >  The model structure gives a handle on the associated homotopy category. For example it
+is possible to construct a mapping space from cofibrant objects to fibrant objects that
+agrees with the mapping space in the \(\infty \)-category. We will start by understanding the
+homotopy \(1\)-category, denoted \(h(C)\). If \(A\) is an object of \(C\), define a <span 
+class="cmbx-12">cylinder object </span>of \(A\), denoted \(\Delta ^1A\)
+(resembling \(\Delta ^1\times A\)) to be a factorization </p>
+<div class="center" 
+>
+<!--l. 725--><p class="noindent" >
+</p><!--l. 729--><p class="noindent" >        <img 
+src="Simplicial15x.svg" alt="    A &#x222A; A
+
+
+     1
+i&#x2207;~   &#x0394; A        A "  />
+</p></div>
+<!--l. 730--><p class="noindent" >Where \(\nabla \) is the fold map. The dual notion is a <span 
+class="cmbx-12">path object </span>of \(B\), denoted \(B\Delta ^1\) (resembling \(B^{\Delta ^1}\)).
+Cylinder objects always exist, and furthermore we can always make the weak equivalence
+also a fibration.
+</p>
+  <div class="newtheorem">
+<!--l. 732--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4025r12"></a>
+<span 
+class="cmbx-12">Definition 4.12.</span>  </span><span 
+class="cmti-12">Given a cylinder object, a </span><span 
+class="cmbxti-10x-x-120">left homotopy </span><span 
+class="cmti-12">from</span> \(f\) <span 
+class="cmti-12">to</span> \(g\) <span 
+class="cmti-12">is a commutative</span>
+<span 
+class="cmti-12">diagram:</span> </p>
+<div class="center" 
+>
+<!--l. 734--><p class="noindent" >
+</p><!--l. 738--><p class="noindent" >         <img 
+src="Simplicial16x.svg" alt="    A &#x222A; A
+
+
+if,g  &#x0394;1A        B "  />
+</p></div>
+  </div>
+<!--l. 741--><p class="indent" >  \(f,g\) are <span 
+class="cmbx-12">left homotopic </span>if there is a left homotopy with respect to some cylinder. If \(f, g\) are
+left homotopic via some cylinder, \(hf, hg\) are too. There is also a dual notion of right
+homotopy.
+</p>
+                                                                                  
+
+                                                                                  
+  <div class="newtheorem">
+<!--l. 743--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4026r13"></a>
+<span 
+class="cmbx-12">Lemma 4.13.</span>  </span><span 
+class="cmti-12">Let</span> \(A\) <span 
+class="cmti-12">be cofibrant. Then the components of</span> \(i\) <span 
+class="cmti-12">are trivial cofibrations, and left</span>
+<span 
+class="cmti-12">homotopy is an equivalence relation.</span>
+</p>
+  <div class="proof">
+<!--l. 746--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By pushing out the initial maps to the two factors \(A\), we see that each of the
+inclusions into \(A\cup A\) is a cofibration, so the components of \(i\) are as well. Moreover, since
+the map \(\Delta ^1A \to A\) is a weak equivalence, by the \(2\) out of \(3\) property, so are the components of
+the inclusion.
+</p><!--l. 748--><p class="indent" >  Reflexivity of left homotopy comes from the canonical map \(\Delta ^1A \to A\). Symmetry comes
+from swapping the factors. Transitivity follows by observing that we can pushout two
+left homotopies and two cylinders along a common map to get another homotopy
+and cylinder. We need \(A\) to be cofibrant so that the pushout is also a cylinder. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 752--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4027r14"></a>
+<span 
+class="cmbx-12">Proposition 4.14.</span>  </span> <span 
+class="cmti-12">TFAE when</span> \(A\) <span 
+class="cmti-12">is cofibrant,</span> \(B\) <span 
+class="cmti-12">is fibrant,</span> \(f,g\) <span 
+class="cmti-12">are maps</span> \(A \to B\)<span 
+class="cmti-12">:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem">\(f,g\) <span 
+class="cmti-12">are left homotopic</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem">\(f,g\) <span 
+class="cmti-12">are right homotopic</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem">\(f,g\) <span 
+class="cmti-12">are left homotopic with respect to a fixed cylinder object.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(4)</span> </dt><dd 
+class="enumerate-enumitem">\(f,g\) <span 
+class="cmti-12">are right homotopic with respect to a fixed cylinder object.</span></dd></dl>
+                                                                                  
+
+                                                                                  
+  <div class="proof">
+<!--l. 761--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It will suffice to show by duality that if we have a right homotopy, and a cylinder
+object \(\Delta ^1A\) for \(A\), then \(f,g\) are left homotopic with respect to \(\Delta ^1A\). Let \(p_0,p_1\) be the components of the
+projection \(B\Delta ^1 \to B\times B\), let \(\sigma : B\to B\Delta ^1\) be the equivalence coming from the path structure, and let \(h\) be
+the right homotopy. Then the map \(p_1\gamma \) in the diagram below is a left homotopy.
+</p>
+<div class="center" 
+>
+<!--l. 762--><p class="noindent" >
+</p><!--l. 766--><p class="noindent" >              <img 
+src="Simplicial17x.svg" alt="                             1
+    A &#x222A; A                B &#x0394;
+
+
+i&#x03C3;p0&#x03B3;ff,h &#x0394;1A        A         B "  />
+</p></div>
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+<!--l. 770--><p class="indent" >  We will call a map \(\gamma :\Delta ^1A \to B\Delta ^1\) such that the diagram in Proposition <a 
+href="#x1-4027r14">4.14<!--tex4ht:ref: equivalentleftrighthomotopiesmodelcat --></a> commutes a
+<span 
+class="cmbx-12">correspondence </span>between the left and right homotopies.
+</p>
+  <div class="newtheorem">
+<!--l. 772--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4032r15"></a>
+<span 
+class="cmbx-12">Lemma 4.15 </span>(Whitehead)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">If</span> \(f:X \to Y\) <span 
+class="cmti-12">is a weak equivalence between cofibrant fibrant objects, it</span>
+<span 
+class="cmti-12">is a homotopy equivalence.</span>
+</p>
+  <div class="proof">
+<!--l. 775--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Since homotopy equivalences are closed under composition and we can factor a
+                                                                                  
+
+                                                                                  
+weak equivalence into a trivial fibration and cofibration, it suffices by duality to show it
+when \(f\) is a trivial cofibration. If \(\cdot \) denotes the terminal object, let \(g\) denote a lift of the
+diagram </p>
+<div class="center" 
+>
+<!--l. 776--><p class="noindent" >
+</p><!--l. 780--><p class="noindent" >       <img 
+src="Simplicial18x.svg" alt="  X        X
+
+
+~g Y        &#x22C5; "  />
+</p></div>
+<!--l. 782--><p class="noindent" >By construction it is a left inverse so it suffices to show \(f \circ g\) is homotopic to the identity. This
+can be achieved by finding a lift in the diagram below. </p>
+<div class="center" 
+>
+<!--l. 783--><p class="noindent" >
+</p><!--l. 787--><p class="noindent" >         <img 
+src="Simplicial19x.svg" alt="                 1
+  X           Y&#x0394;
+
+
+~&#x03C3;pfgfgY,1           Y &#x00D7; Y "  />
+</p></div>
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+<!--l. 790--><p class="indent" >  Whitehead&#8217;s theorem has a converse.
+</p>
+  <div class="newtheorem">
+<!--l. 791--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4033r16"></a>
+<span 
+class="cmbx-12">Theorem 4.16.</span>  </span> <span 
+class="cmti-12">The homotopy (1-)category of a model category</span> \(C\) <span 
+class="cmti-12">is given by homotopy</span>
+<span 
+class="cmti-12">class of maps between cofibrant fibrant objects. Moreover, isomorphism in the homotopy</span>
+<span 
+class="cmti-12">category is the same as weak equivalence, so model categories are saturated homotopical</span>
+<span 
+class="cmti-12">categories.</span>
+</p>
+  <div class="proof">
+                                                                                  
+
+                                                                                  
+<!--l. 794--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It is ok to just think about the full essentially surjective subcategory of the
+homotopy category consisting of cofibrant fibrant objects. Now suppose we have
+a  functor  \(F:C \to D\)  inverting  weak  equivalences.  Since  the  two  inclusions  into  a  cylinder
+are equal in the homotopy \(1\)-category, \(F\) factors through the category obtained by
+identifying homotopy classes of maps. By Lemma <a 
+href="#x1-4032r15">4.15<!--tex4ht:ref: whiteheadstheorem --></a>, weak equivalences are already
+isomorphism in this category, so the factorization is unique.
+</p><!--l. 796--><p class="indent" >  Now suppose that a map \(f:X \to Y\) is an isomorphism in the homotopy category. After passing to
+cofibrant fibrant replacements using the \(2\) out of \(3\) property, we can assume that our objects
+are cofibrant fibrant, so that \(f\) has a homotopy inverse \(g\). Moreover, by factoring \(f\) into a
+trivial cofibration and fibration and using Lemma <a 
+href="#x1-4032r15">4.15<!--tex4ht:ref: whiteheadstheorem --></a>, we can assume \(f\) is a
+fibration. The strategy is to show that \(f\) has the right lifting property with respect to
+cofibrations. Let \(\Delta ^1X,\tilde{Y}\) be path objects for \(X,Y\), \(k\) a right homotopy from \(gf\) to the identity, and
+form the diagram below given a map from a cofibration \(i\) to \(f\) given by maps \(\alpha ,\beta \):
+</p>
+<div class="center" 
+>
+<!--l. 797--><p class="noindent" >
+</p><!--l. 801--><p class="noindent" >                      <img 
+src="Simplicial20x.svg" alt="  A            X &#x0394;1                      X
+
+
+                         1        1
+ikppfg&#x03C0;p&#x03B1;0,1&#x03B2;21B?,&#x03C3;&#x03B2;           X  &#x00D7;Y  Y&#x0394;      Y &#x0394;        Y "  />
+</p></div>
+<!--l. 803--><p class="noindent" >If we could fill in the map \(?\) in a way that \((p_0,?)\) is a fibration and the diagram commuted, it would
+have to be a trivial fibration by the \(2\) out of \(3\) property for the composition with \(X\times _{\pi _2} Y \to X\), so we
+could make the indicated lift and be done.
+</p><!--l. 805--><p class="indent" >  To make \(?\) we will choose a particularly nice right homotopy from \(gf\) to the identity by
+slightly modifying the dual construction of Proposition <a 
+href="#x1-4027r14">4.14<!--tex4ht:ref: equivalentleftrighthomotopiesmodelcat --></a>.
+</p><!--l. 807--><p class="indent" >  Let \(h:\Delta ^1X \to X\) be a left homotopy from \(gf\) to the identity, and \(s\) the map \(\Delta ^1X \to X\). Choose a path object \(Y\Delta ^1\) for \(Y\).
+We can make a path object \(X\Delta ^1\) for \(X\) with a compatible fibration \(\hat{f}=?\) to \(Y\Delta ^1\) by factoring the map \((\Delta ,\sigma _Y f): X \to (X\times X)\times _{Y\times Y} Y\Delta ^1\)
+as a trivial cofibration and fibration. Then create a lift \(Q\) in the diagram below.
+</p>
+<div class="center" 
+>
+<!--l. 809--><p class="noindent" >
+                                                                                  
+
+                                                                                  
+</p><!--l. 813--><p class="noindent" >                    <img 
+src="Simplicial21x.svg" alt="                                1
+   X                        X &#x0394;
+
+
+i&#x03C3;&#x03C0;Q(1(h,&#x0394;s)1,&#x03C3;XY fs)                   (X  &#x00D7; X ) &#x00D7;Y &#x00D7;Y Y &#x0394;1 "  />
+</p></div>
+<!--l. 814--><p class="noindent" >\(k=i_1Q\)is a right homotopy from \(gf\) to the identity with the extra property that \(\hat{f}k = \sigma _Yf\). This shows that the
+strategy works. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 818--><p class="indent" >  We now briefly examine the higher categorical structure on a model category. Let \(X\) be a
+semi-simplicial set. We will inductively define a semi-simplicial set of cylinders for \(A\),
+denoted \(\Cyl (A)\), where a map of a \(X\)-cylinder object for \(A\) is denoted \(XA\). A \(\Delta ^0\)<span 
+class="cmbx-12">-cylinder </span>is the data
+below. </p>
+<div class="center" 
+>
+<!--l. 819--><p class="noindent" >
+</p><!--l. 823--><p class="noindent" >        <img 
+src="Simplicial22x.svg" alt="   A
+
+
+     0
+i~  &#x0394;  A       A "  />
+</p></div>
+<!--l. 825--><p class="indent" >  Suppose we have defined the \(\Delta ^{n-1}\)-cylinders. Then a \(\Delta ^n\)-cylinder will be a choice of \(\partial{\Delta ^n}\)-cylinder
+and a diagram as below.
+</p>
+<div class="center" 
+>
+<!--l. 827--><p class="noindent" >
+</p><!--l. 831--><p class="noindent" >        <img 
+src="Simplicial23x.svg" alt="    &#x2202;&#x0394;nA
+
+
+i~   &#x0394;nA        A "  />
+</p></div>
+<!--l. 833--><p class="indent" >  Its boundary maps will be the ones coming from \(\partial \Delta ^nA\). Using \(\Cyl (A)\), we can define a
+semi-simplicial mapping space \(\Maps _{\Cyl }(A,B)\) where the \(n\)-simplices are a choice of \(\Delta ^nA\) and a map \(\Delta ^nA \to B\). There
+                                                                                  
+
+                                                                                  
+is a dual notion of \(\Path (B)\) and \(\Maps _{\Path }(A,B)\). We can also force these to be simplicial sets by Kan
+extension.
+</p>
+  <div class="newtheorem">
+<!--l. 835--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4034r1"></a>
+<span 
+class="cmbx-12">Question 4.16.1.</span>  </span>Is    \(\Maps _{\Cyl }(A,B)\)    a    semi-simplicial    Kan    complex?    What    about
+its simplicialization? Can one canonically identify \(\Maps _{\Cyl }(A,B)\) with \(\LMaps (A,B)\) in the homotopy \(\infty \)-category
+(even with no conditions on \(A,B\))?
+</p>
+  </div>
+<!--l. 839--><p class="indent" >  In any case, \(\Cyl (A)\) has a very nice property that cells can be reordered. For example, there is
+an involution on the \(1\)-simplices given by swapping. This suggests it&#8217;s even better than a
+Kan complex. Maybe a semi-simplicial structure is not the right thing but rather some
+other test category such as a globe or cube category is better. The following lemma
+suggests as much.
+</p>
+  <div class="newtheorem">
+<!--l. 841--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4035r17"></a>
+<span 
+class="cmbx-12">Lemma 4.17.</span>  </span> <span 
+class="cmti-12">Given a left homotopy</span> \(h:\Delta ^1X \to Y\) <span 
+class="cmti-12">from</span> \(\alpha \) <span 
+class="cmti-12">to</span> \(\beta \) <span 
+class="cmti-12">with structure map</span> \(s:\Delta ^1X\to X\)<span 
+class="cmti-12">, the composite</span>
+<span 
+class="cmti-12">homotopy</span> \(h^{-1}\circ h:\overline{\Delta ^1}X\to X\) <span 
+class="cmti-12">is homotopic to the constant homotopy on</span> \(\alpha \) <span 
+class="cmti-12">via a map</span> \(H\)<span 
+class="cmti-12">, i.e there is a diagram as</span>
+<span 
+class="cmti-12">below:</span> </p>
+<div class="center" 
+>
+<!--l. 843--><p class="noindent" >
+</p><!--l. 846--><p class="noindent" >              <img 
+src="Simplicial24x.svg" alt="         ---         ---
+         &#x0394;1X   &#x222A;X &#x222A;X &#x0394;1X  X
+
+
+ -1                         &#x2032;
+sjh~H&#x03C0;,1s,j2&#x2218;h,&#x03B1;s  Y                X "  />
+</p></div>
+  <div class="proof">
+<!--l. 848--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>Choose \(Y\Delta ^1\) with structure map \(\sigma \), and a correspondence \(\gamma \) between \(h\) and a right
+homotopy \(k\) on \(Y\Delta ^1\). \(\gamma \) glues on \(\overline{\Delta ^1}X\cup _{X\cup X}\overline{\Delta ^1}X\) to give a map \(\overline{\gamma }\), so we can lift the diagram </p>
+<div class="center" 
+>
+<!--l. 849--><p class="noindent" >
+</p><!--l. 852--><p class="noindent" >               <img 
+src="Simplicial25x.svg" alt="         ---         ---
+         &#x0394;1X   &#x222A;     &#x0394;1X   Y &#x0394;1
+                X &#x222A;X
+
+-          &#x2032;
+&#x03B3;jp~&#x03B1;K,10&#x03C0;&#x03C3;,j&#x03B1;2s    X                 Y "  />
+</p></div>
+<!--l. 853--><p class="noindent" >and the map \(p_1K=H\) works. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 857--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4036r18"></a>
+<span 
+class="cmbx-12">Lemma 4.18.</span>  </span><span 
+class="cmti-12">Suppose</span> \(X,Y\) <span 
+class="cmti-12">are cofibrant fibrant, and</span> \(f:X \to Y\) <span 
+class="cmti-12">is a trivial fibration. Then</span> \(f\) <span 
+class="cmti-12">admits a</span>
+<span 
+class="cmti-12">section</span> \(g\)<span 
+class="cmti-12">, and for any section there is a homotopy</span> \(H:\Delta ^1X \to X\) <span 
+class="cmti-12">from</span> \(gf\) <span 
+class="cmti-12">to the identity such that</span> \(fH\) <span 
+class="cmti-12">is the</span>
+<span 
+class="cmti-12">constant homotopy of</span> \(f\) <span 
+class="cmti-12">(i.e a fibrewise homotopy).</span>
+</p>
+  <div class="proof">
+<!--l. 860--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(f\) admits a section \(g\) by lifting the identity along \(f\), and since this is an inverse in
+the homotopy category, there is a left homotopy \(h: \Delta ^1X \to X\) from the identity to \(gf\). Let \(h^{-1}\) denote
+tha homotopy in the other direction obtained from swapping factors. \(gfh^{-1}\) is a homotopy
+from \(gf\) to itself, and let \(gfh^{-1}\circ h:\overline{\Delta ^1}X \to X\) be the composite of the homotopies \(gfh^{-1}\) and \(h\).
+</p><!--l. 862--><p class="indent" >  By Lemma <a 
+href="#x1-4035r17">4.17<!--tex4ht:ref: invhomotopymodelcat --></a> \(f(gfh^{-1}\circ h) = fh^{-1}\circ fh\) is homotopic to the identity via some homotopy \(H:X' \to Y\), where \(i_L,i_R\) are the
+inclusions \(\overline{\Delta ^1}X \to X'\), we can create a lift \(K\) as below so that \(Ki_R\) will be the desired fibrewise homotopy.
+</p>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 863--><p class="noindent" >
+</p><!--l. 866--><p class="noindent" >        <img 
+src="Simplicial26x.svg" alt="    ---
+    &#x0394;1X       X
+
+
+gifHKfLh-X1&#x2218;&#x2032;h       Y "  />
+</p></div>
+  <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 872--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4037r19"></a>
+<span 
+class="cmbx-12">Proposition 4.19.</span>  </span> <span 
+class="cmti-12">Let</span> \(\adjunction{F}{C}{D}{U}\) <span 
+class="cmti-12">be an adjunction, suppose that</span> \(D\) <span 
+class="cmti-12">is bicomplete,</span> \(C\) <span 
+class="cmti-12">has a model</span>
+<span 
+class="cmti-12">structure cofibrantly generated by</span> \(\kappa \)<span 
+class="cmti-12">-small objects that are sent to</span> \(\kappa '\)<span 
+class="cmti-12">-small objects in</span> \(D\)<span 
+class="cmti-12">. We can</span>
+<span 
+class="cmti-12">try to define a model structure by having a map in</span> \(D\) <span 
+class="cmti-12">be a fibration or weak equivalence if it</span>
+<span 
+class="cmti-12">is after applying</span> \(U\)<span 
+class="cmti-12">. If</span> \(D\) <span 
+class="cmti-12">has natural path objects</span> \(P\) <span 
+class="cmti-12">and a natural fibrant replacement</span> \(Q\)<span 
+class="cmti-12">, we get a</span>
+<span 
+class="cmti-12">cofibrantly generated model structure generated by</span> \(Fi\) <span 
+class="cmti-12">where</span> \(i\) <span 
+class="cmti-12">are the generators for</span>
+\(C\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 875--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By Proposition <a 
+href="#x1-4021r11">4.11<!--tex4ht:ref: adjunctioninducedmodelstr --></a>, it suffices to show if \(f \in D\) has the left lifting property with respect
+to \(g\) such that \(Uf\) is a fibration, then \(Uf\) is a weak equivalence. Now produce a lift \(u\) of the
+diagram </p>
+<div class="center" 
+>
+<!--l. 876--><p class="noindent" >
+</p><!--l. 879--><p class="noindent" >       <img 
+src="Simplicial27x.svg" alt=" A         QA
+
+
+fuB         &#x22C5; "  />
+                                                                                  
+
+                                                                                  
+</p></div>
+<!--l. 880--><p class="noindent" >Then construct a lift in the diagram </p>
+<div class="center" 
+>
+<!--l. 881--><p class="noindent" >
+</p><!--l. 884--><p class="noindent" >                   <img 
+src="Simplicial28x.svg" alt="  A            P QA              PQB
+
+
+fiH0B            QB   &#x00D7; QA         QB  &#x00D7; QB "  />
+</p></div>
+<!--l. 884--><p class="noindent" >, so that in the diagram </p>
+<div class="center" 
+>
+<!--l. 885--><p class="noindent" >
+</p><!--l. 888--><p class="noindent" >       <img 
+src="Simplicial29x.svg" alt=" A          QA
+
+
+
+fQuBf          QB "  />
+</p></div>
+<!--l. 889--><p class="noindent" >The upper triangle commutes and the lower triangle does up to right homotopy. Applying \(U\) to
+this square, which preserves right homotopy, we see that \(UA \to UB\) is an isomorphism in the
+homotopy \(1\)-category of \(C\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 893--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4038r1"></a>
+<span 
+class="cmbx-12">Remark 4.19.1.</span>  </span>There  is  an  alternate  hypothesis  that  will  make  the  proof  of
+Proposition  <a 
+href="#x1-4037r19">4.19<!--tex4ht:ref: adjunctioninducedhypothesis --></a>  go  through,  but  seems  not  as  good.  Namely,  we  can  assume  \(U\)
+preserves \(\kappa \)-sequential colimits instead of the assumption about the generators being
+sent to small objects. Then we can use a variant of Proposition <a 
+href="#x1-4014r7">4.7<!--tex4ht:ref: smallobjectargument --></a> to produce
+the factorization system. Namely, after countably many steps in the small object
+argument, since \(U\) preserves \(\kappa \)-sequential colimits, we will be able to lift the generating
+                                                                                  
+
+                                                                                  
+cofibrations in \(C\).
+</p>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">5. </span> <a 
+ id="x1-50005"></a>Derived Functors and Simplicial Model Categories</h3>
+<!--l. 898--><p class="noindent" >A <span 
+class="cmbx-12">left Quillen functor </span>between model categories is one that preserves (finite) colimits,
+cofibrations and trivial cofibrations. Dually there is a notion of right Quillen
+functor.
+</p><!--l. 900--><p class="indent" >  Quillen functors are useful because one can compute their derived functors.
+</p>
+  <div class="newtheorem">
+<!--l. 902--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5001r1"></a>
+<span 
+class="cmbx-12">Definition 5.1.</span>  </span><span 
+class="cmti-12">If</span> \(F:C \to D\) <span 
+class="cmti-12">is a functor of homotopical categories, the </span><span 
+class="cmbxti-10x-x-120">total left derived</span>
+<span 
+class="cmbxti-10x-x-120">functor</span><span 
+class="cmti-12">, denoted</span> \(\LL F\) <span 
+class="cmti-12">is the </span>right <span 
+class="cmti-12">Kan extension of the diagram:</span> </p>
+<div class="center" 
+>
+<!--l. 904--><p class="noindent" >
+</p><!--l. 908--><p class="noindent" >          <img 
+src="Simplicial30x.svg" alt="   C            D
+
+
+FLF h (C )        h(D ) "  />
+</p></div>
+  </div>
+<!--l. 911--><p class="indent" >  To help compute derived functors, we can use a deformation.
+</p>
+  <div class="newtheorem">
+<!--l. 912--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5002r2"></a>
+<span 
+class="cmbx-12">Definition 5.2.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">left deformation </span><span 
+class="cmti-12">on a homotopical category</span> \(C\) <span 
+class="cmti-12">is an endofunctor</span>
+\(Q\) <span 
+class="cmti-12">with a natural weak equivalence</span> \(q\) <span 
+class="cmti-12">from</span> \(Q\) <span 
+class="cmti-12">to the identity.</span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+<!--l. 916--><p class="indent" >  Let \(C_Q\) denote the full subcategory of objects in the image of \(Q\), also called a <span 
+class="cmbx-12">left</span>
+<span 
+class="cmbx-12">deformation retract</span>. A left deformation induces an equivalence between \(h(C)\) and \(h(C_Q)\). If we
+have a functorial map from a cofibrant fibrant factorization in a model category, that is a
+left defomation.
+</p>
+  <div class="newtheorem">
+<!--l. 918--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5003r3"></a>
+<span 
+class="cmbx-12">Definition 5.3.</span>  </span><span 
+class="cmti-12">a </span><span 
+class="cmbxti-10x-x-120">left deformation </span><span 
+class="cmti-12">on a functor</span> \(F:C \to D\) <span 
+class="cmti-12">is a left deformation</span> \(Q\) <span 
+class="cmti-12">on</span> \(C\) <span 
+class="cmti-12">such</span>
+<span 
+class="cmti-12">that</span> \(F\) <span 
+class="cmti-12">is homotopical on</span> \(C_Q\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 922--><p class="indent" >  \(F\) is <span 
+class="cmbx-12">left deformable </span>if it admits a left deformation. Any left deformable functor has a
+maximal subcategory on which it is homotopical (not proven here but uses 2 out of
+6).
+</p>
+  <div class="newtheorem">
+<!--l. 924--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5004r4"></a>
+<span 
+class="cmbx-12">Proposition 5.4.</span>  </span><span 
+class="cmti-12">If</span> \(F:C\to D\) <span 
+class="cmti-12">between homotopical categories has a left deformation</span> \(Q,q\)<span 
+class="cmti-12">, then</span> \(FQ\)
+<span 
+class="cmti-12">induces a left derived functor of</span> \(F\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 927--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(h_C\) denote the localization functor of \(C\). Since \(F\) is homotopical on \(C_Q\), \(h_DFQ\) does descend
+to a functor from \(h(C)\). \(h_DFq\) gives the natural transformation we want. Instead of proving the
+universal property in \(h(D)^C\), it suffices to prove it in the equivalent full subcategory of \(h(D)^C\)
+consisting of homotopical functors. Now suppose that \(G\in h(D)^C\) is homotopical and we have a
+natural transfromation \(\eta :G\to h_DF\). \(Gq:GQ\to G\) is a natural transformation that is a natural isomorphism
+since \(G\) is homotopical. Thus by naturality of \(\eta \), \(\eta \) factors as \(h_DF q \circ \eta Q \circ (Gq)^{-1}\). Uniqueness follows from
+the fact that \(h_DFq\) is a natural isomorphism since \(q\) is a weak equivalence. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 931--><p class="indent" >  Morally here is how one can think about a deformation. When you invert weak
+equivalences, you really get an \(\infty \)-category, and we can expect left Kan extensions to be the
+\(1\)-categorical shadow of computing (homotopy) colimits in the \(\infty \)-category, as is the formula
+for Kan extensions when enough colimits exist. The deformation allows you to
+\(1\)-categorically change your object to one that is homotopically good, so that the
+\(\infty \)-categorical colimit agrees with the usual one.
+</p>
+  <div class="newtheorem">
+<!--l. 933--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5005r1"></a>
+<span 
+class="cmbx-12">Remark 5.4.1.</span>  </span>Maybe  it&#8217;s  worth  mentioning  that  \(FQ\)  is  really  an  absolute  Kan
+extension, i.e it is preserved by post composition with all functors (including the
+representable ones, making it a pointwise Kan extension).
+</p>
+  </div>
+<!--l. 937--><p class="indent" >  There is really a pseudo \(2\)-functor taking a homotopical category \(C\) to \(h(C)\), a left deformable
+functor to its total left derived functor, and a natural transformation of such functors to
+the derived natural transformation.
+</p>
+  <div class="newtheorem">
+<!--l. 939--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5006r5"></a>
+<span 
+class="cmbx-12">Lemma 5.5 </span>(Ken Brown&#8217;s Lemma)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">Let</span> \(F:C\to D\) <span 
+class="cmti-12">be a functor between model categories that</span>
+<span 
+class="cmti-12">sends trivial cofibrations between cofibrant objects to weak equivalences. Then</span> \(F\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">homotopical on the category of cofibrant objects.</span>
+</p>
+  <div class="proof">
+<!--l. 942--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>Let \(f:X \to Y\) be a weak equivalence of cofibrant objects. Factor \(X \coprod Y \xrightarrow{f,1} Y\) as a cofibration and trivial
+cofibration, and consider the diagram below. </p>
+<div class="center" 
+>
+<!--l. 943--><p class="noindent" >
+</p><!--l. 949--><p class="noindent" >             <img 
+src="Simplicial31x.svg" alt="  &#x03D5;              X
+
+          X &#x2210; Y
+
+  Y              Z
+
+
+jfi~                       Y "  />
+</p></div>
+<!--l. 950--><p class="noindent" >By \(2\) out of \(3\), \(i,j\) are weak equivalences, so they get sent to weak equivalences. But then since the
+map \(Z \to Y\) is a retraction of \(i\), it is also sent to a weak equivalence by \(2\) out of \(3\). Then \(f\) is too by \(2\)
+out of \(3\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 954--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5007r6"></a>
+<span 
+class="cmbx-12">Corollary 5.6.</span>  </span> <span 
+class="cmti-12">If</span> \(C\) <span 
+class="cmti-12">has a functorial cofibrant replacement, then a left Quillen functor is</span>
+<span 
+class="cmti-12">left deformable. In any case, the total left derived functor exists, and can be computed by</span>
+<span 
+class="cmti-12">taking a cofibrant replacement.</span>
+</p>
+  <div class="proof">
+<!--l. 957--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The  first  fact  follows  from  <a 
+href="#x1-5006r5">5.5<!--tex4ht:ref: kenbrown --></a>  and  second  just  requires  the  additional
+observation that the inclusion of the full subcategory of cofibrant objects induces an
+equivalence on the homotopy category. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+                                                                                  
+
+                                                                                  
+  </div>
+  </div>
+<!--l. 961--><p class="indent" >  An adjunction is called a <span 
+class="cmbx-12">Quillen adjunction </span>if the left adjoint is left Quillen and
+similarly for the right adjoint.
+</p>
+  <div class="newtheorem">
+<!--l. 963--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5008r7"></a>
+<span 
+class="cmbx-12">Lemma 5.7.</span>  </span><span 
+class="cmti-12">TFAE for an adjunction</span> \(F\dashv G\)
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem">\(F\) <span 
+class="cmti-12">is left Quillen</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem">\(G\) <span 
+class="cmti-12">is right Quillen</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem">\(F\) <span 
+class="cmti-12">preserves cofibrations and</span> \(G\) <span 
+class="cmti-12">preserves fibrations</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(4)</span> </dt><dd 
+class="enumerate-enumitem">\(F\) <span 
+class="cmti-12">preserves trivial cofibrations and</span> \(G\) <span 
+class="cmti-12">preserves trivial fibrations.</span>
+          <div class="proof">
+       <!--l. 970--><p class="indent" >   <span class="head">
+       <span 
+class="cmti-12">Proof.</span> </span>The  preserving  limits  and  colimits  is  satisfied  because  of  the
+       adjunction. The equivalences then follow because of Lemma <a 
+href="#x1-2010r10">2.10<!--tex4ht:ref: adjunctionlifting --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+          </div>
+          </dd></dl>
+  </div>
+<!--l. 975--><p class="indent" >  A Quillen adjunction induces an adjunction on the homotopy \(1\)-categories. The
+same can be said of an adjoint pair of deformable functors between homotopical
+categories.
+</p><!--l. 977--><p class="indent" >  A Quillen adjunction is a <span 
+class="cmbx-12">Quillen equivalence </span>if its derived functors are an
+equivalence.
+</p>
+  <div class="newtheorem">
+                                                                                  
+
+                                                                                  
+<!--l. 979--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5013r8"></a>
+<span 
+class="cmbx-12">Lemma 5.8.</span>  </span><span 
+class="cmti-12">A Quillen adjunction</span> \(\adjunction{F}{C}{D}{G}\) <span 
+class="cmti-12">is a Quillen equivalence iff when</span> \(c \in C\) <span 
+class="cmti-12">is cofibrant and</span> \(d \in D\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">fibrant, then</span> \(Fc \to d\) <span 
+class="cmti-12">is a weak equivalence iff the adjoint map</span> \(c \to Gd\) <span 
+class="cmti-12">is.</span>
+</p>
+  <div class="proof">
+<!--l. 982--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose \(F\dashv G\) is a Quillen equivalence. Then for \(c\) cofibrant and \(d\) fibrant, \(F,G\) agree
+with the derived functors, so combined with the fact that weak equivalences are
+the isomorphism in the homotopy category, the condition follows. Conversely if the
+condition holds, then the unit map \(c \to GFc\) is an isomorphism in \(h(C)\) since \(G\) is given by taking
+a fibrant replacement and applying \(G\), so by the condition it is equivalent to \(Fc\) being
+isomorphic or weakly equivalent to the fibrant replacement. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 986--><p class="indent" >  For example \(S\) and \(|\cdot |\) give a Quillen equivalence between the Serrre and Quillen model
+structures.
+</p><!--l. 988--><p class="indent" >  Simplicial model categories are ones that have a compatible simplicial enrichment and
+tensoring/cotensoring. Many natural examples of model categories are simplicial model
+categories.
+</p>
+  <div class="newtheorem">
+<!--l. 990--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5014r9"></a>
+<span 
+class="cmbx-12">Definition 5.9.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">left Quillen bifunctor</span> \(\otimes : C \times D \to E\) <span 
+class="cmti-12">is a map of model categories preserving</span>
+<span 
+class="cmti-12">colimits in both variables, and such that the Construction </span><a 
+href="#x1-2031r1"><span 
+class="cmti-12">2.21.1</span><!--tex4ht:ref: leibnizconstruction --></a> \(\hat{\otimes }\) <span 
+class="cmti-12">sends pairs of</span>
+<span 
+class="cmti-12">cofibrations to cofibrations that are trivial iff either arrow is.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+                                                                                  
+
+                                                                                  
+<!--l. 994--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5015r10"></a>
+<span 
+class="cmbx-12">Lemma 5.10.</span>  </span><span 
+class="cmti-12">Left Quillen bifunctors preserve cofibrant objects and are homotopical on</span>
+<span 
+class="cmti-12">the subcategories of cofibrant objects.</span>
+</p>
+  <div class="proof">
+<!--l. 997--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>These claims follow from the condition on \(\hat{\otimes }\) and Lemma <a 
+href="#x1-5006r5">5.5<!--tex4ht:ref: kenbrown --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 1001--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5016r11"></a>
+<span 
+class="cmbx-12">Lemma 5.11.</span>  </span><span 
+class="cmti-12">If</span> \(\otimes ,\{,\},\hom \) <span 
+class="cmti-12">form a two variable adjunction between model categories, then one is a</span>
+<span 
+class="cmti-12">Quillen bifunctor iff the rest are.</span>
+</p>
+  <div class="proof">
+<!--l. 1004--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This follows from Lemma <a 
+href="#x1-2032r22">2.22<!--tex4ht:ref: twovaradjunctionlifting --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 1008--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5017r12"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Definition 5.12.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">simplicial model category </span><span 
+class="cmti-12">is a</span> \(\SSet \) <span 
+class="cmti-12">enriched model category that</span>
+<span 
+class="cmti-12">is tensored and cotensored such that</span> \(\otimes \) <span 
+class="cmti-12">is a left Quillen bifunctor.</span>
+</p>
+  </div>
+<!--l. 1011--><p class="indent" >  By Lemma <a 
+href="#x1-2038r25">2.25<!--tex4ht:ref: mapsfibration --></a> and Lemma <a 
+href="#x1-2039r26">2.26<!--tex4ht:ref: mapstrivfibration --></a>, the Quillen model structure on \(\SSet \) is a simplicial model
+category.
+</p><!--l. 1013--><p class="indent" >  With a simplicial model category, we have nice cylinders. For example, \(\Delta ^1\) is a cylinder
+object for \(\Delta ^0\) in \(\SSet \), and tensoring with \(A\) gives a cylinder object for \(A\) when \(A\) is cofibrant. Thus if \(A\)
+is cofibrant and \(B\) fibrant, then homotopy of maps \(A \to B\) agrees with equivalence in
+\(\ul \Hom (A,B)\).
+</p>
+  <div class="newtheorem">
+<!--l. 1015--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5018r13"></a>
+<span 
+class="cmbx-12">Lemma 5.13.</span>  </span>\((W2)\) <span 
+class="cmti-12">for the factorization systems is implied by the rest of the axioms for a</span>
+<span 
+class="cmti-12">simplicial model category. Moreover, if the object in the upper left corner is cofibrant, the</span>
+<span 
+class="cmti-12">lift is unique up to relative homotopy.</span>
+</p>
+  <div class="proof">
+<!--l. 1018--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>A lift in a diagram of the form </p>
+<div class="center" 
+>
+<!--l. 1019--><p class="noindent" >
+</p><!--l. 1022--><p class="noindent" >       <img 
+src="Simplicial32x.svg" alt="A        X
+
+
+B        Y "  />
+</p></div>
+<!--l. 1023--><p class="noindent" >is the same as a lift of a \(0\)-simplex in the map \(\Hom (B,X) \to \Hom (A,X) \times _{\Hom (B,Y)}\Hom (X,Y)\). But this is a trivial fibration if either of the
+vertical maps is trivial by the fact that the two-variable adjunction with \(\otimes \) is Quillen, so
+there is a unique lift up homotopy. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 1027--><p class="indent" >  We can reduce the amount of work needed to check something is a simiplicial model
+category by observing that we can check the condition of \(\otimes ,\{,\}\) or \(\hom \) being a Quillen bifunctor on
+generating cofibrations or generating fibrations.
+</p>
+  <div class="newtheorem">
+<!--l. 1029--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5019r14"></a>
+<span 
+class="cmbx-12">Lemma 5.14.</span>  </span><span 
+class="cmti-12">If</span> \(A,B\) <span 
+class="cmti-12">are cofibrant,</span> \(A \to B\) <span 
+class="cmti-12">is an equivalence in a simplicial model category iff</span>
+\(\ul \Hom (B,C) \to \ul \Hom (A,C)\) <span 
+class="cmti-12">is a weak equivalence for every fibrant object</span> \(C\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 1033--><p class="indent" >  Many categories of simplicial objects (eg: models of Lawvere theories) have natural
+simplicial model structures. These often come from inducing model structures through an
+adjunction
+</p>
+  <div class="newtheorem">
+<!--l. 1035--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5020r15"></a>
+<span 
+class="cmbx-12">Proposition 5.15.</span>  </span>  <span 
+class="cmti-12">Let</span>  \(\adjunction{F}{C}{D}{U}\)  <span 
+class="cmti-12">be  an  enriched  adjunction  of  categories  tensored  and</span>
+<span 
+class="cmti-12">cotensored over</span> \(\SSet \)<span 
+class="cmti-12">, suppose that</span> \(D\) <span 
+class="cmti-12">is bicomplete, and</span> \(C\) <span 
+class="cmti-12">has a simplicial model structure</span>
+<span 
+class="cmti-12">cofibrantly generated by</span> \(\kappa \)<span 
+class="cmti-12">-small objects that are sent to</span> \(\kappa '\)<span 
+class="cmti-12">-small objects in</span> \(D\)<span 
+class="cmti-12">. We can try</span>
+<span 
+class="cmti-12">to define a model structure by having a map in</span> \(D\) <span 
+class="cmti-12">be a fibration or weak equivalence if</span>
+<span 
+class="cmti-12">it is after applying</span> \(U\)<span 
+class="cmti-12">. Suppose that if</span> \(f \in D\) <span 
+class="cmti-12">has the left lifting property with respect to</span> \(g\) <span 
+class="cmti-12">such</span>
+<span 
+class="cmti-12">that</span> \(Uf\) <span 
+class="cmti-12">is a fibration, then</span> \(Uf\) <span 
+class="cmti-12">is a weak equivalence.</span>
+</p><!--l. 1038--><p class="indent" >  <span 
+class="cmti-12">Then</span> \(D\) <span 
+class="cmti-12">has a cofibrantly generated simplicial model structure where the fibrations</span>
+<span 
+class="cmti-12">and weak equivalences are determined by applying</span> \(U\)<span 
+class="cmti-12">, the cofibrations are generated by</span>
+\(U\) <span 
+class="cmti-12">applied to generators for</span> \(D\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 1041--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>By Proposition <a 
+href="#x1-4021r11">4.11<!--tex4ht:ref: adjunctioninducedmodelstr --></a> a model structure, and we only need to show that it is
+simplicial.
+</p><!--l. 1043--><p class="indent" >  To do this, we can identify the map \[U\hom _{D}(L,X) \to U(\hom _{\simp C}(K,X)\times _{\hom _{D(K,Y)}} \hom _{D} (L,Y) )\] with \[\hom _{C}(L,UX) \to \hom _{C}(K,UX)\times _{\hom _{C(K,UY)}} \hom _{C} (L,UY)\] since the adjunction is enriched and \(U\)
+preserves pullbacks. If \(K \to L\) is a cofibration and \(X \to Y\) is a fibration, one of which is trivial then
+this map is a fibration, since \(C\) is a simplicial model category. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 1047--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5021r16"></a>
+<span 
+class="cmbx-12">Lemma 5.16.</span>  </span> <span 
+class="cmti-12">If</span> \(D\) <span 
+class="cmti-12">has a functorial fibrant replacement</span> \(Q\)<span 
+class="cmti-12">, then the last condition of</span>
+<span 
+class="cmti-12">Proposition </span><a 
+href="#x1-5020r15"><span 
+class="cmti-12">5.15</span><!--tex4ht:ref: liftingimpliessimpmodelcat --></a> <span 
+class="cmti-12">is satisfied.</span>
+</p>
+  <div class="proof">
+<!--l. 1050--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>We  have  a  functorial  path  object  given  by  \(\hom (\Delta ^1,-)\),  and  \(Q\)  is  a  functorial  fibrant
+replacement, so by Proposition <a 
+href="#x1-4037r19">4.19<!--tex4ht:ref: adjunctioninducedhypothesis --></a> we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 1054--><p class="indent" >  The following corollary is probably bad because the last assumption is unnecessary. Or
+maybe not because the other version requires the objects to be &#8220;small&#8221;.
+</p>
+  <div class="newtheorem">
+<!--l. 1055--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5022r17"></a>
+<span 
+class="cmbx-12">Corollary 5.17.</span>  </span> <span 
+class="cmti-12">Let</span> \(\adjunction{F}{\Set }{C}{U}\) <span 
+class="cmti-12">be an adjunction of categories, suppose that</span> \(C\) <span 
+class="cmti-12">is bicomplete,</span> \(F\)
+<span 
+class="cmti-12">sends</span> \(1\) <span 
+class="cmti-12">to a</span> \(\kappa \)<span 
+class="cmti-12">-small object in</span> \(C\)<span 
+class="cmti-12">. We can try to define a model structure on</span> \(\simp C\) <span 
+class="cmti-12">by having</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">a map in</span> \(\simp C\) <span 
+class="cmti-12">be a fibration or weak equivalence if it is after applying</span> \(U\)<span 
+class="cmti-12">. Suppose that if</span> \(f \in \simp C\)
+<span 
+class="cmti-12">has the left lifting property with respect to</span> \(g\) <span 
+class="cmti-12">such that</span> \(Uf\) <span 
+class="cmti-12">is a fibration, then</span> \(Uf\) <span 
+class="cmti-12">is a weak</span>
+<span 
+class="cmti-12">equivalence.</span>
+</p><!--l. 1058--><p class="indent" >  <span 
+class="cmti-12">Then</span> \(\simp C\) <span 
+class="cmti-12">has a cofibrantly generated simplicial model structure where the fibrations</span>
+<span 
+class="cmti-12">and weak equivalences are determined by applying</span> \(U\)<span 
+class="cmti-12">, the cofibrations are generated by</span>
+\(U\) <span 
+class="cmti-12">applied to generators for</span> \(D\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 1061--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(\simp{C}\) is tensored and cotensored by Lemma <a 
+href="#x1-2037r24">2.24<!--tex4ht:ref: simplicialobjectssimplicialcat --></a>. The adjunction \(\adjunction{F}{\simp C}{\SSet }{U}\) enriches over \(\SSet \)
+by Lemma <a 
+href="#x1-2033r23">2.23<!--tex4ht:ref: enrichadjunction --></a> since \(F(X \times K) \cong F(X)\otimes K\). \(F\) sends the generators of cofibrations/trivial cofibrations to
+\(\kappa \)-small objects after possibly enlarging \(\kappa \) since \(\Delta ^{op}\) is a small category, so by Proposition
+<a 
+href="#x1-5020r15">5.15<!--tex4ht:ref: liftingimpliessimpmodelcat --></a> we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 1065--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5023r1"></a>
+<span 
+class="cmbx-12">Example 5.17.1.</span>  </span>Any  category  for  which  the  forgetful  functor  factors  through
+groups satisfies Lemma <a 
+href="#x1-5021r16">5.16<!--tex4ht:ref: liftingsimplicialdeformationcondition --></a> with \(Q\) the identity by Proposition <a 
+href="#x1-3001r1">3.1<!--tex4ht:ref: simplicialgroupsfibrant --></a>. This includes
+simplicial groups, rings, Lie algebras, modules.
+</p>
+  </div>
+<!--l. 1069--><p class="indent" >  I think you can replace small in the theorem below by \(\kappa \)-small if you use a large ordinal
+power of \(\Ex \) rather than \(\Ex ^\infty \).
+</p>
+  <div class="newtheorem">
+<!--l. 1071--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5024r18"></a>
+<span 
+class="cmbx-12">Theorem 5.18.</span>  </span> <span 
+class="cmti-12">Let</span> \(C\) <span 
+class="cmti-12">be complete and cocomplete, and let</span> \(Z_i\) <span 
+class="cmti-12">be a set of small objects of</span> \(C\)<span 
+class="cmti-12">,</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">and regard them as constant simplicial objects. Then there is a cofibrantly generated</span>
+<span 
+class="cmti-12">simplicial model structure on</span> \(\simp C\) <span 
+class="cmti-12">such that a map</span> \(A \to B\) <span 
+class="cmti-12">is a weak equivalence or fibration iff the</span>
+<span 
+class="cmti-12">maps</span> \(\ul \Hom _{\simp C}(Z_i,A) \to \ul \Hom _{\simp C}(Z_i,B)\) <span 
+class="cmti-12">is one.</span>
+</p>
+  <div class="proof">
+<!--l. 1074--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Use \(\Ex \) to produce a natural fibrant replacement... <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 1078--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5025r1"></a>
+<span 
+class="cmbx-12">Example 5.18.1.</span>  </span>Simplicial objects of models of any Lawvere theory will have the
+forgetful functor corepresented by a small object, making Theorem <a 
+href="#x1-5024r18">5.18<!--tex4ht:ref: representablesimpmodelstr --></a> apply.
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 1082--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5026r2"></a>
+<span 
+class="cmbx-12">Example 5.18.2.</span>  </span>Let \(\FF \) be a field. A coalgebra over \(\FF \) is locally finite dimensional, so
+the finite dimensional coalgebras are a set of small generators. Thus we can apply
+Theorem <a 
+href="#x1-5024r18">5.18<!--tex4ht:ref: representablesimpmodelstr --></a> on the set of finite dimensional coalgebras.lm
+</p>
+  </div>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

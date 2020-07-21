@@ -1,0 +1,1237 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Complex Analysis</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Complex_Analysis.css" /> 
+<meta name="src" content="Complex_Analysis.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+COMPLEX ANALYSIS
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Basics of holomorphic functions</h3>
+<!--l. 10--><p class="noindent" >The basic objects of complex analysis are the complex manifold and functions between
+them. The simplest case is when the manifolds are \(1\)-dimensional, in which case
+they are called Riemann surfaces. The first important observation (known to
+Gauss) is that for a holomorphic differential \(1\)-form, integrating along a curve
+only depends on the homology class of the curve. This is known as Cauchy&#8217;s
+theorem.
+</p>
+  <div class="newtheorem">
+<!--l. 12--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Theorem 1.1 </span>(Cauchy&#8217;s theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">The integral of a holomorphic differential form along</span>
+<span 
+class="cmti-12">a 1-chain only depends on the homology class.</span>
+</p>
+  <div class="proof">
+<!--l. 15--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>If two curves \(\gamma ,\gamma '\) are homologous via a surface \(M\), then by Stokes&#8217;s theorem \(\int _\gamma fdz - \int _{\gamma '}fdz = \int _M dfdz = 0\), as \(f\)
+is holomorphic, so \(\frac{df}{d\bar{z}} = 0\) and hence \(dfdz =0\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 19--><p class="indent" >  Now given a holomorphic differential form \(\omega \) on a Riemann surface \(C\) and a point \(p\), we can
+think of points \(\gamma \) in the universal cover \(\tilde{C}\) as homotopy classes of paths starting at \(p\). Then \(\gamma \to \int _\gamma \omega \)
+gives a function on \(\tilde{C}\) called the <span 
+class="cmbx-12">primitive </span>of \(\omega \).
+</p>
+  <div class="newtheorem">
+<!--l. 20--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r2"></a>
+<span 
+class="cmbx-12">Theorem 1.2.</span>  </span>\(g = \int _\gamma \omega \) <span 
+class="cmti-12">is holomorphic.</span>
+</p>
+  <div class="proof">
+<!--l. 23--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This needs to be checked locally. \(g(z+h)-g(z)\) is the integral of the path from \(z\) to \(z+h\), so we
+see that the derivative at \(z\) is \(f\), where \(\omega = f(z)dz\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 27--><p class="indent" >  For example, if \(\omega \) is \(\frac{1}{z}dz\), then the resulting function is \(\log (z)\). For any simply connected
+region of the universal cover of \(\CC ^\times \), this descends to a function on an open set of
+\(\CC ^\times \).
+</p><!--l. 29--><p class="indent" >  Cauchy&#8217;s theorem let&#8217;s us compute integrals of meromorphic differential forms in terms
+of residues. The residue of a differential form \(fdz\) at a point \(p\) is \(a_{-1}\) where \(f\) locally is given by \(\sum _{-m}^{-1}a_k(z-p)^k + H\),
+where \(H\) is holomorphic. Amazingly enough, this gives an analytic proof of the algebraic fact
+that \(a_{-1}\) is an invariant of the coordinate system.
+</p>
+  <div class="newtheorem">
+<!--l. 31--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1003r3"></a>
+<span 
+class="cmbx-12">Theorem 1.3 </span>(Residue formula)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(fdz\) <span 
+class="cmti-12">is a meromorphic differential form, and</span> \(\gamma \) <span 
+class="cmti-12">is a</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">counterclockwise oriented curve bounding a region</span> \(X\)<span 
+class="cmti-12">, then</span> \(\int _\gamma fdz = 2 \pi i\sum _{p \in X} \res _p(fdz)\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 34--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By Cauchy&#8217;s theorem, this reduces to a local computation around each pole.
+Then note that the integral for \(\frac{1}{z^k}dz\) is \(0\) for \(k&gt;1\) and \(2 \pi i\) for \(k = 1\), and since locally the form differs
+from a holomorphic form by a finite linear combination of these, we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 38--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1004r4"></a>
+<span 
+class="cmbx-12">Theorem 1.4 </span>(Cauchy integral formulas)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">A holomorphic function is analytic, and its</span> \(n^{th}\)
+<span 
+class="cmti-12">derivative at a point</span> \(p\) <span 
+class="cmti-12">is given by</span> \(n!\int \frac{f(z)}{2 \pi i(z-p)^{n+1}}dz\) <span 
+class="cmti-12">where the integral is over a small circle around</span> \(p\)<span 
+class="cmti-12">. The</span>
+<span 
+class="cmti-12">radius of convergence for the power series for</span> \(f\) <span 
+class="cmti-12">at a point is the largest it could possibly</span>
+<span 
+class="cmti-12">be.</span>
+</p>
+  <div class="proof">
+<!--l. 41--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The case \(n =0\) follows from the residue formula, and by differentiating inside the
+integral, we get the formula for all \(n\). To see analyticity, suppose that \(f\) is analytic in the
+neighborhood of \(p\) of radius \(&lt;r\), then let \(z\) be inside this circle. Now integrating over the circle,
+we compute \begin{align*} f(z) &amp;= \frac{1}{2 \pi i}\int \frac{f(\xi )}{\xi -z} d\xi \\ &amp;= \frac{1}{2 \pi i}\int \frac{f(\xi )}{\xi -p} \frac{1}{1-\frac{z-p}{\xi -p}} d\xi \\ &amp;= \frac{1}{2 \pi i}\int \sum _{n\geq 0}\frac{f(\xi )}{(\xi -p)^{n+1}} (z-p)^n d\xi \\ &amp;= \frac{1}{2 \pi i}\sum _{n\geq 0}\int \frac{f(\xi )}{(\xi -p)^{n+1}} d\xi (z-p)^n \\ &amp;= \sum _{n\geq 0} \frac{f^{(n)}(p)}{n!}(z-p)^n \end{align*}
+  <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+                                                                                  
+
+                                                                                  
+  <div class="newtheorem">
+<!--l. 53--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1005r5"></a>
+<span 
+class="cmbx-12">Corollary 1.5 </span>(Cauchy inequalities)<span 
+class="cmbx-12">.</span>  </span>\(|f^{(n)}(z)| \leq \frac{n!}{R^{n+1}}\sup _{\gamma _R}|f(z)|\)<span 
+class="cmti-12">, where</span> \(\gamma _R\) <span 
+class="cmti-12">is the circle of radius</span> \(R\) <span 
+class="cmti-12">around</span>
+\(z\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 56--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Try to bound the integral formulas. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 60--><p class="indent" >  The integral formulas have an interpretation via Fourier series. Let \(f\) be a holomorphic
+function on the unit disc.
+</p>
+  <div class="newtheorem">
+<!--l. 61--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1006r6"></a>
+<span 
+class="cmbx-12">Corollary 1.6.</span>  </span> <span 
+class="cmti-12">The Fourier coefficients for</span> \(f\) <span 
+class="cmti-12">restricted to the unit circle are the</span>
+<span 
+class="cmti-12">coefficients in the power series for</span> \(f\) <span 
+class="cmti-12">at</span> \(0\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 64--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Try  to  explicitly  calculate  using  the  integral  formulas.  Note  that  the  \(0^{th}\)
+coefficient is the mean value property. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 68--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1007r7"></a>
+<span 
+class="cmbx-12">Corollary 1.7 </span>(Riemann&#8217;s theorem on removable singularities)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Suppose that</span> \(f\) <span 
+class="cmti-12">is bounded</span>
+<span 
+class="cmti-12">and holomorphic and a deleted neighborhood of a point</span> \(p\)<span 
+class="cmti-12">. Then</span> \(f\) <span 
+class="cmti-12">can be extended</span>
+<span 
+class="cmti-12">holomorphically to</span> \(p\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 71--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Simply define \(f\) at \(p\) via the integral formula, or alternatively, note that we can
+extend \((z-p)^2f\) holomorphically to be \(0\) at \(p\), and then divide by the factor we put in. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 75--><p class="indent" >  The unit disk and the complex plane are not isomorphic Riemann surfaces:
+</p>
+  <div class="newtheorem">
+<!--l. 77--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1008r8"></a>
+<span 
+class="cmbx-12">Theorem 1.8 </span>(Liouville&#8217;s theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">A bounded holomorphic function is constant.</span>
+</p>
+  <div class="proof">
+<!--l. 80--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Apply the Cauchy inequalities. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 84--><p class="indent" >  Here is a converse to Cauchy&#8217;s theorem.
+</p>
+  <div class="newtheorem">
+<!--l. 86--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1009r9"></a>
+<span 
+class="cmbx-12">Theorem 1.9 </span>(Morera&#8217;s theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is continuous and</span> \(\int _Tf(z)dz = 0\) <span 
+class="cmti-12">for all triangles, then</span> \(f\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">holomorphic.</span>
+</p>
+  <div class="proof">
+<!--l. 89--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Note that we can locally define a holomorphic primitive of \(f\) using this fact,
+and it is analytic, so its derivative, \(f\), is as well. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 93--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1010r10"></a>
+<span 
+class="cmbx-12">Lemma 1.10.</span>  </span><span 
+class="cmti-12">If</span> \(f_i \to f\) <span 
+class="cmti-12">uniformly on compact sets, then</span> \(f\) <span 
+class="cmti-12">is holomorphic, and the derivatives of</span> \(f_i\)
+<span 
+class="cmti-12">also converge to the derivatives of</span> \(f\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 96--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By  Morera&#8217;s  theorem,  the  limit  is  holomorphic.  Apply  the  uniform
+convergence to the integral formulas for the derivatives of a holomorphic function to
+obtain the second part. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 100--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1011r11"></a>
+<span 
+class="cmbx-12">Lemma 1.11.</span>  </span><span 
+class="cmti-12">If</span> \(f(z,s)\) <span 
+class="cmti-12">is continuous and holomorphic in the variable</span> \(z\)<span 
+class="cmti-12">, then</span> \(\int _{[0,1]}f(z,s)\) <span 
+class="cmti-12">is holomorphic,</span>
+<span 
+class="cmti-12">and its derivatives are</span> \(\int _{[0,1]}f^{(n)}(z,s)\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 103--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Either observe by Fubini&#8217;s theorem that Morera&#8217;s theorem is satisfied, or note
+that the integral is a uniform limit of Riemann sums. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 107--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1012r12"></a>
+<span 
+class="cmbx-12">Theorem 1.12 </span>(Rigidity)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is holomorphic on a connected region and vanishes on a set</span>
+<span 
+class="cmti-12">of points with a limit point, then</span> \(f \equiv 0\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 110--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Consider the series expansion of \(f\) around the limit point \(p\), and note that for a
+small enough disk around \(p\), \(f\) cannot vanish, as it behaves like the first non-vanishing
+term. Thus the set of points on which \(f\) is locally identically \(0\) is open, but it is also
+closed so we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 114--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1013r13"></a>
+<span 
+class="cmbx-12">Corollary 1.13 </span>(Analytic continuation)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(f,g\) <span 
+class="cmti-12">are defined on regions that intersect on a</span>
+<span 
+class="cmti-12">connected region, and the set of points on which they agree have a limit point, then</span>
+\(f \equiv g\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 117--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By rigidity, \(f-g\) is \(0\) on their region of common definition. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 121--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1014r14"></a>
+<span 
+class="cmbx-12">Theorem 1.14 </span>(Local behaviour)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Every nonconstant holomorphic function</span> \(f\) <span 
+class="cmti-12">after a</span>
+<span 
+class="cmti-12">holomorphic change of variables locally looks like</span> \(z \mapsto z^k\) <span 
+class="cmti-12">for some</span> \(k&gt;1\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 124--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>WLOG we are looking at \(f\) near \(0\) and \(f(0) = 0\). Then \(f\) has a power series expansion, so
+for some \(k\), \(\frac{f}{z^{k}}\) has a power series expansion starting with a nonzero constant \(c\). Since \(\frac{f}{z^k}\) is
+continuous, for a small enough neighborhood around \(0\), \(\frac{f}{z^k}\) is the \(k^{th}\) power of a holomorphic
+function \(g\) since the map \(z\mapsto z^k\) is a covering map away from \(0\). Thus \(f = (gz)^k\) locally, and \(gz\) locally
+has an inverse. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 128--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1015r15"></a>
+<span 
+class="cmbx-12">Corollary 1.15 </span>(Open mapping theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">A nonconstant holomorphic function is an</span>
+<span 
+class="cmti-12">open map.</span>
+</p>
+  <div class="proof">
+<!--l. 131--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It locally looks like \(z \mapsto z^k\), which is an open map. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 135--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1016r16"></a>
+<span 
+class="cmbx-12">Corollary 1.16 </span>(Fundamental Theorem of Algebra)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Any nonconstant polynomial has a</span>
+<span 
+class="cmti-12">root.</span>
+</p>
+  <div class="proof">
+<!--l. 138--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>A nonconstant polynomial \(p\) is a holomorphic function from \(\PP ^1 \to \PP ^1\) so it has closed
+image, but it also is an open map, so must be surjective. Alternatively if there were
+no roots, \(\frac{1}{p}\) would be an entire bounded holomorphic function, so would be constant.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 142--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1017r17"></a>
+<span 
+class="cmbx-12">Corollary 1.17 </span>(Maximum modulus principle)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">For a nonconstant holomorphic function</span>
+\(f\)<span 
+class="cmti-12">,</span> \(|f(z)|\) <span 
+class="cmti-12">cannot attain a maximum on the interior of a set.</span>
+</p>
+  <div class="proof">
+<!--l. 145--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This follows as \(f\) is an open map. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 149--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1018r18"></a>
+<span 
+class="cmbx-12">Theorem 1.18.</span>  </span><span 
+class="cmti-12">The meromorphic functions on</span> \(\PP ^1\) <span 
+class="cmti-12">are the rational functions.</span>
+</p>
+  <div class="proof">
+<!--l. 152--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Note that such a meromorphic function \(f\) has finitely many zeros and poles.
+after multiplying by a polynomial, we can remove all the poles in \(\CC \). But then we have
+have at worst a pole at infinity, so \(|f(z)|\) grows at most like \(c|z|^k\) where \(k\) is the order of the pole.
+But then by the Cauchy inequalities, some derivative of \(f\) is \(0\), so \(f\) is a polynomial. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+                                                                                  
+
+                                                                                  
+<!--l. 156--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1019r19"></a>
+<span 
+class="cmbx-12">Theorem 1.19 </span>(Schwarz reflection principle)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Suppose that</span> \(f\) <span 
+class="cmti-12">is holomorphic on a region</span> \(D^+\)
+<span 
+class="cmti-12">in the upper half plane and extends continuously to a real-valued function</span> \(\partial D \cap \RR \)<span 
+class="cmti-12">. Then if</span> \(D^{-}\)
+<span 
+class="cmti-12">is</span> \(D\) <span 
+class="cmti-12">reflected along</span> \(\RR \)<span 
+class="cmti-12">, then</span> \(f\) <span 
+class="cmti-12">extends to a holomorphic function on the interior of</span>
+\(D^+\cup D^-\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 159--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Define \(f\) on \(D^-\) by \(f(\bar{z}) = \overline{f(z)}\), and note that it is holomorphic on the interior, since it is
+still given by a power series around every point. Moreover, by Morera&#8217;s theorem it
+is holomorphic at the boundary connecting \(D^+,D^-\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 163--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1020r20"></a>
+<span 
+class="cmbx-12">Theorem 1.20 </span>(Argument principle)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">For</span> \(f\) <span 
+class="cmti-12">meromorphic,</span> \(\frac{1}{2 \pi i } \int \frac{f'(z)}{f(z)}dz\)<span 
+class="cmti-12">, integrated over a closed</span>
+<span 
+class="cmti-12">curve bounding a region</span> \(X\) <span 
+class="cmti-12">is the number of zeros minus the number of poles of</span> \(f\) <span 
+class="cmti-12">in the</span>
+<span 
+class="cmti-12">region, counted with multiplicity.</span>
+</p>
+  <div class="proof">
+<!--l. 167--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>First  note  that  the  formula  in  the  statement  is  a  homomorphism  from
+meromorphic functions to \(\RR \). Then note that for a non-vanishing holomorphic function,
+it is \(0\), and that for \((z-z_0)^k\), where \(z_0\) is in \(X\), it is \(k\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 171--><p class="indent" >  The following theorem can be used to give an alternate proof of the open mapping
+theorem.
+</p>
+  <div class="newtheorem">
+<!--l. 172--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1021r21"></a>
+<span 
+class="cmbx-12">Theorem 1.21 </span>(Rouché&#8217;s theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If,</span> \(|f|&gt;|g|\) <span 
+class="cmti-12">are holomorphic on the interior of an open set,</span>
+<span 
+class="cmti-12">then</span> \(f,f+g\) <span 
+class="cmti-12">have the same number of zeros.</span>
+</p>
+  <div class="proof">
+<!--l. 175--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(f_t=f+tg\), and note that the argument principle gives a continuous function from
+the number of zeros to \(\ZZ \), so it must be constant. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 179--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1022r22"></a>
+<span 
+class="cmbx-12">Theorem 1.22 </span>(Runge&#8217;s approximation theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is holomorphic on an open</span>
+<span 
+class="cmti-12">set</span> \(U\) <span 
+class="cmti-12">and</span> \(K\) <span 
+class="cmti-12">is compact in</span> \(U\)<span 
+class="cmti-12">, then</span> \(f\) <span 
+class="cmti-12">can be uniformly approximated on</span> \(K\) <span 
+class="cmti-12">by meromorphic</span>
+<span 
+class="cmti-12">functions, and if</span> \(K^c\) <span 
+class="cmti-12">is connected, it can be uniformly approximated by polynomials.</span>
+</p>
+  </div>
+<!--l. 182--><p class="indent" >  \(K\) is contained in finitely many squares \(D_i\) that are part of a grid and inside \(U\). \(f(z)\) can be
+given by \(\frac{1}{2 \pi i}\sum _i \int _{D_i} \frac{f(\zeta )}{\zeta -z}d\zeta \), and each integral can be uniformly approximated by Riemann sums,
+which are rational functions. Finally, consider the set \(S\) of \(z_0\) such that \(\frac{1}{z-z_0}\) can be
+uniformly approximated by polynomials. Using the geometric series, since \(K\) is
+bounded, sufficiently large \(|z_0|\) are in \(S\). Now clearly \(S\) is closed, and to see \(S\) is open,
+simply note that \(\frac{1}{z-z_1} = \frac{1}{z-z_0}\frac{1}{1-\frac{z_1-z_0}{z-z_0}}\), and so for \(z_1\) close to \(z_0\), the geometric series again gives a uniform
+                                                                                  
+
+                                                                                  
+approximation.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Entire functions</h3>
+<!--l. 185--><p class="noindent" >The number of zeroes of an entire function is related to the growth of the function.
+</p>
+  <div class="newtheorem">
+<!--l. 187--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Theorem 2.1 </span>(Jensen&#8217;s Formula)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Let</span> \(f\) <span 
+class="cmti-12">be holomorphic near the disk of radius</span> \(R\)<span 
+class="cmti-12">, and</span>
+<span 
+class="cmti-12">nonzero at</span> \(0\)<span 
+class="cmti-12">. Then if</span> \(z_1,\dots , z_k\) <span 
+class="cmti-12">are the zeros of</span> \(f\)<span 
+class="cmti-12">,</span> \(\log |f(0)| = \sum \log (\frac{|z_i|}{R}) + \frac{1}{2 \pi } \int _0^{2\pi } \log |f(Re^{i\theta })|d\theta \)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 190--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Note that if the formula holds for \(f,g\), then it holds for \(fg\). Thus we only need to
+show it for \(z-z_0\) where \(z_0\) lies in the disk, and non-vanishing holomorphic functions. For
+the latter, note that \(\log |f(z)|\) is the real part of the log of \(f\), so the formula follows from the
+mean value property. For \(f=z-z_0\), we have \(\frac{1}{2 \pi } \int \log |Re^{i\theta }-z_0|d\theta - \log R = \frac{1}{2 \pi } \int \log |e^{i\theta }-\frac{z_0}{R}|d\theta = \frac{1}{2 \pi } \int \log |1-\frac{z_0}{R}e^{i \theta }|d\theta \) by a change of variables \(\theta \to -\theta \), which by the mean
+value property is \(\real (\log (1-\frac{z_0}{R}z))|_{z = 0} = 0\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 194--><p class="indent" >  Given a holomorphic function \(f\) not vanishing at \(0\), let \(n_f(r)\) be the number of zeros with
+modulus \(\leq R\). Then Jensen&#8217;s formula gives
+</p>
+  <div class="newtheorem">
+<!--l. 195--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+<span 
+class="cmbx-12">Corollary 2.2.</span>  </span>\(\int _0^R\frac{n_f(r)}{r}dr = \frac{1}{2 \pi }\int _0^{2\pi } \log |f(Re^{i \theta })|d\theta - \log |f(0)|\)<span 
+class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+<!--l. 199--><p class="indent" >  As an example, let \(f\) be an <span 
+class="cmbx-12">entire function of finite order</span> \(\rho \), where \(\rho \) is the infimum of \(r\)
+such that \(|f(z)| \leq Ce^{A|z|^r}\).
+</p>
+  <div class="newtheorem">
+<!--l. 201--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r3"></a>
+<span 
+class="cmbx-12">Theorem 2.3.</span>  </span> <span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is of finite order</span> \(\leq \rho \)<span 
+class="cmti-12">, then</span> \(n_f(R) = O(|R|^\rho )\)<span 
+class="cmti-12">. Moreover, if</span> \(z_k\) <span 
+class="cmti-12">are the zeros, then</span> \(\sum _{i}|z_k|^{-s}\) <span 
+class="cmti-12">converges</span>
+<span 
+class="cmti-12">for</span> \(s &gt; \rho \)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 204--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>WLOG, \(f(0) \neq 0\). Jensen&#8217;s formula gives \(n_f(R) \leq 2\int _R^{2R}\frac{n_f(r)}{r}dr \leq \frac{1}{\pi }\int \log |f(2Re^{i\theta })|d\theta - \log |f(0)| = O(|R|^\rho )\). This bound generally implies convergence
+of the series. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 208--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2004r4"></a>
+<span 
+class="cmbx-12">Lemma 2.4.</span>  </span><span 
+class="cmti-12">Let</span> \(F_i(z)\) <span 
+class="cmti-12">be holomorphic functions on</span> \(U\) <span 
+class="cmti-12">such that</span> \(|F_i(z)-1|\leq c_n\) <span 
+class="cmti-12">for some summable</span>
+<span 
+class="cmti-12">sequence</span> \(c_n\)<span 
+class="cmti-12">. Then</span> \(F(z) = \prod _i F_i(z)\) <span 
+class="cmti-12">converges uniformly to a holomorphic function on</span> \(U\) <span 
+class="cmti-12">that vanishes iff</span>
+<span 
+class="cmti-12">one of the</span> \(F_i\) <span 
+class="cmti-12">does. Moreover, if no</span> \(F_i\) <span 
+class="cmti-12">vanishes at a point</span> \(p\)<span 
+class="cmti-12">, then</span> \(\frac{F'(p)}{F(p)} = \sum _i \frac{F_i'(p)}{F_i(p)}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 212--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>WLOG we can assume that \(|F_i(z)-1| \leq \frac{1}{2}\) as \(c_n\) is summable. Then we have \(F(z) = e^{\sum _i\log F_i(z)}\). By the power
+series for \(\log (1+z)\), \(\log F_i(z) \leq 2|F_i(z)-1| \leq 2c_n\), so the sum uniformly converges to a holomorphic function. Note in
+                                                                                  
+
+                                                                                  
+particular this shows that \(F(z)\) doesn&#8217;t vanish as it is the exponential of something finite.
+Moreover, \(\log (F)'(z) = \sum _i\log (F_i)'(z) = \sum _i \frac{F'}{F}(z)\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 216--><p class="indent" >  We will now derive the product formula for \(\sin (z)\).
+</p>
+  <div class="newtheorem">
+<!--l. 218--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2005r5"></a>
+<span 
+class="cmbx-12">Lemma 2.5.</span>  </span>\(\pi \cot (\pi z) = \sum _{k \in \ZZ }\frac{1}{z+k} = \frac{1}{z}+\sum _{n&gt;0}\frac{2z}{z^2-n^2}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 221--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>These can be characterized by Liouville&#8217;s theorem as the unique \(\ZZ \)-periodic
+meromorphic function bounded away from a simple pole at \(\ZZ \) of residue \(1\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 225--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2006r6"></a>
+<span 
+class="cmbx-12">Proposition 2.6.</span>  </span>\(\sin (\pi z) = \pi z \prod _1^\infty (1-\frac{z^2}{n^2})\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 228--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Their logarithmic derivatives agree by the previous two lemmas, and so the
+two sides agree up to multiplication by a constant. By dividing by \(z\) and taking the
+                                                                                  
+
+                                                                                  
+limit as \(z \to 1\), we get \(1\) on both sides, so they are equal. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 232--><p class="indent" >  Given a sequence \(a_n \in \CC \) approaching \(\infty \), we can produce a function \(F\) vanishing exactly at the \(a_i\).
+WLOG, the \(a_i\) are nonzero. The function \(\prod (1-\frac{z}{a_i})\) may not converge, so we will have to correct for
+this. The idea is as follows: \((1-z) = e^{\log (1-z)} = e^{-\sum \frac{z^j}{j}}\). Thus \(E_k(z) = (1-z)e^{{\sum _1^k}\frac{z^j}{j}}\). for large \(k\) will not grow as fast, but will have the same
+zeros as \(E_0(z) = (1-z)\). The \(E_k(z)\) are called <span 
+class="cmbx-12">canonical factors</span>.
+</p>
+  <div class="newtheorem">
+<!--l. 234--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2007r7"></a>
+<span 
+class="cmbx-12">Theorem 2.7 </span>(Weierstrass)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(a_i \neq 0\) <span 
+class="cmti-12">tend to</span> \(\infty \)<span 
+class="cmti-12">,</span> \(\prod _iE_i(\frac{z}{a_i})\) <span 
+class="cmti-12">is entire and has zeroes exactly at the</span>
+\(a_i\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 237--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>For \(|z| \leq \frac{1}{2}\), \(|E_i(z)-1| = |e^{\sum _{k+1}^\infty \frac{z^j}{j}}-1|\). The sum is bounded above by \(c|z|^{k+1}\), so we get this is \(\leq c'|z^{k+1}|\). If we fix some \(r\), then
+in the ball of radius \(r\), eventually the \(\frac{z}{a_i}\) are within \(\frac{1}{2}\), so the product converges. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 241--><p class="indent" >  Any function \(f\) can be divided by a function constructed as above to get a non-vanishing
+entire function, which must be of the form \(e^{g(z)}\) for some entire \(g\). This can be refined for \(f\) of
+finite order \(\rho \).
+</p>
+  <div class="newtheorem">
+<!--l. 243--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2008r8"></a>
+<span 
+class="cmbx-12">Lemma 2.8.</span>  </span><span 
+class="cmti-12">Let</span> \(g\) <span 
+class="cmti-12">be a holomorphic function such that</span> \(\real g(z) \leq c|z|^s\) <span 
+class="cmti-12">for values of</span> \(|z|\) <span 
+class="cmti-12">tending to</span> \(\infty \)<span 
+class="cmti-12">. Then</span> \(g\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">a polynomial of degree at most</span> \(s\)<span 
+class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
+</p>
+  <div class="proof">
+<!--l. 246--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(g(z) = \sum _i a_i z^i\). By Lemma <a 
+href="#x1-1006r6">1.6<!--tex4ht:ref: fouriercoeff --></a>, we have that \(a_n= \frac{1}{2 \pi R^n}\int _0^{2\pi }{g(Re^{i\theta })}{e^{-in\theta }}d\theta \). Conjugating the equation and adding for
+\(n\) and \(-n\) gives \(a_n= \frac{1}{\pi R^n}\int _0^{2\pi }{\real g(Re^{i\theta })}{e^{-in\theta }}d\theta \) for \(n&gt;0\) and \(\real a_0 = \frac{1}{\pi }\int _0^{2\pi }{\real g(e^{i\theta })}d\theta \). Thus we have for \(n&gt;s\), \(|a_n|= \frac{1}{\pi R^n}|\int _0^{2\pi }{\real g(Re^{i\theta })}{e^{-in\theta }}d\theta | = \frac{1}{\pi R^n}|\int _0^{2\pi }{\real (cR^s-g(Re^{i\theta }))}{e^{-in\theta }}d\theta | \) \(\leq 2CR^{s-n}-\real a_0 R^{-n} \to 0\) as \(R \to \infty \). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 250--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2009r9"></a>
+<span 
+class="cmbx-12">Theorem 2.9 </span>(Hadamard factorization theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is a holomorphic function of finite</span>
+<span 
+class="cmti-12">order</span> \(\rho \) <span 
+class="cmti-12">and</span> \(k = \floor \rho \)<span 
+class="cmti-12">, then</span> \(f = e^P(z) z^m \prod _i E_k(\frac{z}{a_i})\)<span 
+class="cmti-12">, where</span> \(P\) <span 
+class="cmti-12">is a polynomial of degree</span> \(\leq k\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 253--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The product \(E(z) = z^m \prod _i E_k(\frac{z}{a_i})\) converges, where \(m\) is the order of the zero of \(f\), and \(a_i\) the other
+zeroes, as \(f\) is finite order, so \(|E_k(\frac z{a_i})-1|\) is bounded from above by \(c|\frac{z}{a_i}|^{k+1}\), and the series \(\frac{1}{|a_i|^{k+1}}\) converges.
+Thus \(\frac{f}{E}\) is an entire function with no zeroes, so is \(e^{g(z)}\) for some \(g\). If we can produce lower
+bounds on \(E\) for arbitrarily large \(|z|\), then by the lemma, \(g\) will have to be a polynomial.
+To do this, for \(\rho &lt;s&lt;k+1\), we would like to show that \(|\prod _k E_k(\frac{z}{a_n})| \geq e^{-C|z|^s}\) except maybe in the balls around each \(a_i\)
+of radius \(|a_i|^{-(k+1)}\). Then since \(R-\sum _{|a_i| \leq R} 2|a_i|^{-k+1} \to \infty \) as \(R \to \infty \), there are are arbitrarily large \(R\) such that when \(|z|=R\), it doesn&#8217;t
+intersect any of the balls, and the bound holds. This bound will then be good enough
+to show that \(g\) is a polynomial of the right degree.
+</p><!--l. 255--><p class="indent" >  To obtain the bound, first obtain from the definition of \(E_k(z)\) that when \(|z| \leq \frac{1}{2}\), \(|E_k(z)| \geq e^{-c|z|^{k+1}}\) and \(|E_k(z)| \geq |1-z|e^{-c'|z|^{k}}\) if \(|z| \geq \frac{1}{2}\).
+Then split the product \(|\prod _k E_k(\frac{z}{a_n})|\) into the product when \(|a_n| \leq 2|z|\) and \(|a_n|&gt;2|z|\). For the second product, we
+have \(\prod _n |E_k(\frac{z}{a_n})| \geq e^{-c|\sum _n\frac{|z|^{k+1}}{a_n^{k+1}}}\) \(\geq e^{-c''|z|^s|\sum _n{a_n^{-s}}} \geq e^{-c'''|z|^s|} \) as the sum converges. For the first product, \(\prod _n |E_k(\frac{z}{a_n})| \geq \prod |1-\frac{z}{a_n}| \prod e^{-c'|\frac{z}{a_n}|^k}\). The first term is \(\prod \frac{|a_n-z|}{|a_n|}\), which is \(\geq \prod \frac{1}{|a_i|^{k+2}} \geq e^{-(k+2)\log n_f(2|z|)\log (2|z|)}\), and
+applying Theorem <a 
+href="#x1-2003r3">2.3<!--tex4ht:ref: finiteorderzeros --></a>, this is \(\geq e^{-C'|z|^{s+\ee }}\), where \(\ee &gt;0\) is arbitrary. Note that if we had just chosen \(s\)
+a bit smaller, then \(s+\ee \) can be chosen to be the original real number we wanted. Finally
+for \(\prod e^{-c'|\frac{z}{a_n}|^k}\), note \(c'\sum |\frac{z}{a_n}|^k \leq C''|z|^s\sum \frac{1}{|a_n|^s}\), so that the overall bound \(|\prod _k E_k(\frac{z}{a_n})| \geq e^{-C|z|^s}\) holds outside the chosen balls. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>The gamma function</h3>
+<!--l. 260--><p class="noindent" >The gamma function \(\Gamma (s)\) is a analytic function that extends the factorial to a meromorphic
+function. It begins with integration by parts: \(\int _0^\infty t^se^{-t}dt= t^s(-e^{-t})|^\infty _0-\int _0^\infty st^{s-1}-e^{-t} = s\int _0^\infty t^{s-1}e^{-t}\). If we define \(\Gamma (s) = \int _0^\infty t^{s-1}e^{-t}dt\), then it will satisfy \(\Gamma (s) = (s-1)\Gamma (s-1)\). Moreover
+\(\Gamma (1) = 1\), and so by induction \(\Gamma (n) = (n-1)!\). Note that we can split the integral into the ones on \([0,1]\) and \([1,\infty ]\),
+and that each of these integrals converges uniformly when \(\real s\) is bounded above
+and below, so \(\Gamma (s)\) is a holomorphic function on \(\real (s)&gt;0\). Moreover the equation \(\Gamma (s) = (s-1)\Gamma (s-1)\) shows
+that it extends to a meromorphic function with simple poles at the nonnegative
+integers.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-40004"></a>Elliptic functions</h3>
+<!--l. 264--><p class="noindent" >Given a lattice \(\Gamma \) in \(\CC \), we can consider the Riemann surface (elliptic curve) given by \(E=\CC /\Gamma \). \(dz\) gives a
+trivialization of the canonical bundle of \(E\), and hence of all of its powers. Thus to give a
+meromorphic function or differential form it suffices to give a \(\Gamma \)-periodic function \(f\), called an
+<span 
+class="cmbx-12">elliptic </span>function. Let \(\CC (E)\) be the field of elliptic functions. Given an elliptic function \(f\), let \(v_p(f)\) be
+the order of the zero/pole at \(p\). For a fixed nonzero \(f\) only finitely many of these can be
+nonzero. The facts marked RS denote that the theorem holds for some more general type
+of Riemann surface.
+</p>
+  <div class="newtheorem">
+<!--l. 266--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4001r1"></a>
+<span 
+class="cmbx-12">Lemma 4.1 </span>(RS)<span 
+class="cmbx-12">.</span>  </span>\(\sum _p v_p(f) = 0\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 269--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Use the argument principle and integrate around a fundamental domain. One
+one hand the sides cancel out so we get \(0\), and on the other hand, we get the sum of
+                                                                                  
+
+                                                                                  
+the orders of the poles and zeroes on the interior. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 273--><p class="indent" >  The <span 
+class="cmbx-12">order </span>of an elliptic function is the sum of the orders of the zeros.
+</p>
+  <div class="newtheorem">
+<!--l. 275--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4002r2"></a>
+<span 
+class="cmbx-12">Corollary 4.2 </span>(RS)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">A holomorphic elliptic function is constant.</span>
+</p>
+  <div class="proof">
+<!--l. 278--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This follows from Louisville&#8217;s theorem and the previous lemma. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 282--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4003r3"></a>
+<span 
+class="cmbx-12">Lemma 4.3 </span>(RS)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">The sum of the residues of an elliptic function is</span> \(0\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 285--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Integrate \(f\) around the fundamental domain. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 289--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4004r4"></a>
+<span 
+class="cmbx-12">Corollary 4.4 </span>(RS)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">An elliptic function cannot have a unique simple pole.</span>
+</p>
+  <div class="proof">
+<!--l. 292--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The sum of the residues would be nonzero. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 296--><p class="indent" >  Now we let \(\HH \) be the upper half plane, and consider \(M\), the quotient of \(\HH /\PSL _2(\ZZ )\) via fractional linear
+transformations. This space classifies lattices up to homothety, and hence elliptic
+curves, by identifying the lattice \([\tau ,1]\) with \(\tau \), where \(\tau \in \HH \). Note that \(d(\frac{az+b}{cz+d}) = \frac{1}{(cz+d)^2}dz\), so that a section
+of \(\omega ^k\) on \(\HH /\PSL _2(\ZZ )\) is given by a weakly modular function of weight \(2k\). Really, we want to
+compactify \(\HH \) to include the point \(\PP ^1_\QQ \), so that a section of \(\omega ^k\) is a modular form of weight
+\(k\).
+</p><!--l. 298--><p class="indent" >  We will construct a function on the universal cover of the universal elliptic curve as
+follows: \(\wp _\tau (z) = \frac{1}{z^2} + \sum '_{w \in \Gamma _\tau }((z+w)^{-2}-w^{-2})\), where the sum is over nonzero lattice points. It isn&#8217;t hard to see that this
+converges uniformly on set bounded away from lattice points, so defines a meromorphic
+function. To see this is indeed elliptic, first note its derivative \(\frac{\partial \wp }{\partial z} = \wp ' = \sum _{w \in \Gamma _\tau } \frac{-2}{(z+w)^{3}}\) is clearly odd, elliptic, and
+is order \(3\) since it has a pole at the lattice points. Thus after translation by a fixed lattice
+point, \(\wp \) can change by some constant. But \(\wp \) is even, so that constant had better be \(0\), and
+so it is elliptic. It is easy to see that the zeroes of \(\wp '\) are two torsion, since the
+opposite terms in the sum cancel out, and these must be simple as \(\wp '\) is order
+\(3\).
+</p>
+  <div class="newtheorem">
+<!--l. 300--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4005r5"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Proposition 4.5.</span>  </span><span 
+class="cmti-12">An even elliptic function is a rational function in</span> \(\wp \)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 303--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(f\) be our function. If \(f\) has a pole at a non-lattice point \(c\), we can multiply \(f\)
+by a power of \(\wp (z)-\wp (c)\) to remove it. We are left with a function that only has poles at the
+lattice point. Note that if \(f\) has a zero at a point of \(2\)-torsion, it must have a double
+zero, as it is even with respect to that point as well. Thus we can subtract a constant
+from \(f\) until it has a zero in common with \(\wp \), and then divide by \(\wp \). This lowers the order,
+as it will cancel out zeroes and poles, so repeat this process. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 307--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4006r6"></a>
+<span 
+class="cmbx-12">Corollary 4.6.</span>  </span>\(\CC (E) = \CC (\wp ,\wp ')\) <span 
+class="cmti-12">where</span> \(\wp '^2 = 4\prod _{x \in E[2]}(\wp (z)-\wp (x))\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 310--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Every function is the sum of an even and odd function. An odd function
+times \(\wp '\) is even, and so we get the first part. For the second part, note that the two
+functions have the same zeroes and poles, and the factor of \(4\) comes from looking at
+the expansion around \(0\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+                                                                                  
+
+                                                                                  
+<!--l. 314--><p class="indent" >  By looking at the series expansion at the origin, one sees that \(\pp _\tau (z) = \pp _{\tau +1}(z)\). Moreover,
+\(\pp _{\frac{-1}{\tau }}(z) = \tau ^2\pp _\tau (\tau z)\).
+</p><!--l. 316--><p class="indent" >  Given a lattice \([b,a]\) , define \(G_k\), \(k\geq 1\) to be the sum \(\sum _{m \in \ZZ } \sum '_{n \in \ZZ }\frac{1}{(na+mb)^{2k}}\) where the sum runs over the nonzero lattice
+points. Because of the way that \(G_k\) scales, it is weakly modular of weight \(k\) when \(k\geq 2\) When \(k = 1\) it is
+still invariant under \(\tau \mapsto \tau +1\). And indeed, we can compute the \(q\)-expansion, so these are
+actually modular for \(\PSL _2(\ZZ )\) when \(k&gt;1\). First, \(\pi (1-2\sum _0^\infty q^n) = \pi \frac{q+1}{q-1} = \pi \cot (\pi \tau ) = \sum \frac{1}{\tau +m}\), and so taking the \(k-1^{th}\) derivative (\(k\geq 2\)), we get \(\sum \frac{(-2\pi i)^k}{(k-1)!}\sum _{l\geq 0} l^{k-1}q^l = \sum \frac{1}{({\tau +m})^k}\). Thus
+\(G_k(\tau ) = 2\zeta (2k) + 2\sum _1^\infty \sum _{\ZZ }\frac{1}{(n\tau +m)^{2k}} = 2\zeta (2k) + \frac{2(-1)^k(2\pi )^{2k}}{(2k-1)!}\sum _1^{\infty }\sigma _{2k-1}(l)q^l\).
+</p><!--l. 318--><p class="indent" >  Moreover, looking at the definition of \(\wp \), we see that \(\wp (z) = \frac 1{z^2} + \sum _1^\infty (2k+1)G_{k+1}z^{2k}\). Moreover, comparing the negative
+terms of \(\wp ,(\wp ')^2,\wp ^3\) near \(0\), we get that \(\wp '^2 = 4\wp ^3-g_2\wp -g_3\) where \(g_2 = 60G_2\), \(g_3 = 140G_3\).
+</p>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

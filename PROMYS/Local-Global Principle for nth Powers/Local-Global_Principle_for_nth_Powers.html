@@ -1,0 +1,523 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Local-Global principle for nth powers</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Local-Global_Principle_for_nth_Powers.css" /> 
+<meta name="src" content="Local-Global_Principle_for_nth_Powers.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+LOCAL-GLOBAL PRINCIPLE FOR \(n^{th}\) POWERS
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>Given a number field \(F\), when is \(a \in F\) an \(n^{th}\) power modulo every prime? Here the question will
+be answered for many \(F\) including \(\QQ \) (and the technique in principle probably works for any \(F\)
+with some calculation).
+  <div class="newtheorem">
+<!--l. 10--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2r1"></a>
+<span 
+class="cmbx-12">Theorem 0.1.</span>  </span><span 
+class="cmti-12">Suppose</span> \(F\) <span 
+class="cmti-12">is a field. If</span> \(4|n\)<span 
+class="cmti-12">, then</span> \(x^n-a\) <span 
+class="cmti-12">is reducible iff if</span> \(a\) <span 
+class="cmti-12">is a</span> \(p^{th}\) <span 
+class="cmti-12">power for some</span>
+\(p|n\) <span 
+class="cmti-12">or if</span> \(a\) <span 
+class="cmti-12">is of the form</span> \(-4k^4\) <span 
+class="cmti-12">and</span> \(\ch F \neq 2\)<span 
+class="cmti-12">. If</span> \(4\nmid n\)<span 
+class="cmti-12">, then</span> \(x^n-a\) <span 
+class="cmti-12">is irreducible iff</span> \(a\) <span 
+class="cmti-12">is not a</span> \(p^{th}\) <span 
+class="cmti-12">power mod every</span> \(p|n\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 14--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>First reduce to the case of a prime power. Suppose \(x^n-a,x^m-a\) are irreducible and \((n,m) = 1\).
+Then \(F[a^{\frac 1 m}]\) is degree \(n\) and \(F[a^{\frac 1 n}]\) is degree \(m\), so their compositum, \(F[a^{\frac 1 mn}]\) is degree \(mn\), so \(x^{nm}-a\) is irreducible.
+Conversely, if either is reducible, \(x^{nm}-a\) is reducible.
+</p><!--l. 18--><p class="indent" >  The prime power case will be done by induction on the power. If \(x^{p^{m}-a}\) is irreducible,
+then \(x^{p^{m+1}}-a\) is reducible iff \(a^{\frac 1{p^m}}\) is a \(p^{th}\) power in \(F[a^{\frac 1{p^m}}]\). But if this is true, then its norm down to \(F\) is
+also a \(p^{th}\) power. The norm is \(a\) unless \(p = 2\), in which case it is \(-a\). Thus \(a\), or \(-a\) is a \(p^{th}\) power, a
+contradiction if \(p&gt;2\) or \(m&gt;1\). If \(p=2,m = 1, \ch F \neq 2\), then \(F[\sqrt{a}] = F[i] \). Now calculation shows \(ki\) is a square iff \(k\) is of the form \((1+i)^2y^2\),
+some \(y \in F\), so \(a\) is of the form \(-4y^4\). In this case, conversely \((-4y^4)^{1/4} = (1+i)y\) is degree \(2\) over \(F\), so the polynomial
+\(x^4+4y^4\) is reducible. If \(\ch F=2\), then \(-a = a\), so \(a\) is a square, a contradiction.
+</p><!--l. 20--><p class="indent" >  In the case \(n\) is a prime \(p\), If \(x^p-a\) factors with some polynomial \(f=x^i+\dots \), where \(i&lt;p\), then the norm
+                                                                                  
+
+                                                                                  
+of a root \(\alpha \) of \(f\) from \(F[\alpha ]\) to \(F\) will be \(\alpha ^{i/p}\), which is an integer iff \(\alpha ^i\) is a \(p^{th}\) power iff \(\alpha \) is a \(p^{th}\) power.
+  <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 25--><p class="indent" >  Let \(F\) be a number field.
+</p>
+  <div class="newtheorem">
+<!--l. 27--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3r2"></a>
+<span 
+class="cmbx-12">Lemma 0.2.</span>  </span><span 
+class="cmti-12">Let</span> \(a \in F\) <span 
+class="cmti-12">be an</span> \(n^{th}\) <span 
+class="cmti-12">power modulo every prime. Then</span> \(a^{\frac 1 n} \in F[\zeta _n]\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 30--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(K\) be the splitting field of \(x^n-a\). If a prime splits in \(K\), it splits completely in
+the subfield \(F[\zeta _n]\). Conversely, if it splits completely in \(F[\zeta _n]\), the polynomial \(x^n-a\) has a root mod
+\(p\) so it factors into linear factors as \(\zeta _n\) is there. Thus if the prime doesn&#8217;t divide the
+discriminant, then it splits completely in \(K\). Up to a finite set, the same primes split
+in \(F[\zeta _n]\) and \(K\) so \(K=F\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 34--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4r3"></a>
+<span 
+class="cmbx-12">Corollary 0.3.</span>  </span><span 
+class="cmti-12">Let</span> \(q\) <span 
+class="cmti-12">be prime. If</span> \(a \in F\) <span 
+class="cmti-12">is a</span> \(q^{th}\) <span 
+class="cmti-12">power mod every prime, it is a</span> \(q^{th}\) <span 
+class="cmti-12">power.</span>
+</p>
+  <div class="proof">
+<!--l. 38--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(a^{1/q} \in F[\zeta _q]\), but \([F[\zeta _q]:F] = q-1\) is relatively prime to \(q\) so \(a \in F\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 42--><p class="indent" >  Now suppose that the cyclotomic polynomials are irreducible over \(F\), i.e. for all \(n\),
+\(F \cap \QQ [\zeta _n] = \QQ \).
+</p>
+  <div class="newtheorem">
+<!--l. 44--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5r4"></a>
+<span 
+class="cmbx-12">Lemma 0.4.</span>  </span><span 
+class="cmti-12">Let</span> \(q\) <span 
+class="cmti-12">be either a prime or</span> \(4\) <span 
+class="cmti-12">and suppose</span> \(x^q-a\) <span 
+class="cmti-12">is irreducible over</span> \(F\) <span 
+class="cmti-12">and if</span> \(q=4\)
+<span 
+class="cmti-12">suppose</span> \(-a\) <span 
+class="cmti-12">is not a square in</span> \(F\)<span 
+class="cmti-12">. Then the Galois group of</span> \(x^q-a\) <span 
+class="cmti-12">is</span> \(\Hol (\ZZ /q\ZZ ) = \ZZ /q\ZZ \rtimes \Aut (\ZZ /q\ZZ )\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 48--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This  problem  amounts  to  showing  that  \(F[a^{\frac 1 q}]\)  is  linearly  disjoint  over  \(F\)  from  \(F[\zeta _{q}]\).
+Indeed, if that is true, then the degree of the splitting field will be the degree of the
+compositum which is \(\phi (q)q\). There are \(\phi (q)\) conjugates of \(\zeta _q\) and \(q\) conjugates of \(a^{\frac 1 q}\), so the Galois
+group must act transitively on the pairs of conjugates of \(\zeta _q\) and \(a^{\frac 1 q}\), giving an isomorphism
+with \(\Hol (\ZZ /q\ZZ )\). In the case that \(q\) is prime, linearly disjointness follows from the degrees being
+relatively prime. In the case that \(q=4\), one simply has to note that since \(a,-a\) are not squares,
+\(x^4-a\) is irreducible in \(F[i]\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 52--><p class="noindent" ><span class="head">
+<a 
+ id="x1-6r5"></a>
+<span 
+class="cmbx-12">Corollary 0.5.</span>  </span><span 
+class="cmti-12">For</span> \(a\) <span 
+class="cmti-12">not a</span> \(q^{th}\) <span 
+class="cmti-12">power for</span> \(q\) <span 
+class="cmti-12">an odd prime,</span> \(a^{1/q}\) <span 
+class="cmti-12">doesn&#8217;t lie in any cyclotomic</span>
+<span 
+class="cmti-12">extension of</span> \(F\)<span 
+class="cmti-12">. If</span> \(\pm a\) <span 
+class="cmti-12">is not a square, then</span> \(a^{\frac 1 4}\) <span 
+class="cmti-12">doesn&#8217;t lie in a cyclotomic extension.</span>
+</p>
+  <div class="proof">
+<!--l. 55--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>If it did, then the Galois group of \(x^q-a\) would be abelian by above, but it is not.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 60--><p class="noindent" ><span class="head">
+<a 
+ id="x1-7r6"></a>
+<span 
+class="cmbx-12">Theorem 0.6.</span>  </span><span 
+class="cmti-12">For an odd prime power</span> \(q^n\)<span 
+class="cmti-12">, if</span> \(a\) <span 
+class="cmti-12">is a</span> \((q^n)^{th}\) <span 
+class="cmti-12">power mod every prime then</span> \(a\) <span 
+class="cmti-12">is a</span>
+\((q^n)^{th}\) <span 
+class="cmti-12">power.</span>
+</p>
+  <div class="proof">
+<!--l. 64--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose the theorem holds for \(n-1\). Then \(a=b^{q^{n-1}}\) by hypothesis, and \(a^{\frac 1{q^n}}=b^{\frac 1 q} \in F[\zeta _{q^n}]\), so by applying
+the previous corollary to \(b\), \(b\) is a \(q^{th}\) power in \(F\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 68--><p class="noindent" ><span class="head">
+<a 
+ id="x1-8r7"></a>
+<span 
+class="cmbx-12">Theorem 0.7.</span>  </span><span 
+class="cmti-12">If</span> \(a\) <span 
+class="cmti-12">is a</span> \((2^n)^{th}\) <span 
+class="cmti-12">power mod every prime, either</span> \(a\) <span 
+class="cmti-12">is a</span> \((2^n)^{th}\) <span 
+class="cmti-12">power or</span> \(n \geq 3\) <span 
+class="cmti-12">and a is</span> \(2^{2^{n-1}}\) <span 
+class="cmti-12">times a</span> \((2^{n})^{th}\)
+<span 
+class="cmti-12">power.</span>
+</p>
+  <div class="proof">
+<!--l. 71--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>For \(n=2\), \(a = b^2\), and \(\sqrt b \in F[i] \implies b = \pm k^2\) for some \(k \in F\). Then \(k^4=a\). For \(n \geq 3\) assume the theorem holds for \(n-1\), \(a = b^{2^{n-1}}\) or \(2^{2^{n-2}}b^{2^{n-1}}\), and \(\sqrt{b}\)
+or \((2b^2)^{\frac 1 4} \in F[\zeta _{2^{n}}]\). If \(\sqrt{b} \in F[\zeta _{2^n}]\), \(\sqrt{b}\) lies in a quadratic subfield of \(F[\zeta _{2^n}]\) which must be in \(F[\zeta _8]\) so \(b = \pm k^2\) or \(b = \pm 2k^2\), and \(a = k^{2^{n}},2^{2^{n-1}}k^{2^{n}}\). If \((2b^2)^{\frac 1 4} \in F[\zeta _{2^{n}}]\), note that
+by the corollary, \(\pm 2b^2 = c^2\), which is impossible. Thus \(a = 2^{2^{n-1}}c^{2^n}\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 75--><p class="indent" >  Finally here is another problem of this sort:
+</p>
+  <div class="newtheorem">
+<!--l. 77--><p class="noindent" ><span class="head">
+<a 
+ id="x1-9r8"></a>
+<span 
+class="cmbx-12">Theorem 0.8.</span>  </span><span 
+class="cmti-12">Let</span> \(f\) <span 
+class="cmti-12">be an irreducible polynomial of degree</span> \(n\) <span 
+class="cmti-12">with coefficient in a number</span>
+<span 
+class="cmti-12">field</span> \(F\)<span 
+class="cmti-12">. Let</span> \(G\) <span 
+class="cmti-12">be the Galois group of</span> \(K\)<span 
+class="cmti-12">, the splitting field of</span> \(f\)<span 
+class="cmti-12">, and let</span> \(G \to S_n\) <span 
+class="cmti-12">be the action of</span> \(G\) <span 
+class="cmti-12">on the</span>
+<span 
+class="cmti-12">roots of</span> \(f\)<span 
+class="cmti-12">. Then some element of</span> \(G\) <span 
+class="cmti-12">acts as an</span> \(n\)<span 
+class="cmti-12">-cycle iff</span> \(f\) <span 
+class="cmti-12">is irreducible modulo every</span>
+<span 
+class="cmti-12">prime.</span>
+</p>
+  <div class="proof">
+<!--l. 80--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>If \(f\) is not separable mod some \(p\), then it can&#8217;t be irreducible mod \(p\). So we can
+ignore those primes. For the rest of the primes, note that how \(p\) splits in \(F[\alpha ]\), \(\alpha \) a root of \(f\),
+depends on the cycle structure of Frobenius. In particular, it is an \(n\)-cycle iff \(p\) is inert.
+But if \(G\) has some \(n\)-cycle, then by Chebotarev density theorem it is realized by some
+prime. Thus \(f\) is reducible mod all \(p\) iff \(p\) is never inert iff there is no \(n\)-cycle. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 84--><p class="indent" >  The action of \(G\) on \(S_n\) is transitive, and is its action on \(G/H\), where \(H\) is the subgroup of index \(n\)
+corresponding to the subfield generated by one root of \(f\). Then some \(g \in G\) acts as an \(n\)-cycle iff \(\langle g \rangle H = G\).
+In particular, suppose that adjoining one root of \(f\) gives a Galois extension, so that \(H\) is
+trivial. Then \(G\) is not cyclic iff \(f\) is reducible modulo every prime. This lets us produce lots of
+examples, by choosing primitive elements of Galois extensions with non-cyclic Galois
+groups. For example, \(x^4+1\) has \(\zeta _8\) a root, which has non-cyclic Galois group, and so \(x^4+1\) is reducible
+modulo every prime.
+</p>
+  <div class="newtheorem">
+<!--l. 86--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-10r9"></a>
+<span 
+class="cmbx-12">Theorem 0.9.</span>  </span><span 
+class="cmti-12">Let</span> \(f\) <span 
+class="cmti-12">be a polynomial with</span> \(\cO _K\) <span 
+class="cmti-12">coefficients over a number field</span> \(K\)<span 
+class="cmti-12">. Let</span> \(G\) <span 
+class="cmti-12">be</span>
+<span 
+class="cmti-12">the Galois group of</span> \(f\)<span 
+class="cmti-12">, let</span> \(a_i\) <span 
+class="cmti-12">be the roots of</span> \(f\)<span 
+class="cmti-12">, and let</span> \(G_i\) <span 
+class="cmti-12">be the subgroup of</span> \(G\) <span 
+class="cmti-12">fixing</span> \(K[a_i]\)<span 
+class="cmti-12">. Then</span> \(f\)
+<span 
+class="cmti-12">has a root modulo (almost) every prime iff</span> \(\cup G_i = G\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 90--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By the Chebotarev density theorem, some prime has Frobenius not in \(\cup G_i\) iff \(\cup G_i \neq G\).
+An unramified prime \(\pp \) lies in some \(G_i\) iff its Frobenius fixes some root \(a_i\) iff \(f\) has a root
+mod \(\pp \). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

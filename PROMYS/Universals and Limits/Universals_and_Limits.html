@@ -1,0 +1,954 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Universals and Limits</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Universals_and_Limits.css" /> 
+<meta name="src" content="Universals_and_Limits.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+UNIVERSALS AND LIMITS
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+  <div class="date" >
+<!--l. 8--><p class="indent" >  <span 
+class="cmti-12">Date</span>:&#x00A0;8/3/2017.</p></div></div></div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Universals</h3>
+<!--l. 11--><p class="noindent" >An important idea in category theory is that of a universal property. This is the idea that
+instead of describing an object directly, you can describe a property that it satisfies in
+relation to other objects, that uniquely characterize it (up to isomorphism). For example,
+we have already seen that initial objects are uniquely characterized by the fact that
+there is a unique arrow to every other object. In fact, universals and limits are
+special cases of this, in appropriate categories. If not made explicit at any point, I
+leave it as an exercise to describe the category in which any definitions I give
+are initial or terminal (and hence unique up to isomorphism in the appropriate
+sense).
+</p>
+  <div class="newtheorem">
+<!--l. 12--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Definition 1.1.</span>  </span><span 
+class="cmti-12">Let</span> \(F: C \to D\) <span 
+class="cmti-12">be a functor,</span> \(d \in D\)<span 
+class="cmti-12">. A </span><span 
+class="cmbxti-10x-x-120">universal arrow </span><span 
+class="cmti-12">from</span> \(d\) <span 
+class="cmti-12">to</span> \(F\) <span 
+class="cmti-12">is an arrow</span> \(f: d \to Fc\) <span 
+class="cmti-12">for</span>
+<span 
+class="cmti-12">some</span> \(c \in C\)<span 
+class="cmti-12">, such that for any other arrow</span> \(g: d \to Fb\)<span 
+class="cmti-12">, there is a unique arrow</span> \(h: c \to b\) <span 
+class="cmti-12">such that the diagram</span>
+<span 
+class="cmti-12">below commutes:</span>
+</p>
+<div class="center" 
+>
+                                                                                  
+
+                                                                                  
+<!--l. 15--><p class="noindent" >
+</p><!--l. 21--><p class="noindent" >       <img 
+src="Universals_and_Limits0x.svg" alt=" d         F c
+
+
+fg&#x2203;!F h       F b "  />
+</p></div>
+  </div>
+  <div class="newtheorem">
+<!--l. 25--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r2"></a>
+<span 
+class="cmbx-12">Corollary 1.2.</span>  </span><span 
+class="cmti-12">Universal arrows are unique up to isomorphism (in the appropriate</span>
+<span 
+class="cmti-12">sense).</span>
+</p>
+  <div class="proof">
+<!--l. 28--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Universal arrows are initial objects in an appropriate category (find it). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 32--><p class="indent" >  The dual concept is a universal arrow from \(F\) to \(d\). Here are some examples of universal
+arrows to and from functors. Let \(U\) be the forgetful functor from \(\Grp \) to \(\Set \). Then given a set \(X\), we
+can construct \(FX\), the free group on \(X\). Then the function \(f_x: X \to UFX\) sending \(x \in X\) to the word consisting of \(x\)
+in \(UFX\) is a universal arrow from \(X\) to \(U\). Similarly, given a group \(G\), we can consider the functor \(F\)
+that takes a set to the free group on this set. Then the homomorphism \(g_G\) sending \(FUG \to G\) by
+sending a word on the elements of \(G\) to the corresponding product in \(G\) is a universal arrow
+from \(F\) to \(U\). In this example, it is not a coincidence that we have these universal arrows. In
+fact these universal arrows give an adjunction, which will be the topic of the next
+lecture.
+</p><!--l. 34--><p class="indent" >  Here is a similar example: Let \(\Dom _m\) be the category with objects integral domains, and
+arrows monos (ie injections), and let \(\Fld \) be the category of fields. Then consider the forgetful
+functor \(D: \Fld \to \Dom _m\). We have for any domain \(R\), the field of fractions \(\Frac (R)\). The embedding \(h_R: R \to \Frac (R)\) is a universal
+arrow to this functor.
+                                                                                  
+
+                                                                                  
+</p><!--l. 36--><p class="indent" >  Universal arrows can be characterized also as the following:
+</p>
+  <div class="newtheorem">
+<!--l. 38--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1003r3"></a>
+<span 
+class="cmbx-12">Proposition 1.3.</span>  </span> <span 
+class="cmti-12">Let</span> \(F: C \to D\) <span 
+class="cmti-12">be a functor. A universal arrow</span> \(f: d \to Fc\) <span 
+class="cmti-12">from</span> \(d\) <span 
+class="cmti-12">to</span> \(F\) <span 
+class="cmti-12">is given exactly</span>
+<span 
+class="cmti-12">by a natural bijection</span> \(\eta : D(d,F-) \cong C(c,-)\)
+</p>
+  </div>
+  <div class="proof">
+<!--l. 43--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Given a universal arrow, there is unique map corresponding to any map from
+\(d\) to \(Fb\), namely \(F\) applied to a map from \(c\) to \(b\). This correspondence of arrows gives
+the natural isomorphism, and I leave you to check that this is indeed natural (it is
+essentially the diagram I use to prove the converse).
+</p><!--l. 45--><p class="indent" >  Conversely,  given  a  natural  isomorphism  \(\eta \)  as  above,  we  can  look  at  the  map
+corresponding to \(1_c \in C(c,c)\), \(\eta _c^{-1}(1_c)\). This is an arrow \(f: d \to Fc\), and is the universal arrow we want. By
+naturality of \(\eta \), we get that this is a universal arrow:
+</p>
+<div class="center" 
+>
+<!--l. 47--><p class="noindent" >
+</p><!--l. 51--><p class="noindent" > <img 
+src="Universals_and_Limits1x.svg" alt=" c
+
+
+gb "  />
+             <img 
+src="Universals_and_Limits2x.svg" alt="      D (d, Fc)        D (d, Fb)
+
+
+&#x03B7;F&#x03B7;gcb&#x2218;g(&#x2218;(--))C(c,c)          C(c,b) "  />
+                                                                                  
+
+                                                                                  
+                   <img 
+src="Universals_and_Limits3x.svg" alt="     &#x03B7;-c1(1c)              F g &#x2218; &#x03B7;-c 1(1c) = &#x03B7;-c 1(g )
+
+
+F&#x03B7;&#x03B7;gg-&#x2218;&#x2218;1(-(-)1)                    g
+ cb    c "  />
+</p></div>
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+<!--l. 68--><p class="indent" >  There is also the similar notion of universal element.
+</p>
+  <div class="newtheorem">
+<!--l. 70--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1004r4"></a>
+<span 
+class="cmbx-12">Definition 1.4.</span>  </span><span 
+class="cmti-12">Let</span> \(F:C \to \Set \) <span 
+class="cmti-12">be a functor. A </span><span 
+class="cmbxti-10x-x-120">universal element </span><span 
+class="cmti-12">is a universal arrow from</span>
+\(*\)<span 
+class="cmti-12">, the set with 1 object, to F (this can be thought of as an element of</span> \(Fa\) <span 
+class="cmti-12">for some</span> \(a \in C\)<span 
+class="cmti-12">).</span>
+</p>
+  </div>
+<!--l. 74--><p class="indent" >  An example is the following. Let \(S\) be a set, \(E\) an equivalence relation on \(S\). We have a
+projection \(\pi : S \to S/E\). Then let \(H\) be the functor taking \(X\) to the set of functions from \(S\) to \(X\) such that are
+constant on equivalence classes. Then \(\pi \) (or more accurately the map from \(*\) to \(\pi \in HX\)) is a
+universal element of this functor (check this).
+</p><!--l. 76--><p class="indent" >  Note that a universal arrow is also a special case of universal element: a universal arrow
+from \(d \in D\) to a functor \(F:C \to D\) is just a universal element of the functor \(D(d,F-)\).
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Limits and colimits</h3>
+<!--l. 79--><p class="noindent" >Consider the Cartesian product in \(\Set \). It is a construction that takes a collection of sets
+\(X_i\), and yields a set \(\Pi _i X_i\). Whenever we have functions \(f_i: Z \to X_i\), we get a function \(\Pi _if: Z \to \Pi _iX_i\) that on
+the \(X_i\) component is \(f_i\). This property can be used to characterize the Cartesian
+product up to isomorphism, and something that satisfies this property is called a
+product:
+</p>
+  <div class="newtheorem">
+<!--l. 81--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Definition 2.1.</span>  </span><span 
+class="cmti-12">Given an indexed family</span> \(X_i\) <span 
+class="cmti-12">of objects in a category</span> \(C\)<span 
+class="cmti-12">, the </span><span 
+class="cmbxti-10x-x-120">product </span><span 
+class="cmti-12">of these</span>
+<span 
+class="cmti-12">objects is an object</span> \(\Pi _iX_i\) <span 
+class="cmti-12">with a collection of projections</span> \(\pi _i:\Pi _iX_i \to X_i\) <span 
+class="cmti-12">such that whenever there is another</span>
+<span 
+class="cmti-12">object</span> \(Z\) <span 
+class="cmti-12">and a family of maps</span> \(f_i:Z \to X_i\) <span 
+class="cmti-12">for each</span> \(i\)<span 
+class="cmti-12">, then there is a unique map</span> \(\Pi _if_i: Z \to \Pi _iX_i\) <span 
+class="cmti-12">such that the diagram</span>
+<span 
+class="cmti-12">below commutes:</span> </p>
+<div class="center" 
+>
+<!--l. 83--><p class="noindent" >
+</p><!--l. 87--><p class="noindent" >             <img 
+src="Universals_and_Limits4x.svg" alt="             Z
+
+
+
+
+fifj&#x03A0;&#x03C0;&#x03C0;iijXfi          &#x03A0; X        X
+    i          i i        j "  />
+</p></div>
+  </div>
+<!--l. 91--><p class="indent" >  The dual is a coproduct, denoted by \(\coprod _iX_i\). When there are only two indexed objects, we can
+write \(X \times Y\) for the product of \(X\) and \(Y\), and \(X \coprod Y\) for their coproduct. Convince yourself that in \(\Set \), the
+product is the Cartesian product, and the coproduct is the disjoint union. These notions
+aren&#8217;t just familiar in \(\Set \), however. For example, in \(\Ring \), the product is the direct product,
+and the coproduct is the tensor product (over \(\ZZ \)). In \(\Grp \), the product is the direct
+product, and the coproduct is the free product. In a poset, the product is the
+infimum, and the coproduct is the supremum. Verify that these have the property
+required.
+</p><!--l. 93--><p class="indent" >  Now consider another construction. An equivalence relation \(E\) on \(X\) is a subset of \(X \times X\). we then
+get two projections \(\pi _1\) and \(\pi _2\) from \(E\) to \(X\), because \(X\times X\) is the product of \(X\) with itself. More concretely,
+\(\pi _1\) is the function that takes \((x,y) \in E\) to \(x \in X\) and \(\pi _2\) takes it to \(y\). Then we get a quotient map \(q:X \to X/E\). \(X/E\) satisfies the
+following universal property: Suppose we have a map \(f\) from \(X\) to a set \(S\) that is constant on
+equivalence classes (This can be described as having a map \(e: E \to S\) such that \(f \circ \pi _1 = f \circ \pi _2 = e\)). Then this
+uniquely determines a compatible map \(X/E \to S\). This idea is captured in the notion of a
+coequalizer:
+</p>
+  <div class="newtheorem">
+<!--l. 95--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+<span 
+class="cmbx-12">Definition 2.2.</span>  </span><span 
+class="cmti-12">Suppose we have two arrows</span> \(f_1,f_2:X \to Y\) <span 
+class="cmti-12">in the category</span> \(C\)<span 
+class="cmti-12">. The </span><span 
+class="cmbxti-10x-x-120">coequalizer </span><span 
+class="cmti-12">of this</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">diagram is an arrow</span> \(q:Y \to Q\) <span 
+class="cmti-12">so that</span> \(q \circ f_1 = q \circ f_2\)<span 
+class="cmti-12">, such that whenever we have an</span> \(Q'\) <span 
+class="cmti-12">and a map</span> \(q': Y \to Q'\) <span 
+class="cmti-12">such</span>
+<span 
+class="cmti-12">that</span> \(q' \circ f_1 = q' \circ f_2\)<span 
+class="cmti-12">, then there is a unique map from</span> \(Q \to Q'\) <span 
+class="cmti-12">such that the diagram below commutes:</span>
+</p>
+<div class="center" 
+>
+<!--l. 97--><p class="noindent" >
+</p><!--l. 107--><p class="noindent" >            <img 
+src="Universals_and_Limits5x.svg" alt="  X        Y         Q
+
+
+ &#x2032;                    &#x2032;
+fgqq                    Q "  />
+</p></div>
+  </div>
+<!--l. 111--><p class="indent" >  The dual notion is equalizer. \(X/E\) as described above is the coequalizer in \(\Set \). Given two arrows
+\(f,g : X \to Y\) in \(\Set \), the equalizer is the subset of \(X\) consisting of elements \(x\) such that \(f(x)=g(x)\). I leave it to you to
+figure out the general description of a coequalizer in \(\Set \). In \(\Ab \), the equalizer of \(f\) and \(g\) is the
+kernel of \(f-g\) (or more precisely the inclusion arrow of the kernel). The coequalizer is the
+cokernel of \(f-g\) (ie. \(Y/im(f-g)\)).
+</p><!--l. 113--><p class="indent" >  example of a coequalizer in use (eg RP2)
+</p><!--l. 115--><p class="indent" >  We can also consider the following construction. Given two spaces \(X\) and \(Y\), we can glue
+these together along another space \(Z\). For example if \(X\) and \(Y\) are closed disks, we can glue
+them together along their boundary, \(Z\) (which is a circle) to get \(S^2\), the 2-sphere. This
+construction has a very nice property, namely that whenever you have a continuous
+function from the two disks \(X,Y\) into a space that agree on the boundary, we get a map from \(S^2\)
+into the space. This is because \(S^2\) (along with the maps embedding \(X\) and \(Y\) into it) is a
+pushout:
+</p>
+  <div class="newtheorem">
+<!--l. 117--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r3"></a>
+<span 
+class="cmbx-12">Definition 2.3.</span>  </span> <span 
+class="cmti-12">Let there be two maps</span> \(f:Z \to X\) <span 
+class="cmti-12">and</span> \(g:Z \to Y\)<span 
+class="cmti-12">. Then the pushout is a pair of maps</span> \(f':X \to W\)
+<span 
+class="cmti-12">and</span> \(g': Y \to W\) <span 
+class="cmti-12">such that</span> \(g' \circ g = f' \circ f\) <span 
+class="cmti-12">and if there are another pair of maps</span> \(j:X \to V\) <span 
+class="cmti-12">and</span> \(k:Y \to V\)<span 
+class="cmti-12">, there is a unique map</span> \(W \to V\)
+<span 
+class="cmti-12">such that the diagram below commutes:</span>
+</p>
+<div class="center" 
+>
+                                                                                  
+
+                                                                                  
+<!--l. 120--><p class="noindent" >
+</p><!--l. 125--><p class="noindent" >            <img 
+src="Universals_and_Limits6x.svg" alt="  Z         Y
+
+
+  X         W
+
+
+ &#x2032;&#x2032;
+fggkfj                    V "  />
+</p></div>
+  </div>
+<!--l. 129--><p class="indent" >  The dual notion is a pullback. The pushout in \(\Top \) corresponds to glueing as described
+earlier, the pullback is the fibre product. The pushout in \(\Ring \) corresponds to the tensor
+product, and the pushout is the fibre product of rings. Here is an easy lemma about
+pushouts:
+</p>
+  <div class="newtheorem">
+<!--l. 131--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2004r4"></a>
+<span 
+class="cmbx-12">Lemma 2.4.</span>  </span><span 
+class="cmti-12">A pushout as in Definition </span><a 
+href="#x1-2003r3"><span 
+class="cmti-12">2.3</span><!--tex4ht:ref: pushout --></a> <span 
+class="cmti-12">is just a coproduct when</span> \(Z\) <span 
+class="cmti-12">is the terminal</span>
+<span 
+class="cmti-12">object.</span>
+</p>
+  <div class="proof">
+<!--l. 134--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Just check that in this case \(W\) with the maps \(g',f'\) satisfies the universal property
+of the coproduct. I leave this checking as an exercise. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 138--><p class="indent" >  Dually, a pullback of the initial object is a product.
+</p><!--l. 140--><p class="indent" >  By this lemma, the Chinese remainder theorem is just the statement that when \(I\) and \(J\)
+are comaximal ideals in \(R\), then the pullback as in the diagram below (sometimes denoted \(R/I \times _{R/(I+J)} R/J\))
+is isomorphic to \(R/IJ\) (all the maps are projections): </p>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 141--><p class="noindent" >
+</p><!--l. 151--><p class="noindent" >                 <img 
+src="Universals_and_Limits7x.svg" alt="T
+
+
+           R&#x2215;IJ           R &#x2215;I
+
+
+           R&#x2215;J            R &#x2215;(I + J ) "  />
+</p></div>
+<!--l. 154--><p class="indent" >  Viewing these rings as affine varieties (or schemes if you prefer), this says that the ring
+of functions of two disjoint subvarieties is the product of the ring of functions for each
+component.
+</p><!--l. 156--><p class="indent" >  All of the before mentioned constructions (limits, equalizers, pullbacks) are important
+cases of a concept called a limit.
+</p>
+  <div class="newtheorem">
+<!--l. 158--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2005r5"></a>
+<span 
+class="cmbx-12">Definition 2.5.</span>  </span><span 
+class="cmti-12">Let J be a (small) category, and</span> \(F:J \to C\) <span 
+class="cmti-12">a functor. Let</span> \(\Delta :C \to C^J\) <span 
+class="cmti-12">be the diagonal</span>
+<span 
+class="cmti-12">functor, taking</span> \(c \in C\) <span 
+class="cmti-12">to</span> \(\hat{c}\)<span 
+class="cmti-12">, the constant functor to</span> \(c\)<span 
+class="cmti-12">. Then a </span><span 
+class="cmbxti-10x-x-120">limit </span><span 
+class="cmti-12">of a functor</span> \(F \in C^J\) <span 
+class="cmti-12">is a universal</span>
+<span 
+class="cmti-12">arrow</span> \(\nu _F\) <span 
+class="cmti-12">from</span> \(\Delta \) <span 
+class="cmti-12">to</span> \(F\)<span 
+class="cmti-12">. We say that the object that</span> \(\Delta \) <span 
+class="cmti-12">sends to</span> \(\dom (\nu _F)\) <span 
+class="cmti-12">is the </span><span 
+class="cmbxti-10x-x-120">limiting object</span>
+<span 
+class="cmti-12">(sometimes also called limit) of</span> \(F\) <span 
+class="cmti-12">and sometimes is denoted</span> \(\lim (F)\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 162--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2006r6"></a>
+<span 
+class="cmbx-12">Corollary 2.6.</span>  </span><span 
+class="cmti-12">Limits are unique up to isomorphism.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 166--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-2007r7"></a>
+<span 
+class="cmbx-12">Corollary 2.7.</span>  </span>\(\Nat (\hat{-},F) \cong C(-,\lim (F))\)
+</p>
+  <div class="proof">
+<!--l. 169--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span> Apply Proposition <a 
+href="#x1-1003r3">1.3<!--tex4ht:ref: univarrow --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 174--><p class="indent" >  The dual concept is <span 
+class="cmbx-12">colimit</span>. For example, if \(J\) is a discrete category (ie with no
+non-identity arrows), a limit of a functor from it is just a product. If \(J\) is the category below
+(two objects and two non-identity arrows): </p>
+<div class="center" 
+>
+<!--l. 175--><p class="noindent" >
+</p><!--l. 181--><p class="noindent" >     <img 
+src="Universals_and_Limits8x.svg" alt="&#x22C5;       &#x22C5; "  />
+</p></div>
+<!--l. 183--><p class="noindent" >then the limit of a functor from it is an equalizer. If \(J\) is the category below (three objects and
+two non-identity arrows): </p>
+<div class="center" 
+>
+<!--l. 184--><p class="noindent" >
+</p><!--l. 187--><p class="noindent" >         <img 
+src="Universals_and_Limits9x.svg" alt="&#x22C5;       &#x22C5;       &#x22C5; "  />
+</p></div>
+<!--l. 189--><p class="noindent" >then the limit of a functor from it is a pullback.
+</p><!--l. 191--><p class="indent" >  A limit can alternatively be described directly as follows: given a diagram in a category,
+a <span 
+class="cmbx-12">cone </span>is an object \(L\) with a collection of maps to every diagram in the category such that
+the maps to the diagram commute with the arrows in the diagram (in other words every
+triangle consisting of an arrow in the diagram and the arrows from \(L\) to the domain and
+codomain of this arrow commutes). A morphism of cones from \(L\) and \(M\) is an arrow
+from \(L\) to \(M\) that commute with the arrows to the diagram. Then a limit is just a
+terminal object in the cone category. Below is a drawing of two cones and a
+                                                                                  
+
+                                                                                  
+morphism \(f\) between them, where the diagram consists of a single arrow from \(A\) to \(B\):
+</p>
+<div class="center" 
+>
+<!--l. 192--><p class="noindent" >
+</p><!--l. 196--><p class="noindent" >       <img 
+src="Universals_and_Limits10x.svg" alt="  A        M
+
+
+f B        L "  />
+</p></div>
+<!--l. 198--><p class="noindent" >I suggest the reader look at the diagrams for products, coequalizers, and pushouts above and
+notice how these are indeed special types of limits and colimits.
+</p>
+  <div class="newtheorem">
+<!--l. 200--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2008r8"></a>
+<span 
+class="cmbx-12">Definition 2.8.</span>  </span><span 
+class="cmti-12">We say a category</span> \(C\) <span 
+class="cmbxti-10x-x-120">has limits of shape</span> \(J\) <span 
+class="cmti-12">if every functor from</span> \(J \to C\)
+<span 
+class="cmti-12">has a limit.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 203--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2009r9"></a>
+<span 
+class="cmbx-12">Definition 2.9.</span>  </span><span 
+class="cmti-12">If</span> \(C\) <span 
+class="cmti-12">has limits of shape</span> \(J\) <span 
+class="cmti-12">for every (small) category</span> \(J\)<span 
+class="cmti-12">, then we say</span> \(J\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmbxti-10x-x-120">(small) complete</span><span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 206--><p class="indent" >  Sometimes people also use &#8220;finite complete&#8221; to mean having all limits for any finite
+category.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>Existence/Construction of Limits</h3>
+                                                                                  
+
+                                                                                  
+<!--l. 209--><p class="noindent" >How can we know if a category is complete? It turns out one has all limits if one has all
+(small) products and equalizers. One can think of the product as being able to provide
+enough maps to a small diagram, and the equalizer as being able to &#8220;thin&#8221; the product to
+make these maps to the diagram be compatible (yielding a cone) and have this cone be
+terminal. The following construction allows one to produce any (small) limit in a category
+given these:
+</p>
+  <div class="newtheorem">
+<!--l. 211--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+<span 
+class="cmbx-12">Theorem 3.1.</span>  </span><span 
+class="cmti-12">A  category  is  (small)  complete  if  it  has  (small)  products  and</span>
+<span 
+class="cmti-12">equalizers</span>
+</p>
+  <div class="proof">
+<!--l. 215--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The proof can be summed up in one big commutative diagram: </p>
+<div class="center" 
+>
+<!--l. 216--><p class="noindent" >
+</p><!--l. 223--><p class="noindent" >                            <img 
+src="Universals_and_Limits11x.svg" alt="  Fj              F  cod(f)
+
+
+                  &#x220F;                     &#x220F;
+  L                  j&#x2208;J F j               f&#x2208;J F cod (f )
+
+
+
+ll&#x03C0;&#x0394;F&#x03C0;&#x03C0;&#x03C0;kkmF K*f               F  dom (f)            F cod (f)
+ jj "  />
+</p></div>
+<!--l. 226--><p class="indent" >  To make sense of this diagram, we&#8217;ll start on the right half. \(J\) is small, so we can take the
+product of the codomains of \(Ff\) for each arrow \(f\) of \(J\) (\(\prod _{j \in J} Fj\)), and also take the product of \(Fj\) for each \(j \in J\)
+(\(\prod _{f \in J}F\cod (f)\)). Now in order to make the two arrows \(\Delta \), and \(F^*\), the universal property of product says we
+need a map to \(F\cod (f)\) for each \(\cod (f)\). One way to do this is to just project \(\prod _{j \in J}\) to \(F\cod (f)\), and another way is to
+                                                                                  
+
+                                                                                  
+first project to \(F\dom (f)\) and then apply \(Ff\). These induce the maps \(\Delta \) and \(F^*\) by the universal
+property of products. We then take the equalizer of these two maps to get \(L\) and \(l\). By
+the universal property of products, \(l\) splits into maps \(l_j\) to the diagram, and the
+fact that \(L\) equalizes \(\Delta ,F^*\) (by equalize I mean \(\Delta \circ l = F^* \circ l\)) amounts to these forming a cone.
+We must check that this cone is terminal. Suppose K is another object with a
+collection of maps \(k_j\) that form a cone. These give a map to the product, \(k\), and
+the fact that this is a cone means that \(k\) also equalizes \(\Delta \) and \(F^*\), so this induces a
+map \(m\) as \(L\) is an equalizer. Why is \(m\) unique? Well any map like \(m\) that is a cone
+morphism (commutes with \(k_j, l_j\) must commute with \(k, l\), hence is unique as \(L\) is an equalizer.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 230--><p class="indent" >  Note that the dual of this is that a category is cocomplete if it has coproducts and
+coequalizers. This theorem immediately implies that many familiar categories, such as \(\Cat \), \(\Set \), \(\Ring \),
+\(\Grp \), \(\Vect _F\), and so on are complete and cocomplete. Indeed this proof gives a way of actually
+constructing these limits and colimits.
+</p><!--l. 232--><p class="indent" >  To end, here are some examples of limits and colimits.
+</p><!--l. 234--><p class="indent" >  In Galois theory, one studies field extensions and their symmetries. In particular, if \(K/k\) is a
+finite Galois (normal and separable) extension, we have a correspondence between the
+subgroups of its automorphism group and the intermediate fields. When the extension \(K\) is
+not finite but still normal and separable, one has too many subgroups so the
+correspondence doesn&#8217;t hold. However, one may consider \(K\) to be the colimit (union in this
+case) of all of the finite Galois intermediate extensions of it, and in this way, we can treat
+its automorphism group as a colimit of the automorphism groups of the finite
+intermediate extensions. However, consider the category of topological groups, \(\Grp \Top \),
+which consists of a group on a topological space such that the multiplication and
+negation operations are continuous (arrows are continuous group homomorphisms).
+We can view the finite Galois groups of the finite intermediate extensions as
+discrete topological groups. If we have a tower of Galois extensions, \(K/M/L/k\), where \(M/L\)
+and \(L/k\) are finite, then there is a restriction map from \(\Gal (M/k)\) to \(\Gal (L/k)\). If we take the limit of
+all of the finite Galois intermediate extensions of \(K/k\) with these restriction maps,
+we get a natural topology on the automorphism group of \(K\) over \(k\). Then infinite
+Galois theory says that the closed subgroups correspond to the intermediate
+extensions.
+</p><!--l. 236--><p class="indent" >  Let \(x \in \CC \). Given any neighborhood \(U\) of \(x\), we can consider the ring \(R_U\) of holomorphic functions
+on this neighborhood. If \(V \subset U\), then there is a natural (injective if \(U\) and \(V\) are connected) map
+                                                                                  
+
+                                                                                  
+from \(R_U\) to \(R_V\), namely restriction. Then we can define the ring of germs at \(x\) to be the colimit of
+the diagram consisting of each \(R_U\) and the restriction maps. People study such things when
+they construct compact Riemann surfaces or study similar analytic/geometric things.
+They are especially nice as they are local rings, so provide a nice setting in which to study
+local properties of a function.
+</p><!--l. 238--><p class="indent" >  In the category of \(R\)-modules, \(R\)-Mod, \(R\) itself is an \(R\)-module. In this category, a finite
+coproduct (\(\bigoplus \)) is the same as a finite product (\(\prod \)). Recall that one thinks of an \(n\times n\)
+square matrix as representing an endomorphism of \(f:R^n \to R^n\). But then \(f\) can be thought of
+as a map from \(\bigoplus _1^nR \to \prod _1^nR\). By the universal property of the product and coproduct, this
+is determined by \(n^2\) maps from \(R\) to \(R\), each of which is determined by where 1 is
+sent (recall \(\End _R(R) \cong R\) from last lecture), which are exactly what the entries of the matrix
+represent.
+</p><!--l. 240--><p class="indent" >  As a final example, the p-adic integers, a often studied ring in number theory, can be
+described as a limit. Namely, consider the rings \(\ZZ /(p^n)\) for each \(n \in \NN \). Then if \(n &lt; m\), there is a
+projection from \(\ZZ /(p^m) \to \ZZ /(p^n)\). The limit of each of these rings along with these projections is the
+ring \(\ZZ _p\) of p-adic integers. This is known as completing with respect to the ideal
+\((p)\). One can do the same for \(R[x]\) with the ideal \((x)\), namely take the rings \(R[x]/(x^n)\) for each \(n \in \NN \)
+along with similar projections, and the limit yields \(R[[x]]\), the ring of formal power
+series.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-40004"></a>Group Objects</h3>
+<!--l. 242--><p class="noindent" >Recall that in the Yoneda lemma lecture I said that the reason that certain representable
+functors lifted to other categories like \(\Grp \) was because the representing objects were
+something called group objects. I can now make this precise using products and the
+Yoneda lemma. The set up is the following: We have a representable functor \(C(-,a)\) that lifts to \(\Grp \)
+as in the diagram below:
+</p>
+<div class="center" 
+>
+<!--l. 244--><p class="noindent" >
+</p><!--l. 248--><p class="noindent" >       <img 
+src="Universals_and_Limits12x.svg" alt="  C         Grp
+
+
+FCU(-,a)       Set "  />
+</p></div>
+<!--l. 251--><p class="indent" >  In order for this to happen, we need a way to &#8220;multiply arrows&#8221; to the object \(a\). In other
+                                                                                  
+
+                                                                                  
+words, we need a natural transformation \(C(-,a) \times C(-,a) \to C(-,a)\). By Corollary <a 
+href="#x1-2007r7">2.7<!--tex4ht:ref: liminset --></a>, \(C(-,a) \times C(-,a) \cong C(-,a \times a)\) (We assume here that the
+limit exists). By the Yoneda lemma, such a natural transformation then is given by a map
+from \(a \times a\) to \(a\). We would like this map to be associative, and have an inverse and identity.
+Hence the following definition:
+</p>
+  <div class="newtheorem">
+<!--l. 252--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4001r1"></a>
+<span 
+class="cmbx-12">Definition 4.1.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">group object </span><span 
+class="cmti-12">in a category</span> \(C\) <span 
+class="cmti-12">is an object</span> \(X\) <span 
+class="cmti-12">with a map</span> \(\mu : X \times X \to X\)<span 
+class="cmti-12">, a map</span>
+\(\nu : X \to X\)<span 
+class="cmti-12">, and a map</span> \(i:t \to X\) <span 
+class="cmti-12">(t is the terminal object), such that we have the following diagrams</span>
+<span 
+class="cmti-12">commute:</span>
+</p><!--l. 255--><p class="indent" >  <span 
+class="cmti-12">Associativity of</span> \(\mu \)<span 
+class="cmti-12">:</span> </p>
+<div class="center" 
+>
+<!--l. 256--><p class="noindent" >
+</p><!--l. 260--><p class="noindent" >                         <img 
+src="Universals_and_Limits13x.svg" alt="       X  &#x00D7; (X  &#x00D7; X )       (X  &#x00D7; X ) &#x00D7; X     X &#x00D7;  X
+
+
+
+1X&#x03B7;X&#x03BC;&#x03BC;&#x03BC;&#x00D7;&#x00D7;1&#x03BC;X   X  &#x00D7; X               X                 X "  />
+</p></div>
+<!--l. 262--><p class="noindent" ><span 
+class="cmti-12">Here</span> \(\eta _X\) <span 
+class="cmti-12">is the (natural) isomorphism one generally has between</span> \((X \times Y)\times Z\) <span 
+class="cmti-12">and</span> \(X \times (Y \times Z)\) <span 
+class="cmti-12">(use the universal</span>
+<span 
+class="cmti-12">property to define it and show it&#8217;s an isomorphism).</span>
+</p><!--l. 264--><p class="indent" >  <span 
+class="cmti-12">Left and right identity:</span> </p>
+<div class="center" 
+>
+<!--l. 265--><p class="noindent" >
+</p><!--l. 269--><p class="noindent" >                  <img 
+src="Universals_and_Limits14x.svg" alt="    t &#x00D7; X        X  &#x00D7; X        X  &#x00D7; t
+
+
+&#x03B3;&#x03B7;&#x03BC;&#x03B3;1 &#x00D7;i             X
+ lXrX "  />
+</p></div>
+<!--l. 271--><p class="noindent" ><span 
+class="cmti-12">Here I leave it to you again to define the isomorphisms</span> \(\gamma _l,\gamma _r\)<span 
+class="cmti-12">.</span>
+</p><!--l. 273--><p class="indent" >  <span 
+class="cmti-12">Left and right inverses:</span> </p>
+<div class="center" 
+>
+<!--l. 274--><p class="noindent" >
+                                                                                  
+
+                                                                                  
+</p><!--l. 278--><p class="noindent" >                   <img 
+src="Universals_and_Limits15x.svg" alt="    X  &#x00D7; X         X &#x00D7;  X        X  &#x00D7; X
+
+
+1&#x03BC;&#x03BD;ii&#x00D7;&#x00D7;1&#x03BD;t              X             t
+ X X "  />
+</p></div>
+  </div>
+<!--l. 282--><p class="indent" >  I leave it to you to prove the following result which I have hinted to (use Yoneda a
+lot):
+</p>
+  <div class="newtheorem">
+<!--l. 283--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4002r2"></a>
+<span 
+class="cmbx-12">Proposition 4.2.</span>  </span><span 
+class="cmti-12">Let</span>  \(C\)  <span 
+class="cmti-12">be  a  category  with  finite  products.  The  functor</span>  \(C(-,a)\)  <span 
+class="cmti-12">factors</span>
+<span 
+class="cmti-12">through the category of groups iff</span> \(a\) <span 
+class="cmti-12">is a group object.</span>
+</p>
+  </div>
+<!--l. 287--><p class="indent" >  If \(C\) is a category, we can consider the category of group objects on \(C\), which I will denote \(\Grp C\).
+The objects are group objects in \(C\) and the morphisms are group object homomorphisms in \(C\)
+(I leave it to you to define these). For example, \(\Grp = \Grp \Set \), and the category of topological groups I
+described earlier is \(\Grp \Top \) (hence the notation). One similarly can define ring objects, monoid
+objects, lattice objects, and so on for any algebraic theory. If you are curious I recommend
+figuring out how the examples in the duality lecture are \((-)\) objects in their respective
+categories.
+</p>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

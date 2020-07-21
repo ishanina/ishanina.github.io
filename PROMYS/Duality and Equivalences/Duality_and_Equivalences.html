@@ -1,0 +1,662 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Duality and Equivalences</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Duality_and_Equivalences.css" /> 
+<meta name="src" content="Duality_and_Equivalences.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+DUALITY AND EQUIVALENCES
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+  <div class="date" >
+<!--l. 7--><p class="indent" >  <span 
+class="cmti-12">Date</span>:&#x00A0;7/27/2017.</p></div></div></div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>What is Duality?</h3>
+<!--l. 9--><p class="noindent" >First the definitions:
+</p>
+  <div class="newtheorem">
+<!--l. 11--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Definition 1.1.</span>  </span><span 
+class="cmti-12">If</span>  \(C\)  <span 
+class="cmti-12">is  a  category,  there  is  a  category  called</span>  \(C^{op}\)  <span 
+class="cmti-12">that  is  the  </span><span 
+class="cmbxti-10x-x-120">dual</span>
+<span 
+class="cmbxti-10x-x-120">category</span><span 
+class="cmti-12">. Its objects are the same as</span> \(C\)<span 
+class="cmti-12">&#8217;s, and we have</span> \(C(a,b)\) <span 
+class="cmti-12">=</span> \(C(b,a), \forall a,b \in C\) <span 
+class="cmti-12">(ie the arrows are flipped).</span>
+<span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is an arrow in</span> \(C\)<span 
+class="cmti-12">, we call the corresponding arrow in</span> \(C^{op}\) \(f^{op}\)<span 
+class="cmti-12">. Composition in</span> \(C^{op}\) <span 
+class="cmti-12">is defined</span>
+<span 
+class="cmti-12">by</span> \(f^{op}\circ g^{op}=(g\circ f)^{op}\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 15--><p class="indent" >  Now if \(F: C \to D\) is a functor, then we can define \(F^{op}: C^{op} \to D^{op}\) in the only way that makes sense. In this
+way, \((-)^{op}\) defines a functor from \(\Cat \) to itself. Note that \((-)^{op}\circ (-)^{op}=(-)^{opop}=1_{\Cat }\), ie the dual of the dual is the
+original category. Now I can tell you what a contravariant functor really is. If \(F: C \to D\) is a
+contravariant functor, it is really just a (covariant) functor from \(C^{op}\) to \(D\). Also note that
+for a group, the dual is the same group with left multiplication switched with
+right multiplication, and for a poset, the dual is the poset with \(\geq \) switched with
+\(\leq \).
+                                                                                  
+
+                                                                                  
+</p><!--l. 17--><p class="indent" >  Recall that we defined two \(\Hom \) functors for a category, \(C(-,a): C^{op} \to \Set \) and \(C(a,-): C \to \Set \)., We can define a more general
+\(\Hom \) <span 
+class="cmbx-12">functor</span> \(C(-,-): C^{op}\times C \to \Set \) as follows: on objects, it takes the pair \((a,b)\) to \(C(a,b)\), and on arrows it takes \((f,g): (a,b) \to (c,d)\) to the
+function \(C(f,g): C(a,b) \to C(c,d)\) that takes \(h \to g\circ h\circ f^{op}\).
+</p><!--l. 19--><p class="indent" >  Now why do we care about duality? Because many objects, definitions, and theorems
+that we talk about can be dualized. For example, recall from earlier the definitions of
+section and retraction. These are dual notions: If \(g\) is a section of \(f\) in \(C\), then \(g^{op}\) is a retract of \(f^{op}\)
+in \(C^{op}\). What this means is that if a map is a section in a category, it is a retract in the
+opposite category. Some concepts, such as isomorphism, are self dual. One way to see this
+uses the idea of diagrams as functors. Consider the category corresponding to the diagram
+associated with the concept functor. This is isomorphic to its dual (check this), so the
+notion of isomorphism is self-dual. We can use the word &#8220;co&#8221; to mean the dual of
+a concept. For example, codomain is dual to domain, and a coconut is just a
+nut.
+</p><!--l. 21--><p class="indent" >  Duality is nice because it allows one to do two things at once: If you prove a theorem
+about a concept for all categories, you&#8217;ve also proved it for the dual concept. Here is an
+important example.
+</p>
+  <div class="newtheorem">
+<!--l. 23--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r2"></a>
+<span 
+class="cmbx-12">Definition 1.2.</span>  </span><span 
+class="cmti-12">If</span> \(C\) <span 
+class="cmti-12">is a category, an </span><span 
+class="cmbxti-10x-x-120">initial object</span> \(a\) <span 
+class="cmti-12">is an object such that there is</span>
+<span 
+class="cmti-12">exactly one map to every other object. The dual concept is a </span><span 
+class="cmbxti-10x-x-120">terminal object</span><span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 27--><p class="indent" >  In this definition, I seem to presume that the notion of an initial object is unique, i.e
+there can only be 1 at most in any category. Though this is not true, it is true that any
+two initial objects are isomorphic as follows:
+</p>
+  <div class="newtheorem">
+<!--l. 29--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1003r3"></a>
+<span 
+class="cmbx-12">Proposition 1.3.</span>  </span> <span 
+class="cmti-12">Initial objects are unique up to isomorphism.</span>
+</p>
+  <div class="proof">
+                                                                                  
+
+                                                                                  
+<!--l. 33--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Consider the following diagram, where a and b are initial objects, and use the
+fact that arrows are unique.
+</p>
+<div class="center" 
+>
+<!--l. 35--><p class="noindent" >
+</p><!--l. 40--><p class="noindent" >        <img 
+src="Duality_and_Equivalences0x.svg" alt="a        b "  />
+</p></div>
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 45--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1004r4"></a>
+<span 
+class="cmbx-12">Corollary 1.4.</span>  </span><span 
+class="cmti-12">Terminal objects are unique up to isomorphism.</span>
+</p>
+  <div class="proof">
+<!--l. 49--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Terminal is dual to initial, isomorphism is dual to isomorphism. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 53--><p class="indent" >  Here are some examples of initial/terminal objects. In \(\Set \), the initial object is the empty
+set, and the terminal object is the set with one element. In \(\Grp \) and \(\Ab \), the terminal and initial
+object are both the trivial group. In this case, it is called a null or <span 
+class="cmbx-12">zero object</span>. In the
+category of rings (\(\CRing \) or \(\Ring \)), the terminal object is the trivial ring, and the initial
+                                                                                  
+
+                                                                                  
+object is \(\ZZ \). In fact, if we consider for each ring, the kernel of this unique map
+from \(\ZZ \), we get the characteristic of that ring. This is a functor to the category
+of rings that are quotients of \(\ZZ \) (or to the poset of natural numbers (and 0) by
+division).
+</p><!--l. 55--><p class="indent" >  It turns out Proposition <a 
+href="#x1-1003r3">1.3<!--tex4ht:ref: uniqueness --></a> and its dual are very important: many uniqueness
+statements involve viewing the object you are studying in the right category, and then
+realizing it is initial or terminal.
+</p><!--l. 57--><p class="indent" >  Here is another example of duality: it turns out surjections and injections in Set are
+dual. For this we will need the definition:
+</p>
+  <div class="newtheorem">
+<!--l. 59--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1005r5"></a>
+<span 
+class="cmbx-12">Definition 1.5.</span>  </span><span 
+class="cmti-12">An arrow</span> \(f\) <span 
+class="cmti-12">is </span><span 
+class="cmbxti-10x-x-120">mono </span><span 
+class="cmti-12">if</span> \(f \circ g = f \circ h \implies g = h\)<span 
+class="cmti-12">. The dual notion is </span><span 
+class="cmbxti-10x-x-120">epi</span><span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 63--><p class="indent" >  In \(\Set \), monos are injections, and epis are surjections (exercise). In the category of groups
+we have the same, but this is not true in general. For algebraic categories (like \(\Grp \), \(\Ab \),
+\(\Ring \), \(\CRing \), \(\Vect _K\)) monos are always injections, but epis are not necessarily surjections. For
+example, a localization in \(\CRing \) may be not surjective (for example the map \(\ZZ \to \QQ \)) but is
+epi.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>What are equivalences?</h3>
+<!--l. 66--><p class="noindent" >We want to say when two categories can be considered &#8220;the same&#8221;. A naive way to do this
+is to say that \(C\) and \(D\) should be considered the same if they are isomorphic in \(\Cat \). However, this
+is too restrictive a definition: we often have categories that behave the same, but are not
+isomorphic. For example, consider the category \(\Matr _F\) with objects the natural numbers (I
+include \(0 \in \NN \)) and arrows \(m \to n\) the \(m \times n\) matrices with \(F\) coefficients). This category is very similar to the
+category \(\FinVect _F\) of finite dimensional \(F\)-vector spaces. In situations like these, we should have a
+notion of equivalent categories that generalizes isomorphic. Hence the following
+definition:
+</p>
+  <div class="newtheorem">
+<!--l. 68--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Definition 2.1.</span>  </span><span 
+class="cmti-12">A functor</span> \(F: C \to D\) <span 
+class="cmti-12">is an equivalence if there is a</span> \(G:D \to C\) <span 
+class="cmti-12">such that</span> \(G \cdot F \cong 1_C\) <span 
+class="cmti-12">and</span> \(F \cdot G \cong 1_D\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 72--><p class="indent" >  In other words, \(C\) and \(D\) are equivalent if they are isomorphic up to isomorphism. If you
+have seen a homotopy equivalence in topology, this is the analogous definition with
+homotopy replaced by natural isomorphism.
+</p><!--l. 74--><p class="indent" >  Here are some examples of categories that are equivalent:
+</p><!--l. 76--><p class="indent" >  We can consider the category of transitive \(G\)-sets (\(G\) is a group): the objects are sets with a
+transitive \(G\)-action, and the maps are functions compatible with the \(G\)-action. Similarly we
+can consider the category of subgroups of \(G\). The Orbit Stabilizer theorem says that these
+two categories are equivalent (the equivalence is given by taking the stabilizer of a
+point).
+</p><!--l. 78--><p class="indent" >  Another example is from classical algebraic geometry. One main idea in algebraic
+geometry is that one can translate between algebraic and geometric problems. If \(\AA ^n\) is
+affine n-space over an algebraically closed field \(K\), then an algebraic set is a subset
+of \(\AA ^n\) that is the common zeroes of an ideal \(I \subset K[x_1,...,x_n]\) for some n. A morphism between
+two algebraic sets is a map from one algebraic set to another that is given by a
+polynomial. The main theorem about these algebraic sets is that the category of
+algebraic sets is (contravariantly) equivalent to the category of reduced finitely
+generated K-algebras (ie rings that are quotients of polynomial rings over K in
+finitely many variables and have no nilpotent elements). To get the equivalence,
+on takes an algebraic set \(A \in \AA ^n\) to \(K[x_1,...,x_n]/I(A)\) where \(I(A)\) is the ideal of polynomials that vanish on
+\(A\).
+</p><!--l. 80--><p class="indent" >  This idea of taking a category of spaces and associating a category of rings that is
+equivalent is quite a common idea.
+</p><!--l. 82--><p class="indent" >  For example, there is a famous theorem known as Stone&#8217;s Representation Theorem,
+which says that the category of Stone spaces (totally disconnected compact Hausdorff
+spaces) is equivalent to the category of Boolean algebras (complemented distributive
+lattices). One constructs the Stone space \(S(A)\) from the Boolean algebra \(A\) by looking at the set
+of homomorphisms from \(A\) to \(2\), the initial Boolean algebra. Another example from functional
+analysis is that the category of compact Hausdorff spaces is equivalent to the category of
+commutative \(C^*\)-algebras with identity. one constructs the \(C^*\)-algebra from the compact
+Hausdorff space by looking at the set of continuous functions from the space to \(\CC \), and
+naturally giving it a \(C^*\)-algebra structure.
+</p><!--l. 84--><p class="indent" >  How can we tell if a functor is an equivalence? The following three definitions and
+                                                                                  
+
+                                                                                  
+propositions will help us:
+</p>
+  <div class="newtheorem">
+<!--l. 86--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+<span 
+class="cmbx-12">Definition 2.2.</span>  </span> <span 
+class="cmti-12">A functor</span> \(F: C \to D\) <span 
+class="cmti-12">is </span><span 
+class="cmbxti-10x-x-120">full </span><span 
+class="cmti-12">if for each</span> \(a,b \in C\)<span 
+class="cmti-12">, we have the map from</span> \(C(a,b) \to D(Fa,Fb)\) <span 
+class="cmti-12">surjective.</span>
+<span 
+class="cmti-12">Similarly it is </span><span 
+class="cmbxti-10x-x-120">faithful </span><span 
+class="cmti-12">if it is injective. It is </span><span 
+class="cmbxti-10x-x-120">fully faithful </span><span 
+class="cmti-12">if it is a bijection.</span>
+</p>
+  </div>
+<!--l. 90--><p class="indent" >  Note that a functor \(F:C \to D\) can be defined as a function from the objects to objects and
+arrows to arrows, giving a functor \(D(F-,F-)\) and a natural transformation between \(C(-,-)\) and
+\(D(F-,F-)\)
+</p>
+  <div class="newtheorem">
+<!--l. 92--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r3"></a>
+<span 
+class="cmbx-12">Definition 2.3.</span>  </span><span 
+class="cmti-12">A functor</span> \(F: C \to D\) <span 
+class="cmti-12">is </span><span 
+class="cmbxti-10x-x-120">essentially surjective </span><span 
+class="cmti-12">or </span><span 
+class="cmbxti-10x-x-120">dense </span><span 
+class="cmti-12">if for every object</span>
+<span 
+class="cmti-12">of</span> \(D\)<span 
+class="cmti-12">, there is an isomorphic object in the image.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 96--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2004r4"></a>
+<span 
+class="cmbx-12">Proposition 2.4.</span>  </span> <span 
+class="cmti-12">Equivalence is an equivalence relation.</span>
+</p>
+  <div class="proof">
+<!--l. 100--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It is clearly reflexive and symmetric. For transitivity, if \(F: C \to D, F': D \to C, G: D \to E, G': E \to D\) are functors and \(\eta : F'F \to 1_C, \ee : FF' \to 1_D, \eta ': G'G \to 1_D, \ee ': GG' \to 1_E\)
+are natural isomorphisms, then \(F'G'GF\) is naturally isomorphic to \(1_C\) via \(F'\eta 'F \cdot \eta \), and \(GFF'G'\) is naturally
+isomorphic to \(1_E\) via \(G\ee G'\cdot \ee '\) <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 104--><p class="indent" >  We will need a fact about functors.
+</p>
+  <div class="newtheorem">
+<!--l. 105--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2005r5"></a>
+<span 
+class="cmbx-12">Proposition 2.5.</span>  </span> <span 
+class="cmti-12">If</span> \(F:C \to D\) <span 
+class="cmti-12">is a functor, then so is</span> \(D(F-,F-): C^{op} \times C \to \Set \) <span 
+class="cmti-12">and</span> \(F_{a,b}\)<span 
+class="cmti-12">, or &#8220;applying</span> \(F\)<span 
+class="cmti-12">&#8221; is a natural</span>
+<span 
+class="cmti-12">transformation from</span> \(C(-,-) \to D(F-,F-)\)<span 
+class="cmti-12">.</span> \(\eta _F\) <span 
+class="cmti-12">is a natural isomorphism iff</span> \(F\) <span 
+class="cmti-12">is fully faithful.</span>
+</p>
+  <div class="proof">
+<!--l. 110--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Consider the diagram:
+</p>
+<div class="center" 
+>
+<!--l. 112--><p class="noindent" >
+</p><!--l. 118--><p class="noindent" >                <img 
+src="Duality_and_Equivalences1x.svg" alt="      C(a, b)              C (c,d)
+
+
+     op op
+g&#x2218;FFF(a,c,g-bd&#x2218;()-&#x2218;)f&#x2218;DFf(F a,F b)          D (F c,Fd) "  />
+</p></div>
+<!--l. 121--><p class="indent" >  We can chase around an arrow h:
+</p>
+<div class="center" 
+>
+<!--l. 123--><p class="noindent" >
+                                                                                  
+
+                                                                                  
+</p><!--l. 129--><p class="noindent" >                         <img 
+src="Duality_and_Equivalences2x.svg" alt="  h                             g &#x2218; h &#x2218; fop
+
+
+gFFF&#x2218;(gF-&#x2218;)(-h&#x2218;f)&#x2218;opFfop                      F g &#x2218; F h &#x2218; Ff op = F (g &#x2218; h &#x2218; fop)
+ ac,,bd "  />
+</p></div>
+<!--l. 132--><p class="indent" >  It is obvious that this is a natural isomorphism iff \(F\) is fully faithful. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 136--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2006r6"></a>
+<span 
+class="cmbx-12">Proposition 2.6.</span>  </span> <span 
+class="cmti-12">A functor</span> \(F: C \to D\) <span 
+class="cmti-12">is an equivalence iff it is fully faithful and essentially</span>
+<span 
+class="cmti-12">surjective.</span>
+</p>
+  <div class="proof">
+<!--l. 140--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose \(F\) is an equivalence, and let \(G\) be as in Definition <a 
+href="#x1-2002r2">2.2<!--tex4ht:ref: equiv --></a>. Then let \(d \in D\). As
+there is an isomorphism between \(FGd\) and \(d\), \(F\) is essentially surjective. Now note that being
+full and faithful is preserved by natural isomorphism (this becomes very obvious if
+you use the categorified homotopy version of a natural transformation). Then since
+identity functors are fully faithful, \(F\cdot G\) and \(G \cdot F\) are fully faithful. \(F\) then must be faithful
+as \(G \cdot F\) is. Given an arrow \(f: Fa \to Fb\), let \(h = \ee _b \circ Gf \circ \ee _a^{-1}\), where \(\ee \) is the natural transformation from \(GF to 1_C\). Then \(GFh = Gf\) by
+naturality of \(\ee \) and as \(G\) is faithful \(Fh = f\), so \(F\) is full.
+</p><!--l. 142--><p class="indent" >  Conversely, suppose \(F\) is fully faithful, and essentially surjective. Then for each \(d \in D\), we
+can choose an isomorphism \(\phi _d\) from an \(d_F\) in image of \(F\) (If \(d\) is in the image, choose \(d_F=d\)) . We
+can define \(G: D \to C\) on objects to be just an element of the preimage of \(d_f\). On arrows, as \(F\) is
+fully faithful, we can send an arrow \(f\) from \(d \to d'\) to the unique arrow that \(\phi _{d'} \circ f \circ \phi _d^{-1}\) corresponds to.
+Then we can make a natural isomorphism \(\ee \) from \(G \circ F\) to \(1_C\) as follows. If \(c \in C\), then \(GFc\) are sent to
+the same thing by \(F\) so we can choose the isomorphism that is the preimage of \(1_{Fc}\) in the
+natural isomorphism from \(C(c,GFc)\) to \(D(Fc,Fc)\) given by applying \(F\) (check this is an isomorphism by
+doing the same with \(C(GFc,c)\)). To see this is natural, we have:
+</p>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 144--><p class="noindent" >
+</p><!--l. 150--><p class="noindent" >         <img 
+src="Duality_and_Equivalences3x.svg" alt="    c          b
+
+
+f&#x03F5;&#x03F5;GcF fGF c       GF  b
+ b "  />
+</p></div>
+<!--l. 153--><p class="indent" >  which commutes as we can apply F to everything to get
+</p>
+<div class="center" 
+>
+<!--l. 155--><p class="noindent" >
+</p><!--l. 161--><p class="noindent" >       <img 
+src="Duality_and_Equivalences4x.svg" alt="  F c       F b
+
+
+F1c1cFffF c       F b "  />
+</p></div>
+<!--l. 164--><p class="indent" >  but \(F\) is faithful so the original diagram commutes. In particular, G,F is also fully faithful
+and essentially surjective.
+</p><!--l. 167--><p class="indent" >  I claim \(\phi \) which at \(d\) is \(\phi _d\) is a natural isomorphism from \(1_D\) to \(F \circ G\). To see this we have the
+diagram:
+</p>
+<div class="center" 
+>
+<!--l. 169--><p class="noindent" >
+</p><!--l. 175--><p class="noindent" >         <img 
+src="Duality_and_Equivalences5x.svg" alt="   d           e
+
+
+f&#x03D5;d&#x03D5;eGFfF Gd        F Ge "  />
+</p></div>
+<!--l. 178--><p class="indent" >  which commutes as \(GFf \circ \phi _d = \phi _d \circ f \circ \phi _d^{-1} \circ \phi _d = \phi _d \circ f = \phi _d \circ f\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 182--><p class="indent" >  A <span 
+class="cmbx-12">subcategory </span>of a category \(D\) is a category \(I\) with an inclusion map \(i:I \to D\) that is a faithful
+functor. If this inclusion is also full, \(I\) is a <span 
+class="cmbx-12">full subcategory</span>. A <span 
+class="cmbx-12">skeleton </span>of a
+category is a fully faithful subcategory with one object for every isomorphism class
+of the category. For example, \(\Matr _F\) is a skeleton of \(\FinVect _F\) if we choose isomorphisms to
+a particular finite dimensional vector space. Proposition <a 
+href="#x1-2006r6">2.6<!--tex4ht:ref: ffessentsurj --></a> implies this is an
+equivalence. One might be tempted to replace all categories with skeleta, but this is
+generally not a good thing to do unless one wants to deal with set-theoretic issues.
+Looking at categories up to equivalence is not a bug, but a feature of category
+theory.
+</p>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

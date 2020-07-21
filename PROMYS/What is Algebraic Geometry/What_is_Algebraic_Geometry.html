@@ -1,0 +1,600 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>What is Algebraic Geometry?</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="What_is_Algebraic_Geometry.css" /> 
+<meta name="src" content="What_is_Algebraic_Geometry.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+WHAT IS ALGEBRAIC GEOMETRY?
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Motivation</h3>
+<!--l. 10--><p class="noindent" >Algebraic geometry is the study of the geometry that arises from studying polynomial
+functions, and spaces that are defined using polynomial equations. One reason
+to be interested in algebraic geometry is that it is closely related to complex
+geometry. For example, let&#8217;s classify meromorphic functions on \(\CC \PP ^1\), the Riemann
+sphere.
+</p>
+  <div class="newtheorem">
+<!--l. 12--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Proposition 1.1.</span>  </span><span 
+class="cmti-12">A meromorphic function on</span> \(\CC \PP ^1\) <span 
+class="cmti-12">is given by a function in</span> \(\CC (x)\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 16--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By compactness of \(\CC \PP ^1\) and the fact that zeros are isolated, there are only finitely
+many zeros and poles of the rational function \(f\). We can multiply \(f\) by a rational
+function so that the result is something that either only has poles or zeros, and by
+inverting it we can assume it only has zeros. The result is a holomorphic function on
+                                                                                  
+
+                                                                                  
+\(\CC \PP ^1\), so lands in a compact subset of \(\CC \), hence is constant by Louisville&#8217;s theorem or the
+open mapping theorem. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 20--><p class="indent" >  Indeed, like this example, many compact complex manifolds behave algebraically. For
+example, let&#8217;s consider complex curves (Riemann surfaces) inside \(\CC \PP ^2\). The points of \(\CC \PP ^2\) are
+denoted \([x,y,z]\), where \(x,y,z \in \CC \) are not all \(0\), and \([x,y,z] = [x\lambda ,y\lambda ,z\lambda ]\) One way to construct complex submanifolds of \(\CC \PP ^2\) is
+to take a polynomial \(f\) that is homogeneous in the variables \(x,y,z\), and consider the
+submanifold of \(\CC \PP ^2\) that is the zero set of this homogeneous polynomial. For the
+general \(f\), the resulting subset will indeed be everywhere smooth. For example
+this yields \(\CC \PP ^1\) if \(f\) is a linear or quadratic form, and an elliptic curve if \(f\) is a cubic.
+In fact, any closed complex submanifold of \(\CC \PP ^2\) is given by the zero set for some
+\(f\).
+</p><!--l. 24--><p class="indent" >  Another main realm in which algebraic geometry is useful is in number theory. For
+example let&#8217;s try to find the points on the circle \(x^2+y^2=1\) inside \(\QQ ^2\). In order to find all
+the solutions to this polynomial equation, we start by noticing \((1,0)\) is a solution.
+We can use this point to make a projection map from \(V\) to \(\QQ \PP ^1\) as follows: for any
+point \((a,b) \in V\), we can take the line through \((1,0)\) and \((a,b)\), given by \(b(x-1)=(1-a)y\). This line gives a point in \(\QQ \PP ^1\),
+namely \((b:1-a)\). Conversely given a point \((c:d) \in \QQ \PP ^1\), we can consider the common solutions to \(c(x-1)=dy\)
+and \(x^2+y^2=1\), and recover our solution as the second solution to this pair of polynomial
+equations. For example if \(d = 0\), \((1,0)\) is a solution of multiplicity 2, meaning that \(\QQ [x,y]/(x^2+y^2-1,x-1)=\QQ [x,y]/(x-1,y^2)\) is a two
+dimensional \(\QQ \)-vector space, so the solution corresponding to this is \((1,0)\). If \(d \neq 0\), then \(x^2+\frac{c^2}{d^2} (x-1)^2=1\), and along
+with \(x = 1\), we get \(x = \frac{c^2-d^2}{c^2+d^2}\) as a solution, hence the pair \((\frac{c^2-d^2}{c^2+d^2},\frac{-2cd}{c^2+d^2})\) is a solution. This parameterize
+all the solutions of \(x^2+y^2=1\) in terms of point in \(\QQ \PP ^1\). Note that the formula works for \((1:0)\) as
+well.
+</p>
+  <div class="newtheorem">
+<!--l. 27--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r1"></a>
+<span 
+class="cmbx-12">Exercise 1.1.1.</span>  </span><span 
+class="cmti-12">Classify the rational solutions to</span> \(y^2=x^3+x^2\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 31--><p class="indent" >  We have classified these solutions by making a parameterization of our solutions in
+terms of \(\QQ \PP ^1\), noting that this gives all the solutions because there is a projection map that is
+                                                                                  
+
+                                                                                  
+the inverse. Both the projection map and the parameterization map was very nice in the
+sense that it is given by rational functions.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Affine Geometry</h3>
+<!--l. 35--><p class="noindent" >These examples suggest that it might be good to systematically study solutions to
+polynomial equations as spaces: complex manifolds sometimes already behave like they are
+solution spaces to polynomial equations, and we have seen that we can use geometric maps
+between \(\QQ \PP ^1\) and the conic \(x^2+y^2=1\) to classify rational points. The first object that lets us do this is a
+variety. We will begin for simplicity by talking about with affine varieties over the field
+\(\CC \).
+</p>
+  <div class="newtheorem">
+<!--l. 37--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Definition 2.1.</span>  </span><span 
+class="cmti-12">An  </span><span 
+class="cmbxti-10x-x-120">affine  variety </span><span 
+class="cmti-12">over</span>  \(\CC \)  <span 
+class="cmti-12">is  a  subset  of</span>  \(\CC ^n\)  <span 
+class="cmti-12">that  is  a  solution  to</span>
+<span 
+class="cmti-12">polynomial equations in</span> \(n\) <span 
+class="cmti-12">variables.</span>
+</p>
+  </div>
+<!--l. 41--><p class="indent" >  By the Hilbert Basis theorem, any affine variety can be thought of as the solution of
+only finitely many polynomial equations.
+</p>
+  <div class="newtheorem">
+<!--l. 43--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+<span 
+class="cmbx-12">Definition 2.2.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">morphism </span><span 
+class="cmti-12">(or regular map) of affine varieties</span> \(g:U\subset \CC ^n \to V \subset \CC ^m\) <span 
+class="cmti-12">is a function</span>
+<span 
+class="cmti-12">from</span> \(U\) <span 
+class="cmti-12">to</span> \(V\) <span 
+class="cmti-12">that is given by</span> \(m\) <span 
+class="cmti-12">polynomials in</span> \(n\) <span 
+class="cmti-12">variables.</span>
+</p>
+  </div>
+<!--l. 47--><p class="indent" >  For an example of a morphism, we can project the hyperbola \(xy = 1\) to the line \(\AA ^1\) via the
+polynomial \(x\). This hits every point once on \(\AA ^1\) except for \(0\). Since any quadratic form over \(\CC \) is
+equivalent to \(xy\),
+                                                                                  
+
+                                                                                  
+</p><!--l. 49--><p class="indent" >  In this way, we can turn affine varieties into a category. The most basic example is \(\AA ^n\),
+which is just all of \(\CC ^n\).
+</p><!--l. 51--><p class="indent" >  A variety comes with a topology inherited from \(\CC ^n\), but it is not the usual topology.
+Namely, we say that any subset that is the common zeros of some polynomials is closed in
+the <span 
+class="cmbx-12">Zariski topology</span>. A morphism of varieties is continuous with respect to this
+topology. Note that there is a natural basis for the open sets, namely, the <span 
+class="cmbx-12">principle open</span>
+<span 
+class="cmbx-12">sets</span> \(D(f)\), the set on which \(f\) is nonzero for any polynomial.
+</p><!--l. 53--><p class="indent" >  Now given an affine variety \(V\), we can form its <span 
+class="cmbx-12">coordinate ring</span> \(\CC [V]\), by taking the ideal of
+polynomials \(I\) that vanish on \(V\) and setting \(\CC [V] = \CC [x_1,\dots ,x_n]/I\). A polynomial is the same as a map to \(\AA ^1\), so this
+ring is just \(\Hom (V,\AA ^1)\). Thus, when we have a morphism \(f:U \to V\), we get a map \(f^*:\CC [V] \to \CC [U]\) by \(f^*(v) = v \circ f\), where we interpret \(v\) as a
+morphism.
+</p><!--l. 55--><p class="indent" >  Note that the \(\CC [V]\) are always finitely generated reduced \(\CC \) algebras (the inclusion map to \(\AA ^n\)
+induces the desired surjection \(\CC [x_1,\dots ,x_m] \to \CC [V]\)), and the morphisms between them are \(\CC \) algebra morphisms.
+In fact, these two categories are equivalent, meaning studying the algebra of polynomial
+functions on \(V\) is just as good as studying \(V\). Given a reduced finitely generated \(\CC \) algebra, we
+get an affine variety by choosing a surjection from \(\CC [x_1,\dots ,x_m]\), and the kernel is an ideal whose
+common zero set is a variety. Given a \(\CC \) algebra morphism \(A \to B\), we can lift the map in the
+diagram: </p>
+<div class="center" 
+>
+<!--l. 56--><p class="noindent" >
+</p><!--l. 60--><p class="noindent" >                 <img 
+src="What_is_Algebraic_Geometry0x.svg" alt="        &#x2102;[x1,...,xn]       &#x2102; [y1,...,ym]
+
+
+ff&#x2032;      A                  B "  />
+</p></div>
+<!--l. 62--><p class="noindent" >The lift gives some polynomials defining a morphism from the corresponding varieties. The
+proof that this is an equivalence of categories amounts to the fact that the set of
+polynomials that vanish on any variety is the same as the radical of the ideal generated by
+any set of polynomials that define the variety. This is Hilbert&#8217;s Nullstellensatz. It is this
+theorem that requires the field to be algebraically closed (though there are versions for
+non-algebraically closed fields). For example \(x^2+y^2=-1\) has no real points, but its radical is not the
+trivial ideal. The way to fix this over a non algebraically closed field is to allow &#8221;points&#8221; in
+finite extensions of \(\QQ \), not just \(\QQ ^n\). For example, in \(\AA ^n\) over the field \(\RR \), the points are
+points in \(\CC ^n\) up to complex conjugation. The points can be seen on the level of the
+rings.
+</p>
+                                                                                  
+
+                                                                                  
+  <div class="newtheorem">
+<!--l. 65--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r1"></a>
+<span 
+class="cmbx-12">Exercise 2.2.1.</span>  </span><span 
+class="cmti-12">Classify the maximal ideals of</span> \(\CC [x], \RR [x]\)<span 
+class="cmti-12">, and show that they correspond to</span>
+<span 
+class="cmti-12">the points in</span> \(\AA ^1\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 69--><p class="indent" >  We can talk about geometric properties of a variety. From the topology, we can make
+sense of an <span 
+class="cmbx-12">irreducible variety</span>. Namely, this is a variety that is not the union of any two
+closed proper subsets of itself. Any variety breaks up into finitely many irreducible
+components. A line is irreducible, but a pair of lines isn&#8217;t. When doing algebraic geometry
+people often restrict to irreducible varieties. The <span 
+class="cmbx-12">dimension </span>of a variety is \(1\) less than the
+maximal chain of irreducible subvarieties of \(V\). Varieties of dimension \(1\) are curves, \(2\) are
+surfaces, and \(3\) are \(3\)-folds.
+</p><!--l. 72--><p class="indent" >  A irreducible variety often gives a complex manifold. Namely, we can treat the variety \(V\)
+as a subset of \(\CC ^n\) with the complex topology. Then if the ideal of polynomials vanishing on a
+variety is given by \(f_1,\dots f_n\), and the Jacobian of partial derivatives of the \(f_i\) has rank \(\codim (V)\) at each point
+of \(V\), then by the inverse function theorem \(V\) is a closed complex submanifold of \(V\). If the
+Jacobian has the right rank at a point, that point is called <span 
+class="cmbx-12">smooth</span>. The resulting complex
+manifold will be dimension \(\dim (V)\). Points that aren&#8217;t smooth are called <span 
+class="cmbx-12">singular</span>. For any
+variety, the singular points form a closed subset of smaller dimension. To see it is closed,
+note that the set of singular points is given by the vanishing of the determinants of
+minors of a matrix of polynomials. To see it is smaller dimension, the singular
+points on any irreducible component is proper since partial derivatives lower the
+degree of the polynomial, and the intersection of any variety with any other
+variety that doesn&#8217;t contain it is also proper closed subset of it, and any points
+that aren&#8217;t in this intersection are smooth iff they are smooth on the irreducible
+component.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>Projective Geometry</h3>
+<!--l. 78--><p class="noindent" >Let&#8217;s try to do geometry on \(\AA ^2\). If we take two curves in \(\AA ^2\), how many times do
+they intersect? This is an elementary problem when one of the curves is a line.
+After a linear change of variables, the line can be assumed to be \(x = 0\). If the other
+curve is given by \(f(x,y) = 0\), then the number of roots of \(f(0,y)\) is the number of intersection
+                                                                                  
+
+                                                                                  
+points. Unfortunately, this depends on our line, even when the intersection points
+are counted with multiplicity. The way to fix this is to do projective geometry
+instead. This can be thought of as compactifying \(\AA ^2\). Namely, we define \(\PP ^n\) to be the set
+of points \([x_0:\dots :x_n]\) not all \(0\), where \([x_0:\dots :x_n] = [\lambda x_0:\dots :\lambda x_n]\). We say that a rational function on \(\PP ^n\) is a quotient
+of two homogeneous polynomials in \(x_0,\dots x_n\) of the same degree. Note that this is well
+defined up to scalar multiplication since the degree of the top and bottom are the
+same.
+</p><!--l. 80--><p class="indent" >  We say that a rational function is <span 
+class="cmbx-12">regular </span>at a point \(p\) if there is a way to write the
+homogeneous polynomial as a function that you can evaluate at that point. For
+example, the function \(x/y\) on \(\PP ^1\) is regular on all points \([x:y]\) where \(y \neq 0\). We can put a Zariski
+topology on \(\PP ^n\). Namely, given an ideal of polynomials in \(\CC [x_0,\dots ,x_n]\) generated by homogeneous
+elements, it makes sense to talk about the points of \(\PP ^n\) in which they all vanish.
+We will define these to be the closed sets, and say that they are <span 
+class="cmbx-12">projective</span>
+<span 
+class="cmbx-12">varieties</span>. Note that a projective variety can be thought of as the closure of some
+affine variety in projective space. This is because if we consider the points in \(\PP ^n\)
+where some \(x_i\) are not \(0\), we can make each point of the form \([x_1, \dots ,1,x_{i+1},\dots x_n]\), which is exactly
+the points of \(\AA ^n\). We call this the <span 
+class="cmbx-12">affine chart</span> \(\AA ^n_i\). We can intersect any projective
+variety with an affine chart to get an affine variety. For example, consider the
+subset of \(\PP ^2\) given by \(y^2z = x^3+axz^2+bz^3\) for some \(a,b \in \CC \), which is called an elliptic curve. In the affine chart
+where \(z \neq 0\), we can find the equation for the elliptic curve by setting \(z = 1\), where we get
+\(y^2 = x^3+ax+b\).
+</p>
+  <div class="newtheorem">
+<!--l. 84--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+<span 
+class="cmbx-12">Exercise 3.0.1.</span>  </span><span 
+class="cmti-12">Show that an elliptic curve is smooth.</span>
+</p>
+  </div>
+<!--l. 88--><p class="indent" >  Similarly as in the affine case we can define smoothness and dimension. These notions
+are compatible in the sense that the dimension of a projective variety is the maximal
+dimension of it on any affine chart, and a point is smooth if it is smooth in any (or each)
+affine chart. This condition can also be checked projectively again via the matrix of partial
+derivatives. For example, if we have a <span 
+class="cmbx-12">projective hypersurface</span>, which is a variety given
+by one equation \(F=0\), then (in characteristic \(0\)) the singular points are the subvariety
+simultaneous zero of \(\frac{\partial F}{\partial x_i} = 0\). Analogously to the affine case, a smooth projective variety gives a
+compact complex manifold by replacing the Zariski topology with the complex
+                                                                                  
+
+                                                                                  
+topology.
+</p>
+  <div class="newtheorem">
+<!--l. 90--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3002r1"></a>
+<span 
+class="cmbx-12">Definition 3.1.</span>  </span><span 
+class="cmti-12">A  rational  map  between  projective  varieties</span>  \(A\subset P^n,B\subset P^m\)  <span 
+class="cmti-12">is  a  collection  of</span>  \(m+1\)
+<span 
+class="cmti-12">rational functions</span> \(f_0,\dots f_m\) <span 
+class="cmti-12">on</span> \(\PP ^n\) <span 
+class="cmti-12">that are regular on a dense open set of</span> \(A\)<span 
+class="cmti-12">, and so that</span> \([f_0:\dots :f_m]\) <span 
+class="cmti-12">sends</span>
+<span 
+class="cmti-12">points of</span> \(A\) <span 
+class="cmti-12">to points of</span> \(B\) <span 
+class="cmti-12">where it is regular. Two rational functions are the same if</span>
+<span 
+class="cmti-12">they are the same function on the intersection.</span>
+</p>
+  </div>
+<!--l. 94--><p class="indent" >  A rational map that is everywhere regular is called a <span 
+class="cmbx-12">regular map </span>or morphism. There
+are two different categories that we can make from these notions. For one, we consider
+projective varieties with <span 
+class="cmbx-12">dominant </span>rational maps, namely rational maps where the image
+contains an open dense set (this is necessary in order to be able to compose
+rational maps). The notion of isomorphism in this category is called <span 
+class="cmbx-12">birational</span>
+<span 
+class="cmbx-12">equivalence</span>.
+</p><!--l. 96--><p class="indent" >  The other category we can make is the one with projective varieties and morphisms.
+Here we just call the notion of isomorphism isomorphism.
+</p><!--l. 98--><p class="indent" >  We already saw an example of a regular map. We can consider the projectivized conic \(x^2+y^2=z^2\),
+and consider the projection map that we did at the beginning to \(\PP ^1\) given by \([\frac{x-z}{z}:\frac{y}{z}]\). This can also
+be written as \([\frac{xz-z^2}{x^2+y^2}:\frac{yz}{x^2+y^2}]\), so is actually regular everywhere on the conic. We showed before that there
+is an inverse, which also happens to be everywhere regular, so this map gives an
+isomorphism of this plane conic with \(\PP ^1\).
+</p><!--l. 100--><p class="indent" >  For projective curves in \(\PP ^2\), we can say something about the intersection between two
+curves. Namely,
+</p>
+  <div class="newtheorem">
+<!--l. 102--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3003r2"></a>
+<span 
+class="cmbx-12">Proposition 3.2.</span>  </span><span 
+class="cmti-12">If</span> \(F,G\) <span 
+class="cmti-12">are homogeneous in</span> \(3\) <span 
+class="cmti-12">variables of degree</span> \(m,n\)<span 
+class="cmti-12">, then the number</span>
+<span 
+class="cmti-12">of intersections of the varieties in</span> \(\PP ^2\) <span 
+class="cmti-12">defined by</span> \(F,G\) <span 
+class="cmti-12">counted with multiplicity is</span> \(mn\)<span 
+class="cmti-12">, if the</span>
+<span 
+class="cmti-12">intersection is dimension</span> \(0\)<span 
+class="cmti-12">.</span>
+</p>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 106--><p class="indent" >  The multiplicity of an intersection point can be defined as the dimension of the \(\CC \)-vector
+space \(\CC [x,y]/(f,g)\), where \(f,g\) are dehomogenized equations for \(F,G\) on an affine chart.
+</p><!--l. 108--><p class="indent" >  One basic operation we would like to be able to do with projective varieties is take their
+product. We can do this with affine varieties very easily: The product of \(V \in \CC ^n\) and \(U \in \CC ^m\) as sets is
+a subvariety of \(\CC ^{n+m}\). It is a little bit harder to do this for projective varieties. It
+suffices however to do this for \(\PP ^n\times \PP ^m\), as if it comes with projections to \(\PP ^n\) and \(\PP ^m\), and \(A\subset \PP ^n,B\subset \PP ^m\) are
+closed sets, then the intersection of their preimages under the product is the
+product \(A\times B\). To construct the product, we can imagine it as embedded in \(\PP ^{(n+1)(m+1)-1}\). Namely if \(x_0,\dots ,x_n\)
+were the coordinates of \(\PP ^n\), and \(z_0,\dots ,z_m\) were the coordinates of \(\PP ^m\), then the coordinates
+of \(\PP ^{(n+1)(m+1)-1}\) can be thought of as \(w_{ij}, 0 \leq i \leq n, 0 \leq j \leq m\). Then the equations defining \(\PP ^n\times \PP ^m\) are \(w_{ij}w_{kl} = w_{il}w_{kj}\). This is called the
+<span 
+class="cmbx-12">Segre embedding </span>of \(\PP ^n\times \PP ^m\). If a point in \(\PP ^n\times \PP ^m\) looks like \([x_0:\dots :x_n;z_0:\dots :z_m]\), then the embedding is given by
+\(w_{ij} = x_iz_j\).
+</p>
+  <div class="newtheorem">
+<!--l. 110--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3004r1"></a>
+<span 
+class="cmbx-12">Exercise 3.2.1.</span>  </span><span 
+class="cmti-12">Find the projection maps for the Segre embedding.</span>
+</p>
+  </div>
+<!--l. 114--><p class="indent" >  For example, \(\PP ^1\times \PP ^1\) is a hypersurface in \(\PP ^3\) given by the equation \(w_{00}w_{11} = w_{01}w_{10}\). Note that this is a quadratic
+surface, the surface analog of a conic.
+</p>
+  <div class="newtheorem">
+<!--l. 116--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3005r2"></a>
+<span 
+class="cmbx-12">Exercise 3.2.2.</span>  </span><span 
+class="cmti-12">Show that</span> \(\PP ^1\times \PP ^1\) <span 
+class="cmti-12">is birational to</span> \(\PP ^2\) <span 
+class="cmti-12">(Hint: project from a point as in the</span>
+<span 
+class="cmti-12">case of a conic). Are they isomorphic?</span>
+</p>
+  </div>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

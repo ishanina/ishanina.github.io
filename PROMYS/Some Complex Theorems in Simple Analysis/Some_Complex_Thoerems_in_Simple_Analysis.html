@@ -1,0 +1,621 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Some Complex Theorems in Simple Analysis</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Some_Complex_Thoerems_in_Simple_Analysis.css" /> 
+<meta name="src" content="Some_Complex_Thoerems_in_Simple_Analysis.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+SOME COMPLEX THEOREMS IN SIMPLE ANALYSIS
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+  <div class="date" >
+<!--l. 9--><p class="indent" >  <span 
+class="cmti-12">Date</span>:&#x00A0;8/7/2017.</p></div></div></div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Holomorphic Functions</h3>
+<!--l. 11--><p class="noindent" >Let&#8217;s recall the statements of two important theorems that we will need. Throughout the
+first part of the notes (about holomorphic functions), we assume that \(f\) is a holomorphic
+function on an open set \(\Omega \), \(D\) is an open disk. \(D(z_0,r)\) indicates that this disk is centered at \(z_0\) of radius
+r.
+</p>
+  <div class="newtheorem">
+<!--l. 13--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Theorem 1.1 </span>(Cauchy&#8217;s Theorem in a Disk)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">If</span> \(D\subset \Omega \)<span 
+class="cmti-12">, then </span>\[ \int _\gamma f(z)dz=0 \] <span 
+class="cmti-12">for any closed curve</span> \(\gamma \) <span 
+class="cmti-12">in</span> \(D\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 21--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r2"></a>
+<span 
+class="cmbx-12">Theorem 1.2 </span>(Cauchy&#8217;s Integral Formulæ)<span 
+class="cmbx-12">.</span>  </span> \(f\) <span 
+class="cmti-12">has infinitely many derivatives on</span> \(\Omega \)
+<span 
+class="cmti-12">and for any circle</span> \(C \subset \Omega \) <span 
+class="cmti-12">that is boundary of</span> \(D \subset \Omega \) <span 
+class="cmti-12">we have </span>\[ f^{(n)}(z) = \frac{n!}{2\pi i}\int _C\frac{f(\zeta )}{(\zeta -z)^{n+1}}d\zeta \] <span 
+class="cmti-12">for any</span> \(z\) <span 
+class="cmti-12">in the interior of</span> \(C\)<span 
+class="cmti-12">.</span>
+</p>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 29--><p class="indent" >  As a consequence we have the following:
+</p>
+  <div class="newtheorem">
+<!--l. 31--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1003r3"></a>
+<span 
+class="cmbx-12">Corollary 1.3 </span>(Cauchy Inequalities)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">If</span> \(\Omega \) <span 
+class="cmti-12">contains the closure of</span> \(D(z_0,R)\)<span 
+class="cmti-12">, then </span>\[ |f^{(n)}(z)| \leq \frac{n!|f|_C}{2\pi R^n} \] <span 
+class="cmti-12">where</span> \(|f|_C\) <span 
+class="cmti-12">is the</span>
+<span 
+class="cmti-12">maximum modulus</span> \(f\) <span 
+class="cmti-12">attains on</span> \(C\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 38--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By Theorem <a 
+href="#x1-1002r2">1.2<!--tex4ht:ref: intformula --></a> we have: \begin{align*} |f^{(n)}(z)| &amp;= |\frac{n!}{2\pi i}\int _C\frac{f(\zeta )}{(\zeta -z)^{n+1}}d\zeta |\\ &amp;= \frac{n!}{2\pi }|\int _0^{2\pi }\frac{f(z_0 + Re^{i\theta }) Rie^{i \theta }}{(Re^{i\theta )^{n+1}}}d\theta |\\ &amp;\leq \frac{n!}{2\pi }\int _0^{2\pi }|\frac{f(z_0 + Re^{i\theta }) Rie^{i \theta }}{(Re^{i\theta )^{n+1}}}|d\theta \\ &amp;= \frac{n!|f|_CR(2\pi )}{2\pi R^{n+1}}\\ &amp;= \frac{n!|f|_C}{R^{n}} \end{align*}
+  <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 50--><p class="indent" >  Here is another corollary of the Cauchy Integral Formulæ:
+</p>
+  <div class="newtheorem">
+<!--l. 51--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1004r4"></a>
+<span 
+class="cmbx-12">Corollary 1.4.</span>  </span> <span 
+class="cmti-12">Holomorphic functions are analytic.</span>
+</p>
+  <div class="proof">
+<!--l. 55--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose \(f\) is holomorphic near \(z_0\). By Theorem <a 
+href="#x1-1002r2">1.2<!--tex4ht:ref: intformula --></a> we have \[ f(z) = \frac{1}{2\pi i}\int _C\frac{f(\zeta )}{\zeta -z}d\zeta \] where \(C\) is a small
+circle centered around \(z_0\), and \(z\) is inside the disk. Additionally \[ \frac{1}{\zeta -z} = \frac{1}{\zeta -z_0}\frac{1}{1-\frac{z-z_0}{\zeta - z_0}} \] and since \(z\) is inside the
+circle and \(\zeta \) is on the boundary, so we can expand as \[ \frac{1}{1-\frac{z-z_0}{\zeta - z_0}} = \sum _0^\infty \Big (\frac{z-z_0}{\zeta -z_0}\Big )^n \] which converges uniformly for
+                                                                                  
+
+                                                                                  
+all \(\zeta \in C\). Then from uniform convergence we switch the sum and integral and get \[ f(z) = \sum _0^\infty \frac{1}{2\pi i} \int _C \frac{f(\zeta )}{(\zeta -z_0)^{n+1}}d\zeta (z-z_0)^n = \sum _0^\infty \frac{1}{n!}f^{(n)}(z_0)(z-z_0)^n \] <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 74--><p class="indent" >  We can use the Cauchy Inequalities to deduce that a non-constant entire (ie.
+holomorphic on \(\CC \)) function is not bounded.
+</p>
+  <div class="newtheorem">
+<!--l. 76--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1005r5"></a>
+<span 
+class="cmbx-12">Corollary 1.5 </span>(Liouville&#8217;s Theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">A bounded entire function</span> \(f\) <span 
+class="cmti-12">is constant.</span>
+</p>
+  <div class="proof">
+<!--l. 80--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Fix \(z\) arbitrary. Let \(B\) be the bound on \(f\). Integrate around a large circle centered
+at \(z\) and use the Cauchy inequalities to get \(|f'(z)| \leq \frac{B}{R}\). Then letting \(R\) tend to infinity, we get \(f'(z) = 0\) so
+\(f\) is constant by Corollary <a 
+href="#x1-1004r4">1.4<!--tex4ht:ref: holanalytic --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 83--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1006r6"></a>
+<span 
+class="cmbx-12">Theorem 1.6.</span>  </span> <span 
+class="cmti-12">Suppose</span> \(f\) <span 
+class="cmti-12">is holomorphic on a connected open set, and the set of</span>
+<span 
+class="cmti-12">zeros has a limit point, then</span> \(f = 0\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 87--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>Take a limit point \(z_0\) of the set of zeros of \(f\), and write \(f(z) = \sum _i^\infty a_n(z-z_0)^n\), where \(a_i \neq 0\). Then \[ f(z) = a_i(z-z_0)^i(1+g(z-z_0)) \] where \(g\) is
+analytic near \(z_0\) and \(g(z-z_0)\) goes to \(0\) as \(z \to z_0\). Then take a sequence of points \(\neq z_0\) converging to \(z_0\). But
+by the formula above, some of these points cannot be \(0\) as \(1+g(z-z_0)\) is nonzero near \(z_0\). Then \(f\) is
+\(0\) near \(z_0\). This shows that the set of limit points of the zeros of \(f\) is open. But it&#8217;s also
+closed and \(f\) is holomorphic on a connected set. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 94--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1007r7"></a>
+<span 
+class="cmbx-12">Corollary 1.7 </span>(Analytic continuation)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">If there are two functions</span> \(f,g\) <span 
+class="cmti-12">holomorphic on a</span>
+<span 
+class="cmti-12">connected open set such that they agree on a set with a limit point, then they are the</span>
+<span 
+class="cmti-12">same.</span>
+</p>
+  <div class="proof">
+<!--l. 97--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Theorem <a 
+href="#x1-1006r6">1.6<!--tex4ht:ref: toomanyzeros --></a> on \(f-g\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 101--><p class="indent" >  Analytic continuation is an important principle used to extend functions to larger parts
+of \(\CC \) by defining it over a small region and trying to extend it. One of the ways functions can
+be extended is the symmetry principle and in particular the Schwarz reflection principle.
+Here is a converse of Goursat&#8217;s Theorem that we will use to prove the symmetry
+principle.
+</p>
+  <div class="newtheorem">
+<!--l. 103--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1008r8"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Theorem 1.8 </span>(Morera&#8217;s Theorem)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is continuous on</span> \(\Omega \) <span 
+class="cmti-12">and for any triangle</span> \(T\) <span 
+class="cmti-12">we</span>
+<span 
+class="cmti-12">have</span> \(\int _Tf(z)dz = 0\) <span 
+class="cmti-12">then</span> \(f\) <span 
+class="cmti-12">is holomorphic.</span>
+</p>
+  <div class="proof">
+<!--l. 107--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By the proof of Goursat&#8217;s Theorem, \(f\) has a primitive, and so the derivative of
+this primitive, \(f\), is by Corollary <a 
+href="#x1-1004r4">1.4<!--tex4ht:ref: holanalytic --></a> also holomorphic. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 111--><p class="indent" >  Now we will prove the symmetry principle. This is a way of extending a holomorphic
+function.
+</p>
+  <div class="newtheorem">
+<!--l. 112--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1009r9"></a>
+<span 
+class="cmbx-12">Theorem 1.9 </span>(Symmetry principle)<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">Suppose that</span> \(f^+\) <span 
+class="cmti-12">and</span> \(f^-\) <span 
+class="cmti-12">are holomorphic functions such</span>
+<span 
+class="cmti-12">that</span> \(f^+\) <span 
+class="cmti-12">is holomorphic on a region of the upper half-plane, and</span> \(f^-\) <span 
+class="cmti-12">is holomorphic on the lower</span>
+<span 
+class="cmti-12">half-plane such that they can be extended continuously to an interval of</span> \(\RR \) <span 
+class="cmti-12">such that they</span>
+<span 
+class="cmti-12">agree on the boundary, then they can be extended to a holomorphic function on the</span>
+<span 
+class="cmti-12">union.</span>
+</p>
+  <div class="proof">
+<!--l. 115--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>For any triangle in the union of the regions, we can split it into a bunch of
+triangles in the region where \(f^+\) and \(f^-\) are continuous (and possibly also the boundary).
+Then we can approximate the triangles with ones in the interior (where \(f^-\) and \(f^+\) are
+holomorphic) and by Goursat&#8217;s Theorem, the integral on these triangles is \(0\), so by
+continuity the integral on the triangles that do hit the boundary are also \(0\). Then any
+                                                                                  
+
+                                                                                  
+triangle&#8217;s integral is \(0\), so the result follows from Theorem <a 
+href="#x1-1008r8">1.8<!--tex4ht:ref: morera --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 119--><p class="indent" >  As a special case we have the Schwarz reflection principle.
+</p>
+  <div class="newtheorem">
+<!--l. 120--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1010r10"></a>
+<span 
+class="cmbx-12">Theorem 1.10 </span>(Schwarz reflection principle)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Suppose that</span> \(f\) <span 
+class="cmti-12">is holomorphic on some</span> \(\Omega \) <span 
+class="cmti-12">in</span>
+<span 
+class="cmti-12">the upper half-plane, and extends continuously to a real-valued function on an interval on</span>
+<span 
+class="cmti-12">the boundary,</span> \(I\)<span 
+class="cmti-12">. Then</span> \(f\) <span 
+class="cmti-12">can be extended to a holomorphic function on the region</span> \(\Omega \cup -\Omega \cup I\)<span 
+class="cmti-12">, where</span>
+\(f(\bar{z})=\bar{f(z)}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 123--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Use Theorem <a 
+href="#x1-1009r9">1.9<!--tex4ht:ref: symprinciple --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Meromorphic Functions</h3>
+<!--l. 127--><p class="noindent" >Sometimes we don&#8217;t want to require such a strong condition as holomorphicity, but would
+rather have a function that is &#8221;almost&#8221; holomorphic, or meromorphic. I offer two ways to
+think about this. One way is that a function can have three types of singularities:
+removable singularities, poles, and essential singularities. Removable singularities are as
+their name suggests removable (ie the function can be extended to fill in the hole).
+Essential singularities are wild, we would not like our notion of meromorphic to allow this.
+Poles, however, are quite reasonable and interesting singularities, hence we can allow
+these. Another way to think about meromorphic functions is as holomorphic
+functions, except these no longer land in the complex plane. Instead, we add a
+                                                                                  
+
+                                                                                  
+point at infinity to \(\CC \), and call this \(\PP ^1\), the Riemann sphere. This has a complex
+analytic structure: it can be thought of as two open disks in \(\CC \) glued together. Then
+a meromorphic function is a holomorphic function from an open subset of \(\CC \) to
+\(\PP ^1\).
+</p><!--l. 129--><p class="indent" >  First let&#8217;s study singularities. A singularity is a point such that \(f\) is defined around the
+point but not on that point. We have a few possibilities:
+</p>
+  <div class="newtheorem">
+<!--l. 131--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Definition 2.1.</span>  </span><span 
+class="cmti-12">A singularity</span> \(z_0\) <span 
+class="cmti-12">is </span><span 
+class="cmbxti-10x-x-120">removable </span><span 
+class="cmti-12">if</span> \(f\) <span 
+class="cmti-12">is bounded near</span> \(z_0\)<span 
+class="cmti-12">. A singularity is</span>
+<span 
+class="cmti-12">a </span><span 
+class="cmbxti-10x-x-120">pole of order</span> \(i\) <span 
+class="cmti-12">if</span> \((z-z_0)^if\) <span 
+class="cmti-12">is bounded near</span> \(z_0\) <span 
+class="cmti-12">for some</span> \(i\)<span 
+class="cmti-12">. A singularity is </span><span 
+class="cmbxti-10x-x-120">essential </span><span 
+class="cmti-12">if it is</span>
+<span 
+class="cmti-12">neither of the other two.</span>
+</p>
+  </div>
+<!--l. 135--><p class="indent" >  Now we can define meromorphic:
+</p>
+  <div class="newtheorem">
+<!--l. 137--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+<span 
+class="cmbx-12">Definition 2.2.</span>  </span>\(f\) <span 
+class="cmti-12">is meromorphic on an open set</span> \(\Omega \) <span 
+class="cmti-12">if there is a set of points</span> \(X \subset \Omega \) <span 
+class="cmti-12">without</span>
+<span 
+class="cmti-12">a limit point such that</span> \(f\) <span 
+class="cmti-12">has removable singularities and poles on</span> \(X\) <span 
+class="cmti-12">and is holomorphic</span>
+<span 
+class="cmti-12">on</span> \(\Omega -X\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 141--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r3"></a>
+<span 
+class="cmbx-12">Theorem 2.3.</span>  </span> <span 
+class="cmti-12">Removable singularities are removable.</span>
+</p>
+  <div class="proof">
+<!--l. 144--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>Suppose \(f\) is bounded near \(z_0\) (WLOG set \(z_0 = 0\)). Then we have \(z^2f\) (extended to be \(0\) at
+\(z_0\)) is holomorphic near \(0\) but also at \(0\). Then \(f\) is of the form \[ \frac{a_{-2}}{z^2} + \frac{a_{-1}}{z} + a_0 + \cdots \] \(f\) is bounded near zero so \(a_{-2}\)
+and \(a_{-1}\) are \(0\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 151--><p class="indent" >  We can characterize poles in the way that agrees with the second way of thinking about
+meromorphic functions:
+</p>
+  <div class="newtheorem">
+<!--l. 152--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2004r4"></a>
+<span 
+class="cmbx-12">Theorem 2.4.</span>  </span><span 
+class="cmti-12">A point</span> \(z_0\) <span 
+class="cmti-12">is a pole iff</span> \(1/f\) <span 
+class="cmti-12">is holomorphic near</span> \(z_0\) <span 
+class="cmti-12">where</span> \(1/f(z_0)\) <span 
+class="cmti-12">is defined to be</span> \(0\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 156--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By Theorem <a 
+href="#x1-2003r3">2.3<!--tex4ht:ref: remove --></a> we have that \(f\) having a pole of order \(n\) at \(z_0\) is equivalent to \(f(z) = (z-z_0)^{-n}h(z)\) for
+some function \(h\) holomorphic near \(z_0\) that is nonzero at \(z_0\). Then \(f\) is meromorphic implies
+\(1/f = (z-z_0)^{n}(1/h)(z)\) is holomorphic. Conversely if \(1/f\) is holomorphic we can write \(1/f\) in the same way, and
+invert it to get \(f\) in the form we want. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

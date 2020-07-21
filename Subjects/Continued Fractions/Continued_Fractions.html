@@ -1,0 +1,1036 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Continued fractions</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Continued_Fractions.css" /> 
+<meta name="src" content="Continued_Fractions.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+CONTINUED FRACTIONS
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>The magic box and convergents</h3>
+<!--l. 10--><p class="noindent" >Given a ring \(R\), a <span 
+class="cmbx-12">simple continued fraction</span> \([a_0,a_1,\dots , a_n]\) is an expression defined via \([a_0] = a_0\) and \([a_0,\dots ,a_n] = a_0 +\frac 1{[a_1,\dots ,a_n]}\). In the
+case that \(R\) has a topology, we can define infinite continued fractions as limits of finite ones.
+We call the sequence \(r_k = [a_1,\dots ,a_k]\) the <span 
+class="cmbx-12">convergents </span>of the continued fraction. Some easily verified
+identities for continued fractions are: \[ [a_0,\dots ,a_k,\dots ,a_n] = [a_0,\dots ,a_{k-1},[a_k,\dots ,a_n]] \] \[ [0,a_0,\dots ,a_n] = \frac 1{[a_0,\dots ,a_n]} \]
+</p><!--l. 18--><p class="indent" >  The convergents are computable using an algorithm called the <span 
+class="cmbx-12">magic box</span>. The magic
+box works as follows: let \(\begin{pmatrix}b_{-2}&amp;b_{-1}\\c_{-2}&amp;c_{-1}\end{pmatrix} = \begin{pmatrix} 0 &amp; 1\\ 1 &amp; 0\end{pmatrix}\) and define \(b_i = b_{i-2} + b_{i-1}a_i\), \(c_i = c_{i-2} + c_{i-1}a_i\). Then \(\frac{b_k}{c_k}\) is \(r_k\), the \(k^{th}\) convergent.
+</p><!--l. 20--><p class="indent" >  This can be proven by inducting on \(k\). The base case is easy to verify. In general, note
+that \([a_0,\dots ,a_k] = [a_0,\dots ,a_{k-1}+\frac 1 a_k]]\). Thus we can apply the result for \([a_0,\dots ,a_{k-1}+\frac 1 a_k]]\) to get that the \(n^{th}\) convergent is \(\frac{b_{k-1}+\frac{b_{k-2}}{a_{k}}}{c_{k-1}+\frac{c_{k-2}}{a_k}} = \frac{a_kb_{k-1}+b_{k-2}}{a_kc_{k-1}+c_{k-2}}\).
+</p><!--l. 22--><p class="indent" >  The reason it is called the magic box is because the entries \(a_i,b_i,c_i\) can be neatly computed in a
+box as shown below:
+                                                                                  
+
+                                                                                  
+</p><!--l. 24--><p class="indent" >  </p><figure class="float" 
+>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 25--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+ 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1" /><col 
+id="TBL-1-2" /></colgroup><colgroup id="TBL-1-3g"><col 
+id="TBL-1-3" /><col 
+id="TBL-1-4" /><col 
+id="TBL-1-5" /><col 
+id="TBL-1-6" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-1"  
+class="td11"></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-2"  
+class="td11"></td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-3"  
+class="td11">\(a_0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-4"  
+class="td11">\(a_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-5"  
+class="td11">\(\dots \)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-6"  
+class="td11">\(a_n\)</td></tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-1"  
+class="td11">\(0\) </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-2"  
+class="td11">\(1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-3"  
+class="td11">\(b_0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-4"  
+class="td11">\(b_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-5"  
+class="td11">\(\dots \)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-6"  
+class="td11">\(b_n\)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-1"  
+class="td11">\(1\) </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-2"  
+class="td11">\(0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-3"  
+class="td11">\(c_0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-4"  
+class="td11">\(c_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-5"  
+class="td11">\(\dots \)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-6"  
+class="td11">\(c_n\)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-4-1"  
+class="td11"> </td></tr></table></div></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 36--><p class="indent" >  It is worth pointing out that the two rows of the magic box have a symmetry, namely
+that if a \(0\) is inserted in the beginning of the \(a_i\) sequence, then the values of \(b_n\) and \(c_n\) switch.
+This corresponds to the second continued fraction identity mentioned at the beginning.
+Now we will see another symmetry of the magic box, and hence of continued
+fractions.
+</p><!--l. 38--><p class="indent" >  The magic box is related to solutions of linear Diophantine equations. Namely, if \([a_0,\dots ,a_n]\)
+is a continued fraction for \(\frac{b_n}{c_n}\) (the terms in the magic box), then we can find a
+solution of the equation \(b_nx-c_ny=1\) in the ring generated by the \(a_i\) using the magic box.
+Namely, we just reverse the order of the \(a_i\) and compute the magic box for \(d_n,e_n\), as shown
+below:
+                                                                                  
+
+                                                                                  
+</p><!--l. 39--><p class="indent" >  </p><figure class="float" 
+>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 40--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+ 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1" /><col 
+id="TBL-2-2" /></colgroup><colgroup id="TBL-2-3g"><col 
+id="TBL-2-3" /><col 
+id="TBL-2-4" /><col 
+id="TBL-2-5" /><col 
+id="TBL-2-6" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-1"  
+class="td11"></td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-2"  
+class="td11"></td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-3"  
+class="td11">\(a_n\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-4"  
+class="td11">\(a_{n-1}\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-5"  
+class="td11">\(\dots \)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-6"  
+class="td11">\(a_0\)</td></tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-1"  
+class="td11">\(0\) </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-2"  
+class="td11">\(1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-3"  
+class="td11">\(d_0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-4"  
+class="td11">\(d_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-5"  
+class="td11">\(\dots \)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-6"  
+class="td11">\(d_n\)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-1"  
+class="td11">\(1\) </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-2"  
+class="td11">\(0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-3"  
+class="td11">\(e_0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-4"  
+class="td11">\(e_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-5"  
+class="td11">\(\dots \)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-6"  
+class="td11">\(e_n\)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-4-1"  
+class="td11"> </td></tr></table></div></div>
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 52--><p class="indent" >  First note that \(d_{n-1}e_{n}-d_{n}e_{n-1} = (-1)^{n}\). Indeed the determinant of the \(2x2\) matrix on the left hand side is clearly \(-1\)
+verifying the base case. If we plug in the recurrence relation for the magic box, we will
+inductively get the result. Now the claim is that \(d_n = b_n, d_{n-1} = c_n\). By the symmetry property of the \(d_i\) and \(e_i\)
+it will then follow that \(e_n = b_{n-1}\), and by the determinant property it will follow that \(e_{n-1} = c_{n-1}\). These
+identities along with the fact that the magic box computes the convergents will give the
+identity:
+</p><!--l. 56--><p class="indent" >  \[ \frac{[a_0,\dots a_n]}{[a_0,\dots a_{n-1}]} = \frac{[a_n,\dots a_0]}{[a_n,\dots a_1]} \]
+</p><!--l. 58--><p class="indent" >  To show the claim about \(d_n,d_{n-1}\), one simply has to note that the recurrence relation for the
+magic box is essentially the one used to obtain solutions of linear Diophantine equations
+from the quotients in the Euclidean algorithm. Namely, \(\frac 1{[a_1,\dots ,a_n]} = [a_0,\dots ,a_n]-a_0 = \frac{b_n}{c_n}-a_0\) = \(\frac{b_n-c_n a_0}{c_n}\). If by the induction hypothesis
+we assume that the result holds for continued fractions of length \(n-1\), then the recurrence
+relation will show that it holds for \(n\). Indeed the calculation shown here is exactly that done
+via the Euclidean algorithm if \(a_0\) is the floor of the quotient of \(b_n,c_n\). Then the magic box is a
+repackaging of the usual algorithm that constructs the solutions of linear Diophantine
+equations.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Real continued fractions and rational approximations</h3>
+<!--l. 60--><p class="noindent" >Given a real number \(r\), there is a unique way to write as a (possibly finite) simple continued
+fraction \([a_0,\dots ]\) such that each \(a_i\) an integer, \(a_i\) nonnegative for \(i&gt;0\), and \(a_i = 0 \implies a_j=0\) if \(j&gt;i\). Indeed, \(a_0\) must be \(\floor *{r}\). If \(r\) is
+not an integer, \([a_1,\dots ]\) must be equal to \(\frac 1{r-\floor *r}\), which is positive and strictly greater than
+\(1\). Thus each of the next \(a_i\) will be nonnegative, and if one of them is zero, the
+rest are \(0\) as well, as this happens only when one step gives an integer. The fact
+that the euclidean algorithm terminates shows that one of them is zero iff \(r\) is a
+rational number. This particular continued fraction will be called <span 
+class="cmti-12">the </span>continued
+fraction of the real number \(r\). If \(r\) is irrational, the convergents will converge to
+\(r\). First observe that by the construction of the \(a_i\) the \(k^{th}\) partial convergent is an
+underestimate of \(r\) if \(k\) is even, and an overestimate otherwise. Now by the magic
+box, if \(r_k = \frac{b_k}{c_k}\) is the \(k^{th}\) partial convergent, then \(\frac{b_k}{c_k}-\frac{b_{k+1}}{c_{k+1}} = \frac{\pm 1}{c_kc_{k+1}}\). if the \(a_i\) are eventually \(0\), then one of the
+convergents is the rational number, so the convergents converge, and by the
+remark about over and underestimating \(r\), they must converge to \(r\). We see in
+particular that any sequence \(a_k\) satisfying the conditions will determine a unique real
+number.
+</p><!--l. 62--><p class="indent" >  The partial convergents of \(r\) are really good approximations of it. Namely, note that \(|\frac{b_k}{c_k}-r| = |r_k-r| \leq |r_k-r_{k+1}| \leq \frac 1{c_kc_{k+1}} \leq \frac 1{c_k^2}\).
+This is a surprisingly good approximation, considering that we might expect
+the best rational approximation of \(r\) with denominator \(c_k\) to have error at most
+\(\frac 1{2c_k}\).
+                                                                                  
+
+                                                                                  
+</p><!--l. 64--><p class="indent" >  Let \(F_k\) denote the Farey sequence of rational numbers between \(0\) and \(1\) with denominator less
+than or equal to \(k\). We will write all fractions in their reduced form.
+</p>
+  <div class="newtheorem">
+<!--l. 65--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Lemma 2.1.</span>  </span> <span 
+class="cmti-12">If</span> \(\frac{a}{b}\) <span 
+class="cmti-12">is right before</span> \(\frac{c}{d}\) <span 
+class="cmti-12">in the</span> \(F_k\)<span 
+class="cmti-12">. then</span> \(ad-bc = -1\)<span 
+class="cmti-12">. If</span> \(\frac{a}{b}, \frac{c}{d}\) <span 
+class="cmti-12">are consecutive, and</span> \(\frac{p}{q}\) <span 
+class="cmti-12">is any</span>
+<span 
+class="cmti-12">rational between them, then</span> \(\frac{p}{q} = \frac{k_1a+k_2c}{k_1b+k_2d}\) <span 
+class="cmti-12">for some positive</span> \(k_1,k_2\)<span 
+class="cmti-12">. If there is one rational number in</span> \(F_k\)
+<span 
+class="cmti-12">between</span> \(\frac{a}{b}\) <span 
+class="cmti-12">and</span> \(\frac{c}{d}\)<span 
+class="cmti-12">, then it is given by</span> \(\frac{a+c}{b+d}\)<span 
+class="cmti-12">. If the determinant</span> \(ad-bc = \pm 1\)<span 
+class="cmti-12">, then</span> \(\frac{a}{b},\frac{c}{d}\) <span 
+class="cmti-12">are neighbors in the</span>
+<span 
+class="cmti-12">Farey sequence</span> \(F_{b+d-1}\) <span 
+class="cmti-12">and the rationals between them in reduced form are</span> \(\frac{k_1a+k_2c}{k_1b+k_2d}\) <span 
+class="cmti-12">where</span> \((k_1,k_2) = 1\)<span 
+class="cmti-12">. The</span>
+<span 
+class="cmti-12">determinant is</span> \(1\) <span 
+class="cmti-12">iff the two rationals are consecutive in some</span> \(F_k\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 69--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It is clearly negative. Consider the parallelogram generated by \((a,b),(c,d)\). The region
+between the ray generated by \((a,b)\) and \((c,d)\) can canonically be tiled with these parallelograms.
+If \((a,b)\) are right next to each other, then the triangle between \((0,0),(a,b),(c,d)\) can have no interior
+points so the triangle has area \(\frac 1 2\), and hence the parallelogram has area \(1\), which proves
+the first result. We can tile the region between the rays generated by \((a,b),(c,d)\) with these
+parallelograms to get the second result. Suppose \(\frac{e}{f}\) is the only thing between \(\frac{a}{b},\frac{c}{d}\) in the
+Farey sequence. If \((a+c,b+d)\) lied strictly in the interior of the region between the rays generated
+by \((e,f)\), and one of \((a,b),(c,d)\) (WLOG \((a,b)\)), we can subtract \((a,b)\) from it to get that \((c,d)\) lies in the region
+between the rays, which is impossible. Thus it must lie on the ray generated by \((e,f)\).
+The next statement follows from the tiling by parallelograms again, and the last
+statement follows from the second last. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 73--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r2"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Lemma 2.2.</span>  </span> <span 
+class="cmti-12">Each convergent of a real number is closer than the last.</span>
+</p>
+  <div class="proof">
+<!--l. 77--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Write \(r = [a_0,\dots ,a_n,b_n]\), where \(a_n\) agree with the continued fraction for \(r\). Then if \(\frac{b_n}{c_n}\) are the usual
+convergents of \(r\), one computes \(|r-\frac{b_n}{c_n}| = \frac{1}{c_n(c_nb_n+c_{n-1})}\). We compute \(|r-\frac{b_{n+1}}{c_{n+1}}| = \frac{b_n-\floor{b_n}}{c_{n+1}(c_nb_n+c_{n-1})}\), which is clearly smaller. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 81--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r3"></a>
+<span 
+class="cmbx-12">Theorem 2.3.</span>  </span><span 
+class="cmti-12">If</span> \(r_k = \frac{b_k}{c_k}\) <span 
+class="cmti-12">are the convergents of</span> \(r\)<span 
+class="cmti-12">,</span> \(k&gt;0\)<span 
+class="cmti-12">, then they are best approximation of</span> \(r\)
+<span 
+class="cmti-12">with denominator at most</span> \(c_{k}+c_{k-1}-1\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 85--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Since \(k&gt;0\) we can assume WLOG \(r\) is between \(0\) and \(1\). Then this follows from the
+lemma about the Farey sequences, and the facts that the determinant between \(r_k\) and
+\(r_{k-1}\) is \(\pm 1\), and that \(r_k\) is the better approximation. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 89--><p class="indent" >  There is another sense in which we can ask that the continued fraction be a good
+approximation of \(r\). Namely we can say that \(\frac{p}{q}\) is a good approximation if \(|qr-p|\) is small. Our
+bounds from before show that if \(\frac{b_k}{c_k}\) are the convergents of \(r\), then \(|c_kr-b_k| &lt; \frac{1}{c_{k+1}}\). We should note that the
+proof of Lemma <a 
+href="#x1-2002r2">2.2<!--tex4ht:ref: getting closer --></a> actually shows:
+</p>
+                                                                                  
+
+                                                                                  
+  <div class="newtheorem">
+<!--l. 91--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2004r4"></a>
+<span 
+class="cmbx-12">Lemma 2.4.</span>  </span>\(|c_kr-b_k|&gt;|c_{k+1}r-b_{k+1}|\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 95--><p class="indent" >  Thus the convergents get closer in this sense as well.
+</p>
+  <div class="newtheorem">
+<!--l. 97--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2005r5"></a>
+<span 
+class="cmbx-12">Theorem 2.5.</span>  </span>\(\frac{p}{q}\) <span 
+class="cmti-12">is a reduced convergent of</span> \(r\) <span 
+class="cmti-12">with</span> \(q \geq c_1\) <span 
+class="cmti-12">iff for all different</span> \(\frac{a}{b}\) <span 
+class="cmti-12">with</span> \(b\leq q\)<span 
+class="cmti-12">,</span> \(|qr-p|&lt;|br-a|\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 101--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The case when \(b =q\) is covered from the statement about Farey sequences. If \(b\) is
+not the denominator of a convergent, let \(c_k &lt; b&lt;c_{k+1}\). We can interpret the statement as with
+Farey sequences by observing that \(|qr-p|\) is the horizontal distance from the point \((p,q)\) to the
+line \((cr,c)\). If \((a,b)\) lies outside the area between the rays generated by \((b_k,c_k)\) and \((b_{k-1},c_{k-1})\), then it certainly
+cannot be closer to the line \((c\alpha ,c)\) than either of them. If it is inside, then by Lemma <a 
+href="#x1-2001r1">2.1<!--tex4ht:ref: farey --></a>, \((a,b)\)
+is a positive linear combination of \((b_k,c_{k})\) and \((b_{k-1},c_{k-1})\), with coefficients \(i_1,i_2\). Note that \(c_{k+1}\) is when \(i_1 = 1\) and \(i_2 = a_{k+1}\),
+and it is defined so that \(i_1=1\) and \(i_2 = a_{k+1}-1\) lies on the same side of the line \((cr,c)\) as \((b_{k-1},c_{k-1})\). Thus the closest \((a,b)\)
+could get to the line is \((b_{k-1}+(a_{k+1}-1)b_k,c_{k-1}+(a_{k+1}-1)c_k)\). But since \((b_{k+1},c_{k+1}),(b_{k},c_k)\) lie on different sides of the line, we have \(|r(b_{k-1}+(a_{k+1}-1)b_k)-(c_{k-1}+(a_{k+1}-1)c_k)| = |r b_{k+1}-c_{k+1}|+|r_{b_k}-c_{k}|\), giving
+the result. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 105--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2006r6"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Proposition 2.6.</span>  </span><span 
+class="cmti-12">An irrational</span> \(r\) <span 
+class="cmti-12">has infinitely many rational approximations</span> \(\frac p q\) <span 
+class="cmti-12">with</span>
+<span 
+class="cmti-12">error less than</span> \(\frac 1{2q^2}\)<span 
+class="cmti-12">. Every such rational number is a convergent. For any</span> \(\ee ,c&gt;0\)<span 
+class="cmti-12">, A rational</span>
+<span 
+class="cmti-12">number has finitely many approximations</span> \(\frac p q\) <span 
+class="cmti-12">with error at most</span> \(\frac c{q^{1+\ee }}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 109--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>The inequality holds for at least one out of every two convergents. Otherwise,
+we have \(\frac{1}{c_kc_{k+1}} = |\frac{b_{k}}{c_k}-\frac{b_{k+1}}{c_{k+1}}|\geq \frac{1}{2c_{k}^2}+ \frac{1}{2c_{k+1}^2}\), which cannot be an equality as \(c_k &lt; c_{k+1}\). Conversely, if the inequality is satisfied for
+\(\frac{a}{b}\), then we will show that \(\frac{a}{b}\) satisfies the theorem above. Let \(\frac{c}{d}\) be any different reduced
+fraction which is closer in the sense of the above theorem. Then \(\frac{1}{bd} \leq |\frac{a}{b}-\frac{c}{d}| \leq |\frac{a}{b} -r| + |\frac{c}{d}-r|\leq \frac{1}{2b^2}+\frac{1}{2bd}\), which implies \(b&lt;d\).
+</p><!--l. 111--><p class="indent" >  For the last statement, if our rational number is \(\frac a b\) and we want \(|\frac a b - \frac p q| \leq \frac c{q^{1+\ee }}\). WLOG we can
+assume \(\frac p q \leq \frac a b\), \(a,q&gt;0\). Then \(aq^{1+\ee }-pq^{\ee }b \leq b\), so \(q\) is bounded, and takes finitely many values. \(p\) does as well. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 115--><p class="indent" >  Let&#8217;s define some notation. If \(x,y \in \RR \), we can say that \(x \to y\) if \(y = \frac{1}{x-\floor{x}}\), and \(x \twoheadrightarrow y\) if \(x \to x_1 \to x_2 \to \dots y\). Clearly if \(x = [c_0,\dots ],y = [c'_0,\dots ]\) are the continued
+fractions, then \(x \to y\) iff \(c'_i = c_{i+1}\).
+</p>
+  <div class="newtheorem">
+<!--l. 117--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2007r7"></a>
+<span 
+class="cmbx-12">Lemma 2.7.</span>  </span> \(\exists x\) <span 
+class="cmti-12">such that</span> \(x \to y\) <span 
+class="cmti-12">iff</span> \(y&gt;1\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 121--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Then if \(x \to y\), this is clear, and conversely, we can let \(x\) be \(\frac{1}{y}+n\) for any \(n\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>Continued fractions of real quadratic numbers</h3>
+<!--l. 126--><p class="noindent" >Suppose that the continued fraction of some irrational \(x\) is repeating, i.e \(x \twoheadrightarrow x\). Then we can
+write \(x = [a_0,\dots ,a_n ,x]\). We can simplify the right hand side to a quotient of two linear polynomials in \(x\),
+showing that \(x\) is the root of a quadratic equation. More precisely if \(\frac{d_i}{e_i}\), by the magic box, \(x = \frac{d_nx+d_{n-1}}{e_{n}x+e_{n-1}}\), so
+\(x = \frac{-(e_{n-1}-d_n)\pm \sqrt{(e_{n-1}-d_n)^2+4e_nd_{n-1}}}{2e_n}\). Using the determinant identity from the magic box, this is equal to \(x = \frac{-(e_{n-1}-d_n)\pm \sqrt{(e_{n-1}+d_n)^2+4(-1)^n}}{2e_n}\). Replace \(n\) with \(kn\), and
+let \(k \to \infty \) and noting that \(e_n \to \infty \), the two roots are \(\lim _{k\to \infty }-\frac{e_{kn-1}}{e_{kn}}\) for negative, and \(\lim _{k\to \infty }\frac{d_{kn}}{e_{kn}}\) for positive. But the first is \(y| \frac{-1}y = [a_n,\dots ,a_0,y]\),
+and the latter is \(x\), so we get:
+</p>
+  <div class="newtheorem">
+<!--l. 128--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+<span 
+class="cmbx-12">Theorem 3.1.</span>  </span> <span 
+class="cmti-12">If</span> \(x\) <span 
+class="cmti-12">has continued fraction</span> \([a_0,\dots a_n,x]\)<span 
+class="cmti-12">, then</span> \(x = \frac{-(e_{n-1}-d_n)+\sqrt{(e_{n-1}+d_n)^2+4(-1)^n}}{2e_n}\) <span 
+class="cmti-12">where</span> \(\frac{d_n}{e_n}\) <span 
+class="cmti-12">is the</span> \(n^{th}\) <span 
+class="cmti-12">convergent. Moreover,</span>
+\(a_i,d_i,e_i&gt;0\)<span 
+class="cmti-12">,</span> \(x&gt;1\)<span 
+class="cmti-12">,</span>\(-1&lt;\bar{x}&lt;0\)<span 
+class="cmti-12">, and</span> \(\frac{-1}{\bar{x}} = [a_n,\dots , a_0,\frac{-1}{\bar{x}}]\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 132--><p class="indent" >  Even if \(x\) has a continued fraction that eventually repeats, ie. \(x \twoheadrightarrow y \twoheadrightarrow y\), we can subtract the first
+few terms and take reciprocals to get another number with repeating continued fraction,
+so \(x\) will lie in the field generated by that element, hence will again be the root of some
+quadratic polynomial.
+</p><!--l. 134--><p class="indent" >  In the case that \(x = \sqrt{d}\), there is a fast way to organize the computation of the continued
+fraction of \(x\). Normally, at each step, we would expect to have something of the form \(\frac{a + g\sqrt{d}}{b}\),
+subtract its floor, and compute its reciprocal in \(\QQ [\sqrt{d}]\). However in this case, at every
+step, \(g=1\)! To see this, let \(c\) be the floor of \(\frac{a+\sqrt{d}}{b}\). Then at the next step we will have \(\frac{b(bc-a+\sqrt{d})}{-\N (a-bc+\sqrt{d})}\).
+So in the next step \(g = 1\) iff \(b|\N (a-bc+\sqrt{d})\) iff \(a^2\equiv d \pmod b\). If this is the case, then letting \(x = bc-a\), \(y = \frac{d-x^2}{b}\), we get that the
+number at the next step is \(\frac{x+\sqrt{d}}{y}\). Note that \(x^2\equiv d \pmod y\) by definition of \(y\). Thus if \(g = 1\) at one step
+and \(a^2 \equiv d \pmod b\), then \(g=1\) at every step. Moreover, we have seen how to compute the next
+step, and we can organize this information into a table called the <span 
+class="cmbx-12">super magic</span>
+<span 
+class="cmbx-12">box</span>.
+</p><!--l. 136--><p class="indent" >  We will consider the super magic box for \(\frac{a_0+\sqrt{n}}{b_0}\), where \(a_0^2 \equiv n \pmod{b_0}\). Note that the congruence condition
+can always be arranged by multiplying the denominator and numerator by a sufficiently
+divisible number (for example \(b_0\)). Let \(w = \floor{\sqrt{n}}\). Then we write a table
+                                                                                  
+
+                                                                                  
+</p><!--l. 138--><p class="indent" >  </p><figure class="float" 
+>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 139--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+ 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1" /></colgroup><colgroup id="TBL-3-2g"><col 
+id="TBL-3-2" /><col 
+id="TBL-3-3" /><col 
+id="TBL-3-4" /><col 
+id="TBL-3-5" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-1"  
+class="td11">\(a_0\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-2"  
+class="td11">\(a_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-3"  
+class="td11">&#x2026;</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-4"  
+class="td11">\(a_n\)</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-1"  
+class="td11">\(b_0\) </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-2"  
+class="td11">\(b_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-3"  
+class="td11">&#x2026;</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-4"  
+class="td11">\(b_n\)</td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-1"  
+class="td11">\(c_0\) </td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-2"  
+class="td11">\(c_1\)</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-3"  
+class="td11">&#x2026;</td><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-4"  
+class="td11">\(c_n\)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-4-1"  
+class="td11"> </td></tr></table></div></div>
+<!--l. 148--><p class="noindent" >where \(a_i = b_{i-1}c_{i-1}-a_{i-1}\), \(b_i = \frac{n-a_i^2}{b_{i-1}}\), \(c_i = \floor{\frac{a_i + w}{b_i}}\).
+                                                                                  
+
+                                                                                  
+</p>
+  </figure>
+<!--l. 150--><p class="indent" >  Then \(\frac{a_i+\sqrt{n}}{b_i} = [c_i,c_{i+1},\dots ]\), so in particular the \(c_i\) are convergents of the original number.
+</p><!--l. 152--><p class="indent" >  We can bound \(b_{i+1}\) in terms of \(b_{i}\) and \(n\). Note that WLOG we can assume \(c_i = 0\) by subtracting it
+off. Now, assume that \(b_i&gt;0\). Thus \(b_{i+1} = \frac{n-a_i^2}{b_i}\). Clearly \(b_{i+1} \leq \frac{n}{b_i}\). Now note that \(b_i-\sqrt{n} \geq a_i \geq -\sqrt{n}\). This shows that either \(|b_{i+1}|&lt;|b_i|-2\sqrt{n}\) or \(|b_{i+1}|\) is less
+than \(\max \{n,2\sqrt{n}\}\). If \(b_i&lt;0\), \(\sqrt{n}-b_i \geq -a_i \geq \sqrt{n}\). It follows that \(0 \leq b_{i+1} \leq -b_i+2\sqrt{n}\). Thus it follows that \(|b_i| \leq 2\sqrt{n}+\max \{|b_0|,n\}\) so that there are only finitely many
+values it takes on. The bounds for \(a_i\) above in general give bounds on \(a_{i+1}\) dependant on \(b_{i}\), so
+there are also finitely many possibilities for the \(a_i\). Thus the columns of the super magic box
+repeat and we get:
+</p>
+  <div class="newtheorem">
+<!--l. 154--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3002r2"></a>
+<span 
+class="cmbx-12">Theorem 3.2.</span>  </span> \(a\) <span 
+class="cmti-12">has an eventually repeating continued fraction iff</span> \(a\) <span 
+class="cmti-12">lies in a real quadratic</span>
+<span 
+class="cmti-12">field. When it repeats,</span> \(c_i,b_i,a_i&gt;0\)<span 
+class="cmti-12">,</span> \(2a_i,b_i&lt;2\sqrt{n}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 157--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(c_i\) is clearly positive, \(b_i\) is positive by the theorem on irrationals with repeating
+continued fractions, and \(a_i\) is positive since \(\frac{{a_i}-\sqrt{n}}{b_i} \in (-1,0)\), and \(\frac{a_i+\sqrt{n}}{b_i}&gt;1\) which implies the bound. The average
+of the number and its conjugate is \(\frac{a_i}{b_i}\), which cannot be negative, so \(a_i&gt;0\). \(a_i &lt; \sqrt{n}\) follows from the
+fact that \(\frac{a_i-\sqrt{n}}{b_i}\) is negative. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 161--><p class="indent" >  When does a number \(r\) have strictly repeating continued fraction? A necessary
+condition is that \(r&gt;1\) and \(\bar{r} \in (-1,0)\). Is this sufficient? Say that \(r\) is <span 
+class="cmbx-12">regular </span>if it is in some real
+quadratic field and satisfies these two conditions. We can try to run the magic box
+backwards.
+</p>
+  <div class="newtheorem">
+<!--l. 162--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3003r3"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Lemma 3.3.</span>  </span><span 
+class="cmti-12">If</span> \(r\) <span 
+class="cmti-12">is regular, then there is a unique regular</span> \(r_{-1}\) <span 
+class="cmti-12">with</span> \(r_{-1} \to r\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 166--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(0&lt;\frac{1}{r}&lt;1\) and \(\frac{1}{\bar{r}}&lt;-1\). Thus there is a unique number such \(n&gt;0\) such that \(\frac{1}{\bar{r}}+n \in (-1,0)\). Let \(r_{-1} = \frac{1}{r}+n\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 170--><p class="indent" >  Thus we can run a reverse super magic box on \(r\). One has to check via a calculation that
+this works with some constant number in the square root. By the bounds for Theorem <a 
+href="#x1-3002r2">3.2<!--tex4ht:ref: legendre --></a>,
+\(a_i,b_i\) take on finitely many values. Thus it eventually repeats. But going forward, this means
+that \(r\) has a repeating continued fraction! We obtain:
+</p>
+  <div class="newtheorem">
+<!--l. 172--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3004r4"></a>
+<span 
+class="cmbx-12">Theorem 3.4.</span>  </span> \(r\) <span 
+class="cmti-12">is regular iff</span> \(r\) <span 
+class="cmti-12">has a repeating continued fraction.</span>
+</p>
+  </div>
+<!--l. 176--><p class="indent" >  As an application, we can study the continued fraction of \(\sqrt{r}\) where \(r\) is a positive
+rational.
+</p>
+  <div class="newtheorem">
+<!--l. 178--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3005r5"></a>
+<span 
+class="cmbx-12">Theorem 3.5.</span>  </span><span 
+class="cmti-12">If</span> \(r&gt;1\) <span 
+class="cmti-12">is a rational, then</span> \(\sqrt{r}\) <span 
+class="cmti-12">has a continued fraction of the form</span> \([a_0,\overline{a_1,\dots a_{r}}]\)<span 
+class="cmti-12">, where</span>
+<span 
+class="cmti-12">the line signifies repetition. Moreover,</span> \(a_r = 2a_0\)<span 
+class="cmti-12">, and</span> \(a_i = a_{r-i+1}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 182--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">Proof.</span> </span>To see that the continued fraction is of that form, we only need to note that
+\(\sqrt{r}+\floor{\sqrt{r}}\). satisfies the conditions of the theorem above. To see the last two conditions, note
+that \(\frac{-1}{\bar{\sqrt{r}}} = \frac{1}{\sqrt{r}}\) so that \(\sqrt{r} = [a_0,\overline{a_1,\dots a_{r}}] = [a_0,\overline{a_1,\dots a_{r}}] = [a_0,\overline{a_1,\dots a_{r}-a_0,0,a_0}] = [\overline{a_0,a_1,\dots a_{r}-a_0,0}]\) but on the other hand it is equal to \([0,\overline{0,a_r-a_0, a_{r-1}\dots a_{0}}] = [\overline{a_r-a_0, a_{r-1}\dots a_{0},0}] = [a_r-a_0, \overline{a_{r-1}\dots a_{0},0,a_r-a_0}] = [a_r-a_0, \overline{a_{r-1}\dots a_{1},a_r}]\) by the last part of Theorem <a 
+href="#x1-3001r1">3.1<!--tex4ht:ref: repeating --></a>.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 186--><p class="indent" >  Given a non-square \(d\), we can find all solutions \((x,y)\) to Pell&#8217;s equation,\(x^2-dy^2=\pm 1\) using continued
+fractions. This is the same as finding a \(x+\sqrt{d}y\) with norm \(\pm 1\). WLOG, we can assume \(x,y&gt;0\), which is the
+same as restricting to \(x+\sqrt{d}y &gt; 1\).
+</p>
+  <div class="newtheorem">
+<!--l. 188--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3006r6"></a>
+<span 
+class="cmbx-12">Theorem 3.6.</span>  </span><span 
+class="cmti-12">If</span> \(x,y&gt;0\)<span 
+class="cmti-12">, and</span> \((x,y)\) <span 
+class="cmti-12">solves Pell&#8217;s equation,</span> \(\frac{x}{y}\) <span 
+class="cmti-12">is a convergent of</span> \(\sqrt{d}\)<span 
+class="cmti-12">. Infinitely many such</span>
+<span 
+class="cmti-12">solutions exist, and are powers of a fundamental solution.</span>
+</p>
+  <div class="proof">
+<!--l. 191--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(|x^2-dy^2|=1 \implies |\frac{x}{y}-\sqrt{d}|\leq \frac{1}{y^2|\frac{x}{y}+\sqrt{d}|} \leq \frac{1}{2y^2}\), so \(x,y\) is a solution. To see that a solution exists, note that \(|b_k^2-dc_k^2|\) is bounded above
+by a constant like \(2d+1\). These infinitely many things must generate finitely many ideals,
+since there are finitely many index \(n\) subgroups of \(\ZZ ^2\). Thus there are infinitely many
+units. Taking log of the positive units, they must form a discrete subgroup as the
+convergents are discrete. Thus there is a fundamental solution. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-40004"></a>Farey Sequences and Hyperbolic Geometry</h3>
+<!--l. 196--><p class="noindent" >A finite continued fraction with integer coefficients takes values in \(\QQ \PP ^1=\QQ \cup \infty \). We can define a
+symmetric relation on \(\QQ \PP ^1\) by saying that \(a \sim b\) iff \(a = [a_0,\dots ,a_n],b = [a_0,\dots ,a_{n-1}]\) for some integers \(a_0,\dots ,a_n\). Here are axioms for this
+relation:
+                                                                                  
+
+                                                                                  
+</p>
+  <div class="newtheorem">
+<!--l. 198--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4001r1"></a>
+<span 
+class="cmbx-12">Lemma 4.1.</span>  </span>\(\sim \) <span 
+class="cmti-12">is the least symmetric relation that is invariant under the action of</span> \(\SL _2(\ZZ )\)
+<span 
+class="cmti-12">(via fractional linear transformations) such that</span> \(0 \sim \infty \)<span 
+class="cmti-12">. the action on</span> \(\QQ \PP ^1\) <span 
+class="cmti-12">is transitive.</span>
+</p>
+  <div class="proof">
+<!--l. 202--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Clearly \(0 \sim \infty \). Moreover, \([a_0,\dots ,a_n]\sim [a_0,\dots ,a_{n-1}] \implies [a_0+m,\dots ,a_{n-1}] \simeq [a_0+m,\dots ,a_n]\) so the relation is invariant under \(\begin{pmatrix} 1 &amp; m \\ 0 &amp; 1 \end{pmatrix}\). Moreover, \([a_0,\dots ,a_n]\sim [a_0,\dots ,a_{n-1}] \implies [0,-a_0,\dots ,-a_{n-1}]\sim [0,-a_0,\dots ,-a_{n}] \), so it is
+invariant under \(\begin{pmatrix} 0 &amp; -1\\ 1 &amp; 0 \end{pmatrix}\) so it is invariant under \(\SL _2(\ZZ )\). Conversely, if \(0 \sim \infty \), then \([] \sim [0]\), and we can build our
+relation up from the two operations above. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 210--><p class="indent" >  Here is another characterization.
+</p>
+  <div class="newtheorem">
+<!--l. 212--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4002r2"></a>
+<span 
+class="cmbx-12">Lemma 4.2.</span>  </span>\(\sim \) <span 
+class="cmti-12">is the symmetrization of the relation</span> \(\frac{a}{b}\sim \frac{c}{d}\) <span 
+class="cmti-12">iff</span> \(ad-bc= 1\) <span 
+class="cmti-12">for reduced fractions.</span> \(\SL _2(\ZZ )\) <span 
+class="cmti-12">acts</span>
+<span 
+class="cmti-12">transitively on pairs that are related.</span>
+</p>
+  <div class="proof">
+<!--l. 216--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This is clearly \(\SL _2(\ZZ )\)-invariant, and \(\frac{n}{1}\) is related to \(\frac{1}{0}\), so the relation described is
+contained in the one we want. Conversely, we can apply \(\begin{pmatrix} a &amp; c\\ b &amp; d \end{pmatrix}\) to \(\infty \sim 0\) to get the other direction,
+and that the action is transitive. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 222--><p class="indent" >  Here is another characterization of the relation using Farey sequences.
+</p>
+  <div class="newtheorem">
+<!--l. 223--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4003r3"></a>
+<span 
+class="cmbx-12">Lemma 4.3.</span>  </span>\(a \sim \infty \iff a \in \ZZ \)<span 
+class="cmti-12">,</span> \(a,b \in \QQ , a \sim b \implies |a-b|\leq 1\)<span 
+class="cmti-12">,</span> \(a\sim b \iff a+n \sim b+n\)<span 
+class="cmti-12">, and if</span> \(0 \leq a,b \leq 1\)<span 
+class="cmti-12">,</span> \(a\sim b\) <span 
+class="cmti-12">iff</span> \(a\) <span 
+class="cmti-12">and</span> \(b\) <span 
+class="cmti-12">are consecutive in some Farey sequence.</span>
+</p>
+  <div class="proof">
+<!--l. 228--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>First note that need to observe that by Lemma <a 
+href="#x1-2001r1">2.1<!--tex4ht:ref: farey --></a>, if \(\frac{a}{b},\frac{c}{d}\) are consecutive in
+a Farey sequence, \(\SL _2(\ZZ )\), then \(ad-bc = 1\), so we can apply the the transformation \(\frac{(a-c)z+c}{(b-d)z+d}\) to \(0 \sim 1\). Thus the
+relation defined in the theorem is contained in the relation \(\sim \). Conversely, if \(ad-bc =1\), \(\frac{a}{b},\frac{c}{d}\) are
+within \(1\) of each other, so after subtracting them, they will be in the unit interval, at
+which Lemma <a 
+href="#x1-2001r1">2.1<!--tex4ht:ref: farey --></a> applies again to say that they are consecutive. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 232--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4004r4"></a>
+<span 
+class="cmbx-12">Lemma 4.4 </span>(Compatibility with the order)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">If</span> \(a\sim b,c \sim d\) <span 
+class="cmti-12">and</span> \(a \leq c \leq b\)<span 
+class="cmti-12">, then</span> \(a \leq d \leq b\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 235--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>We can assume \(a,b \in [0,1]\), for which it follows from Lemma <a 
+href="#x1-2001r1">2.1<!--tex4ht:ref: farey --></a>. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
+</p>
+  </div>
+  </div>
+<!--l. 239--><p class="indent" >  Our relation determines some undirected graph on \(\QQ \cup \infty \). We can embed this graph onto the
+upper graph by taking the geodesics between the two points on the boundary of
+the upper half plane. This is called the <span 
+class="cmbx-12">Farey tiling </span>of the upper half plane.
+Note that if \(\gamma _1\) is the geodesic between two real numbers \(\alpha \leq \beta \), and \(\gamma _2\) is the geodesic
+between \(a\leq b\), and \(a \in [\alpha ,\beta ]\), then the interiors of \(\gamma _1,\gamma _2\) intersect iff \(b \geq \beta \).The previous lemma shows that
+none of these geodesics intersect each other except at the boundary in the Farey
+tiling.
+</p>
+  <div class="newtheorem">
+<!--l. 241--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4005r5"></a>
+<span 
+class="cmbx-12">Lemma 4.5.</span>  </span><span 
+class="cmti-12">If</span> \(\frac{a}{b}\sim \frac{c}{d}, \frac{a}{b} &lt; \frac{c}{d}\)<span 
+class="cmti-12">, then</span> \(\frac{a+c}{b+d}\) <span 
+class="cmti-12">is the unique number between them related to both.</span>
+</p>
+  <div class="proof">
+<!--l. 244--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>That this is related to both and in between is obvious. To show it is unique,
+by transitivity of the \(\SL _2(\ZZ )\) action and due to its preservation of the cyclic order on \( \QQ \PP ^1\), it is
+enough to consider \(0 = \frac{0}{1} \sim \frac{1}{0} = \infty \). In this case, it follows since the only positive number \(0,\infty \) are both
+related to is \(1\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 248--><p class="indent" >  Define \(m|M\) for rationals \(m,M\) to be the unique number in the lemma above.
+</p>
+  <div class="newtheorem">
+<!--l. 250--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4006r6"></a>
+<span 
+class="cmbx-12">Theorem 4.6.</span>  </span><span 
+class="cmti-12">Begin with</span> \(m = 0\) <span 
+class="cmti-12">and</span> \(M = \infty \)<span 
+class="cmti-12">, and let</span> \(\alpha \geq 0\)<span 
+class="cmti-12">. We will construct a sequence of letters</span> \(R\)<span 
+class="cmti-12">s</span>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmti-12">and</span> \(L\)<span 
+class="cmti-12">s as follows: If</span> \(\alpha \) <span 
+class="cmti-12">is greater than or equal to</span> \(m|M\)<span 
+class="cmti-12">, then we replace</span> \(m\) <span 
+class="cmti-12">with</span> \(m|M\) <span 
+class="cmti-12">and record a</span> \(R\)<span 
+class="cmti-12">.</span>
+<span 
+class="cmti-12">Otherwise, we replace</span> \(M\) <span 
+class="cmti-12">with</span> \(m|M\) <span 
+class="cmti-12">and record an</span> \(L\)<span 
+class="cmti-12">. Repeating this process gives an infinite</span>
+<span 
+class="cmti-12">collection of</span> \(L\)<span 
+class="cmti-12">s and</span> \(Rs\)<span 
+class="cmti-12">. Now count the number of times</span> \(L\)<span 
+class="cmti-12">s or</span> \(R\)<span 
+class="cmti-12">s happens consecutively,</span>
+<span 
+class="cmti-12">and let</span> \(c_i\) <span 
+class="cmti-12">be these numbers.</span> \(c_1\) <span 
+class="cmti-12">is the number of times</span> \(R\) <span 
+class="cmti-12">happens at the beginning. Then</span> \([c_0,c_1,\dots ]\)
+<span 
+class="cmti-12">is the continued fraction for</span> \(\alpha \)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 254--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Observe that the number of times \(R\) will appear at the beginning is \(\floor \alpha \). Then,
+apply the transformation \(z \mapsto \frac{1}{z-\alpha }\), and observe that the number of rights that appear by
+starting over except using \(\frac{1}{\alpha -\floor \alpha }\) is exactly the number of lefts that would have appeared
+right after. Moreover, if \(\alpha = [a_0,\dots ]\), then \(\frac{1}{\alpha -\floor \alpha } = [a_1,\dots ]\), so by induction we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 258--><p class="indent" >  Note that this has the following geometric interpretation: we can find the sequence of \(R,L\)s
+by taking the geodesic connecting \(\alpha \) and \(-\alpha \) and looking at how it intersects the Farey
+tiling.
+</p>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

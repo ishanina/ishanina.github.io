@@ -1,0 +1,397 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Isospectral Manifolds/Number fields via Galois theory</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Number_Fields_and_the_Laplacian.css" /> 
+<meta name="src" content="Number_Fields_and_the_Laplacian.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+ISOSPECTRAL MANIFOLDS/NUMBER FIELDS VIA GALOIS
+THEORY
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Number fields</h3>
+<!--l. 10--><p class="noindent" >Two number fields are <span 
+class="cmbx-12">arithmetically equivalent </span>if they have the same Dedekind zeta
+function \(\zeta _K(s) = \sum _I \frac{1}{N(I)^s}\). Note from the zeta function, we can recover the number of ideals of a particular
+norm. Indeed, for any convergent Dirichlet series \(\sum _i \frac{a_n}{n^s}\), the smallest nonzero \(a_j\) can be recovered
+by noticing that the function asymptotically behaves like \(\frac{a_j}{j^s}\), and after subtracting this term
+off and repeating, all the terms can be recovered. Using the data of how many ideals there
+are of norm \(p^k\) for an rational prime \(p\), we can recover the (unordered) residual degrees \(f_1,\dots , f_k\) of the
+factors of all the primes above any rational prime \(p\). This information, is called
+the <span 
+class="cmbx-12">splitting type of</span> \(p\). This recovers information such as which primes split
+completely over \(\QQ \). Thus we can see for example that Galois extensions over \(\QQ \) are
+determined by their zeta functions, and the degree over \(\QQ \) is an invariant of the zeta
+function.
+</p><!--l. 12--><p class="indent" >  To study further the problem of determining when \(\zeta _K(s) = \zeta _K'(s)\) we will let \(N\) be a common Galois
+extension over \(\QQ \) of both of them with Galois group \(G\), such that \(H,H'\) are the Galois groups over \(K,K\).
+Now we can give an interpretation of splitting type in terms of Galois theory. In particular,
+suppose that \(f_1,\dots ,f_k\) is the splitting type of some unramified prime \(p\), and \(D\) is the decomposition
+group of some prime over \(p\). Then the action of \(G\) on the primes above \(p\) is the same as the
+action on right \(D\) cosets. Thus the sizes of the double cosets \(Ht_iD\) of \(H,D\) correspond to the \(f_i\) via \(f_i|H| = |Ht_iD|\)
+possibly after rearrangement this. The information of the sizes of the double cosets will be
+called the <span 
+class="cmbx-12">double coset type of (H,D)</span>. Since by Frobenius density theorem every cyclic
+subgroup is the decomposition group of infinitely many primes, we have that the
+                                                                                  
+
+                                                                                  
+double coset type of \((H,D)\) is an invariant of the zeta function for any cyclic subgroup
+\(D\).
+</p><!--l. 14--><p class="indent" >  The following lemma is purely group theoretic:
+</p>
+  <div class="newtheorem">
+<!--l. 16--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Lemma 1.1.</span>  </span><span 
+class="cmti-12">Two subgroups</span> \(H,H'\) <span 
+class="cmti-12">of a finite group</span> \(G\) <span 
+class="cmti-12">have the same double coset types for</span>
+<span 
+class="cmti-12">any cyclic subgroup</span> \(D\) <span 
+class="cmti-12">iff</span> \(|H\cap [\alpha ]| = |H' \cap [\alpha ]|\) <span 
+class="cmti-12">for any conjugacy class</span> \([\alpha ]\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 20--><p class="indent" >  It shows that two arithmetically equivalent number fields satisfy the lemma above for
+their corresponding subgroups. In fact, the converse is true.
+</p><!--l. 22--><p class="indent" >  To see this, note that for any unramified prime \(p\), we can run the argument backwards to
+see that the number of ideals of norm that are powers of \(p\) is the same for both \(K,K'\). Thus the
+Euler products of \(\zeta _K(s),\zeta _K'(s)\) differ only possibly by the ramified primes. Now we will deal with the
+ramification.
+</p><!--l. 24--><p class="indent" >  Let \(C_i\) be a decomposition group of the real place of \(\QQ \) (generated by complex conjugation).
+The double cosets of \(H,H'\) with \(C\) then correspond to the real and complex places of \(K,K'\) (in
+particular one of size \(2|H|\) is a complex embedding and one of size \(|H|\) is a real embedding). Thus
+we can recover the numbers \(r_1,r_2\) of real and complex places from the double coset type of this
+subgroup.
+</p><!--l. 26--><p class="indent" >  Now to see that \(\zeta _K(s) = \zeta _K'(s)\), we will examine their functional equations.To see that they can&#8217;t be
+different, we will use the functional equation for the Dedekind zeta function. Now recall
+that if \(G_1 = \pi ^{-\frac{s}{2}}\Gamma (\frac{s}{2}), G_2 = (2\pi )^{1-s}\Gamma (s)\), then \(Z_K(s) = G_1(s)^{r_1}G_2(s)^{r_2}\zeta _K(s)\) has simple poles at \(0,1\), is holomorphic elsewhere, and satisfies the functional
+equation \(Z_K(s) = |D_K|^{\frac{1}{2}-s}Z_K(1-s)\). Taking the quotient for \(Z_K,Z_K'\), we get \(\frac{\zeta _K(s)}{\zeta _{K'}(s)} = |\frac{D_K}{D_{K'}}|^{\frac{1}{2}-s}\frac{\zeta _K(s)}{\zeta _{K'}(s)}\).
+</p><!--l. 28--><p class="indent" >  But \(\frac{\zeta _K(s)}{\zeta _{K'}(s)}\) is of the form \(\prod _1^n(1-\frac{1}{a_i^s})\prod _1^m(1-\frac{1}{b_j^s})^{-1}\) since there are finitely many ramified primes, and the only such
+function that can satisfy such a functional equation is \(1\). Indeed, if we can&#8217;t cancel any of
+the terms in the products, choose \(c\) to be the largest among the \(a_i\) or \(b_i\), we can observe from
+the functional equation that \(1-\frac{2k \pi i}{\log c}\) is either a pole or zero of \(\frac{\zeta _K(s)}{\zeta _{K'}(s)}\), which is clearly impossible. As a
+consequence, we also get the absolute values of the discriminants are the same. We have
+proven:
+</p>
+  <div class="newtheorem">
+<!--l. 30--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r2"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Theorem 1.2.</span>  </span><span 
+class="cmti-12">Let</span> \(K,K'\) <span 
+class="cmti-12">be number fields,</span> \(N\) <span 
+class="cmti-12">a common Galois extension over</span> \(\QQ \)<span 
+class="cmti-12">, and</span> \(H,H'\)
+<span 
+class="cmti-12">the subgroups corresponding to each. Then</span> \(K,K'\) <span 
+class="cmti-12">are arithmetically equivalent iff</span> \(|H\cap [a]| = |H'\cap [a]|\) <span 
+class="cmti-12">for all</span>
+<span 
+class="cmti-12">conjugacy classes.</span>
+</p>
+  </div>
+<!--l. 34--><p class="indent" >  As an example, the Galois group of the polynomial \(x^8-3\) is \(\Hol (\ZZ /8\ZZ ) = \ZZ /8\ZZ \rtimes \ZZ /8\ZZ ^\times \). The subgroups \(\langle 0 \rangle \times \ZZ /8\ZZ ^\times \) and the
+subgroup \(\langle (4,\pm 3)\rangle \) satisfy the condition we want, but are not conjugate, so the corresponding
+subfields are distinct but arithmetically equivalent.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Riemannian Manifolds</h3>
+<!--l. 37--><p class="noindent" >Two compact Riemannian manifolds \(M,M'\) are <span 
+class="cmbx-12">isospectral </span>if they have the same
+eigenvalues of their (Hodge) Laplacian \(\Delta _M,\Delta _{M'}\). Here we will think of \(\Delta _M\) as acting on \(p\)-forms
+for some \(p\). Examples of isospectral manifolds have been known for a long time,
+such as Milnor&#8217;s famous example of two isospectral flat tori, but many of the
+ways of producing these manifolds do not work in a lot of generality. Here is a
+method that yields a result highly analogous to the way of producing arithmetically
+equivalent number fields, and that can even produce topologically different isospectral
+manifolds.
+</p><!--l. 39--><p class="indent" >  Namely, given a Riemannian manifold \(M\), we will find a condition for two covering spaces \(M_1,M_2 \to M\)
+to be isospectral. An amazing feature of this construction is that the condition is
+topological, so that \(M_1\) and \(M_2\) will be isospectral regardless of the metric on \(M\). Of course it
+is possible that for some metrics, \(M_1\) and \(M_2\) will also be isometric, but as long as
+\(M_1,M_2\) are topologically different covers, generic metrics on \(M\) will have them not be
+isometric.
+</p><!--l. 41--><p class="indent" >  The first fact that we will use is that the spectrum of a Riemannian manifold \(M\) is entirely
+encoded in its analytic zeta function \(\zeta _M(s) = \sum _i \lambda _i^{-s}\), so we will try to understand how this function with
+respect to covers. To do this, consider the inverse of \(d+d^*\) on \(V_M\), from its image to the orthogonal
+complement of the kernel. As an endomorphism of \(L^2_M(\bigwedge ^*TM)\) it is self adjoint and compact by
+Rellich compactness, so its square \((\Delta _M)^{-1}\) is trace class. It is diagonalizable so we can consider \((\Delta _M)^{-s}\)
+for \(\real (s)&gt;1\), which is also trace class, and moreover has trace equal to \(\zeta _M(s)\) when restricted to
+\(p\)-forms.
+</p><!--l. 44--><p class="indent" >  Now let \(\tilde{M}\) a finite Galois cover whose group of deck transformations is \(G\), and let \(M'\to M\) be a
+cover corresponding to a subgroup \(H \subset G\). We can identify \({V_{\tilde{M}}}^H\) with \(V_{M'}\) by pulling back functions and
+scaling by \(|H|^{-\frac 1 2}\) to preserve the inner product, where \((-)^H\) means the subspace fixed by \(H\).
+                                                                                  
+
+                                                                                  
+Thus using the formula for the projection to the fixed subspace, \[\zeta _{M'}(s) = \tr (\Delta _{M'}^{-s}) = \tr ({\Delta _{\tilde{M}}}^{-s}|{V_{\tilde{M}}}^H)\]\[ = \frac 1{|H|}\sum _{h \in H}\tr ({\Delta _{\tilde{M}}}^{-s}h) = \frac 1{|H|}\sum _{[g] \in G}|[g]\cap H|\tr ({\Delta _{\tilde{M}}}^{-s}g)\] where \([g] \in G\) are the
+conjugacy classes. Note that this formula only depends on \(|[g]\cap H|\) for each \([g] \in G\). Thus we have
+proven:
+</p>
+  <div class="newtheorem">
+<!--l. 47--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Theorem 2.1.</span>  </span><span 
+class="cmti-12">Let</span> \(H_1, H_2\) <span 
+class="cmti-12">be subgroups of the fundamental group of a compact Riemannian</span>
+<span 
+class="cmti-12">manifold</span> \(M\) <span 
+class="cmti-12">such that</span> \(|[g]\cap H_1| = |[g] \cap H_2|\) <span 
+class="cmti-12">for each</span> \([g] \in G\)<span 
+class="cmti-12">. Then the covers corresponding to</span> \(H_1\) <span 
+class="cmti-12">and</span> \(H_2\) <span 
+class="cmti-12">are isospectral.</span>
+</p>
+  </div>
+<!--l. 51--><p class="indent" >  The same example as for number fields from before works. Recall that given a finite
+presentation of a group \(G\), via surgery one can construct \(n \geq 4\) dimensional manifold with
+fundamental group \(G\). Thus we get a manifold \(M\) with fundamental group \(G = \ZZ /8\ZZ \rtimes \ZZ /8\ZZ ^\times \) and a generic
+metric, and looking at the corresponding covers gives genuinely different isospectral
+manifolds.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>Questions</h3>
+<!--l. 54--><p class="noindent" >We have essentially the same result in what might seem like two very different contexts.
+The first result made use of a functional equation of a zeta function, and the latter used a
+projection formula for the trace of an operator, since we had an interpretation of the zeta
+function as the trace of an operator.
+</p><!--l. 56--><p class="indent" >  Why is there an analogy in these two situations? Geometrically, a number field behaves
+a lot like an algebraic curve. Indeed, there are differential operators on compact Riemann
+surfaces whose zeta functions are analogous with Artin \(L\)-functions on arithmetic
+curves. So this leads to the question: is the Dedekind zeta function (or more
+generally an Artin \(L\)-function) the trace of an operator? This question is known as the
+Hilbert-Polya conjecture, and has led to a lot of research. Alain Connes has
+apparently such an operator on a non-commutative space, and claims that the
+Riemann hypothesis can be reformulated in terms of proving a trace formula for this
+operator.
+</p>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

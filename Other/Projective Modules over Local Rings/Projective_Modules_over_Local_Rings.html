@@ -1,0 +1,389 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Projective Modules over Local Rings</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Projective_Modules_over_Local_Rings.css" /> 
+<meta name="src" content="Projective_Modules_over_Local_Rings.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+PROJECTIVE MODULES OVER LOCAL RINGS
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Projective modules over local rings are free</h3>
+<!--l. 11--><p class="noindent" >First we start with an abstract construction. We should think of the category as some
+abelian category.
+</p>
+  <div class="newtheorem">
+<!--l. 13--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Definition 1.1.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">colimit d</span><span 
+class="cmbxti-10x-x-120">é</span><span 
+class="cmbxti-10x-x-120">vissage </span><span 
+class="cmti-12">of an object</span> \(M\) <span 
+class="cmti-12">in a cocomplete category</span> \(C\)
+<span 
+class="cmti-12">with a zero object</span> \(0\) <span 
+class="cmti-12">is a collection of subobjects of</span> \(M_\alpha \) <span 
+class="cmti-12">indexed by the ordinals</span> \(\leq \alpha \) <span 
+class="cmti-12">such</span>
+<span 
+class="cmti-12">that:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(1)</span> </dt><dd 
+class="enumerate-enumitem">\(M_0 = 0, M = M_\alpha \)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(2)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">There exists for each</span> \(i&lt;\alpha \) <span 
+class="cmti-12">a</span> \(N_i\) <span 
+class="cmti-12">such that</span> \(M_{i+1} = N_i\coprod M_i\)
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">(3)</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">For each limit ordinal</span> \(\beta \)<span 
+class="cmti-12">,</span> \(M_\beta \) <span 
+class="cmti-12">is the coproduct of</span> \(M_i\) <span 
+class="cmti-12">for</span> \(i&lt;\beta \)<span 
+class="cmti-12">.</span></dd></dl>
+  </div>
+  <div class="newtheorem">
+<!--l. 22--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1005r2"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Proposition 1.2.</span>  </span><span 
+class="cmti-12">If</span> \(M_\alpha \) <span 
+class="cmti-12">is a colimit d</span><span 
+class="cmti-12">é</span><span 
+class="cmti-12">vissage for</span> \(M\)<span 
+class="cmti-12">, then</span> \(M = \coprod _{i+1}{M_{i+1}/M_i}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 26--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>We will show inductively that for each \(j\leq \alpha \), \(M_j = \coprod _{i+1\leq j}M_{i+1}/M_{i}\). For \(i = 0\) this holds by \((1)\). If it holds for \(i\),
+it holds for \(i+1\) by \((2)\), and if it holds for everything less than a limit ordinal, it holds for
+that limit ordinal by \((3)\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 30--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1006r3"></a>
+<span 
+class="cmbx-12">Definition 1.3.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">Kaplansky d</span><span 
+class="cmbxti-10x-x-120">é</span><span 
+class="cmbxti-10x-x-120">vissage </span><span 
+class="cmti-12">is a colimit d</span><span 
+class="cmti-12">é</span><span 
+class="cmti-12">vissage in a category of</span>
+<span 
+class="cmti-12">modules such that each</span> \(M_{i+1}/M_i\) <span 
+class="cmti-12">is countably generated.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 34--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1007r4"></a>
+<span 
+class="cmbx-12">Proposition 1.4.</span>  </span><span 
+class="cmti-12">If</span> \(M\) <span 
+class="cmti-12">is a sum of countably generated</span> \(R\)<span 
+class="cmti-12">-modules, and</span> \(M\) <span 
+class="cmti-12">=</span> \(P\oplus Q\)<span 
+class="cmti-12">, then</span> \(P\) <span 
+class="cmti-12">and</span>
+\(Q\) <span 
+class="cmti-12">are also sums of countably generated</span> \(R\) <span 
+class="cmti-12">modules.</span>
+</p>
+  <div class="proof">
+<!--l. 38--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(M = \bigoplus _I{N_j}\) where \(N_j\) are countably generated. We will produce a Kaplansky dévissage
+\(M_\alpha \) such that \(M_i = P_i\oplus Q_i\) where \(P_i = P \cap M_i, Q_i = Q \cap M_i\), and each \(M_i\) is a sum of the \(N_j\). Then \(P_i,Q_i\) are Kaplansky dévissages for
+                                                                                  
+
+                                                                                  
+\(P,Q\). For the construction, we only need to define \(M_{i+1}\) given \(M_i \neq M\). Let \(N_j\) be the smallest \(j\) with \(N_j\)
+not contained in \(M_i\), and suppose \(N_j\) is generated by \(x_{11},x_{12},\dots x_{1n},\dots \). Decompose \(x_{11} = p_{11}+q_{11}\). Then \(p_{11},q_{11}\) have nonzero
+component on finitely many \(N_k\), which are generated by \(x_{2n}\). Now do the same for \(x_{12}\) to get
+\(x_{3n}\), and then the same for \(x_{21}\) to get \(x_{4n}\). Proceeding this way going diagonally across the
+matrix \(x_{nm}\), we can have each \(x_{nm}\) split as \(p_{nm}+q_{nm}\) where \(p_{nm},q_{nm}\) lie in \(N_j\) whose generators are in the \(x_{nm}\). We
+add \(x_{nm}\) to \(M_i\) to get \(M_{i+1}\). \((3)\) of a colimit is satisfied as each \(M_i\) is a sum of the \(M_j\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 42--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1008r5"></a>
+<span 
+class="cmbx-12">Corollary 1.5.</span>  </span><span 
+class="cmti-12">Every projective module is a sum of countably generated projective</span>
+<span 
+class="cmti-12">modules.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 46--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1009r6"></a>
+<span 
+class="cmbx-12">Theorem 1.6.</span>  </span><span 
+class="cmti-12">Any projective module over a local ring is free.</span>
+</p>
+  <div class="proof">
+<!--l. 49--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By above, we can assume that the projective module \(M\) is countably generated.
+Now we only to show that for any element \(x\) in \(M\), there is a free direct summand of
+\(M\) containing \(x\). For then we can do this to a set of generators of \(M\) and see that the
+module is free. To do this, Write \(M\oplus N = F\) for \(F\) a free module, and choose a basis \(a_i\) for \(F\) such
+that \(x=\sum _i r_ia_i, r_i \in R\) is a minimal representation of \(x\).
+</p><!--l. 51--><p class="indent" >  \(r_i \notin (r_j, j\neq i)\), or else we could remove \(a_i\) from our basis by adding an appropriate multiple of \(a_i\) to
+each of the \(a_j,j \neq i\). Let \(m_i\) be the \(M\) component of \(a_i\). It suffices to show that replacing the \(a_i\) with
+the \(m_i\) still yields a basis. To see this, if \(m_i = \sum _j b_{ij}a_j\), observe that \(\sum _ir_ia_i = \sum _ir_im_i = \sum _{i,j}r_ib_{ij}a_j\), so \(r_i = \sum _jr_jb_{ij}\), and \(b_{ii}\) must be a unit, and \(b_{ij}\)
+                                                                                  
+
+                                                                                  
+must not be a unit, so the determinant of \((b_{ij})\) is a unit. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

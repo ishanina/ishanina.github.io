@@ -1,0 +1,538 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Lattices, Quadratic forms, and Ideals</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Lattices_Quadratic_Forms_and_Ideals.css" /> 
+<meta name="src" content="Lattices_Quadratic_Forms_and_Ideals.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+LATTICES, QUADRATIC FORMS, AND IDEALS
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Abelian Extensions &amp; Chebotarev</h3>
+<!--l. 10--><p class="noindent" >The theorems of class field theory have amazing consequences:
+</p>
+  <div class="newtheorem">
+<!--l. 11--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1001r1"></a>
+<span 
+class="cmbx-12">Lemma 1.1 </span>(Abelian Classification)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Let</span> \(L,L'\) <span 
+class="cmti-12">be finite abelian extensions of a number</span>
+<span 
+class="cmti-12">field</span> \(K\)<span 
+class="cmti-12">, let</span> \(m\) <span 
+class="cmti-12">be a modulus for</span> \(L,L'\) <span 
+class="cmti-12">and let</span> \(H_L,H_{L'}\) <span 
+class="cmti-12">be the kernels of the Artin maps for</span> \(L,L',m\)<span 
+class="cmti-12">. Then</span> \(L \subset L'\) <span 
+class="cmti-12">iff</span>
+\(H_L' \subset H_L\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 15--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\(L \subset{L'} \implies H'_L \subset H_L\) by naturality of the Artin map. Conversely, if \(H'_L \subset H_L\), then \(LL'\) is abelian, as it&#8217;s Galois
+group embeds in the product of the Galois groups of \(L,L'\). Then the kernel of the Artin
+map for \(LL'\) is the intersection of that for \(L,L'\) since it is the compositum, and since the
+Artin map is natural. But by uniqueness of the existence theorem, \(LL' = L'\) and so \(L' \supset L\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 19--><p class="indent" >  Note that by the conductor theorem, for any pair \(L,L'\), the conditions of the lemma are
+always satisfied for some large enough modulus. Thus class field theory tells us exactly
+what the lattice of abelian extensions looks like.
+</p>
+  <div class="newtheorem">
+<!--l. 21--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1002r2"></a>
+<span 
+class="cmbx-12">Corollary 1.2 </span>(Kronecker-Weber)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Any abelian extension of</span> \(\QQ \) <span 
+class="cmti-12">is contained in some</span>
+<span 
+class="cmti-12">cyclotomic field.</span>
+</p>
+  <div class="proof">
+<!--l. 24--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By Artin reciprocity, for some modulus \(m\), which we can assume contains the
+real embedding by the conductor theorem, the kernel of the Artin map is contained
+in \(P_m\). But \(P_m\) is the kernel of the Artin map for \(\QQ [\zeta _m]\) so we are done by the lemma above. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 28--><p class="indent" >  So an abelian extension is essentially determined by the kernel of the Artin map,
+which is the set of primes that split completely. However, it turns out that the
+assumption that the extension is abelian is non-essential, and is a consequence
+of a theorem that is very related to class field theory, the Chebotarev density
+theorem.
+</p><!--l. 30--><p class="indent" >  Say that the <span 
+class="cmbx-12">natural density </span>of some set \(S\) of primes \(\pp \) in K is the limit \(\lim _{n \to \infty } \frac{\#\pp \in S,N(\pp )&lt;n}{\#\pp \hspace{.1cm}\text{in} \hspace{.1cm} K, N(\pp )&lt;n}\), when the limit
+exists. Say that \(S \doteq S'\) if the \(S,S'\) differ only by finitely many primes. If \(S \doteq S'\), then they have the same
+density, and \(\dot{\supset }, \dot{\subset }\). In particular if the density is greater than \(0\), there are infinitely many
+primes in \(S\). Suppose \(L/K\) is a Galois extension, and \(C\) is a conjugacy class in the Galois
+group.
+</p>
+  <div class="newtheorem">
+<!--l. 32--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1003r3"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Theorem 1.3 </span>(Chebotarev density theorem)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Let  C  be  a  conjugacy  class  in  the</span>
+<span 
+class="cmti-12">Galois group of</span> \(L/K\)<span 
+class="cmti-12">. The density of primes in</span> \(K\) <span 
+class="cmti-12">with Frobenius</span> \(C\) <span 
+class="cmti-12">is</span> \(\frac{|C|}{[L:K]}\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 36--><p class="indent" >  In the case of the extension \(\QQ [\zeta _n]/\QQ \), the Frobenius of \(p\) is \(p \in \ZZ /n\ZZ ^\times \), so the theorem says that the primes
+are evenly distributed mod \(n\), which is Dirichlet&#8217;s theorem.
+</p><!--l. 38--><p class="indent" >  The Chebotarev density theorem along with the Frobenius, can be used to show that
+Galois extensions of number fields are up to an automorphism of the algebraic closure,
+determined by which primes split completely inside of them.
+</p><!--l. 40--><p class="indent" >  If \(L/K\) is a finite extension, then let \(\tilde{S}_{L/K}\) be the set of primes \(\pp \) in \(K\) such that there is a \(\mf{P}/\pp \) in \(L\) such
+that residual degree is \(1\), and let \(S_{L/K}\) be the set of primes splitting completely in \(L\). Note that
+when \(L\) is Galois, \(\tilde{S}_{L/K}\doteq S_{L/K}\).
+</p>
+  <div class="newtheorem">
+<!--l. 42--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1004r4"></a>
+<span 
+class="cmbx-12">Lemma 1.4 </span>(General Classification)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Let</span> \(L,L'\) <span 
+class="cmti-12">be finite extensions of</span> \(K\)<span 
+class="cmti-12">,</span> \(L\) <span 
+class="cmti-12">Galois. Then</span> \(S_{L/K} \dot{\supset }\tilde{S}_{L'/K}\) <span 
+class="cmti-12">iff</span> \(L' \supset L\)<span 
+class="cmti-12">, and</span>
+\(L' \subset L\) <span 
+class="cmti-12">iff</span> \(S_{L/K} \subset S_{L'/K}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 45--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose \(L'\supset L\), where \(L\) is not necessarily Galois. If \(p\) is a prime in \(K\) and there is
+a prime \(\mf{P}\) over \(p\) with residual degree \(1\), then \(\mf{P} \cap L\) is some prime \(\pp \)in \(L\) over \(p\) with residual
+degree \(1\), so \(S_{L/K} \dot{\supset } \tilde{S}_{L'/K}\). Conversely suppose \(S_{L/K} \dot{\supset } \tilde{S}_{L'/K}\). If \(L\) is Galois, let \(M\) be the Galois closure of the
+compositum of \(L,L'\), and let \(\sigma \) be an element of \(\Gal (M/L')\). By the Chebotarev density theorem,
+there are infinitely many primes \(\mf{P}_i/p\) in \(M/L'\) not ramifying such that the Frobenius element
+is \(\sigma \). Since the Frobenius restricts to being trivial on \(L'\), \(p\in S_{L'/K}\), so \(\pp _i \in S_{L/K}\) (for all but finitely many
+\(i\)). Then since \(L\) is Galois, \(\pp \) splits completely, so its Frobenius must fix \(L\). Thus \(\Gal (M/L) \supset \Gal (M/L')\) so \(L \subset L'\).
+</p><!--l. 47--><p class="indent" >  If \(S_{L/K} \dot{\supset } S_{L'/K}\), note that \(L' \subset L\) iff the Galois closure \(\tilde{L'}\) of \(L'\) is in \(L\) iff \(S_{\tilde{L'}/K} \dot{\supset }\tilde{S}_{L/K} \doteq S_{L/K}\) by the first case. But \(S_{L'/K} \supset S_{\tilde{L}/K}\) so we are
+done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+  <div class="newtheorem">
+<!--l. 51--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1005r5"></a>
+<span 
+class="cmbx-12">Corollary 1.5.</span>  </span><span 
+class="cmti-12">The Hilbert class field is unique.</span>
+</p>
+  <div class="proof">
+<!--l. 55--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>This follows from the previous lemma and the definition of the Hilbert class
+field. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Quadratic forms and ideals</h3>
+<!--l. 64--><p class="noindent" >From now on, \(n \equiv 2,1 \pmod 4\) and is square free. Although we have an abstract solution to the problem of
+\(p=x^2+ny^2\) for any particular \(n\), it remains to actually find the Hilbert class field. This is an unramified
+extension of degree the class number, so it would be helpful to know how to compute the
+class number
+</p><!--l. 66--><p class="indent" >  To help us compute class numbers. Given a negative discriminant of a quadratic field \(D \equiv 0,1 \pmod 4\), \(\Cl (D)\)
+is the set of equivalence classes of quadratic forms of discriminant \(D\), and \(\Pic (\QQ [\sqrt{D}])\) is the group of
+ideals modulo principle ones. We will construct a bijection between the two, which will
+induce a group structure on \(\Cl (D)\), and lets us compute class numbers.
+</p><!--l. 68--><p class="indent" >  Given a quadratic form \(ax^2+bxy+cy^2\), we can send it to the ideal that is the free abelian group
+generated by \(a,\frac{b+\sqrt{D}}{2}\), denoted \([\frac{-b+\sqrt{D}}{2},a]\) (check this is an ideal). This can be thought of as a sublattice of
+the complex plane.
+</p><!--l. 70--><p class="indent" >  The proof will use ideas related to complex multiplication, which is a tool used to
+explicitly construct abelian extensions of imaginary quadratic number fields. However
+complex multiplication will not be explored here. Let \(\aa \) be an ideal of \(\cO _K\), an imaginary
+quadratic field, viewed as a lattice in \(\CC \). Given \(x \in \CC \), let \(x\aa \) be the lattice given by multiplying
+every element of \(\aa \) by \(x\). Say that two lattices \(\aa ,\bb \) are <span 
+class="cmbx-12">homothetic </span>if there is a \(x\) such that
+\(\aa = x\bb \).
+                                                                                  
+
+                                                                                  
+</p>
+  <div class="newtheorem">
+<!--l. 72--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2001r1"></a>
+<span 
+class="cmbx-12">Lemma 2.1.</span>  </span><span 
+class="cmti-12">Two  ideals  are  in  the  same  ideal  class  iff  they  are  homothetic  as</span>
+<span 
+class="cmti-12">lattices. A lattice</span> \(L\) <span 
+class="cmti-12">is homothetic to an ideal in</span> \(\cO _K\) <span 
+class="cmti-12">iff</span> \(\cO _K = \{x \in \CC | x\aa \subset \aa \}\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 76--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose \(L\) is a lattice homothetic to an ideal. Clearly, if \(xL\subset L\implies x \in K\). But \(x\) also acts as a
+linear map on \(\aa \) as an abelian group, so is the root of the characteristic polynomial,
+a monic polynomial of degree \(2\), so \(x \in \cO _K\). For the converse, change by homothety so \(1 \in L\), and
+observe that \(L\) is a fractional ideal.
+</p><!--l. 78--><p class="indent" >  If  two  ideals  \(\aa ,\bb \)  are  in  the  same  ideal  class,  then  \(\aa = x\bb , x \in K\),  so  the  two  are  homothetic.
+Conversely, if two fractional ideals are homothetic, by scaling by a large enough
+number,  we  can  assume  \(\aa \subset \bb \).  but  then  by  the  first  part,  the  scaling  factor  for  the
+homothety between \(\aa ,\bb \) must lie in \(K\), so the ideals are in the same class. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 82--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r1"></a>
+<span 
+class="cmbx-12">Exercise 2.1.1.</span>  </span><span 
+class="cmti-12">Can you make a version of the above lemma that works for</span> \(\ZZ [\sqrt{-n}]\) <span 
+class="cmti-12">where</span>
+\(n\) <span 
+class="cmti-12">is arbitrary?</span>
+</p>
+  </div>
+<!--l. 86--><p class="indent" >  Note that \([{\frac{-b+\sqrt D} 2},a]\) is homothetic to \([{\frac{-b+\sqrt D}{2a}},1]\) which is a fractional ideal, and so the lattice that we get
+corresponds to \(\SL _2(\ZZ )\) acts on both lattices with bases, and and
+</p><!--l. 89--><p class="indent" >  If \([a,b]\) is a lattice with a choice of generators, it is homothetic to \([\frac a b,1]\), where \(\frac a b\) is a not real
+complex number. In order to get an invariant of the lattice, we observe that
+                                                                                  
+
+                                                                                  
+we can get all the bases from our original choice by changing \([a,b]\) by some matrix
+in \(\begin{pmatrix}w &amp; x \\ y &amp; z \end{pmatrix}\in \GL _2(\ZZ )\), which sends it to \([wa+bx,ya+zb]\), which is homothetic to \([\frac{wa+bx}{ya+zb},1]\). This is the same as forcing \(\frac{a}{b}\)
+for \([\frac{a} b,1]\) to lie in the upper half plane, and only considering matrices in \(\SL _2(\ZZ )\). So every
+lattice is represented by some complex number, modulo the action of \(\SL _2(\ZZ )\) in the way
+described.
+</p>
+  <div class="newtheorem">
+<!--l. 91--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2003r2"></a>
+<span 
+class="cmbx-12">Theorem 2.2.</span>  </span><span 
+class="cmti-12">The map</span> \(ax^2+bxy+cy^2 \mapsto [a,\frac{-b+\sqrt{D}}{2}]\) <span 
+class="cmti-12">gives an isomorphism between the</span> \(\Cl (D)\) <span 
+class="cmti-12">and the ideal class</span>
+<span 
+class="cmti-12">group of</span> \(\ZZ [\sqrt{-n}]\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 95--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>If we interpret the ideal class group in terms of homothety classes of ideals, If
+we change \(ax^2+bxy+cy^2\) by an element of \(\SL _2(\ZZ )\), then the root of \(x^2+bxy+cy^2\) is acted on by the same element of \(\SL _2(\ZZ )\)
+via fractional linear transformations. Thus since the value of the image only depends
+on the homothety class of the image by the previous lemma, the map is well-defined
+and injective. For surjectivity, we can assume the ideal is of the form \([\tau ,1]\), and send it
+to \(Q(x,y) = ax^2+bxy+cy^2\), where \(\tau \) is the root of \(Q(x,1)\), and \((a,b,c) = 1\). \(\disc (Q) = a^2\disc (\mu (\tau )) = a^2\disc [1,\tau ] = \disc [1,a\tau ]\) so if we show that \([1,a\tau ] = \ZZ [\sqrt{-n}]\), we are done.
+</p><!--l. 98--><p class="indent" >  To show this, a computation shows that \([1,a\tau ] = \{x|x[1,\tau ] \subset [1,\tau ]\}\), so we are done by the lemma from above.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>An example of a Hilbert class field</h3>
+<!--l. 104--><p class="noindent" >Let&#8217;s use these results to find out when \(p = x^2+14y^2\). The reduced quadratic forms for the discriminant
+\(-56\) are \(x^2+14y^2, 2x^2+7y^2, 3x^2 \pm 2xy + 5y^2\) so the size of the class group is \(4\). However, looking at congruence classes is not
+enough to distinguish \(x^2+14y^2\) from the rest. To find the Hilbert class field of \(K=\QQ [\sqrt{-14}]\), first note that \(K[\sqrt{2}]\) is
+an unramified extension, since the subfields are \(K,\QQ [\sqrt{2}],\QQ [\sqrt{-7}]\), and the primes \(2,7\) only ramify in two of
+these. Thus the Hilbert class \(L\) field is a degree \(2\) extension of \(K[\sqrt{2}]\). Moreover, \(\bar{L}\) satisfies the
+                                                                                  
+
+                                                                                  
+axioms of the Hilbert class field, so by uniqueness, \(L\) is generated over \(K\) by a real element,
+and is the linearly disjoint compositum of a real extension over \(\QQ \) of degree \(4\) and \(K\). This
+extension is a degree \(2\) extension of \(\QQ [\sqrt{2}]\) so is of the form \(\QQ [\sqrt{2}][\sqrt{u}]\) for positive \(u\). \(u\) is an algebraic integer
+of the form \(a+b\sqrt{2}\). The minimal polynomial is \(x^2-u\) which has discriminant \(4u\), so if \(p \nmid 4u\) it is
+unramified. for the prime \(\sqrt{2}\), we will have to divide by \(2\), so we want to use instead an
+algebraic integer of the form \(\frac{\sqrt{u}+b}{2}\). These have minimal polynomials \(x^2+bx+c\) where \(u = b^2-4c\), so we
+need \(u\) to be a square mod \(4\) in \(\ZZ [\sqrt{2}]\). \(N(u) = \pm 2,\pm 1\) by the first condition, so \(u\) is a power of \(1 + \sqrt{2}\) with
+a possible extra factor of \(\sqrt{2}\). Thus modulo squares, \(u\) is either \(\sqrt{2},1+\sqrt{2},2+\sqrt{2}\). A \(\sqrt{2}\) factor cannot
+appear in \(u\) because the result will not be a square mod \(4\). Thus \(u = 1+\sqrt{2}\), which has minimal
+polynomial \(x^2-2x-1 = (x-1)^2-2\). Now \(p\) splits completely in \(L\) iff it does in \(\QQ [\sqrt{u}]\) and \(\QQ [\sqrt{-14}]\) so we get the following
+result:
+</p>
+  <div class="newtheorem">
+<!--l. 106--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+<span 
+class="cmbx-12">Theorem 3.1.</span>  </span><span 
+class="cmti-12">Let</span> \(p\) <span 
+class="cmti-12">be a prime not dividing the discriminant of</span> \((x^2-1)^2-2\)<span 
+class="cmti-12">or 56. Then</span> \(p=x^2+14y^2\) <span 
+class="cmti-12">iff</span> \((\frac{-14}{p}) = 1\)
+<span 
+class="cmti-12">and the polynomial</span> \((x^2-1)^2-2\) <span 
+class="cmti-12">has a root mod</span> \(p\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 110--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3002r1"></a>
+<span 
+class="cmbx-12">Exercise 3.1.1.</span>  </span><span 
+class="cmti-12">Which primes are of the form</span> \(x^2+17y^2\)<span 
+class="cmti-12">?</span>
+</p>
+  </div>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

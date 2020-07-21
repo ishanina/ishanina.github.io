@@ -1,0 +1,864 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Morse Theory and Handles</title> 
+<meta  charset="iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Morse_Theory_and_Handles.css" /> 
+<meta name="src" content="Morse_Theory_and_Handles.tex" /> 
+ <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+</head><body 
+>
+  \( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\scr}{\mathscr}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
+\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
+\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)
+  <div class="maketitle">
+  <h2 class="titleHead">
+MORSE THEORY AND HANDLES
+  </h2><div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+</div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-10001"></a>Introduction</h3>
+<!--l. 10--><p class="noindent" >Consider the following function on the torus \(T^2\). We imagine it standardly embedded in \(\RR ^3\), and
+somewhat tilted, as shown in Figure <a 
+href="#x1-10011">1<!--tex4ht:ref: tiltedtorus --></a>.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-10011"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 14--><p class="noindent" ><img 
+src="Tilted_Torus.png" alt="pict"  
+ width="354.75577pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
+class="content"> A height function on the torus. Shown to its right are some sublevel sets.</span></figcaption><!--tex4ht:label?: x1-10011 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 19--><p class="indent" >  Now consider the height function \(h\) on it. We can consider the sub-level sets \(h_a = \{x \in T^2|x \leq a\}\). As we pass
+through \(a = 0\), \(h_a\) changes from being empty to being a disk. After we pass \(a = 1\), we get something
+that looks like an annulus. After passing through \(a = 2\), \(h_a\) looks like a punctured torus, and after
+passing through \(a=3\), \(h_a\) is the entire torus. If we just think about the diffeomorphism type of
+the \(h_a\), we can interpret this example as follows: at \(a = 0\), we added a disk, at \(a=1,2\) we added a
+band onto the boundary of the disk, and at \(a=3\) we capped off the boundary of the
+disk.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-10022"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 23--><p class="noindent" ><img 
+src="Torus_Handles.png" alt="pict"  
+ width="290.25114pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
+class="content">The handles that are added as we raise the sublevel sets on the torus.</span></figcaption><!--tex4ht:label?: x1-10022 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 28--><p class="indent" >  So by looking at this function on our torus, we have gotten a description of the torus in
+terms of disks in bands. Morse theory gives a similar description for any smooth manifold
+for any sufficiently nice function \(h\). From now on our manifolds will be smooth,
+finite dimensional, and compact. When we do Morse theory, they will also be
+closed.
+</p><!--l. 30--><p class="indent" >  Suppose that we have a \(n\)-manifold with boundary \((M,\partial M)\). To <span 
+class="cmbx-12">attach a</span> \(k\)<span 
+class="cmbx-12">-handle </span>on \(M\) is to add a
+copy of \(D^k\times D^{n-k}\) that is attached along the \(\partial D^k \times D^{n-k}\) part of the boundary to the rest of the manifold via
+some diffeomorphism \(\phi \). The handle comes with a <span 
+class="cmbx-12">core</span>, which is \(D^k\times 0\), and a <span 
+class="cmbx-12">cocore</span>, \(0 \times D^{n-k}\). Up to
+homotopy type, adding a \(k\)-handle is the same as adding in a \(k\)-cell. The attaching map is an
+embedding of the trivial \(n-k\) disk bundle of \(S^{k-1}\) on \(\partial M\). This is a <span 
+class="cmbx-12">framed</span> \(k-1\) <span 
+class="cmbx-12">knot </span>in \(\partial M\). An \(r\) knot in a
+\(m\)-manifold \(N\) is an embedded of \(S^r\). For it to be framed simply means we have fixed some
+trivialization of its normal bundle in \(N\). We only are about the framing up to
+homotopy, and so the group \(\pi _r(O(m-r))\) acts simply and transitively on the homotopy classes of
+framings.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-10033"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 34--><p class="noindent" ><img 
+src="Anatomy_of_a_Handle.png" alt="pict"  
+ width="516.0075pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;3:</span><span  
+class="content"> Breakdown of the parts of a \(k\)-handle.</span></figcaption><!--tex4ht:label?: x1-10033 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 39--><p class="indent" >  For example, when \(n = 2\), adding a \(0\)-handle is to add in a disjoint disk, to add a \(1\)-handle is to
+add a band, and to add a \(2\)-handle is to attach a disk along a circle on the boundary. Above
+we saw that the height function on the torus gave a <span 
+class="cmbx-12">handle decomposition </span>of the torus,
+or a description of the torus given by adding handles one by one to an empty manifold.
+There is only one way to frame a \(0\) or \(2\)-handle on a surface, and two ways for a \(1\)-handle,
+since \(|\pi _0(O(1))| = 2\).
+</p><!--l. 42--><p class="indent" >  We can make a handle decomposition for \(\RR \PP ^2\). We can cover it by three disks that are
+attached along their boundary as follows: \(U_i\) will be the disk of points \([x_0:x_1:x_2]\) in \(\RR \PP ^2\) such that \(x_i = 1\), \(|x_j| \leq 1, j \neq i\). We
+can first add in \(U_0\), and then add in \(U_1\). To find the attaching map, the two strips on the
+boundary of \(U_1\), \([\pm 1:1:x_2], -1 \leq x_2 \leq 1\) are attached to the two strips on \(U_0\), \([1:\pm 1:x_2], -1 \leq x_2 \leq 1\). Note that the framing on this attaching
+map has different orientation on different parts of the boundary, and we get a
+Möbius band. The last \(U_2\) caps off the boundary of the Möbius band with a
+disk.
+</p>
+  <div class="newtheorem">
+<!--l. 44--><p class="noindent" ><span class="head">
+<a 
+ id="x1-1004r1"></a>
+<span 
+class="cmbx-12">Exercise 1.0.1.</span>  </span><span 
+class="cmti-12">Find a handle decomposition for</span> \(\RR \PP ^n\) <span 
+class="cmti-12">and</span> \(\CC \PP ^n\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-20002"></a>Handle moves</h3>
+<!--l. 50--><p class="noindent" >One can change a handle decomposition by certain moves to not actually change the
+diffeomorphism type of the manifold. There are three moves that can get between any two
+handle decompositions of a manifold.
+</p><!--l. 52--><p class="indent" >  The first move is to change the order in which any two handle decompositions
+are added by adding two handles that are disjoint, we can switch the order in
+which we attach them. We can also isotope the attaching maps of any of the
+handles without changing the manifold. Finally, we can add or remove handles that
+cancel each other. What this means is the following: Suppose we have a \(k\)-handle
+attached along an unknotted (isotopic to a standard embedding) \(S^{k-1}\) whose framing
+extends to a framing of an embedded disk \(D^k\) on the boundary that it bounds.
+Then a neighborhood of the handle and this disk is diffeomorphic to \(S^k \times D^{n-k}\) as we are
+gluing together \(D^{n-k}\) bundles together in a trivial way along their boundaries (for a
+\(0\)-handle, choose any ball along the boundary to add in as the neighborhood).
+                                                                                  
+
+                                                                                  
+Now we can view \(S^k \times D^{n-k}\) as \(S^k \times D^1 \times D^{n-k-1}\), and glue in a \(k+1\)-handle such that the cocore is glued along
+the \(D^{n-k-1}\) direction, and the core is glued via the identity map to \(S^k\). Then we get \((D^{k+1} \coprod (S^k\times D^1)\times D^{n-k-1} = D^{k+1}\times D^{n-k-1} = D^n\), so
+adding in the \(k\)-handle and \(k+1\)-handle is equivalent to connect summing with a ball.
+Thus another move we can do is to add or remove such pairs of cancelling \(k\) and
+\(k+1\)-handles.
+</p><!--l. 54--><p class="indent" >  Suppose that we have a manifold \(M\) to which we first attach an \(r\)-handle and then a
+\(m\)-handle, where \(m \leq r\). If we can push the boundary of the core of the \(m\)-handle off of the
+boundary of the cocore of the \(r\)-handle, by changing what we call the \(r\)-handle to something
+smaller, we can make the handles disjoint. Indeed we can always do this, since the cocore
+of the \(r\)-handle is dimension \(n-r-1\) and the dimension of the boundary of the core of the \(m\)-handle
+is \(m-1\) and so the sum of the dimensions is strictly less than \(n-1\). Thus if there are finitely many
+handles, we can isotope them to attach them in order of increasing index. We can say
+more. First suppose we have a \(2\)-manifold built only out if \(0\) and \(1\)-handles, we can
+represent it via a drawing where The \(0\)-handles are circles that represent their
+boundary, and the \(1\)-handles are bands attached between the \(0\)-cells. An example is
+below:
+</p><!--l. 56--><p class="indent" >  There are \(2\) moves on this graph that we can do to go between any two representations of
+the same manifold. If there are is a \(1\)-handle with only \(1\) band, we can add or remove such a
+pair of handles (this corresponds to cancelling the handles). If two bands are next to each
+other on the cyclic ordering, we can slide one across the other (this is an isotopy), as
+shown below:
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-20014"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 60--><p class="noindent" ><img 
+src="Handle_Slide.png" alt="pict"  
+ width="225.75636pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;4:</span><span  
+class="content"> The handle slide move on a graph representing a \(n\geq 3\) manifold consisting of \(0\)
+and \(1\)-handles.</span></figcaption><!--tex4ht:label?: x1-20014 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 65--><p class="indent" >  Note that we can always do these moves to reduce the number of \(0\)-handles to the
+number of connected components.
+</p><!--l. 67--><p class="indent" >  If \(n&gt;2\), we still represent such a manifold with a graph instead of a drawing, where the edges
+(\(1\)-handles) are labelled \(\pm 1\), to say whether the \(1\)-handles are attached in an orientation
+preserving or reversing way onto the \(0\)-handles. Now our moves are as follows: If there is a
+leaf on the graph, we can remove that edge and vertex. If there are two edges who meet at
+a common vertex, we can slide one of the edges so that instead it meets at another
+vertex, and have this new edge have the orientation that is the product of the
+orientation of the two edges. Finally, one can switch the orientation of of a vertex,
+which will change the sign of each edge once for every time it is incident to that
+vertex.
+</p>
+  <div class="newtheorem">
+<!--l. 69--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2002r1"></a>
+<span 
+class="cmbx-12">Exercise 2.0.1.</span>  </span><span 
+class="cmti-12">Show  that  any  graph  representing  a  connected  manifold  of</span>
+<span 
+class="cmti-12">dimension</span> \(\geq 3\) <span 
+class="cmti-12">can be changed via these moves to have</span> \(1\) <span 
+class="cmti-12">vertex and at most</span> \(1\) <span 
+class="cmti-12">negative</span>
+<span 
+class="cmti-12">edge.</span>
+</p>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-30003"></a>Morse theory</h3>
+<!--l. 75--><p class="noindent" >Every manifold admits a handle decomposition. To do this, we will consider smooth
+functions \(f\) on our manifold \(M\), and try to analyze them as we did in the example of the torus.
+We say that a critical point of \(f\) is a point at which \(df=0\). At any critical point, there is a
+symmetric bilinear form on the tangent space, called the Hessian. It is defined as follows:
+given two tangent vectors \(v_1,v_2\) at the critical point \(p\), We can extend them to vector fields \(\tilde{v_1},\tilde{v_2}\)
+locally, and define \(H(v_1,v_2)= \tilde{v}_{1,p}(\tilde{v}_2(f))\).To see this is symmetric, \(H(v_1,v_2)-H(v_2,v_1) = [\tilde{v}_1,\tilde{v}_2]_p(f)\), and from definition this doesn&#8217;t depend on \(\tilde{v}_1\),
+so it doesn&#8217;t depend on \(\tilde{v}_2\) either. To write the bilinear form down, we can pick local
+coordinates \(x_1,\dots ,x_n\), and choose \(v_i = \partial x_i\), so that \(H\) is given by the matrix of \(2^{nd}\) partial derivatives of
+\(f\).
+</p><!--l. 77--><p class="indent" >  As a symmetric bilinear real form, the Hessian is determined by its rank, nullity, and
+index. If the Hessian is a map \(TM_p\otimes TM_p\to \RR \), its adjoint is a map \(TM_p\to T^*M_p\), and the dimension of the
+kernel of this is the nullity. We say that a symmetric bilinear form \(B\) is <span 
+class="cmbx-12">negative</span>
+<span 
+class="cmbx-12">definite </span>if \(B(v,v) &lt; 0\) for \(v \neq 0\). The index is the dimension of the largest subspace on which \(B\) is
+                                                                                  
+
+                                                                                  
+negative definite. After an appropriate choice of basis \(x_1,\dots ,x_n\) if \(B\) has rank \(n\), index \(v\), and
+nullity \(r\), \(B\) will look like \(x_1^2+\dots x_{n-v-r}^2-x_{n-v-r+1}^2-\dots x_{n-r}^2\). We say that a critical point is <span 
+class="cmbx-12">nondegenerate </span>if the
+Hessian at that point is nondegenerate, meaning that its nullity is \(0\). Then since the
+rank is just the dimension of the manifold, the index is the only invariant of the
+Hessian.
+</p><!--l. 80--><p class="indent" >  An example of a degenerate critical point is the function \(x^3\) on \(\RR \) at the origin, or the
+function \(x^2y^2\) on \(\RR ^2\), which is degenerate along the \(xy\) axes.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-30015"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 84--><p class="noindent" ><img 
+src="Degen_Crit_Pts.png" alt="pict"  
+ width="451.50288pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;5:</span><span  
+class="content"> Functions with degenerate critical points. Note that degenerate critical
+points can be non-isolated, such as in \(x^2y^2\).</span></figcaption><!--tex4ht:label?: x1-30015 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 89--><p class="indent" >  Here is an example of a nondegenerate critical point. Consider the function \(x_1^2+x_2^2+\dots +x_v^2-x_{v+1}^2-\dots -x_n^2\) as a
+function on \(\RR ^n\). Then the origin is a critical point, and its Hessian is given by \(\partial x_1^2+\partial x_2^2+\dots +\partial x_v^2-\partial x_{v+1}^2-\dots -\partial x_n^2\), so is
+nondegenerate. In fact this is the local behavior of any example. The following lemma can
+be proved via elementary means:
+</p>
+  <div class="newtheorem">
+<!--l. 91--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3002r1"></a>
+<span 
+class="cmbx-12">Lemma 3.1 </span>(Morse Lemma)<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Suppose</span>  \(f\)  <span 
+class="cmti-12">is  a  smooth  function  on</span>  \(M\)  <span 
+class="cmti-12">and</span>  \(p\)  <span 
+class="cmti-12">is  a</span>
+<span 
+class="cmti-12">nondegenerate critical point of</span> \(f\)<span 
+class="cmti-12">. Then there is a local chart near</span> \(p\) <span 
+class="cmti-12">sending</span> \(p\) <span 
+class="cmti-12">to</span> \(0\) <span 
+class="cmti-12">in an</span>
+<span 
+class="cmti-12">open subset of</span> \(\RR ^n\) <span 
+class="cmti-12">such that on this chart</span> \(f\) <span 
+class="cmti-12">is given by</span> \(x_1^2+x_2^2+\dots +x_v^2-x_{v+1}^2-\dots -x_n^2\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 95--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3003r2"></a>
+<span 
+class="cmbx-12">Corollary 3.2.</span>  </span><span 
+class="cmti-12">Nondegenerate critical points are isolated.</span>
+</p>
+  </div>
+<!--l. 99--><p class="indent" >  A <span 
+class="cmbx-12">Morse function </span>on a compact manifold \(M\) is a function such that all critical points are
+nondegenerate. Our function on the torus was a Morse function, and shown below are two
+Morse functions on \(S^2\), interpreted as height functions again:
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-30046"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 103--><p class="noindent" ><img 
+src="Sphere_Morse_Function.png" alt="pict"  
+ width="225.75636pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;6:</span><span  
+class="content"> Some Morse functions on a sphere.</span></figcaption><!--tex4ht:label?: x1-30046 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+  <div class="newtheorem">
+<!--l. 108--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3005r1"></a>
+<span 
+class="cmbx-12">Exercise 3.2.1.</span>  </span><span 
+class="cmti-12">Find a Morse function on</span> \(S^n\)<span 
+class="cmti-12">. Given a triangulation of a manifold,</span>
+<span 
+class="cmti-12">can you imagine a Morse function such that the center of the</span> \(k\)<span 
+class="cmti-12">-simplicies are the</span>
+<span 
+class="cmti-12">index</span> \(k\) <span 
+class="cmti-12">critical points? What about for a handle decomposition (of which a simplicial</span>
+<span 
+class="cmti-12">complex is a special case)?</span>
+</p>
+  </div>
+<!--l. 112--><p class="indent" >  We can use Morse functions to get handle decompositions of our manifold. To do this
+given a Morse function \(f\), as in our first example, we consider \(f_a\) to be the sub-level set of \(f\) at
+\(a\).
+</p>
+  <div class="newtheorem">
+<!--l. 114--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3006r3"></a>
+<span 
+class="cmbx-12">Theorem 3.3.</span>  </span><span 
+class="cmti-12">If</span> \(f\) <span 
+class="cmti-12">is a function on</span> \(M\)<span 
+class="cmti-12">, and</span> \(a,b \in \RR \) <span 
+class="cmti-12">such that there are no critical points in</span> \([a,b]\)<span 
+class="cmti-12">, then</span>
+<span 
+class="cmti-12">the manifold</span> \(f_a\) <span 
+class="cmti-12">is diffeomorphic to the manifold</span> \(f_b\)<span 
+class="cmti-12">, and the inclusion map</span> \(f_a \hookrightarrow f_b\) <span 
+class="cmti-12">is a homotopy</span>
+<span 
+class="cmti-12">equivalence.</span>
+</p>
+  <div class="proof">
+<!--l. 117--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Only the idea of the proof will be given here. First, we give a metric to the
+manifold, so that we can take the gradient of the function \(f\). We can multiply the
+gradient vector field by a function that is \(\frac{1}{\langle \grad (f),\grad (f)\rangle }\) on \(f_b-f_a\) but that vanishes outside of \(f_{b+\ee }-f_{a-\ee }\), where \(\ee \) is
+small enough to not contain any critical points. Then by flowing the manifold \(f_b\) down,
+the level set \(f^{-1}(b)\) will flow through level sets since we have normalized \(\grad f\) to have speed \(1\).
+Then it will eventually reach the level set \(f^{-1}(a)\), giving the desired diffeomorphism. This
+flow is also a deformation retraction of \(f_b\) onto \(f_a\).
+</p>
+  <figure class="figure"> 
+<a 
+ id="x1-30077"></a>
+                                                                                  
+
+                                                                                  
+<div class="center" 
+>
+<!--l. 122--><p class="noindent" >
+</p><!--l. 123--><p class="noindent" ><img 
+src="Gradient_Flow.png" alt="pict"  
+ width="322.50345pt"  /></p></div>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;7:</span><span  
+class="content"></span></figcaption><!--tex4ht:label?: x1-30077 -->
+  </figure>
+  <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+<!--l. 131--><p class="indent" >  Thus in order to see how \(M\) is built up through its sub-level sets,we only need to examine
+what happens at critical points. By a similar argument to above, this is a local argument,
+and we only need to look at our local model from the Morse lemma. From the diagram
+below, we can see that as we pass through an index \(k\) critical point, the only thing that
+changes is that we have added a \(k\)-handle. Shown below is the handle in our local
+model.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-30088"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 136--><p class="noindent" ><img 
+src="Handle_in_Local_Model.png" alt="pict"  
+ width="257.99883pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;8:</span><span  
+class="content"></span></figcaption><!--tex4ht:label?: x1-30088 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 141--><p class="indent" >  Thus if we have a Morse function, we get a handle decomposition of our manifold by
+building it up out of level sets. Fortunately not only do Morse functions exist,
+but they are also generic, and any function can be approximated on its \(\leq k^{th}\) partial
+derivatives by Morse functions. Here is an example of a theorem giving their
+genericity:
+</p>
+  <div class="newtheorem">
+<!--l. 143--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3009r4"></a>
+<span 
+class="cmbx-12">Theorem 3.4.</span>  </span><span 
+class="cmti-12">Suppose</span> \(M \subset \RR ^n\) <span 
+class="cmti-12">is a compact submanifold. Then the set of points on which</span>
+<span 
+class="cmti-12">the function</span> \(f(x) = \Vert x-p\Vert ^2\) <span 
+class="cmti-12">is Morse on</span> \(M\) <span 
+class="cmti-12">has full measure.</span>
+</p>
+  </div>
+<!--l. 147--><p class="indent" >  In particular, we get the following:
+</p>
+  <div class="newtheorem">
+<!--l. 149--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3010r5"></a>
+<span 
+class="cmbx-12">Theorem 3.5.</span>  </span><span 
+class="cmti-12">Any smooth compact manifold has a handle decomposition.</span>
+</p>
+  </div>
+<!--l. 153--><p class="indent" >  Much of the earlier discussion about how we can move between two handle
+decompositions can be described in terms of Morse theory. Namely, we can view them as
+ways of changing the Morse function on our manifold \(M\). For example, the fact that handles
+can be isotoped to be added in terms of increasing index is equivalent to the existence of a
+<span 
+class="cmbx-12">self-indexing Morse function</span>, or one where all the critical point of index \(i\) happen on
+\(f^{-1}(i)\).
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-40004"></a>Applications</h3>
+<!--l. 157--><p class="noindent" >Now that we know that any manifold has a handle decomposition, lets classify connected
+compact manifolds of dimension \(\leq 2\) with boundary. A \(1\)-manifold will looks like a connected
+graph where every vertex has degree \(\leq 2\). There are only two of these, namely \(S^1\) and \([0,1]\). To
+                                                                                  
+
+                                                                                  
+classify \(2\)-manifolds, it suffices to classify closed ones, i.e without boundary, since the
+boundary will be a bunch of circles, and we can cap off circles with a \(2\)-handle in a unique
+way. Then we can recover our manifold with boundary by removing a certain number
+of open disks. To draw them, we need only to draw the \(0\) and \(1\)-handles, since
+the \(2\)-handles can then be added in a unique way. As was noted earlier, we can
+assume there is only \(1\) \(0\)-handle. The \(1\)-handles are all bands attached to this, where
+every band may or may not have a half twists. If a band has a half twist, the
+rest of the bands can be slid over it to isolate the band from the rest as shown
+below:
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-40019"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 161--><p class="noindent" ><img 
+src="RP2_Separate.png" alt="pict"  
+ width="387.00807pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;9:</span><span  
+class="content">It is demonstrated above how to realize \(\RR \PP ^2\) as a summand of a non-orientable
+surface</span></figcaption><!--tex4ht:label?: x1-40019 -->
+.
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 166--><p class="indent" >  We have showed then that this has decomposed our manifold as a connected sum with
+an \(\RR \PP ^2\) as a component. Now lets assume that all the bands are orientation preserving. If any
+band is isolated from the rest of the diagram, it can be cancelled, as it is a cancelling
+\(1\)-handle and \(2\)-handle. If there is a \(1\)-handle that doesn&#8217;t contain any handles inside of the
+the place it is attached, but isn&#8217;t isolated, its attaching \(S^0\) must be linked to the attaching \(S^0\)
+of some other band. Then as shown below, we can isotope the rest of the bands away from
+these two:
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-400210"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 170--><p class="noindent" ><img 
+src="Torus_Separate.png" alt="pict"  
+ width="322.50345pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;10:</span><span  
+class="content">Above it is shown how to separate a torus from other components of a
+surface</span></figcaption><!--tex4ht:label?: x1-400210 -->
+.
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 175--><p class="indent" >  We will be left with an isolated part of the diagram that corresponds to taking a
+connected sum with a torus.
+</p><!--l. 177--><p class="indent" >  Thus we can keep simplifying our manifold into a connected sum of \(T^2\) and \(\RR \PP ^2\)s. Finally, the
+last step of the calculation is to prove the following relation among \(\RR \PP ^2, T^2\) which can be done via
+handle slides:
+</p>
+  <div class="newtheorem">
+<!--l. 179--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4003r1"></a>
+<span 
+class="cmbx-12">Exercise 4.0.1.</span>  </span>\(\RR \PP ^2\#T^2 = \RR \PP ^2\#\RR \PP ^2\#\RR \PP ^2\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 183--><p class="indent" >  We have then proved:
+</p>
+  <div class="newtheorem">
+<!--l. 184--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4004r1"></a>
+<span 
+class="cmbx-12">Theorem 4.1.</span>  </span><span 
+class="cmti-12">Every compact surface is obtained as a connected sum of</span> \(\RR \PP ^2\)<span 
+class="cmti-12">s or a</span>
+<span 
+class="cmti-12">connected sum of</span> \(T^2\)<span 
+class="cmti-12">s, with some open disks removed.</span>
+</p>
+  </div>
+<!--l. 187--><p class="indent" >  Morse theory is however sometimes more powerful than just the handle decompositions
+it gives. Part of the reason for this is that a Morse function comes with a <span 
+class="cmbx-12">gradient flow</span>,
+namely the flow from the vector field that is the gradient of the function \(f\). This is the flow
+that we use to show that the diffeomorphism type doesn&#8217;t change away from critical
+points.
+</p><!--l. 189--><p class="indent" >  One application of the gradient flow is a key ingredient to a proof of the Poincaré-Hopf
+theorem. Say we have a compact manifold with a vector field \(V\) on it with isolated zeros.
+Then at each zero, we can remove a ball to get a manifold which has a boundary that is a
+lot of copies of \(S^{n-1}\). Each of these \(S^{n-1}\)s has a framing (i.e a unit outward pointing normal vector
+at each point.If the neighborhoods are small enough, the vector field will not vanish on the
+boundary. If we locally trivialize the tangent bundle near each zero of \(V\) before we remove
+the balls, we can send each boundary component to \(S^{n-1}\) by sending each point \(p\) to the
+                                                                                  
+
+                                                                                  
+unit vector in \(\RR ^n\) that \(V_p\) corresponds to in the trivialization. Then the degree of this
+map at each boundary component is called the index of the zero of the vector
+field.
+</p>
+  <figure class="figure"> 
+
+                                                                                  
+
+                                                                                  
+<a 
+ id="x1-400511"></a>
+                                                                                  
+
+                                                                                  
+<!--l. 193--><p class="noindent" ><img 
+src="Vector_Field.png" alt="pict"  
+ width="483.75519pt"  />
+</p>
+<figcaption class="caption" ><span class="id">Figure&#x00A0;11:</span><span  
+class="content">Some zeroes of vector fields on surfaces. From left to right, the indices are
+\(3,0,1\).</span></figcaption><!--tex4ht:label?: x1-400511 -->
+                                                                                  
+
+                                                                                  
+  </figure>
+<!--l. 198--><p class="indent" >  It doesn&#8217;t in particular depend on the trivialization, which follows from the fact that the
+space of trivializations has two contractible components corresponding to different
+orientations, and also from the fact that switching orientation flips both the orientation of
+the domain and codomain of the maps from \(S^{n-1}\) to \(S^{n-1}\).
+</p><!--l. 200--><p class="indent" >  Now it is not too hard to show that this doesn&#8217;t depend on the choice of vector field.
+Namely let \(X\) be a compact \(m\)-manifold with boundary in \(\RR ^m\). The Gauss map is the map
+from \(\partial X\) to \(S^{m-1}\) sending a point to its unit normal vector. If we have a vector field
+with isolated zeroes on \(X\), then we first observe that the degree of the Gauss map
+is the sum of the indices of the zeroes of the vector field, since we can remove
+balls around the zeroes to get a cobordism from \(\partial X\) to the spheres around each
+\(0\). The Gauss map on this cobordism shows that the sum of the indices is the
+same. Finally, for a manifold \(M\), we can embed \(M\) in some \(\RR ^n\), and extend a vector
+field on it to a tubular neighborhood in such a way that as it gets closer to the
+boundary, it gets closer to the outward normal. Then the Gauss map agrees with the
+sum of the indices of the original vector field, but isn&#8217;t dependent on the vector
+field.
+</p><!--l. 202--><p class="indent" >  Finally, since each critical point amounts to adding a \(\nu \)-handle, the Euler characteristic is
+the sum over all the critical points of \(-1^\nu \) where \(\nu \) is the index. However, this is also the sum of
+the indices of the zeroes of the gradient flow vector field. To verify this, by the Morse
+lemma, it only suffices to do the following computation:
+</p>
+  <div class="newtheorem">
+<!--l. 204--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4006r1"></a>
+<span 
+class="cmbx-12">Exercise 4.1.1.</span>  </span><span 
+class="cmti-12">The index of the gradient flow for the function</span> \(-x_1^2-x_2^2-\dots -x_v^2+x_{v+1}^2+\dots +x_n^2\) <span 
+class="cmti-12">at</span> \(0\) <span 
+class="cmti-12">is given by</span> \((-1)^\nu \)
+</p>
+  </div>
+<!--l. 206--><p class="indent" >  .
+</p><!--l. 208--><p class="indent" >  Hint: the map \(S^{n-1}\to S^{n-1}\) is a composite of reflections.
+</p>
+   
+</body> 
+</html>
+                                                                                  
+
+                                                                                  
+                                                                                  
+
+

@@ -416,14 +416,18 @@ each subinterval, as indicated in the picture below:
 </p>
   <figure class="figure"> 
 <a 
- id="x1-20031"></a> <img 
+ id="x1-20031"></a>
+<div class="center" 
+>
+<!--l. 76--><p class="noindent" >
+</p><!--l. 77--><p class="noindent" ><img 
 src="vankampen.png" alt="pict"  
- width="322.50345pt"  />
+ width="322.50345pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
 class="content"> Above is indicated how to modify a homotopy of \(\gamma \) such that it preserves \(\gamma \)
 outside the interiors of the subdivisions.</span></figcaption><!--tex4ht:label?: x1-20031 -->
   </figure>
-<!--l. 81--><p class="indent" >  Let \((\xi _r)_i\) be the \(i^{th}\) sub-interval of \(\gamma '_r\) and \((\xi '_r)_i\) be the \(i^{th}\) subinterval of \(\gamma '_r\). Now \((\xi _0)_i\) is homotopic
+<!--l. 83--><p class="indent" >  Let \((\xi _r)_i\) be the \(i^{th}\) sub-interval of \(\gamma '_r\) and \((\xi '_r)_i\) be the \(i^{th}\) subinterval of \(\gamma '_r\). Now \((\xi _0)_i\) is homotopic
 to \((\xi '_1)_i\) by restricting \(\gamma '_r\). However, by changing the subdivision of \((\xi '_1)_i)\) to only contain
 points in \((\xi '_1)_i\), we see that \((\xi '_1)_i\) is homotopic relative to \(U,V\) and the subdivision to \((\xi _1)_i\). Thus \(f(\gamma _0) = f((\xi _0)_{n-1}\circ (\xi _0)_{n-2}\circ \dots \circ (\xi _0)_0) = f((\xi '_1)_{n-1}\circ (\xi '_1)_{n-2}\circ \dots \circ (\xi '_1)_0)\) \(= f((\xi _1)_{n-1}\circ (\xi _1)_{n-2}\circ \dots \circ (\xi _1)_0) = f(\gamma _1)\).
 <span class="qed"><span 
@@ -433,7 +437,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Computing \(\pi _1(S^1)\) with groupoids</h3>
-<!--l. 86--><p class="noindent" >It is hard to compute \(\pi _1\) using all the base-points, but the the theorem becomes much more
+<!--l. 88--><p class="noindent" >It is hard to compute \(\pi _1\) using all the base-points, but the the theorem becomes much more
 useful if we have some choice as to which base-points to use. Given a set of base-points \(A \subset X\),
 let \(\Pi _1(U,A)\) for any open set \(U\) be the sub-groupoid of the fundamental groupoid where the
 objects are in \(A\). Analogously for groupoids, let \(A\) is a set of objects in a groupoid \(G\)
@@ -442,7 +446,10 @@ isomorphism class of \(G\), then \(G_A\) is equivalent to \(G\). More importantl
 true:
 </p>
   <div class="newtheorem">
-<!--l. 88--><p class="noindent" ><span class="head">
+<!--l. 90--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
 <a 
  id="x1-3001r1"></a>
 <span 
@@ -460,12 +467,9 @@ class="cmti-12">contains every isomorphism</span>
 class="cmti-12">class of</span> \(G,G'\)<span 
 class="cmti-12">. Then the inclusion maps induce an equivalence</span> \(G_{g(A)}\star _{H_A} G'_{g(A)} \to G\star _H G'\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
-<!--l. 92--><p class="indent" >  Let&#x2019;s use this to compute \(\pi _1(S^1)\). If our model of \(S^1\) is the unit circle in \(\CC \), let \(U = S^1-\{1\}\) and let \(V = S^1 - \{-1\}\), and let \(A = \{i,-i\}\)
+<!--l. 94--><p class="indent" >  Let&#x2019;s use this to compute \(\pi _1(S^1)\). If our model of \(S^1\) is the unit circle in \(\CC \), let \(U = S^1-\{1\}\) and let \(V = S^1 - \{-1\}\), and let \(A = \{i,-i\}\)
 Then \(A\) satis&#xFB01;es the conditions of the exercise. \(\Pi _1(U,A)\) is the groupoid with a single isomorphism \(a\)
 from \(i \to -i\) since the fundamental group of \(U\) is trivial. Similarly \(\Pi _1(V,A)\) consists of one isomorphism \(b\)
 from \(-i\) to \(i\). \(\Pi _1(U\cap V,A)\) consists of the objects \(i,-i\) with no non-identity arrows. Then the pushout will be

@@ -1,34 +1,33 @@
 
-## Academic Projects
+# Subjects
 
-[2nd Order Elliptic PDE](Academic Projects/2nd Order Elliptic PDE/2nd_Order_Elliptic_PDE.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/2nd Order Elliptic PDE.pdf)
+[Analysis](Subjects/Analysis/Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analysis.pdf)
 
-[3-Manifolds Knots and Homology 3-Spheres Junior Paper](Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper.pdf)
+[Analytic Number Theory](Subjects/Analytic Number Theory/Analytic_Number_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analytic Number Theory.pdf)
 
-[Bott Periodicity and Clifford Algebras](Academic Projects/Bott Periodicity and Clifford Algebras/Bott_Periodicity_and_Clifford_Algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Bott Periodicity and Clifford Algebras.pdf)
+[Chromatic Homotopy Theory](Subjects/Chromatic Homotopy Theory/Chromatic_Homotopy_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Chromatic Homotopy Theory.pdf)
 
-[Chern-Weil Gauss-Bonnet](Academic Projects/Chern-Weil Gauss-Bonnet/Chern-Weil_Gauss-Bonnet.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Chern-Weil Gauss-Bonnet.pdf)
+[Complex Analysis](Subjects/Complex Analysis/Complex_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Complex Analysis.pdf)
 
-[Conjugacy of Cartan Subalgebras](Academic Projects/Conjugacy of Cartan Subalgebras/Conjugacy_of_Cartan_Subalgebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Conjugacy of Cartan Subalgebras.pdf)
+[Continued Fractions](Subjects/Continued Fractions/Continued_Fractions.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Continued Fractions.pdf)
 
-[Descent](Academic Projects/Descent/Descent.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Descent.pdf)
+[Geometry of Numbers](Subjects/Geometry of Numbers/Geometry_of_Numbers.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Geometry of Numbers.pdf)
 
-[Explicit Local Class Field Theory](Academic Projects/Explicit Local Class Field Theory/Explicit_Local_Class_Field_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Explicit Local Class Field Theory.pdf)
+[Group Theory](Subjects/Group Theory/Group_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Group Theory.pdf)
 
-[K-Theory and Fredholm Operators](Academic Projects/K-Theory and Fredholm Operators/K-Theory_and_Fredholm_Operators.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/K-Theory and Fredholm Operators.pdf)
+[Lie Algebras](Subjects/Lie Algebras/Lie_Algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Lie Algebras.pdf)
 
-[K-Theory and the Index Theorem](Academic Projects/K-Theory and the Index Theorem/K-Theory_and_the_Index_Theorem.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/K-Theory and the Index Theorem.pdf)
+[ODEs](Subjects/ODEs/ODEs.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/ODEs.pdf)
 
-[Morse Theory on Loop Spaces](Academic Projects/Morse Theory on Loop Spaces/Morse_Theory_on_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Morse Theory on Loop Spaces.pdf)
+[Riemannian Geometry](Subjects/Riemannian Geometry/Riemannian_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Riemannian Geometry.pdf)
 
-[Pontryagin Construction](Academic Projects/Pontryagin Construction/Pontryagin_Construction.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Pontryagin Construction.pdf)
+[Rings Modules Fields](Subjects/Rings Modules Fields/Rings_Modules_Fields.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)
 
-[Resolving Singularities Globally and Locally](Academic Projects/Resolving Singularities Globally and Locally/Resolving_Singularities_Globally_and_Locally.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Resolving Singularities Globally and Locally.pdf)
+[Simplicial](Subjects/Simplicial/Simplicial.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
+# Talks
 
-[S3 pairs and Dehn surgery on Knots Senior Thesis](Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis.pdf)
-
-[Serre Spectral Sequence and the Homology of Loop Spaces](Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces/Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces.pdf)
-## Other
+[Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
+# Other
 
 [Diagonal Argument](Other/Diagonal Argument/Diagonal_Argument.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Diagonal Argument.pdf)
 
@@ -45,10 +44,7 @@
 [Morita Equivalence](Other/Morita Equivalence/Morita_Equivalence.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Morita Equivalence.pdf)
 
 [Projective Modules over Local Rings](Other/Projective Modules over Local Rings/Projective_Modules_over_Local_Rings.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Projective Modules over Local Rings.pdf)
-## Talks
-
-[Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
-## PROMYS
+# PROMYS
 
 [Adjoints](PROMYS/Adjoints/Adjoints.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Adjoints.pdf)
 
@@ -99,28 +95,32 @@
 [Universals and Limits](PROMYS/Universals and Limits/Universals_and_Limits.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Universals and Limits.pdf)
 
 [What is Algebraic Geometry](PROMYS/What is Algebraic Geometry/What_is_Algebraic_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/What is Algebraic Geometry.pdf)
-## Subjects
+# Academic Projects
 
-[Analysis](Subjects/Analysis/Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analysis.pdf)
+[2nd Order Elliptic PDE](Academic Projects/2nd Order Elliptic PDE/2nd_Order_Elliptic_PDE.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/2nd Order Elliptic PDE.pdf)
 
-[Analytic Number Theory](Subjects/Analytic Number Theory/Analytic_Number_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analytic Number Theory.pdf)
+[3-Manifolds Knots and Homology 3-Spheres Junior Paper](Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper.pdf)
 
-[Chromatic Homotopy Theory](Subjects/Chromatic Homotopy Theory/Chromatic_Homotopy_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Chromatic Homotopy Theory.pdf)
+[Bott Periodicity and Clifford Algebras](Academic Projects/Bott Periodicity and Clifford Algebras/Bott_Periodicity_and_Clifford_Algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Bott Periodicity and Clifford Algebras.pdf)
 
-[Complex Analysis](Subjects/Complex Analysis/Complex_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Complex Analysis.pdf)
+[Chern-Weil Gauss-Bonnet](Academic Projects/Chern-Weil Gauss-Bonnet/Chern-Weil_Gauss-Bonnet.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Chern-Weil Gauss-Bonnet.pdf)
 
-[Continued Fractions](Subjects/Continued Fractions/Continued_Fractions.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Continued Fractions.pdf)
+[Conjugacy of Cartan Subalgebras](Academic Projects/Conjugacy of Cartan Subalgebras/Conjugacy_of_Cartan_Subalgebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Conjugacy of Cartan Subalgebras.pdf)
 
-[Geometry of Numbers](Subjects/Geometry of Numbers/Geometry_of_Numbers.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Geometry of Numbers.pdf)
+[Descent](Academic Projects/Descent/Descent.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Descent.pdf)
 
-[Group Theory](Subjects/Group Theory/Group_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Group Theory.pdf)
+[Explicit Local Class Field Theory](Academic Projects/Explicit Local Class Field Theory/Explicit_Local_Class_Field_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Explicit Local Class Field Theory.pdf)
 
-[Lie Algebras](Subjects/Lie Algebras/Lie_Algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Lie Algebras.pdf)
+[K-Theory and Fredholm Operators](Academic Projects/K-Theory and Fredholm Operators/K-Theory_and_Fredholm_Operators.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/K-Theory and Fredholm Operators.pdf)
 
-[ODEs](Subjects/ODEs/ODEs.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/ODEs.pdf)
+[K-Theory and the Index Theorem](Academic Projects/K-Theory and the Index Theorem/K-Theory_and_the_Index_Theorem.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/K-Theory and the Index Theorem.pdf)
 
-[Riemannian Geometry](Subjects/Riemannian Geometry/Riemannian_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Riemannian Geometry.pdf)
+[Morse Theory on Loop Spaces](Academic Projects/Morse Theory on Loop Spaces/Morse_Theory_on_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Morse Theory on Loop Spaces.pdf)
 
-[Rings Modules Fields](Subjects/Rings Modules Fields/Rings_Modules_Fields.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)
+[Pontryagin Construction](Academic Projects/Pontryagin Construction/Pontryagin_Construction.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Pontryagin Construction.pdf)
 
-[Simplicial](Subjects/Simplicial/Simplicial.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
+[Resolving Singularities Globally and Locally](Academic Projects/Resolving Singularities Globally and Locally/Resolving_Singularities_Globally_and_Locally.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Resolving Singularities Globally and Locally.pdf)
+
+[S3 pairs and Dehn surgery on Knots Senior Thesis](Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis.pdf)
+
+[Serre Spectral Sequence and the Homology of Loop Spaces](Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces/Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces.pdf)

@@ -1,9 +1,10 @@
 #!/bin/bash
 outfile="index.md"
 echo > "$outfile"
-find "." -mindepth 1 -maxdepth 1 -type d ! -name ".git"|while read folder; do
-    #echo "$folder"
-    echo "## ${folder##*/}" >> "$outfile"
+#find "." -mindepth 1 -maxdepth 1 -type d ! -name ".git"|while read folder; do #doesn't order the folders
+while read folder  ; do
+    echo "$folder"
+    echo "# ${folder##*/}" >> "$outfile"
     find "$folder" -name "*.html" -maxdepth 3 | sort -t '\0' -n | awk -F '\0' '{print $0}' | while read file; do
         relpath="${file#*/}"
         linkname="${relpath#*/}"
@@ -22,4 +23,4 @@ find "." -mindepth 1 -maxdepth 1 -type d ! -name ".git"|while read folder; do
         #echo $change
         echo "[$linkname]($relpath) [(pdf)]($pdflink)" >> "$outfile"
     done
-done
+done < folderorder.txt

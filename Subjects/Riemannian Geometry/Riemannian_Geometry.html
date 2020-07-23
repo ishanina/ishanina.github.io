@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en" xml:lang="en" > 
 <head> <title>Riemannian Geometry</title> 
-<meta  charset="iso-8859-1" /> 
+<meta  charset="UTF-8"" /> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Riemannian_Geometry.css" /> 
@@ -232,7 +232,7 @@ class="cmbx-12">Convention 1.0.1.</span>  </span>\(R_{XY} = [\nabla _Y,\nabla _X
 <a 
  id="x1-1002r1"></a>
 <span 
-class="cmbx-12">Definition 1.1.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 1.1.</span>  </span><span 
 class="cmti-12">The </span><span 
 class="cmbxti-10x-x-120">energy</span> \(R(\gamma )\) <span 
 class="cmti-12">of a smooth curve</span> \(\gamma \) <span 
@@ -248,11 +248,11 @@ class="cmti-12">.</span>
 
                                                                                   
 <span 
-class="cmbx-12">Lemma 1.2 </span>(First Variation Formula)<span 
+class="cmbx-12">Lemma 1.2 </span>&#x0028;First Variation Formula&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(V\) <span 
-class="cmti-12">be a variational field of a curve</span> \(\gamma \) <span 
-class="cmti-12">defined on</span> \([0,1]\)
+class="cmti-12">be a variational &#xFB01;eld of a curve</span> \(\gamma \) <span 
+class="cmti-12">de&#xFB01;ned on</span> \([0,1]\)
 <span 
 class="cmti-12">that is piecewise smooth on the subdivision</span> \(0 = t_0&lt;t_1&lt;\dots &lt;t_n=1\)<span 
 class="cmti-12">. </span>\[\frac 1 2dE(V) = \sum _i \langle V(t_i),\Delta \gamma '(t_i)\rangle - \int \langle V,\gamma ''\rangle \]
@@ -260,8 +260,8 @@ class="cmti-12">. </span>\[\frac 1 2dE(V) = \sum _i \langle V(t_i),\Delta \gamma
   <div class="proof">
 <!--l. 24--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Let \(\gamma _s\) be a variation. Then we can calculate: \[\frac 1 2\frac d{ds} \int \langle \gamma _s',\gamma _s'\rangle = \int \langle \frac D{ds} \frac d{dt} \gamma _s,\gamma _s'\rangle = \int \langle \frac D{dt} V,\gamma '\rangle \] \[=\int \frac d{dt} \langle V ,\gamma '\rangle - \int \langle V,\gamma ''\rangle \] And finally, use the fundamental
-theorem of calculus on the first term. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Let \(\gamma _s\) be a variation. Then we can calculate: \[\frac 1 2\frac d{ds} \int \langle \gamma _s',\gamma _s'\rangle = \int \langle \frac D{ds} \frac d{dt} \gamma _s,\gamma _s'\rangle = \int \langle \frac D{dt} V,\gamma '\rangle \] \[=\int \frac d{dt} \langle V ,\gamma '\rangle - \int \langle V,\gamma ''\rangle \] And &#xFB01;nally, use the fundamental
+theorem of calculus on the &#xFB01;rst term. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -271,13 +271,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-1004r3"></a>
 <span 
-class="cmbx-12">Lemma 1.3 </span>(Second Variation Formula)<span 
+class="cmbx-12">Lemma 1.3 </span>&#x0028;Second Variation Formula&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span>  \(V,W\)  <span 
-class="cmti-12">be  endpoint-fixing  variations  of  a</span>
+class="cmti-12">be  endpoint-&#xFB01;xing  variations  of  a</span>
 <span 
 class="cmti-12">geodesic</span> \(\gamma \) <span 
-class="cmti-12">that are piecewise smooth (and continuous). Then if</span> \(H\) <span 
+class="cmti-12">that are piecewise smooth &#x0028;and continuous&#x0029;. Then if</span> \(H\) <span 
 class="cmti-12">is the Hessian of the</span>
 <span 
 class="cmti-12">energy functional,</span> \(\frac 1 2H(V,W) = \sum _i \langle V,\Delta \frac D{dt} W(t_i) \rangle + \int \langle R_{\gamma ',W}\gamma ' - W'',V\rangle \)
@@ -286,9 +286,9 @@ class="cmti-12">energy functional,</span> \(\frac 1 2H(V,W) = \sum _i \langle V,
 <!--l. 35--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Let \(\gamma \) be a two parameter variation in the variables \(s_1,s_2\). Then we can calculate:
-\[\frac d{d{s_2}} \int \langle \frac D{dt} \frac d{ds_1} \gamma , \gamma '\rangle = \int \langle \frac D{ds_2} \frac D{dt}\frac d{ds_1} \gamma , \gamma '\rangle + \int \langle \frac D{dt}\frac d{ds_1} \gamma , \frac D{ds_2} \gamma '\rangle \] For the first term, we get \[ = \int \langle \frac D{dt} \frac D{ds_2}\frac d{ds_1} \gamma , \gamma '\rangle + \int \langle R_{W,\gamma '}V, \gamma '\rangle = \int \frac d{dt} \langle \frac D{ds_2}\frac d{ds_1} \gamma , \gamma '\rangle + \int \langle R_{\gamma ,W}\gamma ',V\rangle \] Now we can calculate \[ \int \frac d{dt} \langle \frac D{ds_2}\frac d{ds_1} \gamma , \gamma '\rangle = \int \frac d{dt}\frac d{ds_2} \langle \frac d{ds_1} \gamma , \gamma '\rangle - \int \frac d{dt}\langle V,\frac D{dt} W\rangle \] The first part is \(0\) because the
-variations fix the ends, and the second is the sum in the answer. Finally we calculate
-\[\int \langle \frac D{dt}\frac d{ds_1} \gamma , \frac D{ds_2} \gamma '\rangle = \int \frac d{dt} \langle V \gamma , \frac D{ds_2} \gamma '\rangle - \int \langle V, W''\rangle \] Where the first term is \(0\) again. <span class="qed"><span 
+\[\frac d{d{s_2}} \int \langle \frac D{dt} \frac d{ds_1} \gamma , \gamma '\rangle = \int \langle \frac D{ds_2} \frac D{dt}\frac d{ds_1} \gamma , \gamma '\rangle + \int \langle \frac D{dt}\frac d{ds_1} \gamma , \frac D{ds_2} \gamma '\rangle \] For the &#xFB01;rst term, we get \[ = \int \langle \frac D{dt} \frac D{ds_2}\frac d{ds_1} \gamma , \gamma '\rangle + \int \langle R_{W,\gamma '}V, \gamma '\rangle = \int \frac d{dt} \langle \frac D{ds_2}\frac d{ds_1} \gamma , \gamma '\rangle + \int \langle R_{\gamma ,W}\gamma ',V\rangle \] Now we can calculate \[ \int \frac d{dt} \langle \frac D{ds_2}\frac d{ds_1} \gamma , \gamma '\rangle = \int \frac d{dt}\frac d{ds_2} \langle \frac d{ds_1} \gamma , \gamma '\rangle - \int \frac d{dt}\langle V,\frac D{dt} W\rangle \] The &#xFB01;rst part is \(0\) because the
+variations &#xFB01;x the ends, and the second is the sum in the answer. Finally we calculate
+\[\int \langle \frac D{dt}\frac d{ds_1} \gamma , \frac D{ds_2} \gamma '\rangle = \int \frac d{dt} \langle V \gamma , \frac D{ds_2} \gamma '\rangle - \int \langle V, W''\rangle \] Where the &#xFB01;rst term is \(0\) again. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -309,7 +309,7 @@ class="cmbx-12">Lemma 1.4.</span>  </span>\(\Hess (u)(X,Y) =\langle \nabla _Y\na
 <a 
  id="x1-1006r5"></a>
 <span 
-class="cmbx-12">Lemma 1.5 </span>(Bochner&#8217;s Formula)<span 
+class="cmbx-12">Lemma 1.5 </span>&#x0028;Bochner&#x2019;s Formula&#x0029;<span 
 class="cmbx-12">.</span>  </span>\(\frac 1 2 \Delta |\nabla u |^2 = |\Hess u|^2 + \nabla u (\Delta u) + \Ric (\nabla u, \nabla u)\)<span 
 class="cmti-12">.</span>
 </p>
@@ -320,7 +320,7 @@ class="cmti-12">Proof.</span> </span>In normal coordinates of a point \(p\) the 
 Then we can compute: \[\frac 1 2 \Delta |\nabla u|^2 = \partial _i\langle \nabla _{\partial _i}\nabla u, \nabla u\rangle = \partial _i \Hess (u)(\partial _i,\nabla u) = \partial _i \langle \nabla _{\nabla u}\nabla u, \partial _i\rangle \] \[ = \langle \nabla _{\partial _i}\nabla _{\nabla u} \nabla u, \partial _i \rangle = \langle \nabla _{\nabla u} \nabla _{\partial _i}\nabla u, \partial _i \rangle + \langle R_{\nabla u, \partial _i} \nabla u, \partial _i \rangle + \langle \nabla _{[\partial _i,\nabla u]}\nabla u, \partial _i \rangle \]
 </p><!--l. 59--><p class="indent" >  The second term is \(\Ric (\nabla u, \nabla u)\).
 </p><!--l. 61--><p class="indent" >  We can compute \[|\Hess u|^2 = \Hess u(\partial _i,\partial _j) \langle \nabla _{\partial _i} \nabla u, \partial _j\rangle = \Hess u(\partial _i, \nabla _{\partial _i}\nabla u)\]\[= \langle \nabla _{[\partial _i,\nabla u]}\nabla u, \partial _i\rangle - \langle \nabla _{\partial _i} \nabla u, \nabla _{\nabla u}\partial _i\rangle \]
-</p><!--l. 64--><p class="indent" >  And also \[\nabla u (\Delta u) = \nabla u \langle \nabla _{\partial _i} \nabla u, \partial _i\rangle =\langle \nabla _{\nabla u} \nabla _{\partial _i} \nabla u, \partial _i\rangle + \langle \nabla _{\partial _i} \nabla u,\nabla _{\nabla u} \partial _i\rangle \] So these add up to the first and third term. <span class="qed"><span 
+</p><!--l. 64--><p class="indent" >  And also \[\nabla u (\Delta u) = \nabla u \langle \nabla _{\partial _i} \nabla u, \partial _i\rangle =\langle \nabla _{\nabla u} \nabla _{\partial _i} \nabla u, \partial _i\rangle + \langle \nabla _{\partial _i} \nabla u,\nabla _{\nabla u} \partial _i\rangle \] So these add up to the &#xFB01;rst and third term. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -334,7 +334,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-2001r1"></a>
 <span 
-class="cmbx-12">Definition 2.1.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 2.1.</span>  </span><span 
 class="cmti-12">For a continuous function from an interval to a metric space, the</span>
 <span 
 class="cmbxti-10x-x-120">length </span><span 
@@ -357,7 +357,7 @@ class="cmti-12">is a geodesic up to reparameterization.</span>
   <div class="proof">
 <!--l. 79--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Locally, geodesics are length minimizing, essentially by Gauss&#8217;s Lemma. Since
+class="cmti-12">Proof.</span> </span>Locally, geodesics are length minimizing, essentially by Gauss&#x2019;s Lemma. Since
 lengths are additive under subdivision, we see by subdividing that the path has to
 coincide locally with minimizing geodesics. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -365,7 +365,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
 <!--l. 83--><p class="indent" >  The essence of Hopf-Rinow is in the following proposition, which can be seen as a
-refinement of it:
+re&#xFB01;nement of it:
 </p>
   <div class="newtheorem">
 <!--l. 85--><p class="noindent" ><span class="head">
@@ -374,7 +374,7 @@ refinement of it:
 <span 
 class="cmbx-12">Proposition 2.3.</span>  </span><span 
 class="cmti-12">If</span> \(\exp _p\) <span 
-class="cmti-12">is defined in a ball of radius</span> \(r\) <span 
+class="cmti-12">is de&#xFB01;ned in a ball of radius</span> \(r\) <span 
 class="cmti-12">for a point</span> \(p\)<span 
 class="cmti-12">, then any point of</span> \(M\) <span 
 class="cmti-12">of</span>
@@ -397,7 +397,7 @@ of minimal length, which is a minimal geodesic. By passing to limits, this is tr
 not in the interior.
 </p><!--l. 90--><p class="indent" >  Now let \(q\) be any point of distance \(r\) from \(p\) in \(M\), and consider a sequence of paths in \(M\)
 from \(p\) to \(q\), whose lengths converge to the distance. WLOG, they can be assumed to
-be minimal geodesics until the first point they leave \(M\). Their initial segment is then
+be minimal geodesics until the &#xFB01;rst point they leave \(M\). Their initial segment is then
 given by exponentiating something in the ball of radius \(r\), so these converge to some
 point \(q'\) by compactness. But then the distance from \(q\) to \(\exp (q')\) is \(0\) by additivity of lengths,
 so \(q \in \exp _p(B_r)\). <span class="qed"><span 
@@ -410,30 +410,30 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-2004r4"></a>
 <span 
-class="cmbx-12">Theorem 2.4 </span>(Hopf-Rinow)<span 
+class="cmbx-12">Theorem 2.4 </span>&#x0028;Hopf-Rinow&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
-class="cmti-12">TFAE for a (connected) Riemannian manifold</span>
+class="cmti-12">TFAE for a &#x0028;connected&#x0029; Riemannian manifold</span>
 \(M\)<span 
 class="cmti-12">:</span>
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    <span 
-class="cmti-12">(1)</span> </dt><dd 
+class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(M\) <span 
 class="cmti-12">is geodesically complete</span>
           </dd><dt class="enumerate-enumitem">
    <span 
-class="cmti-12">(2)</span> </dt><dd 
+class="cmti-12">&#x0028;2&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(\exp _p\) <span 
-class="cmti-12">is completely defined for some</span> \(p\)
+class="cmti-12">is completely de&#xFB01;ned for some</span> \(p\)
           </dd><dt class="enumerate-enumitem">
    <span 
-class="cmti-12">(3)</span> </dt><dd 
+class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd 
 class="enumerate-enumitem"><span 
 class="cmti-12">Closed and bounded sets in</span> \(M\) <span 
 class="cmti-12">are compact</span>
           </dd><dt class="enumerate-enumitem">
    <span 
-class="cmti-12">(4)</span> </dt><dd 
+class="cmti-12">&#x0028;4&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(M\) <span 
 class="cmti-12">is complete as a metric space.</span></dd></dl>
 <!--l. 103--><p class="indent" >  <span 
@@ -445,7 +445,7 @@ class="cmti-12">: Any two points are connected by a minimal geodesic.</span>
 <span 
 class="cmti-12">Proof.</span> </span>\((1) \implies (2)\) is trivial. \((2) \implies (5)\): Follows from the proposition. We thus see that \(M\) is exhausted by
 the compact sets \(\exp _p(B_r)\), showing \((2) \implies (3)\). \((3) \implies (4)\) is trivial. \((4) \implies (1)\): The obstruction to extending a geodesic is
-it being defined on an interval \([0,b)\) and it not convergint at \(b\). <span class="qed"><span 
+it being de&#xFB01;ned on an interval \([0,b)\) and it not convergint at \(b\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -460,9 +460,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-2009r5"></a>
 <span 
-class="cmbx-12">Definition 2.5.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 2.5.</span>  </span><span 
 class="cmti-12">A map between Riemannian manifolds is</span> \(\textbf{expanding}\) <span 
-class="cmti-12">if the derivative doesn&#8217;t</span>
+class="cmti-12">if the derivative doesn&#x2019;t</span>
 <span 
 class="cmti-12">decrease the length of tangent vectors.</span>
 </p>
@@ -481,10 +481,10 @@ class="cmti-12">is a covering map.</span>
   <div class="proof">
 <!--l. 119--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>It suffices to show the smooth path lifting property. But the obstruction to
-lifting a path is the lift going off to infinity, which would give it infinite length since
+class="cmti-12">Proof.</span> </span>It su&#xFB03;ces to show the smooth path lifting property. But the obstruction to
+lifting a path is the lift going o&#xFB00; to in&#xFB01;nity, which would give it in&#xFB01;nite length since
 \(M\) is complete. but an expanding map cannot decrease the length of a curve so this
-isn&#8217;t possible. <span class="qed"><span 
+isn&#x2019;t possible. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -497,7 +497,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 class="cmbx-12">Proposition 2.7.</span>  </span><span 
 class="cmti-12">A point</span> \(p\) <span 
 class="cmti-12">in</span> \(M\) <span 
-class="cmti-12">with no conjugate points (also called a pole) has the</span>
+class="cmti-12">with no conjugate points &#x0028;also called a pole&#x0029; has the</span>
 <span 
 class="cmti-12">exponential map a covering map.</span>
                                                                                   
@@ -507,7 +507,7 @@ class="cmti-12">exponential map a covering map.</span>
   <div class="proof">
 <!--l. 126--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>The exponential map is étale so we can give the tangent space at \(p\) the
+class="cmti-12">Proof.</span> </span>The exponential map is &#x00E9;tale so we can give the tangent space at \(p\) the
 pullback metric. This is complete by Hopf Rinow since the lines going through the
 origin are still complete geodesics. Then the exponential map with this metric is
 expanding so we are done by the previous lemma. <span class="qed"><span 
@@ -520,7 +520,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-2012r8"></a>
 <span 
-class="cmbx-12">Theorem 2.8 </span>(Cartan-Hadamard)<span 
+class="cmbx-12">Theorem 2.8 </span>&#x0028;Cartan-Hadamard&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(M\) <span 
 class="cmti-12">has nonpositive sectional curvature, the</span>
@@ -531,11 +531,11 @@ class="cmti-12">is a covering map.</span>
   <div class="proof">
 <!--l. 133--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Using the Jacobi equation we will first see that there are no conjugate points
-to \(p\). The point is that if \(J\) is a Jacobi field, then \[\langle J,J\rangle ''(t) = 2\langle J,J'\rangle ' = 2\langle J,J''\rangle +2\langle J',J'\rangle \] The second term is nonnegative,
-and the first term is twice \(-\langle J, R_{\gamma ',J}\gamma '\rangle \) which is nonnegative by hypothesis. Then since for small
+class="cmti-12">Proof.</span> </span>Using the Jacobi equation we will &#xFB01;rst see that there are no conjugate points
+to \(p\). The point is that if \(J\) is a Jacobi &#xFB01;eld, then \[\langle J,J\rangle ''(t) = 2\langle J,J'\rangle ' = 2\langle J,J''\rangle +2\langle J',J'\rangle \] The second term is nonnegative,
+and the &#xFB01;rst term is twice \(-\langle J, R_{\gamma ',J}\gamma '\rangle \) which is nonnegative by hypothesis. Then since for small
 \(t\) there are no conjugate points, this shows that it is true globally, so the exponential
-map is étale. By the previous proposition we are done. <span class="qed"><span 
+map is &#x00E9;tale. By the previous proposition we are done. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -548,7 +548,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 
                                                                                   
 <span 
-class="cmbx-12">Theorem 2.9 </span>(Bonnet-Myers)<span 
+class="cmbx-12">Theorem 2.9 </span>&#x0028;Bonnet-Myers&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(M\) <span 
 class="cmti-12">has</span> \(\Ric \geq \frac{n-1}{r^2}g\)<span 
@@ -559,7 +559,7 @@ class="cmti-12">, and in particular it is compact.</span>
   <div class="proof">
 <!--l. 143--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>One can pass to the universal cover without affecting the hypotheses. One
+class="cmti-12">Proof.</span> </span>One can pass to the universal cover without a&#xFB00;ecting the hypotheses. One
 needs to show that a unit speed parameterized geodesic \(\gamma \) of length \( l\geq \pi r\) cannot be minimal.
 We can wiggle the curve and see it reduces length by the second variation formula.
 Choose an orthonormal parallel frame of the normal bundle of \(\gamma \): \(E_1,\dots E_{n-1}\), and let \(F_i = \sin (\frac{\pi } lt) E_i\). \(\sum _i H(F_i,F_i) = \sum _i \int \langle R_{\gamma ',F_i} \gamma ' - F_i'',F_i\rangle = \int -\Ric (\gamma ',\gamma ') + \frac{(n-1)\pi ^2}{l^2}\sin ^2(\frac{\pi }{l}t) &lt; 0\) by
@@ -577,7 +577,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 class="cmbx-12">Lemma 2.10.</span>  </span><span 
 class="cmti-12">An orthogonal transformation of</span> \(\RR ^n\) <span 
 class="cmti-12">with determinant</span> \((-1)^{n-1}\) <span 
-class="cmti-12">has a fixed</span>
+class="cmti-12">has a &#xFB01;xed</span>
 <span 
 class="cmti-12">point.</span>
 </p>
@@ -601,7 +601,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-2015r11"></a>
 <span 
-class="cmbx-12">Theorem 2.11 </span>(Weinstein-Synge)<span 
+class="cmbx-12">Theorem 2.11 </span>&#x0028;Weinstein-Synge&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(M^n\) <span 
 class="cmti-12">is compact, oriented, and has positive sectional</span>
@@ -609,7 +609,7 @@ class="cmti-12">is compact, oriented, and has positive sectional</span>
 class="cmti-12">curvature and has a conformal self map</span> \(f\) <span 
 class="cmti-12">inducing</span> \((-1)^n\) <span 
 class="cmti-12">on</span> \(H^n(M;\ZZ )\)<span 
-class="cmti-12">, then there is a fixed</span>
+class="cmti-12">, then there is a &#xFB01;xed</span>
 <span 
 class="cmti-12">point.</span>
 </p>
@@ -620,7 +620,7 @@ class="cmti-12">Proof.</span> </span>Let \(p\) minimize \(d(p,f(p)) = l\), which
 \(p\) to \(f(p)\). Let \(A\) be the orthogonal map given by applying \(df\) to \(T_p(M)\) and parallel transporting
 back to \(p\) along \(\gamma \). Since \(\gamma \) is minimal, \(d(\gamma (t),f(\gamma (t)) \geq l)\) which together with the triangle inequality with \(\gamma (t), f(p), f(\gamma (t))\)
 shows that \(\gamma ,f(\gamma )\) glue together to form a geodesic. This implies that \(A\) is the identity on \(\gamma '\), so
-by the lemma, \(A\) has a fixed line orthogonal to \(\gamma ', v\). Let \(E_v\) be the parallel field corresponding
+by the lemma, \(A\) has a &#xFB01;xed line orthogonal to \(\gamma ', v\). Let \(E_v\) be the parallel &#xFB01;eld corresponding
 to \(v\). Now applying the second variation formula to \(E_v\), we get \(H(E_v,E_v) = \int \langle R_{\gamma ',E_v}\gamma ',E_v\rangle \leq 0\) because positive sectional
 curvature. But then for points \(q\) slightly in the direction of \(E_v\), \(d(q,f(q)) &lt;l\), a contradiction. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -632,7 +632,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-2016r1"></a>
 <span 
-class="cmbx-12">Question 2.11.1.</span>  </span>Is this true if \(f\) is a diffeomorphism?
+class="cmbx-12">Question 2.11.1.</span>  </span>Is this true if \(f\) is a di&#xFB00;eomorphism?
 </p>
   </div>
   <div class="newtheorem">
@@ -643,7 +643,7 @@ class="cmbx-12">Question 2.11.1.</span>  </span>Is this true if \(f\) is a diffe
 
                                                                                   
 <span 
-class="cmbx-12">Corollary 2.12 </span>(Synge)<span 
+class="cmbx-12">Corollary 2.12 </span>&#x0028;Synge&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(M^n\) <span 
 class="cmti-12">have possitive sectional curvature. If its dimension is even,</span>
@@ -676,7 +676,7 @@ class="cmti-12">are constant.</span>
 <!--l. 176--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By passing to a cover, we can assume \(M\) is orientable. Then for any \(g\), via the
-Cartan homotopy formula we have \(\int _M \Delta g \omega _{vol} = \int _M \diverg \nabla g \omega _{vol} = \int _M L_{\nabla g}\omega _{vol} = \int _M d\iota _{\nabla g} \omega _{vol} = 0\) by Stoke&#8217;s theorem. Plugging in \(g = f^2\) we find \(0 = \int _M \Delta f^2 \omega _{vol} = \int _M (2f \Delta f+\langle \nabla f, \nabla f\rangle ) \omega _{vol}\) so since
+Cartan homotopy formula we have \(\int _M \Delta g \omega _{vol} = \int _M \diverg \nabla g \omega _{vol} = \int _M L_{\nabla g}\omega _{vol} = \int _M d\iota _{\nabla g} \omega _{vol} = 0\) by Stoke&#x2019;s theorem. Plugging in \(g = f^2\) we &#xFB01;nd \(0 = \int _M \Delta f^2 \omega _{vol} = \int _M (2f \Delta f+\langle \nabla f, \nabla f\rangle ) \omega _{vol}\) so since
 \(f\) is subharmonic, we see \(f\) is constant. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -700,7 +700,7 @@ class="cmti-12">.</span>
 <!--l. 183--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Note that the Cauchy Schwarz inequality for \(I,\Hess (u)\) gives \(|\Hess (u)|^2 \geq \frac{(\Delta u)^2} n\). This together with the
-Bochner formula and the bound gives the inequality. We can always find a function
+Bochner formula and the bound gives the inequality. We can always &#xFB01;nd a function
 \(u\) so that at a given point \(p\), \(\Hess u(p)\) is diagonal, and \(\nabla u(p)\) is arbitrary. Then the inequality with
 the Bochner formula gives the Ricci curvature bound. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -739,7 +739,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-3002r2"></a>
 <span 
-class="cmbx-12">Lemma 3.2 </span>(Riccati Comparison)<span 
+class="cmbx-12">Lemma 3.2 </span>&#x0028;Riccati Comparison&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(\rho _1,\rho _2: (0.b) \to \RR \) <span 
 class="cmti-12">are smooth functions satisfying</span> \(\limsup _{t\to 0} (\rho _2(t)-\rho _1(t))\geq 0\) <span 
@@ -752,7 +752,7 @@ class="cmti-12">same holds if all inequalities are strict.</span>
   <div class="proof">
 <!--l. 201--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>The second hypothesis implies that \(e^{\int \rho _1 + \rho _2}(\rho _2-\rho _1)\) is increasing. The first hypothesis shows
+class="cmti-12">Proof.</span> </span>The second hypothesis implies that \(e^{\int \rho _1 + \rho _2}(\rho _2-\rho _1)\) is increasing. The &#xFB01;rst hypothesis shows
 it is nonnegative for arbitrarily small \(t\), so we are done. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -763,7 +763,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-3003r3"></a>
 <span 
-class="cmbx-12">Definition 3.3.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 3.3.</span>  </span><span 
 class="cmti-12">A </span><span 
 class="cmbxti-10x-x-120">distance function</span> \(\rho \) <span 
 class="cmti-12">is one with</span> \(|\nabla \rho | \equiv 1\)<span 
@@ -783,7 +783,7 @@ level sets of \(\rho \), \(m\) is their mean curvature. Then the Bochner formula
 <a 
  id="x1-3004r4"></a>
 <span 
-class="cmbx-12">Proposition 3.4 </span>(Mean Curvature Comparison)<span 
+class="cmbx-12">Proposition 3.4 </span>&#x0028;Mean Curvature Comparison&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Suppose</span> \(\Ric \geq (n-1)\kappa g\)<span 
 class="cmti-12">,</span> \(m(r)\) <span 
@@ -812,8 +812,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-3005r1"></a>
 <span 
-class="cmbx-12">Remark 3.4.1.</span>  </span>I think if you use Gauss&#8217;s equation you can show that the above is
-an equality iff the sectional curvatures of the radial vectors are \(\kappa \).
+class="cmbx-12">Remark 3.4.1.</span>  </span>I think if you use Gauss&#x2019;s equation you can show that the above is
+an equality i&#xFB00; the sectional curvatures of the radial vectors are \(\kappa \).
 </p>
   </div>
   <div class="newtheorem">
@@ -822,8 +822,8 @@ an equality iff the sectional curvatures of the radial vectors are \(\kappa \).
  id="x1-3006r2"></a>
 <span 
 class="cmbx-12">Remark 3.4.2.</span>  </span>A stronger theorem is true, namely the inequality holds in the weak
-sense for the Laplcian of any increasing or decreasing radial function (doesn&#8217;t have
-to be distance).
+sense for the Laplcian of any increasing or decreasing radial function &#x0028;doesn&#x2019;t have
+to be distance&#x0029;.
 </p>
   </div>
 <!--l. 231--><p class="indent" >  This gives a second proof of Bonnet-Myers.
@@ -836,7 +836,7 @@ to be distance).
 
                                                                                   
 <span 
-class="cmbx-12">Corollary 3.5 </span>(Bonnet-Myers 2)<span 
+class="cmbx-12">Corollary 3.5 </span>&#x0028;Bonnet-Myers 2&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(M\) <span 
 class="cmti-12">has</span> \(\Ric \geq \frac{n-1}{r^2}g\)<span 
@@ -860,7 +860,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-3008r6"></a>
 <span 
-class="cmbx-12">Definition 3.6.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 3.6.</span>  </span><span 
 class="cmti-12">The </span><span 
 class="cmbxti-10x-x-120">cut locus </span><span 
 class="cmti-12">at</span> \(p\)<span 
@@ -870,7 +870,7 @@ class="cmti-12">consisting of all points</span>
 \(v\) <span 
 class="cmti-12">where</span> \(\exp (v)\) <span 
 class="cmti-12">is a minimizing geodesic, but</span> \(\exp (tv)\) <span 
-class="cmti-12">isn&#8217;t for</span> \(t&gt;1\)<span 
+class="cmti-12">isn&#x2019;t for</span> \(t&gt;1\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
@@ -886,7 +886,7 @@ class="cmbx-12">cut point</span>.
 class="cmbx-12">Lemma 3.7.</span>  </span><span 
 class="cmti-12">For a cut point</span> \(v\)<span 
 class="cmti-12">, either</span> \(\exp (v)\) <span 
-class="cmti-12">has its first conjugate point at</span> \(t=1\) <span 
+class="cmti-12">has its &#xFB01;rst conjugate point at</span> \(t=1\) <span 
 class="cmti-12">or there is another</span>
 <span 
 class="cmti-12">geodesic of the same length going to</span> \(v\)<span 
@@ -918,10 +918,10 @@ class="cmti-12">.</span>
 <a 
  id="x1-3011r9"></a>
 <span 
-class="cmbx-12">Theorem 3.9 </span>(Rauch Comparison)<span 
+class="cmbx-12">Theorem 3.9 </span>&#x0028;Rauch Comparison&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span>  \(M,M'\)  <span 
-class="cmti-12">be  manifolds  with  Jacobi  fields</span>  \(X,\tilde{X}\)  <span 
+class="cmti-12">be  manifolds  with  Jacobi  &#xFB01;elds</span>  \(X,\tilde{X}\)  <span 
 class="cmti-12">on</span>
 <span 
 class="cmti-12">geodesics</span> \(\gamma ,\tilde{\gamma }\)<span 
@@ -929,19 +929,19 @@ class="cmti-12">, and suppose that</span> \(X(0) = \tilde{X}(0)= 0\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 267--><p class="indent" >  Things to add: Cut locus stuff Bishop-Gromov volume comparison Rauch
+<!--l. 267--><p class="indent" >  Things to add: Cut locus stu&#xFB00; Bishop-Gromov volume comparison Rauch
 Comparison
 </p><!--l. 274--><p class="indent" >  Things to potentially include: </p>
           <ul class="itemize1">
-       <li class="itemize">&#8221;things are determined by curvature&#8221; and symmetric spaces
+       <li class="itemize">&#x201D;things are determined by curvature&#x201D; and symmetric spaces
           </li>
-       <li class="itemize">Cheng&#8217;s theorem on sphere
+       <li class="itemize">Cheng&#x2019;s theorem on sphere
           </li>
-       <li class="itemize">Louiville&#8217;s theorem on conformal transformations
+       <li class="itemize">Louiville&#x2019;s theorem on conformal transformations
           </li>
        <li class="itemize">Construction of spaces of constant curvature
           </li>
-       <li class="itemize">Maybe some basic things like Killing&#8217;s equation, Jacobi equation First/Second
+       <li class="itemize">Maybe some basic things like Killing&#x2019;s equation, Jacobi equation First/Second
        Variation formulae.</li></ul>
    
 </body> 

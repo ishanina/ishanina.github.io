@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en" xml:lang="en" > 
 <head> <title>Analytic number theory</title> 
-<meta  charset="iso-8859-1" /> 
+<meta  charset="UTF-8"" /> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Analytic_Number_Theory.css" /> 
@@ -242,7 +242,7 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 15--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>\(F(n) = \sum _{i \leq n}log(i)a_i \leq \sum _{i \leq n}log(n)a_n\), showing the first statement. For the second, Observe that for any \(\ee &gt;0\), we have
+class="cmti-12">Proof.</span> </span>\(F(n) = \sum _{i \leq n}log(i)a_i \leq \sum _{i \leq n}log(n)a_n\), showing the &#xFB01;rst statement. For the second, Observe that for any \(\ee &gt;0\), we have
 \(F(n) \geq \sum _{\ceil{n^{1-\ee }}}^n \log (n^{1-\ee })a_n = (1-\ee )\log (n)(f(n)-f(\ceil{n^{1-\ee }}))\), so \(\frac{F(n)}{f(n)log(n)} \geq (1-\ee )(1-\frac{f(n^{1-\ee })}{f(n)})\), and letting \(n \to \infty ,\ee \to 0\) gives the result. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -258,7 +258,7 @@ their generating functions. If \(a_n\) is a sequence, one way to turn \(a_n\) in
 function is to consider \(F(z) = \sum _0^\infty a_nz^n\). Properties of the sequence then relate to properties of
 the function, and vice versa. For example, we might expect the behavior of \(F(z)\)
 as \(z \to 1^{-}\) to be related to the asymptotics of the sequence. Also if \(F\) is analytic near
-\(1\), then the coefficients \(a_n\) can be obtained via Cauchy&#8217;s integral formula. These
+\(1\), then the coe&#xFB03;cients \(a_n\) can be obtained via Cauchy&#x2019;s integral formula. These
 generating functions are good at capturing additive properties of sequences, as
 \(x^nx^m = x^{n+m}\).
 </p><!--l. 22--><p class="indent" >  Another type of generating function that can be made from sequences is an
@@ -289,7 +289,7 @@ class="cmti-12">.</span>
 <!--l. 30--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(\sum _1^\infty \frac{1}{n^s}= \prod _p(\frac{1}{1-\frac{1}{p^s}})\), which diverges as \(s \to 1^+\). Taking the log of the right hand side we get \(\sum _p -\log (1-\frac{1}{p^s}) = \sum _p \frac{1}{p} + \sum _{m \geq 2, p} \frac{1}{mp^{ms}}\). The second
-sum is \(\leq \sum _{m \geq 2, p} \frac{1}{p^{ms}} = \sum _{p} \frac{1}{p^{2s}-p^s} \leq 2\sum _{p}\frac{1}{p^{2s}}\), which is finite as \(s \to 1\). Thus \(\sum _p \frac{1}{p}\) diverges. <span class="qed"><span 
+sum is \(\leq \sum _{m \geq 2, p} \frac{1}{p^{ms}} = \sum _{p} \frac{1}{p^{2s}-p^s} \leq 2\sum _{p}\frac{1}{p^{2s}}\), which is &#xFB01;nite as \(s \to 1\). Thus \(\sum _p \frac{1}{p}\) diverges. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -322,7 +322,7 @@ class="cmti-12">.</span>
 <!--l. 38--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Let \(f_n = \sum _1^n a_n\). We will show that the partial sums are uniformly Cauchy by using
-summation by parts. \(\sum _k^m \frac{a_n}{n^s} = \sum _k^m\frac{f_n-f_{n-1}}{n^s}\) = \(\frac{f_m}{m^s} - \frac{f_{k-1}}{(k-1)^s} + \sum _k^{m-1}f_n (\frac{1}{n^s}-\frac{1}{(n+1)^s})\). The first two terms go to \(0\) uniformly as \(k \to \infty \), and the difference
+summation by parts. \(\sum _k^m \frac{a_n}{n^s} = \sum _k^m\frac{f_n-f_{n-1}}{n^s}\) = \(\frac{f_m}{m^s} - \frac{f_{k-1}}{(k-1)^s} + \sum _k^{m-1}f_n (\frac{1}{n^s}-\frac{1}{(n+1)^s})\). The &#xFB01;rst two terms go to \(0\) uniformly as \(k \to \infty \), and the di&#xFB00;erence
 in the sum is equal to \(\int _{n}^{n+1}(-s)x^{-(s+1)}\), which in absolute value is at most \(|s|n^{-s+1}\). But then since \(f_n = O(n^r)\), the last
 term in absolute value is at most \(\sum _k^{m-1}\frac{cn^r}{n^{-(r+\ee +1)}}\), which is uniformly bounded in \(m\) and goes to \(0\) as \(k \to \infty \)
 since \(\ee +1 &gt; 1\). The last statement is clear. <span class="qed"><span 
@@ -347,8 +347,8 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 46--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Let \(a_i\) be the first nonzero term of \(a_n\). Then \(F \sim \frac{a_i}{i^s}\) as \(s \to \infty \), so this behavior determines \(i\) and
-\(a_i\). By subtracting this term off, we can recover the rest of the sequence. We have used
+class="cmti-12">Proof.</span> </span>Let \(a_i\) be the &#xFB01;rst nonzero term of \(a_n\). Then \(F \sim \frac{a_i}{i^s}\) as \(s \to \infty \), so this behavior determines \(i\) and
+\(a_i\). By subtracting this term o&#xFB00;, we can recover the rest of the sequence. We have used
                                                                                   
 
                                                                                   
@@ -377,15 +377,15 @@ class="cmti-12">denotes the Dirichlet convolution.</span>
   <div class="proof">
 <!--l. 55--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>For sufficiently large \(s\), \(F,G\) converge absolutely and uniformly. Then when we take
+class="cmti-12">Proof.</span> </span>For su&#xFB03;ciently large \(s\), \(F,G\) converge absolutely and uniformly. Then when we take
 their product, we can change the order of summation to get the result. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
- id="x1-30003"></a>Zeta functions &amp; The class number formula</h3>
-<!--l. 61--><p class="noindent" >Given a number field \(K\), let \(j_K(n)\) be the number of ideals of norm \(n\) in \(\cO _K\). The <span 
+ id="x1-30003"></a>Zeta functions &#x0026; The class number formula</h3>
+<!--l. 61--><p class="noindent" >Given a number &#xFB01;eld \(K\), let \(j_K(n)\) be the number of ideals of norm \(n\) in \(\cO _K\). The <span 
 class="cmbx-12">Dedekind zeta</span>
 <span 
 class="cmbx-12">function</span> \(\zeta _K(s)\) is the Dirichlet series for \(j_K(n)\)
@@ -445,7 +445,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 
                                                                                   
   </div>
-<!--l. 79--><p class="indent" >  Now we can write \(\zeta _K(s)\) another way. But first a technical lemma.
+<!--l. 79--><p class="indent" >  Now we can write \(\zeta _K(s)\) another way. But &#xFB01;rst a technical lemma.
 </p>
   <div class="newtheorem">
 <!--l. 81--><p class="noindent" ><span class="head">
@@ -464,7 +464,7 @@ class="cmti-12">convergent.</span>
   <div class="proof">
 <!--l. 85--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Note that \(e^{-\sum _i |a_i|} = \prod _i e^{-|a_i|}\) converges and by Taylor&#8217;s theorem is at least \(\prod _i(1-|a_i|)\). Thus the inverse,
+class="cmti-12">Proof.</span> </span>Note that \(e^{-\sum _i |a_i|} = \prod _i e^{-|a_i|}\) converges and by Taylor&#x2019;s theorem is at least \(\prod _i(1-|a_i|)\). Thus the inverse,
 which is the left hand side, absolutely converges, and the partial products show that
 it converges to the right hand side. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -519,10 +519,10 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
 <!--l. 106--><p class="indent" >  The <span 
 class="cmbx-12">Dirichlet density </span>of a set of primes \(S\) is the limit as \(s \to 1\), if it exists, of \(\frac{\sum _{\pp \subset S} \frac{1}{N(\pp )^s}}{\sum _{\pp } \frac{1}{N(\pp )^s}}\). We can
-similarly define the upper and lower Dirichlet densities using \(\liminf \) and \(\limsup \). It clearly satisfies
+similarly de&#xFB01;ne the upper and lower Dirichlet densities using \(\liminf \) and \(\limsup \). It clearly satis&#xFB01;es
 natural properties one might expect. We say that \(S\) has <span 
 class="cmbx-12">polar density</span> \(\frac{n}{m}\) if \(\zeta _{K,S}(s)^m\) has a pole of
-order \(n\). Polar density also satisfies natural properties. The following is easy to see because
+order \(n\). Polar density also satis&#xFB01;es natural properties. The following is easy to see because
 of Lemma <a 
 href="#x1-3005r5">3.5<!--tex4ht:ref: logapprox --></a>.
 </p>
@@ -588,7 +588,7 @@ class="cmti-12">Proof.</span> </span>First assume \(L\) is Galois. WLOG, we can 
 degree \(1\) over \(\QQ \). But then this is clear, since if \(A\) are the primes of residual degree \(1\) in \(L\)
 and \(B\) are the primes of residual degree \(1\) splitting completely, then \(\zeta _{L,A}(s)\) is the \([L:K]^{th}\) power of
 the \(\zeta _{K,B}(s)\), so the result follows. Now we can remove the Galois assumption by noting that
-a prime splits completely in \(L\) iff it splits completely in the Galois closure. <span class="qed"><span 
+a prime splits completely in \(L\) i&#xFB00; it splits completely in the Galois closure. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -618,9 +618,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
 <!--l. 132--><p class="indent" >  A <span 
-class="cmbx-12">Dirichlet character </span>mod \(n\) (usually denoted \(\chi \)) is a totally multiplicative function on
+class="cmbx-12">Dirichlet character </span>mod \(n\) &#x0028;usually denoted \(\chi \)&#x0029; is a totally multiplicative function on
 the natural numbers factoring through \(\ZZ /n\ZZ \), and supported on \(\ZZ /n\ZZ ^\times \). The character corresponding
-to the trivial homomorphism is called the trivial character, and denoted \(1\). We can define \(L(s,\chi ) = \sum _1^\infty \frac{\chi (n)}{n^s}\)
+to the trivial homomorphism is called the trivial character, and denoted \(1\). We can de&#xFB01;ne \(L(s,\chi ) = \sum _1^\infty \frac{\chi (n)}{n^s}\)
 to be the Dirichlet \(L\)-series.
 </p>
   <div class="newtheorem">
@@ -639,7 +639,7 @@ class="cmti-12">trivial.</span>
   <div class="proof">
 <!--l. 137--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Note that \(\sum _{\ZZ /n\ZZ } \chi (a) = 0\) for a nontrivial character mod \(n\), so that \(\sum _1^m \chi (a) = O(1)\), giving the first result. \(L(s,1) = \zeta (s)\prod _{p|n}(1- p^{-s})\),
+class="cmti-12">Proof.</span> </span>Note that \(\sum _{\ZZ /n\ZZ } \chi (a) = 0\) for a nontrivial character mod \(n\), so that \(\sum _1^m \chi (a) = O(1)\), giving the &#xFB01;rst result. \(L(s,1) = \zeta (s)\prod _{p|n}(1- p^{-s})\),
 giving the second result. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -648,8 +648,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
                                                                                   
 
                                                                                   
-<!--l. 142--><p class="indent" >  More generally, given an abelian extension \(L\) of a number field \(K\), we can consider
-characters \(\chi \in \hat{G}\) on the Galois group \(G\), and we can define a corresponding character on the set of
+<!--l. 142--><p class="indent" >  More generally, given an abelian extension \(L\) of a number &#xFB01;eld \(K\), we can consider
+characters \(\chi \in \hat{G}\) on the Galois group \(G\), and we can de&#xFB01;ne a corresponding character on the set of
 ideals via the Artin map composed with the character. For simplicity, let \(\chi (I)\) be shorthand for
 \(\chi ((\frac{L/K}{I}))\). Then \(L_K(s,\chi ) = \prod _{\pp \in \Spec (\cO _K)^{ur}}(1-\frac{\chi (\pp )}{\pp ^{s}}) = \sum _{I \in I^{ur}}\frac{\chi (I)}{N(I)^s}\).
 </p>
@@ -673,9 +673,9 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 148--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>The last identity is obvious, so we&#8217;ll focus on the first. We can split the factors
+class="cmti-12">Proof.</span> </span>The last identity is obvious, so we&#x2019;ll focus on the &#xFB01;rst. We can split the factors
 of \((1-N(\mf{P})^{-s})^{-1}\) on the left hand side into Galois orbits. For each prime \(\pp \), we will get \(\prod _{\mf{P}/\pp }(1-\frac{1}{N(\mf{P})^{s}})^{-r_\pp }\), and for
-the unramified primes, this factors into \(\prod _{\chi \in \hat{G}}(1-\frac{\chi (\pp )}{N(\pp )^{s}})^{-1}\) by basic facts about characters of abelian
+the unrami&#xFB01;ed primes, this factors into \(\prod _{\chi \in \hat{G}}(1-\frac{\chi (\pp )}{N(\pp )^{s}})^{-1}\) by basic facts about characters of abelian
 groups, and how Frobenius relates to splitting. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -703,8 +703,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 159--><p class="indent" >  From the proposition, it follows that if \(K\) is a subfield of a cyclotomic field (i.e. any
-abelian extension) where primes dividing \(m\) ramify, then the residue at \(1\) of \(\zeta _K(s)\) is also given by \(\prod _{p\nmid m}(1-\frac{1}{p^{f_p}})^{r_p}(1-\frac{1}{p})^{-1} \prod _{1\neq \chi \in \hat{G}}L(1,\chi )\),
+<!--l. 159--><p class="indent" >  From the proposition, it follows that if \(K\) is a sub&#xFB01;eld of a cyclotomic &#xFB01;eld &#x0028;i.e. any
+abelian extension&#x0029; where primes dividing \(m\) ramify, then the residue at \(1\) of \(\zeta _K(s)\) is also given by \(\prod _{p\nmid m}(1-\frac{1}{p^{f_p}})^{r_p}(1-\frac{1}{p})^{-1} \prod _{1\neq \chi \in \hat{G}}L(1,\chi )\),
 giving a class number formula. To compute this, we will need to evaluate \(L(1,\chi )\) for nontrivial
 characters.
 </p>
@@ -752,7 +752,7 @@ it is easy to see \(\tau _k(\chi ) = \overline{\chi }(k)\tau (\chi )\). More gen
 <a 
  id="x1-4001r1"></a>
 <span 
-class="cmbx-12">Theorem 4.1 </span>(Dirichlet&#8217;s Theorem)<span 
+class="cmbx-12">Theorem 4.1 </span>&#x0028;Dirichlet&#x2019;s Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">The polar density of primes in each relatively</span>
 <span 
@@ -770,7 +770,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 182--><p class="noindent" >One should note that the proof above works for any cyclotomic extension of number fields
+<!--l. 182--><p class="noindent" >One should note that the proof above works for any cyclotomic extension of number &#xFB01;elds
 without any change other than restricting to primes with residual degree \(1\) over
 \(\QQ \).
 </p><!--l. 184--><p class="indent" >  We can improve the results of Theorem <a 
@@ -792,7 +792,7 @@ class="cmti-12">.</span>
 <span 
 class="cmti-12">Proof.</span> </span>The density of elements of order dividing \(d\) is \(\frac{d}{n}\) by Theorem <a 
 href="#x1-3008r8">3.8<!--tex4ht:ref: splitcompletely --></a>. But then by
-Möbius inversion, we are done. <span class="qed"><span 
+M&#x00F6;bius inversion, we are done. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -805,7 +805,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-4003r3"></a>
 <span 
-class="cmbx-12">Theorem 4.3 </span>(Frobenius Density Theorem)<span 
+class="cmbx-12">Theorem 4.3 </span>&#x0028;Frobenius Density Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(L\) <span 
 class="cmti-12">be a Galois extension of</span> \(K\) <span 
@@ -828,12 +828,12 @@ class="cmti-12">.</span>
 <!--l. 197--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We will ignore ramifying primes, and those in \(L^\sigma \) and \(K\) with inertial degree \(&gt;1\) over
-\(\QQ \). Let \(L^\sigma \) be the fixed field of \(\sigma \). By the previous lemma, the set \(A\) of primes in \(L^{\sigma }\) with
+\(\QQ \). Let \(L^\sigma \) be the &#xFB01;xed &#xFB01;eld of \(\sigma \). By the previous lemma, the set \(A\) of primes in \(L^{\sigma }\) with
 Frobenius \(\sigma ^k\) has polar density \(\frac{\phi (d)}{n}\). Now let \(B\) be the set of prime in \(K\) with Frobenius \(\sigma ^k\)
 for some prime over them. Each prime in \(B\) has \(\frac{|G|}{n}\) primes above it in \(L\), and the Galois
 group acts on these transitively, which acts on the decomposition group transitively
 by conjugation. Thus \(\frac{|G|}{nc}\) primes above the prime in \(B\) must have a Frobenius that works.
-Each of these gives a different element of \(A\) that restricts to \(B\), so the restriction map
+Each of these gives a di&#xFB00;erent element of \(A\) that restricts to \(B\), so the restriction map
 from \(A\) to \(B\) is \(\frac{|G|}{nc}\) to \(1\). Looking at the level of zeta functions for \(A,B\), since everything is inertial
 degree \(1\) over \(\QQ \), we immediately get that the polar density of \(B\) is \(\frac{c\phi (n)}{|G|}\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -849,12 +849,12 @@ theorem:
 <a 
  id="x1-4004r4"></a>
 <span 
-class="cmbx-12">Theorem 4.4 </span>(Chebotarev Density Theorem)<span 
+class="cmbx-12">Theorem 4.4 </span>&#x0028;Chebotarev Density Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(L/K\) <span 
 class="cmti-12">be a Galois extension of number</span>
 <span 
-class="cmti-12">fields, and let</span> \([\sigma ]\) <span 
+class="cmti-12">&#xFB01;elds, and let</span> \([\sigma ]\) <span 
 class="cmti-12">be a conjugacy class in the Galois group. The Dirichlet density of</span>
                                                                                   
 
@@ -867,22 +867,22 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 208--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>First we&#8217;ll reduce to the case of a cyclic extension using the same technique
+class="cmti-12">Proof.</span> </span>First we&#x2019;ll reduce to the case of a cyclic extension using the same technique
 as in the previous. Given a prime \(p\) with Frobenius \([\sigma ]\), note that it splits into \(\frac{|G|}{o(\sigma )}\) primes in
 \(L\), and exactly \(\frac{1}{[\sigma ]}\) of those have Frobenius actually \(\sigma \). Combining this with the Dirichlet
 density for the cyclic case, along with ignoring primes ramifying or having nontrivial
 residual degree over \(\QQ \), we get the result.
 </p><!--l. 210--><p class="indent" >  Next, we will reduce to the case that \(L\) is a cyclotomic extension of \(K\), which was
-proven in the remark after Dirichlet&#8217;s theorem. If \(L\) is a cyclic extension, note that
+proven in the remark after Dirichlet&#x2019;s theorem. If \(L\) is a cyclic extension, note that
 we only need to show that \(\frac{1}{|G|}\) is a lower bound on the lower Dirichlet density as the
 same lower bound on the rest of the elements of \(G\) will give the desired upper bound.
 This will be shown as follows: pick a prime \(m\) linearly disjoint from \(K\), and consider \(L[\zeta _m]\),
-whose Galois group can be identified with \(G\times \ZZ /m\ZZ ^\times \). Then if \(a \in \ZZ /m\ZZ ^\times \) is an element with \(n\) dividing its
+whose Galois group can be identi&#xFB01;ed with \(G\times \ZZ /m\ZZ ^\times \). Then if \(a \in \ZZ /m\ZZ ^\times \) is an element with \(n\) dividing its
 order, then \(\langle (\sigma ,a)\rangle \cap G\times \{1\}\) is a trivial group, which by Galois theory means that \(L[\zeta _m]/L[\zeta _m]^{(\sigma ,a)}\) is a cyclotomic
 extension, so the density of primes for \((\sigma ,a)\) is what we want. In addition, the sum of the
 lower Dirichlet densities for the elements \((\sigma ,a)\) as \(a\) ranges in \(\ZZ /m\ZZ ^\times \) is at most the lower density
 of \(\sigma \). If \(H_m\) is the number of elements elements of \(\ZZ /m\ZZ ^\times \) with \(n\) dividing its order, then the lower
-Dirichlet density is at least \(\frac{H_m}{(m-1)|G|}\). Now we can choose by Dirichlet&#8217;s theorem \(m \equiv 1 \pmod{n^k}\) for large \(k\) so
+Dirichlet density is at least \(\frac{H_m}{(m-1)|G|}\). Now we can choose by Dirichlet&#x2019;s theorem \(m \equiv 1 \pmod{n^k}\) for large \(k\) so
 that \(\frac{H_m}{m-1} \to 1\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en" xml:lang="en" > 
 <head> <title>Quadratic Forms</title> 
-<meta  charset="iso-8859-1" /> 
+<meta  charset="UTF-8"" /> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Positive_Definite_Binary_Quadratic_Forms_over_Z.css" /> 
@@ -225,7 +225,7 @@ by which quadratic forms and how many representations are there? We will be
 especially in the case that a number is of the form \(ax^2+bxy+cy^2\) with \(x,y\) relatively prime, in
 which case we will say it is <span 
 class="cmbx-12">properly represented </span>by the form. We will explore
-Lagrange&#8217;s theory of reduced positive definite forms to get a better grasp on this
+Lagrange&#x2019;s theory of reduced positive de&#xFB01;nite forms to get a better grasp on this
 problem.
 </p><!--l. 12--><p class="indent" >  We can view \(ax^2+bxy+cy^2\) as the product \(\begin{pmatrix}x &amp; y\end{pmatrix} \begin{pmatrix}a &amp; \frac b 2 \\ \frac b 2 &amp; c\end{pmatrix} \begin{pmatrix}x \\ y\end{pmatrix}\) First note that we can replace \(x,y\) with linear functions in \(x\)
 and \(y\) and the result will still be a quadratic form. If this linear transformation is
@@ -235,27 +235,27 @@ quadratic forms represent the same numbers. In the matrix form, if \(Q\) represe
 quadratic form and \(A\) is the matrix representing the linear transformation, then the
 new matrix is represented by \(A^TQA\). Since \(\det (A^TQA)=\det Q\) as \(\det A= \pm 1\), \(4\det A = b^2-4ac\) is an isomorphism invariant of the
 quadratic form called its discriminant, denoted \(\disc (Q)\). Note that it is \(\equiv 0,1 \pmod 4\), and that \(b \equiv D \pmod 2\).
-More generally the discriminant changes by \(\det (A)^2\) if \(A\) has coefficients in \(\CC \). We will like
+More generally the discriminant changes by \(\det (A)^2\) if \(A\) has coe&#xFB03;cients in \(\CC \). We will like
 to consider <span 
 class="cmbx-12">primitive </span>quadratic forms, namely those where \((a,b,c)=(1)\). The problem of
 determining what the isomorphism classes of quadratic forms are and how many
 representations of a number a quadratic form has reduces easily to the case where it is
 primitive.
-</p><!--l. 15--><p class="indent" >  The discriminant greatly affects which primes are represented by the form \(Q\). We can
+</p><!--l. 15--><p class="indent" >  The discriminant greatly a&#xFB00;ects which primes are represented by the form \(Q\). We can
 complete the square to get \(4aQ = (2ax+by)^2 - \disc Qy^2\). This means that if \(\disc Q&gt;0\), the form is <span 
-class="cmbx-12">definite</span>, meaning that it
+class="cmbx-12">de&#xFB01;nite</span>, meaning that it
                                                                                   
 
                                                                                   
-takes on either nonnegative (positive definite) or nonpositive (negative definite) values
+takes on either nonnegative &#x0028;positive de&#xFB01;nite&#x0029; or nonpositive &#x0028;negative de&#xFB01;nite&#x0029; values
 depending on the sign of \(a\). If \(\disc Q&lt;0\), it takes on both positive and negative values, so is
 <span 
-class="cmbx-12">indefinite</span>. If \(\disc Q= 0\), it is <span 
+class="cmbx-12">inde&#xFB01;nite</span>. If \(\disc Q= 0\), it is <span 
 class="cmbx-12">degenerate</span>, and the equation above makes it easy to determine what
 numbers are represented by the form. Here all of our forms will be primitive,
-and positive definite. Note that any discriminant \(\equiv 0,1 \pmod 4\) is attained by some quadratic
+and positive de&#xFB01;nite. Note that any discriminant \(\equiv 0,1 \pmod 4\) is attained by some quadratic
 form.
-</p><!--l. 17--><p class="indent" >  A slightly different equivalence relation that will be important is by requiring the matrix
+</p><!--l. 17--><p class="indent" >  A slightly di&#xFB00;erent equivalence relation that will be important is by requiring the matrix
 \(A\) to be in \(\SL _2(\ZZ )\). In this case we will say that \(Q\) is <span 
 class="cmbx-12">equivalent </span>to \(A^TQA\).
 </p><!--l. 19--><p class="indent" >  It is easy to tell when two forms of the class are equivalent as we will soon see. Say that
@@ -279,14 +279,14 @@ class="cmti-12">Proof.</span> </span>For existence of an equivalent reduced form
 which will make \(|b|\) smaller. If \(c\leq a\), we can swap \(a,c\) via \(x,y \mapsto y,-x\). Finally when \(|b|\leq a \leq c\), if \(-b = a\), it is easy to
 see that one of the previous transformations used will force \(b\) to be positive while
 preserving the inequalities.
-</p><!--l. 27--><p class="indent" >  Now to show that this is unique, we can first observe that for a reduced form, \(a\) can
+</p><!--l. 27--><p class="indent" >  Now to show that this is unique, we can &#xFB01;rst observe that for a reduced form, \(a\) can
 be recovered as being the smallest element represented by the form. Then, observe
 that we can recover whether \(a=c\) or not be looking at whether the value \(a\) is attained
 twice or more than twice by the quadratic form. If \(a = c\), then \(b\) can be recovered from the
 equation of the discriminant and the fact that it is nonnegative. If \(a&lt;c\), then the value
-\(a\) is only obtained by \((x,y) = (1,0), (-1,0)\) so the only automorphisms of the quadratic form that fix the
-coefficient \(a\) are \(x,y \mapsto \pm x, \mp y+cx\). One only needs to check then that for any reduced form, applying
-any of these doesn&#8217;t yield a reduced form. <span class="qed"><span 
+\(a\) is only obtained by \((x,y) = (1,0), (-1,0)\) so the only automorphisms of the quadratic form that &#xFB01;x the
+coe&#xFB03;cient \(a\) are \(x,y \mapsto \pm x, \mp y+cx\). One only needs to check then that for any reduced form, applying
+any of these doesn&#x2019;t yield a reduced form. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
                                                                                   
@@ -305,7 +305,7 @@ class="cmti-12">generate</span> \(\SL _2(\ZZ )\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 35--><p class="indent" >  Let&#8217;s find all equivalence class of quadratic forms of discriminants \(-12\). For a reduced form,
+<!--l. 35--><p class="indent" >  Let&#x2019;s &#xFB01;nd all equivalence class of quadratic forms of discriminants \(-12\). For a reduced form,
 \(a\leq \sqrt{12/3} = 2\). and \(b\) is an even number with \(b \leq a\). So either \((a,b) = (1,0),(2,0),(2,2)\). \(c = \frac{b^2-D}/4a\), giving the forms \(x^2+3y^2, 2x^2+\frac{3}{2}y^2, 2x^2+2xy+2y^2\). The only one that is
 primitive is \(x^2+3y^2\), so there is only one equivalence class.
 </p>
@@ -314,12 +314,12 @@ primitive is \(x^2+3y^2\), so there is only one equivalence class.
 <a 
  id="x1-1003r1"></a>
 <span 
-class="cmbx-12">Question 1.1.1.</span>  </span>Is there a notion of reduced form for indefinite forms? Is it unique?
+class="cmbx-12">Question 1.1.1.</span>  </span>Is there a notion of reduced form for inde&#xFB01;nite forms? Is it unique?
 </p>
   </div>
 <!--l. 41--><p class="indent" >  For \(D&lt;0\) a discriminant, let \(\Cl (D)\) be the set of equivalence classes of quadratic forms of a
-particular discriminant. It is called the class group (though for now it is only a
-set).
+particular discriminant. It is called the class group &#x0028;though for now it is only a
+set&#x0029;.
 </p>
   <div class="newtheorem">
 <!--l. 43--><p class="noindent" ><span class="head">
@@ -327,7 +327,7 @@ set).
  id="x1-1004r2"></a>
 <span 
 class="cmbx-12">Theorem 1.2.</span>  </span>\(\Cl (D)\) <span 
-class="cmti-12">is finite.</span>
+class="cmti-12">is &#xFB01;nite.</span>
 </p>
   <div class="proof">
 <!--l. 46--><p class="indent" >  <span class="head">
@@ -335,17 +335,17 @@ class="cmti-12">is finite.</span>
 
                                                                                   
 <span 
-class="cmti-12">Proof.</span> </span>We only need to show there are finitely many reduced forms. For a reduced
-form, \(D = b^2-4ac\leq a^2-4a^2 =-3a^2\), so \(|b|\leq a \leq \sqrt{-\frac D 3}\), and \(c\) is determined by \(a,b\) via the formula for \(D\). Thus there are only finitely
+class="cmti-12">Proof.</span> </span>We only need to show there are &#xFB01;nitely many reduced forms. For a reduced
+form, \(D = b^2-4ac\leq a^2-4a^2 =-3a^2\), so \(|b|\leq a \leq \sqrt{-\frac D 3}\), and \(c\) is determined by \(a,b\) via the formula for \(D\). Thus there are only &#xFB01;nitely
 many possibilities. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 51--><p class="indent" >  We define \(h(D)\) to be the size of \(\Cl (D)\), and call it the <span 
+<!--l. 51--><p class="indent" >  We de&#xFB01;ne \(h(D)\) to be the size of \(\Cl (D)\), and call it the <span 
 class="cmbx-12">class number </span>of \(D\).
 </p><!--l. 53--><p class="indent" >  When is a number properly represented by a particular quadratic form? Here is a
-necessary and sufficient condition for this given a fixed discriminant.
+necessary and su&#xFB03;cient condition for this given a &#xFB01;xed discriminant.
 </p>
   <div class="newtheorem">
 <!--l. 55--><p class="noindent" ><span class="head">
@@ -353,7 +353,7 @@ necessary and sufficient condition for this given a fixed discriminant.
  id="x1-1005r3"></a>
 <span 
 class="cmbx-12">Lemma 1.3.</span>  </span>\(f\) <span 
-class="cmti-12">is properly represented by a quadratic form iff the form is equivalent to a</span>
+class="cmti-12">is properly represented by a quadratic form i&#xFB00; the form is equivalent to a</span>
 <span 
 class="cmti-12">form</span> \(fx^2+bxy+cy^2\)
 </p>
@@ -362,7 +362,7 @@ class="cmti-12">form</span> \(fx^2+bxy+cy^2\)
 <span 
 class="cmti-12">Proof.</span> </span>Suppose \(f\) is properly represented by some quadratic form \(ax^2+bxy+cy^2\) for \(x = r, y = s\). Then there is
 a solution to \(rp-sq=1\), so consider the transformation \((x,y) \to (rx+qy,sx+py)\), and we will get an equivalent form
-with the \(x^2\) coefficient \(f\). Conversely, if the \(x^2\) coefficient is \(f\), then \(x=1,y=0\) will yield \(f\). <span class="qed"><span 
+with the \(x^2\) coe&#xFB03;cient \(f\). Conversely, if the \(x^2\) coe&#xFB03;cient is \(f\), then \(x=1,y=0\) will yield \(f\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -374,7 +374,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <span 
 class="cmbx-12">Theorem 1.4.</span>  </span>\(f\) <span 
 class="cmti-12">is properly represented by a quadratic form of discriminant</span> \(D\) <span 
-class="cmti-12">iff</span> \(D\) <span 
+class="cmti-12">i&#xFB00;</span> \(D\) <span 
 class="cmti-12">is a</span>
 <span 
 class="cmti-12">square mod</span> \(4f\)<span 
@@ -386,7 +386,7 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 65--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>By  the  previous  theorem  we  can  assume  that  the  form  is  \(fx^2+bxy+cy^2\).  Then  \(D = b^2-4fc\)  iff  \(D \equiv b^2 \pmod{4f}\).
+class="cmti-12">Proof.</span> </span>By  the  previous  theorem  we  can  assume  that  the  form  is  \(fx^2+bxy+cy^2\).  Then  \(D = b^2-4fc\)  i&#xFB00;  \(D \equiv b^2 \pmod{4f}\).
 Conversely, if we can solve \(D = b^2-4fc\), Then \(fx^2+bxy+cy^2\) is a form that works. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -409,8 +409,8 @@ class="cmti-12">.</span>
 </p>
   </div>
 <!--l. 73--><p class="indent" >  Now according to this calculation and the above theorem above, a prime \(p\) is represented
-by \(x^2+3y^2\) iff \(-12\) is a square mod \(4p\). If \(p\) is odd, This is equivalent to \(-3\) being a square mod \(p\), \((\frac{-3} p) = (\frac p 3)\) by
-quadratic reciprocity so we see that this holds iff \(p \equiv 1\pmod 3\).
+by \(x^2+3y^2\) i&#xFB00; \(-12\) is a square mod \(4p\). If \(p\) is odd, This is equivalent to \(-3\) being a square mod \(p\), \((\frac{-3} p) = (\frac p 3)\) by
+quadratic reciprocity so we see that this holds i&#xFB00; \(p \equiv 1\pmod 3\).
 </p>
   <div class="newtheorem">
 <!--l. 75--><p class="noindent" ><span class="head">
@@ -444,8 +444,8 @@ class="cmti-12">?</span>
                                                                                   
 </p>
   </div>
-<!--l. 83--><p class="indent" >  For \(D = -20\), There are two reduced forms, \(x^2+5y^2\) and \(2x^2+2xy+3y^2\). \(-20\) is a square mod \(4p\) iff it is a square mod
-\(p\) iff \(1 = (\frac{-20}{p}) = (\frac{-5}{p}) = (-1)^{\frac{p-1}{2}}(\frac p 5)\). This gives the condition \(p \equiv 1,3,7,9 \pmod{20}\). The relatively prime squares mod \(20\) are \(1,9 \pmod{20}\), so a
+<!--l. 83--><p class="indent" >  For \(D = -20\), There are two reduced forms, \(x^2+5y^2\) and \(2x^2+2xy+3y^2\). \(-20\) is a square mod \(4p\) i&#xFB00; it is a square mod
+\(p\) i&#xFB00; \(1 = (\frac{-20}{p}) = (\frac{-5}{p}) = (-1)^{\frac{p-1}{2}}(\frac p 5)\). This gives the condition \(p \equiv 1,3,7,9 \pmod{20}\). The relatively prime squares mod \(20\) are \(1,9 \pmod{20}\), so a
 of the form \(x^2+5y^2\) must be \(\equiv 1,9\) mod \(20\). Similarly, note that \(3(2x^2+2xy+3y^2) = 5x^2+(x+3y)^2\), so a prime of the form \(2x^2+2xy+3y^2\) is \(3,7 \pmod{20}\).
 So if \((\frac{-20}{4p})=1\), then \(p\) is represented by some quadratic form of discriminant \(-20\), but we
 can tell exactly which one it is by the congruence class of \(p\)! Thus we get the
@@ -458,20 +458,20 @@ theorem:
 <span 
 class="cmbx-12">Theorem 1.5.</span>  </span>\(p\) <span 
 class="cmti-12">is of the form</span> \(x^2+5y^2\) <span 
-class="cmti-12">iff</span> \(p \equiv 1,9 \pmod{20}\)<span 
+class="cmti-12">i&#xFB00;</span> \(p \equiv 1,9 \pmod{20}\)<span 
 class="cmti-12">, and of the form</span> \(2x^2+2xy+3y^2\) <span 
-class="cmti-12">iff</span> \(p \equiv 3,7 \pmod{20}\)<span 
+class="cmti-12">i&#xFB00;</span> \(p \equiv 3,7 \pmod{20}\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 89--><p class="indent" >  So as long as all the reduced forms represent different different congruence classes for
-which \((\frac D{4p}) = 1\), then we can find out when a prime is represented by a particular form of
+<!--l. 89--><p class="indent" >  So as long as all the reduced forms represent di&#xFB00;erent di&#xFB00;erent congruence classes for
+which \((\frac D{4p}) = 1\), then we can &#xFB01;nd out when a prime is represented by a particular form of
 discriminant \(D\).
 </p><!--l. 91--><p class="indent" >  We can divide the quadratic forms of a particular discriminant up based on which
 elements mod \(D\) they represent, and we call the set of quadratic forms representing a
 number a <span 
 class="cmbx-12">genus</span>. So the techniques we have used show that if every genus contains only
-one quadratic form for a fixed discriminant, we can determine which primes are
+one quadratic form for a &#xFB01;xed discriminant, we can determine which primes are
 represented by any quadratic form of that discriminant.
 </p>
   <div class="newtheorem">
@@ -514,7 +514,7 @@ get:
 <span 
 class="cmbx-12">Theorem 1.6.</span>  </span>\(2p\) <span 
 class="cmti-12">is of the form</span> \(x^2+5y^2\) <span 
-class="cmti-12">iff</span> \(p \equiv 3,7 \pmod{20}\)<span 
+class="cmti-12">i&#xFB00;</span> \(p \equiv 3,7 \pmod{20}\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
@@ -524,10 +524,10 @@ forms of equal discriminant, there is always an identity of the form above, wher
 are on the left hand side of the equation. Thus we can think of the form on the right hand
 side as a <span 
 class="cmbx-12">composite </span>of the other two. Unfortunately, two forms may have many
-composites, but by being a little more careful, one can produce a well defined operation
-that actually turns the set \(\Cl (D)\) into an abelian group (hence the name class <span 
-class="cmti-12">group</span>)!
-This was first shown in Gauss&#8217;s <span 
+composites, but by being a little more careful, one can produce a well de&#xFB01;ned operation
+that actually turns the set \(\Cl (D)\) into an abelian group &#x0028;hence the name class <span 
+class="cmti-12">group</span>&#x0029;!
+This was &#xFB01;rst shown in Gauss&#x2019;s <span 
 class="cmti-12">Disquisitiones Arithmeticae</span>, and is an amazing
 feat.
 </p><!--l. 112--><p class="indent" >  Finally I will remark that the quadratic forms \(x^2+14y^2\) and \(2x^2+7y^2\) represent the same numbers mod \(56\).
@@ -535,7 +535,7 @@ And indeed, examples seem to show that about half of the primes in those congrue
 classes belong to each, and it is unclear which belong to which. Can we come up with a
 condition that tells us exactly which primes are represented by \(x^2+14y^2\) and which ones are not?
 This, and the more general problem of determining when a prime is represented
-by a quadratic form can be solved using the more modern tools of class field
+by a quadratic form can be solved using the more modern tools of class &#xFB01;eld
 theory.
 </p>
    

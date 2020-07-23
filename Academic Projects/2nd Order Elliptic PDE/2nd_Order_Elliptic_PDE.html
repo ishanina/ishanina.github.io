@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en" xml:lang="en" > 
 <head> <title>2nd Order Elliptic PDE</title> 
-<meta  charset="iso-8859-1" /> 
+<meta  charset="UTF-8"" /> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="2nd_Order_Elliptic_PDE.css" /> 
@@ -222,18 +222,18 @@ class="cmti-12">Date</span>:&#x00A0;1/7/2019.</p></div></div></div>
  id="x1-10001"></a>Introduction</h3>
 <!--l. 10--><p class="noindent" >Here we will consider 2nd order linear elliptic PDE, which are PDE that behave similarly
 to the standard Laplacian \(\Delta \) in Euclidean space. They can be interpreted as generalizing
-what the Laplacian does: solutions are equilibria of the flow of some quantity such as a
+what the Laplacian does: solutions are equilibria of the &#xFB02;ow of some quantity such as a
 chemical. The extra generality comes from the fact that now other factors such as the
 geometry of the ambient space, transport with in the space, and creation/depletion of the
 quantity are considered. The Laplacian itself makes sense for a Riemannian manifold,
-in which case it is the divergence of the differential of a function. The kinds
-of spaces that much the discussion here easily extends to are those with finite
+in which case it is the divergence of the di&#xFB00;erential of a function. The kinds
+of spaces that much the discussion here easily extends to are those with &#xFB01;nite
 volume, although for simplicity we will always work with a bounded open subset
 \(U \subset \RR ^n\).
-</p><!--l. 12--><p class="indent" >  An elliptic 2nd order operator is a partial differential operator of the form
-(Einstein notation is used throughout) \(Lu = -(a_{ij}u_{x_i}){x_j} + b_i u_{x_i} + c u\), where \(a_{ij},b_i,c\) are functions, and \((a_{ij})\) is positive
-definite at each point. We will usually want \(L\) to be uniformly elliptic, meaning that \(a_{ij}\)
-is uniformly positive definite, or satisfies \(a_{ij}\xi _i \xi _j \geq C|\xi |^2\) on \(U\) for some \(C&gt;0\). We will also assume
+</p><!--l. 12--><p class="indent" >  An elliptic 2nd order operator is a partial di&#xFB00;erential operator of the form
+&#x0028;Einstein notation is used throughout&#x0029; \(Lu = -(a_{ij}u_{x_i}){x_j} + b_i u_{x_i} + c u\), where \(a_{ij},b_i,c\) are functions, and \((a_{ij})\) is positive
+de&#xFB01;nite at each point. We will usually want \(L\) to be uniformly elliptic, meaning that \(a_{ij}\)
+is uniformly positive de&#xFB01;nite, or satis&#xFB01;es \(a_{ij}\xi _i \xi _j \geq C|\xi |^2\) on \(U\) for some \(C&gt;0\). We will also assume
 \(a_{ij} = a_{ji}\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
@@ -242,19 +242,19 @@ is uniformly positive definite, or satisfies \(a_{ij}\xi _i \xi _j \geq C|\xi |^
                                                                                   
 
                                                                                   
-</p><!--l. 18--><p class="indent" >  It can be hard in general to find explicit solutions to \(Lu = f\) (one can try to find Green&#8217;s
-functions for example), but using some functional analysis it is possible to show weak
+</p><!--l. 18--><p class="indent" >  It can be hard in general to &#xFB01;nd explicit solutions to \(Lu = f\) &#x0028;one can try to &#xFB01;nd Green&#x2019;s
+functions for example&#x0029;, but using some functional analysis it is possible to show weak
 solutions exist and are sometimes unique. Namely, we will recast solving the PDE \(Lu = f\), \(u = 0\)
 on \(\partial U\) as follows: If \(Lu = f\), then for any test function \(v \in C^\infty _0(U)\), we can integrate by parts to get
 \[ B[u,v]:= \int _U a_{ij}u_{x_i}v_{x_j} + b_iu_{x_i}v + cuv = \int _U Luv = \int _U fv = \langle f,v\rangle \]
-</p><!--l. 21--><p class="indent" >  Note that \(B[u,v]\) defined above is a bilinear form that makes sense for \(u,v \in H_0^1(U)\).
+</p><!--l. 21--><p class="indent" >  Note that \(B[u,v]\) de&#xFB01;ned above is a bilinear form that makes sense for \(u,v \in H_0^1(U)\).
 </p>
   <div class="newtheorem">
 <!--l. 23--><p class="noindent" ><span class="head">
 <a 
  id="x1-2001r1"></a>
 <span 
-class="cmbx-12">Definition 2.1.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 2.1.</span>  </span><span 
 class="cmti-12">A weak solution of</span> \(Lu=f,f \in H^{-1}(U)\)<span 
 class="cmti-12">,</span> \(u \in H^1_0(U)\) <span 
 class="cmti-12">is an element</span> \(u\) <span 
@@ -264,9 +264,9 @@ class="cmti-12">.</span>
 </p>
   </div>
 <!--l. 27--><p class="indent" >  Note that this formulation of the problem is more symmetric in \(u\) and v. Namely, if we
-similarly define a weak solution for the bilinear form \(B^*[u,v] = B[v,u]\), and the \(b_i\) are \(C^1(\overline{U})\), then \(u\) will be a weak
+similarly de&#xFB01;ne a weak solution for the bilinear form \(B^*[u,v] = B[v,u]\), and the \(b_i\) are \(C^1(\overline{U})\), then \(u\) will be a weak
 solution of \(L^*u = f\), where \(L^*\) is the adjoint elliptic operator \(L^*u = -(a_{ij}u_{x_j})_{x_i} - b_ju_{x_i} + (c-b_{i,x_i})u\).
-</p><!--l. 29--><p class="indent" >  The first tool from functional analysis that will give solutions is the Lax-Milgram
+</p><!--l. 29--><p class="indent" >  The &#xFB01;rst tool from functional analysis that will give solutions is the Lax-Milgram
 Theorem, which can be viewed as an asymmetric generalization of the Riesz representation
 theorem.
 </p>
@@ -275,22 +275,22 @@ theorem.
 <a 
  id="x1-2002r2"></a>
 <span 
-class="cmbx-12">Theorem 2.2 </span>(Lax-Milgram)<span 
+class="cmbx-12">Theorem 2.2 </span>&#x0028;Lax-Milgram&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span>  \(B\)  <span 
 class="cmti-12">be  a  bilinear  form  on  a  Hilbert  space</span>  \(H\)  <span 
 class="cmti-12">that</span>
 <span 
-class="cmti-12">satisfies</span> \(B[u,v] \leq C\Vert u \Vert \Vert v\Vert \)<span 
+class="cmti-12">satis&#xFB01;es</span> \(B[u,v] \leq C\Vert u \Vert \Vert v\Vert \)<span 
 class="cmti-12">,</span> \(B[u,u] \geq c\Vert u \Vert ^2\)<span 
 class="cmti-12">. Then</span> \(u \to B[u,-]\) <span 
-class="cmti-12">defines an isomorphism of</span> \(H\) <span 
+class="cmti-12">de&#xFB01;nes an isomorphism of</span> \(H\) <span 
 class="cmti-12">and</span> \(H^*\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
 <!--l. 35--><p class="indent" >  Unfortunately, our \(B\) will not always satisfy exactly the conditions of the above theorem.
-But if we define \(B_\mu [u,v] = B[u,v] + \mu \langle u,v \rangle \), then for sufficiently large \(\mu \), \(B_\mu [u,v]\) will satisfy the Lax-Milgram theorem. Note
+But if we de&#xFB01;ne \(B_\mu [u,v] = B[u,v] + \mu \langle u,v \rangle \), then for su&#xFB03;ciently large \(\mu \), \(B_\mu [u,v]\) will satisfy the Lax-Milgram theorem. Note
 uniform ellipticity is needed to get \(B_\mu [u,u] \geq c\Vert u \Vert ^2\). A solution for \(B_\mu \) will be a weak solution for
 \(L+\mu I\).
 </p>
@@ -314,11 +314,11 @@ class="cmti-12">.</span>
 </p>
   </div>
 <!--l. 41--><p class="indent" >  In the case that \(b_i \equiv 0, c \geq 0\), then \(\gamma \) is 0, so there is a unique solution.
-</p><!--l. 43--><p class="indent" >  To an extent we can fix the addition of the \(\mu \) using the Fredholm theory for compact
-operators. For sufficiently large \(\mu \), \(L_\mu \) is an isomorphism, so we can consider \(L_\mu ^{-1}\) as a
+</p><!--l. 43--><p class="indent" >  To an extent we can &#xFB01;x the addition of the \(\mu \) using the Fredholm theory for compact
+operators. For su&#xFB03;ciently large \(\mu \), \(L_\mu \) is an isomorphism, so we can consider \(L_\mu ^{-1}\) as a
 map from \(L^2(U) \to L^2(U)\). As we have passed through the inclusion \(H_0^1(U) \to L^2(U)\), which is compact by the
 Rellich-Kondrachov compactness theorem, \(L_\mu ^{-1}\) is compact. Finally note that if \(f \in L^2(U)\), \(u\) is a weak
-solution of \(Lu = f\) iff \(L_\mu (u) = \mu u + f\) iff \(u - \mu L_\mu ^{-1}(u) = f\). But \(K := \mu L_\mu ^{-1}\) is compact, so the Fredholm alternative gives the following
+solution of \(Lu = f\) i&#xFB00; \(L_\mu (u) = \mu u + f\) i&#xFB00; \(u - \mu L_\mu ^{-1}(u) = f\). But \(K := \mu L_\mu ^{-1}\) is compact, so the Fredholm alternative gives the following
 theorem:
 </p>
   <div class="newtheorem">
@@ -334,7 +334,7 @@ class="cmti-12">on</span> \(\partial U\) <span
 class="cmti-12">for each</span> \(f \in L^2(U)\)<span 
 class="cmti-12">, or</span>
 <span 
-class="cmti-12">there is a finite and nonzero dimensional space of weak solutions to the homogeneous</span>
+class="cmti-12">there is a &#xFB01;nite and nonzero dimensional space of weak solutions to the homogeneous</span>
 <span 
 class="cmti-12">problem</span> \(Lu = 0\) <span 
 class="cmti-12">on</span> \(U\)<span 
@@ -346,7 +346,7 @@ class="cmti-12">homogeneous problem is the same as the dimension of solutions to
 <span 
 class="cmti-12">problem of the adjoint operator</span> \(L^*\)<span 
 class="cmti-12">. There is a solution to</span> \(Lu = f\) <span 
-class="cmti-12">iff</span> \(f\) <span 
+class="cmti-12">i&#xFB00;</span> \(f\) <span 
 class="cmti-12">is orthogonal to all weak</span>
 <span 
 class="cmti-12">solutions to</span> \(L^*v= 0\) <span 
@@ -367,20 +367,20 @@ gives:
 <span 
 class="cmbx-12">Theorem 2.5.</span>  </span><span 
 class="cmti-12">There is a set</span> \(\{\lambda _i\}\)<span 
-class="cmti-12">, that is either finite, or an increasing sequence, such</span>
+class="cmti-12">, that is either &#xFB01;nite, or an increasing sequence, such</span>
                                                                                   
 
                                                                                   
 <span 
 class="cmti-12">that</span> \(Lu = \lambda u + f\)<span 
 class="cmti-12">,</span> \(f \in L^2(U)\) <span 
-class="cmti-12">has a unique weak solution iff</span> \(\lambda \) <span 
+class="cmti-12">has a unique weak solution i&#xFB00;</span> \(\lambda \) <span 
 class="cmti-12">is not one of the</span> \(\lambda _i\)<span 
 class="cmti-12">, and if</span> \(\{\lambda _i\}\) <span 
-class="cmti-12">is infinite, the</span> \(\lambda _i\) <span 
+class="cmti-12">is in&#xFB01;nite, the</span> \(\lambda _i\) <span 
 class="cmti-12">tend</span>
 <span 
-class="cmti-12">to infinity.</span>
+class="cmti-12">to in&#xFB01;nity.</span>
 </p>
   </div>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
@@ -390,12 +390,12 @@ motivation, suppose \(u \in H^2_0(U)\) is a weak solution to \(-\Delta u = f\), 
 twice, we can obtain the identity \(\int _U f^2 = \int _U \Delta u^2 = \int _U u_{x_ix_i}u_{x_jx_j} = \int _U u_{x_ix_j}u_{x_jx_i} = \int _U |D^2u|^2\), so in particular we see that the \(H^2\) norm of u can be
 bounded by a constant times the sum of the \(L^2\) norms of \(u\) and \(f\). This tells use that if \(f \in L^2(U), u \in H^1(U)\), we
 might still expect \(u\) to be in \(H^2(U)\) and have similar estimates on its norm. Moreover, since \(-\Delta D^\alpha u = D^\alpha \) for
-each multi-index \(\alpha \) (this can be interpreted in the sense of distributions), we can expect \(u \in H^{m+2}(U)\) if
+each multi-index \(\alpha \) &#x0028;this can be interpreted in the sense of distributions&#x0029;, we can expect \(u \in H^{m+2}(U)\) if
 \(f \in H^{m}(U)\).
-</p><!--l. 59--><p class="indent" >  The way to show this is to put uniform norm bounds on the difference quotients \(D^h_kDu\) for
-small \(h\), as then the difference quotients will have a subsequence weakly converging to a
-weak second derivative. Working with difference quotients in general involves
-having some room to take the difference quotient, so we must first restrict to the
+</p><!--l. 59--><p class="indent" >  The way to show this is to put uniform norm bounds on the di&#xFB00;erence quotients \(D^h_kDu\) for
+small \(h\), as then the di&#xFB00;erence quotients will have a subsequence weakly converging to a
+weak second derivative. Working with di&#xFB00;erence quotients in general involves
+having some room to take the di&#xFB00;erence quotient, so we must &#xFB01;rst restrict to the
 interior of \(U\). The following theorem is local so we can only require that \(L\) be elliptic
 rather than uniformly elliptic and it is possible to remove the restriction that \(U\) is
 bounded.
@@ -430,7 +430,7 @@ result:
 
                                                                                   
 <span 
-class="cmbx-12">Theorem 3.2 </span>(Local regularity)<span 
+class="cmbx-12">Theorem 3.2 </span>&#x0028;Local regularity&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Suppose</span> \(a_{ij},b_i,c \in C^{m+1}(U), f \in H^m(U)\)<span 
 class="cmti-12">, and suppose</span> \(u \in H^1(U)\) <span 
@@ -452,7 +452,7 @@ assumptions about the behavior of \(u\) at the boundary and assumptions about th
 of the boundary. We can for example assume \(u\) vanishes on the boundary and \(\partial U\) is
 \(C^{m+2}\). The way to prove this is to prove Theorem <a 
 href="#x1-3001r1">3.1<!--tex4ht:ref: regularity --></a> in the local model \(B(0,1)\cap \RR ^n_{x_n\geq 0}\). We can
-still use difference quotients in all directions except the \(x_n\) direction to get similar
+still use di&#xFB00;erence quotients in all directions except the \(x_n\) direction to get similar
 bounds. For the \(x_n\) direction, since the PDE \(Lu = f\) is uniformly elliptic, we also have \(a_{nn}u_{x_n x_n} = Lu-f+a_{nn} u_{x_n x_n}\), and
 the right hand side is not dependent on \(u_{x_nx_n}\), and \(a_{nn} \geq \ee &gt;0\) for some \(\ee \) so we can bound \(u_{x_nx_n}\) in
 terms of the other second derivatives. If the boundary is \(C^{m+2}\), we can locally do a
@@ -465,7 +465,7 @@ result:
 <a 
  id="x1-3003r3"></a>
 <span 
-class="cmbx-12">Theorem 3.3 </span>(Global regularity)<span 
+class="cmbx-12">Theorem 3.3 </span>&#x0028;Global regularity&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Suppose</span> \(a_{ij},b_i,c \in C^{m+1}(\overline{U}), f \in H^m(U)\)<span 
 class="cmti-12">,</span> \(\partial U\) <span 
@@ -487,7 +487,7 @@ class="cmti-12">.</span>
  id="x1-40004"></a>Maximum principles</h3>
 <!--l. 83--><p class="noindent" >Like \(\Delta \), general elliptic operators \(L\) satisfy maximum principles. In this section we will assume
 \(u \in C^2(U)\cap C(\overline{U})\). If \(c \equiv 0\), then at an interior maximum of \(u\), we have \(Lu = -a_{ij}u_{x_ix_j}\). We can use the ellipticity condition to see
-that since the Hessian is negative definite and \(a_{ij}\) diagonalizable, \(Lu \geq 0\). Thus if \(u\) is a strict
+that since the Hessian is negative de&#xFB01;nite and \(a_{ij}\) diagonalizable, \(Lu \geq 0\). Thus if \(u\) is a strict
                                                                                   
 
                                                                                   
@@ -523,14 +523,14 @@ class="cmti-12">.</span>
   </div>
 <!--l. 95--><p class="indent" >  A stronger maximal principle states that if the maximum is obtained on the interior,
 then \(u\) is constant.
-</p><!--l. 97--><p class="indent" >  It follows from Hopf&#8217;s lemma, which is a technical analytic computation.
+</p><!--l. 97--><p class="indent" >  It follows from Hopf&#x2019;s lemma, which is a technical analytic computation.
 </p>
   <div class="newtheorem">
 <!--l. 98--><p class="noindent" ><span class="head">
 <a 
  id="x1-4003r3"></a>
 <span 
-class="cmbx-12">Lemma 4.3 </span>(Hopf)<span 
+class="cmbx-12">Lemma 4.3 </span>&#x0028;Hopf&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Assume</span> \(u \in C^2(U) \cap C^1(\bar (U))\) <span 
 class="cmti-12">and</span> \(c \equiv 0\)<span 
@@ -538,10 +538,10 @@ class="cmti-12">, and</span> \(u\) <span
 class="cmti-12">is a subsolution to</span> \(L\)<span 
 class="cmti-12">. If there is a point</span>
 \(x_0 \in \partial U\) <span 
-class="cmti-12">that satisfies</span> \(u(x_0) &gt; u(x)\) <span 
+class="cmti-12">that satis&#xFB01;es</span> \(u(x_0) &gt; u(x)\) <span 
 class="cmti-12">for all</span> \(x \in U\)<span 
 class="cmti-12">, and such that</span> \(u\) <span 
-class="cmti-12">satisfies the interior ball condition, namely</span>
+class="cmti-12">satis&#xFB01;es the interior ball condition, namely</span>
 <span 
 class="cmti-12">there is a ball</span> \(B\) <span 
 class="cmti-12">in</span> \(U\) <span 
@@ -559,8 +559,8 @@ class="cmti-12">, the same conclusion holds.</span>
                                                                                   
 
                                                                                   
-<!--l. 102--><p class="indent" >  By applying Hopf&#8217;s lemma to a point \(x\) on the interior of \(U\) that maximizes \(u\), but in one
-direction is surrounded by points that don&#8217;t maximize \(U\), we get that \(\frac{\partial u}{\partial \nu }(x) &gt;0\), by choosing a ball
+<!--l. 102--><p class="indent" >  By applying Hopf&#x2019;s lemma to a point \(x\) on the interior of \(U\) that maximizes \(u\), but in one
+direction is surrounded by points that don&#x2019;t maximize \(U\), we get that \(\frac{\partial u}{\partial \nu }(x) &gt;0\), by choosing a ball
 containing non-maximizing points of \(u\) with \(x\) on the boundary. This contradicts the fact
 that \(Du(x) = 0\), so we get
 </p>
@@ -606,7 +606,7 @@ class="cmti-12">is constant.</span>
 <a 
  id="x1-4006r6"></a>
 <span 
-class="cmbx-12">Theorem 4.6 </span>(Harnack&#8217;s inequality)<span 
+class="cmbx-12">Theorem 4.6 </span>&#x0028;Harnack&#x2019;s inequality&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(Lu=0, u \in C^2(U)\)<span 
 class="cmti-12">, then for any connected</span> \(V\) <span 
@@ -638,17 +638,17 @@ class="cmti-12">Suppose</span> \(L\) <span
 class="cmti-12">is of the form above. Then the eigenvalues of</span> \(L\) <span 
 class="cmti-12">are real,</span>
 <span 
-class="cmti-12">positive and tending to infinity. Eigenvectors form an orthonormal basis, and the</span>
+class="cmti-12">positive and tending to in&#xFB01;nity. Eigenvectors form an orthonormal basis, and the</span>
 <span 
-class="cmti-12">eigenspaces are finite dimensional.</span>
+class="cmti-12">eigenspaces are &#xFB01;nite dimensional.</span>
 </p>
   </div>
-<!--l. 126--><p class="indent" >  By regularity, the eigenvectors are all smooth functions if the coefficients of \(L\) are smooth,
+<!--l. 126--><p class="indent" >  By regularity, the eigenvectors are all smooth functions if the coe&#xFB03;cients of \(L\) are smooth,
 which we will assume.
-</p><!--l. 128--><p class="indent" >  The first (principle) eigenvalue \(\lambda _1\) is very special. If \(w_k\) are eigenvalues that are an
-orthonormal basis of \(L^2\), then since \(B\) satisfies the Lax-Milgram Theorem and is symmetric, \(w_k\) is
-also an orthonormal basis of the inner product given by \(B\). Let \(s(u) = \frac{B[u,u]}{\langle u,u\rangle }\). Then one finds that \(s(u) \geq \lambda _1\) with
-equality holding iff \(u\) is in the \(\lambda _1\) eigenspace. This condition for being in the eigenspace can
+</p><!--l. 128--><p class="indent" >  The &#xFB01;rst &#x0028;principle&#x0029; eigenvalue \(\lambda _1\) is very special. If \(w_k\) are eigenvalues that are an
+orthonormal basis of \(L^2\), then since \(B\) satis&#xFB01;es the Lax-Milgram Theorem and is symmetric, \(w_k\) is
+also an orthonormal basis of the inner product given by \(B\). Let \(s(u) = \frac{B[u,u]}{\langle u,u\rangle }\). Then one &#xFB01;nds that \(s(u) \geq \lambda _1\) with
+equality holding i&#xFB00; \(u\) is in the \(\lambda _1\) eigenspace. This condition for being in the eigenspace can
 then show that \(\max (u,0), \min (u,0)\) are in the eigenspace if \(u\) is. By the strong maximal principle, \(u^+,u^-\) are strictly
 positive/negative or \(0\). In particular, \(u\) must have been either identically \(0\), or never \(0\). All
 together we have:
@@ -680,7 +680,7 @@ result:
 <span 
 class="cmbx-12">Theorem 5.3.</span>  </span><span 
 class="cmti-12">There is an eigenvalue</span> \(\lambda _1 \in \RR \) <span 
-class="cmti-12">such that any complex eigenvalue satisfies</span> \(\real (\lambda ) \geq \lambda _1\)<span 
+class="cmti-12">such that any complex eigenvalue satis&#xFB01;es</span> \(\real (\lambda ) \geq \lambda _1\)<span 
 class="cmti-12">,</span>
 <span 
 class="cmti-12">and moreover the eigenspace of</span> \(\lambda _1\) <span 
@@ -690,7 +690,7 @@ class="cmti-12">-dimensional and spanned by a positive function.</span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">6. </span> <a 
  id="x1-60006"></a>Exercises</h3>
-<!--l. 140--><p class="noindent" >From now on all coefficients are smooth and \(U\) is bounded, has smooth boundary, and
+<!--l. 140--><p class="noindent" >From now on all coe&#xFB03;cients are smooth and \(U\) is bounded, has smooth boundary, and
 operators \(L\) are uniformly elliptic.
 </p>
   <div class="newtheorem">
@@ -698,11 +698,11 @@ operators \(L\) are uniformly elliptic.
 <a 
  id="x1-6001r1"></a>
 <span 
-class="cmbx-12">Exercise 6.0.1 </span>(2)<span 
+class="cmbx-12">Exercise 6.0.1 </span>&#x0028;2&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">A function</span> \(u \in H^2_0(U)\) <span 
 class="cmti-12">is a weak solution of</span> \(\Delta ^2u=f,u=\frac{\partial u}{\partial \nu } = 0\) <span 
-class="cmti-12">iff</span> \(\int _U \Delta u \Delta v = \int _U fv\) <span 
+class="cmti-12">i&#xFB00;</span> \(\int _U \Delta u \Delta v = \int _U fv\) <span 
 class="cmti-12">for any</span> \(v \in H^2_0(U)\)<span 
 class="cmti-12">. Show that for</span> \(f \in L^2(U)\)<span 
 class="cmti-12">,</span>
@@ -713,12 +713,12 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 146--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>We  will  show  that  the  bilinear  form  \(B[u,v] = \int _U\Delta u \Delta v\)  satisfies  the  conditions  of  the
+class="cmti-12">Proof.</span> </span>We  will  show  that  the  bilinear  form  \(B[u,v] = \int _U\Delta u \Delta v\)  satis&#xFB01;es  the  conditions  of  the
 Lax-Milgram theorem. That theorem will then immediately imply the result.
 </p><!--l. 148--><p class="indent" >  Indeed, \(B\) is bilinear, \(|B[u,v]| \leq \Vert \Delta u \Vert _{L^2(U)} \Vert \Delta v \Vert _{L^2(U)} \leq \Vert D^2u \Vert _{L^2(U)} \Vert D^2 v \Vert _{L^2(U)} \leq \Vert D^2u \Vert _{H^2(U)} \Vert D^2 v \Vert _{H^2(U)}\). For the other estimate, note that for any \(u \in H^2_0(U)\), we have \(\Vert u_{x_ix_i}u_{x_jx_j} \Vert _{L^1(U)} = \Vert u_{x_ix_j}u_{x_jx_i}\Vert _{L^1(U)}\). This
 is proven by approximating \(u\) by compactly supported smooth functions, for which
 it  follows  by  integrating  by  parts  twice.  Thus  we  can  bound  the  mixed  partial
-derivatives of \(u\) with \(\int _U (\Delta u)^2\), so we have \(B[u,u] \geq C\int _U |D^2u|^2\). By applying Poincare&#8217;s inequality twice, we then
+derivatives of \(u\) with \(\int _U (\Delta u)^2\), so we have \(B[u,u] \geq C\int _U |D^2u|^2\). By applying Poincare&#x2019;s inequality twice, we then
 have \(C\int _U|D^2u|^2\geq C'\Vert u \Vert _{H^2(U)}^2\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -732,7 +732,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-6002r2"></a>
 <span 
-class="cmbx-12">Exercise 6.0.2 </span>(4)<span 
+class="cmbx-12">Exercise 6.0.2 </span>&#x0028;4&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(u \in H^1(\RR ^n)\) <span 
 class="cmti-12">be a weak compactly supported solution of</span> \(-\Delta u + c(u) = f\)<span 
@@ -747,9 +747,9 @@ class="cmti-12">.</span>
 <!--l. 156--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>As \(u\) is a weak solution, for each \(v \in H^1(\RR ^n)\) we have \(\int Du\cdot Dv = \int fv-c(u)v\). Set \(v = -D^{-h}D_k^h(u)\), \(h\) small. Then the left hand
-side is \(-\int Du DD_k^{-h}D_k^{h}(u) = \int |DD^h_k(u)|^2\). Note that \(\int v^2 = \int (-D^{-h}_kD^h_ku)^2 \leq C \int |D^h_kDu|^2\) for small \(h\), where \(C\) doesn&#8217;t depend on \(h\) as \(u\) is compactly supported.
+side is \(-\int Du DD_k^{-h}D_k^{h}(u) = \int |DD^h_k(u)|^2\). Note that \(\int v^2 = \int (-D^{-h}_kD^h_ku)^2 \leq C \int |D^h_kDu|^2\) for small \(h\), where \(C\) doesn&#x2019;t depend on \(h\) as \(u\) is compactly supported.
 Thus by Cauchy inequality with \(\ee \) the right hand side is \( \leq \frac 1 2 \int |D^h_kDu|^2 + C'\int |f-c(u)|^2\). Thus \(\int |D^h_kDu|^2 \leq 2C'\int |f-c(u)|^2\), and the right hand
-side doesn&#8217;t depend on \(h\), so \(u\) has weak second derivatives in \(L^2(\RR ^n)\), and \(u \in H^2(\RR ^n)\). <span class="qed"><span 
+side doesn&#x2019;t depend on \(h\), so \(u\) has weak second derivatives in \(L^2(\RR ^n)\), and \(u \in H^2(\RR ^n)\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -759,7 +759,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-6003r3"></a>
 <span 
-class="cmbx-12">Exercise 6.0.3 </span>(7)<span 
+class="cmbx-12">Exercise 6.0.3 </span>&#x0028;7&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Assume</span> \(U\) <span 
 class="cmti-12">is connected. Use</span> \((a)\) <span 
@@ -778,7 +778,7 @@ class="cmti-12">are constant.</span>
 class="cmti-12">Proof.</span> </span>Here is a proof using energy methods. Integrating by parts gives \(0 = \int _U u\Delta u = \int _U |Du|^2\) so \(Du = 0\), and \(u\) is
 constant.
 </p><!--l. 166--><p class="indent" >  Here  is  a  proof  using  the  maximal  principle.  If  \(u\)  is  not  constant,  it  attains  a
-maximum on the boundary. But by Hopf&#8217;s Lemma, \(\frac{\partial u}{\partial \nu }\) is positive at that maximum,
+maximum on the boundary. But by Hopf&#x2019;s Lemma, \(\frac{\partial u}{\partial \nu }\) is positive at that maximum,
 contradicting the boundary condition. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
                                                                                   
@@ -792,7 +792,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-6004r4"></a>
 <span 
-class="cmbx-12">Exercise 6.0.4 </span>(8)<span 
+class="cmbx-12">Exercise 6.0.4 </span>&#x0028;8&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(u \in H^1(U)\) <span 
 class="cmti-12">be a bounded weak solution of</span> \(Lu = -\sum (a^{ij}u_{x_i})_{x_j} = 0\)<span 
@@ -809,7 +809,7 @@ class="cmti-12">.</span>
 <!--l. 172--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By regularity, \(u\) is smooth and solves the PDE. Now observe that \(L\phi (u) = -\phi ''(u)(a_{ij}u_{x_i}u_{x_j}) \leq 0\) as \(a_{ij}\) is positive
-definite, and \(\phi ''\) is positive. Thus integrating by parts gives \(B[\phi (u),v] = \int _U L\phi (u)v \leq 0\) as \(v \geq 0\). <span class="qed"><span 
+de&#xFB01;nite, and \(\phi ''\) is positive. Thus integrating by parts gives \(B[\phi (u),v] = \int _U L\phi (u)v \leq 0\) as \(v \geq 0\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>

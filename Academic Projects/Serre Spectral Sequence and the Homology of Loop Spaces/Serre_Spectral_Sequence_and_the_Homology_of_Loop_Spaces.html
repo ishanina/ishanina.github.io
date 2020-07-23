@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en" xml:lang="en" > 
-<head> <title>The Serre Spectral Sequence &amp; computing Homology of Loop Spaces</title> 
-<meta  charset="iso-8859-1" /> 
+<head> <title>The Serre Spectral Sequence &#x0026; computing Homology of Loop Spaces</title> 
+<meta  charset="UTF-8"" /> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.css" /> 
@@ -209,7 +209,7 @@
 \newcommand{\id}{\mathop{\rm id}\nolimits} \)
   <div class="maketitle">
   <h2 class="titleHead">
-THE SERRE SPECTRAL SEQUENCE &amp; COMPUTING
+THE SERRE SPECTRAL SEQUENCE &#x0026; COMPUTING
 HOMOLOGY OF LOOP SPACES
   </h2><div class="authors"><span class="author" >
 <span 
@@ -228,17 +228,17 @@ the points with their index. Then Morse Theory tells us that the loop space \(\O
 homotopy type of a CW-complex with a \(\lambda \)-cell for each geodesic of index \(\lambda \). In particular
 cases, such as that of the sphere, we can use this information to compute the homology
 of the loop space. For \(S^n\), we have a geodesic of index \(k(n-1)\) for each \(k\geq 0\), so if \(n\geq 3\), then by
-cellular homology, the (\(\ZZ \)) homology of the loop space is \(\ZZ \) for dimensions \(k(n-1)\), and \(0\)
+cellular homology, the &#x0028;\(\ZZ \)&#x0029; homology of the loop space is \(\ZZ \) for dimensions \(k(n-1)\), and \(0\)
 elsewhere.
-</p><!--l. 14--><p class="indent" >  The Serre spectral sequence gives an algebraic way of computing this. Given a fibration \(F \hookrightarrow E \to B\),
-the Serre spectral sequence allows one (under nice conditions) to compute the homology of
-the total space \(E\) in terms of the homology of the fibre \(F\) and base space \(B\). The particular
-fibration that we are interested in is the path space fibration: if \(X\) is a pointed space, with \(PX\)
-the path space, and \(\Omega X\) the loop space, then we have a fibration \(\Omega X \hookrightarrow PX \to X\), given by sending a path \(\gamma \) to
+</p><!--l. 14--><p class="indent" >  The Serre spectral sequence gives an algebraic way of computing this. Given a &#xFB01;bration \(F \hookrightarrow E \to B\),
+the Serre spectral sequence allows one &#x0028;under nice conditions&#x0029; to compute the homology of
+the total space \(E\) in terms of the homology of the &#xFB01;bre \(F\) and base space \(B\). The particular
+&#xFB01;bration that we are interested in is the path space &#xFB01;bration: if \(X\) is a pointed space, with \(PX\)
+the path space, and \(\Omega X\) the loop space, then we have a &#xFB01;bration \(\Omega X \hookrightarrow PX \to X\), given by sending a path \(\gamma \) to
 its end point \(\gamma (1)\). The Serre spectral sequence would give us a way of computing the
 homology of \(PX\) from that of \(\Omega X\) and \(X\), but we already know the homology of \(PX\), since it is
 contractible. Thus we would like to work backwards through the Serre spectral sequence,
-and do some detective work to figure out the homology of \(\Omega X\) in terms of that of
+and do some detective work to &#xFB01;gure out the homology of \(\Omega X\) in terms of that of
 \(X\).
                                                                                   
 
@@ -248,23 +248,23 @@ and do some detective work to figure out the homology of \(\Omega X\) in terms o
  id="x1-20002"></a>Spectral sequences on homology</h3>
 <!--l. 18--><p class="noindent" >I will now say some generalities about spectral sequences on the homology of spaces. First
 some remarks: everything here can be dualized to cohomology, and homology here will be
-with coefficients in an arbitrary group \(G\).
+with coe&#xFB03;cients in an arbitrary group \(G\).
 </p><!--l. 20--><p class="indent" >  Given a space \(X\) that is <span 
-class="cmbx-12">filtered</span>, meaning that it is the union of spaces \(X_p, p \in \ZZ \) with \(X_p \subset X_{p+1}\), we would
-like to compute its homology using this filtration. First, the filtration on \(X\) yields a
-filtration on its homology, namely \(H_{n,p}(X) = \im (i^*:H_n(X_p) \to H_n(X))\). This filtration of \(H_n(X)\) yields the <span 
+class="cmbx-12">&#xFB01;ltered</span>, meaning that it is the union of spaces \(X_p, p \in \ZZ \) with \(X_p \subset X_{p+1}\), we would
+like to compute its homology using this &#xFB01;ltration. First, the &#xFB01;ltration on \(X\) yields a
+&#xFB01;ltration on its homology, namely \(H_{n,p}(X) = \im (i^*:H_n(X_p) \to H_n(X))\). This &#xFB01;ltration of \(H_n(X)\) yields the <span 
 class="cmbx-12">associated</span>
 <span 
-class="cmbx-12">graded group</span> \(\bigoplus H_{n,p}(X)/H_{n,p-1}(X)\) which is isomorphic to \(H_n(X)\) if for example the coefficients are in a
-field, \(X_p\) is empty for small enough \(p\), and \(X_p\) induces isomorphism on \(H_n\) for sufficiently
-large \(p\). The last two conditions are satisfied if \(X\) is a CW-complex, and \(X_p\) is the
-\(p\)-skeleton, which is an example of a filtered space we want to keep in mind. If
-the coefficients are not in a field, the associated graded group is isomorphic to
-homology&#x00A0;&#8220;modulo extensions&#8221; meaning that differences that arise are due to \(H_n(X)\) being
+class="cmbx-12">graded group</span> \(\bigoplus H_{n,p}(X)/H_{n,p-1}(X)\) which is isomorphic to \(H_n(X)\) if for example the coe&#xFB03;cients are in a
+&#xFB01;eld, \(X_p\) is empty for small enough \(p\), and \(X_p\) induces isomorphism on \(H_n\) for su&#xFB03;ciently
+large \(p\). The last two conditions are satis&#xFB01;ed if \(X\) is a CW-complex, and \(X_p\) is the
+\(p\)-skeleton, which is an example of a &#xFB01;ltered space we want to keep in mind. If
+the coe&#xFB03;cients are not in a &#xFB01;eld, the associated graded group is isomorphic to
+homology&#x00A0;&#x201C;modulo extensions&#x201D; meaning that di&#xFB00;erences that arise are due to \(H_n(X)\) being
 a nontrivial extension of the \(H_{n,p}(X)/H_{n,p-1}(X)\). The spectral sequence on the homology of this
-filtration, will under some conditions be able to compute this associated graded
+&#xFB01;ltration, will under some conditions be able to compute this associated graded
 group.
-</p><!--l. 22--><p class="indent" >  To begin with the construction of the spectral sequence, we first look at the
+</p><!--l. 22--><p class="indent" >  To begin with the construction of the spectral sequence, we &#xFB01;rst look at the
 exact sequences of a pair for each of the pairs \((X_p,X_{p-1})\), and put all this data together.
 Namely, we can let \(E\) be \(\bigoplus _{p,q} H_{p+q}(X_p,X_{p-1})\), and \(A\) be \(\bigoplus _{p,q} H_{p+q}(X_p)\). Then for the exact sequence of a pair below:
 </p>
@@ -272,10 +272,10 @@ Namely, we can let \(E\) be \(\bigoplus _{p,q} H_{p+q}(X_p,X_{p-1})\), and \(A\)
 >
 <!--l. 23--><p class="noindent" >
 </p><!--l. 26--><p class="noindent" >                                         <img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces0x.svg" alt="            H  (X )           H  (X  ,X    )      H    (X    )      H    (X  )
-              n   p            n   p   p-1         n-1   p-1         n-1   p
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces0x.svg" alt="            H  &#x0028;X &#x0029;           H  &#x0028;X  ,X    &#x0029;      H    &#x0028;X    &#x0029;      H    &#x0028;X  &#x0029;
+              n   p            n   p   p&#x2212;1         n&#x2212;1   p&#x2212;1         n&#x2212;1   p
 
-jkipp,p,,nnn---ppp-1 "  />
+jkipp,p,,nnn&#x2212;&#x2212;&#x2212;ppp&#x2212;1 "  />
 </p></div>
 <!--l. 29--><p class="indent" >  We can bundle all of the \(i,j,k\)s together to get an exact triangle called an <span 
 class="cmbx-12">exact couple</span>.
@@ -292,16 +292,16 @@ ijk        E "  />
                                                                                   
 
                                                                                   
-<!--l. 37--><p class="indent" >  An exact couple comes with a natural differential on \(E\), namely \(d = kj\), which is a
-differential since \(dd = k(jk)j = k(0)j = 0\). Note in the case \(X_p\) is the \(p\)-skeleton, \(d\) coincides with the differential on
+<!--l. 37--><p class="indent" >  An exact couple comes with a natural di&#xFB00;erential on \(E\), namely \(d = kj\), which is a
+di&#xFB00;erential since \(dd = k(jk)j = k(0)j = 0\). Note in the case \(X_p\) is the \(p\)-skeleton, \(d\) coincides with the di&#xFB00;erential on
 cellular homology. Given an exact triangle, we can produce another exact couple,
 called the <span 
 class="cmbx-12">derived couple </span>as follows: \(A^2 = i(A)\), and \(E^2\) is the homology of \(E\) with respect
-to \(E\). \(i^2\) and \(k^2\) (not to be confused with \(ii\) or \(kk\)) will be the same as \(i\) and \(k\), and \(j^2\) will
-be defined by \(j^2(ia) = j(a)\). A diagram chase shows the derived couple is well-defined and
+to \(E\). \(i^2\) and \(k^2\) &#x0028;not to be confused with \(ii\) or \(kk\)&#x0029; will be the same as \(i\) and \(k\), and \(j^2\) will
+be de&#xFB01;ned by \(j^2(ia) = j(a)\). A diagram chase shows the derived couple is well-de&#xFB01;ned and
 exact.
 </p><!--l. 39--><p class="indent" >  Now we can iterate what we have just done. We get a sequence \(E^r,d^r\) where \(E^r\) is the homology
-of \(E^{r-1}\) with respect to the differential \(d^{r-1}\) (\(E = E^1,d = d^1\)). This is called a <span 
+of \(E^{r-1}\) with respect to the di&#xFB00;erential \(d^{r-1}\) &#x0028;\(E = E^1,d = d^1\)&#x0029;. This is called a <span 
 class="cmbx-12">spectral sequence</span>. We can think
 of each \(E^r\) as a page in a book, and as we compute the homology of \(E^r\), we turn the page and
 write the result \(E^{r+1}\) on the next page.
@@ -309,25 +309,25 @@ write the result \(E^{r+1}\) on the next page.
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Making the spectral sequence converge</h3>
 <!--l. 43--><p class="noindent" >We would like to say that our spectral sequence converges to the associated graded group,
-meaning that eventually, the differentials will become \(0\), and the resulting stable group \(E^\infty \) will
+meaning that eventually, the di&#xFB00;erentials will become \(0\), and the resulting stable group \(E^\infty \) will
 be the associated graded group. However, in order for this to be true we need some
 conditions on our spectral sequence. Recall that our \(E\) and \(A\) are really bigraded as \(E_{p,q} = H_{p+q}(X_p,X_{p-1})\) and \(A_{p,q} = H_{p+q}(X_p)\).
-Thus each of the successive \(E^r,A^r\) also is bigraded, but because of the definition of the derived
-couples, the differential \(d^r\) changes grading as \(r\) changes. In particular, \(d^r\) sends \(E^r_{p,q}\) to
+Thus each of the successive \(E^r,A^r\) also is bigraded, but because of the de&#xFB01;nition of the derived
+couples, the di&#xFB00;erential \(d^r\) changes grading as \(r\) changes. In particular, \(d^r\) sends \(E^r_{p,q}\) to
 \(E^r_{p-r,q+r-1}\).
-</p><!--l. 45--><p class="indent" >  The first assumption we want to make will be on the \(A_{p,q}\). \(i\) is a map from \(A_{p-1,q+1}\) to \(A_{p,q}\), and the
-condition that we want (<span 
-class="cmbx-12">Condition</span> \(1\)) is that for fixed \(p+q\), \(i\) is an isomorphism on all but
-finitely many terms (we can say &#8220;almost always an isomorphism&#8221;). In terms of homology,
-this means that for fixed \(n\), the inclusion \(H_n(X_p) \to H_n(X_{p+1})\) is almost always an isomorphism. By exactness,
-this is the same as saying that \(E_{p,q}\) is nonzero on finitely many terms for a fixed \(p+q\). We see
-that the differential \(d^r\) is then \(0\) for large enough \(r\) since \(E^r_{p,q}\) is a subquotient of \(E_{p,q}\) (i.e.
-a quotient of a subgroup), so we get that each \(E^r_{p,q}\) stabilizes to some \(E^\infty _{p,q}\). Similarly,
-the groups \(A_{p,q}\) stabilize for fixed \(p+q\) as \(p\) gets very small or very large. For \(n = p+q\), We will
+</p><!--l. 45--><p class="indent" >  The &#xFB01;rst assumption we want to make will be on the \(A_{p,q}\). \(i\) is a map from \(A_{p-1,q+1}\) to \(A_{p,q}\), and the
+condition that we want &#x0028;<span 
+class="cmbx-12">Condition</span> \(1\)&#x0029; is that for &#xFB01;xed \(p+q\), \(i\) is an isomorphism on all but
+&#xFB01;nitely many terms &#x0028;we can say &#x201C;almost always an isomorphism&#x201D;&#x0029;. In terms of homology,
+this means that for &#xFB01;xed \(n\), the inclusion \(H_n(X_p) \to H_n(X_{p+1})\) is almost always an isomorphism. By exactness,
+this is the same as saying that \(E_{p,q}\) is nonzero on &#xFB01;nitely many terms for a &#xFB01;xed \(p+q\). We see
+that the di&#xFB00;erential \(d^r\) is then \(0\) for large enough \(r\) since \(E^r_{p,q}\) is a subquotient of \(E_{p,q}\) &#x0028;i.e.
+a quotient of a subgroup&#x0029;, so we get that each \(E^r_{p,q}\) stabilizes to some \(E^\infty _{p,q}\). Similarly,
+the groups \(A_{p,q}\) stabilize for &#xFB01;xed \(p+q\) as \(p\) gets very small or very large. For \(n = p+q\), We will
 call \(A_n^+\) the stable group for \(p\) very large, and \(A_n^-\) the stable group when \(p\) gets very
 small.
-</p><!--l. 48--><p class="indent" >  The second condition we want (<span 
-class="cmbx-12">Condition</span> \(2\)) will guarantee that our spectral
+</p><!--l. 48--><p class="indent" >  The second condition we want &#x0028;<span 
+class="cmbx-12">Condition</span> \(2\)&#x0029; will guarantee that our spectral
 sequence converges to the associated graded group. This is the condition that \(A_n^- = 0\) for all
 \(n\).
 </p><!--l. 50--><p class="indent" >  The exact sequence for the \(r^{th}\) derived couple looks like
@@ -339,15 +339,15 @@ sequence converges to the associated graded group. This is the condition that \(
 >
 <!--l. 52--><p class="noindent" >
 </p><!--l. 56--><p class="noindent" >                                 <img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces2x.svg" alt="       Erp+r-1.q-r+2      Arp+r-2,q- r+2      Arp+r- 1,q-r+1     Erp.q
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces2x.svg" alt="       Erp+r&#x2212;1.q&#x2212;r+2      Arp+r&#x2212;2,q&#x2212; r+2      Arp+r&#x2212; 1,q&#x2212;r+1     Erp.q
 
 
                           r                 r                r
-kijkijrrrrrr                       Ap-1,q           A p,q-1           E p-r+1,q+r-2 "  />
+kijkijrrrrrr                       Ap&#x2212;1,q           A p,q&#x2212;1           E p&#x2212;r+1,q+r&#x2212;2 "  />
 </p></div>
-<!--l. 59--><p class="indent" >  But by Condition \(1\), the first and last term are \(0\) for large \(r\), and by Condition \(2\), the last two
+<!--l. 59--><p class="indent" >  But by Condition \(1\), the &#xFB01;rst and last term are \(0\) for large \(r\), and by Condition \(2\), the last two
 \(A\) terms are \(0\), since \(A^r_{p,q}\) is the image of the iterated inclusion \(i_r:A_{p-r,q+r}\to A_{p,q}\), which is \(0\) for large \(r\). This we get \(E^\infty _{p,q} \cong A^r_{p+r-1,q-r+1}/\im (i:A^r_{p+r-2,q-r+2} \to A^r_{p+r-1,q-r+1})\)
-for large \(r\). However, looking at the definitions of the terms on the right hand side of the
+for large \(r\). However, looking at the de&#xFB01;nitions of the terms on the right hand side of the
 isomorphism, we see that if \(F_{p,q} = \im (i_\infty : A_{p,q} \to A^+_{p+q})\), then \(E^\infty _{p,q} \cong F_{p,q}/F_{p-1,q+1}\). In our particular case, \(F_{p,q}\) is \(H_{p+q,p}(X)\), so we get the proposition
 below.
 </p>
@@ -358,8 +358,8 @@ below.
 <span 
 class="cmbx-12">Proposition 3.1.</span>  </span> <span 
 class="cmti-12">If</span> \(X_p\) <span 
-class="cmti-12">is a filtration of</span> \(X\) <span 
-class="cmti-12">such that for a fixed</span> \(n\)<span 
+class="cmti-12">is a &#xFB01;ltration of</span> \(X\) <span 
+class="cmti-12">such that for a &#xFB01;xed</span> \(n\)<span 
 class="cmti-12">, the inclusion</span> \(H_n(X_p) \to H_n(X_{p+1})\) <span 
 class="cmti-12">is</span>
 <span 
@@ -370,15 +370,15 @@ class="cmti-12">, then the spectral sequence on homology</span>
 class="cmti-12">converges to the associated graded group.</span>
 </p>
   </div>
-<!--l. 65--><p class="indent" >  For an intuitive discussion of where spectral sequences come from see Chow&#8217;s article
-[<a id="page.4"></a><a 
-href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html#X0-chowss" >Cho06</a>].
+<!--l. 65--><p class="indent" >  For an intuitive discussion of where spectral sequences come from see Chow&#x2019;s article
+&#x005B;<a id="page.4"></a><a 
+href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html#X0-chowss" >Cho06</a>&#x005D;.
 </p>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
  id="x1-40004"></a>What is the Serre spectral sequence</h3>
 <!--l. 68--><p class="noindent" >The Serre spectral sequence is what we get when specialize the spectral sequence on
-homology to a certain filtration on the total space of a fibration. We can see it
-as the homology (or cohomology) analog of the exact sequence on homotopy
+homology to a certain &#xFB01;ltration on the total space of a &#xFB01;bration. We can see it
+as the homology &#x0028;or cohomology&#x0029; analog of the exact sequence on homotopy
 groups.
 </p><!--l. 70--><p class="indent" >  The reason it is nice is that there is an explicit formula for \(E^2\), so we can start computing
 from the second page. In an ideal situation, the computation will be completely formal,
@@ -386,17 +386,17 @@ and we will be able to deduce \(E^\infty \).
                                                                                   
 
                                                                                   
-</p><!--l. 72--><p class="indent" >  For a fibration \(F \hookrightarrow E \xrightarrow{\pi } B\), with \(B\) a CW-complex, let \(B_p\) be the \(p\)-skeleton of \(B\), and \(E_p\) be \(\pi ^{-1}(B_p)\). Then \(E_p\) will be
-our filtration of \(E\). It is not too hard to see that the conditions of Proposition <a 
+</p><!--l. 72--><p class="indent" >  For a &#xFB01;bration \(F \hookrightarrow E \xrightarrow{\pi } B\), with \(B\) a CW-complex, let \(B_p\) be the \(p\)-skeleton of \(B\), and \(E_p\) be \(\pi ^{-1}(B_p)\). Then \(E_p\) will be
+our &#xFB01;ltration of \(E\). It is not too hard to see that the conditions of Proposition <a 
 href="#x1-3001r1">3.1<!--tex4ht:ref: specseqhom --></a> are
-satisfied. Indeed, the pair \((B_{p+1},B_p)\) is \(p\)-connected, so by the homotopy lifting property so is
+satis&#xFB01;ed. Indeed, the pair \((B_{p+1},B_p)\) is \(p\)-connected, so by the homotopy lifting property so is
 the pair \((E_{p+1},E_p)\). Then by the Hurewicz theorem, we get that \(H_n(E_{p+1},E_p)\) is almost always \(0\), so
-Condition \(1\) holds. Condition \(2\) is satisfied by the fact that \(B_p\) is the empty set for
+Condition \(1\) holds. Condition \(2\) is satis&#xFB01;ed by the fact that \(B_p\) is the empty set for
 \(p&lt;0\).
-</p><!--l. 75--><p class="indent" >  Recall for a fibration, there is a functor from the fundmental groupoid \(\Pi _1(B)\) to the naive
+</p><!--l. 75--><p class="indent" >  Recall for a &#xFB01;bration, there is a functor from the fundmental groupoid \(\Pi _1(B)\) to the naive
 homotopy category \(\hTop \), which takes a path \(\gamma \) to the homotopy equivalence it induces on the
-fibres \(\pi ^{-1}(\gamma (0)) \to \pi ^{-1}(\gamma (1))\). This functor, when restricted to a particular base point, gives an action of \(\pi _1(B)\) on the
-mapping class group (i.e. group of homotopy equivalences) of the fibre \(F\), which we
+&#xFB01;bres \(\pi ^{-1}(\gamma (0)) \to \pi ^{-1}(\gamma (1))\). This functor, when restricted to a particular base point, gives an action of \(\pi _1(B)\) on the
+mapping class group &#x0028;i.e. group of homotopy equivalences&#x0029; of the &#xFB01;bre \(F\), which we
 can denote \(\MCG (F)\). The condition for the formula for \(E^2\) to hold is for this action to be
 trivial.
 </p>
@@ -407,7 +407,7 @@ trivial.
 <span 
 class="cmbx-12">Theorem 4.1.</span>  </span> <span 
 class="cmti-12">Let</span> \(F \hookrightarrow E \xrightarrow{\pi } B\) <span 
-class="cmti-12">be a fibration with</span> \(B\) <span 
+class="cmti-12">be a &#xFB01;bration with</span> \(B\) <span 
 class="cmti-12">path-connected, and</span> \(\pi _1(B)\) <span 
 class="cmti-12">acting trivially on</span> \(\MCG (F)\)<span 
 class="cmti-12">.</span>
@@ -416,28 +416,28 @@ class="cmti-12">Then there is a spectral sequence</span> \(E^r_{p,q},d^r\)<span
 class="cmti-12">, with</span> \(d^r:E^r_{p,q} \to E^r_{p-r,q+r-1}\)<span 
 class="cmti-12">, converging to</span> \(E^\infty _{p,q} \cong F_{p,q}/F_{p-1,q+1}\)<span 
 class="cmti-12">, where</span> \(F_{0,n} \subset F_{1,n-1} \subset \dots F_{n,0} = H_n(E;G)\) <span 
-class="cmti-12">is a filtration of</span> \(H_n(E;G)\)<span 
+class="cmti-12">is a &#xFB01;ltration of</span> \(H_n(E;G)\)<span 
 class="cmti-12">.</span>
 <span 
 class="cmti-12">Moreover,</span> \(E^2_{p,q} \cong H_p(B;H_q(F,G))\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 81--><p class="indent" >  The only thing so far unproven is the last statement, the proof of which one can find in
-Hatcher&#8217;s notes [<a id="page.5"></a><a 
-href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html#X0-hatcherssat" >Hat04</a>]. Note that \(B\) has not been assumed to be a CW-complex
+<!--l. 81--><p class="indent" >  The only thing so far unproven is the last statement, the proof of which one can &#xFB01;nd in
+Hatcher&#x2019;s notes &#x005B;<a id="page.5"></a><a 
+href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html#X0-hatcherssat" >Hat04</a>&#x005D;. Note that \(B\) has not been assumed to be a CW-complex
 above, this is because one can assume WLOG that \(B\) is a CW-complex by pulling
 back a CW approximation \(B' \to B\). Indeed, by naturality of the long exact sequence on
-homotopy groups and the five lemma, \(E',B'\) will be weakly homotopy equivalent to \(E, B\) via
+homotopy groups and the &#xFB01;ve lemma, \(E',B'\) will be weakly homotopy equivalent to \(E, B\) via
 the pullback maps. By naturality of the action of the fundamental group on \(\MCG (F)\), \(\pi _1(B')\)
-will act trivially on the fibre as well, so that it suffices to prove the theorem for
+will act trivially on the &#xFB01;bre as well, so that it su&#xFB03;ces to prove the theorem for
 \(E' \to B'\).
 </p><!--l. 84--><p class="indent" >  We can consider the special case \(E = B \times F\), with \(\pi \) the projection. Here, \(B\) does act trivially on the
-fibre, so we can compare what we get from the Serre spectral sequence and from the
-Künneth formula. The Künneth formula with the universal coefficient theorem
-give \(H_n(B \times F;G) \cong \bigoplus _{p+q = n} H_p(B;H_q(F;G))\), which is what the spectral sequence yields when \(E^2 = E^\infty \), and all differentials
-are \(0\). Thus for a nontrivial fibration with fibre \(F\), \(H_n(B\times F)\) is an upper bound for \(H_n(E)\), since
-differentials being nonzero will only make homology smaller, as will nontrivial
+&#xFB01;bre, so we can compare what we get from the Serre spectral sequence and from the
+K&#x00FC;nneth formula. The K&#x00FC;nneth formula with the universal coe&#xFB03;cient theorem
+give \(H_n(B \times F;G) \cong \bigoplus _{p+q = n} H_p(B;H_q(F;G))\), which is what the spectral sequence yields when \(E^2 = E^\infty \), and all di&#xFB00;erentials
+are \(0\). Thus for a nontrivial &#xFB01;bration with &#xFB01;bre \(F\), \(H_n(B\times F)\) is an upper bound for \(H_n(E)\), since
+di&#xFB00;erentials being nonzero will only make homology smaller, as will nontrivial
 extensions.
                                                                                   
 
@@ -445,11 +445,11 @@ extensions.
 </p>
   <h3 class="sectionHead"><span class="titlemark">5. </span> <a 
  id="x1-50005"></a>What does the Serre spectral sequence look like</h3>
-<!--l. 88--><p class="noindent" >To draw the Serre spectral sequence, first recall how it was described earlier, namely, each \(E^r\)
+<!--l. 88--><p class="noindent" >To draw the Serre spectral sequence, &#xFB01;rst recall how it was described earlier, namely, each \(E^r\)
 a page in a book. For the Serre spectral sequence, the \(E_{p,q}\) is only nonzero for \(p,q \geq 0\), since \(E_{p,q} := H_{p+q}(E_p,E_{p-1})\), which
-we have already noted is \(p-1\)-connected. Thus we can write each \(E^r\) as a table going infinitely
+we have already noted is \(p-1\)-connected. Thus we can write each \(E^r\) as a table going in&#xFB01;nitely
 upwards and to the right, where the \(p+1^{th}\) column and \(q+1^{th}\) row is \(E^r_{p,q}\). Since \(d^r\) goes from \(E^r_{p,q}\) to \(E^r_{p-r,q+r-1}\), the
-differential on the \(r^{th}\) page goes \(r\) columns left and \(r-1\) columns up. For example, part of the \(E^2\)
+di&#xFB00;erential on the \(r^{th}\) page goes \(r\) columns left and \(r-1\) columns up. For example, part of the \(E^2\)
 page looks like this: </p>
 <div class="center" 
 >
@@ -465,10 +465,10 @@ src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces3x.svg" alt="2     E
       0     1     2      3     4
 "  /></p></div>
 <!--l. 110--><p class="indent" >  where the arrows are \(d^2\).
-</p><!--l. 112--><p class="indent" >  Let&#8217;s try a simple example with \(\ZZ \) coefficients to see how the spectral sequence works. We
-will consider the Hopf fibration \(S^1 \hookrightarrow S^3 \rightarrow S^2\). \(S^2\) is simply connected, so the conditions of Theorem <a 
+</p><!--l. 112--><p class="indent" >  Let&#x2019;s try a simple example with \(\ZZ \) coe&#xFB03;cients to see how the spectral sequence works. We
+will consider the Hopf &#xFB01;bration \(S^1 \hookrightarrow S^3 \rightarrow S^2\). \(S^2\) is simply connected, so the conditions of Theorem <a 
 href="#x1-4001r1">4.1<!--tex4ht:ref: serrespecseq --></a>
-are satisfied. Then the \(E^2\) page looks like
+are satis&#xFB01;ed. Then the \(E^2\) page looks like
 </p>
 <div class="center" 
 >
@@ -484,44 +484,44 @@ src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces4x.svg" alt="2    0 
 "  /></p></div>
 <!--l. 129--><p class="noindent" >Everything on the page not shown above is \(0\). Since \(E^3 = E^ \infty \) here as there are only two adjacent
 nonzero rows, and since we already know the homology of \(S^3\), we must have that the only
-possible nonzero differential must be an isomorphism.
+possible nonzero di&#xFB00;erential must be an isomorphism.
 </p><!--l. 131--><p class="indent" >  Without actually examining the maps, one cannot compute the homology of \(S^3\) using this
-fibration. In fact, from the transitive action of \(SO(3) \cong \RR \PP ^3\) on \(S^2\), we get a similar fibration \(S^1 \hookrightarrow SO(3) \rightarrow S^2\), so the \(E^2\) page
-of this fibration looks the same, except in this case, the map \(\ZZ \to \ZZ \) is multiplication by
+&#xFB01;bration. In fact, from the transitive action of \(SO(3) \cong \RR \PP ^3\) on \(S^2\), we get a similar &#xFB01;bration \(S^1 \hookrightarrow SO(3) \rightarrow S^2\), so the \(E^2\) page
+of this &#xFB01;bration looks the same, except in this case, the map \(\ZZ \to \ZZ \) is multiplication by
 \(2\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">6. </span> <a 
  id="x1-60006"></a>More examples</h3>
-<!--l. 134--><p class="noindent" >Here are some examples, a few of which are inspired from Hatcher&#8217;s notes [<a id="page.7"></a><a 
-href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html#X0-hatcherssat" >Hat04</a>].
+<!--l. 134--><p class="noindent" >Here are some examples, a few of which are inspired from Hatcher&#x2019;s notes &#x005B;<a id="page.7"></a><a 
+href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html#X0-hatcherssat" >Hat04</a>&#x005D;.
 </p><!--l. 136--><p class="indent" >  Lets try our motivating example: the loop space of a sphere. For \(n &gt; 1\), \(S^n\) is simply connected
 so the conditions of Theorem <a 
-href="#x1-4001r1">4.1<!--tex4ht:ref: serrespecseq --></a> are again satisfied. \(E^2_{p,q} = H^p(S^n,H^q(\Omega S^n))\), so the only nonzero columns are the \(p = 0, n\)
-columns, in which case \(E^2_{p,q} = H^q(\Omega S^n)\) by the universal coefficients theorem. We see thus that the only
-page with possibly nonzero differentials is the \(E^{n-1}\) page, so \(E^{n-1}_{p,q} = E^2_{p,q}\), and \(E^n = E^\infty \). Part of the \(E^{n-1}\) page is shown
+href="#x1-4001r1">4.1<!--tex4ht:ref: serrespecseq --></a> are again satis&#xFB01;ed. \(E^2_{p,q} = H^p(S^n,H^q(\Omega S^n))\), so the only nonzero columns are the \(p = 0, n\)
+columns, in which case \(E^2_{p,q} = H^q(\Omega S^n)\) by the universal coe&#xFB03;cients theorem. We see thus that the only
+page with possibly nonzero di&#xFB00;erentials is the \(E^{n-1}\) page, so \(E^{n-1}_{p,q} = E^2_{p,q}\), and \(E^n = E^\infty \). Part of the \(E^{n-1}\) page is shown
 below:
 </p>
 <div class="center" 
 >
 <!--l. 138--><p class="noindent" >
 </p><!--l. 139--><p class="noindent" ><img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces5x.svg" alt="n         Hn (&#x03A9;Sn  )n            Hn (&#x03A9;Sn )n
-n - 1     Hn - 1(&#x03A9;S   )          Hn -1(&#x03A9;S  )
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces5x.svg" alt="n         Hn &#x0028;&#x03A9;Sn  &#x0029;n            Hn &#x0028;&#x03A9;Sn &#x0029;n
+n &#x2212; 1     Hn &#x2212; 1&#x0028;&#x03A9;S   &#x0029;          Hn &#x2212;1&#x0028;&#x03A9;S  &#x0029;
 
-1         H1 (&#x03A9;Sn )             H1 (&#x03A9;Sn )
+1         H1 &#x0028;&#x03A9;Sn &#x0029;             H1 &#x0028;&#x03A9;Sn &#x0029;
 
 
 0         &#x2124;                     &#x2124;
 
           0          &#x22C5;&#x22C5;&#x22C5;        n
 "  /></p></div>
-<!--l. 155--><p class="noindent" >Since the homology of \(PS^n\) is trivial except for the \(\ZZ \) at \(H_0\), everything on the \(E^{n-1}\) page (except \(E^{n-1}_{0,0}\))
+<!--l. 155--><p class="noindent" >Since the homology of \(PS^n\) is trivial except for the \(\ZZ \) at \(H_0\), everything on the \(E^{n-1}\) page &#x0028;except \(E^{n-1}_{0,0}\)&#x0029;
 must be exact, so all the maps \(H_{i}(\Omega S^n) \to H_{n+i-1}(\Omega S^n)\) for each \(i\) are isomorphisms, so \(H_{k(n-1)}\Omega S^n = \ZZ \) for \(k \geq 0\), and is \(0\)
 elsewhere.
-</p><!--l. 157--><p class="indent" >  In that example, we used the homology of the base space and total space to find out the
-homology of the fibre. The example of \(K(\ZZ ,2)\)&#8217;s path space fibration is one in which we can use
-the homology of the total space and fibre to find the homology of the base space. The loop
-space is a \(K(\ZZ ,1)\), which is homotopy equivalent to \(S^1\). \(\pi _1(K(\ZZ ,2)) = [S^1,K(\ZZ ,2)] = H^2(S^1;\ZZ ) = 0\), so this fibration satisfies the conditions of
+</p><!--l. 157--><p class="indent" >  In that example, we used the homology of the base space and total space to &#xFB01;nd out the
+homology of the &#xFB01;bre. The example of \(K(\ZZ ,2)\)&#x2019;s path space &#xFB01;bration is one in which we can use
+the homology of the total space and &#xFB01;bre to &#xFB01;nd the homology of the base space. The loop
+space is a \(K(\ZZ ,1)\), which is homotopy equivalent to \(S^1\). \(\pi _1(K(\ZZ ,2)) = [S^1,K(\ZZ ,2)] = H^2(S^1;\ZZ ) = 0\), so this &#xFB01;bration satis&#xFB01;es the conditions of
 Theorem <a 
 href="#x1-4001r1">4.1<!--tex4ht:ref: serrespecseq --></a>. This time, by looking at \(H_*(S^1,\ZZ )\), we see the only nonzero rows are the \(q = 0,1\) rows, which
 are shown below.
@@ -530,25 +530,25 @@ are shown below.
 >
 <!--l. 159--><p class="noindent" >
 </p><!--l. 160--><p class="noindent" ><img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces6x.svg" alt="1    &#x2124;        H1 (K (&#x2124;,2))   H2(K (&#x2124;, 2))  H3 (K (&#x2124;,2))
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces6x.svg" alt="1    &#x2124;        H1 &#x0028;K &#x0028;&#x2124;,2&#x0029;&#x0029;   H2&#x0028;K &#x0028;&#x2124;, 2&#x0029;&#x0029;  H3 &#x0028;K &#x0028;&#x2124;,2&#x0029;&#x0029;
 
-0    &#x2124;        H1 (K (&#x2124;,2))   H2(K (&#x2124;, 2))  H3 (K (&#x2124;,2))
+0    &#x2124;        H1 &#x0028;K &#x0028;&#x2124;,2&#x0029;&#x0029;   H2&#x0028;K &#x0028;&#x2124;, 2&#x0029;&#x0029;  H3 &#x0028;K &#x0028;&#x2124;,2&#x0029;&#x0029;
 
      0        1              2             3
 "  /></p></div>
-<!--l. 175--><p class="indent" >  As in the previous example, the \(E^2\) page is almost exact (i.e. except for on the \(E^2_{0,0}\)
-term) so we get \(H_i(K(\ZZ ,2)) \cong \ZZ \) for even \(i\), and is \(0\) elsewhere. This agrees with the fact that \(\CC \PP ^\infty \) is a
+<!--l. 175--><p class="indent" >  As in the previous example, the \(E^2\) page is almost exact &#x0028;i.e. except for on the \(E^2_{0,0}\)
+term&#x0029; so we get \(H_i(K(\ZZ ,2)) \cong \ZZ \) for even \(i\), and is \(0\) elsewhere. This agrees with the fact that \(\CC \PP ^\infty \) is a
 \(K(\ZZ ,2)\).
-</p><!--l. 177--><p class="indent" >  Let&#8217;s try computing the homology of some classical groups.
-</p><!--l. 179--><p class="indent" >  \(\SU (3)\) acts transitively on \(S^5\), with stabilizer \(\SU (2) \cong S^3\), giving us the fibration \(S^3 \hookrightarrow \SU (3) \to S^5\). It is easy to see that the
+</p><!--l. 177--><p class="indent" >  Let&#x2019;s try computing the homology of some classical groups.
+</p><!--l. 179--><p class="indent" >  \(\SU (3)\) acts transitively on \(S^5\), with stabilizer \(\SU (2) \cong S^3\), giving us the &#xFB01;bration \(S^3 \hookrightarrow \SU (3) \to S^5\). It is easy to see that the
                                                                                   
 
                                                                                   
-differentials are always \(0\) because there are never any maps from nonzero groups to nonzero
+di&#xFB00;erentials are always \(0\) because there are never any maps from nonzero groups to nonzero
 groups, so the homology matches that of the product; namely it is \(\ZZ \) in dimensions \(0,3,5,8\), and \(0\)
 elsewhere.
-</p><!--l. 182--><p class="indent" >  Another example to try is \(\SOr (4)\), with the fibration \(\RR \PP (3) \cong \SOr (3) \hookrightarrow \SOr (4) \to S^3\). In this case only potentially \(E^3\) can have
-nontrivial differential, and it is shown below:
+</p><!--l. 182--><p class="indent" >  Another example to try is \(\SOr (4)\), with the &#xFB01;bration \(\RR \PP (3) \cong \SOr (3) \hookrightarrow \SOr (4) \to S^3\). In this case only potentially \(E^3\) can have
+nontrivial di&#xFB00;erential, and it is shown below:
 </p>
 <div class="center" 
 >
@@ -563,15 +563,15 @@ src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces7x.svg" alt="3      
 
        0      3
 "  /></p></div>
-<!--l. 199--><p class="noindent" >But \(\ZZ \) is torsion free, so all differentials are \(0\), and \(H_*(\SOr (4)) = H_*(\Spin (3)\times \SOr (3))\) which agrees with the fact that these are
-actually homeomorphic (but not isomorphic).
+<!--l. 199--><p class="noindent" >But \(\ZZ \) is torsion free, so all di&#xFB00;erentials are \(0\), and \(H_*(\SOr (4)) = H_*(\Spin (3)\times \SOr (3))\) which agrees with the fact that these are
+actually homeomorphic &#x0028;but not isomorphic&#x0029;.
 </p><!--l. 201--><p class="indent" >  There are cases in which the conditions of Theorem <a 
-href="#x1-4001r1">4.1<!--tex4ht:ref: serrespecseq --></a> are not satisfied. For example,
-for a normal covering space, we have the fibration \(\Aut (E/B) \hookrightarrow E \to B\), where \(\Aut (E/B)\) is the group of deck
+href="#x1-4001r1">4.1<!--tex4ht:ref: serrespecseq --></a> are not satis&#xFB01;ed. For example,
+for a normal covering space, we have the &#xFB01;bration \(\Aut (E/B) \hookrightarrow E \to B\), where \(\Aut (E/B)\) is the group of deck
 transformations. If \(E\) is a nontrivial cover of \(B\), then \(E\) corresponds to a subgroup \(H\) of \(\pi _1(B)\), and the
 action of the \(\pi _1(B)\) on \(\Aut (E/B)\) is the action of \(\pi _1(B)\) on the left cosets \(\pi _1(B)/H\), which is nontrivial. Indeed we should
 hope that the Serre spectral sequence fails in this case. For example, if \(G\) is a discrete group,
-and we were able to apply the Serre spectral sequence to the fibration \(G \hookrightarrow EG \to BG\), where \(EG\) is
+and we were able to apply the Serre spectral sequence to the &#xFB01;bration \(G \hookrightarrow EG \to BG\), where \(EG\) is
 contractible, we would get that \(BG\) has trivial homology, whereas group homology and
 cohomology are known to be quite nontrivial.
 </p>
@@ -583,8 +583,8 @@ homology version, as we can deduce more from the cup product. For example, we
                                                                                   
 
                                                                                   
-could have tried to compute the homology of \(\SU (n)\) as we did \(\SU (3)\), via the fibration \(\SU (n-1) \hookrightarrow \SU (n) \to S^{2n-1}\) and
-induction, but it would have let to issues that don&#8217;t easily resolve. However the
+could have tried to compute the homology of \(\SU (n)\) as we did \(\SU (3)\), via the &#xFB01;bration \(\SU (n-1) \hookrightarrow \SU (n) \to S^{2n-1}\) and
+induction, but it would have let to issues that don&#x2019;t easily resolve. However the
 computation for cohomology does go through with the use of the additional cup product
 structure.
 </p>
@@ -595,7 +595,7 @@ structure.
 <span 
 class="cmbx-12">Theorem 7.1.</span>  </span> <span 
 class="cmti-12">Let</span> \(F \hookrightarrow E \xrightarrow{\pi } B\) <span 
-class="cmti-12">be a fibration with</span> \(B\) <span 
+class="cmti-12">be a &#xFB01;bration with</span> \(B\) <span 
 class="cmti-12">path-connected, and</span> \(\pi _1(B)\) <span 
 class="cmti-12">acting trivially on</span> \(\MCG (F)\)<span 
 class="cmti-12">.</span>
@@ -604,7 +604,7 @@ class="cmti-12">Then there is a spectral sequence</span> \(E^r_{p,q},d^r\)<span
 class="cmti-12">, with</span> \(d^r:E^r_{p,q} \to E^r_{p+r,q-r+1}\)<span 
 class="cmti-12">, converging to</span> \(E^\infty _{p,q} \cong F_{p,q}/F_{p-1,q+1}\)<span 
 class="cmti-12">, where</span> \(F_{0,n} \subset F_{1,n-1} \subset \dots F_{n,0} = H^n(E;R)\) <span 
-class="cmti-12">is a filtration of</span> \(H^n(E;R)\)<span 
+class="cmti-12">is a &#xFB01;ltration of</span> \(H^n(E;R)\)<span 
 class="cmti-12">.</span>
 <span 
 class="cmti-12">Moreover,</span> \(E^2_{p,q} \cong H^p(B;H^q(F,R))\)<span 
@@ -615,23 +615,23 @@ class="cmti-12">.</span>
 the properties below:
 </p><!--l. 214--><p class="indent" >
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
-   (1) </dt><dd 
-class="enumerate-enumitem">Each \(d^r\) satisfies \(d^r(xy) = d^r(x)y + (-1)^{p+q}xd^r(y)\) for \(x \in E^r_{p,q}\). Thus \(\im (d^r)\) is an ideal of \(\ker (d^r)\), and the quotient ring is \(E^{r+1}\).
+   &#x0028;1&#x0029; </dt><dd 
+class="enumerate-enumitem">Each \(d^r\) satis&#xFB01;es \(d^r(xy) = d^r(x)y + (-1)^{p+q}xd^r(y)\) for \(x \in E^r_{p,q}\). Thus \(\im (d^r)\) is an ideal of \(\ker (d^r)\), and the quotient ring is \(E^{r+1}\).
           </dd><dt class="enumerate-enumitem">
-   (2) </dt><dd 
-class="enumerate-enumitem">The map on \(E^2\) is given by \((-1)^{qs}\) times the cup product, where the coefficients are
+   &#x0028;2&#x0029; </dt><dd 
+class="enumerate-enumitem">The map on \(E^2\) is given by \((-1)^{qs}\) times the cup product, where the coe&#xFB03;cients are
        also cupped together.
           </dd><dt class="enumerate-enumitem">
-   (3) </dt><dd 
-class="enumerate-enumitem">The cup product restricts to a product on the filtration \(F_{p,q}\times F_{s,t} \to F_{p+s,q+t}\) that makes the
+   &#x0028;3&#x0029; </dt><dd 
+class="enumerate-enumitem">The cup product restricts to a product on the &#xFB01;ltration \(F_{p,q}\times F_{s,t} \to F_{p+s,q+t}\) that makes the
        associated graded group into an associated graded ring which is isomorphic
        as a graded ring to \(E^\infty \) via the isomorphism of Theorem <a 
 href="#x1-7001r1">7.1<!--tex4ht:ref: serrecohomology --></a>.</dd></dl>
-<!--l. 219--><p class="indent" >  Notice that the differential&#8217;s arrows on each page point in the opposite direction for the
-cohomology spectral sequence. Let&#8217;s try the example of \(\SU (n)\) again. By induction, we want to
+<!--l. 219--><p class="indent" >  Notice that the di&#xFB00;erential&#x2019;s arrows on each page point in the opposite direction for the
+cohomology spectral sequence. Let&#x2019;s try the example of \(\SU (n)\) again. By induction, we want to
 prove the cohomology ring is the exterior algebra \(\Lambda [w_1,w_3,\dots ,w_{2n-1}]\) where the subscript of the \(w_i\) are
 the grading. The only columns of \(E\) that are nonzero are \(p = 0, 2n-1\), so the only page with
-potentially nonzero differential is the \(2n-2\) page. Below is shown the generators for
+potentially nonzero di&#xFB00;erential is the \(2n-2\) page. Below is shown the generators for
 \(E^{2n-1}\).
 </p>
 <div class="center" 
@@ -641,69 +641,69 @@ potentially nonzero differential is the \(2n-2\) page. Below is shown the genera
 
                                                                                   
 </p><!--l. 222--><p class="noindent" ><img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces8x.svg" alt="2n - 3    w2n- 3      w2n-3w2n -1
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces8x.svg" alt="2n &#x2212; 3    w2n&#x2212; 3      w2n&#x2212;3w2n &#x2212;1
 
 ..
 .
 
-1         w1          w1w2n -1
+1         w1          w1w2n &#x2212;1
 
 
-0         1           w2n-1
+0         1           w2n&#x2212;1
 
-          0           2n - 1
+          0           2n &#x2212; 1
 "  /></p></div>
-<!--l. 236--><p class="noindent" >However on this page the maps from each generator go to \(0\), so all differentials are \(0\), and we
+<!--l. 236--><p class="noindent" >However on this page the maps from each generator go to \(0\), so all di&#xFB00;erentials are \(0\), and we
 are done.
 </p><!--l. 238--><p class="indent" >  Essentially the same computation can yield the cohomology rings of \(\Sp (n), \U (n)\) via induction and
-the fibrations \(\Sp (n-1) \hookrightarrow \Sp (n) \to S^{4n-1}\) and \(\U (n-1) \hookrightarrow \U (n) \to S^{2n-1}\). We get that \(H^*(\Sp (n),\ZZ )\) is \(\Lambda [w_3,w_7,\dots ,w_{4n-1}]\), and \(H^*(\U (n))\) is \(\Lambda [w_1,w_3,\dots ,w_{2n-1}]\).
-</p><!--l. 240--><p class="indent" >  The computation doesn&#8217;t go through the same way for \(\SOr (n-1) \hookrightarrow \SOr (n) \to S^{n-1}\) since there are maps from
+the &#xFB01;brations \(\Sp (n-1) \hookrightarrow \Sp (n) \to S^{4n-1}\) and \(\U (n-1) \hookrightarrow \U (n) \to S^{2n-1}\). We get that \(H^*(\Sp (n),\ZZ )\) is \(\Lambda [w_3,w_7,\dots ,w_{4n-1}]\), and \(H^*(\U (n))\) is \(\Lambda [w_1,w_3,\dots ,w_{2n-1}]\).
+</p><!--l. 240--><p class="indent" >  The computation doesn&#x2019;t go through the same way for \(\SOr (n-1) \hookrightarrow \SOr (n) \to S^{n-1}\) since there are maps from
 generators to nonzero groups on the \(E^{n-1}\) page, some of which do end up being nonzero as seen
-by looking at \(\SOr (3) \cong \RR \PP ^3\)&#8217;s cohomology.
+by looking at \(\SOr (3) \cong \RR \PP ^3\)&#x2019;s cohomology.
 </p><!--l. 271--><p class="indent" >  The last computation we can try is the rational cohomology of \(K(\ZZ ,n)\) via the path space
-fibration \(K(\ZZ ,n-1) \hookrightarrow PK(\ZZ ,n) \to K(\ZZ ,n)\). We already know what it is for \(n = 1,2\), and by induction we&#8217;d like to show for even \(n\) it
-is \(\QQ [x_n]\), and odd \(n\) it is \(\Lambda _\QQ [x_n]\) (i.e. the exterior algebra) for \(x_n \in H^n(K(\ZZ ,n);\QQ )\).
+&#xFB01;bration \(K(\ZZ ,n-1) \hookrightarrow PK(\ZZ ,n) \to K(\ZZ ,n)\). We already know what it is for \(n = 1,2\), and by induction we&#x2019;d like to show for even \(n\) it
+is \(\QQ [x_n]\), and odd \(n\) it is \(\Lambda _\QQ [x_n]\) &#x0028;i.e. the exterior algebra&#x0029; for \(x_n \in H^n(K(\ZZ ,n);\QQ )\).
 </p><!--l. 273--><p class="indent" >  To see this, when \(n\) is even, only the \(q = 0,n-1\) rows are nonzero, so only the \(E^{n}\) page can have
-nonzero differential. This page is shown below:
+nonzero di&#xFB00;erential. This page is shown below:
 </p>
 <div class="center" 
 >
 <!--l. 275--><p class="noindent" >
 </p><!--l. 276--><p class="noindent" ><img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces9x.svg" alt="n - 1    xn-1         xn -1H1 (K (&#x2124;,2))   xn-1Hn (K (&#x2124;,2 ))    xn-1Hn+1 (K (&#x2124;, 2))
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces9x.svg" alt="n &#x2212; 1    xn&#x2212;1         xn &#x2212;1H1 &#x0028;K &#x0028;&#x2124;,2&#x0029;&#x0029;   xn&#x2212;1Hn &#x0028;K &#x0028;&#x2124;,2 &#x0029;&#x0029;    xn&#x2212;1Hn+1 &#x0028;K &#x0028;&#x2124;, 2&#x0029;&#x0029;
 
-0        1            H1 (K (&#x2124;, n))       Hn (K (&#x2124;, 2))        Hn+1 (K (&#x2124;,2))
+0        1            H1 &#x0028;K &#x0028;&#x2124;, n&#x0029;&#x0029;       Hn &#x0028;K &#x0028;&#x2124;, 2&#x0029;&#x0029;        Hn+1 &#x0028;K &#x0028;&#x2124;,2&#x0029;&#x0029;
 
          0            1                   n                   n + 1
 "  /></p></div>
-<!--l. 290--><p class="indent" >  As usual for a path space fibration with one nontrivial \(d^j\), everything except \(E^n_{0,0}\) is exact, so
+<!--l. 290--><p class="indent" >  As usual for a path space &#xFB01;bration with one nontrivial \(d^j\), everything except \(E^n_{0,0}\) is exact, so
 letting \(x_n\) be the image of \(x_{n-1}\) from the arrow above, we get that \(x_n^k\) generates \(H^{nk}(K(\ZZ ,n))\), and that
 cohomology is otherwise \(0\). Note that this is dual to the computation done for
 \(H_*(K(\ZZ ,2))\).
-</p><!--l. 292--><p class="indent" >  Now let&#8217;s look at \(n\) odd, where we will see why the computation only works over a field.
+</p><!--l. 292--><p class="indent" >  Now let&#x2019;s look at \(n\) odd, where we will see why the computation only works over a &#xFB01;eld.
 Here, there are plenty of n rows, namely the \(q = k(n-1)\) row for each \(k\). However, what happens to
 the higher powers of \(x_{n-1}\) is determined by \(x_{n-1}\) by property \((1)\). In particular, only the \(E^{n}\)
-page can have nonzero differential, and so is as usual almost exact. It is shown
+page can have nonzero di&#xFB00;erential, and so is as usual almost exact. It is shown
 below.
 </p>
 <div class="center" 
 >
 <!--l. 294--><p class="noindent" >
 </p><!--l. 295--><p class="noindent" ><img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces10x.svg" alt="3n - 3    x3n- 1          x3n-1Hn (K (&#x2124;, n))   x3n-1H2n (K (&#x2124;,n ))
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces10x.svg" alt="3n &#x2212; 3    x3n&#x2212; 1          x3n&#x2212;1Hn &#x0028;K &#x0028;&#x2124;, n&#x0029;&#x0029;   x3n&#x2212;1H2n &#x0028;K &#x0028;&#x2124;,n &#x0029;&#x0029;
 
-2n - 2    x2n- 1          x2n-1Hn (K (&#x2124;, n))   x2n-1H2n (K (&#x2124;,n ))
+2n &#x2212; 2    x2n&#x2212; 1          x2n&#x2212;1Hn &#x0028;K &#x0028;&#x2124;, n&#x0029;&#x0029;   x2n&#x2212;1H2n &#x0028;K &#x0028;&#x2124;,n &#x0029;&#x0029;
 
-n - 1     x              x   Hn (K (&#x2124;, n))   x   H2n (K (&#x2124;,n ))
-           n- 1           n-1                 n-1
+n &#x2212; 1     x              x   Hn &#x0028;K &#x0028;&#x2124;, n&#x0029;&#x0029;   x   H2n &#x0028;K &#x0028;&#x2124;,n &#x0029;&#x0029;
+           n&#x2212; 1           n&#x2212;1                 n&#x2212;1
                            n                   2n
-0         1              H  (K (&#x2124;,n))        H  (K (&#x2124;, n))
+0         1              H  &#x0028;K &#x0028;&#x2124;,n&#x0029;&#x0029;        H  &#x0028;K &#x0028;&#x2124;, n&#x0029;&#x0029;
 
           0              n                   2n
 "  /></p></div>
 <!--l. 317--><p class="indent" >  By exactness, the map \(x_{n-1} \to H^n(K(\ZZ ,n))\) must be an isomorphism. We can call \(x_n\) the image of \(x_{n-1}\). By
-property \((1)\), \(d^{n}(x_{n-1}^k) = k x_{n-1}^{k-1} x_n\), so the maps from each of the \(x^k_{n-1}\) are isomorphisms (this is where we
-would have had trouble with \(\ZZ \) coefficients) so apart from \(x_n\), the cohomology is \(0\) by
+property \((1)\), \(d^{n}(x_{n-1}^k) = k x_{n-1}^{k-1} x_n\), so the maps from each of the \(x^k_{n-1}\) are isomorphisms &#x0028;this is where we
+would have had trouble with \(\ZZ \) coe&#xFB03;cients&#x0029; so apart from \(x_n\), the cohomology is \(0\) by
 exactness.
                                                                                   
 
@@ -713,7 +713,7 @@ exactness.
  id="x1-80008"></a>Closing remarks</h3>
 <!--l. 320--><p class="noindent" >As we have seen, the Serre spectral sequence is a quite powerful computational tool. We
 were able to compute the homology and cohomology of some spaces, just by knowing that
-they were part of some fibration, for which we knew the (co)homology of the other two
+they were part of some &#xFB01;bration, for which we knew the &#x0028;co&#x0029;homology of the other two
 spaces. For homology we had to be lucky in order for the computations to work, but
 via the cup product we were able to do much more powerful computations for
 cohomology.
@@ -722,14 +722,14 @@ cohomology.
  id="x1-90008"></a>References</h3>
 <!--l. 323--><p class="noindent" >
             </p><dl class="thebibliography"><dt id="X0-chowss" class="thebibliography">
-[Cho06]  </dt><dd 
+&#x005B;Cho06&#x005D;  </dt><dd 
 id="bib-1" class="thebibliography">
          <!--l. 323--><p class="indent" >   <a id="page.13"></a><a 
-href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html" id="X0-" ></a>Timothy  Chow.  &#8220;You  Could  Have  Invented  Spectral  Sequences&#8221;.  In:
+href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html" id="X0-" ></a>Timothy  Chow.  &#x201C;You  Could  Have  Invented  Spectral  Sequences&#x201D;.  In:
          <span 
-class="cmti-12">Notices of the AMS </span>53.1 (2006).
+class="cmti-12">Notices of the AMS </span>53.1 &#x0028;2006&#x0029;.
             </p></dd><dt id="X0-hatcherssat" class="thebibliography">
-[Hat04]  </dt><dd 
+&#x005B;Hat04&#x005D;  </dt><dd 
 id="bib-2" class="thebibliography">
          <!--l. 323--><p class="indent" >   Allen Hatcher. <span 
 class="cmti-12">Spectral Sequences in Algebraic Topology</span>. Springer-Verlag

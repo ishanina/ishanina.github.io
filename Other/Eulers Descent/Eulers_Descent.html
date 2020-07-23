@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en" xml:lang="en" > 
-<head> <title>Euler&#8217;s Descent</title> 
-<meta  charset="iso-8859-1" /> 
+<head> <title>Euler&#x2019;s Descent</title> 
+<meta  charset="UTF-8"" /> 
 <meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Eulers_Descent.css" /> 
@@ -209,7 +209,7 @@
 \newcommand{\id}{\mathop{\rm id}\nolimits} \)
   <div class="maketitle">
   <h2 class="titleHead">
-EULER&#8217;S DESCENT
+EULER&#x2019;S DESCENT
   </h2><div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
@@ -217,16 +217,16 @@ class="cmr-10">ISHAN LEVY</span>
 <div class="submaketitle">
 </div>
   </div>Which odd primes are of the form \(x^2+ny^2\)? One approach to solve this problem for small \(n\) taken
-by Euler is to split it into two problems, the reciprocity step, or finding when \(p|x^2+ny^2,p\nmid x,y\) and the
+by Euler is to split it into two problems, the reciprocity step, or &#xFB01;nding when \(p|x^2+ny^2,p\nmid x,y\) and the
 descent step, to take the number that \(p\) divides and replace it with \(p\) itself. For the
 reciprocity step, \(p|x^2+ny^2 \iff (\frac{-n}p)=1\), and this can be characterized via Jacobi reciprocity. Supposing we have \(p|N=x^2+ny^2\),
 we can always choose \(|x|,|y|&lt; p/2, (x,y) = 1\), so that \(N &lt; (1+n)(\frac{p^2}{4})\). If \(n \leq 3\), all other factors of \(N\) have to be smaller than
 \(p\).
 <!--l. 11--><p class="indent" >  Now the main lemma is that if \(N \in \ZZ \) and \(q \in \Spec (\ZZ )\) are of the form \(a^2+nb^2\) for relatively prime \(a,b\), then \(N/q\)
 is too. From this, we can either continue to get smaller \(N\) that \(p\) divides until \(p=N\),
-or find a smaller prime not of the form \(a^2+nb^2\). By Fermat descent this is impossible
-(for n=3 one has to be make sure that the descending sequence of primes is
-odd).
+or &#xFB01;nd a smaller prime not of the form \(a^2+nb^2\). By Fermat descent this is impossible
+&#x0028;for n=3 one has to be make sure that the descending sequence of primes is
+odd&#x0029;.
 </p><!--l. 13--><p class="indent" >  So we are left to prove the main lemma, which holds for any \(n\).
 </p>
   <div class="newtheorem">
@@ -255,16 +255,16 @@ class="cmti-12">Proof.</span> </span>The key to proving this will be two view it
 that \[(x^2+ny^2)(c^2+nd^2)=(xc-nyd)^2+n(xd+yc)^2\] To get the result, we will try to reconstruct \(c,d\) from the data \(a,b,x,y,q,N\), using the fact that
 \(q\) is prime. To use this fact, we will need \(q\) to divide something that factors, namely, \(Nx^2-qa^2=n(xb-ya)(xb+ya)\).
 By possibly changing the sign of \(a\), we can assume \(q|xb-ya\). But note that \(xb-ya = dq\) in the equation
-above, so we can call define \(d\) according to the main equation above. Similarly, \(q|Nx^2-nqb^2=(ax+nby)(ax-nby)\) so
-after a change of sign \(q|ax+nby=qc\), so we can recover \(c\). To check that this is sufficient, we calculate
+above, so we can call de&#xFB01;ne \(d\) according to the main equation above. Similarly, \(q|Nx^2-nqb^2=(ax+nby)(ax-nby)\) so
+after a change of sign \(q|ax+nby=qc\), so we can recover \(c\). To check that this is su&#xFB03;cient, we calculate
 \[ q(c^2+nd^2)=\frac{(ax+nby)^2+n(xb-ya)^2}q = \frac{Nq}q=N \] Finally if we can show that actually \(a=xc-nyd,b=xd+yc\), it will be shown that \((c,d)=1\) if \((a,b)=1\). To do this, we
-can recover \(c\) in a different way. Namely we can try to show that \(x|a+nyd=xc\), and since \((x,y)=1\), this is
-equivalent to \(x|ay+ny^2d=bx-dx^2\), so we can define \(c\) this way. Then the main equation still holds. <span class="qed"><span 
+can recover \(c\) in a di&#xFB00;erent way. Namely we can try to show that \(x|a+nyd=xc\), and since \((x,y)=1\), this is
+equivalent to \(x|ay+ny^2d=bx-dx^2\), so we can de&#xFB01;ne \(c\) this way. Then the main equation still holds. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 28--><p class="indent" >  Remark: the condition \(q \nmid n\) has to do with ramification in the ring \(\ZZ [\sqrt{-n}]\).
+<!--l. 28--><p class="indent" >  Remark: the condition \(q \nmid n\) has to do with rami&#xFB01;cation in the ring \(\ZZ [\sqrt{-n}]\).
 </p><!--l. 30--><p class="indent" >  Remark: We should not expect in general for it to be the case that \(p|a^2+nb^2 \implies p = a^2+nb^2\). For example, \(2|1^2+5*1^2\), but \(2\)
 is not of the desired form. This can be explained by the fact that \(\ZZ [\sqrt{-5}]\) is not a UFD. Indeed \(\ZZ [i],\ZZ [\sqrt{-2}],\ZZ [\sqrt{-3}]\)
 are UFDs away from the prime \(2\) so, from a more modern point of view we can see why this

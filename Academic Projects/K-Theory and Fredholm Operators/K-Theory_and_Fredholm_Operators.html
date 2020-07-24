@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>K-Theory and Fredholm Operators</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="K-Theory_and_Fredholm_Operators.css" /> 
 <meta name="src" content="K-Theory_and_Fredholm_Operators.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 K-THEORY AND FREDHOLM OPERATORS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -223,14 +223,14 @@ class="cmr-10">ISHAN LEVY</span>
 bundles on \(X\) under the Whitney sum operation. We can force it to become a group in the
 universal way, giving a group called \(K(X)\). This is a functor, so we can ask whether it is
 representable. If it is, the representing object should be a group up to homotopy. But in
-this case, it is represented by the space of Fredholm operators \(F\) on Hilbert space \(H\). In
-particular the composition operation is a commutative group operation on \(F\) up to
+this case, it is represented by the space of Fredholm operators \(\sF \) on Hilbert space \(H\). In
+particular the composition operation is a commutative group operation on \(\sF \) up to
 homotopy.
 </p><!--l. 11--><p class="indent" >  \(K(X)\) for a point is just \(\ZZ \), so in particular the components of the space of Fredholm operators
 should correspond to the integers, and this function from Fredholm operators to \(\ZZ \) is exactly
 the index of an operator. Hence in general we will want to construct a natural
-isomorphism \(\ind : [-,F] \to K(-)\).
-</p><!--l. 13--><p class="indent" >  To do this, &#xFB01;rst suppose that we have a map \(f:X \to F\), and we &#xFB01;x a point \(x \in X\). We should note that
+isomorphism \(\ind : [-,\sF ] \to K(-)\).
+</p><!--l. 13--><p class="indent" >  To do this, &#xFB01;rst suppose that we have a map \(f:X \to \sF \), and we &#xFB01;x a point \(x \in X\). We should note that
 the kernel of \(f(x) = f_x\) varies continuously in \(X\), in the sense that if \(V\) is a subspace on which \(f_x\) is
 injective, then nearby points will also be injective on \(V\). In particular, as \(X\) is compact, we can
 &#xFB01;nd a \(V\) of &#xFB01;nite codimension in \(H\) such that \(f_x\) is injective on \(V\) for all \(x \in X\). Then \(f_x(V)\) is a subbundle of \(X \times H\),
@@ -239,26 +239,26 @@ de&#xFB01;ne \(\ind _V(f) = k-[H/f_X(V)]\). To see this is well de&#xFB01;ned, w
 codimension \(n\) subspace \(U \subset V\) then \(H/f_X(U) \cong f_X(U)^\perp \cong f_X(V)^\perp \oplus f_X(U ^\perp \cap V) \cong H/f_X(V) \oplus \CC ^n \times X\). We thus have \(k-[H/f_X(V)] = k+n - [H/f_X(U)]\), so for any \(V,W\), \(\ind _V(f) = \ind _{V\cap W}(f) = \ind _{W}(f)\). Moreover index is clearly
 natural.
 </p><!--l. 15--><p class="indent" >  Homotopy invariance comes from the commutative diagram: </p>
+                                                                                  
+
+                                                                                  
 <div class="center" 
 >
-                                                                                  
-
-                                                                                  
 <!--l. 16--><p class="noindent" >
 </p><!--l. 21--><p class="noindent" >                <img 
-src="K-Theory_and_Fredholm_Operators0x.svg" alt="      &#x005B;X, F&#x005D;           K &#x0028;X &#x0029;
+src="K-Theory_and_Fredholm_Operators0x.svg" alt="      &#x005B;X, &#x2131; &#x005D;           K &#x0028;X &#x0029;
 
 
-      &#x005B;X &#x00D7;  I,F &#x005D;      K &#x0028;X  &#x00D7; I&#x0029;
+      &#x005B;X  &#x00D7; I,&#x2131; &#x005D;       K &#x0028;X &#x00D7;  I&#x0029;
 
 
 
-      &#x005B;X, F&#x005D;           K &#x0028;X &#x0029;
+      &#x005B;X, &#x2131; &#x005D;           K &#x0028;X &#x0029;
 
 ii&#x0028;&#x0028;&#x0028;&#x0028;indnd1111ndeeXXXXexx&#x00D7;&#x00D7;&#x00D7;&#x00D7;x&#x0028;&#x0028;0101&#x0028;f0ft&#x0029;&#x0029;&#x0029;&#x0029;f1&#x0029;&#x0029;&#x2217;&#x2217;&#x2217;&#x2217;&#x0029; "  />
 </p></div>
-<!--l. 23--><p class="noindent" >The vertical maps are isomorphisms and their composites are the identity on \([X,F]\) and \(K(X)\), so \(\ind (f_0) = \ind (f_1)\). To
-see \(\ind \) is a homomorphism, let \(f,g: X \to F\). Then choose \(U,V\) to be &#xFB01;nite codimension subspaces on which \(f,g\)
+<!--l. 23--><p class="noindent" >The vertical maps are isomorphisms and their composites are the identity on \([X,\sF ]\) and \(K(X)\), so \(\ind (f_0) = \ind (f_1)\). To
+see \(\ind \) is a homomorphism, let \(f,g: X \to \sF \). Then choose \(U,V\) to be &#xFB01;nite codimension subspaces on which \(f,g\)
 are respectively injective and such that \(g_X(V) \subset U\), so that \(fg\) is injective on \(V\). Then there is an exact
 sequence \(0 \to U/g_X(V) \to H/fg_X(V) \to H/f_X(U) \to 0\), so \(\ind (fg) = \codim V - [H/fg_X(V)] = \codim V - [U/g_X(V)] - [H/f_X(U)]\) \(= \codim U + \codim V -[H/g_X(U)] - [H/f_X(U)] = \ind (f) + \ind (g)\).
 </p><!--l. 25--><p class="indent" >  For surjectivity of the index, since it is a homomorphism we need every vector bundle \(V\)
@@ -269,7 +269,7 @@ bundle.
 </p><!--l. 27--><p class="indent" >  Finally let&#x2019;s examine the kernel of the index. If something is in the kernel, there must be
 a &#xFB01;nite codimension subspace \(U \subset H\) with \(H/f_X(U)\) trivial. Let \(e_1,\dots e_n\) be a basis of \(U^\perp \) and let \(s_1,\dots s_n\) be trivializing
 sections of \(f_X(U)^\perp \). Consider the homotopy that has \(f_{x,t}(e_i) = f_x(e_i)(1-t) + s_i t\). It homotopes \(f\) to something that is an
-isomorphism on \(H\). Thus we have an exact sequence \([X ,\GL (H)] \to [X,F] \to K(X) \to 0\). However, by Kuiper&#x2019;s theorem, \(\GL (H)\) is
+isomorphism on \(H\). Thus we have an exact sequence \([X ,\GL (H)] \to [X,\sF ] \to K(X) \to 0\). However, by Kuiper&#x2019;s theorem, \(\GL (H)\) is
 contractible, so the index is a natural isomorphism.
 </p>
    

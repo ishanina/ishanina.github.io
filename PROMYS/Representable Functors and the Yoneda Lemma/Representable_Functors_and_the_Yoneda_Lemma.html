@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Representable Functors and the Yoneda Lemma</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Representable_Functors_and_the_Yoneda_Lemma.css" /> 
 <meta name="src" content="Representable_Functors_and_the_Yoneda_Lemma.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 REPRESENTABLE FUNCTORS AND THE YONEDA LEMMA
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -256,9 +256,9 @@ class="cmti-12">.</span>
                                                                                   
 <!--l. 17--><p class="indent" >  Recall that naturally isomorphic functors should be thought of as essentially the same.
 Here are some examples of representable functors. The contravariant power set functor
-that takes a set to its set of subsets &#x0028;power set&#x0029; and a function to the function on power
-sets which is taking the preimage of a power set. This is represented by the object \(2\), the set
-of \(2\) elements.
+that takes a set to its set of subsets and a function to the function on power sets which is
+taking the preimage of a power set. This is represented by the object \(2\), the set of \(2\)
+elements.
 </p><!--l. 19--><p class="indent" >  Consider the functor taking a topology to its set of open sets. This is a contravariant
 functor, because of how continuity is de&#xFB01;ned, and is represented by the Sierpinski space \(S\).
 The Sierpinski space is a topology with two points, \(a\) and \(b\), and one non trivial open set,

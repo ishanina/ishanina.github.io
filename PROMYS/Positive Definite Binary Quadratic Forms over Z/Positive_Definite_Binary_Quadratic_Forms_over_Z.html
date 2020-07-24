@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Quadratic Forms</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Positive_Definite_Binary_Quadratic_Forms_over_Z.css" /> 
 <meta name="src" content="Positive_Definite_Binary_Quadratic_Forms_over_Z.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 QUADRATIC FORMS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -242,11 +242,11 @@ determining what the isomorphism classes of quadratic forms are and how many
 representations of a number a quadratic form has reduces easily to the case where it is
 primitive.
 </p><!--l. 15--><p class="indent" >  The discriminant greatly a&#xFB00;ects which primes are represented by the form \(Q\). We can
-complete the square to get \(4aQ = (2ax+by)^2 - \disc Qy^2\). This means that if \(\disc Q&gt;0\), the form is <span 
-class="cmbx-12">de&#xFB01;nite</span>, meaning that it
                                                                                   
 
                                                                                   
+complete the square to get \(4aQ = (2ax+by)^2 - \disc Qy^2\). This means that if \(\disc Q&gt;0\), the form is <span 
+class="cmbx-12">de&#xFB01;nite</span>, meaning that it
 takes on either nonnegative &#x0028;positive de&#xFB01;nite&#x0029; or nonpositive &#x0028;negative de&#xFB01;nite&#x0029; values
 depending on the sign of \(a\). If \(\disc Q&lt;0\), it takes on both positive and negative values, so is
 <span 
@@ -288,10 +288,10 @@ equation of the discriminant and the fact that it is nonnegative. If \(a&lt;c\),
 coe&#xFB03;cient \(a\) are \(x,y \mapsto \pm x, \mp y+cx\). One only needs to check then that for any reduced form, applying
 any of these doesn&#x2019;t yield a reduced form. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
                                                                                   
 
                                                                                   
+</p>
   </div>
   </div>
   <div class="newtheorem">
@@ -379,10 +379,10 @@ class="cmti-12">is a</span>
 <span 
 class="cmti-12">square mod</span> \(4f\)<span 
 class="cmti-12">.</span>
-</p>
                                                                                   
 
                                                                                   
+</p>
   <div class="proof">
 <!--l. 65--><p class="indent" >  <span class="head">
 <span 
@@ -429,6 +429,9 @@ class="cmti-12">for</span> \(n = 1,2,3,5,7,11,17,41\)
 <!--l. 79--><p class="noindent" ><span class="head">
 <a 
  id="x1-1009r3"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Exercise 1.4.3.</span>  </span><span 
 class="cmti-12">Construct reduced quadratic forms that are not</span> \(x^2+ny^2\) <span 
@@ -439,9 +442,6 @@ class="cmti-12">show that</span> \(h(-4n)&gt;1\) <span
 class="cmti-12">unless</span> \(n=1,2,3,4,7\)<span 
 class="cmti-12">. How far does this technique work for discriminants</span> \(-4n+1\)<span 
 class="cmti-12">?</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
 <!--l. 83--><p class="indent" >  For \(D = -20\), There are two reduced forms, \(x^2+5y^2\) and \(2x^2+2xy+3y^2\). \(-20\) is a square mod \(4p\) i&#xFB00; it is a square mod
@@ -486,13 +486,13 @@ class="cmti-12">for</span> \(n = 6,10,13,15,21,22,30\)<span
 class="cmti-12">?</span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
 <!--l. 97--><p class="indent" >  When is \(2p\) is of the form \(x^2+5y^2\)?
 </p>
   <div class="newtheorem">
 <!--l. 99--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
 <a 
  id="x1-1012r2"></a>
 <span 
@@ -537,6 +537,9 @@ condition that tells us exactly which primes are represented by \(x^2+14y^2\) an
 This, and the more general problem of determining when a prime is represented
 by a quadratic form can be solved using the more modern tools of class &#xFB01;eld
 theory.
+                                                                                  
+
+                                                                                  
 </p>
    
 </body> 

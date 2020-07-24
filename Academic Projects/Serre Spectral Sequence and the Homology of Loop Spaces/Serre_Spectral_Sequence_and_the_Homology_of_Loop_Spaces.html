@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>The Serre Spectral Sequence &#x0026; computing Homology of Loop Spaces</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.css" /> 
 <meta name="src" content="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -211,7 +210,8 @@
   <h2 class="titleHead">
 THE SERRE SPECTRAL SEQUENCE &#x0026; COMPUTING
 HOMOLOGY OF LOOP SPACES
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -272,8 +272,7 @@ Namely, we can let \(E\) be \(\bigoplus _{p,q} H_{p+q}(X_p,X_{p-1})\), and \(A\)
 >
 <!--l. 23--><p class="noindent" >
 </p><!--l. 26--><p class="noindent" >                                         <img 
-src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces0x.svg" alt="            H  &#x0028;X &#x0029;           H  &#x0028;X  ,X    &#x0029;      H    &#x0028;X    &#x0029;      H    &#x0028;X  &#x0029;
-              n   p            n   p   p&#x2212;1         n&#x2212;1   p&#x2212;1         n&#x2212;1   p
+src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces0x.svg" alt="            Hn &#x0028;Xp&#x0029;           Hn &#x0028;Xp, Xp &#x2212;1&#x0029;      Hn &#x2212;1&#x0028;Xp &#x2212;1&#x0029;      Hn &#x2212;1&#x0028;Xp &#x0029;
 
 jkipp,p,,nnn&#x2212;&#x2212;&#x2212;ppp&#x2212;1 "  />
 </p></div>
@@ -283,15 +282,15 @@ class="cmbx-12">exact couple</span>.
 <div class="center" 
 >
 <!--l. 30--><p class="noindent" >
+                                                                                  
+
+                                                                                  
 </p><!--l. 34--><p class="noindent" >         <img 
 src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces1x.svg" alt="  A             A
 
 
 ijk        E "  />
 </p></div>
-                                                                                  
-
-                                                                                  
 <!--l. 37--><p class="indent" >  An exact couple comes with a natural di&#xFB00;erential on \(E\), namely \(d = kj\), which is a
 di&#xFB00;erential since \(dd = k(jk)j = k(0)j = 0\). Note in the case \(X_p\) is the \(p\)-skeleton, \(d\) coincides with the di&#xFB00;erential on
 cellular homology. Given an exact triangle, we can produce another exact couple,
@@ -329,12 +328,12 @@ small.
 </p><!--l. 48--><p class="indent" >  The second condition we want &#x0028;<span 
 class="cmbx-12">Condition</span> \(2\)&#x0029; will guarantee that our spectral
 sequence converges to the associated graded group. This is the condition that \(A_n^- = 0\) for all
-\(n\).
-</p><!--l. 50--><p class="indent" >  The exact sequence for the \(r^{th}\) derived couple looks like
-</p>
                                                                                   
 
                                                                                   
+\(n\).
+</p><!--l. 50--><p class="indent" >  The exact sequence for the \(r^{th}\) derived couple looks like
+</p>
 <div class="center" 
 >
 <!--l. 52--><p class="noindent" >
@@ -342,8 +341,8 @@ sequence converges to the associated graded group. This is the condition that \(
 src="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces2x.svg" alt="       Erp+r&#x2212;1.q&#x2212;r+2      Arp+r&#x2212;2,q&#x2212; r+2      Arp+r&#x2212; 1,q&#x2212;r+1     Erp.q
 
 
-                          r                 r                r
-kijkijrrrrrr                       Ap&#x2212;1,q           A p,q&#x2212;1           E p&#x2212;r+1,q+r&#x2212;2 "  />
+ rrrrrr                        r                 r                r
+kijkij                        Ap&#x2212;1,q           A p,q&#x2212;1           E p&#x2212;r+1,q+r&#x2212;2 "  />
 </p></div>
 <!--l. 59--><p class="indent" >  But by Condition \(1\), the &#xFB01;rst and last term are \(0\) for large \(r\), and by Condition \(2\), the last two
 \(A\) terms are \(0\), since \(A^r_{p,q}\) is the image of the iterated inclusion \(i_r:A_{p-r,q+r}\to A_{p,q}\), which is \(0\) for large \(r\). This we get \(E^\infty _{p,q} \cong A^r_{p+r-1,q-r+1}/\im (i:A^r_{p+r-2,q-r+2} \to A^r_{p+r-1,q-r+1})\)
@@ -380,12 +379,12 @@ href="Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html#X0-chowss" >C
 homology to a certain &#xFB01;ltration on the total space of a &#xFB01;bration. We can see it
 as the homology &#x0028;or cohomology&#x0029; analog of the exact sequence on homotopy
 groups.
-</p><!--l. 70--><p class="indent" >  The reason it is nice is that there is an explicit formula for \(E^2\), so we can start computing
-from the second page. In an ideal situation, the computation will be completely formal,
-and we will be able to deduce \(E^\infty \).
                                                                                   
 
                                                                                   
+</p><!--l. 70--><p class="indent" >  The reason it is nice is that there is an explicit formula for \(E^2\), so we can start computing
+from the second page. In an ideal situation, the computation will be completely formal,
+and we will be able to deduce \(E^\infty \).
 </p><!--l. 72--><p class="indent" >  For a &#xFB01;bration \(F \hookrightarrow E \xrightarrow{\pi } B\), with \(B\) a CW-complex, let \(B_p\) be the \(p\)-skeleton of \(B\), and \(E_p\) be \(\pi ^{-1}(B_p)\). Then \(E_p\) will be
 our &#xFB01;ltration of \(E\). It is not too hard to see that the conditions of Proposition <a 
 href="#x1-3001r1">3.1<!--tex4ht:ref: specseqhom --></a> are
@@ -436,12 +435,12 @@ will act trivially on the &#xFB01;bre as well, so that it su&#xFB03;ces to prove
 &#xFB01;bre, so we can compare what we get from the Serre spectral sequence and from the
 K&#x00FC;nneth formula. The K&#x00FC;nneth formula with the universal coe&#xFB03;cient theorem
 give \(H_n(B \times F;G) \cong \bigoplus _{p+q = n} H_p(B;H_q(F;G))\), which is what the spectral sequence yields when \(E^2 = E^\infty \), and all di&#xFB00;erentials
-are \(0\). Thus for a nontrivial &#xFB01;bration with &#xFB01;bre \(F\), \(H_n(B\times F)\) is an upper bound for \(H_n(E)\), since
-di&#xFB00;erentials being nonzero will only make homology smaller, as will nontrivial
-extensions.
                                                                                   
 
                                                                                   
+are \(0\). Thus for a nontrivial &#xFB01;bration with &#xFB01;bre \(F\), \(H_n(B\times F)\) is an upper bound for \(H_n(E)\), since
+di&#xFB00;erentials being nonzero will only make homology smaller, as will nontrivial
+extensions.
 </p>
   <h3 class="sectionHead"><span class="titlemark">5. </span> <a 
  id="x1-50005"></a>What does the Serre spectral sequence look like</h3>

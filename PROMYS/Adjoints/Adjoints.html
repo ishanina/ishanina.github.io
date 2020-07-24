@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Adjoints</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Adjoints.css" /> 
 <meta name="src" content="Adjoints.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 ADJOINTS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -236,16 +236,16 @@ arrow \(R \to U\Frac (R)\) gives \(\Dom _m(R,UK) \cong \Fld (\Frac (R),K)\), whi
 <div class="center" 
 >
 <!--l. 13--><p class="noindent" >
+                                                                                  
+
+                                                                                  
 </p><!--l. 17--><p class="noindent" >          <img 
 src="Adjoints0x.svg" alt="  R            U Frac&#x0028;R &#x0029;
 
 
-
-fiRUiSFSrac&#x0028;f&#x0029;        U Frac&#x0028;S&#x0029; "  />
+fiUiFSrac&#x0028;f&#x0029;        U Frac&#x0028;S&#x0029;
+RS "  />
 </p></div>
-                                                                                  
-
-                                                                                  
 <!--l. 19--><p class="noindent" >Note that \(i\) is not just a universal arrow, but also by this diagram a natural transformation
 from \(1_{\Dom _m}\) to \(U\Frac \). Then, from the second universal arrow \(K \to \Frac (UK)\) we get the same natural bijection \(\Dom _m(R,UK) \cong \Fld (\Frac (R),K)\),
 except now it is natural in \(R\). The fact that these bijections are the same shows that we end
@@ -311,10 +311,10 @@ class="cmti-12">such that at every component it is universal to</span> \(G\)<spa
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 31--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+<!--l. 31--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose we have \(F\), \(G\), and the unit \(\eta \). The fact that \(\eta \) consists of universal arrows gives
 a natural bijection \(\nu :D(Fa,b) \cong C(a,Gb)\) that is natural in b. To get naturality in \(a\), we have that \(\eta \) is a natural
@@ -326,7 +326,6 @@ transformation, so we want </p>
 src="Adjoints1x.svg" alt="      D &#x0028;F a,b&#x0029;       D &#x0028;F c,b&#x0029;
 
 
-
 &#x2218;&#x03BD;&#x03BD;&#x2218;Fff   C&#x0028;a,Gb &#x0029;       C &#x0028;c,Gb &#x0029; "  />
 </p></div>
 <!--l. 38--><p class="noindent" >which commutes due to the following diagram: </p>
@@ -335,6 +334,7 @@ src="Adjoints1x.svg" alt="      D &#x0028;F a,b&#x0029;       D &#x0028;F c,b&#x
 <!--l. 39--><p class="noindent" >
 </p><!--l. 44--><p class="noindent" >             <img 
 src="Adjoints2x.svg" alt="  c         GF c       F c
+
 
 
   a         GF a       F a
@@ -353,13 +353,13 @@ class="cmbx-12">re&#xFB02;ective </span>if the inclusion has a left adjoint &#x0
 fact that a full re&#xFB02;ective subcategory has the counit an isomorphism &#x0028;this is a nice
 exercise&#x0029;. Another example of this is the abelianization, which is the left adjoint of the
 inclusion of \(\Ab \) into \(\Grp \).
+                                                                                  
+
+                                                                                  
 </p><!--l. 51--><p class="indent" >  Another important fact in practice is the triangle identities: \(\epsilon F \circ F\eta = 1_F\) and \(G\epsilon \circ \eta G = 1_G\). These are dual, so I
 will prove the &#xFB01;rst. \(\epsilon \) and \(\eta \) are universal arrows, so if \(\varphi : C(a,Gb) \to D(Fa,b)\) is our natural bijection, we
 have \(\varphi (f) = G(f) \circ \eta _a\) if \(f: Fa \to b\) is an arrow. Then the triangle identity is \(1_{Ga} = \varphi (\epsilon _a)\) by de&#xFB01;nition \(= G(\epsilon _a) \circ \eta _{Ga}\) by the formula
 above.
-                                                                                  
-
-                                                                                  
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Adjunctions are Everywhere</h3>
@@ -382,7 +382,8 @@ have the diagonal functor \(\Omega \), and the right adjoint is \(\forall x:P(x)
 >
 <!--l. 59--><p class="noindent" >
 </p><!--l. 62--><p class="noindent" >          <img 
-src="Adjoints3x.svg" alt="&#x0394;&#x2203;&#x2200; &#x03A9;              &#x03A9;X "  />
+src="Adjoints3x.svg" alt="                  X
+&#x0394;&#x2203;&#x2200; &#x03A9;              &#x03A9; "  />
 </p></div>
 <!--l. 65--><p class="indent" >  This is also a special case of adjoints on partial orders, called a Galois connection. In
 particular, we have the following:
@@ -398,6 +399,9 @@ class="cmti-12">and</span> \(Q\) <span
 class="cmti-12">be posets,</span> \(G:P \to Q\)<span 
 class="cmti-12">,</span> \(F:Q \to P\) <span 
 class="cmti-12">contravariant &#x0028;order reversing&#x0029; functors.</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">These functors are a </span><span 
 class="cmbxti-10x-x-120">Galois connection </span><span 
@@ -406,9 +410,6 @@ class="cmti-12">i&#xFB00;</span> \(a \leq Gb\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
 <!--l. 71--><p class="indent" >  Note that the triangle identities in this case amount to \(FGF = F\) and \(GFG = G\). The classic example
 of this is when a group \(G\) acts on a set \(S\). Then if \(2^{UG}\) is the lattice of subsets of the
 underlying group of \(G\), we get a functor \(F\) from \(2^{UG}\) to \(2^S\), which is just the &#xFB01;xed points of
@@ -461,14 +462,14 @@ class="cmbxti-10x-x-120">exponential </span><span
 class="cmti-12">object.</span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
 <!--l. 81--><p class="indent" >  The counit of this adjunction is a map \(e_c:c^b \times b \to c\) called the <span 
 class="cmbx-12">evaluation </span>map. Examples of
 cartesian closed categories are \(\Set \), \(\Cat \), \(k\Top \) &#x0028;compactly generated spaces&#x0029;, \(\Pos \).
 </p><!--l. 83--><p class="indent" >  The last important example I will give is the tensor-hom adjunction. Let \(R\)-\(\Mod \) be the
 category of left R-modules. Recall that \(\Hom (R,-)\) is a functor from \(R\)-Mod to itself. The left adjoint of
-                                                                                  
-
-                                                                                  
 this is called the tensor product. Explicitly, we have \(\Hom (S\otimes R, T) \cong \Hom (S,\Hom (R,T))\). This is an isomorphism of \(R\)-modules,
 and is actually natural in \(R,S,\) and \(T\).
 </p><!--l. 86--><p class="indent" >  If we take the counit of this adjunction for vector spaces, we get an evaluation map \(ev:V \otimes \Hom (V,W) \to W\).
@@ -516,12 +517,12 @@ class="cmbx-12">.</span>  </span><span
 class="cmti-12">Right adjoints preserve limits. Dually left adjoints preserve</span>
 <span 
 class="cmti-12">colimits &#x0028;LAPC&#x0029;.</span>
-</p>
-  <div class="proof">
-<!--l. 102--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+</p>
+  <div class="proof">
+<!--l. 102--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose \(G:C \to D\) has a left adjoint \(F:D \to C\), and \(K\) is a diagram in \(C\). Then the proof is indicated by
 this diagram: </p>
@@ -557,6 +558,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 Indeed limits and colimits can &#x0028;and were originally&#x0029; be de&#xFB01;ned via the fact that
 representable functors are continuous.
 </p>
+                                                                                  
+
+                                                                                  
    
 </body> 
 </html>

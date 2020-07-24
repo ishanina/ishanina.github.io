@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Conjugacy of Cartan Subalgebras</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Conjugacy_of_Cartan_Subalgebras.css" /> 
 <meta name="src" content="Conjugacy_of_Cartan_Subalgebras.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 CONJUGACY OF CARTAN SUBALGEBRAS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -284,15 +284,15 @@ class="cmbx-12">rank</span> \(r\) of \(\mf{g}\) is the smallest \(r\) such that
 <!--l. 29--><p class="noindent" ><span class="head">
 <a 
  id="x1-2001r1"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">De&#xFB01;nition 2.1.</span>  </span><span 
 class="cmti-12">A regular element of</span> \(\mf{g}\) <span 
 class="cmti-12">is an</span> \(x \in \mf{g}\) <span 
 class="cmti-12">such that</span> \(c_r(x) \neq 0\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
 <!--l. 33--><p class="indent" >  Since \(c_r\) is a nonzero polynomial, the set of regular elements is a non-empty
@@ -332,11 +332,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 43--><p class="indent" >  Note that the dimension of the Cartan subalgebra produced this way is exactly the rank
-of \(\mf{g}\).
                                                                                   
 
                                                                                   
+<!--l. 43--><p class="indent" >  Note that the dimension of the Cartan subalgebra produced this way is exactly the rank
+of \(\mf{g}\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Conjugacy of Cartan subalgebras</h3>
@@ -376,12 +376,12 @@ class="cmti-12">Given a morphism</span> \(\AA ^n \to \AA ^n\) <span
 class="cmti-12">such that the Jacobian at a point is invertible, then the</span>
 <span 
 class="cmti-12">image contains an open set.</span>
-</p>
-  <div class="proof">
-<!--l. 55--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+</p>
+  <div class="proof">
+<!--l. 55--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose that the morphism is given by the polynomials \(f_1,\dots ,f_n\). WLOG, suppose
 that the Jacobian at \(0\), i.e. \((\partial _j f_i)\) is invertible. If the \(f_i\) satisfy a polynomial relation \(F(f_1,\dots ,f_n) = 0\), then \(\sum _i \partial _{f_i}F \partial _j f_i = 0\)
@@ -417,14 +417,14 @@ class="cmti-12">set.</span>
 class="cmti-12">Proof.</span> </span>If we can &#xFB01;nd a point where the Jacobian of this function is invertible, then
 by the previous lemma, the image contains a Zariski open set. Since the domain
 and codomain of the map have the same dimension, it will su&#xFB03;ce to show that the
+                                                                                  
+
+                                                                                  
 Jacobian is injective. To do this, we will compute the Jacobian of the function at
 a point \(a \in \mf{h}\), in the direction \(b_i,h\). Indeed, it is \(\frac{d}{dt}_{t=0} \prod _1^ne^{tb_i\ad x_i}(a+th) = \frac{d}{dt}_{t=0} \prod _1^n(1+tb_i\ad x_i)(a+th) = \sum _i b_i [x_i,a] + h\). This is guaranteed to be \(0\) for all nonzero
 choices of \(b_i,h\) as long as \([x_i,a] \neq 0\) for each \(i\), since the \(x_i\) are generalized eigenvectors of \(\ad{a}\). For each
 nonzero weight space, the elements of \(\mf{h}\) with \(0\) eigenvalue on that weight space is a
 hyperplane, and since &#xFB01;nitely many hyperplanes cannot cover the whole space, there
-                                                                                  
-
-                                                                                  
 is a point \(a\) satisfying the conditions we want. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -462,6 +462,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 76--><p class="noindent" >This is based on notes for Victor Kac&#x2019;s class Introduction to Lie Algebras.
 </p><!--l. 78--><p class="indent" >  http://math.mit.edu/classes/18.745/classnotes.html.
 </p>
+                                                                                  
+
+                                                                                  
    
 </body> 
 </html>

@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Group Theory</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Group_Theory.css" /> 
 <meta name="src" content="Group_Theory.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 GROUP THEORY
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -242,10 +242,10 @@ class="cmbx-12">act </span>on one of these objects. One
 distinguished between left and right actions by saying that a right action is an
 action of the opposite group. In particular, an action is a just a homomorphism
 \(\phi \) from \(G\) to \(\Aut (O)\). Generally when one says group action, \(O\) is a set, however another
-important example is when \(O\) is a vector space, in which case an action is called a
                                                                                   
 
                                                                                   
+important example is when \(O\) is a vector space, in which case an action is called a
 <span 
 class="cmbx-12">representation</span>.
 </p><!--l. 16--><p class="indent" >  There is some standard terminology when discussing actions. An action is <span 
@@ -298,10 +298,10 @@ class="cmti-12">The category of pointed transitive set</span>
 <span 
 class="cmti-12">actions is equivalent to the category of subgroups of</span> \(G\)<span 
 class="cmti-12">.</span>
-</p>
                                                                                   
 
                                                                                   
+</p>
   <div class="proof">
 <!--l. 32--><p class="indent" >  <span class="head">
 <span 
@@ -361,13 +361,13 @@ class="cmti-12">&#x0029;. One example of a normal subgroup is the center.</span>
 class="cmti-12">Another example is the </span><span 
 class="cmbxti-10x-x-120">kernel </span><span 
 class="cmti-12">of a homomorphism, ie. all the elements that are sent</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">to the identity. In fact, as we will see below, when</span> \(H\) <span 
 class="cmti-12">is normal,</span> \(G/H\) <span 
 class="cmti-12">can be made into a</span>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmti-12">group such that the projection</span> \(G \to G/H\) <span 
 class="cmti-12">is a homomorphism with kernel</span> \(H\)<span 
@@ -414,13 +414,13 @@ class="cmti-12">A group homomorphism is injective i&#xFB00; the kernel is trivia
 </p>
   <div class="proof">
 <!--l. 63--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Certainly a homomorphism is injective if the kernel is trivial. Conversely if
 the kernel is trivial and \(\phi (g) = \phi (h)\), then \(\phi (gh^{-1})\) is in the kernel so \(g = h\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
@@ -446,7 +446,6 @@ class="cmti-12">as in the diagram</span> </p>
 src="Group_Theory0x.svg" alt="   G          G &#x2032;
 
 
-
 &#x03D5;&#x03C0;!&#x03B3;  G &#x2215;H "  />
 </p></div>
   <div class="proof">
@@ -462,6 +461,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 82--><p class="noindent" ><span class="head">
 <a 
  id="x1-1007r7"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Corollary 1.7 </span>&#x0028;First Isomorphism Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -469,9 +471,6 @@ class="cmti-12">The induced map</span> \(G/\ker (\phi )\to \im (\phi )\) <span
 class="cmti-12">is an isomorphism.</span>
 </p>
   <div class="proof">
-                                                                                  
-
-                                                                                  
 <!--l. 85--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Indeed the kernel of the induced map is trivial by de&#xFB01;nition so the map is
@@ -516,13 +515,13 @@ class="cmti-12">,</span> \(H \subset N\)<span
 class="cmti-12">, then</span> \((G/H)/(N/H) \cong G/N\)
 </p>
   <div class="proof">
+                                                                                  
+
+                                                                                  
 <!--l. 99--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The projection \(G \to G/H \to (G/H)/(N/H)\) is surjective with kernel \(N\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
@@ -568,12 +567,12 @@ class="cmti-12">&#xFB01;nite, then</span> \(|H|\) <span
 class="cmti-12">divides</span>
 \(|G|\)<span 
 class="cmti-12">.</span>
-</p>
-  <div class="proof">
-<!--l. 115--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+</p>
+  <div class="proof">
+<!--l. 115--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(G\) acts transitively on each coset in \(G/H\), which has size \(H\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -620,12 +619,12 @@ class="cmti-12">then</span> \(HN\) <span
 class="cmti-12">is normal.</span>
 </p>
   <div class="proof">
-<!--l. 131--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>For the &#xFB01;rst statement look at the second isomorphism theorem, and for the
                                                                                   
 
                                                                                   
+<!--l. 131--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>For the &#xFB01;rst statement look at the second isomorphism theorem, and for the
 second statement just note \(HN/N\) is normal in \(G/N\) since \(H\) is normal in \(G\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -663,15 +662,15 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 145--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>This is just the statement that the conjugation action partitions \(G\) into orbits.
 <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 149--><p class="noindent" ><span class="head">
@@ -713,14 +712,14 @@ class="cmti-12">.</span>
 class="cmti-12">Proof.</span> </span>WLOG we may assume that \(p\nmid |Z(G)|\) as otherwise either \(G\) is abelian in which case
 Theorem <a 
 href="#x1-2006r6">2.6<!--tex4ht:ref: classfinabgp --></a> makes this obvious, or we can induct, and inspect \(Z(G)\) instead. Now by
+                                                                                  
+
+                                                                                  
 looking at the class equation, we must have some nontrivial conjugacy class with \(p\)
 not dividing its size, so we can induct by looking at the corresponding centralizer. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 163--><p class="noindent" ><span class="head">
@@ -757,15 +756,15 @@ class="cmti-12">cannot be prime.</span>
 </p>
   <div class="proof">
 <!--l. 175--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>If the center is not everything, then the centralizer of an element not in the
 center is a subgroup strictly between \(G\) and \(Z(G)\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Sylow Theorems</h3>
@@ -812,6 +811,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
+                                                                                  
+
+                                                                                  
 <!--l. 191--><p class="noindent" ><span class="head">
 <a 
  id="x1-3002r2"></a>
@@ -823,9 +825,6 @@ class="cmti-12">with</span> \(k(p-1)&gt;m\)<span
 class="cmti-12">. Then</span> \(G\) <span 
 class="cmti-12">is not simple.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 195--><p class="indent" >  <span class="head">
 <span 
@@ -867,6 +866,9 @@ class="cmti-12">elements of the form</span> \(aba^{-1}b{-1}\)<span
 class="cmti-12">.</span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
 <!--l. 209--><p class="noindent" >More generally, \([S,P]\) is the subgroup generated by the commutators of elements of \(S\) and \(P\) when \(S,P\)
 are subsets of \(G\). The commutator subgroup is a <span 
 class="cmbx-12">characteristic subgroup</span>, ie. it is
@@ -875,9 +877,6 @@ quotient \(G/[G,G]\) is abelian since \([c][d] = [cd][d^{-1}c^{-1}dc] = [d][c]\)
 group, so we have the universal property:
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
 <!--l. 211--><p class="noindent" ><span class="head">
 <a 
  id="x1-4003r3"></a>
@@ -918,6 +917,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 223--><p class="noindent" ><span class="head">
 <a 
  id="x1-4005r5"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Proposition 4.5.</span>  </span><span 
 class="cmti-12">Let</span> \(G^{(i)} = [G^{(i-1)},G^{(i-1)}]\)<span 
@@ -930,9 +932,6 @@ class="cmti-12">is trivial.</span>
 <!--l. 226--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Certainly if some \(G^{(j)}\) is trivial, the sequence \(G^{(i)}\) shows that \(G\) is solvable. conversely,
-                                                                                  
-
-                                                                                  
 if \(G\) is solvable via the sequence \(G_i\), then \(G^{(i)} \subset G_i\), which is seen by induction and Proposition
 <a 
 href="#x1-4003r3">4.3<!--tex4ht:ref: commutator --></a>. <span class="qed"><span 
@@ -972,6 +971,9 @@ central series.
 <!--l. 241--><p class="noindent" ><span class="head">
 <a 
  id="x1-5002r2"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">De&#xFB01;nition 5.2.</span>  </span><span 
 class="cmti-12">The </span><span 
@@ -985,9 +987,6 @@ class="cmti-12">.</span>
 central in \(G/[G,H]\).
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
 <!--l. 246--><p class="noindent" ><span class="head">
 <a 
  id="x1-5003r3"></a>
@@ -1026,6 +1025,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 261--><p class="noindent" ><span class="head">
 <a 
  id="x1-5005r5"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Proposition 5.5.</span>  </span><span 
 class="cmti-12">If</span> \(G=H_0\triangleright ,\dots ,\triangleright H_n = \{1\}\) <span 
@@ -1034,9 +1036,6 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 264--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>This follows from induction and the fact that if \(H_i \supset G_i\), then \(H_{i+1} \supset [G,H_{i}] \supset [G,G_i] = G_{i+1}\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -1075,15 +1074,15 @@ class="cmbx-12">Proposition 5.7.</span>  </span><span
 class="cmti-12">Nilpotent groups are solvable.</span>
 </p>
   <div class="proof">
+                                                                                  
+
+                                                                                  
 <!--l. 278--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Let \(G^{i+1}/G^{i}\) is abelian as it is the center of \(G/G^{i}\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 282--><p class="noindent" ><span class="head">
@@ -1116,6 +1115,9 @@ class="cmti-12">-groups.</span>
 </p>
   <div class="proof">
 <!--l. 292--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Finite \(p\)-groups have nontrivial center by the class equation, and since quotients
 of \(p\)-groups are \(p\)-groups, they are nilpotent by induction. For the converse, the previous
@@ -1125,9 +1127,6 @@ href="#x1-2004r4">2.4<!--tex4ht:ref: commutesubgp --></a> we are done. <span cla
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <h3 class="sectionHead"><span class="titlemark">6. </span> <a 
  id="x1-60006"></a>Semidirect Products, Presentations, and Examples</h3>
@@ -1161,6 +1160,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
 <!--l. 307--><p class="indent" >  The <span 
 class="cmbx-12">free group </span>construction on a set \(I\) is the group obtained from applying the left
 adjoint of the forgetful functor \(\Grp \to \Set \). It can be described as words in the letters \(I\) and
@@ -1172,9 +1174,6 @@ choose generators \(g_\alpha , \alpha \in I\) of \(G\) to determine a surjective
 class="cmbx-12">normally generate </span>the kernel, meaning that the smallest
 normal subgroup that contains them is the kernel. Then we can write \(G = \langle g_\alpha | r_\beta \rangle \), and we can
 describe \(G\) as words in the \(g_\alpha \), where we are allowed to insert and remove any \(r_\beta \) to the
-                                                                                  
-
-                                                                                  
 word.
 </p><!--l. 309--><p class="indent" >  As an example, let&#x2019;s describe the group \(\ZZ ^2\). It is the abelianization of \(F_2\), the free group on
 two generators, so we can describe it as \(\langle a,b|[a,b]\rangle \). Then whenever \(ab\) appears in a word, we can
@@ -1209,6 +1208,9 @@ class="cmbx-12">cycle</span>. It can be represented by choosing a base point
 and using Theorem <a 
 href="#x1-1002r2">1.2<!--tex4ht:ref: orbitstabilizer --></a> writing the cosets corresponding to the subgroup of the group
 generated by element. For example, the cycle \((123)\) comes from the element that sends \(1\) to \(2\), \(2\) to \(3\),
+                                                                                  
+
+                                                                                  
 and \(3\) to \(1\). It is a \(3\)-cycle since it has \(3\) elements, and has two other equivalent forms, \((231)\), and \((312)\).
 Any action breaks up into orbits, so we can represent an element of \(S_n\) in its cycle form. For
 example, \((132)(45)\) is an element of \(S_5\). We say that the <span 
@@ -1219,9 +1221,6 @@ orbits in increasing order. For example in \(S_6\), \((132)(45)\) has cycle type
 \(b^{-1}ax\), so we see that the cycle type has stayed the same, only the cycles have changed by \(b\).
 Conversely by varying \(b\), we see that the cycle types are exactly the conjugacy
 classes.
-                                                                                  
-
-                                                                                  
 </p><!--l. 325--><p class="indent" >  Let&#x2019;s try to understand the structure of \(S_n\). \(S_1\) is trivial, and \(S_2\) is \(C_2\). \(S_3\) has a subgroup of index \(2\),
 hence is the semidirect product \(C_3\rtimes C_2\), where the action is given by the inversion map. This is
 the same as \(D_3\). \(S_4\) has a normal subgroup \(C_2\times C_2\) generated by \([2,2]\) cycles. The short exact sequence &#x0028;non
@@ -1256,6 +1255,9 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 339--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>WLOG, let \((123\dots k)\) be a cycle in an element of \(A_n\). if \(k\) is odd, we can write \((1(k-1)k)\dots (145)(123)= (123\dots k)\). If \(k\) is even,
 then we must have \(n \geq k+2\), so that we can use \(((k+1)1(k+2))(1k(k+1))\dots (145)(123)\), and by induction on \(n\), we are done. <span class="qed"><span 
@@ -1264,9 +1266,6 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
 <!--l. 343--><p class="noindent" ><span class="head">
 <a 
  id="x1-7003r3"></a>
@@ -1295,6 +1294,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
 <!--l. 360--><p class="indent" >  In particular, for \(n\geq 5\), \(A_n\) is the commutator subgroup of \(S_n\), and further commutators will again
 yield \(A_n\).
+                                                                                  
+
+                                                                                  
 </p>
   <h3 class="sectionHead"><span class="titlemark">8. </span> <a 
  id="x1-80008"></a>Finite subgroups of \(\SU (2),\SOr (3)\)</h3>
@@ -1305,9 +1307,6 @@ symmetries of the platonic solids. \(E_6\) comes from the tetrahedron, \(E_7\) c
 the cube/octahedron, and \(E_8\) comes from the dodecahedron and icosahedron. It is
 easy to compute their orders by observe that they act simply and transitively
 on the oriented edges of the tetrahedron, octahedron, and icosahedron, so the
-                                                                                  
-
-                                                                                  
 orders are \(12,24,60\) respectively. In fact they are familiar groups. In particular, note that \(E_6\)
 acts faithfully on the faces, of which their are \(4\), so it is easy to see it is \(A_4\). \(E_7\) acts
 faithfully on pairs of opposite vertices of the cube, so it is \(S_4\). One can group the edges
@@ -1340,6 +1339,9 @@ extensions that split are the cyclic groups, so we have classi&#xFB01;ed subgrou
 <!--l. 370--><p class="noindent" >For any &#xFB01;nite group \(G\), a <span 
 class="cmbx-12">normal series </span>is a sequence \(G= G_0 \triangleright G_1 \triangleright G_2 \dots \{1\}\) The \(G_i/G_{i+1}\) are called the <span 
 class="cmbx-12">factors</span>. A
+                                                                                  
+
+                                                                                  
 normal series can be <span 
 class="cmbx-12">re&#xFB01;ned </span>if there is an inclusion of it into another where all the
 inclusions commute. This puts a partial ordering on normal series, and maximal elements
@@ -1351,9 +1353,6 @@ Even though these are not the same, the length is the same, and the composition 
 are the same up to permutation. In fact, this is true in general.
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
 <!--l. 374--><p class="noindent" ><span class="head">
 <a 
  id="x1-9001r1"></a>
@@ -1389,6 +1388,9 @@ class="cmti-12">equivalent.</span>
 </p>
   <div class="proof">
 <!--l. 385--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>We can make an abstract rewriting system where our objects are pairs \((H,\sigma )\) of
 subgroups \(H\) of \(G\) and a formal linear combination of simple groups \(\sigma \). Our relation \(\to \) is
@@ -1398,9 +1400,6 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
 <!--l. 389--><p class="indent" >  Note that this proof works in much greater generality. For example, it works for modules
 that are both Artinian and Noetherian &#x0028;these are exactly modules with &#xFB01;nite composition
 series&#x0029;. The theorem itself holds in even greater generality: for in&#xFB01;nite ascending
@@ -1429,6 +1428,9 @@ homomorphisms \(C_{p^2}\to \Aut (C_p)\), so this case cannot happen &#x0028;it i
 There must be another element not in the center of order \(p\). Otherwise, the group can be
 partitioned into the center and copies of \(C_{p^2}-C_p\), giving that \(p + k(p^2-p) = p^3\) for some \(k\). Looking mod \(p^2\), \(k \equiv 1 \pmod p\), but also \(1&lt;k&lt;p\),
 a contradiction. Now the element of order \(p\) is nontrivial in the abelianization, hence it
+                                                                                  
+
+                                                                                  
 splits an exact sequence of the form \(1 \to C_{p^2} \to G \to C_p \to 1\). There is an essentially unique map \(C_p \to \Aut (C_{p^2})\), so in this case
 our group is \(C_{p^2} \rtimes C_p\).
 </p><!--l. 402--><p class="indent" >  Now suppose that there is no element of order \(p^2\). Then all elements are order \(p\). Once
@@ -1438,9 +1440,6 @@ minimal polynomial divides \(X^p-1 = (X-1)^p\), and since it is \(2\times 2\) an
 exactly \((X-1)^2 = 0\). By rational canonical form, up to conjugation it is the matrix \(\begin{pmatrix}0 &amp; -1\\ 1 &amp; 2 \end{pmatrix}\). In particular it is
 unique, so our group is \((C_p \times C_p) \rtimes C_p\). When \(p = 2\), this group is called \(Q_8\), and has the presentation
 \(\langle \bar{e},i,j,k|\bar{e}i^2,\bar{e}j^2,\bar{e}k^2,\bar{e}ijk\rangle \).
-                                                                                  
-
-                                                                                  
 </p><!--l. 404--><p class="indent" >  Finally, let&#x2019;s try groups of order \(p^2q\). The abelian ones are \(C_{p^2q}\) and \(C_{pq}\times C_p\). If \(C_q\) is the center, \(G/Z(G)\) will be
 order \(p^2\), hence the group will be nilpotent, hence abelian, a contradiction. Now suppose that
 \(C_p\) is the center. The quotient by the center is a non-abelian group of order \(pq\) since \(G\) is not
@@ -1468,6 +1467,9 @@ that have this property.
 <!--l. 415--><p class="noindent" ><span class="head">
 <a 
  id="x1-12001r1"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">De&#xFB01;nition 12.1.</span>  </span><span 
 class="cmti-12">A  </span><span 
@@ -1486,9 +1488,6 @@ class="cmbx-12">De&#xFB01;nition 12.2.</span>  </span><span
 class="cmti-12">A </span><span 
 class="cmbxti-10x-x-120">Hamilton group </span><span 
 class="cmti-12">is a non-abelian Dedekind group.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
 <!--l. 423--><p class="indent" >  The basic example of a Hamilton group is the group \(Q_8\). This justi&#xFB01;es the name Hamilton,
@@ -1519,6 +1518,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 433--><p class="noindent" ><span class="head">
 <a 
  id="x1-12004r4"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Corollary 12.4.</span>  </span><span 
 class="cmti-12">In a Dedekind group</span> \(G\)<span 
@@ -1534,9 +1536,6 @@ class="cmti-12">Proof.</span> </span>It is in \(\langle c \rangle \cap \langle d
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 440--><p class="noindent" ><span class="head">
@@ -1565,6 +1564,9 @@ this, we see that a Hamilton group is a product of Hamilton \(p\)-groups, for di
 \(p\)s.
 </p>
   <div class="newtheorem">
+                                                                                  
+
+                                                                                  
 <!--l. 452--><p class="noindent" ><span class="head">
 <a 
  id="x1-12006r6"></a>
@@ -1579,9 +1581,6 @@ class="cmti-12">same order.</span>
 <!--l. 456--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>WLOG, we can assume there are two generators, \(a,b\) that don&#x2019;t commute. Then
-                                                                                  
-
-                                                                                  
 let \([a,b] = b^{k-1}=a^{1-l}\). By taking a quotient, we can assume \([a,b]^p = 1\). Now \(ab = b^ka = b^{k-1}ab^l=\dots =ab^{kl}\), so \(kl \equiv 1 \pmod{|b|}\). By symmetry, it is also true
 for \(a\), and \(kl-1 = k(l-1)+k-1\), so \(l-1\) and \(k-1\) must have the same \(p\)-adic valuation, and \(|a| = |b|\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -1612,6 +1611,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 467--><p class="noindent" ><span class="head">
 <a 
  id="x1-12008r8"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Lemma 12.8.</span>  </span><span 
 class="cmti-12">An element in a Hamilton</span> \(2\)<span 
@@ -1625,9 +1627,6 @@ class="cmti-12">Proof.</span> </span>Suppose that \(a,b\) don&#x2019;t commute a
 \(2^{k-2}\), we have that \([a,b^{2^{k-2}}] = [a,b]^{2^{k-2}} = 1\). Now if \([a,b]= a^{2^rx} = b^{2^ry}\) for \(x,y\) odd, then \((a^{-x}b^y)^{2^{k-1}} = 1\), a contradiction as it doesn&#x2019;t commute with
 \(a\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
@@ -1659,6 +1658,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
 <!--l. 481--><p class="noindent" ><span class="head">
 <a 

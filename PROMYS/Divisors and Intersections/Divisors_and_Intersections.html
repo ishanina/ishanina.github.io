@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Divisors and Intersections</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Divisors_and_Intersections.css" /> 
 <meta name="src" content="Divisors_and_Intersections.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 DIVISORS AND INTERSECTIONS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -248,10 +248,10 @@ class="cmti-12">is the map</span>
 class="cmti-12">for some</span> \(k\)<span 
 class="cmti-12">.</span>
 </p>
-  </div>
                                                                                   
 
                                                                                   
+  </div>
 <!--l. 21--><p class="indent" >  The way this Riemann surface is produced as in the theorem below:
 </p>
   <div class="newtheorem">
@@ -294,10 +294,10 @@ class="cmbx-12">resolution </span>of \(C\). Here is an example of what is happen
 the curve \(x^2z = y^3\) inside \(\PP ^2\). The point \([0:0:1]\) is a singular point. We can make a map from \(\PP ^1\) to this
 singular curve given by \([v:w] \mapsto [v^3:v^2w:w^3]\). This is the resolution as it is a holomorphic map away from the
 singular point and \(\PP ^1\) is smooth.
-</p>
                                                                                   
 
                                                                                   
+</p>
   <div class="newtheorem">
 <!--l. 35--><p class="noindent" ><span class="head">
 <a 
@@ -346,10 +346,10 @@ the factorization of \(F\). Then for a nonconstant rational function \(F/G\) on 
 \(\di (F/G) = \di (F)-\di (G)\).
 </p><!--l. 50--><p class="indent" >  On a curve, a divisor has another equivalent description. Now a codimension \(1\) subvariety
 is dimension \(0\) so is a point. Thus a divisor is a linear combination of points. To &#xFB01;nd \(\di (f)\) at a
-point \(p\), we &#xFB01;rst take an a&#xFB03;ne neighborhood \(U\) containing \(p\), and adjoin inverses in \(\CC [U]\) to every
                                                                                   
 
                                                                                   
+point \(p\), we &#xFB01;rst take an a&#xFB03;ne neighborhood \(U\) containing \(p\), and adjoin inverses in \(\CC [U]\) to every
 element that doesn&#x2019;t vanish at \(p\). Call the resulting ring \(\CC [U]_p\), or the <span 
 class="cmbx-12">local ring </span>at \(p\). Then let \(f=g/h\),
 where \(g,h\) are functions that are de&#xFB01;ned at \(p\). If \(p\) is smooth, then \(\dim _\CC (\CC [U]_p/(g))-\dim _\CC (\CC [U]_p/(h))\) is the multiplicity of the
@@ -399,10 +399,10 @@ class="cmti-12">.</span>
   </div>
 <!--l. 69--><p class="indent" >  What is the class group of \(\PP ^n\)? Given a divisor, we can get a quotient of homogeneous
 polynomials by interpreting \(\Sigma n_iF_i\), where \(F_i\) is a homogeneous polynomial viewed as a divisor,
-as \(\prod F_i^{n_i}\). We can make a homomorphism \(\deg : \Cl (\PP ^n) \to \ZZ \) by sending a divisor to the degree of its
                                                                                   
 
                                                                                   
+as \(\prod F_i^{n_i}\). We can make a homomorphism \(\deg : \Cl (\PP ^n) \to \ZZ \) by sending a divisor to the degree of its
 numerator minus the degree of its denominator as a homogeneous polynomial. The
 kernel is exactly the rational functions, and the map is clearly surjective, so
 \(\Cl (\PP ^n) = \ZZ \).
@@ -443,10 +443,10 @@ class="cmti-12">for a smooth curve is regular.</span>
 <!--l. 93--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(f\) is a rational function on \(V\), then \([f:1]\) de&#xFB01;nes a rational map to \(\PP ^1\). To see this
-is a morphism, write \(f = G/H\), so that \([f:1] = [G:H]\), \(G,H\) coprime. For a smooth point on a curve, we can
                                                                                   
 
                                                                                   
+is a morphism, write \(f = G/H\), so that \([f:1] = [G:H]\), \(G,H\) coprime. For a smooth point on a curve, we can
 always force this map to be regular, as the local ring at each point is a DVR, so by
 multiplying by a uniformizer, we can guarantee that \([f:1] = [a:b]\) where at most one of \(a,b\) vanishes,
 and the other is de&#xFB01;ned at \(p\). Conversely, given a morphism to \(\PP ^1\) given as \([f,g]\), \(f/g\) is the
@@ -485,13 +485,13 @@ compactness.
 <!--l. 109--><p class="noindent" ><span class="head">
 <a 
  id="x1-2002r2"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Theorem 2.2.</span>  </span>\(\deg \di (f) = 0\) <span 
 class="cmti-12">on a nonsingular curve</span> \(C\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
 <!--l. 113--><p class="indent" >  <span class="head">
@@ -526,11 +526,11 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 125--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>We &#xFB01;rst show that the intersection number only depends on the divisor class.
                                                                                   
 
                                                                                   
+<span 
+class="cmti-12">Proof.</span> </span>We &#xFB01;rst show that the intersection number only depends on the divisor class.
 It su&#xFB03;ces by linearity to prove that \(\di (f)\cdot C\) is \(0\) for a prime divisor \(C\) and a rational function
 \(f\). However this is true because \(\di (f)\cdot C = \deg i^*(\di (f))\) by de&#xFB01;nition where \(i\) is the inclusion map \(C \to \PP ^2\). Then by
 the previous theorem &#x0028;for singular curves&#x0029;, this intersection number is indeed \(0\).

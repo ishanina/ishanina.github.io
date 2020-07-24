@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>3-manifolds, knots, and homology 3-spheres</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.css" /> 
 <meta name="src" content="3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 3-MANIFOLDS, KNOTS, AND HOMOLOGY 3-SPHERES
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -240,10 +240,10 @@ is to try to decompose a \(3\)-manifold into simpler things. For example, for ou
 model of \(S^2\times S^1\) as a quotient of \(S^2 \times [0,1] \subset \RR ^3\), we can cut our model down the middle in \(\RR ^3\) as in
 Figure <a 
 href="#x1-10011">1<!--tex4ht:ref: S1xS2 --></a>, dividing it into two copies of \(D^2 \times S^1\), glued together along their boundary
-\(S^1 \times S^1\).
                                                                                   
 
                                                                                   
+\(S^1 \times S^1\).
 </p>
   <figure class="figure"> 
 
@@ -2502,30 +2502,30 @@ F0       F                  &#x03A3;
                    H2 "  />
 </p></div>
 <!--l. 875--><p class="indent" >  Each map is surjective on the fundamental group, so we get inclusions on the
-representations spaces &#x0028;\(R\) denotes the representation space&#x0029;: </p>
+representations spaces &#x0028;\(\sR \) denotes the representation space&#x0029;: </p>
 <div class="center" 
 >
 <!--l. 876--><p class="noindent" >
-</p><!--l. 881--><p class="noindent" >                       <img 
-src="3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper1x.svg" alt="                          R &#x0028;H1 &#x0029;
+</p><!--l. 881--><p class="noindent" >                        <img 
+src="3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper1x.svg" alt="                           &#x211B; &#x0028;H1 &#x0029;
 
 
-R &#x0028;F0&#x0029;       R &#x0028;F &#x0029;                    R &#x0028;&#x03A3;&#x0029;
+&#x211B; &#x0028;F0 &#x0029;      &#x211B;  &#x0028;F &#x0029;                     &#x211B; &#x0028;&#x03A3; &#x0029;
 
 
 
-                          R &#x0028;H2 &#x0029; "  />
+                           &#x211B; &#x0028;H2 &#x0029; "  />
 </p></div>
 <!--l. 884--><p class="indent" >  By the Seifert Van-Kampen Theorem, the square in the &#xFB01;rst diagram induces a pushout
-diagram on the fundamental group, so that \(R(\Sigma )\) is exactly the intersection \(R(H_1)\cap R(H_2)\). \(SU(2)\) is \(3\)-dimensional,
-so consequently if \(F\) is genus \(g\), \(R(F_0)\) is \(6g-3\) dimensional as \(\pi _1(F_0)\) is free, but we also mod out by
-conjugation. \(R(F)\) is \(6g-6\) dimensional as there is one relation that removes a degree of freedom. The
+diagram on the fundamental group, so that \(\sR (\Sigma )\) is exactly the intersection \(\sR (H_1)\cap \sR (H_2)\). \(SU(2)\) is \(3\)-dimensional,
+so consequently if \(F\) is genus \(g\), \(\sR (F_0)\) is \(6g-3\) dimensional as \(\pi _1(F_0)\) is free, but we also mod out by
+conjugation. \(\sR (F)\) is \(6g-6\) dimensional as there is one relation that removes a degree of freedom. The
 representation space of each handlebody is dimension \(3g-3\), since the fundamental group is free
 again. Thus the representation space of each handlebody is a half dimensional subspace of
-the representation space of the surface, with intersection exactly \(R(\Sigma )\). The irreducible
-representations of \(R(H_i)\) are an open smooth part of the representation space, so if we are
+the representation space of the surface, with intersection exactly \(\sR (\Sigma )\). The irreducible
+representations of \(\sR (H_i)\) are an open smooth part of the representation space, so if we are
 careful to avoid the singularities &#x0028;i.e the trivial representation, we can perturb the
-\(R(H_i)\) and get an intersection number. One must be a little careful when thinking
+\(\sR (H_i)\) and get an intersection number. One must be a little careful when thinking
 about orientations, but one we &#xFB01;x an orientation convention, we have a Casson
 invariant.
 </p><!--l. 886--><p class="indent" >  This construction works, and one gets a an invariant \(\lambda (\Sigma )\) that is characterized

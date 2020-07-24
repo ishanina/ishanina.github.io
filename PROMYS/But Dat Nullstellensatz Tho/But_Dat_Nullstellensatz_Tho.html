@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>But Dat Nullstellensatz Tho</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="But_Dat_Nullstellensatz_Tho.css" /> 
 <meta name="src" content="But_Dat_Nullstellensatz_Tho.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 BUT DAT NULLSTELLENSATZ THO
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -239,10 +239,10 @@ Nullstellensatz.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Integrality Facts</h3>
-  <div class="newtheorem">
                                                                                   
 
                                                                                   
+  <div class="newtheorem">
 <!--l. 20--><p class="noindent" ><span class="head">
 <a 
  id="x1-2001r1"></a>
@@ -301,10 +301,10 @@ polynomial of the matrix \(a_{ij}\) which is monic.
   <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
-  </div>
                                                                                   
 
                                                                                   
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 46--><p class="noindent" ><span class="head">
@@ -359,10 +359,10 @@ class="cmti-12">is integral over the image.</span>
 <span 
 class="cmti-12">&#x0028;This statement doesn&#x2019;t require K algebraically closed&#x0029;</span>
 </p>
-  <div class="proof">
                                                                                   
 
                                                                                   
+  <div class="proof">
 <!--l. 59--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Consider the map \(K[x_1,\dots x_m] \rightarrow B\) sending \(x_i\) to \(r_i\). If the map is injective, it is an isomorphism so
@@ -406,10 +406,10 @@ class="cmti-12">, it has a zero in</span> \(\AA ^n\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 72--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+<!--l. 72--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>It is obvious that the ideals of the form above are maximal. For the converse,
 suppose that I is maximal. \(K[x_1,\dots x_m]/I\) is a &#xFB01;eld \(K'\). By Noether Normalization, K&#x2019; is integral over
@@ -449,10 +449,10 @@ Weak Nullstellensatz, \((f_1,\dots f_m,x_{n+1}g-1)\) is not a proper ideal, so t
 Replacing \(x_{n+1}\) with \(\frac 1 y\) in this equation and multiplying through by a large enough power of \(y\) to
 clear denominators yields: \begin{equation} y^k = c_1f_1+\dots c_mf_m + c_{m+1}(g-y) \end{equation}
 where we have changed \(b_i\) to \(c_i\) to absorb the new powers of y introduced. Plugging in g, we
-get \begin{equation} g^k = c_1f_1+\dots c_mf_m \end{equation}
                                                                                   
 
                                                                                   
+get \begin{equation} g^k = c_1f_1+\dots c_mf_m \end{equation}
 which is exactly \(g \in \sqrt C\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>

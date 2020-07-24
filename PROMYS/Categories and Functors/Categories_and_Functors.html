@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Categories &#x0026; Functors</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Categories_and_Functors.css" /> 
 <meta name="src" content="Categories_and_Functors.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 CATEGORIES &#x0026; FUNCTORS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -241,10 +241,10 @@ examples of a categorical idea you have thought carefully about, the better you
 understand it.
 </p><!--l. 15--><p class="indent" >  Here are two examples of solving a problem that are categorical in their approach. The
 &#xFB01;rst, known as Bu&#xFB00;on&#x2019;s Needle, is the following: suppose we drop a needle of length 1 onto
-a collection of lines spaces 1 apart from one another. What is the probability of the needle
                                                                                   
 
                                                                                   
+a collection of lines spaces 1 apart from one another. What is the probability of the needle
 intersecting one of the lines? To answer this, we &#xFB01;rst observe that the probability of the
 needle hitting a line is the same as the expectation, since the needle cannot hit two
 lines.
@@ -281,10 +281,10 @@ study groups, but also the homomorphisms between them. We don&#x2019;t study jus
 topological spaces, but the continuous functions between them. Hence the notion of a
 category:
 </p>
-  <div class="newtheorem">
                                                                                   
 
                                                                                   
+  <div class="newtheorem">
 <!--l. 28--><p class="noindent" ><span class="head">
 <a 
  id="x1-2001r1"></a>
@@ -347,10 +347,10 @@ class="cmti-12">is a morphism &#x0028;arrow&#x0029; with a left and right</span>
 class="cmti-12">inverse.</span>
 </p>
   </div>
-<!--l. 40--><p class="indent" >  This matches the de&#xFB01;nition of isomorphism that you are used to in familiar categories.
                                                                                   
 
                                                                                   
+<!--l. 40--><p class="indent" >  This matches the de&#xFB01;nition of isomorphism that you are used to in familiar categories.
 For example, in the category of sets, \(\Set \), this is just a bijection. In the category of groups, \(\Grp \),
 and rings \(\Ring \) or \(\CRing \) &#x0028;C for commutative&#x0029;, it is an isomorphism, and in the category of
 topological spaces, \(\Top \), it is just a homeomorphism.

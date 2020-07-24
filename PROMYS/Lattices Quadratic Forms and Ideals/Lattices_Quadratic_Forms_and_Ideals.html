@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Lattices, Quadratic forms, and Ideals</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Lattices_Quadratic_Forms_and_Ideals.css" /> 
 <meta name="src" content="Lattices_Quadratic_Forms_and_Ideals.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 LATTICES, QUADRATIC FORMS, AND IDEALS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -249,11 +249,11 @@ group embeds in the product of the Galois groups of \(L,L'\). Then the kernel of
 map for \(LL'\) is the intersection of that for \(L,L'\) since it is the compositum, and since the
 Artin map is natural. But by uniqueness of the existence theorem, \(LL' = L'\) and so \(L' \supset L\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
 <!--l. 19--><p class="indent" >  Note that by the conductor theorem, for any pair \(L,L'\), the conditions of the lemma are
 always satis&#xFB01;ed for some large enough modulus. Thus class &#xFB01;eld theory tells us exactly
@@ -293,13 +293,13 @@ density, and \(\dot{\supset }, \dot{\subset }\). In particular if the density is
 primes in \(S\). Suppose \(L/K\) is a Galois extension, and \(C\) is a conjugacy class in the Galois
 group.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
 <!--l. 32--><p class="noindent" ><span class="head">
 <a 
  id="x1-1003r3"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Theorem 1.3 </span>&#x0028;Chebotarev density theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -348,14 +348,14 @@ compositum of \(L,L'\), and let \(\sigma \) be an element of \(\Gal (M/L')\). By
 there are in&#xFB01;nitely many primes \(\mf{P}_i/p\) in \(M/L'\) not ramifying such that the Frobenius element
 is \(\sigma \). Since the Frobenius restricts to being trivial on \(L'\), \(p\in S_{L'/K}\), so \(\pp _i \in S_{L/K}\) &#x0028;for all but &#xFB01;nitely many
 \(i\)&#x0029;. Then since \(L\) is Galois, \(\pp \) splits completely, so its Frobenius must &#xFB01;x \(L\). Thus \(\Gal (M/L) \supset \Gal (M/L')\) so \(L \subset L'\).
+                                                                                  
+
+                                                                                  
 </p><!--l. 47--><p class="indent" >  If \(S_{L/K} \dot{\supset } S_{L'/K}\), note that \(L' \subset L\) i&#xFB00; the Galois closure \(\tilde{L'}\) of \(L'\) is in \(L\) i&#xFB00; \(S_{\tilde{L'}/K} \dot{\supset }\tilde{S}_{L/K} \doteq S_{L/K}\) by the &#xFB01;rst case. But \(S_{L'/K} \supset S_{\tilde{L}/K}\) so we are
 done. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 51--><p class="noindent" ><span class="head">
@@ -387,6 +387,9 @@ induce a group structure on \(\Cl (D)\), and lets us compute class numbers.
 </p><!--l. 68--><p class="indent" >  Given a quadratic form \(ax^2+bxy+cy^2\), we can send it to the ideal that is the free abelian group
 generated by \(a,\frac{b+\sqrt{D}}{2}\), denoted \([\frac{-b+\sqrt{D}}{2},a]\) &#x0028;check this is an ideal&#x0029;. This can be thought of as a sublattice of
 the complex plane.
+                                                                                  
+
+                                                                                  
 </p><!--l. 70--><p class="indent" >  The proof will use ideas related to complex multiplication, which is a tool used to
 explicitly construct abelian extensions of imaginary quadratic number &#xFB01;elds. However
 complex multiplication will not be explored here. Let \(\aa \) be an ideal of \(\cO _K\), an imaginary
@@ -394,9 +397,6 @@ quadratic &#xFB01;eld, viewed as a lattice in \(\CC \). Given \(x \in \CC \), le
 every element of \(\aa \) by \(x\). Say that two lattices \(\aa ,\bb \) are <span 
 class="cmbx-12">homothetic </span>if there is a \(x\) such that
 \(\aa = x\bb \).
-                                                                                  
-
-                                                                                  
 </p>
   <div class="newtheorem">
 <!--l. 72--><p class="noindent" ><span class="head">
@@ -436,15 +436,15 @@ class="cmti-12">Can you make a version of the above lemma that works for</span> 
 class="cmti-12">where</span>
 \(n\) <span 
 class="cmti-12">is arbitrary?</span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
 <!--l. 86--><p class="indent" >  Note that \([{\frac{-b+\sqrt D} 2},a]\) is homothetic to \([{\frac{-b+\sqrt D}{2a}},1]\) which is a fractional ideal, and so the lattice that we get
 corresponds to \(\SL _2(\ZZ )\) acts on both lattices with bases, and and
 </p><!--l. 89--><p class="indent" >  If \([a,b]\) is a lattice with a choice of generators, it is homothetic to \([\frac a b,1]\), where \(\frac a b\) is a not real
 complex number. In order to get an invariant of the lattice, we observe that
-                                                                                  
-
-                                                                                  
 we can get all the bases from our original choice by changing \([a,b]\) by some matrix
 in \(\begin{pmatrix}w &amp; x \\ y &amp; z \end{pmatrix}\in \GL _2(\ZZ )\), which sends it to \([wa+bx,ya+zb]\), which is homothetic to \([\frac{wa+bx}{ya+zb},1]\). This is the same as forcing \(\frac{a}{b}\)
 for \([\frac{a} b,1]\) to lie in the upper half plane, and only considering matrices in \(\SL _2(\ZZ )\). So every
@@ -479,6 +479,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>An example of a Hilbert class &#xFB01;eld</h3>
 <!--l. 104--><p class="noindent" >Let&#x2019;s use these results to &#xFB01;nd out when \(p = x^2+14y^2\). The reduced quadratic forms for the discriminant
@@ -486,9 +489,6 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 enough to distinguish \(x^2+14y^2\) from the rest. To &#xFB01;nd the Hilbert class &#xFB01;eld of \(K=\QQ [\sqrt{-14}]\), &#xFB01;rst note that \(K[\sqrt{2}]\) is
 an unrami&#xFB01;ed extension, since the sub&#xFB01;elds are \(K,\QQ [\sqrt{2}],\QQ [\sqrt{-7}]\), and the primes \(2,7\) only ramify in two of
 these. Thus the Hilbert class \(L\) &#xFB01;eld is a degree \(2\) extension of \(K[\sqrt{2}]\). Moreover, \(\bar{L}\) satis&#xFB01;es the
-                                                                                  
-
-                                                                                  
 axioms of the Hilbert class &#xFB01;eld, so by uniqueness, \(L\) is generated over \(K\) by a real element,
 and is the linearly disjoint compositum of a real extension over \(\QQ \) of degree \(4\) and \(K\). This
 extension is a degree \(2\) extension of \(\QQ [\sqrt{2}]\) so is of the form \(\QQ [\sqrt{2}][\sqrt{u}]\) for positive \(u\). \(u\) is an algebraic integer

@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>What is Algebraic Geometry?</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="What_is_Algebraic_Geometry.css" /> 
 <meta name="src" content="What_is_Algebraic_Geometry.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 WHAT IS ALGEBRAIC GEOMETRY?
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -241,10 +241,10 @@ class="cmti-12">.</span>
 class="cmti-12">Proof.</span> </span>By compactness of \(\CC \PP ^1\) and the fact that zeros are isolated, there are only &#xFB01;nitely
 many zeros and poles of the rational function \(f\). We can multiply \(f\) by a rational
 function so that the result is something that either only has poles or zeros, and by
-inverting it we can assume it only has zeros. The result is a holomorphic function on
                                                                                   
 
                                                                                   
+inverting it we can assume it only has zeros. The result is a holomorphic function on
 \(\CC \PP ^1\), so lands in a compact subset of \(\CC \), hence is constant by Louisville&#x2019;s theorem or the
 open mapping theorem. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -283,11 +283,11 @@ class="cmti-12">Classify the rational solutions to</span> \(y^2=x^3+x^2\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 31--><p class="indent" >  We have classi&#xFB01;ed these solutions by making a parameterization of our solutions in
-terms of \(\QQ \PP ^1\), noting that this gives all the solutions because there is a projection map that is
                                                                                   
 
                                                                                   
+<!--l. 31--><p class="indent" >  We have classi&#xFB01;ed these solutions by making a parameterization of our solutions in
+terms of \(\QQ \PP ^1\), noting that this gives all the solutions because there is a projection map that is
 the inverse. Both the projection map and the parameterization map was very nice in the
 sense that it is given by rational functions.
 </p>
@@ -339,10 +339,10 @@ class="cmti-12">variables.</span>
   </div>
 <!--l. 47--><p class="indent" >  For an example of a morphism, we can project the hyperbola \(xy = 1\) to the line \(\AA ^1\) via the
 polynomial \(x\). This hits every point once on \(\AA ^1\) except for \(0\). Since any quadratic form over \(\CC \) is
-equivalent to \(xy\),
                                                                                   
 
                                                                                   
+equivalent to \(xy\),
 </p><!--l. 49--><p class="indent" >  In this way, we can turn a&#xFB03;ne varieties into a category. The most basic example is \(\AA ^n\),
 which is just all of \(\CC ^n\).
 </p><!--l. 51--><p class="indent" >  A variety comes with a topology inherited from \(\CC ^n\), but it is not the usual topology.
@@ -384,10 +384,10 @@ trivial ideal. The way to &#xFB01;x this over a non algebraically closed &#xFB01
 &#xFB01;nite extensions of \(\QQ \), not just \(\QQ ^n\). For example, in \(\AA ^n\) over the &#xFB01;eld \(\RR \), the points are
 points in \(\CC ^n\) up to complex conjugation. The points can be seen on the level of the
 rings.
-</p>
                                                                                   
 
                                                                                   
+</p>
   <div class="newtheorem">
 <!--l. 65--><p class="noindent" ><span class="head">
 <a 
@@ -432,10 +432,10 @@ component.
 <!--l. 78--><p class="noindent" >Let&#x2019;s try to do geometry on \(\AA ^2\). If we take two curves in \(\AA ^2\), how many times do
 they intersect? This is an elementary problem when one of the curves is a line.
 After a linear change of variables, the line can be assumed to be \(x = 0\). If the other
-curve is given by \(f(x,y) = 0\), then the number of roots of \(f(0,y)\) is the number of intersection
                                                                                   
 
                                                                                   
+curve is given by \(f(x,y) = 0\), then the number of roots of \(f(0,y)\) is the number of intersection
 points. Unfortunately, this depends on our line, even when the intersection points
 are counted with multiplicity. The way to &#xFB01;x this is to do projective geometry
 instead. This can be thought of as compactifying \(\AA ^2\). Namely, we de&#xFB01;ne \(\PP ^n\) to be the set
@@ -479,10 +479,10 @@ derivatives. For example, if we have a <span
 class="cmbx-12">projective hypersurface</span>, which is a variety given
 by one equation \(F=0\), then &#x0028;in characteristic \(0\)&#x0029; the singular points are the subvariety
 simultaneous zero of \(\frac{\partial F}{\partial x_i} = 0\). Analogously to the a&#xFB03;ne case, a smooth projective variety gives a
-compact complex manifold by replacing the Zariski topology with the complex
                                                                                   
 
                                                                                   
+compact complex manifold by replacing the Zariski topology with the complex
 topology.
 </p>
   <div class="newtheorem">
@@ -545,10 +545,10 @@ class="cmti-12">, if the</span>
 <span 
 class="cmti-12">intersection is dimension</span> \(0\)<span 
 class="cmti-12">.</span>
-</p>
                                                                                   
 
                                                                                   
+</p>
   </div>
 <!--l. 106--><p class="indent" >  The multiplicity of an intersection point can be de&#xFB01;ned as the dimension of the \(\CC \)-vector
 space \(\CC [x,y]/(f,g)\), where \(f,g\) are dehomogenized equations for \(F,G\) on an a&#xFB03;ne chart.

@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Resolving singularities globally and locally</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Resolving_Singularities_Globally_and_Locally.css" /> 
 <meta name="src" content="Resolving_Singularities_Globally_and_Locally.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 RESOLVING SINGULARITIES GLOBALLY AND LOCALLY
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -241,10 +241,10 @@ form.
 look &#x201C;very cusp-like&#x201D;:
 </p>
   <div class="newtheorem">
-<!--l. 18--><p class="noindent" ><span class="head">
                                                                                   
 
                                                                                   
+<!--l. 18--><p class="noindent" ><span class="head">
 <a 
  id="x1-1001r1"></a>
 <span 
@@ -296,10 +296,10 @@ singularity.
 </p><!--l. 29--><p class="indent" >  However we do not have to blow up all at once. We could instead try just blowing up
 the maximal ideal. Since \(a&lt;b\), we get that the blowup of the maximal ideal is locally given by \(\tilde{x}^a = y^{b-a}\).
 We could repeat this process many times, e&#xFB00;ectively running the Euclidean algorithm on \(a,b\).
-We will then eventually end up with the normalization when the Euclidean algorithm
                                                                                   
 
                                                                                   
+We will then eventually end up with the normalization when the Euclidean algorithm
 terminates. In fact in more generality a blowup of an ideal sheaf can be achieved via point
 blowups. For smooth surfaces, this amounts to the fact that a birational morphism of
 smooth surfaces is a composite of point blowups, the proof of which can be found in
@@ -337,11 +337,11 @@ true:
 </p>
   <div class="newtheorem">
 <!--l. 41--><p class="noindent" ><span class="head">
-<a 
- id="x1-2001r1"></a>
                                                                                   
 
                                                                                   
+<a 
+ id="x1-2001r1"></a>
 <span 
 class="cmbx-12">Theorem 2.1.</span>  </span><span 
 class="cmti-12">The Albanese method results with some</span> \(X_i\) <span 
@@ -384,11 +384,11 @@ projective varieties:
 </p>
   <div class="newtheorem">
 <!--l. 65--><p class="noindent" ><span class="head">
-<a 
- id="x1-2002r2"></a>
                                                                                   
 
                                                                                   
+<a 
+ id="x1-2002r2"></a>
 <span 
 class="cmbx-12">Lemma 2.2 </span>&#x0028;Chow&#x2019;s lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -429,10 +429,10 @@ to the original curve. <span class="qed"><span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-  </div>
                                                                                   
 
                                                                                   
+  </div>
 <!--l. 81--><p class="indent" >  To get a result about surfaces we need the following elementary property of
 multiplicities which can be found in Section 2.8 of &#x005B;<a id="page.5"></a><a 
 href="Resolving_Singularities_Globally_and_Locally.html#X0-kollarres" >Kol07</a>&#x005D;:
@@ -477,10 +477,10 @@ global method. For example, were the Albanese method a local method, we would ex
 the multiplicity of isolated singularities to go down after a projection. But this is not
 necessarily the case. For example, consider the image of the map from \(\PP ^1\) into \(\PP ^n\) given by \((t^{m_1}:t^{m_2}s^{m_1-m_2}:\dots :t^{m_n}s^{m_1-m_n}:s^{m_1})\)
 where \(i &lt; j \implies m_i &gt; m_j\). If we project from the singular point \((0:0:\dots :1)\) of multiplicity \(m_n\), we get the map from \(\PP ^1\) given
-by \((t^{m_1-m_n}:t^{m_2-m_n}s^{m_1-m_2}:\dots s^{m_1-m_n})\). It does look like the map has gotten simpler, but if \(m_{n-1}-m_n&gt;m_n\), then the multiplicity of the
                                                                                   
 
                                                                                   
+by \((t^{m_1-m_n}:t^{m_2-m_n}s^{m_1-m_2}:\dots s^{m_1-m_n})\). It does look like the map has gotten simpler, but if \(m_{n-1}-m_n&gt;m_n\), then the multiplicity of the
 singularity actually increases.
 </p><!--l. 107--><p class="indent" >  Another example of how this is a global method is how projecting from a point can
 actually remove singularities that weren&#x2019;t close to it. Consider the hypersurface in \(\PP ^3\) given
@@ -517,10 +517,10 @@ charts of the covering maps by copies of the unit disk with the map \(z \mapsto 
 the Riemann extension theorem this map can be extended to the entire unit
 disk.
 </p><!--l. 119--><p class="indent" >  Computing the normalization of a curve algebraically is not necessarily easy, but it can
-be done by repeatedly blowing up the curve at points. When we blowup, the
                                                                                   
 
                                                                                   
+be done by repeatedly blowing up the curve at points. When we blowup, the
 sum of the multiplicities of the exceptional points in the blowup is at most the
 multiplicity of the original singular point. Thus it only needs to be proved that there
 can not be an in&#xFB01;nite number of blowups where the singularity&#x2019;s multiplicity is

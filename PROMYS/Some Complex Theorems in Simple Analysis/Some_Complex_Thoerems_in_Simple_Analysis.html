@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Some Complex Theorems in Simple Analysis</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Some_Complex_Thoerems_in_Simple_Analysis.css" /> 
 <meta name="src" content="Some_Complex_Thoerems_in_Simple_Analysis.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 SOME COMPLEX THEOREMS IN SIMPLE ANALYSIS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -254,10 +254,10 @@ class="cmti-12">we have </span>\[ f^{(n)}(z) = \frac{n!}{2\pi i}\int _C\frac{f(\
 class="cmti-12">for any</span> \(z\) <span 
 class="cmti-12">in the interior of</span> \(C\)<span 
 class="cmti-12">.</span>
-</p>
                                                                                   
 
                                                                                   
+</p>
   </div>
 <!--l. 29--><p class="indent" >  As a consequence we have the following:
 </p>
@@ -304,10 +304,10 @@ class="cmti-12">Holomorphic functions are analytic.</span>
 class="cmti-12">Proof.</span> </span>Suppose \(f\) is holomorphic near \(z_0\). By Theorem <a 
 href="#x1-1002r2">1.2<!--tex4ht:ref: intformula --></a> we have \[ f(z) = \frac{1}{2\pi i}\int _C\frac{f(\zeta )}{\zeta -z}d\zeta \] where \(C\) is a small
 circle centered around \(z_0\), and \(z\) is inside the disk. Additionally \[ \frac{1}{\zeta -z} = \frac{1}{\zeta -z_0}\frac{1}{1-\frac{z-z_0}{\zeta - z_0}} \] and since \(z\) is inside the
-circle and \(\zeta \) is on the boundary, so we can expand as \[ \frac{1}{1-\frac{z-z_0}{\zeta - z_0}} = \sum _0^\infty \Big (\frac{z-z_0}{\zeta -z_0}\Big )^n \] which converges uniformly for
                                                                                   
 
                                                                                   
+circle and \(\zeta \) is on the boundary, so we can expand as \[ \frac{1}{1-\frac{z-z_0}{\zeta - z_0}} = \sum _0^\infty \Big (\frac{z-z_0}{\zeta -z_0}\Big )^n \] which converges uniformly for
 all \(\zeta \in C\). Then from uniform convergence we switch the sum and integral and get \[ f(z) = \sum _0^\infty \frac{1}{2\pi i} \int _C \frac{f(\zeta )}{(\zeta -z_0)^{n+1}}d\zeta (z-z_0)^n = \sum _0^\infty \frac{1}{n!}f^{(n)}(z_0)(z-z_0)^n \] <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>

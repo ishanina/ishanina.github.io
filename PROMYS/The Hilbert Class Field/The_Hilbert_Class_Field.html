@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Global Statements of Class Field Theory</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="The_Hilbert_Class_Field.css" /> 
 <meta name="src" content="The_Hilbert_Class_Field.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 GLOBAL STATEMENTS OF CLASS FIELD THEORY
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -242,11 +242,11 @@ class="cmti-12">.</span>
 <span 
 class="cmti-12">Proof.</span> </span>\(p=x^2+ny^2 \iff (p) = (x+\sqrt{-n}y)(x-\sqrt{-n}y) = (N(x\pm \sqrt{-n}y))\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
 <!--l. 20--><p class="indent" >  Ignoring the ramifying primes, we can split the problem into two steps: &#xFB01;guring out
 when \(p\) splits in \(\ZZ [\sqrt{-n}]\), and &#xFB01;guring out when the ideals it splits into are principle.
@@ -294,12 +294,12 @@ the primes that are principle are exactly the ones for which \(-5\) is a square 
 in addition. \(p \equiv 1 \pmod 4\) is also the condition for a prime to split in \(\ZZ [i]\). If \(p\) splits in both \(\ZZ [i],\ZZ [\sqrt{-5}]\),
 it splits completely in the &#x0028;ring of integers of the&#x0029; composite &#xFB01;eld \(\QQ [\sqrt{-5},\sqrt{-1}]\). Thus we
 have found an extension of \(\QQ [\sqrt{-5}]\) that has the property that if \(p\) splits into \(\pp \bar{\pp }\) in \(\QQ [\sqrt{-5}]\), it
-splits into principle ideals i&#xFB00; \(\pp \) splits further in \(\QQ [\sqrt{-5},\sqrt{-1}]\). This motivates the following
-de&#xFB01;nition:
-</p>
                                                                                   
 
                                                                                   
+splits into principle ideals i&#xFB00; \(\pp \) splits further in \(\QQ [\sqrt{-5},\sqrt{-1}]\). This motivates the following
+de&#xFB01;nition:
+</p>
   <div class="newtheorem">
 <!--l. 37--><p class="noindent" ><span class="head">
 <a 
@@ -359,12 +359,12 @@ class="cmti-12">.</span>
 prime, but it can be made pretty concrete. Let \(\alpha \) be a integer in \(L\) generating the &#xFB01;eld over \(\QQ \). \(\ZZ [\alpha ]\)
 isn&#x2019;t <span 
 class="cmti-12">that </span>di&#xFB00;erent from \(\cO _L\), it is a subring of &#xFB01;nite index, and we can calculate the index by
-looking at the discriminant of \(\ZZ [\alpha ]\). In particular, after adjoining inverses of &#xFB01;nitely many
-primes \(p_1,\dots p_n\) dividing the discriminant of \(\ZZ [\alpha ]\) &#x0028;this is the same as the discriminant of the minimal
-polynomial of \(\alpha \)&#x0029;, \(\ZZ [\alpha ,\frac 1 p_i,1\leq i \leq n] = \cO _K[\frac 1 p_i,1 \leq i \leq n]\). Then except for these &#xFB01;nitely many primes, we should be able to tell if \(p\)
                                                                                   
 
                                                                                   
+looking at the discriminant of \(\ZZ [\alpha ]\). In particular, after adjoining inverses of &#xFB01;nitely many
+primes \(p_1,\dots p_n\) dividing the discriminant of \(\ZZ [\alpha ]\) &#x0028;this is the same as the discriminant of the minimal
+polynomial of \(\alpha \)&#x0029;, \(\ZZ [\alpha ,\frac 1 p_i,1\leq i \leq n] = \cO _K[\frac 1 p_i,1 \leq i \leq n]\). Then except for these &#xFB01;nitely many primes, we should be able to tell if \(p\)
 splits i&#xFB00; the minimal polynomial of \(\alpha \) factors into linear factors, but since the
 extension is Galois, this is equivalent to the minimal polynomial having a root mod
 \(p\).
@@ -414,11 +414,11 @@ class="cmti-12">splits completely</span>
 <span 
 class="cmti-12">in the extension.</span>
 </p>
-  <div class="proof">
-<!--l. 64--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+  <div class="proof">
+<!--l. 64--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Note that since the Frobenius generates the decomposition group, it is trivial
 i&#xFB00; the decomposition group is trivial i&#xFB00; the extension of residue &#xFB01;elds is trivial,
@@ -454,13 +454,13 @@ in \(\ZZ [\sqrt{n}]\) &#x0028;after inverting \(2\), these become the same ring&
 \((\frac n p)\)=1. Thus the Artin map for odd \(p\) is \((\frac n p)\) and extending multiplicatively gives the Jacobi
 symbol \((\frac n a)\).
 </p><!--l. 78--><p class="indent" >  Before moving on, let&#x2019;s give a quick proof of quadratic reciprocity using the cyclotomic
+                                                                                  
+
+                                                                                  
 &#xFB01;eld \(\QQ [\zeta _q]\), \(q\) odd. The \((\frac a q)\) is the unique surjective homomorphism \(\ZZ /q\ZZ ^\times \to \ZZ /2\ZZ \) as the former group is cyclic. By
 Galois theory, this surjective map corresponds to the quadratic sub&#xFB01;eld of \(\QQ [\zeta _q]\). But
 only \(q\) rami&#xFB01;es in \(\QQ [\zeta _q]\), and the only quadratic number &#xFB01;eld with that property is \(\QQ [\sqrt{q^*}]\)
 where \(q^* = (-1)^{\frac{q-1} 2}q\). But the Artin map for this sub&#xFB01;eld is given by the Jacobi symbol \((\frac{q^*} a)\). By
-                                                                                  
-
-                                                                                  
 naturality of the Artin map we then have, \(a \mapsto (\frac{q^*} a)\) is a surjective homomorphism from \(\ZZ /q\ZZ ^\times \to \ZZ /2\ZZ \) so
 \((\frac{q^*} a) = (\frac a q)\).
 </p>
@@ -504,6 +504,9 @@ class="cmbx-12">Theorem 2.2 </span>&#x0028;Artin Reciprocity&#x0029;<span
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">The Artin map</span> \(I_{ur} \to \Gal (L/K)\) <span 
 class="cmti-12">of a &#xFB01;nite abelian extension of</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">number &#xFB01;elds is surjective. The kernel</span> \(H\) <span 
 class="cmti-12">always contains some</span> \(P_m\)<span 
@@ -514,9 +517,6 @@ class="cmti-12">chosen ideal, and so the Artin map induces an isomorphism</span>
 class="cmti-12">.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
 <!--l. 94--><p class="indent" >  For example, we can see that the kernel in the case of \(\QQ [\zeta _n]/\QQ \) is \(P_m\), where \(m_0 = n\) and \(m_\infty \) is the unique
 embedding of \(\QQ \).
 </p>
@@ -564,6 +564,9 @@ the extension.
 <!--l. 110--><p class="noindent" ><span class="head">
 <a 
  id="x1-2007r4"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Theorem 2.4 </span>&#x0028;Existence Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -574,9 +577,6 @@ class="cmti-12">such that the Artin map induces an isomorphism</span> \(I_m/H \t
 class="cmti-12">.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
 <!--l. 114--><p class="noindent" ><span class="head">
 <a 

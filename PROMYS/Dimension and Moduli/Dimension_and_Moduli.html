@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Dimension and Moduli</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Dimension_and_Moduli.css" /> 
 <meta name="src" content="Dimension_and_Moduli.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 DIMENSION AND MODULI
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -246,11 +246,11 @@ class="cmti-12">.</span>
 class="cmti-12">Proof.</span> </span>\(f\) might not be monic in \(x_n\), but we can force it to be monic in \(x_n\) by doing a linear
 change of basis. Namely if we change \(x_i\) to \(x_i+\alpha _i x_n\), the condition that the \(x_n\) term is nonzero
 for the highest homogeneous part of the polynomial is satis&#xFB01;ed for some \(\alpha _i\) as the &#xFB01;eld
-is in&#xFB01;nite, and the condition that it is \(0\) is a single nonzero polynomial in the \(\alpha _i\). <span class="qed"><span 
-class="msam-10x-x-120">&#x25A1;</span></span>
                                                                                   
 
                                                                                   
+is in&#xFB01;nite, and the condition that it is \(0\) is a single nonzero polynomial in the \(\alpha _i\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
@@ -298,11 +298,11 @@ integral over some \(k[x_1,\dots ,x_n]\). We call \(n\) the <span
 class="cmbx-12">dimension </span>of the variety. Note that this is equivalent to
 the transcendence degree of the fraction &#xFB01;eld over \(k\) by Lemma <a 
 href="#x1-1001r1">1.1<!--tex4ht:ref: noethernormalization --></a>. If a variety is not
-irreducible, its dimension is the maximum of the dimension of each irreducible
-component.
                                                                                   
 
                                                                                   
+irreducible, its dimension is the maximum of the dimension of each irreducible
+component.
 </p><!--l. 39--><p class="indent" >  Here is another characterization of dimension, called the <span 
 class="cmbx-12">Krull dimension</span>, which is
 actually de&#xFB01;ned for any ring.
@@ -350,11 +350,11 @@ class="cmti-12">, then the variety</span>
 class="cmti-12">cut out by</span> \(f\) <span 
 class="cmti-12">is codimension at most</span> \(1\)<span 
 class="cmti-12">.</span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
 <!--l. 55--><p class="indent" >  Using this, the next thing we can observe about dimension is that it is local. This is
 already suggested by the fact that it only depends on \(k(V)\), not \(k[V]\), as we can invert elements of \(k[V]\),
 e&#xFB00;ectively removing a proper closed subset from our variety, yet keep the dimension the
@@ -397,11 +397,11 @@ codimension of the tangent space of \(V\) in \(\AA ^n\). Then the point is smoot
 then the codimension of the variety i&#xFB00; the dimension of the cotangent space is the
 dimension of the variety i&#xFB00; the point is regular. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 67--><p class="noindent" ><span class="head">
@@ -438,12 +438,12 @@ dimension of the cotangent space is the dimension of the variety.
 <!--l. 83--><p class="noindent" ><span class="head">
 <a 
  id="x1-2001r1"></a>
-<span 
-class="cmbx-12">Proposition 2.1.</span>  </span><span 
-class="cmti-12">The image of a projective variety under a morphism is closed.</span>
                                                                                   
 
                                                                                   
+<span 
+class="cmbx-12">Proposition 2.1.</span>  </span><span 
+class="cmti-12">The image of a projective variety under a morphism is closed.</span>
 </p>
   </div>
 <!--l. 87--><p class="indent" >  Morally this is true because projective varieties are closed subsets of \(\PP ^n\), hence are
@@ -487,14 +487,14 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 101--><p class="noindent" ><span class="head">
 <a 
  id="x1-2003r3"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Corollary 2.3.</span>  </span><span 
 class="cmti-12">The subset of points in</span> \(Y\) <span 
 class="cmti-12">for a map</span> \(X \to Y\) <span 
 class="cmti-12">of projective varieties for which</span>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmti-12">the dimension of the &#xFB01;bre is at least</span> \(k\) <span 
 class="cmti-12">is closed.</span>
@@ -535,11 +535,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 117--><p class="indent" >  If the &#xFB01;bres are irreducible and same dimension Y irreducible, then X is irreducible.
-proof: One irreducible component must hit everything, then apply the previous
                                                                                   
 
                                                                                   
+<!--l. 117--><p class="indent" >  If the &#xFB01;bres are irreducible and same dimension Y irreducible, then X is irreducible.
+proof: One irreducible component must hit everything, then apply the previous
 theorem on that, and observe that everything that is missing must have smaller
 dimension.
 </p><!--l. 121--><p class="indent" >  We will try to answer the question: on a general hypersurface in \(\PP ^3\), how many lines are
@@ -577,11 +577,11 @@ project \(\Gamma _m\) to \(\PP ^{c_m}\). If a line is given by \(l_1=l_2 = 0\), 
 form a linear subspace of dimension \(2{m+2\choose 3}-{m+1\choose 3} = c_m-(m+1)\). The &#xFB01;bres are all irreducible, so \(\Gamma _m\) is too, and is
 dimension \(c_m-(m+1)+4 = c_m-m+3\).
 </p><!--l. 133--><p class="indent" >  We can now consider the other projection from \(\Gamma _m\) to \(\PP ^{c_m}\). If \(m &gt; 3\), then the map cannot be
-surjective as the dimension is too small, so the image is a proper irreducible closed subset,
-and so we get:
                                                                                   
 
                                                                                   
+surjective as the dimension is too small, so the image is a proper irreducible closed subset,
+and so we get:
 </p>
   <div class="newtheorem">
 <!--l. 135--><p class="noindent" ><span class="head">

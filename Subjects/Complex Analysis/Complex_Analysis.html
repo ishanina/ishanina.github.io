@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Complex Analysis</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Complex_Analysis.css" /> 
 <meta name="src" content="Complex_Analysis.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 COMPLEX ANALYSIS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -241,11 +241,11 @@ class="cmti-12">a 1-chain only depends on the homology class.</span>
 <!--l. 15--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If two curves \(\gamma ,\gamma '\) are homologous via a surface \(M\), then by Stokes&#x2019;s theorem \(\int _\gamma fdz - \int _{\gamma '}fdz = \int _M dfdz = 0\), as \(f\)
-is holomorphic, so \(\frac{df}{d\bar{z}} = 0\) and hence \(dfdz =0\). <span class="qed"><span 
-class="msam-10x-x-120">&#x25A1;</span></span>
                                                                                   
 
                                                                                   
+is holomorphic, so \(\frac{df}{d\bar{z}} = 0\) and hence \(dfdz =0\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
@@ -283,15 +283,15 @@ that \(a_{-1}\) is an invariant of the coordinate system.
 <!--l. 31--><p class="noindent" ><span class="head">
 <a 
  id="x1-1003r3"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Theorem 1.3 </span>&#x0028;Residue formula&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(fdz\) <span 
 class="cmti-12">is a meromorphic di&#xFB00;erential form, and</span> \(\gamma \) <span 
 class="cmti-12">is a</span>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmti-12">counterclockwise oriented curve bounding a region</span> \(X\)<span 
 class="cmti-12">, then</span> \(\int _\gamma fdz = 2 \pi i\sum _{p \in X} \res _p(fdz)\)<span 
@@ -337,10 +337,10 @@ we compute \begin{align*} f(z) &amp;= \frac{1}{2 \pi i}\int \frac{f(\xi )}{\xi -
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-  </div>
                                                                                   
 
                                                                                   
+  </div>
   <div class="newtheorem">
 <!--l. 53--><p class="noindent" ><span class="head">
 <a 

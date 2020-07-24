@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>Analysis Theorems</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Analysis.css" /> 
 <meta name="src" content="Analysis.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 ANALYSIS THEOREMS
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -243,11 +243,11 @@ by applying \(g\) to each side of this equation we have \(b \in C\), a contradic
 </p><!--l. 25--><p class="indent" >  For surjectivity, let \(y \in Y\). Suppose \(g(y) \notin C\). Then \(h(g(y)) = y\). Now suppose \(g(y) \in C\). Then \(g(y) = (g\circ f)^n(c)\) with \(c \notin g(B)\), which implies
 \(n\geq 1\). Then by injectivity of \(g\) we get \(y = f((g\circ f)^{n-1}(c)) = h((g\circ f)^{n-1}(c))\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Inequalities</h3>
@@ -292,12 +292,12 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 46--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>We suppose some of the \(x_i\) are not equal and show the strict inequality via
-induction. If \(\mu \) denotes \(\frac{\sum _1^nx_i}{n}\) then WLOG we may assume \(x_n&gt;\mu &gt;x_{n-1}\). Then de&#xFB01;ne \(y = x_n+x_{n-1}-\mu \) and note \(y\) is
                                                                                   
 
                                                                                   
+<span 
+class="cmti-12">Proof.</span> </span>We suppose some of the \(x_i\) are not equal and show the strict inequality via
+induction. If \(\mu \) denotes \(\frac{\sum _1^nx_i}{n}\) then WLOG we may assume \(x_n&gt;\mu &gt;x_{n-1}\). Then de&#xFB01;ne \(y = x_n+x_{n-1}-\mu \) and note \(y\) is
 non-negative. Then by induction, we have \[ y\prod _1^{n-2}x_i\leq \big (\frac{y+\sum _1^{n-2}x_i}{n-1}\big )^{n-1} = \mu ^{n-1} \] Multiplying by \(\mu \), we get \[ \mu y\prod _1^{n-2}x_i\leq \mu ^{n} \] so it su&#xFB03;ces to
 show \(\mu y&gt;x_nx_{n-1}\), but this is true as \[ y\mu -x_nx_{n-1} = (x_n+x_{n-1}-\mu )\mu -x_nx_{n-1} = (x_n-\mu )(\mu -x_{n-1})&gt;0 \] <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -357,12 +357,12 @@ class="cmti-12">at</span> \(p\) <span
 class="cmti-12">is called the </span><span 
 class="cmbxti-10x-x-120">subdi&#xFB00;erential</span><span 
 class="cmti-12">.</span>
-</p>
-  </div>
-  <div class="newtheorem">
                                                                                   
 
                                                                                   
+</p>
+  </div>
+  <div class="newtheorem">
 <!--l. 77--><p class="noindent" ><span class="head">
 <a 
  id="x1-2006r6"></a>
@@ -412,12 +412,12 @@ by assumption. <span class="qed"><span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-  </div>
-  <div class="newtheorem">
-<!--l. 93--><p class="noindent" ><span class="head">
                                                                                   
 
                                                                                   
+  </div>
+  <div class="newtheorem">
+<!--l. 93--><p class="noindent" ><span class="head">
 <a 
  id="x1-2008r8"></a>
 <span 
@@ -473,12 +473,12 @@ but to see this, by L&#x2019;Hopital&#x2019;s Rule and continuity of the exponen
 \[\lim _{p \to 0}\big (\sum w_ix_i^p\big )^{\frac{1}{p}}=\lim _{p \to 0}e^{\log \big (\sum w_ix_i^p\big )^{\frac{1}{p}}} =e^{\lim _{p \to 0}\frac{\log \big (\sum w_ix_i^p\big )}{p}} = e^{\lim _{p \to 0}\frac{\sum w_ix_i^p \log (x_i)}{\big (\sum w_ix_i^p\big )}}\]\[ = e^{\sum w_i\log (x_i)} = \prod x_i^{w_i} \]
 </p><!--l. 110--><p class="indent" >  The following generalizes Theorem <a 
 href="#x1-2002r2">2.2<!--tex4ht:ref: amgm --></a>.
-</p>
-  <div class="newtheorem">
-<!--l. 111--><p class="noindent" ><span class="head">
                                                                                   
 
                                                                                   
+</p>
+  <div class="newtheorem">
+<!--l. 111--><p class="noindent" ><span class="head">
 <a 
  id="x1-2010r10"></a>
 <span 
@@ -522,11 +522,11 @@ get the inequality. <span class="qed"><span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-  </div>
-  <div class="newtheorem">
                                                                                   
 
                                                                                   
+  </div>
+  <div class="newtheorem">
 <!--l. 127--><p class="noindent" ><span class="head">
 <a 
  id="x1-2012r12"></a>
@@ -570,12 +570,12 @@ class="cmti-12">Proof.</span> </span>\(f(x)=x^p\) is convex, so \(|\frac{x+y}{2}
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-  </div>
-  <div class="newtheorem">
-<!--l. 146--><p class="noindent" ><span class="head">
                                                                                   
 
                                                                                   
+  </div>
+  <div class="newtheorem">
+<!--l. 146--><p class="noindent" ><span class="head">
 <a 
  id="x1-2014r14"></a>
 <span 
@@ -614,11 +614,11 @@ class="cmti-12">has a limit point.</span>
 class="cmti-12">Proof.</span> </span>If  not,  \(X\)  is  closed,  and  is  a  countable  compact  discrete  space,  which  is  a
 contradiction. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 166--><p class="noindent" ><span class="head">
@@ -658,12 +658,12 @@ class="cmti-12">is compact.</span>
 <!--l. 178--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose we have a covering with no &#xFB01;nite subcover. Then we can divide the
-unit cube into \(2^n\) pieces of half the size, and at least one of these must have the same
-property. We can keep doing this, getting a chain of cubes contained within one
-another with diameter approaching \(0\) such that this cover has no &#xFB01;nite subcover for
                                                                                   
 
                                                                                   
+unit cube into \(2^n\) pieces of half the size, and at least one of these must have the same
+property. We can keep doing this, getting a chain of cubes contained within one
+another with diameter approaching \(0\) such that this cover has no &#xFB01;nite subcover for
 any of these. But the intersection of these has diameter \(0\), but contains exactly \(1\) point
 by taking the limiting point of a sequence of points in each of the cubes in the chain.
 Taking an open set surrounding this point, we get a contradiction as in&#xFB01;nitely many
@@ -706,11 +706,11 @@ class="cmti-12">is compact i&#xFB00; any sequence has</span>
 <span 
 class="cmti-12">a convergent subsequence.</span>
 </p>
-  <div class="proof">
-<!--l. 192--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+  <div class="proof">
+<!--l. 192--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>&#x2018; Suppose any sequence has a convergent subsequence. Then the subset must
 be bounded or else we could take an increasingly large sequence. It must also be
@@ -753,10 +753,10 @@ class="cmti-12">All norms on &#xFB01;nite dimensional</span> \(\RR \)<span
 class="cmti-12">-vector spaces are equivalent.</span>
 </p>
   <div class="proof">
-<!--l. 208--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+<!--l. 208--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We will show every norm is equivalent to \(\Vert \cdot \Vert _\infty \). To do this, let \(\Vert \cdot \Vert \) be any norm, and
 we will show it is continuous with respect to \(\Vert \cdot \Vert _\infty \). In particular, if \(M = \max _i\Vert \delta _i \Vert \) we have \(\Vert x\Vert \leq \sum _1^n\Vert x_i\delta _i\Vert \leq M\sum _1^n|x_i| \leq Mn\Vert x\Vert _\infty \), so we have
@@ -845,11 +845,11 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 239--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>We induct on \(k\), for \(k =0\) we just have \(S^n-i(D_0) = \RR ^n\). For the induction step, we replace \(D^k\) with \(I^k\).
                                                                                   
 
                                                                                   
+<span 
+class="cmti-12">Proof.</span> </span>We induct on \(k\), for \(k =0\) we just have \(S^n-i(D_0) = \RR ^n\). For the induction step, we replace \(D^k\) with \(I^k\).
 Now we split \(I^k\) into two halves \(I^{k-1}\times [0,\frac{1}{2}],I^{k-1}\times [\frac{1}{2},1]\) and by Mayer-Vietoris and induction we have \(\tilde{H}_*(S^n-I^k) \hookrightarrow \tilde{H}_*(I^{k-1}\times [0,\frac{1}{2}])\oplus \tilde{H}_*(I^{k-1}\times [\frac{1}{2},1])\) is an
 isomorphism. If there were a nontrivial &#x0028;reduced&#x0029; cycle \(\alpha \) in \(H_*(S^n-I^k)\) it would land nontrivially
 in one of the two summands on the right, and we could repeatedly cut these up into
@@ -892,11 +892,11 @@ class="cmbx-12">.</span>  </span> <span
 class="cmti-12">An injective map</span> \(\RR ^n \to \RR ^n\) <span 
 class="cmti-12">is open.</span>
 </p>
-  <div class="proof">
-<!--l. 255--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+  <div class="proof">
+<!--l. 255--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By  Theorem  <a 
 href="#x1-3012r12">3.12<!--tex4ht:ref: jordancurve --></a>,  the  boundary  of  an  embedding  \(D^n \to \RR ^n\)  separates  \(\RR ^n\)  into  two
@@ -943,10 +943,10 @@ class="cmti-12">is compact is</span>
 class="cmti-12">uniformly continuous.</span>
 </p>
   <div class="proof">
-<!--l. 271--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+<!--l. 271--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Take the preimages of \(\ee \) balls around each point in \(T\) to make a cover of \(S\). The
 Lebesgue number of this cover is a uniform \(\delta \) for this \(\ee \). <span class="qed"><span 
@@ -995,10 +995,10 @@ class="cmti-12">3.16</span><!--tex4ht:ref: uniflimitthm --></a><span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 292--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+<!--l. 292--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>For any \(\ee &gt;0\), there is a neighborhood around each point \(x\in X\), \(U_x\) such that \(f(y)\) is within \(\ee /2\)
 of \(f(x)\) for any \(y \in U_x\). Then make a &#xFB01;nite cover of these \(U_x\) and take the maximum \(N\) for each of
@@ -1039,13 +1039,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
  id="x1-40004"></a>Derivatives</h3>
 <!--l. 304--><p class="noindent" >Let \(\FF \) from now on denote \(\CC \) or \(\RR \).
 </p>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
 <!--l. 305--><p class="noindent" ><span class="head">
 <a 
@@ -1089,11 +1089,11 @@ or it attains some maximum/minimum on the interior of the interval, which by
 Proposition <a 
 href="#x1-4001r1">4.1<!--tex4ht:ref: extrema --></a> yields a point \(c\) with \(h'(c) = 0\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
 <!--l. 322--><p class="indent" >  Note that the Mean Value Theorem is most often used in the case where \(g(x) = x\).
 </p><!--l. 324--><p class="indent" >  The chain rule is the theorem that in the category \(\Diff \), \(d\) is an endofunctor that takes a
@@ -1140,12 +1140,12 @@ class="cmbx-12">.</span>  </span> \[\partial _i(f(x)g(x)) = \partial _if(x)g(x) 
 </p>
   <div class="proof">
 <!--l. 350--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>Use the chain rule on the composite \(x \mapsto (f(x),g(x)) \mapsto f(x)g(x)\) and \(x \mapsto (f(x),g(x)) \mapsto \frac{f(x)}{g(x)}\). <span class="qed"><span 
-class="msam-10x-x-120">&#x25A1;</span></span>
                                                                                   
 
                                                                                   
+<span 
+class="cmti-12">Proof.</span> </span>Use the chain rule on the composite \(x \mapsto (f(x),g(x)) \mapsto f(x)g(x)\) and \(x \mapsto (f(x),g(x)) \mapsto \frac{f(x)}{g(x)}\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
@@ -1193,11 +1193,11 @@ class="cmti-12">Proof.</span> </span>Consider the function \(g:[0,1] \to U\) goi
 <a 
 href="#x1-4002r2">4.2<!--tex4ht:ref: mvt --></a> we have \((f\circ g)'(c) = f(b)-f(a)\), and we can use the chain rule to get \((f\circ g)'(c)= f'(g(c))g'(c)=f'(g(c))(b-a)\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 367--><p class="noindent" ><span class="head">
@@ -1250,11 +1250,11 @@ class="cmti-12">is uniformly continuous.</span>
 class="cmti-12">Proof.</span> </span>Corollary <a 
 href="#x1-4007r7">4.7<!--tex4ht:ref: mvineq --></a> gives \(\Vert f(x)-f(y) \Vert _2 \leq M\Vert x-y\Vert \). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 390--><p class="noindent" ><span class="head">
@@ -1302,11 +1302,11 @@ di&#xFB00;erentiable in each component. Now &#xFB01;x an \(h\) in a small enough
 Proposition \(\ref{mvt}\): \[f(a_1+h_1,\dots ,a_i+h_i,a_{i+1},\dots ,a_n) - f(a_1+h_1,\dots ,a_{i-1}+h_{i-1},a_{i},\dots ,a_n)\] \[= h_i\partial _if(a_1+h_1,\dots ,a_{i-1}+h_i, \alpha _i,a_{i+1},\dots ,a_n)\] where \(\alpha _i \in (a_i,a_i+h_i)\). Now we have \[f(a+h)-f(a) = \sum _ih_i\partial _if(a_1+h_1,\dots a_{i-1}+h_{i-1},\alpha _i,a_{i+1}+h_{i+1},\dots ,a_n) \] \[=h(\partial _if(a)) + \ee \] where \[\frac{\Vert \ee \Vert }{\Vert h\Vert } \leq \sum _i\Vert \partial _if(a_i+h_i,\dots ,\alpha _i,\dots ,a_n)-\partial _if(a)\Vert \] which tends to \(0\) as \(h \to 0\) by continuity of
 the partial derivatives. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 418--><p class="noindent" ><span class="head">
@@ -1360,11 +1360,11 @@ href="#x1-4002r2">4.2<!--tex4ht:ref: mvt --></a> many times, &#xFB01;rst on the 
 repeating this on \(R'(0)=R'(a_1)=0\). Then &#xFB01;nally we will have a \(a_{k+1}\) with \(R^{(k+1)}(a_{k+1}) = 0\), at which point taking the \(k+1^{th}\)
 derivative yields \(0=R^{(k+1)}(a_k) = f^{(k+1)}(a+a_{k+1})-c\), so we are done. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 438--><p class="noindent" ><span class="head">
@@ -1415,14 +1415,14 @@ class="cmti-12">series is absolutely convergent.</span>
 </p>
   <div class="proof">
 <!--l. 453--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>WLOG \(c_n \geq 0\). Then note that \(R_n-1 = \frac{1}{c_n}(c_n(n-1)-c_{n+1}n)\) so \(0 \leq c_n = \frac{c_n(n-1)-c_{n+1}n}{R_n-1}\). By hypothesis \(R_n-1\) stays away from \(0\) for large \(n\)
 so it su&#xFB03;ces to show \(c_n(n-1)-c_{n+1}n\), which is positive for large \(n\), converges. But \(\sum _1^mc_n(n-1)-c_{n+1}n = -c_{m+1}m\) is monotonically
 increasing for large \(m\) and bounded above by \(0\) so converges to a limit. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
@@ -1462,15 +1462,15 @@ class="cmti-12">has the same radius of convergence.</span>
 </p>
   <div class="proof">
 <!--l. 469--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>First note by Proposition <a 
 href="#x1-5002r2">5.2<!--tex4ht:ref: radconv --></a> since \(n^{1/n} \to 1\) as \(n \to \infty \) we have that \(\sum _0^\infty nc_nz^{n-1}\) has the same radius of
 convergence.
 </p><!--l. 471--><p class="indent" >  Let \(z_0,z_0+h\) lie in radius \(r\), which is less than the radius of convergence. \[\left |\frac{\sum _0^\infty c_j(z_0+h)^j-\sum _0^\infty c_jz_0^j}{h}-\sum _0^\infty c_jjz_0^{j-1}\right |\] \[= |\ee _n(h)| + \left |\frac{\sum _{n+1}^\infty c_j(z_0+h)^j-\sum _{n+1}^\infty c_jz_0^j}{h}\right |+|\sum _{n+1}^\infty c_jjz_0^{j-1}|\] where \(\ee _n(h)\) is the
 error from the \(n^{th}\) partial sum&#x2019;s approximation by its derivative. Since \(a^j-b^j = (a-b)(a^{j-1}+a^{j-2}b+\dots +b^{j-1})\) we have \(|\frac{(z_0+h)^j-z_0^j}{h}|\leq jr^{j-1}\). For
-                                                                                  
-
-                                                                                  
 any \(\ee &gt;0\), we can choose \(n\) large enough so that \(\sum _{n+1}^\infty jc_jr^{j-1}&lt;\ee \). Afterwards we can choose \(h\) small enough
 so \(\ee _n(h)&lt;\ee \). Then continuing from above we get \[\leq \ee + \ee + \ee = 3\ee \] concluding the proof. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -1516,13 +1516,13 @@ class="cmti-12">converges</span>
 class="cmti-12">and is analytic within radius of</span> \(R-|a|\)<span 
 class="cmti-12">.</span>
 </p>
+                                                                                  
+
+                                                                                  
   <div class="proof">
 <!--l. 497--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Inside \(|z|&lt;R-|a|\) the power series absolutely converges, and we would like to recenter
-                                                                                  
-
-                                                                                  
 around 0. WLOG \(a\) is real and non-negative. For \(0&lt;x&lt;R-|a|\) we have \[ \sum _0^\infty c_i(a+x)^i = \sum _0^\infty c_i \sum _{j=0}^i\binom i j a^{i-j}x^j \] We can then split the inner
 sum up into separate terms, still absolutely convergent as everything is non-negative,
 and then we can collect like powers of \(x\) to get \[\sum _0^\infty c_i(a+x)^i = \sum _0^\infty \Big (\sum _m^\infty c_i\binom i m a^{i-m}\Big )x^m\] so \(f(a+z)\) has a power series that converges
@@ -1564,14 +1564,14 @@ class="cmti-12">. It converges absolutely and uniformly on the interval</span> \
 class="cmti-12">when</span> \(a&gt;0\)<span 
 class="cmti-12">.</span>
 </p>
+                                                                                  
+
+                                                                                  
   <div class="proof">
 <!--l. 518--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>That this is analytic follows from Lemma <a 
 href="#x1-5006r6">5.6<!--tex4ht:ref: companalytic --></a>, and that it is holomorphic of
-                                                                                  
-
-                                                                                  
 radius \(1\) comes from Hadamard&#x2019;s formula. Now when \(z \in [-1,1]\), for \(n&gt;a&gt;0\) we have \(n\bigg (1-\Big |\frac{\binom a{n+1}}{\binom a n}z\Big |\bigg ) \geq n\bigg (1-\Big |\frac{\binom a{n+1}}{\binom a n}\Big |\bigg ) = n\big (1-\frac{n-a}{n+1}\big ) = \frac{n(1+\alpha )}{n+1}\) which is larger
 than \(1\) for su&#xFB03;ciently large \(n\) so by Lemma <a 
 href="#x1-5001r1">5.1<!--tex4ht:ref: raabe --></a> and Theorem <a 
@@ -1616,13 +1616,13 @@ class="cmti-12">that separates</span>
 <span 
 class="cmti-12">points is dense.</span>
 </p>
+                                                                                  
+
+                                                                                  
   <div class="proof">
 <!--l. 533--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Let \(A\) be a \(\RR \)-subalgebra of \(\cC (S,\RR )\) that separates points. If \(f \in \bar{A}\), then \(|f| \in \bar{A}\) as \(f\) has a bounded
-                                                                                  
-
-                                                                                  
 image so by Lemma <a 
 href="#x1-5008r8">5.8<!--tex4ht:ref: absapprox --></a> \(|f|\) can be approximated uniformly by polynomials in \(f\), which
 are in \(\bar{A}\).
@@ -1660,15 +1660,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">6. </span> <a 
  id="x1-60006"></a>Endomorphisms</h3>
   <div class="newtheorem">
 <!--l. 552--><p class="noindent" ><span class="head">
 <a 
  id="x1-6001r1"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Lemma 6.1 </span>&#x0028;Adjugates&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
@@ -1710,14 +1710,14 @@ class="cmti-12">Proof.</span> </span>\(p(A)v=p(\lambda )v\) is a linear combinat
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 566--><p class="noindent" ><span class="head">
 <a 
  id="x1-6003r3"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Theorem 6.3 </span>&#x0028;Cayley-Hamilton&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
@@ -1768,12 +1768,12 @@ this follows from Theorem <a
 href="#x1-6003r3">6.3<!--tex4ht:ref: cayleyhamilton --></a> by noting that the coe&#xFB03;cients of \(\chi _f(x)\) are of the form
 described. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
+  </div>
   <div class="newtheorem">
 <!--l. 580--><p class="noindent" ><span class="head">
 <a 
@@ -1824,13 +1824,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
 <!--l. 596--><p class="noindent" ><span class="head">
 <a 
  id="x1-6007r7"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Corollary 6.7 </span>&#x0028;Nakayama&#x2019;s Lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
@@ -1884,13 +1884,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 612--><p class="noindent" >Note if the ring is not local, we can replace \(m\) by the Jacobson radical and Nakayama&#x2019;s
 Lemma still holds.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
 <!--l. 614--><p class="noindent" ><span class="head">
 <a 
  id="x1-6009r9"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Proposition 6.9.</span>  </span><span 
 class="cmti-12">Every endomorphism</span> \(f:V\to V\) <span 
@@ -1943,13 +1943,13 @@ element sent to a generator of the image, \(x_1\), which WLOG is nonzero. Now if
 so we can project orthogonal to \(r_1\) via a section \(s_1:R \to R^n\) taking \(1 \mapsto r_1\). Our projection \(o_1(x) = x-s_1\circ f_1(x)\). This section
 gives \(R^n = r_1R\oplus o_1(R)\). The projection to \(o_1(R)\) is surjective, and by removing an appropriate generator
 and localizing at \((0)\), we see that our new module must be free of rank \(n-1\). Now we apply
+                                                                                  
+
+                                                                                  
 induction to get \(y_2,\dots ,y_n\) and \(r_2,\dots ,r_n\), and by looking at \(f_1\) we get \(x_1|x_2\). Uniqueness also follows from
 induction. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
-                                                                                  
-
-                                                                                  
   </div>
   </div>
   <div class="newtheorem">
@@ -1999,14 +1999,14 @@ class="cmti-12">up to units.</span>
 </p>
   <div class="proof">
 <!--l. 647--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>A &#xFB01;nitely generated module over a PID is a quotient of a &#xFB01;nite rank free
 module, which has the correct form according to Proposition <a 
 href="#x1-6010r10">6.10<!--tex4ht:ref: fgfreePID --></a>. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
@@ -2057,12 +2057,12 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 670--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>If \(V\) is dimension \(n\) we can consider the \(F[T]\) module homomorphism \(F[T]^n \to V\) mapping the
-generators \(r_i\) surjectively onto an \(F\)-basis \(v_i\) of \(V\). Now the elements \(y_i=Tr_j-\sum _1^i(a_{ij}r_i)\) are in the kernel but
                                                                                   
 
                                                                                   
+<span 
+class="cmti-12">Proof.</span> </span>If \(V\) is dimension \(n\) we can consider the \(F[T]\) module homomorphism \(F[T]^n \to V\) mapping the
+generators \(r_i\) surjectively onto an \(F\)-basis \(v_i\) of \(V\). Now the elements \(y_i=Tr_j-\sum _1^i(a_{ij}r_i)\) are in the kernel but
 note that \(\sum _iy_iF[T] + \sum _ir_iF = \sum _ir_iF[T] = F[T]^n\), so \(y_i\) actually generate the kernel. The \(y_i\) have the relations matrix \(xI-A^{t}\), so by
 Corollary <a 
 href="#x1-6011r11">6.11<!--tex4ht:ref: smithcanform --></a> after a change of basis it is in Smith Normal Form with invariant
@@ -2113,11 +2113,11 @@ class="cmbx-12">.</span>  </span><span
 class="cmti-12">A  matrix  is  diagonalizable  i&#xFB00;  its</span>
 <span 
 class="cmti-12">Jordan Canonical Form is diagonal i&#xFB00; its minimal polynomial is separable.</span>
-</p>
-  <div class="proof">
                                                                                   
 
                                                                                   
+</p>
+  <div class="proof">
 <!--l. 696--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By uniqueness of the Jordan Canonical Form the &#xFB01;rst statement is true, and
@@ -2153,6 +2153,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 709--><p class="noindent" ><span class="head">
 <a 
  id="x1-7001r1"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Lemma 7.1.</span>  </span> <span 
 class="cmti-12">If</span> \(f:\Sym ^2V\to F\) <span 
@@ -2162,9 +2165,6 @@ class="cmti-12">, there is an</span>
 <span 
 class="cmti-12">element so that</span> \(f(v\otimes v)\neq 0\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
 <!--l. 713--><p class="indent" >  <span class="head">
@@ -2220,12 +2220,12 @@ class="cmti-12">-orthogonal basis. Hence</span> \(f\) <span
 class="cmti-12">is represented by a diagonal</span>
 <span 
 class="cmti-12">matrix.</span>
-</p>
-  <div class="proof">
-<!--l. 729--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+</p>
+  <div class="proof">
+<!--l. 729--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(f\) is \(0\), any basis will do. If not, by induction, Lemma <a 
 href="#x1-7001r1">7.1<!--tex4ht:ref: char2lemma --></a> and Proposition <a 
@@ -2270,6 +2270,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 740--><p class="noindent" ><span class="head">
 <a 
  id="x1-7005r5"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Proposition 7.5 </span>&#x0028;Sylvester&#x2019;s Criterion&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -2279,9 +2282,6 @@ class="cmti-12">is  positive</span>
 class="cmti-12">de&#xFB01;nite i&#xFB00; the principle minors are positive, and negative i&#xFB00; the odd principle minors</span>
 <span 
 class="cmti-12">are negative and the even ones positive.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
 <!--l. 744--><p class="indent" >  <span class="head">
@@ -2322,10 +2322,10 @@ neighborhood of \(0\). The corresponding argument yields the other result. <span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-  </div>
                                                                                   
 
                                                                                   
+  </div>
   <h3 class="sectionHead"><span class="titlemark">8. </span> <a 
  id="x1-80008"></a>Inner Product Spaces</h3>
   <div class="newtheorem">
@@ -2371,11 +2371,11 @@ class="cmti-12">Proof.</span> </span>For the &#xFB01;rst part, \(v \in \ker (T)\
 we can have an orthonormal basis for \(W\), and extend it to an orthonormal basis for \(V\),
 the remaining vectors making up a basis for \(W^\perp \). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 785--><p class="noindent" ><span class="head">
@@ -2426,6 +2426,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 795--><p class="noindent" ><span class="head">
 <a 
  id="x1-8005r5"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Proposition 8.5.</span>  </span><span 
 class="cmti-12">If</span> \(T\) <span 
@@ -2435,9 +2438,6 @@ class="cmti-12">and</span>
 class="cmti-12">then</span> \(T\) <span 
 class="cmti-12">is normal.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 799--><p class="indent" >  <span class="head">
 <span 
@@ -2478,15 +2478,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 812--><p class="noindent" ><span class="head">
 <a 
  id="x1-8007r7"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Lemma 8.7.</span>  </span><span 
 class="cmti-12">The eigenvalues of a self-adjoint endomorphism</span> \(T\) <span 
 class="cmti-12">on a vector space</span> \(V\)
 <span 
 class="cmti-12">are real.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
 <!--l. 816--><p class="indent" >  <span class="head">
@@ -2527,10 +2527,10 @@ complement again, so we can repeat until we get an orthonormal basis of eigenvec
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-  </div>
                                                                                   
 
                                                                                   
+  </div>
   <h3 class="sectionHead"><span class="titlemark">9. </span> <a 
  id="x1-90009"></a>Geometry of Mappings</h3>
   <div class="newtheorem">
@@ -2589,11 +2589,11 @@ class="cmti-12">that only change one variable.</span>
 </p>
   <div class="proof">
 <!--l. 854--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>WLOG, \(a = f(a) = 0\). We say that \(f\) is of type \(r\) if \(f\) doesn&#x2019;t change at least \(r-1\) coordinates. By
                                                                                   
 
                                                                                   
+<span 
+class="cmti-12">Proof.</span> </span>WLOG, \(a = f(a) = 0\). We say that \(f\) is of type \(r\) if \(f\) doesn&#x2019;t change at least \(r-1\) coordinates. By
 induction it su&#xFB03;ces to show that if \(f\) is type \(r\), then there is a \(\cC ^1\) di&#xFB00;eomorphism \(\phi \) so that
 \(f \circ \phi \) is type \(r+1\), so we assume \(f\) &#xFB01;xes the &#xFB01;rst \(r-1\) coordinates, denoting these \(x_I\), and denoting
 the last \(n-r\) coordinates \(x_{II}\). Then after some relabeling \(f'\) looks like \[\begin{pmatrix} I_{r-1}&amp;0&amp;0\\ \partial _If_r&amp;\partial _rf_r&amp;\partial _{II}f_r\\ \partial _If_{II}&amp;\partial _rf_{II}&amp;\partial _{II}f_{II} \end{pmatrix}\] Since \(f'(x)\) is invertible near
@@ -2644,11 +2644,11 @@ class="cmti-12">so indeed</span> \(f\circ \phi \) <span
 class="cmti-12">is locally linear.</span>
 </p>
   </div>
-  <div class="newtheorem">
-<!--l. 891--><p class="noindent" ><span class="head">
                                                                                   
 
                                                                                   
+  <div class="newtheorem">
+<!--l. 891--><p class="noindent" ><span class="head">
 <a 
  id="x1-9004r4"></a>
 <span 
@@ -2702,11 +2702,11 @@ implicit functions in \(k\) variables. Conversely if \(V\) is given locally by i
 in \(k\) variables, those implicit functions are a \(\cC ^1\) di&#xFB00;eomorphism to a linear embedding of
 \(\RR ^k\) in \(\RR ^n\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
 <!--l. 907--><p class="indent" >  Note that the \(n=m=r\) case of the Rank Theorem below is the Inverse Mapping Theorem.
 </p>
@@ -2770,14 +2770,14 @@ class="cmti-12">-submanifold of</span> \(\RR ^n\)<span
 class="cmti-12">, and the preimage of</span> \(f(a)\) <span 
 class="cmti-12">is a</span> \(\cC ^1\) \(m-r\)<span 
 class="cmti-12">-submanifold</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">if</span> \(f\) <span 
 class="cmti-12">is restricted close enough to</span> \(a\)<span 
 class="cmti-12">.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 924--><p class="indent" >  <span class="head">
 <span 
@@ -2822,15 +2822,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">10. </span> <a 
  id="x1-1000010"></a>Integration</h3>
   <div class="newtheorem">
 <!--l. 938--><p class="noindent" ><span class="head">
 <a 
  id="x1-10001r1"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Lemma 10.1.</span>  </span> <span 
 class="cmti-12">A countable union</span> \(\cup _iU_i\) <span 
@@ -2875,12 +2875,12 @@ href="#x1-10001r1">10.1<!--tex4ht:ref: meas0 --></a> there is an \(\ee \)
 such that the set of points with oscillation \(\geq \ee \) cannot be covered by cells of size smaller
 than \(\delta \), so \(\sum _{\Delta \in \cP }o_f(\Delta )|\Delta |\) is larger than than \(\ee \delta \). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
+  </div>
 <!--l. 957--><p class="noindent" >Note for some of the following theorems the conditions on the function may be made
 weaker, ie. it can be just continuous, di&#xFB00;erentiable on the interior, with a bounded and
 almost everywhere continuous derivative.
@@ -2929,11 +2929,11 @@ class="cmti-12">Proof.</span> </span>This follows from linearity, Corollary <a
 href="#x1-4004r4">4.4<!--tex4ht:ref: prodquotrule --></a>, and Theorem <a 
 href="#x1-10003r3">10.3<!--tex4ht:ref: 2ndfdthmcalc --></a>. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
                                                                                   
 
                                                                                   
+</p>
+  </div>
   </div>
   <div class="newtheorem">
 <!--l. 974--><p class="noindent" ><span class="head">
@@ -2979,12 +2979,12 @@ class="cmti-12">Proof.</span> </span>Scaling is obvious, so it su&#xFB03;ces to 
 so that \(S_*(f,\cP _1),S_*(g,\cP _2)\) di&#xFB00;er by at most \(\frac{\ee }{2}\) from \(\int _D f,\int _D g\). Then taking a common re&#xFB01;nement \(\cP \), we have that \(S_*(f+g)\)
 di&#xFB00;ers from \(\int _D (f+g)\) by at most \(\ee \). A similar argument can be made for the upper integral. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-</p>
-  </div>
-  <div class="newtheorem">
                                                                                   
 
                                                                                   
+</p>
+  </div>
+  <div class="newtheorem">
 <!--l. 991--><p class="noindent" ><span class="head">
 <a 
  id="x1-10007r7"></a>
@@ -3032,12 +3032,12 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 1007--><p class="noindent" ><span class="head">
-<a 
- id="x1-10009r9"></a>
                                                                                   
 
                                                                                   
+<!--l. 1007--><p class="noindent" ><span class="head">
+<a 
+ id="x1-10009r9"></a>
 <span 
 class="cmbx-12">Theorem 10.9 </span>&#x0028;Invariance of the Integral&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
@@ -3084,11 +3084,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   <div class="newtheorem">
 <!--l. 1022--><p class="noindent" ><span class="head">
-<a 
- id="x1-10011r11"></a>
                                                                                   
 
                                                                                   
+<a 
+ id="x1-10011r11"></a>
 <span 
 class="cmbx-12">Theorem 10.11 </span>&#x0028;Fubini&#x2019;s Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
@@ -3138,11 +3138,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   <div class="newtheorem">
 <!--l. 1044--><p class="noindent" ><span class="head">
-<a 
- id="x1-10013r13"></a>
                                                                                   
 
                                                                                   
+<a 
+ id="x1-10013r13"></a>
 <span 
 class="cmbx-12">Proposition 10.13.</span>  </span> <span 
 class="cmti-12">Any open set</span> \(U \subset \RR ^m\) <span 
@@ -3191,12 +3191,12 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 1059--><p class="noindent" ><span class="head">
-<a 
- id="x1-10015r15"></a>
                                                                                   
 
                                                                                   
+<!--l. 1059--><p class="noindent" ><span class="head">
+<a 
+ id="x1-10015r15"></a>
 <span 
 class="cmbx-12">Theorem 10.15 </span>&#x0028;Change of Variables&#x0029;<span 
 class="cmbx-12">.</span>  </span>  <span 
@@ -3250,11 +3250,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
  id="x1-1100011"></a>Line Integrals</h3>
   <div class="newtheorem">
 <!--l. 1083--><p class="noindent" ><span class="head">
-<a 
- id="x1-11001r1"></a>
                                                                                   
 
                                                                                   
+<a 
+ id="x1-11001r1"></a>
 <span 
 class="cmbx-12">Lemma 11.1.</span>  </span> <span 
 class="cmti-12">If</span> \(\psi :[a,b]\to \RR ^n\) <span 
@@ -3306,10 +3306,10 @@ class="cmti-12">is continuously monotonically increasing,</span>
 class="cmti-12">and is constant on a subinterval</span> \([a,b]\) <span 
 class="cmti-12">i&#xFB00;</span> \(\psi \) <span 
 class="cmti-12">is.</span>
-</p>
                                                                                   
 
                                                                                   
+</p>
   <div class="proof">
 <!--l. 1100--><p class="indent" >  <span class="head">
 <span 
@@ -3351,12 +3351,12 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 1119--><p class="noindent" >The arc length gives a natural parameterization of a curve for integration of a function,
-but this is unnecessary for line integration over a vector &#xFB01;eld. A vector &#xFB01;eld should be
-thought of as a section of the tangent bundle.
                                                                                   
 
                                                                                   
+<!--l. 1119--><p class="noindent" >The arc length gives a natural parameterization of a curve for integration of a function,
+but this is unnecessary for line integration over a vector &#xFB01;eld. A vector &#xFB01;eld should be
+thought of as a section of the tangent bundle.
 </p>
   <div class="newtheorem">
 <!--l. 1121--><p class="noindent" ><span class="head">
@@ -3416,6 +3416,9 @@ class="cmti-12">is a conservative vector &#xFB01;eld in a connected open set</sp
 class="cmti-12">with</span> \(\cC ^1\) <span 
 class="cmti-12">potential</span> \(h\)<span 
 class="cmti-12">,</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">and</span> \(\gamma \) <span 
 class="cmti-12">is a</span> \(\cC ^1\) <span 
@@ -3429,9 +3432,6 @@ class="cmti-12">is</span> \(\cC ^1\)
 <span 
 class="cmti-12">satis&#xFB01;es this property is also su&#xFB03;cient for it to be conservative.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 1136--><p class="indent" >  <span class="head">
 <span 
@@ -3487,13 +3487,13 @@ class="cmti-12">is de&#xFB01;ned as the linear map sending</span> \(x_I\in \bigw
 class="cmti-12">to</span> \(\ee (IJ)x_J\in \bigwedge ^{n-r}M\) <span 
 class="cmti-12">where</span> \(\ee \) <span 
 class="cmti-12">is the sign</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">of the permutation, and</span> \(I,J\) <span 
 class="cmti-12">are reduced.</span>
 </p>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 1152--><p class="noindent" ><span class="head">
@@ -3532,13 +3532,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
 <!--l. 1166--><p class="indent" >  We will work in the smooth category of \(\cC ^\infty \) functions for simplicity, but if one is careful it
 is possible to treat \(\cC ^r\) functions. We think of the <span 
 class="cmbx-12">de Rham complex</span> \(\bigwedge (D)\) of \(D\subset \RR ^n\) as the exterior
 algebra of the \(\cC ^\infty (D)\)-module of smooth sections of the cotangent bundle \(T^*(D)\), where \(\bigwedge ^r(D)\) is a free
-                                                                                  
-
-                                                                                  
 module of rank \(\binom n r\). Elements of \(\bigwedge ^r(D)\) are called <span 
 class="cmbx-12">di&#xFB00;erential r-forms</span>. Since here \(D\) is in \(\RR ^n\), by
 choosing an orientation \(x_1\dots x_n\) of \(\RR ^n\), we determine a basis for \(\bigwedge ^1(D)\), \(dx_1\dots dx_n\), namely \(dx_1\) is the section taking every
@@ -3589,13 +3589,13 @@ class="cmti-12">Moreover it is characterized by these properties.</span>
 class="cmti-12">Proof.</span> </span>\(d\) is clearly linear and satis&#xFB01;es the &#xFB01;rst property by de&#xFB01;nition. The second
 follows from the product rule with the \((-1)^r\) coming from moving the derivative of each \(g\)
 in the \(\sigma \) to the right place. For the third, it su&#xFB03;ces to show that \(ddf = 0\) for a function, but
+                                                                                  
+
+                                                                                  
 this is true by Theorem <a 
 href="#x1-4010r10">4.10<!--tex4ht:ref: partialssame --></a> since \(ddf = \sum _{i,j}\partial _i\partial _jdx_idx_j = 0\). To see that \(d\) is characterized by these properties,
 note that by induction \(d(dx_I) = 0\), so this allows us to compute \(d(f\wedge dx_I)\) as de&#xFB01;ned. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
@@ -3634,11 +3634,11 @@ class="cmti-12">complexes.</span>
 </p>
   <div class="proof">
 <!--l. 1201--><p class="indent" >  <span class="head">
-<span 
-class="cmti-12">Proof.</span> </span>Let&#x2019;s consider the pullback of a map \(\phi :D\to E\), \(D \subset \RR ^m\), \(E\subset \RR ^n\). The pullback is the composite of
                                                                                   
 
                                                                                   
+<span 
+class="cmti-12">Proof.</span> </span>Let&#x2019;s consider the pullback of a map \(\phi :D\to E\), \(D \subset \RR ^m\), \(E\subset \RR ^n\). The pullback is the composite of
 maps along the functor \(\bigwedge (d(-))^*\), which is a functor by the chain rule, so it is a functor. By
 de&#xFB01;nition pullback is a map of algebras, and so we must check it commutes with the
 exterior derivative. For any function \(f:E\to \RR \) we have by the chain rule \(\phi ^*(df) = \phi ^*(\sum _i\partial _ifdx_i) = \sum _i(\partial _if \circ \phi )(\sum _j\partial _j\phi _idy_j)\) \(= \sum _j\sum _i(\partial _jf\circ \phi )\partial _j\phi _idy_j = \sum _i\partial _i(f\circ \phi )dy_i= d(f\circ \phi ) = d(\phi ^*(f))\). Now by linearity
@@ -3676,13 +3676,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">13. </span> <a 
  id="x1-1300013"></a>Integrals of Di&#xFB00;erential Forms</h3>
 <!--l. 1218--><p class="noindent" >If we have an orientation \(y_1\dots y_n\) on \(\RR ^n\), we de&#xFB01;ne \(\int _Efdy_1\wedge \dots \wedge dy_n = \int _Ef\) for \(E\subset \RR ^n\).
 </p>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
 <!--l. 1220--><p class="noindent" ><span class="head">
 <a 
@@ -3730,14 +3730,14 @@ class="cmbx-12">normal unit</span>
 <span 
 class="cmbx-12">vector</span>, and we can write \(\partial _1\phi \times \partial _2\phi = \nu \Vert \partial _1\phi \times \partial _2\phi \Vert _2\). Now we can interpret \(\int _\Delta \Vert \partial _1\phi \times \partial _2\phi \Vert _2 = \int _\phi 1dS\) as the surface area, and write
 \(\int _\phi \omega = \int _\phi f\cdot \nu dS\).
+                                                                                  
+
+                                                                                  
 </p><!--l. 1234--><p class="indent" >  We would like to integrate over chains rather than cells, so we de&#xFB01;ne a <span 
 class="cmbx-12">singular</span> \(n\)<span 
 class="cmbx-12">-chain</span>
 as a &#xFB01;nite formal sum of singular \(n\) cells. We can let \(\Delta (x_1,\dots ,x_n)\) be the unit cell in \(\RR ^n\) with that
 orientation, and then let its boundary be de&#xFB01;ned as the singular \(n-1\)-chain \[\partial \Delta (x_1,\dots ,x_n) = \sum _{i=1}^n\sum _{\ee = 0}^1(-1)^{i+\ee }\Delta (x_1,\dots ,\ee ,\dots ,x_n) \] where \(\ee \) denotes the
-                                                                                  
-
-                                                                                  
 part of the boundary restricting \(x_i\) to \(\ee \). For a singular \(n\)-chain \(\phi \), we de&#xFB01;ne \(\partial \phi = \phi (\partial \Delta (x_1,\dots ,x_n))\). We then have our
 notions of boundary and cycle for chains.
 </p>
@@ -3780,13 +3780,13 @@ class="cmti-12">.</span>
 <!--l. 1253--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Since pullback commutes with exterior derivative and integration over chains
+                                                                                  
+
+                                                                                  
 is linear, it su&#xFB03;ces to prove this on the unit cell \(\Delta (x_1,\dots ,x_n)\) for a \(n-1\)-form \(\omega = f dX_r\) where \(dX_r\) indicates \(dx_r\) is
 missing from \(dX = dx_1\wedge \dots \wedge dx_n\). This way \(d\omega = (-1)^{r-1}\partial _rfdX\). Similarly let \(\Delta \) denote the cell, \(\Delta _{r,e}\) denote the boundary on the
 \(r^{th}\) side with \(\ee \), \(\Delta _r\) denote the cell \(\Delta \) with the \(r\) dimension missing. Then from Theorem <a 
 href="#x1-10011r11">10.11<!--tex4ht:ref: fubini --></a>
-                                                                                  
-
-                                                                                  
 and Theorem <a 
 href="#x1-10003r3">10.3<!--tex4ht:ref: 2ndfdthmcalc --></a> we get \[ \int _\Delta d\omega = (-1)^{r-1}\int _\Delta \partial _rfdX= (-1)^{r-1}\int _{\Delta _r}\int _{\Delta (x_r)}\partial _rf\]\[= (-1)^{r+1}\int _{\Delta _{r,1}}f(x_1,\dots ,1,\dots ,x_n)+(-1)^{r}\int _{\Delta _{r,0}}f(x_1,\dots ,0,\dots ,x_n) = \int _{\partial \Delta }fdX_r \] Where \(\int _{\partial \Delta }fdX_r\) vanishes on all other parts of the boundary as on
 \(\Delta _{i,\ee }\) with \(i\neq r\) the \(x_i\) part is constant, so pulling back yields the form \(0\). <span class="qed"><span 
@@ -3838,12 +3838,12 @@ class="cmti-12">-chain</span> \(\cC \) <span
 class="cmti-12">and</span> \(\omega = \sum _if_idX_i\) <span 
 class="cmti-12">is an</span> \(n-1\)<span 
 class="cmti-12">-form, then </span>\[\int _D\sum _i(-1)^{i-1}\partial _if_i = \int _{\partial \cC }\omega \]
-</p>
-  <div class="proof">
-<!--l. 1275--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+</p>
+  <div class="proof">
+<!--l. 1275--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from Theorem <a 
 href="#x1-13003r3">13.3<!--tex4ht:ref: stokesthm --></a> and Theorem <a 
@@ -3886,6 +3886,9 @@ as total &#xFB02;ow of a substance moving across the curve with velocity given b
 <!--l. 1292--><p class="noindent" ><span class="head">
 <a 
  id="x1-13007r7"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Corollary 13.7 </span>&#x0028;Gauss&#x2019;s Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -3896,9 +3899,6 @@ class="cmti-12">-chain</span> \(\cC \)<span
 class="cmti-12">, then</span>
 \[\int _{\partial \cC }f_1dx_2\wedge dx_3+f_2dx_3\wedge dx_1 + f_3dx_1\wedge dx_2 = \int _D\sum _{i=1}^3\partial _if_i\]
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 1296--><p class="indent" >  <span class="head">
 <span 

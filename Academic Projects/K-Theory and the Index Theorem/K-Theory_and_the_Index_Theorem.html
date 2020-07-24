@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en" > 
 <head> <title>K-Theory and the Index Theorem</title> 
 <meta  charset="UTF-8"" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="K-Theory_and_the_Index_Theorem.css" /> 
 <meta name="src" content="K-Theory_and_the_Index_Theorem.tex" /> 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ 'fast-preview': {disabled: true}, TeX: { extensions: ["color.js","AMSmath.js"], equationNumbers: { autoNumber: "AMS" } }, extensions: ["tex2jax.js"], tex2jax: {  inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true } }); </script> 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+ <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
   <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
@@ -30,7 +30,6 @@
 \newcommand{\sC}{\mathscr{C}}
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\mf}{\mathfrak}
-\newcommand{\scr}{\mathscr}
 \newcommand{\cc}{\mf{c}}
 \newcommand{\mg}{\mf{g}}
 \newcommand{\ma}{\mf{a}}
@@ -210,7 +209,8 @@
   <div class="maketitle">
   <h2 class="titleHead">
 K-THEORY AND THE INDEX THEOREM
-  </h2><div class="authors"><span class="author" >
+  </h2>
+  <div class="authors"><span class="author" >
 <span 
 class="cmr-10">ISHAN LEVY</span>
   </span></div>
@@ -232,7 +232,8 @@ will factor through K-theory via a symbol map as shown in the diagram below:
 src="K-Theory_and_the_Index_Theorem0x.svg" alt="         elliptic operators   K &#x0028;TM  &#x0029;
 
 
-&#x03C3;itndinedx                         &#x2124; "  />
+&#x03C3;itndex                         &#x2124;
+ ind "  />
 </p></div>
 <!--l. 19--><p class="indent" >  Here \(K(TM)\) is the compactly supported \(K\)-theory de&#xFB01;ned as the reduced \(K\)-group of the one point
 compacti&#xFB01;cation. The map \(\sigma \) map is called the symbol map and is obtained from the
@@ -240,10 +241,10 @@ principal symbol of the elliptic operator. The map \(t_{\text{ind}}\) is called 
 these maps have been de&#xFB01;ned, the theorem states:
 </p>
   <div class="newtheorem">
-<!--l. 21--><p class="noindent" ><span class="head">
                                                                                   
 
                                                                                   
+<!--l. 21--><p class="noindent" ><span class="head">
 <a 
  id="x1-1001r1"></a>
 <span 
@@ -288,10 +289,10 @@ consider the map \(\Gamma \oplus _{j=2i} E_j \to \Gamma \oplus _{j=2i+1} E_{j}\)
 product on each \(E_i\). This map is still an elliptic partial di&#xFB00;erential operator, has the same
 index as the complex and will have the same value in \(K(TM)\). Thus the index theorem only needs
 to be proved for elliptic operators.
-</p><!--l. 36--><p class="indent" >  To de&#xFB01;ne our symbol map, we will use the fact that the K group for a locally compact
                                                                                   
 
                                                                                   
+</p><!--l. 36--><p class="indent" >  To de&#xFB01;ne our symbol map, we will use the fact that the K group for a locally compact
 space can be de&#xFB01;ned the following way. Take the semi-group of &#xFB01;nite complexes of vector
 bundles on \(M\) \(0 \to E_1 \to \dots \to E_n \to 0\) such that set on which the complex is not exact is compact. Identify
 complexes that are homotopic, meaning there is a complex on \(M\times [0,1]\) restricting to each at the
@@ -329,10 +330,10 @@ axioms.
 <span 
 class="cmbx-12">analytic index </span>that takes an element of \(K(TM)\) to &#x201C;\(\ind \circ \sigma ^{-1}\)&#x201D;. Then if we could show it satis&#xFB01;es the
 same axioms as the topological index, the proof would be complete. Unfortunately, not
-every element of \(K(TM)\) comes from the symbol of an elliptic operator, and it&#x2019;s not apriori clear
                                                                                   
 
                                                                                   
+every element of \(K(TM)\) comes from the symbol of an elliptic operator, and it&#x2019;s not apriori clear
 that two elliptic operators with the same image via \(\sigma \) will have the same index. The
 failure of surjectivity can be seen for example in the case of odd-dimensional
 manifolds.
@@ -350,7 +351,7 @@ class="cmbx-12">pseudo-di&#xFB00;erential operator</span> \(D\) of order \(m\) i
 operator of the following form from compactly supported smooth sections of a bundle \(E\) to
 smooth sections of a bundle \(F\) with the following properties. Consider any chart \(\RR ^n\) on which \(E\)
 and \(F\) can be trivialized to be trivial bundles of ranks \(l,k\). For any compactly supported
-function \(f\) and any smooth section \(u\) of \(E\) on the chart, we must have \(D(fu)(x) = \int p_f(x,\xi ) F(u)e^{i\langle x,\xi \rangle }d\xi )\) where \(F\) is the Fourier
+function \(f\) and any smooth section \(u\) of \(E\) on the chart, we must have \(D(fu)(x) = \int p_f(x,\xi ) \sF (u)e^{i\langle x,\xi \rangle }d\xi )\) where \(\sF \) is the Fourier
 transform, and \(p_f\) is some matrix where each partial derivative of \(p_f\) is \(O(\xi ^{m-|a|})\) where \(|a|\) is the number of
 times the partial derivative is taken in the \(\xi \) direction. Moreover, we should like the limit \(\sigma _f(x,\xi )= \lim _{\lambda \to \infty } \frac{p_f(x,\lambda \xi )}{\lambda ^m}\)
 to exist. When \(f\) is compactly supported but \(1\) in a neighborhood of \(x\), \(\sigma _f(x,\xi )\) doesn&#x2019;t
@@ -371,10 +372,10 @@ partial di&#xFB00;erential operator.
 element of \(K(TM)\) can be obtained from some bundle map \(f:E \to F\) which is an isomorphism away from
 some compact set \(L\). Choose a metric for which the unit disk bundle of \(TM/M\) contains \(L\).
 The composite \(TM \xrightarrow{\pi } M \xrightarrow{0} TM\) is homotopic to the identity, so if \(E_0,F_0\) are the pullbacks of \(E,F\) along
-this map, they are isomorphic to \(E,F\). We can produce a map \(f_m: E_0 \to F_0\) by extending the
                                                                                   
 
                                                                                   
+this map, they are isomorphic to \(E,F\). We can produce a map \(f_m: E_0 \to F_0\) by extending the
 map from \(E\) to \(F\) as a homogeneous function of degree \(m\), meaning, that \(f_m(\lambda v) = \lambda ^m f_m(v), v \in TM\). It is easy
 to see that \(f_m\) is homotopic to \(f\). Moreover, if \(f\) is an isomorphism it can be made
 to be constant, so that the corresponding map \(f_m\) will be constant on the unit
@@ -401,7 +402,7 @@ class="cmti-12">bundle.</span>
 an element of \(K(TM)\) represent it via some homogeneous map \(f_m:E \to F\), choose coordinates, a
 trivialization of \(TX,E,F\), and a smooth function \(\varphi \) that is \(0\) in a neighborhood of the zero section of \(TM\)
 &#x0028;where the map may not be continuous&#x0029; and \(1\) far away from this section. The
-pseudo-di&#xFB00;erential operator de&#xFB01;ned locally via \(Du(x) = \int \varphi (\xi )f_m(x,\xi )F(u)e^{i\langle x,\xi \rangle }d\xi \) will then be an order \(m\) and have \(f_m\) as its
+pseudo-di&#xFB00;erential operator de&#xFB01;ned locally via \(Du(x) = \int \varphi (\xi )f_m(x,\xi )\sF (u)e^{i\langle x,\xi \rangle }d\xi \) will then be an order \(m\) and have \(f_m\) as its
 symbol.
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
@@ -421,10 +422,10 @@ class="cmti-12">and</span> \(\sigma (D) = \sigma (E)\)<span
 class="cmti-12">, then</span> \(\ind (D) = \ind (E)\)<span 
 class="cmti-12">.</span>
 </p>
-  <div class="proof">
                                                                                   
 
                                                                                   
+  <div class="proof">
 <!--l. 72--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>First, suppose \(D,E\) have the same degree. If they have the same symbol, the linear
@@ -460,10 +461,10 @@ represents the original element. If \(Pf = 0\), since \(P\) is the identity outs
 \(U\). Thus the kernels of \(P,P|U\) have the same dimension, and the same is true for the adjoints, so
 the indexes agree.
 </p><!--l. 82--><p class="indent" >  It remains to show that \(a_{\text{ind}}\) commutes with the Thom isomorphism. Recall that in
-K-theory the Thom isomorphism \(K(M) \to K(V)\) is given by \(u \mapsto \pi ^*(u) \cdot \lambda _V\), where \(\lambda _V\) is the Thom class in \(K(V)\)
                                                                                   
 
                                                                                   
+K-theory the Thom isomorphism \(K(M) \to K(V)\) is given by \(u \mapsto \pi ^*(u) \cdot \lambda _V\), where \(\lambda _V\) is the Thom class in \(K(V)\)
 de&#xFB01;ned by complex given by the exterior algebra \(\Lambda (V)\) where the maps are given by
 \((v,w) \mapsto (v,v\wedge w)\).
 </p><!--l. 84--><p class="indent" >  To prove that the analytic index commutes with the Thom isomorphism, we will use a
@@ -506,10 +507,10 @@ in the direction of the &#xFB01;bres.
 \(ab\) in \(K(TV)\). Now \[DD^* = \begin{pmatrix} \tilde{A}\tilde{A}^* + \tilde{B}^*\tilde{B} &amp; 0\\ 0 &amp; \tilde{A}^*\tilde{A} + \tilde{B}\tilde{B}^*\\ \end{pmatrix} = \begin{pmatrix}P_0 &amp; 0\\0&amp;P_1\end{pmatrix}\]\[ D^*D = \begin{pmatrix} \tilde{A}^*\tilde{A} + \tilde{B}^*\tilde{B} &amp; 0\\ 0 &amp; \tilde{A}\tilde{A}^* + \tilde{B}\tilde{B}^*\\ \end{pmatrix} = \begin{pmatrix}Q_0 &amp;0 \\ 0 &amp; Q_1\end{pmatrix}\] so we have:
 </p><!--l. 106--><p class="indent" >  \[ \ind D = \ker (D)-\ker (D^*) = \ker (DD^*) - \ker (D^*D)\]\[= \sum _{i=0,1} (\ker (P_ i) - \ker (Q_i)). \] Now \(\langle P_0 u,u\rangle = \langle \tilde{A}^* u, \tilde{A}^* u\rangle + \langle \tilde{B} u, \tilde{B} u\rangle \), so \(\ker (P_0)= \ker (\tilde{A}) \cap \ker (\tilde{B}^*)\), and analogous results hold for \(P_1,Q_0,Q_1\). \(\ker (\tilde{B})\) is the sections of the vector bundle
 \(P \times _{H} \ker (B)= K_B\) since \(\tilde{B}\) is a lift of \(B\). Thus \(A\) acts on this bundle via an operator \(C\) &#x0028;because the action
-of \(A\) commutes with \(B\)&#x0029;, and \(\sigma (C) = a [K_B]\) since the action is the tensor product action. Thus, \(a_\text{ind}(a[K_B])=\ind (C) = \ker (P_1)-\ker (Q_1)\).
                                                                                   
 
                                                                                   
+of \(A\) commutes with \(B\)&#x0029;, and \(\sigma (C) = a [K_B]\) since the action is the tensor product action. Thus, \(a_\text{ind}(a[K_B])=\ind (C) = \ker (P_1)-\ker (Q_1)\).
 If we de&#xFB01;ne \(L_B\) analogously as \(P\times _{H}\coker (B)\), then putting everything together we have \[a_{\text{ind}}(ab) = \ind D = a_{\text{ind}}(a([K_B]-[L_B]))\] By our
 assumption, \([K_B]-[L_B]\) is an integer \(a^{H}_\text{ind}(b)\), so since \(a_{\text{ind}}\) is a homomorphism, we get the desired product
 formula. <span class="qed"><span 

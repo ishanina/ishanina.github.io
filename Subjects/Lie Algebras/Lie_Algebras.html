@@ -886,49 +886,27 @@ since abelian Lie algebras aren&#x2019;t semisimple.
 cocommutative Hopf algebra, where the coproduct is \(x \mapsto 1 \otimes x +x\otimes 1\), and the antipode is \(x \mapsto -x\) on \(\mg \subset U(\mg )\). It is the
 algebra of di&#xFB00;erential operators on the associated formal group. \(U\) of a free Lie algebra is a
 tensor algebra, \(U(\mg \oplus \mh ) = U(\mg ) \otimes _k U(\mh )\), and \(U(k) = k[x]\).
-</p>
-  <div class="newtheorem">
-<!--l. 236--><p class="noindent" ><span class="head">
-<a 
- id="x1-2017r13"></a>
-<span 
-class="cmbx-12">Theorem 2.13 </span>&#x0028;Poincar&#x00E9;-Birkho&#xFB00;-Witt&#x0029;<span 
-class="cmbx-12">.</span>  </span><span 
-class="cmti-12">If</span> \(v_1,\dots , v_n\) <span 
-class="cmti-12">is an ordered basis for</span> \(\mg \)<span 
-class="cmti-12">,</span> \(U(\mg )\) <span 
-class="cmti-12">has a basis</span>
-<span 
-class="cmti-12">of order increasing monomials in the</span> \(v_i\)<span 
-class="cmti-12">. The associated graded of</span> \(U(\mg )\) <span 
-class="cmti-12">is</span> \(\Sym ^*(\mg )\)<span 
-class="cmti-12">.</span>
-</p>
-  </div>
-<!--l. 240--><p class="indent" >  The argument that representations are semisimple is similar to the argument for
+</p><!--l. 236--><p class="indent" >  The argument that representations are semisimple is similar to the argument for
 compact Lie group. There, via averaging over a bi-invariant metric, one makes any
 representation unitary, after which one can produce orthogonal complements to
 subrepresentations. Here the bi-invariant metric becomes the Killing form, and it hard to
 average, but we still have an in&#xFB01;nitesmal version of averaging, namely the Laplacian
 operator, which here is called the Casimir element.
-</p><!--l. 242--><p class="indent" >  Any symmetric invariant form \(B\) on \(\mg \) can be thought of as a map of \(\mg \)-modules \(\mg \otimes \mg \to k\).
+</p><!--l. 238--><p class="indent" >  Any symmetric invariant form \(B\) on \(\mg \) can be thought of as a map of \(\mg \)-modules \(\mg \otimes \mg \to k\).
 Nondegeneracy means the adjoint \(\mg \to \mg ^*\) is an isomorphism. Via this identi&#xFB01;cation,
 the identity \(\mg \to \mg \) is adjoint to a map \(k \to \mg \otimes \mg \), the image of \(1\) being the <span 
 class="cmbx-12">Casimir element</span>
 \(L_B\). Alternatively it is adjoint to the map \(B\). Note that symmetry of the bilinear
 form implies that \(L_B\) is invariant under swapping the two terms. We can also view
-                                                                                  
-
-                                                                                  
 \(L\) in \(U(\mg )\) via the multiplication map \(\mg \otimes \mg \to U(\mg )\). It is central in \(U(\mg )\) since the map \(k \to \mg \otimes \mg \) is a map of
 \(\mg \)-modules.
 </p>
   <div class="newtheorem">
-<!--l. 244--><p class="noindent" ><span class="head">
+<!--l. 240--><p class="noindent" ><span class="head">
 <a 
- id="x1-2018r14"></a>
+ id="x1-2017r13"></a>
 <span 
-class="cmbx-12">Lemma 2.14.</span>  </span><span 
+class="cmbx-12">Lemma 2.13.</span>  </span><span 
 class="cmti-12">The category of f.d representations of</span> \(\mg \) <span 
 class="cmti-12">is semisimple i&#xFB00;</span> \(\Ext ^1(k,V)=0\) <span 
 class="cmti-12">for all irreducible</span> \(V\)<span 
@@ -936,9 +914,12 @@ class="cmti-12">,</span>
 <span 
 class="cmti-12">where</span> \(k\) <span 
 class="cmti-12">is the tensor unit.</span>
+                                                                                  
+
+                                                                                  
 </p>
   <div class="proof">
-<!--l. 247--><p class="indent" >  <span class="head">
+<!--l. 243--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We can identify \(\Hom _{\mg }(V,W)\) with \(\Hom _{\mg }(k,W\otimes V^*)\). \((-)\otimes V^*\) is exact and preserves injectives, so we can derive the
 isomorphism to \(\Ext \). Semisimplicity is equivalent to \(\Ext ^1(V,W)=0\). So we only need \(\Ext ^1(k,V) = 0\) for all \(V\), but the
@@ -948,11 +929,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 251--><p class="noindent" ><span class="head">
+<!--l. 247--><p class="noindent" ><span class="head">
 <a 
- id="x1-2019r15"></a>
+ id="x1-2018r14"></a>
 <span 
-class="cmbx-12">Theorem 2.15 </span>&#x0028;Weyl Complete Reducability&#x0029;<span 
+class="cmbx-12">Theorem 2.14 </span>&#x0028;Weyl Complete Reducability&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">For a semisimple</span> \(\mg \)<span 
 class="cmti-12">, any &#xFB01;nite-dimensional</span>
@@ -961,70 +942,67 @@ class="cmti-12">representation of</span> \(U(\mg )\) <span
 class="cmti-12">is semisimple.</span>
 </p>
   <div class="proof">
-<!--l. 254--><p class="indent" >  <span class="head">
+<!--l. 250--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We need to show that a short exact sequence \(0 \to V \to W \to k \to 0\) splits when \(V\) is irreducible.
 WLOG \(V\) is faithful by passing to a quotient of \(\mg \). \(L_V\) is \(0\) on \(k\), and \(\tr _{L_V}(V) = \dim \mg \neq 0\). So \(L_V\) is nonzero, and thus
 an isomorphism by Schur&#x2019;s Lemma. An element in the kernel of \(L_W\) gives a splitting. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
-<!--l. 258--><p class="indent" >  A remark about the proof: we should expect \(k\) to be the only irreducible representation
+<!--l. 254--><p class="indent" >  A remark about the proof: we should expect \(k\) to be the only irreducible representation
 for which \(L\) acts as \(0\) since every irrep embeds in \(L^2\), where \(L\) is literally the Laplacian, and the
 only harmonic functions are constant.
-</p><!--l. 260--><p class="indent" >  This has an interpretation in terms of derivations. A <span 
+</p><!--l. 256--><p class="indent" >  This has an interpretation in terms of derivations. A <span 
 class="cmbx-12">derivation</span> \(d:\mg \to M\) is a map such that \(d[a,b] = adb-bda\) It
 is the same as a \(1\)-cocycle in the Chevalley-Eilenberg complex &#x0028;i.e the de Rham complex&#x0029; of
 \(M\). A \(1\)-boundary is an <span 
 class="cmbx-12">inner derivation </span>or a map of the form \(dx = xa, a \in M\). We can write these groups
 as \(\Der (\mg ,M)\) and \(\Ider (\mg ,M)\).
+                                                                                  
+
+                                                                                  
 </p>
   <div class="newtheorem">
-<!--l. 262--><p class="noindent" ><span class="head">
+<!--l. 258--><p class="noindent" ><span class="head">
 <a 
- id="x1-2020r16"></a>
+ id="x1-2019r15"></a>
 <span 
-class="cmbx-12">Corollary 2.16.</span>  </span><span 
+class="cmbx-12">Corollary 2.15.</span>  </span><span 
 class="cmti-12">Every  derivation  of  a  semisimple  Lie  into  a  &#xFB01;nite-dimensional</span>
 <span 
 class="cmti-12">module is inner.</span>
 </p>
   </div>
-<!--l. 266--><p class="indent" >  A special case of this is the Lie algebra of derivations of \(\mg \) into \(\mg \). Here is an alternate proof
+<!--l. 262--><p class="indent" >  A special case of this is the Lie algebra of derivations of \(\mg \) into \(\mg \). Here is an alternate proof
 of the fact in that case:
 </p>
   <div class="newtheorem">
-<!--l. 268--><p class="noindent" ><span class="head">
+<!--l. 264--><p class="noindent" ><span class="head">
 <a 
- id="x1-2021r17"></a>
+ id="x1-2020r16"></a>
 <span 
-class="cmbx-12">Proposition 2.17.</span>  </span><span 
+class="cmbx-12">Proposition 2.16.</span>  </span><span 
 class="cmti-12">If</span> \(\mg \) <span 
 class="cmti-12">is semisimple, the map</span> \(\ad : \mg \to \Der (\mg )\) <span 
 class="cmti-12">is an isomorphism.</span>
 </p>
   <div class="proof">
-<!--l. 271--><p class="indent" >  <span class="head">
+<!--l. 267--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The  restriction  of  the  tautological  representation  \(\Der (\mg )\)  to  \(\mg \)  is  the  adjoint
 representation. Since \(\kappa \) is nondegenerate, \(\Der (\mg )\) splits as \(\ad \mg \oplus \ad \mg ^{\perp }\). If \(D \in \ad \mg ^{\perp }\) then \(0 = [D,\ad a] = \ad Da\), so \(Da \in Z(\mg ) =0\) showing \(D = 0\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
-                                                                                  
-
-                                                                                  
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 275--><p class="noindent" ><span class="head">
+<!--l. 271--><p class="noindent" ><span class="head">
 <a 
- id="x1-2022r18"></a>
+ id="x1-2021r17"></a>
 <span 
-class="cmbx-12">De&#xFB01;nition 2.18.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 2.17.</span>  </span><span 
 class="cmti-12">An </span><span 
 class="cmbxti-10x-x-120">abstract Jordan decomposition </span><span 
 class="cmti-12">of</span> \(a\) <span 
@@ -1033,21 +1011,24 @@ class="cmti-12">is a decomposition</span> \(a=a_s+a_n\)
 class="cmti-12">where</span> \([a_s,a_n]=0\) <span 
 class="cmti-12">and</span> \(\ad a_s,\ad a_n\) <span 
 class="cmti-12">are semisimple and nilpotent.</span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
-<!--l. 279--><p class="indent" >  They are unique i&#xFB00; \(Z(\mg )=0\), because that is the kernel of map \(\ad \), and we know Jordan
+<!--l. 275--><p class="indent" >  They are unique i&#xFB00; \(Z(\mg )=0\), because that is the kernel of map \(\ad \), and we know Jordan
 decompositions to be unique in \(\gl _V\).
 </p>
   <div class="newtheorem">
-<!--l. 281--><p class="noindent" ><span class="head">
+<!--l. 277--><p class="noindent" ><span class="head">
 <a 
- id="x1-2023r19"></a>
+ id="x1-2022r18"></a>
 <span 
-class="cmbx-12">Lemma 2.19.</span>  </span><span 
+class="cmbx-12">Lemma 2.18.</span>  </span><span 
 class="cmti-12">Abstract Jordan decompositions exist for reductive Lie algebras.</span>
 </p>
   <div class="proof">
-<!--l. 284--><p class="indent" >  <span class="head">
+<!--l. 280--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>It  su&#xFB03;ces  to  assume  \(\mg \)  semisimple.  \(A=\ad g\)  has  a  Jordan  decomposition  as  an
 endomorphism, so it su&#xFB03;ces to show that \(A_s\) is a derivation. By linearity it su&#xFB03;ces to
@@ -1056,17 +1037,14 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 288--><p class="indent" >  Now we can better understand the Killing forms of a semisimple Lie algebra.
+<!--l. 284--><p class="indent" >  Now we can better understand the Killing forms of a semisimple Lie algebra.
 </p>
   <div class="newtheorem">
-<!--l. 290--><p class="noindent" ><span class="head">
+<!--l. 286--><p class="noindent" ><span class="head">
 <a 
- id="x1-2024r20"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-2023r19"></a>
 <span 
-class="cmbx-12">Theorem 2.20.</span>  </span><span 
+class="cmbx-12">Theorem 2.19.</span>  </span><span 
 class="cmti-12">Let</span> \(\kappa \) <span 
 class="cmti-12">be the killing form on</span> \(\mg \)<span 
 class="cmti-12">, a semisimple Lie algebra, and let</span> \(\mh \) <span 
@@ -1089,72 +1067,281 @@ class="cmti-12">is nondegenerate.</span>
 class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(\mh \) <span 
 class="cmti-12">is abelian</span>
+                                                                                  
+
+                                                                                  
           </dd><dt class="enumerate-enumitem">
    <span 
 class="cmti-12">&#x0028;4&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(\mh \) <span 
 class="cmti-12">consists of semisimple elements</span></dd></dl>
   <div class="proof">
-<!--l. 298--><p class="indent" >  <span class="head">
+<!--l. 294--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\((1)\): This is immediate from Theorem <a 
 href="#x1-1015r15">1.15<!--tex4ht:ref: weightstheorem --></a> by looking at how \(\ad \) acts on the root
 spaces.
-</p><!--l. 300--><p class="indent" >  \((2)\): This follows from \((1)\) and the fact that \(\kappa \) is nondegenerate.
-</p><!--l. 302--><p class="indent" >  \((3)\): Cartan&#x2019;s criterion shows that \(\kappa (\mh ,[\mh ,\mh ])= 0\), but along with \((2)\) on \(\mg _0=\mh \) this means \([\mh ,\mh ]=0\).
-</p><!--l. 304--><p class="indent" >  \((4)\): \(\mh _s \subset \mh \) because of how \(\ad \mh _s\) behaves, but note that by \((3)\), \(\kappa (h,h') = \kappa (h_s,h')\) for \(h,h' \in \mh \). Thus by \((2)\) on \(\mg _0=\mh \), \(h = h_s\). <span class="qed"><span 
+</p><!--l. 296--><p class="indent" >  \((2)\): This follows from \((1)\) and the fact that \(\kappa \) is nondegenerate.
+</p><!--l. 298--><p class="indent" >  \((3)\): Cartan&#x2019;s criterion shows that \(\kappa (\mh ,[\mh ,\mh ])= 0\), but along with \((2)\) on \(\mg _0=\mh \) this means \([\mh ,\mh ]=0\).
+</p><!--l. 300--><p class="indent" >  \((4)\): \(\mh _s \subset \mh \) because of how \(\ad \mh _s\) behaves, but note that by \((3)\), \(\kappa (h,h') = \kappa (h_s,h')\) for \(h,h' \in \mh \). Thus by \((2)\) on \(\mg _0=\mh \), \(h = h_s\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
- id="x1-30003"></a>\(\msl _2k\)</h3>
-<!--l. 310--><p class="noindent" >The structure theory of semisimple Lie algebras is centered around the behavior of \(\msl _2k\). Before
+ id="x1-30003"></a>Poincar&#x00E9; Birkho&#xFB00; Witt</h3>
+<!--l. 306--><p class="noindent" >We would in general like to understand the structure of \(U(\mg )\).
+</p><!--l. 308--><p class="indent" >  To do this, we will use a general tool due to George Bergman for &#xFB01;nding canonical forms
+for elements of associative \(k\)-algebras.
+</p><!--l. 310--><p class="indent" >  Say that we have a set \(X\), and we consider the tensor algebra \(T_R(X)\) on \(X\) over a commutative
+ring \(R\). Say we also have some relations \(\sigma \in S\) of the form \(W_\sigma = f_\sigma \), where \(W\) is a word in \(X\). For any other
+words \(A,B\), we can consider \(r_{A\sigma B}\), the \(R\)-linear endomorphism on \(T_R(X)\) replacing \(AW_\sigma B\) with \(Af_\sigma B\). We call
+applying this to an element of \(T_R(X)\) a <span 
+class="cmbx-12">reduction</span>. If all reductions on an element are
+trivial, then that element is <span 
+class="cmbx-12">irreducible</span>. The submodule of irreducible elements is
+called \(T_R(X)_{irr}\). We say that an element is <span 
+class="cmbx-12">reduction &#xFB01;nite </span>if for any in&#xFB01;nite sequence of
+reductions, only &#xFB01;nitely many act nontrivially. The reduction &#xFB01;nite elements form an
+\(R\)-submodule of \(T_R(X)\) called \(T_R(X)_{fin}\). A sequence of reductions is <span 
+class="cmbx-12">&#xFB01;nal </span>if it results in an irreducible
+element. An element \(a\) is <span 
+class="cmbx-12">reduction unique </span>if it is reduction &#xFB01;nite and any &#xFB01;nal
+sequence results in the same irreducible element. The unique result will be denoted
+\(r(a)\).
+</p>
+  <div class="newtheorem">
+<!--l. 313--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+                                                                                  
+
+                                                                                  
+<span 
+class="cmbx-12">Lemma 3.1.</span>  </span><span 
+class="cmti-12">The reduction unique elements form a submodule denoted</span> \(T_R(X)_{un}\)<span 
+class="cmti-12">, and</span> \(r:T_R(X)_{un} \to T_R(X)_{irr}\) <span 
+class="cmti-12">is</span>
+\(R\)<span 
+class="cmti-12">-linear.</span>
+</p>
+  <div class="proof">
+<!--l. 317--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Suppose \(a,b \in T_R(X)_{un}, k \in R\). \(a+kb\) is reduction &#xFB01;nite, and if we have two reduction sequences of it
+to an irreducible, we can consider doing the same sequence on \(a,b\) and extend them
+to one that makes each irreducible &#x0028;note that this won&#x2019;t change the result, only the
+sequence&#x0029;. Then by uniqueness for \(a,b\) we see that the two reductions are the same, and
+that \(r\) is \(R\)-linear. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 321--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3002r2"></a>
+<span 
+class="cmbx-12">Lemma 3.2.</span>  </span> <span 
+class="cmti-12">Let</span> \(a,b,c \in T_R(X)\) <span 
+class="cmti-12">have the property that if</span> \(A,B,C\) <span 
+class="cmti-12">are nonzero monomials in</span> \(a,b,c\)<span 
+class="cmti-12">, then</span> \(ABC\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">reduction unique. Then if</span> \(r_\Sigma (b)\) <span 
+class="cmti-12">is the result of some &#xFB01;nite reductions on</span> \(b\)<span 
+class="cmti-12">, then</span> \(ar_\Sigma (b)c\) <span 
+class="cmti-12">is reduction</span>
+<span 
+class="cmti-12">unique.</span>
+</p>
+  <div class="proof">
+<!--l. 325--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Note in particular that the hypotheses imply that if \(abc\) is reduction unique,
+and that if the conclusion holds, \(r(ar_\Sigma (b)c) = r(abc)\). By linearity we only need to show this when \(a,b,c\) are
+monomials, and when \(r_\Sigma (b)\) is a single reduction \(r_{d\sigma e}\). But \(ar_{d\sigma e}(b)c = r_{ad\sigma ec}(abc)\), so this follows since \(abc\) is reduction
+unique. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                  
+
+                                                                                  
+  </div>
+<!--l. 330--><p class="indent" >  We say that a <span 
+class="cmbx-12">overlap ambiguity </span>is a pair \(\sigma ,\sigma ' \in S\) and a triple \(A,B,C\) of nonempty words such that \(AB = W_\sigma , BC = W_\sigma '\)
+&#x0028;they overlap&#x0029;. It is <span 
+class="cmbx-12">resolvable </span>if there is are sequences of reductions \(r,r'\) such that \(r \circ r_\sigma (ABC) = r' \circ r_{\sigma '}(ABC)\). An
+<span 
+class="cmbx-12">inclusion ambiguity </span>is the same, except when \(W_\sigma = B,W_\sigma ' = ABC\), and has the same conditions for
+resolvability &#x0028;except \(A,C\) can be empty&#x0029;.
+</p><!--l. 332--><p class="indent" >  Say that a <span 
+class="cmbx-12">compatible partial ordering</span> \(\leq \) on words of \(X\) is one such that \(A\leq B \implies CAD \leq CBD\) and such that
+the monomials of the \(f_\sigma \) are smaller than the monomials of \(W_\sigma \). Let \(I\) be the two-sided ideal
+generated by the relations in \(S\), and \(I_A\) be the \(R\)-submodule of \(T_R(X)\) generated by \(B\sigma C&lt;A, \sigma \in S\) &#x0028;every monomial
+is smaller than \(A\)&#x0029;. An ambiguity is <span 
+class="cmbx-12">resolvable relative to</span> \(\leq \) if \(r_\sigma (ABC)-r'_\sigma (ABC) \in I_{ABC}\). Note that this is an easy
+condition to check.
+</p><!--l. 334--><p class="indent" >  Finally we arrive at this theorem, which can be considered a Diamond Lemma for
+rings:
+</p>
+  <div class="newtheorem">
+<!--l. 336--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3003r3"></a>
+<span 
+class="cmbx-12">Theorem 3.3.</span>  </span> <span 
+class="cmti-12">Suppose we have</span> \(S,X,\leq ,I\) <span 
+class="cmti-12">as above where</span> \(\leq \) <span 
+class="cmti-12">is compatible with</span> \(S\) <span 
+class="cmti-12">and satis&#xFB01;es</span>
+<span 
+class="cmti-12">the descending chain condition. Then the following are equivalent:</span>
+</p><!--l. 340--><p class="indent" >
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">Every ambiguity is resolvable.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;2&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">Every ambiguity is resolvable with respect to</span> \(\leq \)<span 
+class="cmti-12">.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">Every element is reduction unique.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;4&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">The  natural  quotient  identi&#xFB01;es  the  submodule  spanned  by  irreducible</span>
+       <span 
+class="cmti-12">monomials with</span> \(T_R(X)/I\)<span 
+class="cmti-12">, which is</span> \(T_R(X)_{irr}\)<span 
+class="cmti-12">.</span></dd></dl>
+  <div class="proof">
+<!--l. 346--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Clearly \((3) \implies (1) \implies (2)\). If \((3)\) is true, \(r\) de&#xFB01;nes a projection onto \(T_R(X)_{irr}\). The kernel is contained in \(I\)
+by de&#xFB01;nition of \(r\) and contains \(I\), as for any \(AB\), \(r(A\sigma B) = 0\) by Lemma <a 
+href="#x1-3002r2">3.2<!--tex4ht:ref: idealred --></a>. Thus as an \(R\)-module, \(T_R(X) = I \oplus T_R(X)_{irr}\),
+giving \((4)\). Conversely if \((4)\) is true, Then since reductions are equal in the quotient, they
+                                                                                  
+
+                                                                                  
+must be unique.
+</p><!--l. 348--><p class="indent" >  Thus it su&#xFB03;ces to prove \((2) \implies (3)\), and by linearity, we need only show this for a monomial
+\(A\). From the descending chain condition, we can assume that any smaller monomial is
+reduction unique. Now suppose that we have two reductions of a monomial \(A\).
+</p><!--l. 350--><p class="indent" >  If there is no ambiguity, they commute, so we can create two more reductions to
+an irreducible where the &#xFB01;rst two steps are the &#xFB01;rst step of these reductions but in
+di&#xFB00;erent orders. They will give the same element, and by induction will show that
+the two original reductions are also the same.
+</p><!--l. 352--><p class="indent" >  If  there  is  ambiguity,  then  since  it  is  resolvable  relative  to  \(\leq \)  by  induction  the
+di&#xFB00;erence can be resolved to \(0\), so by linearity the two resolutions must agree. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 356--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3008r4"></a>
+<span 
+class="cmbx-12">Theorem 3.4 </span>&#x0028;Poincar&#x00E9;-Birkho&#xFB00;-Witt&#x0029;<span 
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">Let</span> \(\mg \) <span 
+class="cmti-12">be a Lie algebra over</span> \(R\) <span 
+class="cmti-12">where the</span>
+<span 
+class="cmti-12">underlying module is free. Choose a well-ordered basis of</span> \(\mg \)<span 
+class="cmti-12">,</span> \(x_\alpha , \alpha \in I\)<span 
+class="cmti-12">. Then</span> \(x_{a_1}^{e_1}\dots x_{a_n}^{e_n}\) <span 
+class="cmti-12">for</span> \(x_{a_1}\) <span 
+class="cmti-12">in increasing</span>
+<span 
+class="cmti-12">order, over all possible</span> \(a_i\) <span 
+class="cmti-12">and</span> \(e_i\) <span 
+class="cmti-12">form a basis of</span> \(U(\mg )\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 361--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Construct an ordering on monomials in the basis where monomials of smaller
+degree are smaller, and if two monomials have the same degree, we compare them
+lexicographically using the order on our basis. This is a well-ordering on monomials,
+and a su&#xFB03;cient set of relations for \(U(\mg )\) can be written as \(xy = yx +[x,y]\) for \(x&gt;y\) in the basis. The order
+is compatible with this, and we can check that every ambiguity is resolvable with
+respect to our order. Here, the only nontrivial kind of ambiguity that can occur is an
+overlap ambiguity, when we have something of the form \(A(yxz+[x,y]z)B=AxyzB=A(xzy+x[y,z])B\). The di&#xFB00;erence is: \[A(yxz+[x,y]z-(xzy+x[y,z]))B = A(yzx + y[x,z] + z[x,y] + [[x,y],z]\]\[ - (zxy + [x,z]y + [y,z]x + [x,[y,z]]))B= A(zyx + [y,z]x + y[x,z] + z[x,y] + [[x,y],z]\]\[ - (zyx + z[x,y] + y[x,z] + [[x,z],y] + [y,z]x + [x,[y,z]])B\]\[ = A([[x,y],z] - [[x,z],y] - [x,[y,z]])B = 0 \] Where
+at the last step, we have used the Jacobi identity. This shows that the ambiguity is
+resolvable under the ordering, so that by Theorem <a 
+href="#x1-3003r3">3.3<!--tex4ht:ref: diamondlemmaring --></a> we are done. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+                                                                                  
+
+                                                                                  
+  </div>
+  </div>
+<!--l. 368--><p class="indent" >  Note that as a corollary, any Lie algebra \(\mg \) &#x0028;not necessarily &#xFB01;nite-dimensional&#x0029; is faithfully
+represented in \(U(\mg )\).
+</p>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-40004"></a>\(\msl _2k\)</h3>
+<!--l. 371--><p class="noindent" >The structure theory of semisimple Lie algebras is centered around the behavior of \(\msl _2k\). Before
 moving on let&#x2019;s study it more carefully.
-</p><!--l. 312--><p class="indent" >  Let&#x2019;s consider a root system for \(\msl _2\).
-</p><!--l. 314--><p class="indent" >  It has a basis \(e = \begin{bmatrix} 0 &amp; 1\\0 &amp; 0 \end{bmatrix},f = \begin{bmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{bmatrix},h = \begin{bmatrix} 1 &amp; 0\\ 0 &amp; -1 \end{bmatrix}\), and can be presented via the relations \([e,f]=h, [h,e]=2e,[h,f]=-2f\). \(kh\) is a Cartan subalgebra, and \(e,f\)
+</p><!--l. 373--><p class="indent" >  Let&#x2019;s consider a root system for \(\msl _2\).
+</p><!--l. 375--><p class="indent" >  It has a basis \(e = \begin{bmatrix} 0 &amp; 1\\0 &amp; 0 \end{bmatrix},f = \begin{bmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{bmatrix},h = \begin{bmatrix} 1 &amp; 0\\ 0 &amp; -1 \end{bmatrix}\), and can be presented via the relations \([e,f]=h, [h,e]=2e,[h,f]=-2f\). \(kh\) is a Cartan subalgebra, and \(e,f\)
 generate the root spaces.
-</p><!--l. 323--><p class="indent" >  We can try to classify &#xFB01;nite-dimensional irreducible \(\msl _2\)-modules. There is a standard
+</p><!--l. 384--><p class="indent" >  We can try to classify &#xFB01;nite-dimensional irreducible \(\msl _2\)-modules. There is a standard
 one, given on a vector space \(V\) of dimension \(2\). \(\Sym ^nV\) is a representation of dimension
 \(n+1\).
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
-<!--l. 324--><p class="noindent" ><span class="head">
+<!--l. 385--><p class="noindent" ><span class="head">
 <a 
- id="x1-3001r1"></a>
+ id="x1-4001r1"></a>
 <span 
-class="cmbx-12">Proposition 3.1.</span>  </span>\(\Sym ^nV\) <span 
+class="cmbx-12">Proposition 4.1.</span>  </span>\(\Sym ^nV\) <span 
 class="cmti-12">is a complete list of f.d irreducible</span> \(\msl _2\)<span 
 class="cmti-12">-representations.</span>
 </p>
   <div class="proof">
-<!--l. 327--><p class="indent" >  <span class="head">
+<!--l. 388--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Let \(v\) be a nonzero element of \(V\) in the kernel of \(e\). \(v,fv\) form a basis of \(V\). Note that \(e\)
 acts nilpotently with \(1\)-dimensional kernel \(v^{\otimes n}\). Thus any subrepresentation contains that
 vector, and since it generates the rest of the space by powers of \(f\), \(\Sym ^nV\) is irreducible.
-</p><!--l. 329--><p class="indent" >  Now let \(W\) be an any f.d irreducible representation. It decomposes into eigenspaces
+</p><!--l. 390--><p class="indent" >  Now let \(W\) be an any f.d irreducible representation. It decomposes into eigenspaces
 \(W_\lambda \) for \(h\), and \(eW_{\lambda } \subset W_{\lambda +2}, fW_{\lambda } = W_{\lambda -2}\). We see then by irreducibility \(\oplus _n W_{\lambda +2n} = W\), where the nonzero terms occur in a
 segment, and are one-dimensional as \([e,f] = h\). Since \(\tr h\) is \(0\), we must have the highest and lowest
 weights be opposite in signs, so \(\lambda \) is an integer \(n\). This is enough to see that \(\lambda \) uniquely
 characterizes the irrep, so it is \(\Sym ^n V\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
+                                                                                  
+
+                                                                                  
   </div>
   </div>
-<!--l. 332--><p class="indent" >  By this theorem, we can understand the isomorphism class of any &#xFB01;nite-dimensional
+<!--l. 393--><p class="indent" >  By this theorem, we can understand the isomorphism class of any &#xFB01;nite-dimensional
 \(\msl _2\)-module by looking at how \(h\) acts on the kernel of \(e\). Namely, every eigenvalue of \(n\)
 corresponds to a copy of \(\Sym ^n V\).
 </p>
   <div class="newtheorem">
-<!--l. 334--><p class="noindent" ><span class="head">
+<!--l. 395--><p class="noindent" ><span class="head">
 <a 
- id="x1-3002r2"></a>
+ id="x1-4002r2"></a>
 <span 
-class="cmbx-12">Corollary 3.2.</span>  </span><span 
+class="cmbx-12">Corollary 4.2.</span>  </span><span 
 class="cmti-12">Let</span> \(W\) <span 
 class="cmti-12">be a &#xFB01;nite dimensional representation of</span> \(\msl _2\)<span 
 class="cmti-12">, and</span> \(v\) <span 
@@ -1174,14 +1361,11 @@ class="cmti-12">.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 339--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 400--><p class="noindent" ><span class="head">
 <a 
- id="x1-3003r3"></a>
+ id="x1-4003r3"></a>
 <span 
-class="cmbx-12">Corollary 3.3.</span>  </span> <span 
+class="cmbx-12">Corollary 4.3.</span>  </span> <span 
 class="cmti-12">A f.d representation of</span> \(\msl _2\) <span 
 class="cmti-12">is irreducible i&#xFB00; it satis&#xFB01;es any of the following</span>
 <span 
@@ -1202,22 +1386,25 @@ class="cmti-12">The eigenspaces of</span> \(h\) <span
 class="cmti-12">are</span> \(1\)<span 
 class="cmti-12">-dimensional.</span></li></ul>
   </div>
-<!--l. 348--><p class="indent" >  Given a &#xFB01;nite-dimensional \(\msl _2\)-module \(V\), let \(\tau = \exp (e)\exp (f)\exp (-e)\).
+<!--l. 409--><p class="indent" >  Given a &#xFB01;nite-dimensional \(\msl _2\)-module \(V\), let \(\tau = \exp (e)\exp (f)\exp (-e)\).
 </p>
   <div class="newtheorem">
-<!--l. 349--><p class="noindent" ><span class="head">
+<!--l. 410--><p class="noindent" ><span class="head">
 <a 
- id="x1-3004r4"></a>
+ id="x1-4004r4"></a>
 <span 
-class="cmbx-12">Lemma 3.4.</span>  </span>\(\tau \) <span 
+class="cmbx-12">Lemma 4.4.</span>  </span>\(\tau \) <span 
 class="cmti-12">swaps the</span> \(-n\) <span 
 class="cmti-12">and</span> \(n\) \(h\)<span 
 class="cmti-12">-eigenspaces of any f.d.</span> \(\msl _2\)<span 
 class="cmti-12">-module</span> \(W\)<span 
 class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
 </p>
   <div class="proof">
-<!--l. 352--><p class="indent" >  <span class="head">
+<!--l. 413--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Since \(W\) is a sum of summands of tensor products of the standard representation,
 it su&#xFB03;ces to verify for the standard representation. Here \(\tau \) is \(\begin{bmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{bmatrix}\). <span class="qed"><span 
@@ -1226,37 +1413,34 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 358--><p class="noindent" ><span class="head">
+<!--l. 419--><p class="noindent" ><span class="head">
 <a 
- id="x1-3005r5"></a>
+ id="x1-4005r5"></a>
 <span 
-class="cmbx-12">De&#xFB01;nition 3.5.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 4.5.</span>  </span><span 
 class="cmti-12">An</span> \(\msl _2\)<span 
 class="cmbxti-10x-x-120">-triple </span><span 
 class="cmti-12">is a homomorphism</span> \(\msl _2 \to \mg \)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
-<!--l. 361--><p class="indent" >  For any semisimple Lie algebra, we will get an \(\msl _2\)-triple for each root, so we will use the
+<!--l. 422--><p class="indent" >  For any semisimple Lie algebra, we will get an \(\msl _2\)-triple for each root, so we will use the
 representation theory of \(\msl _2\) to show that the roots form a root system.
 </p>
-  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
- id="x1-40004"></a>Root Systems</h3>
-<!--l. 365--><p class="noindent" >First we will need to show that we get a root system from a semisimple Lie
+  <h3 class="sectionHead"><span class="titlemark">5. </span> <a 
+ id="x1-50005"></a>Root Systems</h3>
+<!--l. 426--><p class="noindent" >First we will need to show that we get a root system from a semisimple Lie
 algebra. Let \(\mg \) be a &#xFB01;xed semisimple Lie algebra, \(\mh \) a Cartan subalgebra, \(\Delta \) the set of
 roots. \(\kappa \) induces a nondegenerate symmetric bilinear form on \(\mh ^*\), and we will use \(\kappa \) to
 denote this as well. Let \((-)^*\) be the isomorphism between \(\mg \) and its dual induced by
 \(\kappa \).
 </p>
   <div class="newtheorem">
-<!--l. 367--><p class="noindent" ><span class="head">
+<!--l. 428--><p class="noindent" ><span class="head">
 <a 
- id="x1-4001r1"></a>
+ id="x1-5001r1"></a>
 <span 
-class="cmbx-12">Lemma 4.1 </span>&#x0028;\(\msl _2\)-triples&#x0029;<span 
+class="cmbx-12">Lemma 5.1 </span>&#x0028;\(\msl _2\)-triples&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(\alpha \in \Delta \)<span 
 class="cmti-12">,</span> \(e \in \mg _{\alpha }\)<span 
@@ -1265,8 +1449,11 @@ class="cmti-12">, then</span> \([e,f] = \kappa (e,f)\alpha ^*\)<span
 class="cmti-12">. Moreover, if</span> \(\alpha \in \Delta , \kappa (\alpha ,\alpha ) \neq 0\)<span 
 class="cmti-12">.</span>
 </p>
+                                                                                  
+
+                                                                                  
   <div class="proof">
-<!--l. 371--><p class="indent" >  <span class="head">
+<!--l. 432--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(\kappa (h,[e,f]) = \kappa (\ad h(e),f) = \alpha (h) \kappa (e,f) = \kappa (h,\alpha ^*\kappa (e,f))\), giving the &#xFB01;rst result since \(\kappa \) is nondegenerate on \(\mh \). For the second, choose \(e,f\) so
 that \(\kappa (e,f)=1\). If \(\kappa (\alpha ,\alpha ) = \kappa (\alpha ,[e,f]) = \alpha ([e,f])\) is \(0\), then \(\alpha ^*,e,f\) form a subalgebra presented by the relations \([e,f] = \alpha ^*,[\alpha ^*,e] = [\alpha ^*,f]=0\). This is a nilpotent
@@ -1276,22 +1463,19 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 375--><p class="indent" >  Thus given \(\alpha \), we can pick \(e_{\alpha },f_{\alpha }\) so that \(\kappa (e_{\alpha },f_{\alpha }) = \frac 2{\kappa (\alpha ,\alpha )}\). Then \([e_\alpha ,f_\alpha ] = h_\alpha = \frac{2\alpha ^*}{\kappa (\alpha ,\alpha )}\). Then \(e_\alpha ,f_\alpha ,h_\alpha \) give an \(\msl _2\)-triple associated with
+<!--l. 436--><p class="indent" >  Thus given \(\alpha \), we can pick \(e_{\alpha },f_{\alpha }\) so that \(\kappa (e_{\alpha },f_{\alpha }) = \frac 2{\kappa (\alpha ,\alpha )}\). Then \([e_\alpha ,f_\alpha ] = h_\alpha = \frac{2\alpha ^*}{\kappa (\alpha ,\alpha )}\). Then \(e_\alpha ,f_\alpha ,h_\alpha \) give an \(\msl _2\)-triple associated with
 \(\alpha \).
-</p><!--l. 377--><p class="indent" >  \(\msl _2\)-triples associated with \(\alpha \) are unique up to scaling \(f \mapsto \lambda f, e \mapsto \lambda ^{-1}e\). This follows from the next
+</p><!--l. 438--><p class="indent" >  \(\msl _2\)-triples associated with \(\alpha \) are unique up to scaling \(f \mapsto \lambda f, e \mapsto \lambda ^{-1}e\). This follows from the next
 theorem.
-                                                                                  
-
-                                                                                  
-</p><!--l. 380--><p class="indent" >  For convenience, de&#xFB01;ne \(\langle \alpha |\beta \rangle \) as \(2\frac{\kappa (\alpha ,\beta )}{\kappa (\alpha ,\alpha )}\). This notation is nonstandard, but \(|\) is being used to remind
+</p><!--l. 441--><p class="indent" >  For convenience, de&#xFB01;ne \(\langle \alpha |\beta \rangle \) as \(2\frac{\kappa (\alpha ,\beta )}{\kappa (\alpha ,\alpha )}\). This notation is nonstandard, but \(|\) is being used to remind
 us that it is not symmetric.
 </p>
   <div class="newtheorem">
-<!--l. 381--><p class="noindent" ><span class="head">
+<!--l. 442--><p class="noindent" ><span class="head">
 <a 
- id="x1-4002r2"></a>
+ id="x1-5002r2"></a>
 <span 
-class="cmbx-12">Theorem 4.2.</span>  </span>
+class="cmbx-12">Theorem 5.2.</span>  </span>
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    <span 
 class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
@@ -1321,33 +1505,33 @@ class="enumerate-enumitem">\(\alpha \in \Delta \implies r\alpha \in \Delta \) <s
 class="cmti-12">i&#xFB00;</span> \(r = \pm 1\)<span 
 class="cmti-12">.</span></dd></dl>
   <div class="proof">
-<!--l. 389--><p class="indent" >  <span class="head">
+<!--l. 450--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>\((1)\): If \(e,e'\) are nonzero in \(\mg _\alpha \), rescale them and choose an \(f\) in \(\mg _{-\alpha }\), so that \(e,f,[e,f]\) and \(e',f,[e',f]\) extend to
 an \(\msl _2\)-triple. But \([e,f] = \frac{2\alpha ^*}{\kappa (\alpha ,\alpha )} = [e',f]\), so the representation theory of \(\msl _2\) tells us \(e = e'\).
-</p><!--l. 391--><p class="indent" >  \((2\&amp; 3)\): Consider \(M = \oplus _{r \in k} \mg _{\beta +r\alpha }\) as a representation of an \(\msl _2\)-triple associated to \(\alpha \). \(h_{\alpha }\mg _{\beta +r\alpha } = (\langle \alpha |\beta \rangle +2r) \mg _\beta \) by de&#xFB01;nition of \(h_\alpha \), so \(M\)
+</p><!--l. 452--><p class="indent" >  \((2\&amp; 3)\): Consider \(M = \oplus _{r \in k} \mg _{\beta +r\alpha }\) as a representation of an \(\msl _2\)-triple associated to \(\alpha \). \(h_{\alpha }\mg _{\beta +r\alpha } = (\langle \alpha |\beta \rangle +2r) \mg _\beta \) by de&#xFB01;nition of \(h_\alpha \), so \(M\)
 is irreducible by \((1)\) and Corollary <a 
-href="#x1-3003r3">3.3<!--tex4ht:ref: irreduciblecrit --></a>. The results then follows from the representation
+href="#x1-4003r3">4.3<!--tex4ht:ref: irreduciblecrit --></a>. The results then follows from the representation
 theory of \(\msl _2\).
-</p><!--l. 393--><p class="indent" >  \((4)\): This follows from the former observation that \(M\) is an irreducible \(\msl _2\) module for \(\beta =\alpha \) along
+</p><!--l. 454--><p class="indent" >  \((4)\): This follows from the former observation that \(M\) is an irreducible \(\msl _2\) module for \(\beta =\alpha \) along
 with the fact that \([\mg _\alpha ,\mg _\alpha ]=0\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 396--><p class="indent" >  Because the &#x0028;nonzero&#x0029; roots are \(1\)-dimensional, and \(\mh \) is abelian, it follows that if \(a,b \in \mh \), then
+<!--l. 457--><p class="indent" >  Because the &#x0028;nonzero&#x0029; roots are \(1\)-dimensional, and \(\mh \) is abelian, it follows that if \(a,b \in \mh \), then
 \(\kappa (a,b) = \sum _{\alpha \in \Delta }\alpha (a)\alpha (b)\).
-</p><!--l. 398--><p class="indent" >  \(\kappa \) restricted to the roots is really de&#xFB01;ned over \(\QQ \) and is positive de&#xFB01;nite.
+</p><!--l. 459--><p class="indent" >  \(\kappa \) restricted to the roots is really de&#xFB01;ned over \(\QQ \) and is positive de&#xFB01;nite.
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
-<!--l. 399--><p class="noindent" ><span class="head">
+<!--l. 460--><p class="noindent" ><span class="head">
 <a 
- id="x1-4007r3"></a>
+ id="x1-5007r3"></a>
 <span 
-class="cmbx-12">Theorem 4.3.</span>  </span>
+class="cmbx-12">Theorem 5.3.</span>  </span>
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    <span 
 class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
@@ -1366,25 +1550,28 @@ class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(\kappa |_{\mh ^*_\QQ }\) <span 
 class="cmti-12">is positive de&#xFB01;nite.</span></dd></dl>
   <div class="proof">
-<!--l. 406--><p class="indent" >  <span class="head">
+<!--l. 467--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\((1)\): If there is some \(h \in \mh \) such that \(\kappa (\alpha ^*,h) = \alpha (h)=0\) for all \(\alpha \in \Delta \), then \(h\) acts trivially on all \(\mg _\alpha \), so must be \(0\).
-</p><!--l. 408--><p class="indent" >  \((2\&amp; 3)\): Let \(\alpha ,\beta \in \Delta \). Then the formula for \(\kappa \) shows \(\frac{4}{\kappa (\alpha ,\alpha )} = \sum _{\lambda \in \Delta } \langle \alpha | \lambda \rangle \in \ZZ \) so \(\kappa (\alpha ,\alpha ) \in \QQ \). Since \(\frac{\langle \alpha |\beta \rangle \kappa (\alpha ,\alpha )}{2} = \kappa (\alpha ,\beta )\), \(\kappa (\alpha ,\beta ) \in \QQ \). Finally the formula for \(\kappa (\alpha ,\alpha )\) shows it
+</p><!--l. 469--><p class="indent" >  \((2\&amp; 3)\): Let \(\alpha ,\beta \in \Delta \). Then the formula for \(\kappa \) shows \(\frac{4}{\kappa (\alpha ,\alpha )} = \sum _{\lambda \in \Delta } \langle \alpha | \lambda \rangle \in \ZZ \) so \(\kappa (\alpha ,\alpha ) \in \QQ \). Since \(\frac{\langle \alpha |\beta \rangle \kappa (\alpha ,\alpha )}{2} = \kappa (\alpha ,\beta )\), \(\kappa (\alpha ,\beta ) \in \QQ \). Finally the formula for \(\kappa (\alpha ,\alpha )\) shows it
 is positive, since it is a sum of squares of rational numbers. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
-<!--l. 412--><p class="indent" >  We have shown that \(h^*,\Delta \) is a root system, of which a de&#xFB01;nition will now be given. I think
+<!--l. 473--><p class="indent" >  We have shown that \(h^*,\Delta \) is a root system, of which a de&#xFB01;nition will now be given. I think
 the right way to do this gives something called root datum, where you don&#x2019;t identify the
 vector space with its dual via an inner product.
 </p>
   <div class="newtheorem">
-<!--l. 414--><p class="noindent" ><span class="head">
+<!--l. 475--><p class="noindent" ><span class="head">
 <a 
- id="x1-4011r4"></a>
+ id="x1-5011r4"></a>
 <span 
-class="cmbx-12">De&#xFB01;nition 4.4.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 5.4.</span>  </span><span 
 class="cmti-12">A </span><span 
 class="cmbxti-10x-x-120">root system </span><span 
 class="cmti-12">is an vector space</span> \(V\) <span 
@@ -1410,13 +1597,10 @@ class="cmti-12">in a connected string from</span> \(-p\) <span
 class="cmti-12">to</span> \(q\)<span 
 class="cmti-12">, where</span> \(p-q = \frac{2(\alpha ,\beta )}{(\alpha ,\alpha )}\)<span 
 class="cmti-12">.</span></li></ul>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 421--><p class="indent" >  The second condition is called the string condition.
-</p><!--l. 423--><p class="indent" >  We denote \(\frac{2(\alpha ,\beta )}{(\alpha ,\alpha )}\) as \(\langle \alpha |\beta \rangle \) like before.
-</p><!--l. 425--><p class="indent" >  We would like to determine when a Lie algebra is simple rather than just
+<!--l. 482--><p class="indent" >  The second condition is called the string condition.
+</p><!--l. 484--><p class="indent" >  We denote \(\frac{2(\alpha ,\beta )}{(\alpha ,\alpha )}\) as \(\langle \alpha |\beta \rangle \) like before.
+</p><!--l. 486--><p class="indent" >  We would like to determine when a Lie algebra is simple rather than just
 semisimple. Let us consider a sum of two semisimple Lie algebras \(\mg ,\mg '\), let \(\mh ,\mh '\) be their
 Cartan subalgebras and let \(\Delta ,\Delta '\) be the roots. \(\mh \oplus \mh '\) is a Cartan subalgebra and \(\Delta \coprod \Delta '\) is the
 corresponding set of roots. Note that the splitting of \(\mg \oplus \mg '\) can be detected entirely through
@@ -1428,22 +1612,25 @@ a partition \(\Delta \coprod \Delta '\) where \(a+b \notin \Delta \coprod \Delta
 class="cmbx-12">indecomposable</span>.
 </p>
   <div class="newtheorem">
-<!--l. 427--><p class="noindent" ><span class="head">
+<!--l. 488--><p class="noindent" ><span class="head">
 <a 
- id="x1-4012r5"></a>
+ id="x1-5012r5"></a>
 <span 
-class="cmbx-12">Lemma 4.5.</span>  </span>\(\mg \) <span 
+class="cmbx-12">Lemma 5.5.</span>  </span>\(\mg \) <span 
 class="cmti-12">is simple i&#xFB00; its root system is indecomposable.</span>
 </p>
+                                                                                  
+
+                                                                                  
   </div>
-<!--l. 431--><p class="indent" >  We can easily check indecomposability as follows:
+<!--l. 492--><p class="indent" >  We can easily check indecomposability as follows:
 </p>
   <div class="newtheorem">
-<!--l. 432--><p class="noindent" ><span class="head">
+<!--l. 493--><p class="noindent" ><span class="head">
 <a 
- id="x1-4013r6"></a>
+ id="x1-5013r6"></a>
 <span 
-class="cmbx-12">Lemma 4.6.</span>  </span> <span 
+class="cmbx-12">Lemma 5.6.</span>  </span> <span 
 class="cmti-12">A root system</span> \(\Delta \) <span 
 class="cmti-12">is indecomposable i&#xFB00; any two roots can be connected</span>
 <span 
@@ -1451,20 +1638,17 @@ class="cmti-12">by a sequence such that for any neighboring pair in the sequence
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 436--><p class="indent" >  The existence of a root system is really equivalent to being semisimple. Now we will
+<!--l. 497--><p class="indent" >  The existence of a root system is really equivalent to being semisimple. Now we will
 produce many examples of semisimple Lie algebras and hence root systems. To
 exhibit a Lie algebra as semisimple, it really su&#xFB03;ces to provide a root space
 decomposition.
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
-<!--l. 438--><p class="noindent" ><span class="head">
+<!--l. 499--><p class="noindent" ><span class="head">
 <a 
- id="x1-4014r7"></a>
+ id="x1-5014r7"></a>
 <span 
-class="cmbx-12">Theorem 4.7.</span>  </span> <span 
+class="cmbx-12">Theorem 5.7.</span>  </span> <span 
 class="cmti-12">If</span> \(\mg \) <span 
 class="cmti-12">has a decomposition as</span> \(\mh \oplus \bigoplus _{\alpha \in \Delta }\mg _\alpha \)<span 
 class="cmti-12">,</span> \(\Delta \subset \mh ^*\) <span 
@@ -1488,16 +1672,19 @@ class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(\alpha (a,\mg _{-\alpha })\neq 0\) <span 
 class="cmti-12">for</span> \(a \in \mg _\alpha \)<span 
 class="cmti-12">.</span></dd></dl>
-<!--l. 445--><p class="noindent" ><span 
+<!--l. 506--><p class="noindent" ><span 
 class="cmti-12">Then</span> \(\mg \) <span 
 class="cmti-12">is semisimple, and</span> \(\mh ,\Delta ,\mg _\alpha \) <span 
 class="cmti-12">denote the usual things.</span>
 </p>
   <div class="proof">
-<!--l. 447--><p class="indent" >  <span class="head">
+<!--l. 508--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Consider an abelian ideal \(\ma \). It cannot be contained in \(\mh \), as \(\alpha \) of any element in \(\mh \)
 is nonzero for some \(\alpha \) by \((1)\), so \(\mg _\alpha \) would also be in it. Consider any element \(a \in \ma -\mh \). By acting on
+                                                                                  
+
+                                                                                  
 it by elements of \(\mh \) many times, since \(\mh \) is nilpotent and \(\mg _\alpha \) are weight spaces for \(\mh \), we can
 assume its component in \(\mh \) is \(0\) and its components in the \(\mg _\alpha \) are restricted to \(\alpha \) supported
 on a line. By further acting by an element in \(\mh \) for which \(\alpha \) doesn&#x2019;t vanish, and taking
@@ -1508,49 +1695,49 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 451--><p class="indent" >  Now we can construct the classical simple Lie algebras and their root decompositions.
+<!--l. 512--><p class="indent" >  Now we can construct the classical simple Lie algebras and their root decompositions.
 We will not show they are simple since it easily follows from our criteria.
 </p>
   <div class="newtheorem">
-<!--l. 453--><p class="noindent" ><span class="head">
+<!--l. 514--><p class="noindent" ><span class="head">
 <a 
- id="x1-4018r1"></a>
+ id="x1-5018r1"></a>
 <span 
-class="cmbx-12">Example 4.7.1 </span>&#x0028;\(\msl _n\)&#x0029;<span 
+class="cmbx-12">Example 5.7.1 </span>&#x0028;\(\msl _n\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>The diagonal matricies form an abelian subalgebra, with basis \(e_i = E_{i,i}-E_{i+1,i+1}\)
-                                                                                  
-
-                                                                                  
 for \(1 \leq i &lt; n\). Anything that commutes with \(e_i\) commutes with all diagonal matricies preserves
 their eigenspaces so must be diagonal. \(\ad e_i(E_{jk})\) was computed before, and we see that \(E_{jk},j\neq k\) are
 the weight spaces with weight \(e_j^*-e_k^*\). The roots are then \(e_j^*-e_k^*\) for \(j\neq k\) both less than \(n\).
 </p>
   </div>
-<!--l. 457--><p class="indent" >  Given a bilinear form \(B\) on a vector space \(V\), the set of endomorphisms \(A\) such that \(B(Aa,b)+B(a,Ab)=0\) is a Lie
+<!--l. 518--><p class="indent" >  Given a bilinear form \(B\) on a vector space \(V\), the set of endomorphisms \(A\) such that \(B(Aa,b)+B(a,Ab)=0\) is a Lie
 algebra. When \(B\) is a nondegenerate symmetric bilinear form on a vector space of dimension
 \(n\), this is called \(\so _n\), and when it is a nondegenerate alternating biliner form on a vector space
 of dimension \(2n\), this is called \(\msp _{2n}\).
 </p>
   <div class="newtheorem">
-<!--l. 459--><p class="noindent" ><span class="head">
+<!--l. 520--><p class="noindent" ><span class="head">
 <a 
- id="x1-4019r2"></a>
+ id="x1-5019r2"></a>
 <span 
-class="cmbx-12">Example 4.7.2 </span>&#x0028;\(\so _{n}\)&#x0029;<span 
+class="cmbx-12">Example 5.7.2 </span>&#x0028;\(\so _{n}\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>Here \(n\geq 3\). Choose a basis so that \(B\) is the matrix that is \(1\)s on the
 antidiagonal. Then \(\so _n\) consists of all matrices that are anti symmetric with respect to
 &#xFB02;ipping across the antidiagonal. A Cartan subalgebra consists of all matrices that
 are diagonal, a basis given by \(e_i = E_{ii}-E_{n+1-i,n+1-i}\) for \(1 \leq i \leq \frac n 2\). The root spaces are given by \(E_{ij}-E_{n+1-i,n+1-j}\), corresponding to
+                                                                                  
+
+                                                                                  
 the roots \(e_i^*-e_{j}^*\), where \(e_j^*\) really means \(-e_{n+1-j}^*\) when \(j&gt;\frac n 2\) and \(0\) when \(j=\frac n 2\). When \(n\) is even, these then give \(\pm (e_i^* + e_j^*), e_i^*-e_j^*\)
 for \(i\neq j\) at most \(\frac{n}{2}\), and when \(n\) is odd, they give \(\pm (e_i^* + e_j^*),e_i^*-e_j^*, \pm e_i^*\) for \(i \neq j\) at most \(\frac n 2\).
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 463--><p class="noindent" ><span class="head">
+<!--l. 524--><p class="noindent" ><span class="head">
 <a 
- id="x1-4020r3"></a>
+ id="x1-5020r3"></a>
 <span 
-class="cmbx-12">Example 4.7.3 </span>&#x0028;\(\msp _{2n}\)&#x0029;<span 
+class="cmbx-12">Example 5.7.3 </span>&#x0028;\(\msp _{2n}\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>Here \(n\geq 1\). We can choose a basis so the bilinear form looks like \(1\) on
 the upper half of the antidiagonal and \(-1\) on the other half. We can split any matrix in
 \(\msp _{2n}\) into four quadrants like \(\begin{bmatrix} a&amp;b\\c&amp;d \end{bmatrix}\), and if \(a'\) denotes the re&#xFB02;ection across the antidiagonal, the
@@ -1560,19 +1747,16 @@ upper left quadrant, which gives \(e_i^*-e_j^*\). Another is \(E_{ij}+E_{n+1-i,n
 the top right or bottom left quadrant, giving \(\pm (e_i^* + e_j^*)\). The last kind is \(E_{ij}\) where \(i,j\) lies on the
 antidiagonal, giving \(\pm 2e_i^*\).
 </p>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 468--><p class="indent" >  There is another naming scheme related to Dynkin diagrams: \(A_n = \msl _{n+1}, B_n = \so _{2n+1}, C_n = \msp _{2n}, D_n = \so _{2n} (n&gt;1)\).
-</p><!--l. 471--><p class="indent" >  The Killing forms are easy to understand up to scalar multiplication:
+<!--l. 529--><p class="indent" >  There is another naming scheme related to Dynkin diagrams: \(A_n = \msl _{n+1}, B_n = \so _{2n+1}, C_n = \msp _{2n}, D_n = \so _{2n} (n&gt;1)\).
+</p><!--l. 532--><p class="indent" >  The Killing forms are easy to understand up to scalar multiplication:
 </p>
   <div class="newtheorem">
-<!--l. 472--><p class="noindent" ><span class="head">
+<!--l. 533--><p class="noindent" ><span class="head">
 <a 
- id="x1-4021r8"></a>
+ id="x1-5021r8"></a>
 <span 
-class="cmbx-12">Lemma 4.8.</span>  </span><span 
+class="cmbx-12">Lemma 5.8.</span>  </span><span 
 class="cmti-12">Any nontrivial invariant bilinear form on a simple Lie algebra is</span>
 <span 
 class="cmti-12">nondegenerate. Moreover any invariant nondegenerate bilinear form on a simple Lie</span>
@@ -1582,24 +1766,27 @@ class="cmti-12">algebra is unique up to scalar multiplication. In particular it 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 475--><p class="indent" >  <span class="head">
+<!--l. 536--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>An invariant bilinear form is a map of \(\mg \)-modules \(\mg \otimes \mg \to k\). \(\Hom (\mg \otimes \mg ,k) = \Hom (\mg ,\mg ^*)\) which is one-dimensional
 since \(\mg \) is simple. The result follows since \(\kappa \) is an example of a nontrivlal form. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
   </div>
-<!--l. 479--><p class="indent" >  Thus the trace form of the standard representation is proportional to \(\kappa \). Now let&#x2019;s
+<!--l. 540--><p class="indent" >  Thus the trace form of the standard representation is proportional to \(\kappa \). Now let&#x2019;s
 study root systems in general. There is an analog of the previous lemma for root
 systems.
 </p>
   <div class="newtheorem">
-<!--l. 482--><p class="noindent" ><span class="head">
+<!--l. 543--><p class="noindent" ><span class="head">
 <a 
- id="x1-4022r9"></a>
+ id="x1-5022r9"></a>
 <span 
-class="cmbx-12">Proposition 4.9.</span>  </span><span 
+class="cmbx-12">Proposition 5.9.</span>  </span><span 
 class="cmti-12">An indecomposable root system has a unique up to scalars</span>
 <span 
 class="cmti-12">inner product making it a root system. Moreover, if</span> \((\alpha ,\alpha ) \in \QQ \) <span 
@@ -1609,45 +1796,45 @@ class="cmti-12">, it is true for all</span>
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-                                                                                  
-
-                                                                                  
-<!--l. 485--><p class="indent" >  <span class="head">
+<!--l. 546--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Given \((\alpha ,\alpha )\), the string condition lets us compute \((\alpha ,\beta )\) whenever \(\alpha +\beta \in \Delta \), which then lets us
 compute \((\beta ,\beta )\). Continuing this way via Lemma <a 
-href="#x1-4013r6">4.6<!--tex4ht:ref: indeccondition --></a>, we can recover the rest of the inner
+href="#x1-5013r6">5.6<!--tex4ht:ref: indeccondition --></a>, we can recover the rest of the inner
 product showing it is determined by \((\alpha ,\alpha )\) and moreover in \(\QQ \) if \((\alpha ,\alpha )\) is. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 488--><p class="indent" >  Thus we can really choose to work over \(\QQ \) or \(\RR \) and it makes no di&#xFB00;erence. \(\ZZ \Delta \) is a &#xFB01;nitely
+<!--l. 549--><p class="indent" >  Thus we can really choose to work over \(\QQ \) or \(\RR \) and it makes no di&#xFB00;erence. \(\ZZ \Delta \) is a &#xFB01;nitely
 generated subgroup of a rational vector space, so is a lattice called the <span 
 class="cmbx-12">root</span>
 <span 
 class="cmbx-12">lattice</span>.
-</p><!--l. 490--><p class="indent" >  Let \(E_r\) be the lattice consisting of linear combinations \(a_ie_I\) where either \(a_i \in \ZZ \) or \(a_i\in \ZZ +\frac 1 2\) for all \(i\) and
+</p><!--l. 551--><p class="indent" >  Let \(E_r\) be the lattice consisting of linear combinations \(a_ie_I\) where either \(a_i \in \ZZ \) or \(a_i\in \ZZ +\frac 1 2\) for all \(i\) and
 \(\sum _i a_i \in 2\ZZ \).
-</p><!--l. 492--><p class="indent" >  A lattice is <span 
+</p><!--l. 553--><p class="indent" >  A lattice is <span 
 class="cmbx-12">even </span>if \((a,b) \in \ZZ \) for any \(a,b\) in it. The following is straightforward.
 </p>
   <div class="newtheorem">
-<!--l. 494--><p class="noindent" ><span class="head">
+<!--l. 555--><p class="noindent" ><span class="head">
 <a 
- id="x1-4023r10"></a>
+ id="x1-5023r10"></a>
+                                                                                  
+
+                                                                                  
 <span 
-class="cmbx-12">Lemma 4.10.</span>  </span>\(E_r\) <span 
+class="cmbx-12">Lemma 5.10.</span>  </span>\(E_r\) <span 
 class="cmti-12">is even i&#xFB00;</span> \(8|r\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 498--><p class="noindent" ><span class="head">
+<!--l. 559--><p class="noindent" ><span class="head">
 <a 
- id="x1-4024r11"></a>
+ id="x1-5024r11"></a>
 <span 
-class="cmbx-12">Theorem 4.11.</span>  </span><span 
+class="cmbx-12">Theorem 5.11.</span>  </span><span 
 class="cmti-12">Given an even lattice such that</span> \(\Delta \)<span 
 class="cmti-12">, the set of elements in the lattice such</span>
 <span 
@@ -1656,10 +1843,7 @@ class="cmti-12">span the vector space,</span> \(\Delta \) <span
 class="cmti-12">is a root system.</span>
 </p>
   <div class="proof">
-<!--l. 501--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 562--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>One really only needs to check the string property. Since \(0 \leq (\alpha -\beta ,\alpha -\beta ) = (\alpha ,\alpha )+(\beta ,\beta )-2(\alpha ,\beta )\), we see that \((\alpha ,\beta ) \leq 2\). One
 can calculate in each case that the string condition holds. <span class="qed"><span 
@@ -1668,22 +1852,25 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 505--><p class="noindent" ><span class="head">
+<!--l. 566--><p class="noindent" ><span class="head">
 <a 
- id="x1-4025r1"></a>
+ id="x1-5025r1"></a>
 <span 
-class="cmbx-12">Example 4.11.1 </span>&#x0028;\(E_8\)&#x0029;<span 
+class="cmbx-12">Example 5.11.1 </span>&#x0028;\(E_8\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>The theorem implies \(E_8\) is a root system, which can be checked
 is indecomposable. It can be described as the root system consisting of \(\pm (e_i + e_j), \pm e_i \mp e_j\) and things
 of the form \(\frac{1}{2}(e_1\pm \dots e_8)\) where there are an even number of minus signs.
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 509--><p class="noindent" ><span class="head">
+<!--l. 570--><p class="noindent" ><span class="head">
 <a 
- id="x1-4026r2"></a>
+ id="x1-5026r2"></a>
+                                                                                  
+
+                                                                                  
 <span 
-class="cmbx-12">Example 4.11.2 </span>&#x0028;\(E_7\)&#x0029;<span 
+class="cmbx-12">Example 5.11.2 </span>&#x0028;\(E_7\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>We  can  construct  another  called  \(E_7\)  as  a  sub-root  system  as
 follows: consider the vectors in \(E_8\) orthogonal to the constant vector with entry \(\frac 1 2\). It is
 still even, so a root system. These are of the form \(e_i-e_j, i \neq j\) and things of the form \(\frac{1}{2}(e_1\pm \dots e_8)\) where the
@@ -1691,28 +1878,25 @@ number of minus signs is divisible by four.
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 513--><p class="noindent" ><span class="head">
+<!--l. 574--><p class="noindent" ><span class="head">
 <a 
- id="x1-4027r3"></a>
+ id="x1-5027r3"></a>
 <span 
-class="cmbx-12">Example 4.11.3 </span>&#x0028;\(E_6\)&#x0029;<span 
+class="cmbx-12">Example 5.11.3 </span>&#x0028;\(E_6\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>Finally, \(E_6\) can be constructed as the root system consisting of
 vectors in \(E_7\) that are orthogonal to \(e_7+e_8\). It is still even, so a root system. It contains \(e_i-e_j\) such
 that if either of \(\{i,j\}\cap \{7,8\}\) is \(\{7,8\}\) or \(\phi \), as well as things of the form \(\frac{1}{2}(e_1\pm \dots e_8)\) where the number of minus
 signs is divisible by four, and \(e_7,e_8\) have opposite signs.
 </p>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 517--><p class="indent" >  There are two more exceptional root systems, which have a di&#xFB00;erent origin.
+<!--l. 578--><p class="indent" >  There are two more exceptional root systems, which have a di&#xFB00;erent origin.
 </p>
   <div class="newtheorem">
-<!--l. 519--><p class="noindent" ><span class="head">
+<!--l. 580--><p class="noindent" ><span class="head">
 <a 
- id="x1-4028r4"></a>
+ id="x1-5028r4"></a>
 <span 
-class="cmbx-12">Example 4.11.4 </span>&#x0028;\(F_4\)&#x0029;<span 
+class="cmbx-12">Example 5.11.4 </span>&#x0028;\(F_4\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>Consider  the  vector  space  generated  by  \(e_1,e_2,e_3,e_4\)  and  consider  the
 lattice consisting of elements of the form \(\sum _i a_i e_i\) where either \(a_i \in \ZZ \) or all \(a_i \in \ZZ +\frac 1 2\). The elements of the
 lattice such that \((x,x) = 1,2\) form an indecomposable root system. More explicitly, the roots are
@@ -1720,19 +1904,22 @@ lattice such that \((x,x) = 1,2\) form an indecomposable root system. More expli
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 523--><p class="noindent" ><span class="head">
+<!--l. 584--><p class="noindent" ><span class="head">
 <a 
- id="x1-4029r5"></a>
+ id="x1-5029r5"></a>
 <span 
-class="cmbx-12">Example 4.11.5 </span>&#x0028;\(G_2\)&#x0029;<span 
+class="cmbx-12">Example 5.11.5 </span>&#x0028;\(G_2\)&#x0029;<span 
 class="cmbx-12">.</span>  </span>Here the lattice is the same as that for \(A_2\), namely all elements
 \(a_1e_1+a_2e_2+a_3e_3\) such that \(\sum _i a_i = 0\), except we take elements with \((x,x) = 2,6\). This is an indecomposable root system
+                                                                                  
+
+                                                                                  
 whose elements are \(\pm (e_i + e_j), e_i - e_j, \pm (2e_i-e_j-e_k)\).
 </p>
   </div>
-  <h3 class="sectionHead"><span class="titlemark">5. </span> <a 
- id="x1-50005"></a>Classi&#xFB01;cation</h3>
-<!--l. 529--><p class="noindent" >To classify root systems, we will really classify root systems with a generic linear
+  <h3 class="sectionHead"><span class="titlemark">6. </span> <a 
+ id="x1-60006"></a>Classi&#xFB01;cation</h3>
+<!--l. 590--><p class="noindent" >To classify root systems, we will really classify root systems with a generic linear
 functional, and show it doesn&#x2019;t depend on the functional. Suppose that we have a root
 system \((V,\Delta )\) and a linear functional \(f\) not vanishing on any root. Then we say a root \(\alpha \) is
 <span 
@@ -1744,14 +1931,11 @@ negative roots, and \(\Pi \) denotes the simple roots. \(\Pi \) is indecomposabl
 partitioned into orthogonal sets.
 </p>
   <div class="newtheorem">
-<!--l. 531--><p class="noindent" ><span class="head">
+<!--l. 592--><p class="noindent" ><span class="head">
 <a 
- id="x1-5001r1"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-6001r1"></a>
 <span 
-class="cmbx-12">Theorem 5.1 </span>&#x0028;Dynkin&#x0029;<span 
+class="cmbx-12">Theorem 6.1 </span>&#x0028;Dynkin&#x0029;<span 
 class="cmbx-12">.</span>  </span>
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    <span 
@@ -1798,39 +1982,39 @@ class="cmti-12">, and</span> \((\theta ,\alpha )&gt;0,\alpha \in \Delta _+\)<spa
 class="cmti-12">.</span>
           </dd></dl>
   <div class="proof">
-<!--l. 542--><p class="indent" >  <span class="head">
+<!--l. 603--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>\((1)\): If it were in \(\Delta \), by possibly taking its negative, we could assume it is in \(\Delta _+\). But
 then \(\alpha -\beta + \beta = \beta \) so \(\beta \) isn&#x2019;t simple. The string condition then implies that \((\alpha ,\beta ) \leq 0\).
-</p><!--l. 544--><p class="indent" >  \((2)\): Break up a positive root into smaller positive roots until they are all simple.
-</p><!--l. 546--><p class="indent" >  \((3)\): \(\alpha = \sum _i c_i\gamma _i\) where \(\gamma _i\) are positive simple roots, and \(c_i&gt;0\). we have that \(\sum _i c_i\langle \alpha |\gamma _i\rangle = \langle \alpha |\alpha \rangle = 2\), so \(\langle \alpha |\gamma _i\rangle \) is positive for some \(\gamma _i\),
+</p><!--l. 605--><p class="indent" >  \((2)\): Break up a positive root into smaller positive roots until they are all simple.
+</p><!--l. 607--><p class="indent" >  \((3)\): \(\alpha = \sum _i c_i\gamma _i\) where \(\gamma _i\) are positive simple roots, and \(c_i&gt;0\). we have that \(\sum _i c_i\langle \alpha |\gamma _i\rangle = \langle \alpha |\alpha \rangle = 2\), so \(\langle \alpha |\gamma _i\rangle \) is positive for some \(\gamma _i\),
 so \(\gamma _i-\alpha \in \Delta \). If \(\gamma -\alpha \) is ever in \(\Delta _+\), then since \(\alpha \) is too, \(\gamma \) cannot be simple. Thus \(\alpha -\gamma \in \Delta _+\).
-</p><!--l. 548--><p class="indent" >  \((4)\): Since \(\Delta \) spans the lattice, so does \(\Delta _+\), so by \((2)\), \(\Pi \) does too. Suppose there is a relation \(\sum c_i \gamma _i = \sum c'_j \gamma '_j\)
+</p><!--l. 609--><p class="indent" >  \((4)\): Since \(\Delta \) spans the lattice, so does \(\Delta _+\), so by \((2)\), \(\Pi \) does too. Suppose there is a relation \(\sum c_i \gamma _i = \sum c'_j \gamma '_j\)
 where \(c_i,c'_j\geq 0\), and \(\gamma _i,\gamma _j'\) are a disjoint set of simple roots. Then \((\sum c_i \gamma _i,\sum c'_j \gamma '_j) \leq 0\) by \((1)\) so the coe&#xFB03;cients are \(0\).
-</p><!--l. 550--><p class="indent" >  \((5)\):  If  \(\Gamma \)  is  decomposable,  the  string  condition  and  \((2),(3)\)  implies  that  any  element  in
+</p><!--l. 611--><p class="indent" >  \((5)\):  If  \(\Gamma \)  is  decomposable,  the  string  condition  and  \((2),(3)\)  implies  that  any  element  in
 \(\Delta _+\) is  decomposable  into  things  in  exactly  one  of  the  decompositions  of  \(\Gamma \),  showing
 \(\Delta \) is  decomposable.  Conversely  if  \(\Delta \)  is  decomposable,  as  noted  earlier  the  string
 condition shows the decomposition is orthogonal, implying that that the simple roots
 decompose orthogonally too.
-</p><!--l. 552--><p class="indent" >  \((6)\): If \(\theta \) is a highest root and \(\alpha \) a positive root, then \(\theta +\alpha \notin \Delta \) because it is larger than \(\theta \). Then
+</p><!--l. 613--><p class="indent" >  \((6)\): If \(\theta \) is a highest root and \(\alpha \) a positive root, then \(\theta +\alpha \notin \Delta \) because it is larger than \(\theta \). Then
 the string condition implies \((\theta ,\alpha )\geq 0\). By \((1),(2)\), the set of \(\gamma \in \Pi \) orthogonal to \(\theta \) and the set of \(\gamma \in \Pi \) in the
 decomposition of \(\theta \) are a decomposition of \(\Pi \), so by indecomposability we must have \((\theta ,\gamma )&gt;0\)
 for \(\gamma \in \Pi \) and hence for all elements of \(\Delta _+\).
-                                                                                  
-
-                                                                                  
-</p><!--l. 554--><p class="indent" >  But if \(\theta _1\neq \theta _2\) are highest roots, \(f(\theta _1-\theta _2)\) = 0 so it cannot be a root and \(f(\theta _1+\theta _2)&gt;f(\theta _1)\) so it isn&#x2019;t a root. the
+</p><!--l. 615--><p class="indent" >  But if \(\theta _1\neq \theta _2\) are highest roots, \(f(\theta _1-\theta _2)\) = 0 so it cannot be a root and \(f(\theta _1+\theta _2)&gt;f(\theta _1)\) so it isn&#x2019;t a root. the
 string condition then says \((\theta _1,\theta _2) = 0\), but this was shown to not be possible. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 558--><p class="noindent" ><span class="head">
+<!--l. 619--><p class="noindent" ><span class="head">
 <a 
- id="x1-5008r2"></a>
+ id="x1-6008r2"></a>
 <span 
-class="cmbx-12">De&#xFB01;nition 5.2.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 6.2.</span>  </span><span 
 class="cmti-12">If</span> \(\gamma _1,\dots ,\gamma _r\) <span 
 class="cmti-12">are the simple roots, then the matrix</span> \(A\) <span 
 class="cmti-12">with entries</span> \(\langle \gamma _i|\gamma _i\rangle \) <span 
@@ -1841,21 +2025,24 @@ class="cmti-12">.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 562--><p class="noindent" ><span class="head">
+<!--l. 623--><p class="noindent" ><span class="head">
 <a 
- id="x1-5009r3"></a>
+ id="x1-6009r3"></a>
 <span 
-class="cmbx-12">Lemma 5.3.</span>  </span> <span 
+class="cmbx-12">Lemma 6.3.</span>  </span> <span 
 class="cmti-12">The Cartan matrix</span> \(A\) <span 
 class="cmti-12">is an integer matrix with</span> \(2\) <span 
 class="cmti-12">on the diagonals,</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">nonpositive numbers on the o&#xFB00;-diagonals, and positive principle values. Moreover</span>
 \(A_{ij}=0 \iff A_{ji}=0\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 565--><p class="indent" >  <span class="head">
+<!--l. 626--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The &#xFB01;rst,second, and last claim are clear, the third follows from the previous
 theorem, and the fourth follows from Sylvester&#x2019;s criterion because the Cartan matrix
@@ -1865,14 +2052,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 569--><p class="noindent" ><span class="head">
+<!--l. 630--><p class="noindent" ><span class="head">
 <a 
- id="x1-5010r4"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-6010r4"></a>
 <span 
-class="cmbx-12">De&#xFB01;nition 5.4.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 6.4.</span>  </span><span 
 class="cmti-12">If</span> \(\gamma _1,\dots ,\gamma _r,\theta \) <span 
 class="cmti-12">are the simple roots, then the matrix</span> \(\tilde{A}\) <span 
 class="cmti-12">with the same entries for</span>
@@ -1883,36 +2067,39 @@ class="cmbxti-10x-x-120">extended Cartan matrix</span><span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 573--><p class="indent" >  \(\tilde{A}\) clearly satis&#xFB01;es the same properties as \(A\) except the determinant is \(0\).
+<!--l. 634--><p class="indent" >  \(\tilde{A}\) clearly satis&#xFB01;es the same properties as \(A\) except the determinant is \(0\).
 </p>
   <div class="newtheorem">
-<!--l. 575--><p class="noindent" ><span class="head">
+<!--l. 636--><p class="noindent" ><span class="head">
 <a 
- id="x1-5011r5"></a>
+ id="x1-6011r5"></a>
 <span 
-class="cmbx-12">De&#xFB01;nition 5.5.</span>  </span><span 
+class="cmbx-12">De&#xFB01;nition 6.5.</span>  </span><span 
 class="cmti-12">An abstract Cartan matrix is one satisfying the properties of Lemma</span>
 <a 
-href="#x1-5009r3"><span 
-class="cmti-12">5.3</span><!--tex4ht:ref: cartanproperties --></a><span 
+href="#x1-6009r3"><span 
+class="cmti-12">6.3</span><!--tex4ht:ref: cartanproperties --></a><span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 579--><p class="indent" >  A Cartan matrix is <span 
+<!--l. 640--><p class="indent" >  A Cartan matrix is <span 
 class="cmbx-12">indecomposable </span>i&#xFB00; it is not the direct sum of Cartan matrices.
 Clearly a root system is indecomposable i&#xFB00; its Cartan matrix is.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 581--><p class="noindent" ><span class="head">
+<!--l. 642--><p class="noindent" ><span class="head">
 <a 
- id="x1-5012r6"></a>
+ id="x1-6012r6"></a>
 <span 
-class="cmbx-12">Lemma 5.6.</span>  </span><span 
+class="cmbx-12">Lemma 6.6.</span>  </span><span 
 class="cmti-12">The only</span> \(2x2\) <span 
 class="cmti-12">Cartan matricies &#x0028;up to rearrangement&#x0029; are </span>\[ \begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 2 \end{bmatrix} \begin{bmatrix} 2 &amp; -1 \\ -1 &amp; 2 \end{bmatrix} \begin{bmatrix} 2 &amp; -1 \\ -2 &amp; 2 \end{bmatrix} \begin{bmatrix} 2 &amp; -1 \\ -3 &amp; 2 \end{bmatrix} \]
 </p>
   </div>
-<!--l. 599--><p class="indent" >  Because of this classi&#xFB01;cation and the fact that every matrix is determined by its graph
+<!--l. 660--><p class="indent" >  Because of this classi&#xFB01;cation and the fact that every matrix is determined by its graph
 of \(2x2\) principal submatrices, the Cartan matrix is completely encoded by a <span 
 class="cmbx-12">Dynkin</span>
 <span 
@@ -1921,11 +2108,8 @@ each \(2x2\) principal submatrix.
 </p>
 <div class="center" 
 >
-<!--l. 601--><p class="noindent" >
+<!--l. 662--><p class="noindent" >
 </p>
-                                                                                  
-
-                                                                                  
 <div class="tabular"> <table id="TBL-1" class="tabular" 
  
 ><colgroup id="TBL-1-1g"><col 
@@ -1949,26 +2133,29 @@ src="Lie_Algebras2x.svg" alt=" "  /> </td>
 class="td11">\(\begin{bmatrix} 2 &amp; -1 \\-3 &amp; 2 \end{bmatrix}\)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-4-2"  
 class="td11"> <img 
 src="Lie_Algebras3x.svg" alt=" "  /> </td></tr></table></div></div>
-<!--l. 617--><p class="noindent" >An edge indicates two arrows that are not orthogonal. The double and triple edges indicate
+<!--l. 678--><p class="noindent" >An edge indicates two arrows that are not orthogonal. The double and triple edges indicate
 that one root is longer, and they point to the shorter root.
-</p><!--l. 619--><p class="indent" >  Extended Cartan matrices gives an <span 
+</p><!--l. 680--><p class="indent" >  Extended Cartan matrices gives an <span 
 class="cmbx-12">extended Dynkin diagram</span>, where we mark the
 highest root as special. In the case of \(A_1\) the extended Cartan matrix consists of all \(2\)s, so it is
 exceptional, and we denote it by  <img 
 src="Lie_Algebras4x.svg" alt="  "  />  .
 </p>
   <div class="newtheorem">
-<!--l. 621--><p class="noindent" ><span class="head">
+<!--l. 682--><p class="noindent" ><span class="head">
 <a 
- id="x1-5013r1"></a>
+ id="x1-6013r1"></a>
 <span 
-class="cmbx-12">Example 5.6.1 </span>&#x0028;Extended Dynkin Diagrams&#x0029;<span 
+class="cmbx-12">Example 6.6.1 </span>&#x0028;Extended Dynkin Diagrams&#x0029;<span 
 class="cmbx-12">.</span>  </span>Here is a list of the extended Dynkin
 diagrams of the thus-far constructed root systems. We will soon see that this list is
 complete. </p>
 <div class="center" 
 >
-<!--l. 623--><p class="noindent" >
+<!--l. 684--><p class="noindent" >
+                                                                                  
+
+                                                                                  
 </p>
 <div class="tabular"> <table id="TBL-2" class="tabular" 
  
@@ -2025,14 +2212,11 @@ src="Lie_Algebras13x.svg" alt=" "  />        </td>
 class="td11">\(G_2\)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-10-2"  
 class="td11">     <img 
 src="Lie_Algebras14x.svg" alt=" "  />       </td></tr></table></div></div>
-<!--l. 637--><p class="noindent" >Now let&#x2019;s see why these are as above. We will always choose \(f\) so the \(e_i\) are positive and \(e_i\) is
+<!--l. 698--><p class="noindent" >Now let&#x2019;s see why these are as above. We will always choose \(f\) so the \(e_i\) are positive and \(e_i\) is
 much larger than \(e_{i+1}\). </p>
           <ul class="itemize1">
        <li class="itemize">\(A_n\):, The roots are \(e_i-e_j\) &#x0028;we drop the \((-)^*\) in the notation&#x0029;. Then the simple roots are \(e_i-e_{i+1}\),
        and the largest root is \(e_1-e_n\).
-                                                                                  
-
-                                                                                  
           </li>
        <li class="itemize">\(B_n\): The roots are \(\pm (e_i +e_j),e_i - e_j, \pm e_i\). Then the simple roots are \(e_n, e_{i}-e_{i+1}\), and the largest root is \(e_1+e_2\).
           </li>
@@ -2052,34 +2236,34 @@ much larger than \(e_{i+1}\). </p>
        The simple roots are \(e_i-e_{i+1}\) for \(i \neq 1,7\) and \(\frac 1 2 (\sum _{1,5,6,8}e_i-\sum _{2,3,4,7}e_j)\) and the largest root is \(e_1-e_2\).
           </li>
        <li class="itemize">\(F_4\): The roots are \(\pm e_i, \pm (e_i + e_j), e_i-e_j, \pm \frac 1 2 (e_1\pm \dots e_4)\). The simple roots are \(\frac{1}{2} (e_1-e_2-e_3-e_4), e_4,e_2-e_3,e_3-e_4\), and the largest root is \(e_1+e_2\).
+                                                                                  
+
+                                                                                  
           </li>
        <li class="itemize">\(G_2\): The roots are \(\pm (e_i + e_j), e_i - e_j, \pm (2e_i-e_j-e_k)\). The simple roots are \(e_2-e_3, e_1-2e_2+e_3\), and the largest root is \(2e_1-e_2-e_3\).</li></ul>
   </div>
   <div class="newtheorem">
-<!--l. 651--><p class="noindent" ><span class="head">
+<!--l. 712--><p class="noindent" ><span class="head">
 <a 
- id="x1-5014r7"></a>
+ id="x1-6014r7"></a>
 <span 
-class="cmbx-12">Theorem 5.7.</span>  </span><span 
+class="cmbx-12">Theorem 6.7.</span>  </span><span 
 class="cmti-12">The examples contain a complete list of indecomposable Cartan</span>
 <span 
 class="cmti-12">matrices.</span>
 </p>
   <div class="proof">
-<!--l. 654--><p class="indent" >  <span class="head">
+<!--l. 715--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Every subdiagram of a Dynkin diagram is a Dynkin diagram. Moreover, any
 extended Dynkin diagram is not a Dynkin diagram. Finally, for any multiple edge
 on a vertex of degree \(1\) on a Dynkin diagram, reversing an isolated set of multiple
-                                                                                  
-
-                                                                                  
 edges preserves being a Dynkin diagram since it preserves determinants of principle
 submatrices.  Reducing  an  edge&#x2019;s  multiplicity  preserves  being  a  Dynkin  diagram
 since it increases the determinant of the principal submatrices. These observations
 essentially prove the theorem. Namely, the extended Dynkin diagrams constructed
 obstruct any other Dynkin diagrams from existing via these observations.
-</p><!--l. 656--><p class="indent" >  To actually work this out, \(A_n\) obstructs cycles from existing, so all Dynkin diagrams
+</p><!--l. 717--><p class="indent" >  To actually work this out, \(A_n\) obstructs cycles from existing, so all Dynkin diagrams
 are trees.  \(G_2\) obstructs triple edges from existing anywhere else, \(F_4\) obstructs double
 edges from appearing not on a leaf. \(C_n\) obstructs double edges from appearing multiple
 times elsewhere, \(B_n\) obstructs branching when there is a double edge. \(D_n\) obstructs double
@@ -2088,13 +2272,16 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 660--><p class="indent" >  Observe that the list is a bit redundant. Namely, \(A_1=B_1=C_1\), \(D_2 = A_1 \oplus A_1\), \(B_2 = C_2\), \(D_3 = A_3\), but the rest are not redundant.
+<!--l. 721--><p class="indent" >  Observe that the list is a bit redundant. Namely, \(A_1=B_1=C_1\), \(D_2 = A_1 \oplus A_1\), \(B_2 = C_2\), \(D_3 = A_3\), but the rest are not redundant.
 Sometimes these are called <span 
 class="cmbx-12">exceptional isomorphisms</span>.
-</p><!--l. 662--><p class="indent" >  We will now show that this classi&#xFB01;cation also classi&#xFB01;es simple Lie algebras and
+</p><!--l. 723--><p class="indent" >  We will now show that this classi&#xFB01;cation also classi&#xFB01;es simple Lie algebras and
 indecomposable root systems as well. First we will show nothing depends on \(f\), and that we
 can recover the root system from the Cartan matrix.
-</p><!--l. 664--><p class="indent" >  There is another way of thinking about root systems. Namely, re&#xFB02;ection across the
+                                                                                  
+
+                                                                                  
+</p><!--l. 725--><p class="indent" >  There is another way of thinking about root systems. Namely, re&#xFB02;ection across the
 orthogonal plane to \(a\) is given by the equation \(r_a(v) = v-\langle a|v\rangle a\). One then sees from the string
 condition that \(\Delta \) is closed under re&#xFB02;ection by any element in it &#x0028;this condition is
 actually equivalent to it by checking what happens in dimension \(2\)&#x0029;. For the root
@@ -2104,20 +2291,17 @@ called the <span
 class="cmbx-12">Weyl group </span>and denoted \(W(\Delta )\). It is &#xFB01;nite since it acts faithfully on \(\Delta \).
 The fact that there are so many symmetries already suggests \(f\) doesn&#x2019;t really do
 much.
-</p><!--l. 666--><p class="indent" >  If \(\gamma _1,\dots ,\gamma _r\) are the simple roots, let \(s_i = r_{\gamma _i}\); these are called simple re&#xFB02;ections. De&#xFB01;ne the <span 
+</p><!--l. 727--><p class="indent" >  If \(\gamma _1,\dots ,\gamma _r\) are the simple roots, let \(s_i = r_{\gamma _i}\); these are called simple re&#xFB02;ections. De&#xFB01;ne the <span 
 class="cmbx-12">height </span>of a
 positive root \(\alpha \) to be \(\hgt (\alpha ) = \sum _i c_i\) where \(\alpha = \sum _i c_i \gamma _i\).
 </p>
   <div class="newtheorem">
-<!--l. 668--><p class="noindent" ><span class="head">
+<!--l. 729--><p class="noindent" ><span class="head">
 <a 
- id="x1-5015r8"></a>
+ id="x1-6015r8"></a>
 <span 
-class="cmbx-12">Theorem 5.8.</span>  </span>
+class="cmbx-12">Theorem 6.8.</span>  </span>
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
-                                                                                  
-
-                                                                                  
    <span 
 class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(s_i\) <span 
@@ -2145,40 +2329,40 @@ class="cmti-12">&#x0028;4&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(W\) <span 
 class="cmti-12">is generated by simple re&#xFB02;ections.</span></dd></dl>
   <div class="proof">
-<!--l. 676--><p class="indent" >  <span class="head">
+<!--l. 737--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\((1)\): Such an element looks like \(\sum _jc_j \gamma _j\) where \(c_j &gt; 0\) for some \(j \neq i\). \(\gamma _j\) are linearly independent and
 everything is either a strictly positive or negative linear combination of them, so the
 result follows.
-</p><!--l. 678--><p class="indent" >  \((2)\): \((\alpha ,\alpha )&gt;0\), and \(\alpha \) is a positive sum of \(\gamma _i\)s so \((\alpha ,\gamma _i)&gt;0\) for some \(i\). Then \(s_i(\alpha )\) has smaller height.
-</p><!--l. 680--><p class="indent" >  \((3)\): Follows immediately from \((2)\).
-</p><!--l. 682--><p class="indent" >  \((4)\): By \((3)\) we can get between from element of \(\Delta \) and an element \(\gamma _i\) of \(\Pi \) via simple re&#xFB02;ections.
+</p><!--l. 739--><p class="indent" >  \((2)\): \((\alpha ,\alpha )&gt;0\), and \(\alpha \) is a positive sum of \(\gamma _i\)s so \((\alpha ,\gamma _i)&gt;0\) for some \(i\). Then \(s_i(\alpha )\) has smaller height.
+</p><!--l. 741--><p class="indent" >  \((3)\): Follows immediately from \((2)\).
+</p><!--l. 743--><p class="indent" >  \((4)\): By \((3)\) we can get between from element of \(\Delta \) and an element \(\gamma _i\) of \(\Pi \) via simple re&#xFB02;ections.
+                                                                                  
+
+                                                                                  
 Now conjugating \(s_i\) by this composite of simple re&#xFB02;ections gives the re&#xFB02;ection by that
 element. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 686--><p class="indent" >  We can consider \(V-\cup _{\alpha \in \Delta }T_\alpha \) where \(T_\alpha \) is the plane perpendicular to \(\alpha \). The components of this
+<!--l. 747--><p class="indent" >  We can consider \(V-\cup _{\alpha \in \Delta }T_\alpha \) where \(T_\alpha \) is the plane perpendicular to \(\alpha \). The components of this
 are called the <span 
 class="cmbx-12">Weyl chambers</span>. The Weyl group acts on these chambers since
 \(r_\alpha (T_\beta ) = T_{r_\alpha (\beta )}\).
 </p>
   <div class="newtheorem">
-<!--l. 688--><p class="noindent" ><span class="head">
+<!--l. 749--><p class="noindent" ><span class="head">
 <a 
- id="x1-5020r9"></a>
+ id="x1-6020r9"></a>
 <span 
-class="cmbx-12">Lemma 5.9.</span>  </span>\(x\) <span 
+class="cmbx-12">Lemma 6.9.</span>  </span>\(x\) <span 
 class="cmti-12">such that</span> \((x,\gamma )&gt;0\) <span 
 class="cmti-12">for any</span> \(\gamma \in \Delta \) <span 
 class="cmti-12">form a chamber.</span>
 </p>
   <div class="proof">
-<!--l. 691--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 752--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Since anything is a positive or negative learn combination of \(\Pi \), the set described
 doesn&#x2019;t contain anything orthogonal to anything in \(\Delta \). Moreover its boundary clearly
@@ -2187,17 +2371,17 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 695--><p class="indent" >  A word in the \(s_i\) is <span 
+<!--l. 756--><p class="indent" >  A word in the \(s_i\) is <span 
 class="cmbx-12">reduced </span>if it isn&#x2019;t equivalent to a shorter word in \(W\). The length of a
 reduced work representing \(w \in W\) is called its <span 
 class="cmbx-12">length</span>, denoted \(l\).
 </p>
   <div class="newtheorem">
-<!--l. 696--><p class="noindent" ><span class="head">
+<!--l. 757--><p class="noindent" ><span class="head">
 <a 
- id="x1-5021r10"></a>
+ id="x1-6021r10"></a>
 <span 
-class="cmbx-12">Lemma 5.10 </span>&#x0028;Exchange Lemma&#x0029;<span 
+class="cmbx-12">Lemma 6.10 </span>&#x0028;Exchange Lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Suppose that</span> \(s_{i_1}\dots s_{i_{t-1}}(\gamma _{i_t}) \in \Delta _-\)<span 
 class="cmti-12">. Then</span> \(s_{i_1}\dots s_{i_t}\) <span 
@@ -2206,9 +2390,12 @@ class="cmti-12">isn&#x2019;t reduced. In fact, it is equal</span>
 class="cmti-12">to</span> \(s_{i_1}\dots s_{i_{m-1}}s_{i_{m+1}}\dots s_{i_{t-1}}\) <span 
 class="cmti-12">for some</span> \(m\)<span 
 class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
 </p>
   <div class="proof">
-<!--l. 699--><p class="indent" >  <span class="head">
+<!--l. 760--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The sequence \(\beta _k = s_{i_k}\dots s_{i_{t-1}}(\gamma _{i_t})\) at some point switches from negative to positive, which can
 only happen by the previous theorem if \(\beta _{m+1}\) is \(\gamma _{i_m}\). But then \(w=s_{i_{m+1}}\dots s_{i_{t-1}}\) satis&#xFB01;es \(ws_{i_t}w^{-1} = s_{i_m}\) which gives the result
@@ -2218,20 +2405,17 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 703--><p class="noindent" ><span class="head">
+<!--l. 764--><p class="noindent" ><span class="head">
 <a 
- id="x1-5022r11"></a>
+ id="x1-6022r11"></a>
 <span 
-class="cmbx-12">Theorem 5.11.</span>  </span>\(W\) <span 
+class="cmbx-12">Theorem 6.11.</span>  </span>\(W\) <span 
 class="cmti-12">acts simply and transitively on chambers, and on possible sets of simple</span>
 <span 
 class="cmti-12">roots.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
-<!--l. 706--><p class="indent" >  <span class="head">
+<!--l. 767--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>To see it acts transitively on chambers, make a generic path between two
 chambers and everytime you cross a wall, do a re&#xFB02;ection. By realizing the re&#xFB02;ections
@@ -2243,11 +2427,14 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 710--><p class="noindent" ><span class="head">
+<!--l. 771--><p class="noindent" ><span class="head">
 <a 
- id="x1-5023r12"></a>
+ id="x1-6023r12"></a>
+                                                                                  
+
+                                                                                  
 <span 
-class="cmbx-12">Corollary 5.12.</span>  </span><span 
+class="cmbx-12">Corollary 6.12.</span>  </span><span 
 class="cmti-12">The Cartan matrix is not dependent on</span> \(f\) <span 
 class="cmti-12">and one can recover the root</span>
 <span 
@@ -2256,7 +2443,7 @@ class="cmti-12">system from the Cartan matrix. In fact there is a bijection betw
 class="cmti-12">matrices and root systems.</span>
 </p>
   <div class="proof">
-<!--l. 713--><p class="indent" >  <span class="head">
+<!--l. 774--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The Cartan matrix essentially encodes the inner product on \(\Pi \) which form
 a basis for the vector space. Thus we can recover these vectors, but by using the
@@ -2269,28 +2456,28 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
-<!--l. 717--><p class="noindent" ><span class="head">
+<!--l. 778--><p class="noindent" ><span class="head">
 <a 
- id="x1-5024r1"></a>
+ id="x1-6024r1"></a>
 <span 
-class="cmbx-12">Example 5.12.1.</span>  </span>\(A_n\) has Weyl group \(S_{n+1}\) coming from the permutations of the \(e_i\).
+class="cmbx-12">Example 6.12.1.</span>  </span>\(A_n\) has Weyl group \(S_{n+1}\) coming from the permutations of the \(e_i\).
 </p>
   </div>
-<!--l. 721--><p class="indent" >  Recall \(\mg \) semisimple is \(\mh \oplus \bigoplus _{\alpha \in \Delta }\mg _{\alpha } = \mg \oplus \mn _+ \oplus \mn _- \). where \(\mn _+,\mn _-\) are the nilpotent subalgebra of positive/negative root
+<!--l. 782--><p class="indent" >  Recall \(\mg \) semisimple is \(\mh \oplus \bigoplus _{\alpha \in \Delta }\mg _{\alpha } = \mg \oplus \mn _+ \oplus \mn _- \). where \(\mn _+,\mn _-\) are the nilpotent subalgebra of positive/negative root
 spaces. We would like to &#xFB01;nd a description in terms of the Cartan matrix \(A_{ij}\). Let \(\gamma _1\dots \gamma _r\) be the
 simple roots, and let \(e_i,f_i,h_i\) be \(\msl _2\)-triples corresponding to \(\gamma _i\). Note that they generate the algebra,
 are linearly independent, and satisfy the following relations called the <span 
 class="cmbx-12">Chevalley</span>
 <span 
 class="cmbx-12">relations</span>:
-</p><!--l. 724--><p class="indent" >
+</p><!--l. 785--><p class="indent" >
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    &#x0028;1&#x0029; </dt><dd 
 class="enumerate-enumitem">\([h_i,h_j]=0\)
+                                                                                  
+
+                                                                                  
           </dd><dt class="enumerate-enumitem">
    &#x0028;2&#x0029; </dt><dd 
 class="enumerate-enumitem">\([h_i,e_j]=\langle \gamma _i|\gamma _j\rangle e_i\)
@@ -2300,7 +2487,7 @@ class="enumerate-enumitem">\([h_i,f_j]= -\langle \gamma _i|\gamma _j\rangle f_i\
           </dd><dt class="enumerate-enumitem">
    &#x0028;4&#x0029; </dt><dd 
 class="enumerate-enumitem">\([e_i,f_j]= \delta _{ij}h_i\)</dd></dl>
-<!--l. 730--><p class="indent" >  Note that these relations come from entries in the Cartan matrix: namely \(\langle \gamma _i|\gamma _j\rangle \)
+<!--l. 791--><p class="indent" >  Note that these relations come from entries in the Cartan matrix: namely \(\langle \gamma _i|\gamma _j\rangle \)
 is \(A_{ij}\). Let \(\tilde{\mg }\) denote the free Lie algebra presented by these relations. Let \(\tilde{\mn }_+,\tilde{\mn }_-\) denote
 the subalgebras generated by \(e_i\) and \(f_i\) respectively. When the Cartan matrix was
 constructed from a Lie algebra, there is a natural surjective map to \(\tilde{\mg } \to \mg \). Note that the
@@ -2308,26 +2495,23 @@ construction is symmetric in the \(f_i,e_i\): we can swap the two and replace \(
 and the same relations hold. This means we have to prove half as many things
 about the construction. We will still use \(\gamma _i \in \Pi \) to denote the weights of the span of \(\ad (h_i)\) on
 \(e_i\).
-</p><!--l. 732--><p class="indent" >  Consider the \(T(V)\) the tensor algebra on the vector space \(V\) generated by \(v_1,\dots , v_r\). This should be
+</p><!--l. 793--><p class="indent" >  Consider the \(T(V)\) the tensor algebra on the vector space \(V\) generated by \(v_1,\dots , v_r\). This should be
 thought of as the universal enveloping algebra of \(\tilde{\mg }/(\tilde{\mn }_+\oplus \mh )\). Of course this doesn&#x2019;t make sense since
 the quotient isn&#x2019;t by an ideal, but it is the quotient as an algebra and can probably be
 thought of as the invariant di&#xFB00;erential operators on the quotient formal group. We can
 produce an action of \(\tilde{\mg }\) on \(T(V)\) as follows: \(h_k\) sends \(v_{i_1}\dots v_{i_s}\) to \(-(\sum _1^sA_{k,i_j}\rangle ) v_{i_1}\dots v_{i_s}\), \(f_k\) sends \(v_{i_1}\dots v_{i_s}\) to \(v_k v_{i_1}\dots v_{i_s}\), and \(e_k\) sends \(v_{i_1}\dots v_{i_s}\) to \(\sum _1^s (\delta _{k,i_j}v_{i_1}\dots \hat{v_{i_j}}\dots v_{i_s})\). A
 straightforward calculation shows that this satis&#xFB01;es the Chevalley relations, so is indeed an
 action.
-                                                                                  
-
-                                                                                  
-</p><!--l. 734--><p class="indent" >  For the next lemma, it will be convenient to introduce notation. \(e(s),f(s)\) denote an iterated
+</p><!--l. 795--><p class="indent" >  For the next lemma, it will be convenient to introduce notation. \(e(s),f(s)\) denote an iterated
 bracket of \(s\) of the \(e_i,f_i\) respectively, and \(\Sigma \) to denote a linear combination. \(f(0)\) or \(e(0)\) will mean the
 \(h_i\).
 </p>
   <div class="newtheorem">
-<!--l. 735--><p class="noindent" ><span class="head">
+<!--l. 796--><p class="noindent" ><span class="head">
 <a 
- id="x1-5029r13"></a>
+ id="x1-6029r13"></a>
 <span 
-class="cmbx-12">Lemma 5.13.</span>  </span>
+class="cmbx-12">Lemma 6.13.</span>  </span>
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    <span 
 class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
@@ -2352,50 +2536,52 @@ class="cmti-12">is an ideal in</span> \(\tilde{\mg }\) <span
 class="cmti-12">then</span> \(I = \mh \cap I \oplus \bigoplus _\alpha \mg _\alpha \cap I\)<span 
 class="cmti-12">.</span>
           </dd><dt class="enumerate-enumitem">
+                                                                                  
+
+                                                                                  
    <span 
 class="cmti-12">&#x0028;4&#x0029;</span> </dt><dd 
 class="enumerate-enumitem"><span 
 class="cmti-12">Maximal ideals in</span> \(\tilde{\mg }\) <span 
 class="cmti-12">correspond to components of the Dynkin diagram.</span></dd></dl>
   <div class="proof">
-<!--l. 743--><p class="indent" >  <span class="head">
+<!--l. 804--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\((1)\): The action on \(T(V)\) gives a Lie algebra homomorphism \(\tilde{\mg } \to T(V)\). First note that the \(h_i\)
 are linearly independent since the Cartan matrix is nonsingular. The Jacobi identity
 &#x0028;equivalent to the fact that \(\ad \) is a derivation&#x0029; \([h,e(s)]=[h,[e(1),e(s-1)]] = [[h,e(1)],e(s)]+[e(1),[h,e(s-1)]]\) shows via induction on \(s\) that for an
 iterated bracket of \(e_{i_1},\dots , e_{i_s}\) that \(\ad h_k\) has eigenvalue \(\sum _1^sA_{k,i_j}\), and by symmetry the same is true for \(f_i\)
 with the opposite eigenvalue.
-</p><!--l. 745--><p class="indent" >  Next we can see inductively that \([f(s),e(s')]\) is a linear combination of \([f(s-s')]\) when \(s\geq s'\geq 0\) via \([f(s),e(s')] = [f(s),[e(s'-1),e(1)]] = [[f(s),e(s'-1)],e(1)]+[e(s'-1),[f(s),e(1)]]\) reducing to
+</p><!--l. 806--><p class="indent" >  Next we can see inductively that \([f(s),e(s')]\) is a linear combination of \([f(s-s')]\) when \(s\geq s'\geq 0\) via \([f(s),e(s')] = [f(s),[e(s'-1),e(1)]] = [[f(s),e(s'-1)],e(1)]+[e(s'-1),[f(s),e(1)]]\) reducing to
 \(s'=1\) and \([f(s),e(1)] = [[f(s-1),f(1)],e(1)] = [[f(s-1),e(1)],f(1)]+ [f(s-1),[f(1),e(1)]]\) reducing to \(s=1\), where it follows from relation \((4)\). The same statement holds when \(e,f\)
 are switched.
-</p><!--l. 747--><p class="indent" >  Thus  \(\tilde{\mn }_+ + \tilde{\mn }_- + \mh \)  is  a  subalgebra,  but  it  isn&#x2019;t  clear  that  the  sum  is  direct.  However,  by
+</p><!--l. 808--><p class="indent" >  Thus  \(\tilde{\mn }_+ + \tilde{\mn }_- + \mh \)  is  a  subalgebra,  but  it  isn&#x2019;t  clear  that  the  sum  is  direct.  However,  by
 nondegeneracy we can &#xFB01;nd \(h \in \mh \) such that its eigenvalue on \(e(s)\) is positive, and hence on \(f(s)\) is
 negative. Moreover \([\mh ,\mh ]=0\) so the eigenspace decomposition of \(h\) separates these subalgebras.
-</p><!--l. 749--><p class="indent" >  \((2)\): There is a commutative square </p>
+</p><!--l. 810--><p class="indent" >  \((2)\): There is a commutative square </p>
 <div class="center" 
 >
-<!--l. 750--><p class="noindent" >
-                                                                                  
-
-                                                                                  
-</p><!--l. 754--><p class="noindent" >                <img 
+<!--l. 811--><p class="noindent" >
+</p><!--l. 815--><p class="noindent" >                <img 
 src="Lie_Algebras15x.svg" alt="F &#x0028;fi&#x0029;            &#x02DC;&#x1D52B; &#x2212;
 
 
-End &#x0028;T &#x0028;f&#x0029;&#x0029;       End &#x0028;T &#x0028;V &#x0029;&#x0029;
-         i "  />
+End &#x0028;T &#x0028;fi&#x0029;&#x0029;       End &#x0028;T &#x0028;V &#x0029;&#x0029; "  />
 </p></div>
-<!--l. 756--><p class="noindent" >where the left vertical map is the canonical action on the universal enveloping algebra.
+<!--l. 817--><p class="noindent" >where the left vertical map is the canonical action on the universal enveloping algebra.
 Since the left arrow is injective and the bottom arrow is an isomorphism, the top
 arrow is injective. But it is also clearly surjective, so it is an isomorphism. Thus \( \tilde{\mn }_+ \)
 is free and by symmetry \( \tilde{\mn }_- \) is too. The second statement was already proven in
 \((1)\).
-</p><!--l. 758--><p class="indent" >  \((3)\): Given an element \(x \in I\), keep acting by the elements of \(\mh \). Since \(\mh \) acts semisimply, some
+</p><!--l. 819--><p class="indent" >  \((3)\): Given an element \(x \in I\), keep acting by the elements of \(\mh \). Since \(\mh \) acts semisimply, some
 linear combination of the \(\ad (\mh )^i x\) will be the projection onto the various eigenspaces of
 \(x\).
-</p><!--l. 760--><p class="indent" >  \((4)\): Consider any proper ideal of \(\tilde{\mg }\). By \((3)\) if its intersection with \(\mh \) wasn&#x2019;t \(0\), it would have to
+</p><!--l. 821--><p class="indent" >  \((4)\): Consider any proper ideal of \(\tilde{\mg }\). By \((3)\) if its intersection with \(\mh \) wasn&#x2019;t \(0\), it would have to
 contain all nonzero weight spaces of its intersection in \(\mh \), which would contain atleast one \(f_i,e_i\).
 Thus it would contain \([e_i,f_i]=h_i\), for which the eigenvalue doesn&#x2019;t vanish for all neighbors of \(\gamma _i\).
+                                                                                  
+
+                                                                                  
 Continuing this way since it is indecomposable, it would have to contain the whole
 component. Thus the union of all ideals containing the part of \(\mh \) orthogonal to some
 component of a Dynkin diagram is a maximal ideal, and moreover all maximal ideals must
@@ -2404,18 +2590,18 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 764--><p class="indent" >  If the Cartan matrix is indecomposable, there is a unique maximal ideal, and if we
+<!--l. 825--><p class="indent" >  If the Cartan matrix is indecomposable, there is a unique maximal ideal, and if we
 already know that the Cartan matrix comes from a simple Lie algebra, the quotient has to
 be that simple Lie algebra. The only information this really gives us is knowing the
 quotient is &#xFB01;nite-dimensional. However we will now prove that we should apriori expect
 the quotient to be &#xFB01;nite dimensional.
 </p>
   <div class="newtheorem">
-<!--l. 766--><p class="noindent" ><span class="head">
+<!--l. 827--><p class="noindent" ><span class="head">
 <a 
- id="x1-5034r14"></a>
+ id="x1-6034r14"></a>
 <span 
-class="cmbx-12">Theorem 5.14.</span>  </span><span 
+class="cmbx-12">Theorem 6.14.</span>  </span><span 
 class="cmti-12">Consider the intersection of all the maximal ideals of</span> \(\tilde{\mg }\)<span 
 class="cmti-12">. The quotient by</span>
 <span 
@@ -2423,11 +2609,8 @@ class="cmti-12">this is a semisimple Lie algebra, whose Cartan subalgebra and ro
 <span 
 class="cmti-12">ones used to construct it.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
-<!--l. 769--><p class="indent" >  <span class="head">
+<!--l. 830--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We can make a reduction to the case of an indecomposable Cartan matrix by
 observing that a splitting of the Cartan matrix splits everything involved \(\mh ,\tilde{\mg },\tilde{\mn _+},\tilde{\mn _-}\). In this
@@ -2435,15 +2618,18 @@ case when it is simple, if we can &#xFB01;nd a proper ideal with quotient &#xFB0
 \(&gt;1\), then the quotient is simple, and \(\mh \) is clearly self normalizing with \(\mg _{\alpha }\) are its weight
 spaces, so we would be done. The quotient contains cannot be \(1\)-dimensional since if
 an ideal contains any of the \(e_i,f_i,h_i\), it must contain everything.
-</p><!--l. 771--><p class="indent" >  To prove &#xFB01;nite-dimensionality, we &#xFB01;rst prove that when \(i\neq j\) and \(k\) is arbitrary, \(\ad e_k (\ad f_i)^{1-A_{ij}}(f_j)=0\). If \(k\neq i\),
+</p><!--l. 832--><p class="indent" >  To prove &#xFB01;nite-dimensionality, we &#xFB01;rst prove that when \(i\neq j\) and \(k\) is arbitrary, \(\ad e_k (\ad f_i)^{1-A_{ij}}(f_j)=0\). If \(k\neq i\),
 this is equal to \( (\ad f_i)^{1-A_{ij}}\ad e_k(f_j) = (\ad f_i)^{1-A_{ij}}\delta _{jk} h_j = (\ad f_i)^{-A_{ij}}A_{ij}f_i = 0\). If \(k = i\), \(e_i,f_i\) are part of an \(\msl _2\)-triple, so it follows from representation theory
 of \(\msl _2\) that \(\ad e_i (\ad f_i)^{t}(f_j)= t(A_{ik}-t+1)(\ad f_i)^{t-1}(f_j) = 0\) by our choice of \(t\).
-</p><!--l. 773--><p class="indent" >  Now let \(J_+,J_-\) be the ideals of \(\tilde{\mn }_+,\tilde{\mn }_-\) generated by \((\ad f_i)^{1-A_{ij}}(f_j)\) and \((\ad e_i)^{1-A_{ij}}(e_j)\). By what was just shown, these are
+</p><!--l. 834--><p class="indent" >  Now let \(J_+,J_-\) be the ideals of \(\tilde{\mn }_+,\tilde{\mn }_-\) generated by \((\ad f_i)^{1-A_{ij}}(f_j)\) and \((\ad e_i)^{1-A_{ij}}(e_j)\). By what was just shown, these are
 also ideals of \(\tilde{\mg }\). Let \(J\) be their sum. I claim \(\tilde{\mg }/J\) is &#xFB01;nite dimensional. Note that \(\ad e_i,\ad f_i\) act locally
+                                                                                  
+
+                                                                                  
 nilpotently on this, since they do on generators and \(\ad \) is a derivation. Now we still
 have for each \(i\) the \(\msl _2\)-triple associated to \(e_i,f_i,h_i\). Then \(\tilde{\mg }/J\) is a sum of &#xFB01;nite-dimensional modules
 for these \(\msl _2\)-triples since the \(e_i,f_i\) act locally nilpotently.
-</p><!--l. 775--><p class="indent" >  Thus we can consider the action of \(\tau _i\) from the representation theory of \(\msl _2\) which is
+</p><!--l. 836--><p class="indent" >  Thus we can consider the action of \(\tau _i\) from the representation theory of \(\msl _2\) which is
 an involution swapping positive and negative eigenspaces, implementing the Weyl
 group re&#xFB02;ection of the corresponding simple root on \(\ZZ \Pi \). We know that \(\tilde{\mg }_{k\gamma _i}\) is \(1\)-dimensional
 for \(k = \pm 1\) and \(0\)-dimensional for \(|k|&gt;1\) so the same is true for anything connected to these by the
@@ -2460,32 +2646,32 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
-  <h3 class="sectionHead"><span class="titlemark">6. </span> <a 
- id="x1-60006"></a>Homological Methods</h3>
-<!--l. 781--><p class="noindent" >Lets expand on homological methods, which were &#xFB01;rst mentioned in the proof of
+  <h3 class="sectionHead"><span class="titlemark">7. </span> <a 
+ id="x1-70007"></a>Homological Methods</h3>
+<!--l. 842--><p class="noindent" >Lets expand on homological methods, which were &#xFB01;rst mentioned in the proof of
 Weyl&#x2019;s theorem that a semisimple Lie algebra has semisimple &#xFB01;nite dimensional
 representations.
-</p><!--l. 783--><p class="indent" >  Usually \(\Ext \) and \(\Tor \) are the main tools of studying representations of algebras but
+</p><!--l. 844--><p class="indent" >  Usually \(\Ext \) and \(\Tor \) are the main tools of studying representations of algebras but
 for a Hopf algebra, we can do with a bit less. First observe that the antipode
 makes left and right modules canonically equivalent, so we can drop the lefts and
 rights.
 </p>
   <div class="newtheorem">
-<!--l. 785--><p class="noindent" ><span class="head">
+<!--l. 846--><p class="noindent" ><span class="head">
 <a 
- id="x1-6001r1"></a>
+ id="x1-7001r1"></a>
 <span 
-class="cmbx-12">De&#xFB01;nition 6.1.</span>  </span>\(H_*(\mg ,M)\) <span 
+class="cmbx-12">De&#xFB01;nition 7.1.</span>  </span>\(H_*(\mg ,M)\) <span 
 class="cmti-12">is</span> \(\Tor _*^{U(\mg )}(k,M)\)<span 
 class="cmti-12">,</span> \(H^*(\mg ,M)\) <span 
 class="cmti-12">is</span> \(\Ext ^*_{U(\mg )}(k,M)\)<span 
 class="cmti-12">.</span>
 </p>
+                                                                                  
+
+                                                                                  
   </div>
-<!--l. 788--><p class="indent" >  In otherwords, \(H_*\), the homology, is the left derived functors of the coinvariants and \(H^*\),
+<!--l. 849--><p class="indent" >  In otherwords, \(H_*\), the homology, is the left derived functors of the coinvariants and \(H^*\),
 cohomology, is the right derived functors of invariants. The \(\mg \) will be dropped if
 unambiguous. The homology, cohomology should be thought of as sheaf cohomology on
 the associated Lie group &#x0028;the sheaf being trivial for the module \(k\)&#x0029;. When the module is \(k\)
@@ -2496,42 +2682,42 @@ the construction of \(\ad \). The reason these are well equipped to replace \(\E
 following:
 </p>
   <div class="newtheorem">
-<!--l. 789--><p class="noindent" ><span class="head">
+<!--l. 850--><p class="noindent" ><span class="head">
 <a 
- id="x1-6002r2"></a>
+ id="x1-7002r2"></a>
 <span 
-class="cmbx-12">Proposition 6.2.</span>  </span>\(\Ext ^*(M,N) = H^*(\Hom (M,N))\)<span 
+class="cmbx-12">Proposition 7.2.</span>  </span>\(\Ext ^*(M,N) = H^*(\Hom (M,N))\)<span 
 class="cmti-12">,</span> \(\Tor ^*(M,N) = H_*(\Hom (M,N)))\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 792--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 853--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(\Hom _{\mg }(M,N) \cong \Hom _{\mg }(k,\Hom (M,N))\). Take right derived functors in \(N\). On the right hand side, \(\Hom (M,-)\) is exact and sends
 injectives to injectives by the tensor hom adjunction since tensor products are exact,
 so the edge homomorphism in the Grothendieck spectral sequence is an isomorphism.
-</p><!--l. 794--><p class="indent" >  The same argument works for \(\Tor \) since \(M\otimes _{\mg } N \cong k \otimes _{\mg } (M \otimes N)\). <span class="qed"><span 
+</p><!--l. 855--><p class="indent" >  The same argument works for \(\Tor \) since \(M\otimes _{\mg } N \cong k \otimes _{\mg } (M \otimes N)\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 798--><p class="indent" >  Since \(U(\mg ) \otimes _k U(\mg ')\) = \(U(\mg \oplus \mg ')\) we get Kunneth isomorphisms: \[\bigoplus _{p+q=n} H_p(\mg ,k)\otimes H_p(\mg ',k) = H_n(\mg \oplus \mg ',k)\]\[\bigoplus _{p+q=n} H^p(\mg ,k)\otimes H^p(\mg ',k) =H^n(\mg \oplus \mg ',k)\]
-</p><!--l. 801--><p class="indent" >  Using the diagonal \(\mg \to \mg \oplus \mg \) we get a coalgebra structure and an algebra structure on the
+<!--l. 859--><p class="indent" >  Since \(U(\mg ) \otimes _k U(\mg ')\) = \(U(\mg \oplus \mg ')\) we get Kunneth isomorphisms: \[\bigoplus _{p+q=n} H_p(\mg ,k)\otimes H_p(\mg ',k) = H_n(\mg \oplus \mg ',k)\]\[\bigoplus _{p+q=n} H^p(\mg ,k)\otimes H^p(\mg ',k) =H^n(\mg \oplus \mg ',k)\]
+</p><!--l. 862--><p class="indent" >  Using the diagonal \(\mg \to \mg \oplus \mg \) we get a coalgebra structure and an algebra structure on the
 homology and cohomology of \(\mg \).
-</p><!--l. 803--><p class="indent" >  \(H_1,H^1\) are easy to interpret. Let \(J\) denote the augementation ideal of \(U(\mg )\).
+</p><!--l. 864--><p class="indent" >  \(H_1,H^1\) are easy to interpret. Let \(J\) denote the augementation ideal of \(U(\mg )\).
 </p>
   <div class="newtheorem">
-<!--l. 805--><p class="noindent" ><span class="head">
+<!--l. 866--><p class="noindent" ><span class="head">
 <a 
- id="x1-6003r3"></a>
+ id="x1-7003r3"></a>
+                                                                                  
+
+                                                                                  
 <span 
-class="cmbx-12">Lemma 6.3.</span>  </span>\(H_1(k) = \mg /[\mg ,\mg ]\)
+class="cmbx-12">Lemma 7.3.</span>  </span>\(H_1(k) = \mg /[\mg ,\mg ]\)
 </p>
   <div class="proof">
-<!--l. 808--><p class="indent" >  <span class="head">
+<!--l. 869--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(0 \to J \to U(\mg ) \to k \to 0\), so taking the long exact sequence in homology, we get \(H_1(k) = H_0(J) = \mg /[\mg ,\mg ]\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -2539,17 +2725,14 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 812--><p class="noindent" ><span class="head">
+<!--l. 873--><p class="noindent" ><span class="head">
 <a 
- id="x1-6004r4"></a>
+ id="x1-7004r4"></a>
 <span 
-class="cmbx-12">Lemma 6.4.</span>  </span>\(H^1(M) = \Der (M)/\Ider (M)\)
+class="cmbx-12">Lemma 7.4.</span>  </span>\(H^1(M) = \Der (M)/\Ider (M)\)
 </p>
   <div class="proof">
-<!--l. 815--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 876--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Again look at the long exact sequence for \(0 \to J \to U(\mg ) \to k \to 0\) after taking \(\Hom \) into \(M\). We get \(0 \to \Hom (k,M) \to \Hom (U(\mg ),M) \to \Hom (J,M) \to H^1(M) \to 0\). \(\Hom (J,M)\) is the
 derivations, and the image of \(\Hom (U(\mg )),M\) is the inner derivations. <span class="qed"><span 
@@ -2557,7 +2740,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 819--><p class="indent" >  If \(M\) is trivial, then \(\Ider (M)\) is trivial, and \(\Der (M)\) is \(\Hom _{\Lie }(\mg ,M)\). Suppose we have a short exact sequence \(0 \to \mh \to \mg \to \mg /\mh \to 0\). The
+<!--l. 880--><p class="indent" >  If \(M\) is trivial, then \(\Ider (M)\) is trivial, and \(\Der (M)\) is \(\Hom _{\Lie }(\mg ,M)\). Suppose we have a short exact sequence \(0 \to \mh \to \mg \to \mg /\mh \to 0\). The
 forgerful functor from \(\mg /\mh \) modules to \(\mg \) modules has left adjoint \(\mh \)-coinvariants and right
 adjoint \(\mh \)-invariants. Taking \(\mg \)-invariants is the composite of taking \(\mh \)-invariants and
 then taking \(\mg /\mh \)-invariants, and similarly for coinvariants so we get Grothendieck
@@ -2565,29 +2748,32 @@ spectral sequences: \[E_2^{p,q} = H^p(\mg /\mh ,H^q(\mh ,M)) \Rightarrow H^{p+q}
 class="cmbx-12">Hochschild-Serre spectral</span>
 <span 
 class="cmbx-12">sequences</span>.
-</p><!--l. 824--><p class="indent" >  \(H^2(M)\) has a simple interpretation: it is extensions of \(\mg \) by the abelian Lie algebra
+</p><!--l. 885--><p class="indent" >  \(H^2(M)\) has a simple interpretation: it is extensions of \(\mg \) by the abelian Lie algebra
 \(M\).
+                                                                                  
+
+                                                                                  
 </p>
   <div class="newtheorem">
-<!--l. 825--><p class="noindent" ><span class="head">
+<!--l. 886--><p class="noindent" ><span class="head">
 <a 
- id="x1-6005r5"></a>
+ id="x1-7005r5"></a>
 <span 
-class="cmbx-12">Theorem 6.5.</span>  </span>\(\Ext (\mg ,M) = H^2(\mg ,M)\)<span 
+class="cmbx-12">Theorem 7.5.</span>  </span>\(\Ext (\mg ,M) = H^2(\mg ,M)\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 828--><p class="indent" >  Given an extension \(0 \to M \to \me \to \mg \to 0\), we can look at low dimenisonal exact sequence of the spectral
+<!--l. 889--><p class="indent" >  Given an extension \(0 \to M \to \me \to \mg \to 0\), we can look at low dimenisonal exact sequence of the spectral
 sequence in cohomology: \[0 \to H^1(\mg ,M) \to H^1(\me ,M) \to H^1(M,M)^{\mg } \to H^2(\mg ,M) \to H^2(\me ,M)\] The image of the identity in \(H^1(M,M)^{\mg } = \Hom _{\mg }(M,M)\) is the class corresponding to the
 extension. This gives a map \(\Ext (\mg ,M) \xrightarrow{d^2} H^2(\mg ,M)\). To go in the other direction, we can use a presentation of
 \(\mg \).
 </p>
   <div class="newtheorem">
-<!--l. 832--><p class="noindent" ><span class="head">
+<!--l. 893--><p class="noindent" ><span class="head">
 <a 
- id="x1-6006r6"></a>
+ id="x1-7006r6"></a>
 <span 
-class="cmbx-12">Lemma 6.6.</span>  </span><span 
+class="cmbx-12">Lemma 7.6.</span>  </span><span 
 class="cmti-12">For a free Lie algebra on the set</span> \(X\)<span 
 class="cmti-12">,</span> \(J\) <span 
 class="cmti-12">is a free module on the set</span> \(X\)<span 
@@ -2597,61 +2783,58 @@ class="cmti-12">for</span>
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-                                                                                  
-
-                                                                                  
-<!--l. 835--><p class="indent" >  <span class="head">
+<!--l. 896--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This is because it is the augmentation ideal of a tensor algebra. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 839--><p class="indent" >  Now consider a presentation \(0 \to \ma \to \mff \to \mg \to 0\), where \(\mff \) is free, and mod out by the ideal generated by \([\ma ,\ma ]\) so
+<!--l. 900--><p class="indent" >  Now consider a presentation \(0 \to \ma \to \mff \to \mg \to 0\), where \(\mff \) is free, and mod out by the ideal generated by \([\ma ,\ma ]\) so
 that it is an extension of \(\mg \) by \(\mg _{ab}\) which is abelian. This is actually the unversal extension in
 that \(\Hom (\ma _{ab}, M) = H^2(\mg ,M)\) classi&#xFB01;es extensions by \(M\).
-</p><!--l. 841--><p class="indent" >  Given any extension \(\me \), we can form the diagram below since \(\mff \) is free and \(M\) is abelian:
+</p><!--l. 902--><p class="indent" >  Given any extension \(\me \), we can form the diagram below since \(\mff \) is free and \(M\) is abelian:
 </p>
 <div class="center" 
 >
-<!--l. 842--><p class="noindent" >
-</p><!--l. 847--><p class="noindent" >                      <img 
+                                                                                  
+
+                                                                                  
+<!--l. 903--><p class="noindent" >
+</p><!--l. 908--><p class="noindent" >                      <img 
 src="Lie_Algebras16x.svg" alt="0        &#x1D51E;           &#x1D523;          &#x1D524;        0
 
 
-0        &#x1D51E;ab         &#x1D523;&#x2215;&#x005B;&#x1D51E;, &#x1D51E;&#x005D;    &#x1D524;        0
-
+0        &#x1D51E;           &#x1D523;&#x2215;&#x005B;&#x1D51E;, &#x1D51E;&#x005D;    &#x1D524;        0
+          ab
 
 
 0        M           &#x1D522;          &#x1D524;        0 "  />
 </p></div>
-<!--l. 850--><p class="indent" >  Now the map producing the class in \(H^2\) corresponding to \(\me \) factors as \[\Hom _{\mg }(M,M) \to \Hom _{\mg }(\ma _{ab}, M) = H^1(\ma _{ab},M)^{\mg } \xrightarrow{d^2} H^2(\mg ,M)\]
-</p><!--l. 853--><p class="indent" >  By naturality the extension class in \(H^2(\mg ,\ma _{ab})\) gets sent to the corresponding class in \(H^2(\mg ,M)\). Since \(H^2(\mff ,M)\)
+<!--l. 911--><p class="indent" >  Now the map producing the class in \(H^2\) corresponding to \(\me \) factors as \[\Hom _{\mg }(M,M) \to \Hom _{\mg }(\ma _{ab}, M) = H^1(\ma _{ab},M)^{\mg } \xrightarrow{d^2} H^2(\mg ,M)\]
+</p><!--l. 914--><p class="indent" >  By naturality the extension class in \(H^2(\mg ,\ma _{ab})\) gets sent to the corresponding class in \(H^2(\mg ,M)\). Since \(H^2(\mff ,M)\)
 vanishes, the restriction of any class in \(H^2(\mg ,M)\) to \(\mff \) vanishes. From the low-dimensional exact
 sequence, this means that there is an element of \(H^1(\ma ,M)^\mg = \Hom _{\mg }(\ma _{ab},M)\) lifting \(H^2(\mg ,M)\). One can then from the semidirect
 product \(M\ltimes \mff \) over \(\ma \) to get an extension of \(\mg \) by \(M\) realizing the class.
-</p><!--l. 856--><p class="indent" >  It su&#xFB03;ces to show that the cohomology class determines the extension. But suppose
+</p><!--l. 917--><p class="indent" >  It su&#xFB03;ces to show that the cohomology class determines the extension. But suppose
 there were two extensions \(\me _1,\me _2\) coming from the same class. They are classi&#xFB01;ed by some maps \(\phi _1,\phi _2 \in H^1(\ma _{ab},M)^{\mg }\).
 By assumption their image via \(d^2\) is the same, so there is some element in \(H^1(\mff /[a,a],M)=\Der (\mff ,M)\) whose image is \(\phi _1-\phi _2\).
 WLOG, the map \(\mff \to \me _1,\me _2\) is surjective, and it is then easy to see that \(\phi _2+(\phi _1-\phi _2)\) descends to an isomorphism
 of extensions from \(\me _1\) to \(\me _2\).
 </p>
   <div class="newtheorem">
-<!--l. 858--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 919--><p class="noindent" ><span class="head">
 <a 
- id="x1-6007r7"></a>
+ id="x1-7007r7"></a>
 <span 
-class="cmbx-12">Corollary 6.7.</span>  </span><span 
+class="cmbx-12">Corollary 7.7.</span>  </span><span 
 class="cmti-12">If</span> \(H^2(\mg ,M)\) <span 
 class="cmti-12">vanishes for all</span> \(M\)<span 
 class="cmti-12">, then</span> \(\mg \) <span 
 class="cmti-12">is free.</span>
 </p>
   <div class="proof">
-<!--l. 861--><p class="indent" >  <span class="head">
+<!--l. 922--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Choose a presentation \(\mg =\mff /\ma \) that is minimal in the sense that \(\ma \subset [\mff ,\mff ]\). Mod out by \([\mff ,\ma ]\) to see
 that \(\mff /[\mff ,\ma ] = \mg \oplus \ma /[\mff ,\ma ]\) since extensions by abelian things are trivial. But \(f\) is minimal, so taking the
@@ -2659,63 +2842,66 @@ commutator of that equation, we see \(\ma /[\mff ,\ma ]=0\), but any subalgebra 
 that is trivial. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
+                                                                                  
+
+                                                                                  
   </div>
   </div>
-<!--l. 865--><p class="indent" >  There is a canonical and e&#xFB03;cient complex called the Chevalley-Eilenberg complex that
+<!--l. 926--><p class="indent" >  There is a canonical and e&#xFB03;cient complex called the Chevalley-Eilenberg complex that
 computes Lie algebra homology and cohomology. It is a free resolution of \(k\), and is
 essentially the de Rham complex.
-</p><!--l. 867--><p class="indent" >  Consider the chain complex where \(V_n(\mg ) = U\mg \otimes _k \Lambda ^n\mg \), and \(d(g \otimes w_1 \dots \wedge w_n)= \sum _{i}(-1)^{i+1}ux_i \otimes w_1 \dots \wedge \hat{w_i} \dots \wedge w_n\) \(+ \sum _{i &lt;j}(-1)^{i+j}u\otimes [w_i,w_j]\otimes w_1 \dots \wedge \hat{w_i} \dots \wedge \hat{w_j} \dots \wedge w_n\). There is an obvious augmentation
+</p><!--l. 928--><p class="indent" >  Consider the chain complex where \(V_n(\mg ) = U\mg \otimes _k \Lambda ^n\mg \), and \(d(g \otimes w_1 \dots \wedge w_n)= \sum _{i}(-1)^{i+1}ux_i \otimes w_1 \dots \wedge \hat{w_i} \dots \wedge w_n\) \(+ \sum _{i &lt;j}(-1)^{i+j}u\otimes [w_i,w_j]\otimes w_1 \dots \wedge \hat{w_i} \dots \wedge \hat{w_j} \dots \wedge w_n\). There is an obvious augmentation
 \(V_*(\mg ) \to k\).
 </p>
   <div class="newtheorem">
-<!--l. 869--><p class="noindent" ><span class="head">
+<!--l. 930--><p class="noindent" ><span class="head">
 <a 
- id="x1-6008r8"></a>
+ id="x1-7008r8"></a>
 <span 
-class="cmbx-12">Lemma 6.8.</span>  </span>\(V_*(\mg )\) <span 
+class="cmbx-12">Lemma 7.8.</span>  </span>\(V_*(\mg )\) <span 
 class="cmti-12">is a free resolution of</span> \(k\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 872--><p class="indent" >  <span class="head">
+<!--l. 933--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>There is a &#xFB01;ltration on \(V_*\) coming from the tensor products of the &#xFB01;ltrations on
 \(U(\mg ),\Lambda ^*(\mg )\). The associated graded by PBW is \(k[\mg ]\otimes _k\Lambda ^*(\mg )\), and di&#xFB00;erential is the Koszul di&#xFB00;erential. Thus
 the spectral sequence for the &#xFB01;ltration degenerates at \(E^1\) to the expected cohomology.
   <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 877--><p class="noindent" ><span class="head">
+<!--l. 938--><p class="noindent" ><span class="head">
 <a 
- id="x1-6009r9"></a>
+ id="x1-7009r9"></a>
 <span 
-class="cmbx-12">Corollary 6.9.</span>  </span><span 
+class="cmbx-12">Corollary 7.9.</span>  </span><span 
 class="cmti-12">For an</span> \(\mg \)<span 
 class="cmti-12">-module</span> \(M\)<span 
 class="cmti-12">, </span>\[H_*(M) = H_*(M\otimes \Lambda ^*(\mg )), H^*(M) = H^*(\Hom (\Lambda ^*(\mg ),M)\]
 </p>
   </div>
-<!--l. 882--><p class="indent" >  This complex can give explicit proofs of the interpretations of \(H^1,H^2\).
+<!--l. 943--><p class="indent" >  This complex can give explicit proofs of the interpretations of \(H^1,H^2\).
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 884--><p class="noindent" ><span class="head">
+<!--l. 945--><p class="noindent" ><span class="head">
 <a 
- id="x1-6010r10"></a>
+ id="x1-7010r10"></a>
 <span 
-class="cmbx-12">Corollary 6.10.</span>  </span><span 
+class="cmbx-12">Corollary 7.10.</span>  </span><span 
 class="cmti-12">If</span> \(\mg \) <span 
 class="cmti-12">has dimension</span> \(n\)<span 
 class="cmti-12">, its cohomological dimension is</span> \(n\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 887--><p class="indent" >  <span class="head">
+<!--l. 948--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The Chevalley-Eilenberg complex shows it is at most \(n\). But it also shows that
 \(H^n(\Lambda ^n\mg )= k \neq 0\). <span class="qed"><span 
@@ -2723,7 +2909,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 891--><p class="indent" >  The Chevalley-Eilenberg complex for the Lie algebra of a Lie group can be used to show
+<!--l. 952--><p class="indent" >  The Chevalley-Eilenberg complex for the Lie algebra of a Lie group can be used to show
 that cohomology and homology of the Lie algebra agree with homology and
 cohomology of a compact connected Lie group &#x0028;over \(k\)&#x0029;. Namely, one can choose a
 bi-invariant metric, and use Hodge theory to show the harmonic forms are invariant
@@ -2731,18 +2917,15 @@ and correspond to the cohomology of the Chevalley-Eilenberg complex. Using
 this we can see why we should expect \(H^3(\msl _2)=k\), since \(\msl _2\CC \) is the complexi&#xFB01;cation of the lie
 algebra of \(\su (2)\), and \(\SU (2)\) is a \(3\)-sphere. Indeed, the Chevalley-Eilenberg complex veri&#xFB01;es
 this.
-                                                                                  
-
-                                                                                  
-</p><!--l. 893--><p class="indent" >  We already showed \(H^1(\mg ,M)\) vanishes for a semisimple Lie algebra, but the same is true for \(H^2\).
+</p><!--l. 954--><p class="indent" >  We already showed \(H^1(\mg ,M)\) vanishes for a semisimple Lie algebra, but the same is true for \(H^2\).
 First we can upgrade Weyl&#x2019;s theorem.
 </p>
   <div class="newtheorem">
-<!--l. 895--><p class="noindent" ><span class="head">
+<!--l. 956--><p class="noindent" ><span class="head">
 <a 
- id="x1-6011r11"></a>
+ id="x1-7011r11"></a>
 <span 
-class="cmbx-12">Proposition 6.11.</span>  </span><span 
+class="cmbx-12">Proposition 7.11.</span>  </span><span 
 class="cmti-12">Let</span> \(M\) <span 
 class="cmti-12">be a &#xFB01;nite-dimensional nontrivial irreducible</span> \(\mg \) <span 
 class="cmti-12">module in</span>
@@ -2753,7 +2936,10 @@ class="cmti-12">for any</span> \(I\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 898--><p class="indent" >  <span class="head">
+<!--l. 959--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Over \(\bar{k}\), \(L\), the Casimir element, acts by a scalar on \(M\) and by \(0\) on \(k\), hence it acts on
 the homology and cohomology, and the two actions coming from \(M\) and \(k\) coincide since
@@ -2763,15 +2949,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 902--><p class="indent" >  Thus all the interesting &#x0028;&#xFB01;nite-dimensional&#x0029; cohomological information is in the trivial
+<!--l. 963--><p class="indent" >  Thus all the interesting &#x0028;&#xFB01;nite-dimensional&#x0029; cohomological information is in the trivial
 sheaf.
 </p>
   <div class="newtheorem">
-<!--l. 904--><p class="noindent" ><span class="head">
+<!--l. 965--><p class="noindent" ><span class="head">
 <a 
- id="x1-6012r12"></a>
+ id="x1-7012r12"></a>
 <span 
-class="cmbx-12">Theorem 6.12 </span>&#x0028;Second Whitehead Lemma&#x0029;<span 
+class="cmbx-12">Theorem 7.12 </span>&#x0028;Second Whitehead Lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(\mg \) <span 
 class="cmti-12">is semisimple over characteristic</span> \(0\) <span 
@@ -2782,10 +2968,7 @@ class="cmti-12">&#xFB01;nite-dimensional, then</span> \(H^2(\mg ,M)=0\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 907--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 968--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By the previous proposition, it su&#xFB03;ces to show \(H^2(\mg )\) vanishes, which is equivalent
 to any saying any extension \(k \to \me \to \mg \) splits. To see that is true, simply observe that the \([\me ,\me ]\) gives
@@ -2794,17 +2977,20 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 911--><p class="indent" >  This is analogous to &#x0028;and partially proves&#x0029; a fact in Lie groups, that \(\pi _2\) vanishes for any
+<!--l. 972--><p class="indent" >  This is analogous to &#x0028;and partially proves&#x0029; a fact in Lie groups, that \(\pi _2\) vanishes for any
 Lie group. Perhaps one complete the proof for compact Lie groups by proving that \(H_2\) is the
 kernel of the universal central extension, so there can&#x2019;t be any torsion as it would give a
 nontrivial cover.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 913--><p class="noindent" ><span class="head">
+<!--l. 974--><p class="noindent" ><span class="head">
 <a 
- id="x1-6013r13"></a>
+ id="x1-7013r13"></a>
 <span 
-class="cmbx-12">Corollary 6.13 </span>&#x0028;Levi Decomposition&#x0029;<span 
+class="cmbx-12">Corollary 7.13 </span>&#x0028;Levi Decomposition&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">In characteristic</span> \(0\)<span 
 class="cmti-12">, any Lie group splits as a</span>
@@ -2815,7 +3001,7 @@ class="cmti-12">is solvable and</span> \(\mg \) <span
 class="cmti-12">is semisimple.</span>
 </p>
   <div class="proof">
-<!--l. 916--><p class="indent" >  <span class="head">
+<!--l. 977--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Note that \(\ma \) is really the radical, so we want to show that \(\rad (\mg ) \to \mg \to \mg /\rad (\mg )\) splits. We can do
 this by induction on the length of the derived series. Mod out by \([\rad (\mg ),\rad (\mg )]\) to get an extension
@@ -2827,14 +3013,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 920--><p class="noindent" ><span class="head">
+<!--l. 981--><p class="noindent" ><span class="head">
 <a 
- id="x1-6014r14"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-7014r14"></a>
 <span 
-class="cmbx-12">Lemma 6.14 </span>&#x0028;Hopf&#x0029;<span 
+class="cmbx-12">Lemma 7.14 </span>&#x0028;Hopf&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(\mff /\ma \) <span 
 class="cmti-12">be a presentation of</span> \(\mg \)<span 
@@ -2842,20 +3025,23 @@ class="cmti-12">. Then</span> \(H_2(\mg ) = \frac{\ma \cap [\mff ,\mff ]}{[\mff 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 923--><p class="indent" >  <span class="head">
+<!--l. 984--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Consider the low term exact sequence from the homology spectral sequence
 for \(0 \to \ma \to \mff \to \mg \to 0\) and the trivial module: \[0 \to H_2(\mg ,k) \to \ma /[\ma ,\ma ]_\mg \to \mff /[\mff ,\mff ] \to \mg /[\mg ,\mg ] \to 0\] The second term is \(\ma /[\mff ,\ma ]\), giving the result. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
   <div class="newtheorem">
-<!--l. 929--><p class="noindent" ><span class="head">
+<!--l. 990--><p class="noindent" ><span class="head">
 <a 
- id="x1-6015r15"></a>
+ id="x1-7015r15"></a>
 <span 
-class="cmbx-12">Lemma 6.15.</span>  </span> <span 
+class="cmbx-12">Lemma 7.15.</span>  </span> <span 
 class="cmti-12">If</span> \(\me ,\me '\) <span 
 class="cmti-12">are central extensions of</span> \(\mg \)<span 
 class="cmti-12">, and</span> \(\me \) <span 
@@ -2865,7 +3051,7 @@ class="cmti-12">homomorphism of extensions</span> \(\me \to \me '\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 932--><p class="indent" >  <span class="head">
+<!--l. 993--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Any two homomorphisms di&#xFB00;er by something in the kernel of \(\me \), and \(\me '\) is perfect
 and the kernel is central, it has to be \(0\). <span class="qed"><span 
@@ -2874,22 +3060,19 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 936--><p class="noindent" ><span class="head">
+<!--l. 997--><p class="noindent" ><span class="head">
 <a 
- id="x1-6016r16"></a>
+ id="x1-7016r16"></a>
 <span 
-class="cmbx-12">Theorem 6.16.</span>  </span>\(\mg \) <span 
+class="cmbx-12">Theorem 7.16.</span>  </span>\(\mg \) <span 
 class="cmti-12">has a universal central extension i&#xFB00;</span> \(\mg \) <span 
 class="cmti-12">is perfect, and it is a central</span>
 <span 
 class="cmti-12">extension by</span> \(H_2(\mg ,k)\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
-<!--l. 940--><p class="indent" >  <span class="head">
+<!--l. 1001--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose \(\mg \) has a universal central extension \(\me \), it must have a unique map to the
 trivial central extension, which implies that \(\mg \) has to be perfect. Conversely let \(\mg \) be
@@ -2897,20 +3080,23 @@ perfect. Choose a presentation \(\mg = \mff /\ma \), for \(\mff \) free. Then \(
 central extension. By the previous lemma, it is an extension by \(H_2(\mg )\). Moreover, one can
 see it is perfect. Since \(\mg \) is perfect, any \(x \in \mff \) decomposes as \(x'+r\) where \(x' \in \mff , r \in \ma \). Then choosing such a
 decomposition for \(x =x'+r,y =x'+r\) Then \([x,y] = [x',y']\) modulo \([\mff ,\ma ]\). This gives uniqueness of a map to any extension.
-</p><!--l. 943--><p class="indent" >  Now let \(\me \) be any other central extension. There is a map from \(\mff \) to \(\me \) lifting the
+                                                                                  
+
+                                                                                  
+</p><!--l. 1004--><p class="indent" >  Now let \(\me \) be any other central extension. There is a map from \(\mff \) to \(\me \) lifting the
 projection to \(\mg \), and since \(\me \) is central, it induces a map from \(\mh \). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 947--><p class="indent" >  Here is a recognition criterion for universal central extensions.
+<!--l. 1008--><p class="indent" >  Here is a recognition criterion for universal central extensions.
 </p>
   <div class="newtheorem">
-<!--l. 948--><p class="noindent" ><span class="head">
+<!--l. 1009--><p class="noindent" ><span class="head">
 <a 
- id="x1-6017r17"></a>
+ id="x1-7017r17"></a>
 <span 
-class="cmbx-12">Lemma 6.17.</span>  </span><span 
+class="cmbx-12">Lemma 7.17.</span>  </span><span 
 class="cmti-12">TFAE for a central extension</span> \(\me \to \mg \)<span 
 class="cmti-12">:</span>
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
@@ -2930,34 +3116,34 @@ class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(H_1(\me )=H_2(\me ) = 0\)<span 
 class="cmti-12">.</span>
           </dd></dl>
-<!--l. 956--><p class="noindent" ><span 
+<!--l. 1017--><p class="noindent" ><span 
 class="cmti-12">Moreover the universal central extension is idempotent.</span>
 </p>
   <div class="proof">
-<!--l. 958--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 1019--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Consider \(\me '\), the universal central extension of the universal central extension,
 and let \(x\) be in its kernel to \(\mg \). Since \(\me '\) is perfect, for any \(a\), there is some \(a',a''\) so that \([x,a] = [x,[a',a']]\). But
 by the Jacobi identity this is zero since \(\me ',\me \) are central extensions. Thus \(\me '\) is a central
 extension so it splits, and must be \(\me \).
-</p><!--l. 961--><p class="indent" >  \((1) \implies (2)\): Any central extension \(\me '\) of \(\me \) splits. \(\me '\) is thus also a central extension of \(\mg \) and since \(\me \)
+</p><!--l. 1022--><p class="indent" >  \((1) \implies (2)\): Any central extension \(\me '\) of \(\me \) splits. \(\me '\) is thus also a central extension of \(\mg \) and since \(\me \)
 is perfect, this splitting is unique by Lemma <a 
-href="#x1-6015r15">6.15<!--tex4ht:ref: uniquemapcentextn --></a>.
-</p><!--l. 963--><p class="indent" >  \((2) \implies (3)\): Since the a trivial \(k\) extension splits in a unique way, we see \(H_1(\me )=0\). Moreover since any
+href="#x1-7015r15">7.15<!--tex4ht:ref: uniquemapcentextn --></a>.
+</p><!--l. 1024--><p class="indent" >  \((2) \implies (3)\): Since the a trivial \(k\) extension splits in a unique way, we see \(H_1(\me )=0\). Moreover since any
 extension splits, the universal central extension splits, so it must be trivial, showing
 \(H_2(\me )=0\).
-</p><!--l. 965--><p class="indent" >  \((3) \implies (1)\): Given any central extension of \(\mg \), we can pull it back to a central extension of \(\me \) which
+</p><!--l. 1026--><p class="indent" >  \((3) \implies (1)\): Given any central extension of \(\mg \), we can pull it back to a central extension of \(\me \) which
+                                                                                  
+
+                                                                                  
 splits, giving a map to the central extension. Uniqueness follows from perfectness. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-  <h3 class="sectionHead"><span class="titlemark">7. </span> <a 
- id="x1-70007"></a>To add</h3>
-<!--l. 976--><p class="noindent" >A&#xFB03;ne Kac-Moody algebras Representation theory/Character formulas More on Cartan
+  <h3 class="sectionHead"><span class="titlemark">8. </span> <a 
+ id="x1-80008"></a>To add</h3>
+<!--l. 1031--><p class="noindent" >A&#xFB03;ne Kac-Moody algebras Representation theory/Character formulas More on Cartan
 subalgebras Malcev theorem Ado&#x2019;s theorem
 </p>
    

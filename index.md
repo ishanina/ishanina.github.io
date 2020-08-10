@@ -44,6 +44,8 @@
 [Morita Equivalence](Other/Morita Equivalence/Morita_Equivalence.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Morita Equivalence.pdf)
 
 [Projective Modules over Local Rings](Other/Projective Modules over Local Rings/Projective_Modules_over_Local_Rings.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Projective Modules over Local Rings.pdf)
+
+[Vector Bundles on P1](Other/Vector Bundles on P1/Vector_Bundles_on_P1.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Vector Bundles on P1.pdf)
 # PROMYS
 
 [Adjoints](PROMYS/Adjoints/Adjoints.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Adjoints.pdf)
@@ -85,6 +87,8 @@
 [Positive Definite Binary Quadratic Forms over Z](PROMYS/Positive Definite Binary Quadratic Forms over Z/Positive_Definite_Binary_Quadratic_Forms_over_Z.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Positive Definite Binary Quadratic Forms over Z.pdf)
 
 [Representable Functors and the Yoneda Lemma](PROMYS/Representable Functors and the Yoneda Lemma/Representable_Functors_and_the_Yoneda_Lemma.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Representable Functors and the Yoneda Lemma.pdf)
+
+[Some Complex Theorems in Simple Analysis](PROMYS/Some Complex Theorems in Simple Analysis/Some_Complex_Theorems_in_Simple_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Some Complex Theorems in Simple Analysis.pdf)
 
 [Some Complex Theorems in Simple Analysis](PROMYS/Some Complex Theorems in Simple Analysis/Some_Complex_Thoerems_in_Simple_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Some Complex Theorems in Simple Analysis.pdf)
 

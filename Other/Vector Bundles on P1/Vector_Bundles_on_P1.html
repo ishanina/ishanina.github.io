@@ -312,30 +312,29 @@ have for example \(f_{j}\leq f_i\), then these two conditions on \(A_{ij}\) forc
 splitting.
 </p><!--l. 50--><p class="indent" >  Thus it will su&#xFB03;ce to show that if \(f_{i+1}&gt;f_i\) we can do operations to achieve \(f_{i+1}\leq f_i\) &#x0028;from which it will
 follow that \(f_j\leq f_i\)&#x0029;. We can arrange this by essentially focusing only on the \(2x2\) submatrix: \[\begin{bmatrix} x^{f_i}&amp; A_{i,i+1}\\ &amp; x^{f_{i+1}} \end{bmatrix}\] The
-lowest monomial in \(A_{i,i+1}\) is higher degree than \(x^{f_i}\), so we can do a column operation to
-make it cancel out with \(x^{f_i}\) Then we can run the whole process again making these
-two columns upper triangular. The observation is that \(x^{f_i}\) will be replaced with
-the gcd of the left column, which now will be larger than before since we have
-eliminated \(x^f_i\), and since \(x^{f_{i+1}}\) is larger than any monomial in \(A_{i,i+1}\). Since the determinant
-has remained the same, the power of \(x\) in the other diagonal element will have
-reduced. By induction, we can then force the condition we want, and the proof is
-complete.
+lowest monomial in \(A_{i,i+1}\) is higher degree than \(x^{f_i}\), so we can simply switch the two columns
+around and rerun our algorithm to make it return to upper triangular form.
+The &#xFB01;rst diagonal entry becomes the gcd of \(A_{i,i+1},x^{f_{i+1}}\), which is a higher power of \(x\) than
+\(f_i\).
 </p><!--l. 57--><p class="indent" >  Observe that this last part of the computation actually shows more, namely that if \(n+m=n'+m'\),
 then \(\cO (n)\oplus \cO (m)\) has a &#xFB01;ltration whose associated graded pieces are \(\cO (n')\) and \(\cO (n')\). This quickly leads to the
-same \(K\)-theory result as in the topological setting.
+same \(K\)-theory computation as in the topological setting. The only other input
+necessary is the notion of degree, which shows that \(\cO (1)\) is linearly independent from
+\(\cO _{\PP ^1}\).
 </p><!--l. 59--><p class="indent" >  Here is an alternate more beautiful proof that gives the &#xFB01;ltration that we want already
-with the property that \(f_{i+1}&gt;f_i\). The di&#xFB00;erence is that it uses cohomlogy instead of plain linear
-algebra. Given a locally free sheaf \(\sF \), we know that \(\sF (n)\) has global sections for \(n&gt;&gt;0\), and one can
-show that it has no global sections for \(n&lt;&lt;0\) &#x0028;either you can use Serre duality, or you can resolve
+with the property that \(f_{i+1}&gt;f_i\). The di&#xFB00;erence is that it uses cohomlogy instead of plain
+linear algebra. Given a locally free sheaf \(\sF \), we know that \(\sF (n)\) has global sections for \(n&gt;&gt;0\),
+and one can show that it has no global sections for \(n&lt;&lt;0\) &#x0028;either you can use Serre
+duality, or you can resolve \(\sF ^{\vee }(n)\) by sums of line bundles and dualize to make \(\sF (-n)\) embed
+in something with no global sections&#x0029;. Thus there is a critical value \(\sF (n)\) where it
                                                                                   
 
                                                                                   
-\(\sF ^{\vee }(n)\) by sums of line bundles and dualize to make \(\sF (-n)\) embed in something with no global
-sections&#x0029;. Thus there is a critical value \(\sF (n)\) where it obtains global sections. A nonzero global
-section gives a map \(\cO _{\PP ^1} \to \sF (n)\). Taking the cokernel, there can be no torsion, or else the map from \(\cO _{\PP ^1}\)
-would extend to \(\cO (1)\) by examining the stalk near the torsion point, contradicting
-criticality of \(n\). This uses the fact that any positive divisor corresponds to \(\cO (m)\) for some
-\(m&gt;0\).
+obtains global sections. A nonzero global section gives a map \(\cO _{\PP ^1} \to \sF (n)\). Taking the cokernel,
+there can be no torsion, or else the map from \(\cO _{\PP ^1}\) would extend to \(\cO (1)\) by examining
+the stalk near the torsion point, contradicting criticality of \(n\). This uses the fact
+that any positive divisor corresponds to \(\cO (m)\) for some \(m&gt;0\), which really requires genus
+\(0\).
 </p><!--l. 61--><p class="indent" >  Thus the quotient is locally free, and by induction on rank it is a sum of line bundles \(\cO (n_i)\).
 This gives the desired &#xFB01;ltration and it su&#xFB03;ces to show that \(n_i&lt;0\), but this follows by
 examining the long exact sequence on cohomology, since \(\sF (n)\) has no global sections and

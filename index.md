@@ -90,8 +90,6 @@
 
 [Some Complex Theorems in Simple Analysis](PROMYS/Some Complex Theorems in Simple Analysis/Some_Complex_Theorems_in_Simple_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Some Complex Theorems in Simple Analysis.pdf)
 
-[Some Complex Theorems in Simple Analysis](PROMYS/Some Complex Theorems in Simple Analysis/Some_Complex_Thoerems_in_Simple_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Some Complex Theorems in Simple Analysis.pdf)
-
 [The Hilbert Class Field](PROMYS/The Hilbert Class Field/The_Hilbert_Class_Field.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/The Hilbert Class Field.pdf)
 
 [The Seifert Van Kampen Thoerem](PROMYS/The Seifert Van Kampen Thoerem/The_Seifert_Van_Kampen_Theorem.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/The Seifert Van Kampen Thoerem.pdf)

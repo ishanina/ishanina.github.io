@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Chromatic_Homotopy_Theory.css" /> 
 <meta name="src" content="Chromatic_Homotopy_Theory.tex" /> 
- <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+<script>window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand'] } }; </script> 
  <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
@@ -14,6 +14,7 @@
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
+\newcommand{\cK}{\mathcal{K}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -61,8 +62,8 @@
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
 
-\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
-\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+\newcommand{\pushout}{\arrow[ul, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[dr, phantom, "\lrcorner", very near start]}
 
 \newcommand{\simp}[1]{#1^{\Delta^{op}}}
 
@@ -217,14 +218,24 @@ class="cmr-10">ISHAN LEVY</span>
 <div class="submaketitle">
 </div>
   </div>
+  <h3 class="sectionHead"><a 
+ id="x1-1000"></a>Contents</h3>
+  <div class="tableofcontents"><span class="sectionToc" ><a 
+href="#x1-1000" id="QQ2-1-1">Contents</a></span><br /><span class="sectionToc" >&#x00A0;1.&#x00A0;&#x00A0;<a 
+href="#x1-20001" id="QQ2-1-2">Nilpotence                     Theorem</a></span><br /><span class="sectionToc" >&#x00A0;2.&#x00A0;&#x00A0;<a 
+href="#x1-30002" id="QQ2-1-3">Thick
+Subcategories</a></span><br /><span class="sectionToc" >&#x00A0;3.&#x00A0;&#x00A0;<a 
+href="#x1-40003" id="QQ2-1-4">\(\o:mathop:{\rm MU}\nolimits \)</a></span><br /><span class="sectionToc" >&#x00A0;4.&#x00A0;&#x00A0;<a 
+href="#x1-50004" id="QQ2-1-5">Landweber Exact Functor Theorem</a></span><br />
+  </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
- id="x1-10001"></a>Nilpotence Theorem</h3>
+ id="x1-20001"></a>Nilpotence Theorem</h3>
 <!--l. 12--><p class="noindent" >\(\MU \) is a strong invariant of spaces.
 </p>
   <div class="newtheorem">
 <!--l. 13--><p class="noindent" ><span class="head">
 <a 
- id="x1-1001r1"></a>
+ id="x1-2001r1"></a>
 <span 
 class="cmbx-12">Theorem 1.1 </span>&#x0028;Nilpotence Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -237,6 +248,9 @@ class="cmti-12">, then it is smash-nilpotent.</span>
   </div>
 <!--l. 16--><p class="indent" >  If \(R\) has a map \(R\otimes R \to R\), and \(\alpha \) is a homotopy class in \(R\) in the kernel of the Hurewicz
 map, then by the nilpotence theorem it is nilpotent. On the other hand let \(F \to X\) be
+                                                                                  
+
+                                                                                  
 a map as in the above theorem. It is smash-nilpotent i&#xFB00; the dual map \(\SP \to DF\otimes X\) is, so
 WLOG \(F\) is a sphere. If the map is in the kernel of the \(\MU _*\) Hurewicz map, then its
 nulhomotopy takes place in \(\MU \otimes X'\) for some &#xFB01;nite spectrum in X, so we can assume \(X\) is
@@ -244,13 +258,10 @@ nulhomotopy takes place in \(\MU \otimes X'\) for some &#xFB01;nite spectrum in 
 \(0\)-connected. Replacing \(X\) with \(\oplus X^{\otimes n}\), we see that the following version of the theorem is
 equivalent:
 </p>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
 <!--l. 17--><p class="noindent" ><span class="head">
 <a 
- id="x1-1002r2"></a>
+ id="x1-2002r2"></a>
 <span 
 class="cmbx-12">Theorem 1.2.</span>  </span><span 
 class="cmti-12">If</span> \(R\) <span 
@@ -272,7 +283,7 @@ su&#xFB03;ciently large \(n\). Thus it su&#xFB03;ces to show:
   <div class="newtheorem">
 <!--l. 24--><p class="noindent" ><span class="head">
 <a 
- id="x1-1003r3"></a>
+ id="x1-2003r3"></a>
 <span 
 class="cmbx-12">Theorem 1.3.</span>  </span><span 
 class="cmti-12">If</span> \(\alpha \otimes 1_{X(n+1)}\) <span 
@@ -287,9 +298,12 @@ its Thom spectrum. The following two results will then prove the nilpotence
 theorem:
 </p>
   <div class="newtheorem">
+                                                                                  
+
+                                                                                  
 <!--l. 30--><p class="noindent" ><span class="head">
 <a 
- id="x1-1004r4"></a>
+ id="x1-2004r4"></a>
 <span 
 class="cmbx-12">Proposition 1.4.</span>  </span> <span 
 class="cmti-12">If</span> \(\alpha \) <span 
@@ -299,13 +313,10 @@ class="cmti-12">-nilpotent for large</span> \(k\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
 <!--l. 34--><p class="noindent" ><span class="head">
 <a 
- id="x1-1005r5"></a>
+ id="x1-2005r5"></a>
 <span 
 class="cmbx-12">Theorem 1.5.</span>  </span> \(G_k\) <span 
 class="cmti-12">is Bous&#xFB01;eld equivalent to</span> \(G_{k+1}\)<span 
@@ -318,7 +329,7 @@ establish:
   <div class="newtheorem">
 <!--l. 40--><p class="noindent" ><span class="head">
 <a 
- id="x1-1006r6"></a>
+ id="x1-2006r6"></a>
 <span 
 class="cmbx-12">Proposition 1.6.</span>  </span>\[\Ext _{X(n+1)_*X(n+1)}(X(n+1)_*,X(n+1)_*(G_k\otimes R))\] <span 
 class="cmti-12">has a vanishing line of slope tending to</span> \(0\) <span 
@@ -335,7 +346,7 @@ in the following:
   <div class="newtheorem">
 <!--l. 46--><p class="noindent" ><span class="head">
 <a 
- id="x1-1007r7"></a>
+ id="x1-2007r7"></a>
 <span 
 class="cmbx-12">Lemma 1.7.</span>  </span><span 
 class="cmti-12">If</span> \(n \geq m\)<span 
@@ -343,15 +354,15 @@ class="cmti-12">,</span> \(X(n)_*X_m = X(n)_*[b_1,\dots b_{m}]\)<span
 class="cmti-12">.</span>
 </p><!--l. 49--><p class="indent" >  \(X(n+1)_*G_k = X(n+1)_*[b_1,\dots ,b_n]\{1,b_{n+1},\dots ,b_{n+1}^{p^k-1}\}\)<span 
 class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
 <!--l. 52--><p class="indent" >  In particular, \(X(n+1)_*X(n+1) = X(n+1)_*\otimes \ZZ [b_1,\dots ,b_n]\), so it is &#xFB02;at over \(X(n+1)_*\) and is in fact a split Hopf algebroid. Thus the \(E_2\) term of
 the \(X(n+1)\)-based Adams spectral sequence for \(G_k\otimes R\) is \[\Ext _{X(n+1)_*X(n+1)}(X(n+1)_*,X(n+1)_*(G_k\otimes R))\] Since \(X(n+1)_*(G_k)\) is &#xFB02;at, we get that this is \[\Ext _{X(n+1)_*X(n+1)}(X(n+1)_*,X(n+1)_*(G_k) \otimes _{X(n+1)} X(n+1)_*R))\] Now since the
 Hopf algebroid is split, this is just &#x0028;the localization at \(p\) is supressed&#x0029;: \[\Ext _{\ZZ [b_1,\dots ,b_n]}(\ZZ ,\ZZ [b_1,\dots ,b_{n-1}]\{1,b_{n},\dots , b_n^{p^k-1}\} \otimes X(n+1)_*R))\] We can identify \(\ZZ [b_1,\dots ,b_{n-1}]\{1,b_{n},\dots , b_n^{p^k-1}\}\) as a
 left comodule with the cotensor product \(\ZZ [b_1,\dots ,b_{n}]\square _{\ZZ [b_n]}\ZZ \{1,b_n,\dots ,b_n^{p^k-1}\}\), so that \[(\ZZ [b_1,\dots ,b_{n}]\square _{\ZZ [b_n]}\ZZ \{1,b_n,\dots ,b_n^{p^k-1}\}) \otimes X(n+1)_*R\] \[=\ZZ [b_1,\dots ,b_{n}]\square _{\ZZ [b_n]}(\ZZ \{1,b_n,\dots ,b_n^{p^k-1}\} \otimes X(n+1)_*R)\] &#x0028;the isomorphism is not totally
-                                                                                  
-
-                                                                                  
 obvious&#x0029;
 </p><!--l. 62--><p class="indent" >  Since the comodule is extended from \(\ZZ [b_i]\), we can identify the \(\Ext \) term with \[\Ext _{\ZZ [b_n]}(\ZZ ,\ZZ \{1,b_{n},\dots , b_n^{p^k-1}\} \otimes X(n+1)_*R)\] This is saying
 that action of the group \(\Spec \ZZ [b_1,\dots ,b_n]\) is induced from the subgroup \(\Spec \ZZ [b_n]\), so the group cohomology can be
@@ -364,7 +375,7 @@ is
 </p><!--l. 68--><p class="indent" >  \[\Ext _{\FF _p[b_n^{p^k}]}(\FF _p,\FF _p \otimes \Gr X(n+1)_*R)\] But this is a sum of copies of \(\Ext _{\FF _p[b_n^{p^k}]}(\FF _p,\sigma ^k\FF _p)\), which has a vanishing line of slope \((np^{k+1}-1)^{-1}\) by looking at a
 minimal resolution. This goes to zero as \(k \to \infty \).
 </p><!--l. 71--><p class="indent" >  Now that we have our vanishing line, we can argue for Proposition <a 
-href="#x1-1004r4">1.4<!--tex4ht:ref: step1 --></a> as follows:
+href="#x1-2004r4">1.4<!--tex4ht:ref: step1 --></a> as follows:
 </p>
   <div class="proof">
 <!--l. 74--><p class="indent" >  <span class="head">
@@ -378,26 +389,28 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
 <!--l. 77--><p class="indent" >  Now let&#x2019;s start to examine Theorem <a 
-href="#x1-1005r5">1.5<!--tex4ht:ref: step2 --></a>.
+href="#x1-2005r5">1.5<!--tex4ht:ref: step2 --></a>.
 </p><!--l. 79--><p class="indent" >  First we will produce a \(p\)-local &#xFB01;bre sequence \(G'_k \to G'_{k+1} \to J_{p-1}S^{2np^k}\). To do this, &#xFB01;rst note that the map \(J_{p^k-1}S^{2n} \to JS^{2n}\) is the
 homotopy &#xFB01;bre of the James-Hopf map \(JS^{2n} \to JS^{2np^k}\). To see this, one can see that there is an
 isomorphism in mod \(p\) homology via the Serre SS. Thus we can paste together the &#xFB01;bre
 sequences below.
 </p>
+                                                                                  
+
+                                                                                  
 <div class="center" 
 >
 <!--l. 81--><p class="noindent" >
-                                                                                  
-
-                                                                                  
 </p><!--l. 86--><p class="noindent" >             <img 
-src="Chromatic_Homotopy_Theory0x.svg" alt="G &#x2032;k             &#x03A9;SU  &#x0028;n&#x0029;
-
-       2n          2n
-Jpk&#x2212; 1S          JS
+src="Chromatic_Homotopy_Theory0x.svg" alt="G &#x2032;             &#x03A9;SU  &#x0028;n&#x0029;
+  k
 
 
-&#x2217;               JS2npk "  />
+Jpk&#x2212; 1S2n        JS2n
+
+
+                   2npk
+&#x2217;               JS "  />
 </p></div>
 <!--l. 88--><p class="noindent" >But then we can consider the following diagram of cartesian squares:
 </p>
@@ -412,7 +425,8 @@ src="Chromatic_Homotopy_Theory1x.svg" alt="G &#x2032;k          G &#x2032;k+1   
 &#x2217;            Jp &#x2212;1S           JS
 
 
-             &#x2217;                JS2npk+1 "  />
+                                 2npk+1
+             &#x2217;                JS "  />
 </p></div>
 <!--l. 98--><p class="indent" >  \(G'_{k+1}\) is indeed the homotopy pullback since the pasted pullback square on the right is
 the same kind &#x0028;i.e same on homology&#x0029; as the one from before. This creates the
@@ -425,15 +439,15 @@ spectra.
 with a map \(\xi \) to BU and a map \(\pi \) to \(J_{r}S^{2m}\). For \(q \leq r\), let \(E_q\) denote the homotopy pullback of \(\pi \) via the
 inclusion \(J_{q}S^{2m} \to J_{r}S^{2m}\), and note it lies in \(F_q\). In particular, \(E_0\) is the &#xFB01;bre of \(\pi \) &#x0028;which in our case is \(G'_k\)&#x0029;. Let \((-)^\xi \) be
 the Thom spectrum with respect to \(\xi \).
+                                                                                  
+
+                                                                                  
 </p><!--l. 102--><p class="indent" >  We will produce a natural self map \(b: \Sigma ^{2m(r+1)-2} E_0 \to E_0\) such that \(E_0\) is Bous&#xFB01;eld equivalent to \(b^{-1}E_0 \vee E\). Then we will
 show that under our conditions, \(b^{-1}E_0 = 0\). The point is that \(b\) induces zero on mod \(p\) cohomology
 because of our assumption on the inclusion of the &#xFB01;bre. \(b\) comes from the action of an
 element \(\beta \) in \(\pi _*\Omega J_rS^{2m}_+\). The action extends to \(\Omega ^2S^{2m+1}_+\), and we will show that the image of \(\beta \) is \(p\)-torsion. Thus
 since \(\Omega ^2S^{2m+1}_+[\beta ^{-1}]\) is an \(E_2\)-ring with \(p=0\), by Mahowald&#x2019;s theorem it is a sum of \(H\FF _p\)s. Then since \(\beta \) induces \(0\) on \(H\FF _{p*}\) it
 is \(0\).
-                                                                                  
-
-                                                                                  
 </p><!--l. 104--><p class="indent" >  \((\pi ,1)\) gives a map \(E \to J_rS^{2m}\times E\), and the latter comes with the map \(\xi \pi _2\) to \(BU\), so this is a map of spaces over \(BU\).
 Moreover, there is a projection to \((J_rS^{2m})^2\) and \((\pi ,1)\) covers the diagonal map. We can equip \(J_rS^{2m}\times E\) with the
 product &#xFB01;ltration, but then \((\pi ,1)\) doesn&#x2019;t preserve the &#xFB01;ltration.
@@ -447,7 +461,8 @@ category of spaces&#x0029;. </p>
 >
 <!--l. 107--><p class="noindent" >
 </p><!--l. 117--><p class="noindent" >                   <img 
-src="Chromatic_Homotopy_Theory2x.svg" alt="S2m         &#x0028;S2m &#x0029;2          &#x0028;S2m&#x0029;3 &#x22C5;&#x22C5;&#x22C5;
+src="Chromatic_Homotopy_Theory2x.svg" alt=" 2m            2m  2            2m 3
+S           &#x0028;S   &#x0029;           &#x0028;S  &#x0029;  &#x22C5;&#x22C5;&#x22C5;
 
 
 S2m         &#x2228;2 S2m           &#x2228;3&#x0028;S2m &#x0029;3&#x22C5;&#x22C5;&#x22C5;
@@ -465,17 +480,17 @@ use the same notation to denote the map on the co&#xFB01;bres \(E_q^\xi /E_{q-j}
   <div class="newtheorem">
 <!--l. 124--><p class="noindent" ><span class="head">
 <a 
- id="x1-1008r8"></a>
+ id="x1-2008r8"></a>
 <span 
 class="cmbx-12">Lemma 1.8.</span>  </span>\(\theta _i \circ \theta _j = (i,j)\theta _{i+j}: E_q^\xi /E_{q-1}^\xi \to E_{q-i-j}^\xi /E_{q-i-j-1}^\xi \) <span 
 class="cmti-12">where</span> \((i,j)\) <span 
 class="cmti-12">is the binomial coe&#xFB03;cient.</span>
-</p>
-  <div class="proof">
-<!--l. 127--><p class="indent" >  <span class="head">
                                                                                   
 
                                                                                   
+</p>
+  <div class="proof">
+<!--l. 127--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The map \((\pi ,1,1)\) on \(E\) factors as both \((1,(\pi ,1)) \circ (\pi ,1)\), after passing to Thom spectra and projecting
 giving \(\theta _i \circ \theta _j\), and also as \((\Delta , 1) \circ (\pi ,1)\),which gives \((i,j) \theta _{i+j}\) after passing to Thom spectra and projecting since
@@ -490,7 +505,7 @@ simple.
   <div class="newtheorem">
 <!--l. 132--><p class="noindent" ><span class="head">
 <a 
- id="x1-1009r9"></a>
+ id="x1-2009r9"></a>
 <span 
 class="cmbx-12">Lemma 1.9.</span>  </span>\(\theta _j: E_j^\xi /E_{j-1}^\xi \to \Sigma _{2mj}E^\xi _0\) <span 
 class="cmti-12">is an equivalence.</span>
@@ -512,20 +527,20 @@ src="Chromatic_Homotopy_Theory3x.svg" alt="                                     
 
 &#x03C0; "  />
 </p></div>
+                                                                                  
+
+                                                                                  
 <!--l. 142--><p class="noindent" >The lower map is a homology equivalence so the top one is too since the square is cartesian.
 Via the Thom isomorphism, we get a homology equivalence between the relative Thom
 spectra. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 146--><p class="noindent" ><span class="head">
 <a 
- id="x1-1010r10"></a>
+ id="x1-2010r10"></a>
 <span 
 class="cmbx-12">Corollary 1.10.</span>  </span><span 
 class="cmti-12">After inverting</span> \(r!\)<span 
@@ -541,12 +556,11 @@ class="cmti-12">Proof.</span> </span>Use induction on \(j\) to see the following
 >
 <!--l. 150--><p class="noindent" >
 </p><!--l. 154--><p class="noindent" >                    <img 
-src="Chromatic_Homotopy_Theory4x.svg" alt="      &#x03BE;   &#x03BE;          &#x03BE;              &#x03BE;     &#x03BE;
-    E j&#x2215;E 0        E j+1 &#x2215;E0        Ej+1&#x2215;E j
+src="Chromatic_Homotopy_Theory4x.svg" alt="    E &#x03BE;&#x2215;E &#x03BE;        E &#x03BE;  &#x2215;E0        E&#x03BE;  &#x2215;E &#x03BE;
+      j   0          j+1             j+1   j
 
 
-&#x1D703;&#x1D703;&#x1D703;   E &#x03BE;            E &#x03BE;             E&#x03BE;&#x2215;E &#x03BE;
- 111    j&#x2212;1            j              j   j&#x2212;1 "  />
+&#x1D703;&#x1D703;&#x1D703;111  E &#x03BE;j&#x2212;1          E &#x03BE;j             E&#x03BE;j&#x2215;E &#x03BE;j&#x2212;1 "  />
 </p></div>
 <!--l. 156--><p class="noindent" >The map on the right is an equivalence since \(\theta _j \circ \theta _1 = (j+1)\theta _{j+1}\), and the other two are equivalences by the
 lemma, and \(j+1\) is invertible. <span class="qed"><span 
@@ -556,6 +570,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
 <!--l. 159--><p class="indent" >  Note in the situation of application \(r=p-1\) so \(r!\) is invertible since we are working
 \(p\)-locally.
+                                                                                  
+
+                                                                                  
 </p><!--l. 161--><p class="indent" >  Now we can de&#xFB01;ne the natural self map \(b\) on the &#xFB01;bre as the following composite: \[\Sigma ^{2m(r+1)-2}E^\xi _0 \xrightarrow{\theta _r^{-1}} \Sigma ^{2m-2}E_r^\xi /E_{r-1}^\xi \xrightarrow{\delta } \Sigma ^{2m-1}E_{r-1}^\xi \xrightarrow{\theta _1^{-1}} \Sigma ^{-1}E^\xi _{r}/E^\xi _0 \xrightarrow{\delta } E_0^\xi \] In the
 situation of application, \(b\) induces \(0\) on mod \(p\) homology since the second \(\delta \) does as the
 inclusion of the &#xFB01;bre is injective on mod \(p\) homology.
@@ -563,10 +580,7 @@ inclusion of the &#xFB01;bre is injective on mod \(p\) homology.
   <div class="newtheorem">
 <!--l. 164--><p class="noindent" ><span class="head">
 <a 
- id="x1-1011r11"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-2011r11"></a>
 <span 
 class="cmbx-12">Lemma 1.11.</span>  </span>\(E_0^\xi \) <span 
 class="cmti-12">is in the same Bous&#xFB01;eld class as</span> \(E^\xi \vee b^{-1}E_0^\xi \)<span 
@@ -590,15 +604,17 @@ following diagram:
 >
 <!--l. 173--><p class="noindent" >
 </p><!--l. 177--><p class="noindent" >                       <img 
-src="Chromatic_Homotopy_Theory5x.svg" alt="              2m&#x0028;r+1&#x0029;&#x2212; 2     2m     &#x03BE;    2m &#x0028;r+1&#x0029;&#x2212;2  &#x03BC;
-             &#x03A3;         &#x03A9;JrS +  &#x2297; E 0  &#x03A3;         E 0
+src="Chromatic_Homotopy_Theory5x.svg" alt="             &#x03A3;2m&#x0028;r+1&#x0029;&#x2212; 2&#x03A9;JrS2m+  &#x2297; E &#x03BE;0  &#x03A3;2m &#x0028;r+1&#x0029;&#x2212;2E &#x03BC;0
 
 
-&#x03BC;bb&#x03BC;            &#x03A9;J S2m  &#x2297; E &#x03BE;            E &#x03BE;
-               r  +      0              0 "  />
+                  2m     &#x03BE;              &#x03BE;
+&#x03BC;bb&#x03BC;            &#x03A9;JrS +  &#x2297; E 0            E 0 "  />
 </p></div>
 <!--l. 180--><p class="indent" >  In otherwords, \(E_0^\xi \) is a module over the ring \(\Omega J_rS^{2m}_+\) and \(b\) is given by multiplication by \(\beta :=b(*)\) where \(*\) is
 the single point object in \(F_r\). So we want \(\beta ^{-1}E_0^\xi =0\).
+                                                                                  
+
+                                                                                  
 </p><!--l. 182--><p class="indent" >  Let&#x2019;s examine \(\beta \), i.e \(E = *\). Here, since the map to \(BU\) is trivial, the Thom spectrum is just \(\Sigma ^\infty _+\). \(\beta \) is
 then the composite:
 </p><!--l. 184--><p class="indent" >  \[\Sigma ^{2m(r+1)-2}\Omega J_r S^{2m}_+ \xrightarrow{\theta _r^{-1}} \Sigma ^{2m-1}E_{r-1} \xrightarrow{\delta } \Sigma ^{2m-1}(E_{r-1+}) \xrightarrow{\theta _1^{-1}} \Omega J_r S^{2m} \xrightarrow{\delta } \Omega J_r S^{2m}_+\]
@@ -607,10 +623,7 @@ then the composite:
   <div class="newtheorem">
 <!--l. 187--><p class="noindent" ><span class="head">
 <a 
- id="x1-1012r12"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-2012r12"></a>
 <span 
 class="cmbx-12">Lemma 1.12.</span>  </span>\(\theta _1\) <span 
 class="cmti-12">is the desuspension of the evaluation</span> \(S^2\otimes \Omega J_rS^{2m} \to S^2 \otimes \Omega ^2 S^{2m+1} \to S^{2m+1}\)<span 
@@ -629,7 +642,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   <div class="newtheorem">
 <!--l. 195--><p class="noindent" ><span class="head">
 <a 
- id="x1-1013r13"></a>
+ id="x1-2013r13"></a>
 <span 
 class="cmbx-12">Corollary 1.13.</span>  </span>\(\ee _+ \circ \beta : \Sigma ^{2m(r+1)-2}\Omega J_rS^{2m} \to \Omega J_rS^{2m} \to S^{2m-1}\) <span 
 class="cmti-12">is</span> \(0\)<span 
@@ -643,11 +656,14 @@ connecting homomorphism in the de&#xFB01;nition of \(b\). <span class="qed"><spa
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
   <div class="newtheorem">
 <!--l. 202--><p class="noindent" ><span class="head">
 <a 
- id="x1-1014r14"></a>
+ id="x1-2014r14"></a>
 <span 
 class="cmbx-12">Proposition 1.14.</span>  </span><span 
 class="cmti-12">If</span> \(r =p-1\)<span 
@@ -656,9 +672,6 @@ class="cmti-12">is as above, then</span> \(p\beta = 0\) <span
 class="cmti-12">in</span> \(\pi _*\Omega ^2S^{2m+1}_+\)<span 
 class="cmti-12">.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 206--><p class="indent" >  <span class="head">
 <span 
@@ -670,7 +683,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
 <!--l. 210--><p class="indent" >  Now we can complete the argument of Proposition <a 
-href="#x1-1005r5">1.5<!--tex4ht:ref: step2 --></a>.
+href="#x1-2005r5">1.5<!--tex4ht:ref: step2 --></a>.
 </p>
   <div class="proof">
 <!--l. 212--><p class="indent" >  <span class="head">
@@ -683,15 +696,18 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
- id="x1-20002"></a>Thick Subcategories</h3>
+ id="x1-30002"></a>Thick Subcategories</h3>
 <!--l. 216--><p class="noindent" >As a consequence of the nilpotence theorem, we can calculate all the &#x201C;prime ideals&#x201D; in the
 category of spectra. However, one needs the periodicity theorem to see that these are
 distinct.
+                                                                                  
+
+                                                                                  
 </p>
   <div class="newtheorem">
 <!--l. 219--><p class="noindent" ><span class="head">
 <a 
- id="x1-2001r1"></a>
+ id="x1-3001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.1.</span>  </span><span 
 class="cmti-12">A </span><span 
@@ -700,9 +716,6 @@ class="cmti-12">of</span> \(p\)<span
 class="cmti-12">-local &#xFB01;nite spectra is a full subcategory</span>
 <span 
 class="cmti-12">closed under &#xFB01;nite limits and colimits, and retracts.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
 <!--l. 222--><p class="indent" >  Some notes about the de&#xFB01;nition: for something to be thick it su&#xFB03;ces to check that it is
@@ -713,7 +726,7 @@ characterization of thick subcategories:
   <div class="newtheorem">
 <!--l. 225--><p class="noindent" ><span class="head">
 <a 
- id="x1-2002r2"></a>
+ id="x1-3002r2"></a>
 <span 
 class="cmbx-12">Theorem 2.2 </span>&#x0028;Thick Subcategory Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -739,16 +752,16 @@ has a &#xFB01;nite &#xFB01;ltration by the co&#xFB01;bres of \(f^i\), whose asso
 which is \(W^{i-1}\otimes X\otimes DX \otimes Y\), which is in \(C\) since \(X\) is. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
-  </div>
-  </div>
-  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
- id="x1-30003"></a>\(\MU \)</h3>
-<!--l. 236--><p class="noindent" >Let \(E\) be a complex oriented associative ring spectrum &#x0028;COCT for short&#x0029;, i.e it is equipped
-with a unital map from \(\MU (1)\). Equivalently it is a Thom class for the universal line bundle. This
-implies the degeneration of the \(E\)-based AHSSs for \(\BU (1) = \Sigma ^2\MU (1)\), and consequently for \(\BU (n)\) and \(\MU (n)\) by the
                                                                                   
 
                                                                                   
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-40003"></a>\(\MU \)</h3>
+<!--l. 236--><p class="noindent" >Let \(E\) be a complex oriented associative ring spectrum &#x0028;COCT for short&#x0029;, i.e it is equipped
+with a unital map from \(\MU (1)\). Equivalently it is a Thom class for the universal line bundle. This
+implies the degeneration of the \(E\)-based AHSSs for \(\BU (1) = \Sigma ^2\MU (1)\), and consequently for \(\BU (n)\) and \(\MU (n)\) by the
 splitting principle. Moreover the degeneration shows that for these spaces there is an
 isomorphism \(E^*= H^*\otimes E^*(pt)\) respecting the ring structure, because in \(E^*(\CC \PP ^n)\) a class \(x\) in the kernel of the
 augementation can be taken relative to a basepoint, and \((n+1)\) contractible sets cover \(\CC \PP ^n\). Thus we
@@ -775,11 +788,14 @@ we get
   <div class="newtheorem">
 <!--l. 244--><p class="noindent" ><span class="head">
 <a 
- id="x1-3001r1"></a>
+ id="x1-4001r1"></a>
 <span 
 class="cmbx-12">Proposition 3.1.</span>  </span>\(E\otimes \MU _*\) <span 
 class="cmti-12">is the universal strict isomorphism of the formal group law on</span> \(E\)<span 
 class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
 <!--l. 248--><p class="indent" >  Now we can try to prove:
@@ -787,10 +803,7 @@ class="cmti-12">.</span>
   <div class="newtheorem">
 <!--l. 250--><p class="noindent" ><span class="head">
 <a 
- id="x1-3002r2"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-4002r2"></a>
 <span 
 class="cmbx-12">Theorem 3.2 </span>&#x0028;Quillen&#x2019;s Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span>\(\MU _* = L\) <span 
@@ -823,7 +836,10 @@ algebra in degree \(1\), which will be called \(r_i\). Thus we get:
   <div class="newtheorem">
 <!--l. 262--><p class="noindent" ><span class="head">
 <a 
- id="x1-3003r3"></a>
+ id="x1-4003r3"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Proposition 3.3.</span>  </span><span 
 class="cmti-12">The</span>  \(E_2\)<span 
@@ -839,9 +855,6 @@ class="cmti-12">.</span>
   </div>
 <!--l. 266--><p class="indent" >  With this we can &#xFB01;nish Quillen&#x2019;s Theorem.
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 268--><p class="indent" >  <span class="head">
 <span 
@@ -858,7 +871,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
- id="x1-40004"></a>Landweber Exact Functor Theorem</h3>
+ id="x1-50004"></a>Landweber Exact Functor Theorem</h3>
 <!--l. 272--><p class="noindent" >Given a ring \(R\) with a formal group law, when is \(R = E_{R*}\) for some complex oriented theory \(E_R\)? One
 way to try to produce such a cohomology theory would be to de&#xFB01;ne \(E_{R*}(X) = \MU _*(X) \otimes _{\MU _*} E_R\) and hope that it is a
 cohomology theory. If \(R\) were &#xFB02;at over \(\MU _*\), then the long exact sequence on cohomology would
@@ -870,6 +883,9 @@ be &#xFB02;at over \(M_{fg}\). Note that we don&#x2019;t really need \(R\) to be
 \(L\).
 </p><!--l. 274--><p class="indent" >  Let \(M_{fgs}\) be the moduli stack of formal groups with a trivialization of their Lie algebra. The
 projection \(M_{fgs} \to M_{fg}\) is just the quotient by the \(\GG _m\) action, so it is faithfully &#xFB02;at. Thus it is equivalent
+                                                                                  
+
+                                                                                  
 that \(M\) is &#xFB02;at over \(M_{fgs}\).
 </p><!--l. 276--><p class="indent" >  Checking this can be done locally at every prime \(p\), so we will work locally. Then
 although \(\Spec (L)\) is a faithfully &#xFB02;at cover of \(M_{fgs}\), there is a more e&#xFB03;cient cover, coming from the fact
@@ -878,9 +894,6 @@ that every formal group law has a canonical \(p\)-typicalization. Namely let \(B
 group law. To show that \(\Spec (BP_*)\) is &#xFB02;at over \(M_{fgs}\) it su&#xFB03;ces to pullback to the cover \(\Spec (L)\) and
 show it there. Since the map \(\Spec (BP_*) \to M_{fgs}\) factors through \(\Spec (L)\), this map can be computed by
 taking \(L[b_1,\dots ]\) and quotienting by the images of \(t'_i\) for \(j \neq p^k-1\) for the non obvious inclusion \(\ZZ _{(p)}[t'_j] \to L[b_1,\dots ]\).
-                                                                                  
-
-                                                                                  
 But the proof of Lazard&#x2019;s theorem shows that the image of these are the \(b_i\) up to
 decomposables and units, so the quotient is a free algebra over \(L\), in particular
 faithfully &#xFB02;at. \(\MU _*(X) \otimes _{\MU _*} BP_*\) is Brown-Peterson homology, and the representing spectrum is
@@ -889,7 +902,7 @@ faithfully &#xFB02;at. \(\MU _*(X) \otimes _{\MU _*} BP_*\) is Brown-Peterson ho
   <div class="newtheorem">
 <!--l. 278--><p class="noindent" ><span class="head">
 <a 
- id="x1-4001r1"></a>
+ id="x1-5001r1"></a>
 <span 
 class="cmbx-12">Theorem 4.1 </span>&#x0028;Landweber Exact Functor Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -918,21 +931,21 @@ regular sequence on \(M'\) is necessary, since it is a regular sequence on the r
 </p><!--l. 285--><p class="indent" >  We can apply this using descending induction to the regular sequence \((p,v_1,\dots ,v_n)\) which up to units
 agrees with \((p,v'_1,\dots v'_n)\) which we have assumed is a regular sequence on \(M'\). So in the base case, we are
 working over \(\ZZ _{(p)}[v_1,\dots ,v_n]/(p,v_1,\dots ,v_n) = \FF _p\) where everything is &#xFB02;at. In the inductive hypothesis, we have \(M/(p,v_1,\dots v_{k+1})\) is &#xFB02;at over \(\ZZ _{(p)}[v_1,\dots ,v_n]/(p,v_1,\dots ,v_{k+1})\).
+                                                                                  
+
+                                                                                  
 By our assumption on \(M\) it su&#xFB03;ces to show then that \(M'/(p,v_1,\dots v_k)[v_{k+1}^{-1}]\) is &#xFB02;at over \(\ZZ _{(p)}[v_1,\dots ]/(p,v_1,\dots ,v_{k})[v_{k+1}^{-1}]\) But there is a pullback
 diagram: </p>
 <div class="center" 
 >
 <!--l. 286--><p class="noindent" >
-                                                                                  
-
-                                                                                  
 </p><!--l. 289--><p class="noindent" >                                    <img 
 src="Chromatic_Homotopy_Theory6x.svg" alt="                                 &#x2212;1                          &#x2212;1
 Spec BP &#x2217;&#x005B;b1,b2,...&#x005D;&#x2215;&#x0028;v1,...,vk&#x0029;&#x005B;vk+1&#x005D;  Spec L&#x0028;p&#x0029;&#x2215;&#x0028;v1,...,vk&#x0029;&#x005B;vk+1&#x005D;
 
 
-Spec BP  &#x2215;&#x0028;v ,...,v &#x0029;&#x005B;v&#x2212;1 &#x005D;            M k+1
-        &#x2217;   1      k   k+1               fg "  />
+                       &#x2212;1                k+1
+Spec BP &#x2217;&#x2215;&#x0028;v1,...,vk&#x0029;&#x005B;vk+1&#x005D;            M fg "  />
 </p></div>
 <!--l. 290--><p class="noindent" >Where \(M_{fgs}^{k+1}\) is the moduli stack of formal group laws of height exactly \(k+1\). Thus it su&#xFB03;ces to show
 that \(M/(v_1,\dots ,v_{k})[v_{k+1}^{-1}]\) is &#xFB02;at over \(M_{fgs}^{k+1}\). When \(k+1=0\), this is vecause \(M_{fgs}^0\) is literally \(\Spec \QQ \). For \(k+1&gt;0\), choose a formal group law \(f\) of
@@ -947,7 +960,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   <div class="newtheorem">
 <!--l. 294--><p class="noindent" ><span class="head">
 <a 
- id="x1-4002r1"></a>
+ id="x1-5002r1"></a>
 <span 
 class="cmbx-12">Remark 4.1.1.</span>  </span>I  think  this  proof  can  almost  completely  be  phrased  almost
 completely internally to stacks. \(v_n\) descends to a section of a line bundle on \(M_{fg}\) &#x0028;the dual of

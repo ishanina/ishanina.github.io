@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Rings_Modules_Fields.css" /> 
 <meta name="src" content="Rings_Modules_Fields.tex" /> 
- <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+<script>window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand'] } }; </script> 
  <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
@@ -14,6 +14,7 @@
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
+\newcommand{\cK}{\mathcal{K}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -61,8 +62,8 @@
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
 
-\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
-\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+\newcommand{\pushout}{\arrow[ul, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[dr, phantom, "\lrcorner", very near start]}
 
 \newcommand{\simp}[1]{#1^{\Delta^{op}}}
 
@@ -217,9 +218,36 @@ class="cmr-10">ISHAN LEVY</span>
 <div class="submaketitle">
 </div>
   </div>
+  <h3 class="sectionHead"><a 
+ id="x1-1000"></a>Contents</h3>
+  <div class="tableofcontents"><span class="sectionToc" ><a 
+href="#x1-1000" id="QQ2-1-1">Contents</a></span><br /><span class="sectionToc" >&#x00A0;1.&#x00A0;&#x00A0;<a 
+href="#x1-20001" id="QQ2-1-2">Rings</a></span><br /><span class="sectionToc" >&#x00A0;2.&#x00A0;&#x00A0;<a 
+href="#x1-30002" id="QQ2-1-3">Unique Factorization</a></span><br /><span class="sectionToc" >&#x00A0;3.&#x00A0;&#x00A0;<a 
+href="#x1-40003" id="QQ2-1-4">Localization and
+local rings</a></span><br /><span class="sectionToc" >&#x00A0;4.&#x00A0;&#x00A0;<a 
+href="#x1-50004" id="QQ2-1-5">Polynomial Algebras</a></span><br /><span class="sectionToc" >&#x00A0;5.&#x00A0;&#x00A0;<a 
+href="#x1-60005" id="QQ2-1-6">Noetherian rings</a></span><br /><span class="sectionToc" >&#x00A0;6.&#x00A0;&#x00A0;<a 
+href="#x1-70006" id="QQ2-1-7">Tensor
+products</a></span><br /><span class="sectionToc" >&#x00A0;7.&#x00A0;&#x00A0;<a 
+href="#x1-80007" id="QQ2-1-8">Dimension and Integral extensions</a></span><br /><span class="sectionToc" >&#x00A0;8.&#x00A0;&#x00A0;<a 
+href="#x1-90008" id="QQ2-1-9">Valuation
+rings</a></span><br /><span class="sectionToc" >&#x00A0;9.&#x00A0;&#x00A0;<a 
+href="#x1-100009" id="QQ2-1-10">Dedekind domains</a></span><br /><span class="sectionToc" >&#x00A0;10.&#x00A0;&#x00A0;<a 
+href="#x1-1100010" id="QQ2-1-11">Module Theory for Dedekind domains
+and Canonical forms</a></span><br /><span class="sectionToc" >&#x00A0;11.&#x00A0;&#x00A0;<a 
+href="#x1-1200011" id="QQ2-1-12">Fields</a></span><br /><span class="sectionToc" >&#x00A0;12.&#x00A0;&#x00A0;<a 
+href="#x1-1300012" id="QQ2-1-13">Separability</a></span><br /><span class="sectionToc" >&#x00A0;13.&#x00A0;&#x00A0;<a 
+href="#x1-1400013" id="QQ2-1-14">Normal
+extensions</a></span><br /><span class="sectionToc" >&#x00A0;14.&#x00A0;&#x00A0;<a 
+href="#x1-1500014" id="QQ2-1-15">Galois extensions</a></span><br /><span class="sectionToc" >&#x00A0;15.&#x00A0;&#x00A0;<a 
+href="#x1-1600015" id="QQ2-1-16">First Applications</a></span><br /><span class="sectionToc" >&#x00A0;16.&#x00A0;&#x00A0;<a 
+href="#x1-1700016" id="QQ2-1-17">Symmetric
+Polynomials</a></span><br />
+  </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
- id="x1-10001"></a>Rings</h3>
-<!--l. 9--><p class="noindent" >A <span 
+ id="x1-20001"></a>Rings</h3>
+<!--l. 10--><p class="noindent" >A <span 
 class="cmbx-12">ring </span>is a monoid object in the category of abelian groups via the monoidal structure
 given by the tensor product \(\otimes \), the left adjoint of \(\Hom \). In other words, it is an abelian group \((R,+)\)
 with a bilinear multiplication operation \(*\) that is associative, and has an identity called \(1\).
@@ -227,28 +255,28 @@ The category of rings is complete and cocomplete, its terminal object is the uni
 ring with \(1=0\), and is called the zero or trivial ring, and the initial object is the
 integers, \(\mathbb{Z}\). A property of rings is that \(0*a\) &#x0028;often written \(0a\) for concision&#x0029; is \(0\) for any
 \(a\).
-</p><!--l. 11--><p class="indent" >  The reason rings are important is quite similar to the reason groups are important.
+</p><!--l. 12--><p class="indent" >  The reason rings are important is quite similar to the reason groups are important.
 Groups arise naturally as the automorphisms of objects in a category, and similarly rings
+                                                                                  
+
+                                                                                  
 arise as the endomorphisms of objects in a <span 
 class="cmbx-12">preadditive category </span>&#x0028;i.e. one where the \(\Hom \)s
 are abelian groups and composition is bilinear&#x0029;. In other words, a ring is a one object
 preadditive category.
-</p><!--l. 13--><p class="indent" >  Thus it makes sense for a ring to &#x201C;act&#x201D; on a preadditive category. We call a functor from
+</p><!--l. 14--><p class="indent" >  Thus it makes sense for a ring to &#x201C;act&#x201D; on a preadditive category. We call a functor from
 \(R\) to a preadditive category an \(R\)<span 
 class="cmbx-12">-module</span>. If the category is unspeci&#xFB01;ed, one usually assumes
 that it is the category of abelian groups, \(Ab\). If \(M\) is an \(R\)-module, \(m \in M, r \in R\), we write \(rm\) to mean the
 &#x0028;bilinear&#x0029; action of \(R\) on \(M\).
-</p><!--l. 15--><p class="indent" >  We will focus on commutative rings, as they are easier to understand than
+</p><!--l. 16--><p class="indent" >  We will focus on commutative rings, as they are easier to understand than
 non-commutative rings. In fact, sometimes one even studies rings without \(1\), but we will
 again not think about this. From now on, commutative rings will be referred to as just
 rings.
-                                                                                  
-
-                                                                                  
-</p><!--l. 17--><p class="indent" >  Now for a commutative ring \(R\), analogously to the case of abelian groups, monoids in its
+</p><!--l. 18--><p class="indent" >  Now for a commutative ring \(R\), analogously to the case of abelian groups, monoids in its
 category of modules are called \(R\)-algebras. For example, \(\ZZ \)-algebras are just rings, since
 \(\ZZ \)-modules are just abelian groups.
-</p><!--l. 19--><p class="indent" >  We can consider \(R\) to be an \(R\)-module in the natural way, the submodules of \(R\) are called
+</p><!--l. 20--><p class="indent" >  We can consider \(R\) to be an \(R\)-module in the natural way, the submodules of \(R\) are called
 <span 
 class="cmbx-12">ideals</span>. In particular, these are nonempty subsets of \(R\) that are closed under multiplication
 by any element of \(R\) and under addition. Ideals are analogous to normal subgroups in that
@@ -260,7 +288,7 @@ generated by \(a,b,\dots \). Now a module is called <span
 class="cmbx-12">Noetherian </span>if every submodule is &#xFB01;nitely
 generated, and a ring is called Noetherian if every ideal &#x0028;submodule&#x0029; is &#xFB01;nitely
 generated.
-</p><!--l. 21--><p class="indent" >  One special kind of ideal \(\pp \) is called a <span 
+</p><!--l. 22--><p class="indent" >  One special kind of ideal \(\pp \) is called a <span 
 class="cmbx-12">prime ideal</span>, which means that \(1 \notin \pp \), and if \(ab \in \pp \),
 then \(a \in \pp \) or \(b \in \pp \). An <span 
 class="cmbx-12">integral domain </span>&#x0028;sometimes just domain&#x0029; is a nontrivial ring in
@@ -272,7 +300,7 @@ class="cmbx-12">zero</span>
 class="cmbx-12">divisors</span>, i.e. elements \(a\) such that \(ab = 0\), but \(b \neq 0\) for some \(b\). Note the nice property of
 prime ideals that the preimage of a prime ideal under a ring homomorphism is
 prime.
-</p><!--l. 23--><p class="indent" >  There is also the notion of a <span 
+</p><!--l. 24--><p class="indent" >  There is also the notion of a <span 
 class="cmbx-12">maximal ideal</span>, which is an ideal \(I\subset R\) which is maximal in the
 poset of <span 
 class="cmbx-12">proper ideals</span>, i.e those ideals not containing \(1\). By Zorn&#x2019;s Lemma, maximal ideal
@@ -280,24 +308,24 @@ always exist in nonzero rings. Analogously to prime ideals and integral domains,
 class="cmbx-12">&#xFB01;eld </span>is
 a ring with two ideals. Equivalently it is a nonzero ring, where nonzero elements
 are units. Fields are then exactly the quotient of rings by a maximal ideal. In
+                                                                                  
+
+                                                                                  
 particular since units in a nonzero ring are not zero divisors, maximal ideals are
 prime.
-</p><!--l. 25--><p class="indent" >  There are many operations of ideals \(I,J\). For example, we can take meets \(I+J\) and joins \(I\cap J\), and
+</p><!--l. 26--><p class="indent" >  There are many operations of ideals \(I,J\). For example, we can take meets \(I+J\) and joins \(I\cap J\), and
 products \(IJ\), which is the ideal generated by products of elements of \(I\) and \(J\). There is also the
 ideal quotient \((I:J) = \{r|rJ\subset I\}\).
-</p><!--l. 27--><p class="indent" >  It is always the case that \(IJ \subset I\cap J\), but they are not always equal. The following theorem gives a
+</p><!--l. 28--><p class="indent" >  It is always the case that \(IJ \subset I\cap J\), but they are not always equal. The following theorem gives a
 way to note when they are equal, and also realizes the quotient by an intersection as a
 pushout. It uses the notion of two ideals being <span 
 class="cmbx-12">comaximal</span>, which means that their sum
 contains \(1\).
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
-<!--l. 29--><p class="noindent" ><span class="head">
+<!--l. 30--><p class="noindent" ><span class="head">
 <a 
- id="x1-1001r1"></a>
+ id="x1-2001r1"></a>
 <span 
 class="cmbx-12">Proposition 1.1 </span>&#x0028;CRT&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -313,7 +341,7 @@ class="cmti-12">, and</span> \(R/IJ = R/I \times R/J\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 32--><p class="indent" >  <span class="head">
+<!--l. 33--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Given elements \([a],[b]\) in \(R/I, R/J\) that agree on \(R/(I+J)\), \(a = b + x+y\), with \(x,y \in I,J\) respectively. Then \(a-x=b+y\) is congruent
 mod \(I\) to a, and mod \(J\) to \(b\). Moreover, it is the unique such class mod \(I\cap J\), since if \(a-x'=b+y'\) were
@@ -324,8 +352,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
- id="x1-20002"></a>Unique Factorization</h3>
-<!--l. 39--><p class="noindent" >The reason it is called a prime ideal, is that there is a related notion of a <span 
+ id="x1-30002"></a>Unique Factorization</h3>
+<!--l. 40--><p class="noindent" >The reason it is called a prime ideal, is that there is a related notion of a <span 
 class="cmbx-12">prime element</span>,
 which is an element that generates a prime ideal. Note we can use the notation \(a|b\) &#x0028;&#x201D;\(a\) divides
 \(b\)&#x201D;&#x0029; to mean \(b \in (a)\). A <span 
@@ -333,23 +361,23 @@ class="cmbx-12">unit </span>is an element that divides \(1\). The collection of 
 multiplication, denoted \(R^\times \) for the ring \(R\). Then a prime element is one where \(a|bc \implies a|c\) or \(a|b\). There is a
 related notion, called an <span 
 class="cmbx-12">irreducible element</span>. A non-unit \(a\) is irreducible if \(bc|a\)
+                                                                                  
+
+                                                                                  
 means either \(b\) or \(c\) is a unit. We say that two elements are <span 
 class="cmbx-12">associates </span>if they
 generate the same ideal, and that \(a\) is a <span 
 class="cmbx-12">proper divisor </span>of \(b\) if \((a) \supsetneq (b)\). Note that many of
 these notions such as prime and irreducible make sense in arbitrary commutative
 monoids.
-</p><!--l. 41--><p class="indent" >  We would like to study the multiplicative structure of a ring, and in particular
+</p><!--l. 42--><p class="indent" >  We would like to study the multiplicative structure of a ring, and in particular
 we would like to be able to tell when nonzero elements can be factorized into
 irreducibles.
 </p>
   <div class="newtheorem">
-<!--l. 43--><p class="noindent" ><span class="head">
+<!--l. 44--><p class="noindent" ><span class="head">
 <a 
- id="x1-2001r1"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-3001r1"></a>
 <span 
 class="cmbx-12">Lemma 2.1.</span>  </span><span 
 class="cmti-12">The set of zero divisors is closed under multiplication by any element</span>
@@ -357,7 +385,7 @@ class="cmti-12">The set of zero divisors is closed under multiplication by any e
 class="cmti-12">of the ring, and the set of non zero divisors is closed under multiplication.</span>
 </p>
   <div class="proof">
-<!--l. 47--><p class="indent" >  <span class="head">
+<!--l. 48--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(a\) is a zero divisor let \(b\neq 0\) such that \(ab = 0\). Then for any \(r\), \((ar)b = 0\), so \(ar\) is a zero divisor. Now
 suppose that \(ab\) is a zero divisor. Then choose \(c \neq 0\) such that \(abc = 0\). If \(bc = 0\), then \(b\) is a zero divisor,
@@ -366,15 +394,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 51--><p class="indent" >  The simplest way to understand the multiplicative structure of a ring \(R\) is to restrict to
+<!--l. 52--><p class="indent" >  The simplest way to understand the multiplicative structure of a ring \(R\) is to restrict to
 nonzero divisors &#x0028;to avoid cases like \(2 \in \ZZ /6\ZZ \), for which \(2*4=2\)&#x0029;. We will call the monoid of nonzero
 divisors &#x0028;in a nonzero ring&#x0029; \(R_z\). Note that by the previous lemma, any factorization of
 elements in \(R_z\) remains entirely in \(R_z\).
 </p>
   <div class="newtheorem">
-<!--l. 53--><p class="noindent" ><span class="head">
+<!--l. 54--><p class="noindent" ><span class="head">
 <a 
- id="x1-2002r2"></a>
+ id="x1-3002r2"></a>
 <span 
 class="cmbx-12">Lemma 2.2.</span>  </span><span 
 class="cmti-12">If</span> \(a \in R_z\) <span 
@@ -383,29 +411,29 @@ class="cmti-12">then</span> \(a = ub\) <span
 class="cmti-12">for some unit. Moreover, if</span> \(a = bc\)<span 
 class="cmti-12">, where</span> \(b,c\) <span 
 class="cmti-12">aren&#x2019;t units, then</span> \(b,c\)
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">are proper divisors of</span> \(a\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 57--><p class="indent" >  <span class="head">
+<!--l. 58--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \((a) = (b)\), then \(a = cb, b = da\), so \((cd-1)a = 0 \implies cd = 1\), so \(c\) is a unit. Now if \(a = bc\) where \(b,c\) are not units, then \(b,c\) are not zero
 divisors as \(a\) isn&#x2019;t. \((a) \supset (b)\), but were they equal, <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 62--><p class="indent" >  One way to get factorization into irreducibles is to require our ring be Noetherian. First,
+<!--l. 63--><p class="indent" >  One way to get factorization into irreducibles is to require our ring be Noetherian. First,
 here are some conditions equivalent to being Noetherian.
 </p>
   <div class="newtheorem">
-<!--l. 64--><p class="noindent" ><span class="head">
+<!--l. 65--><p class="noindent" ><span class="head">
 <a 
- id="x1-2003r3"></a>
+ id="x1-3003r3"></a>
 <span 
 class="cmbx-12">Proposition 2.3.</span>  </span> <span 
 class="cmti-12">The following notions are equivalent for an</span> \(R\)<span 
@@ -423,7 +451,7 @@ class="cmti-12">has a maximal element.</span>
        <li class="itemize"><span 
 class="cmti-12">Every submodule is &#xFB01;nitely generated.</span></li></ul>
   <div class="proof">
-<!--l. 72--><p class="indent" >  <span class="head">
+<!--l. 73--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The &#xFB01;rst two are equivalent for any poset. The third implies the &#xFB01;rst since the
 union of an ascending chain of submodules is &#xFB01;nitely generated, hence is contained in
@@ -431,27 +459,27 @@ one of the elements of the chain. The &#xFB01;rst implies the third since given 
 we can construct a &#xFB01;nite generating set by adding elements not already generated,
 and since this must stabilize, the submodule is &#xFB01;nitely generated. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 76--><p class="noindent" ><span class="head">
+<!--l. 77--><p class="noindent" ><span class="head">
 <a 
- id="x1-2004r4"></a>
+ id="x1-3004r4"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.4.</span>  </span><span 
 class="cmti-12">A </span><span 
 class="cmbxti-10x-x-120">Bezout ring </span><span 
 class="cmti-12">is one where &#xFB01;nitely generated ideals are principle.</span>
 </p>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
-<!--l. 80--><p class="noindent" ><span class="head">
+<!--l. 81--><p class="noindent" ><span class="head">
 <a 
- id="x1-2005r5"></a>
+ id="x1-3005r5"></a>
 <span 
 class="cmbx-12">Proposition 2.5.</span>  </span><span 
 class="cmti-12">If</span> \(R\) <span 
@@ -459,7 +487,7 @@ class="cmti-12">is Noetherian, every non-unit of</span> \(R_z\) <span
 class="cmti-12">can be factored into irreducibles.</span>
 </p>
   <div class="proof">
-<!--l. 83--><p class="indent" >  <span class="head">
+<!--l. 84--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If not, choose a maximal proper \((a)\) such that \(a \in R_z\) doesn&#x2019;t factor into irreducibles.
 Then \(a\) cannot be irreducible so \(a = bc\), where \(b,c \in R_z\) aren&#x2019;t units. But then \((b),(c)\) are strictly larger
@@ -468,12 +496,12 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 87--><p class="indent" >  Sometimes what lets us have unique factorization is a division algorithm:
+<!--l. 88--><p class="indent" >  Sometimes what lets us have unique factorization is a division algorithm:
 </p>
   <div class="newtheorem">
-<!--l. 89--><p class="noindent" ><span class="head">
+<!--l. 90--><p class="noindent" ><span class="head">
 <a 
- id="x1-2006r6"></a>
+ id="x1-3006r6"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.6.</span>  </span><span 
 class="cmti-12">A </span><span 
@@ -490,12 +518,15 @@ class="cmti-12">such that</span> \(a = bq+r\)
 <span 
 class="cmti-12">with</span> \(\rho (r)&lt;\rho (b)\)<span 
 class="cmti-12">.</span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 93--><p class="noindent" ><span class="head">
+<!--l. 94--><p class="noindent" ><span class="head">
 <a 
- id="x1-2007r7"></a>
+ id="x1-3007r7"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.7.</span>  </span><span 
 class="cmti-12">A </span><span 
@@ -504,15 +535,12 @@ class="cmti-12">&#x0028;PIR&#x0029; is one where all ideals are principle</span>
 <span 
 class="cmti-12">&#x0028;i.e. generated by</span> \(1\) <span 
 class="cmti-12">element&#x0029;. In other words, it is a Noetherian Bezout ring.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 97--><p class="noindent" ><span class="head">
+<!--l. 98--><p class="noindent" ><span class="head">
 <a 
- id="x1-2008r8"></a>
+ id="x1-3008r8"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.8.</span>  </span><span 
 class="cmti-12">We say that a commutative monoid</span> \(M\) <span 
@@ -524,14 +552,14 @@ class="cmti-12">has factorization if every element can be factored into</span>
 class="cmti-12">irreducibles.</span>
 </p>
   </div>
-<!--l. 101--><p class="indent" >  When there is unique factorization, greatest common divisors &#x0028;gcd&#x0029; and least
+<!--l. 102--><p class="indent" >  When there is unique factorization, greatest common divisors &#x0028;gcd&#x0029; and least
 common multiples &#x0028;lcm&#x0029; always exist between &#xFB01;nite collections of elements of
 \(M/M^\times \).
 </p>
   <div class="newtheorem">
-<!--l. 103--><p class="noindent" ><span class="head">
+<!--l. 104--><p class="noindent" ><span class="head">
 <a 
- id="x1-2009r9"></a>
+ id="x1-3009r9"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.9.</span>  </span><span 
 class="cmti-12">A </span><span 
@@ -542,38 +570,38 @@ class="cmti-12">has unique factorization.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 107--><p class="noindent" ><span class="head">
+<!--l. 108--><p class="noindent" ><span class="head">
 <a 
- id="x1-2010r10"></a>
+ id="x1-3010r10"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Proposition 2.10.</span>  </span>\(\ZZ \) <span 
 class="cmti-12">is a Euclidean domain.</span>
 </p>
   <div class="proof">
-<!--l. 110--><p class="indent" >  <span class="head">
+<!--l. 111--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(\rho \) is the absolute value function. Then given \(a,b\), choose \(q\) to be the integer such
 that \(a-qb\) is the smallest non negative number since \(\NN \) is well ordered. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
-<!--l. 114--><p class="indent" >  Let \(K[x]\) denote the ring of polynomials with coe&#xFB03;cients in \(K\) in the variable \(x\).
+<!--l. 115--><p class="indent" >  Let \(K[x]\) denote the ring of polynomials with coe&#xFB03;cients in \(K\) in the variable \(x\).
 </p>
   <div class="newtheorem">
-<!--l. 116--><p class="noindent" ><span class="head">
+<!--l. 117--><p class="noindent" ><span class="head">
 <a 
- id="x1-2011r11"></a>
+ id="x1-3011r11"></a>
 <span 
 class="cmbx-12">Proposition 2.11.</span>  </span>\(K[x]\) <span 
 class="cmti-12">where</span> \(K\) <span 
 class="cmti-12">is a &#xFB01;eld is a Euclidean domain.</span>
 </p>
   <div class="proof">
-<!--l. 119--><p class="indent" >  <span class="head">
+<!--l. 120--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(\rho \) is the degree of a polynomial. Given two polynomials with \(ax^k,bx^l\) as the leading
 term, we can choose \(q\) to be \(\frac a b x^{k-l}\) if \(k\geq l\) and \(0\) otherwise. <span class="qed"><span 
@@ -582,33 +610,33 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 123--><p class="noindent" ><span class="head">
+<!--l. 124--><p class="noindent" ><span class="head">
 <a 
- id="x1-2012r12"></a>
+ id="x1-3012r12"></a>
 <span 
 class="cmbx-12">Proposition 2.12.</span>  </span><span 
 class="cmti-12">Every Euclidean ring is a PIR.</span>
+                                                                                  
+
+                                                                                  
 </p>
   <div class="proof">
-<!--l. 126--><p class="indent" >  <span class="head">
+<!--l. 127--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>First note that it is Noetherian, as given a set of generating elements \(A\), we can
 construct a &#xFB01;nite set of generators \(a_i\) as follows: pick \(a'_i\) to be an element not generated
 by \(a_j, j&lt;i\) if it exists, and then apply the property of \(\rho \) to \(a'_i\) and each of the \(a_j\) to create a \(a_i\) such
 that \(\rho (a_i)&lt;\rho (a_j)\) for \(j&lt;i\). Now since \(W\) is well ordered, some \(a_i\) must be \(0\), so the \(a_j,j&lt;i\) generate the ideal.
-                                                                                  
-
-                                                                                  
-</p><!--l. 128--><p class="indent" >  Thus it su&#xFB03;ces to show that \((a,b) = (c)\) for some \(c\). Indeed choosing \(c\) be a non zero element
+</p><!--l. 129--><p class="indent" >  Thus it su&#xFB03;ces to show that \((a,b) = (c)\) for some \(c\). Indeed choosing \(c\) be a non zero element
 of \((a,b)\) with \(\rho (c)\) minimal works. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 132--><p class="noindent" ><span class="head">
+<!--l. 133--><p class="noindent" ><span class="head">
 <a 
- id="x1-2013r13"></a>
+ id="x1-3013r13"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.13.</span>  </span><span 
 class="cmti-12">A commutative monoid </span><span 
@@ -618,9 +646,9 @@ class="cmti-12">.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 136--><p class="noindent" ><span class="head">
+<!--l. 137--><p class="noindent" ><span class="head">
 <a 
- id="x1-2014r14"></a>
+ id="x1-3014r14"></a>
 <span 
 class="cmbx-12">Lemma 2.14.</span>  </span> <span 
 class="cmti-12">If</span> \(M\) <span 
@@ -630,10 +658,13 @@ class="cmti-12">has unique factorization i&#xFB00; it has</span>
 class="cmti-12">cancellation, factorization, and irreducibles are prime.</span>
 </p>
   <div class="proof">
-<!--l. 139--><p class="indent" >  <span class="head">
+<!--l. 140--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(M\) has unique factorization, it has clearly has cancellation and factorization,
 and if \(m\) is irreducible, and \(m|ab\), \(m\) is in the factorization of \(a\) or \(b\), so \(m|a\) or \(m|b\). Conversely, given
+                                                                                  
+
+                                                                                  
 two factorizations, any irreducible on one side must divide one on the other side, so
 they agree up to a unit. By cancellation and induction, the factorization is unique.
 <span class="qed"><span 
@@ -642,18 +673,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 143--><p class="noindent" ><span class="head">
+<!--l. 144--><p class="noindent" ><span class="head">
 <a 
- id="x1-2015r15"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-3015r15"></a>
 <span 
 class="cmbx-12">Proposition 2.15.</span>  </span><span 
 class="cmti-12">Every PIR is a UFR.</span>
 </p>
   <div class="proof">
-<!--l. 146--><p class="indent" >  <span class="head">
+<!--l. 147--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We can show that irreducibles in \(R_z\) are prime. Indeed, if \(a \in R_z\) is irreducible, and \(a|bc, b,c \in R_z\), \(a\nmid b\),
 then \((a,b) = (d)\), so \(dx = a\). Now \(x\) cannot be a unit so \(d\) must be, and \((a,b) = R\). Thus by the previous lemma we
@@ -662,21 +690,24 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 150--><p class="indent" >  In particular, since \(\ZZ \) is a PID the kernel of the unique map to any ring \(R\) is an ideal \((n)\), for
+<!--l. 151--><p class="indent" >  In particular, since \(\ZZ \) is a PID the kernel of the unique map to any ring \(R\) is an ideal \((n)\), for
 some \(n\geq 0\), and \(n\) is called the <span 
 class="cmbx-12">characteristic </span>of \(R\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
- id="x1-30003"></a>Localization and local rings</h3>
-<!--l. 154--><p class="noindent" >If \(R\) is a ring and \(X\) a set, \(R[X]\) is the set of polynomials with coe&#xFB03;cients in \(R\) in the variables \(X\). This
+ id="x1-40003"></a>Localization and local rings</h3>
+<!--l. 155--><p class="noindent" >If \(R\) is a ring and \(X\) a set, \(R[X]\) is the set of polynomials with coe&#xFB03;cients in \(R\) in the variables \(X\). This
 is the left adjoint to the forgetful functor from \(R\)-algebras to \(\Set \). Similarly we can
 construct the ring \(R[[X]]\) of formal power series. We&#x2019;d like to say that \(R[X]\) is a UFR if \(R\)
 is, but to prove this we will need a simple case of a powerful technique called
 Localization.
-</p><!--l. 156--><p class="indent" >  Localized rings are in a sense dual to quotient rings, and both are examples of epis in
+                                                                                  
+
+                                                                                  
+</p><!--l. 157--><p class="indent" >  Localized rings are in a sense dual to quotient rings, and both are examples of epis in
 the category of rings. Localization is essentially the universal process of formally adding
 inverses.
-</p><!--l. 158--><p class="indent" >  Given a multiplicative monoid \(M \subset R\), we can form the <span 
+</p><!--l. 159--><p class="indent" >  Given a multiplicative monoid \(M \subset R\), we can form the <span 
 class="cmbx-12">localization of</span> \(R\) <span 
 class="cmbx-12">away from</span> \(M\),
 denoted \(M^{-1}R\) as follows: The underlying set of \(M^{-1}R\) is \(R\times M\) &#x0028;we can write \((r,m)\) as \(\frac r m\)&#x0029; modded out by
@@ -684,12 +715,9 @@ the equivalence relation \(\frac{r_1}{r_1} ~ \frac{r_2}{m_2}\) i&#xFB00; there i
 an equivalence relation, and we make \(M^{-1}R\) into a ring via \(\frac a b+\frac c d = \frac{ad+bc}{bd}\) and \(\frac a b \frac c d = \frac{ac}{bd}\). It is easy to check
 that these operations are well de&#xFB01;ned. Moreover there is a natural map \(R \to M^{-1}R\) sending
 \(r \mapsto \frac r 1\).
-</p><!--l. 160--><p class="indent" >  The localization is \(0\) i&#xFB00; \(1 =0\) in it i&#xFB00; \(0 \in M\). The map \(R \to M^{-1}R\) is injective i&#xFB00; \(M \subset R_z\) since \(\frac{a}{1} = \frac 0 1\) i&#xFB00; \(af = 0\) for some \(f \in M\), and
+</p><!--l. 161--><p class="indent" >  The localization is \(0\) i&#xFB00; \(1 =0\) in it i&#xFB00; \(0 \in M\). The map \(R \to M^{-1}R\) is injective i&#xFB00; \(M \subset R_z\) since \(\frac{a}{1} = \frac 0 1\) i&#xFB00; \(af = 0\) for some \(f \in M\), and
 \(f \in R_z \implies a = 0\).
-</p><!--l. 162--><p class="indent" >  The localized ring has the universal property any map sending \(M\) to units factors through
-                                                                                  
-
-                                                                                  
+</p><!--l. 163--><p class="indent" >  The localized ring has the universal property any map sending \(M\) to units factors through
 \(M^{-1}R\). There are a few special instances of localization that deserve remark. First note that
 given a set \(S \subset R\), we can make sense of \(S^{-1}R\) as the localization away from the monoid
 generated by \(S\). If \(S\) has one element \(a\), we write the ring \(R_a\), the localization away from \(a\). If
@@ -703,17 +731,17 @@ class="cmbx-12">fractions</span>. Indeed it is a &#xFB01;eld by the universal pr
 &#xFB01;elds are integral domains, we see that integral domains are exactly those rings
 that are subrings of &#xFB01;elds. For example, \(\Frac (\ZZ ) = \QQ \), \(\Frac (K[x]) = K(x)\), the &#xFB01;eld of rational functions &#x0028;\(K\) is a
 &#xFB01;eld&#x0029;.
-</p><!--l. 164--><p class="indent" >  One can also localize modules. If \(N\) is an \(R\)-module, then \(M^{-1}N\) is the universal way of making \(N\)
+</p><!--l. 165--><p class="indent" >  One can also localize modules. If \(N\) is an \(R\)-module, then \(M^{-1}N\) is the universal way of making \(N\)
 into a \(M^{-1}R\) module. Its underlying set is \(N \times M\) &#x0028;once again written as a fraction&#x0029; modded
 out by the equivalence relation \(\frac a b ~ \frac{c}{d}\) i&#xFB00; there is \(f \in M\) such that \(f(da-bc) = 0\). Addition is given by \(\frac a b + \frac c d = \frac{da+bc}{bd}\),
 and the action of \(M^{-1}R\) is given by \(\frac r m\frac a b = \frac{ra}{mb}\). There is a universal homomorphism \(N \to M^{-1}N\) given by
 \(n \mapsto \frac n 1\).
-</p><!--l. 166--><p class="indent" >  There is a correspondence of ideals for localized rings that is dual to quotients.
+</p><!--l. 167--><p class="indent" >  There is a correspondence of ideals for localized rings that is dual to quotients.
 </p>
   <div class="newtheorem">
-<!--l. 168--><p class="noindent" ><span class="head">
+<!--l. 169--><p class="noindent" ><span class="head">
 <a 
- id="x1-3001r1"></a>
+ id="x1-4001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 3.1.</span>  </span><span 
 class="cmti-12">An ideal</span> \(I\) <span 
@@ -727,9 +755,12 @@ class="cmti-12">.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 172--><p class="noindent" ><span class="head">
+<!--l. 173--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
 <a 
- id="x1-3002r2"></a>
+ id="x1-4002r2"></a>
 <span 
 class="cmbx-12">Proposition 3.2.</span>  </span><span 
 class="cmti-12">There is a natural isomorphism of lattices between ideals in</span> \(M^{-1}R\) <span 
@@ -746,34 +777,31 @@ class="cmti-12">not intersecting</span> \(M\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 175--><p class="indent" >  <span class="head">
+<!--l. 176--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>It is straightforward to verify that this isomorphism is as mentioned, and that
-                                                                                  
-
-                                                                                  
 primes correspond as mentioned which is easy to see since the preimage of primes
 are primes and primes not intersecting \(M\) are clearly \(M\)-saturated. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 179--><p class="indent" >  This correspondence is the sense in which localization is dual to quotienting.
-</p><!--l. 181--><p class="indent" >  The name localization comes from algebraic geometry. We&#x2019;d like to think of a
+<!--l. 180--><p class="indent" >  This correspondence is the sense in which localization is dual to quotienting.
+</p><!--l. 182--><p class="indent" >  The name localization comes from algebraic geometry. We&#x2019;d like to think of a
 ring as the ring of functions on some space. For example consider the ring of
 entire functions on \(\PP ^1\), \(\CC [x]\). We can now allow functions that are possibly meromorphic
 at the origin, giving \(\CC [x]_{x}\), so we have localized away from \(x\) &#x0028;which corresponds to
 its zero set, the point \(0\)&#x0029;. Similarly, we can allow functions to be meromorphic
 everywhere except at the origin, in which case we get \(\CC [x]_{(x)}\), and we are localizing at the
 origin.
-</p><!--l. 183--><p class="indent" >  Now if we localize at a prime ideal \(\pp \), we get a <span 
+</p><!--l. 184--><p class="indent" >  Now if we localize at a prime ideal \(\pp \), we get a <span 
 class="cmbx-12">local ring</span>, one with a unique maximal
 ideal &#x0028;in this case \(\pp \)&#x0029;.
 </p>
   <div class="newtheorem">
-<!--l. 185--><p class="noindent" ><span class="head">
+<!--l. 186--><p class="noindent" ><span class="head">
 <a 
- id="x1-3003r3"></a>
+ id="x1-4003r3"></a>
 <span 
 class="cmbx-12">Lemma 3.3.</span>  </span><span 
 class="cmti-12">TFAE:</span>
@@ -782,6 +810,9 @@ class="cmti-12">TFAE:</span>
 class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(R\) <span 
 class="cmti-12">is a local ring with maximal ideal</span> \(\mm \)
+                                                                                  
+
+                                                                                  
           </dd><dt class="enumerate-enumitem">
    <span 
 class="cmti-12">&#x0028;2&#x0029;</span> </dt><dd 
@@ -808,10 +839,7 @@ class="enumerate-enumitem"><span
 class="cmti-12">If a &#xFB01;nite sum in</span> \(R\) <span 
 class="cmti-12">is a unit, one of the terms is a unit</span></dd></dl>
   <div class="proof">
-<!--l. 196--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 197--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>It is clear that \((2)\) and \((1)\) are equivalent as well as \((3)\) and \((5)\) &#x0028;for \((1) \implies (2)\) use existence of
 maximal ideals&#x0029;. Now \((2)\) implies \((4)\) as otherwise \(1 \in \mm \), and \((4)\) implies \((5)\) by taking a &#xFB01;nite sum that
@@ -821,30 +849,33 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 200--><p class="indent" >  Another example of a local ring is the formal power series \(K[[x]]\), where \(K\) is a &#xFB01;eld, where the
+<!--l. 201--><p class="indent" >  Another example of a local ring is the formal power series \(K[[x]]\), where \(K\) is a &#xFB01;eld, where the
 maximal ideal is \((x)\).
-</p><!--l. 202--><p class="indent" >  Add in things about &#x201D;local properties&#x201D; for example a module is 0 i&#xFB00; localization at all
+</p><!--l. 203--><p class="indent" >  Add in things about &#x201D;local properties&#x201D; for example a module is 0 i&#xFB00; localization at all
 prime/maximals is 0. An integral domain is the intersection of its localizations.
 A
 </p>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
- id="x1-40004"></a>Polynomial Algebras</h3>
-<!--l. 206--><p class="noindent" >Now let&#x2019;s study polynomial algebras \(R[X]\). We can ask questions like when is it Noetherian or a
+ id="x1-50004"></a>Polynomial Algebras</h3>
+<!--l. 207--><p class="noindent" >Now let&#x2019;s study polynomial algebras \(R[X]\). We can ask questions like when is it Noetherian or a
 UFR?
 </p>
   <div class="newtheorem">
-<!--l. 208--><p class="noindent" ><span class="head">
+<!--l. 209--><p class="noindent" ><span class="head">
 <a 
- id="x1-4001r1"></a>
+ id="x1-5001r1"></a>
 <span 
 class="cmbx-12">Lemma 4.1.</span>  </span><span 
 class="cmti-12">If</span> \(R[X]\) <span 
 class="cmti-12">is nontrivial Noetherian, then</span> \(R\) <span 
 class="cmti-12">is too, and</span> \(X\) <span 
 class="cmti-12">is &#xFB01;nite.</span>
+                                                                                  
+
+                                                                                  
 </p>
   <div class="proof">
-<!--l. 212--><p class="indent" >  <span class="head">
+<!--l. 213--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The ideals of \(R\) are a sublattice of those of \(R[X]\), so \(R\) is Noetherian. \(R\) is nontrivial
 since \(R[X]\) is, so if \(X\) is in&#xFB01;nite, then let \(x_i\) be an in&#xFB01;nite sequence in \(X\), so that \(\aa _i = (x_1,\dots ,x_i)\) is an in&#xFB01;nite
@@ -852,16 +883,13 @@ ascending chain of ideals. <span class="qed"><span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 216--><p class="indent" >  The converse is called the Hilbert Basis Theorem.
+<!--l. 217--><p class="indent" >  The converse is called the Hilbert Basis Theorem.
 </p>
   <div class="newtheorem">
-<!--l. 218--><p class="noindent" ><span class="head">
+<!--l. 219--><p class="noindent" ><span class="head">
 <a 
- id="x1-4002r2"></a>
+ id="x1-5002r2"></a>
 <span 
 class="cmbx-12">Proposition 4.2 </span>&#x0028;Hilbert&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -871,7 +899,7 @@ class="cmti-12">a &#xFB01;nite set,</span> \(R[X]\) <span
 class="cmti-12">is Noetherian.</span>
 </p>
   <div class="proof">
-<!--l. 221--><p class="indent" >  <span class="head">
+<!--l. 222--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By induction it su&#xFB03;ces to show \(R[x]\) is Noetherian. Now given an ideal \(I\) in \(R[x]\),
 consider the ideal of leading terms \(I_n\) of elements of \(I\) of \(n^{th}\) degree polynomials. Then \(I_n\)
@@ -881,19 +909,22 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 225--><p class="indent" >  As for the second question, it is note true generally that \(R[x]\) is a UFR if \(R\) is. For example, in
+<!--l. 226--><p class="indent" >  As for the second question, it is note true generally that \(R[x]\) is a UFR if \(R\) is. For example, in
 \(\ZZ /6\ZZ [x]\), \((x-1)x = (x+2)(x+3)\), but \(\ZZ /6\ZZ \) is a UFR. If we restrict to domains however, it is true. The key to proving this is
 that \(\Frac (R)[x]\) is a UFD, and this
-</p><!--l. 227--><p class="indent" >  To prove this, we can use Gauss&#x2019;s Lemma. Note that given a nonzero polynomial in \(R[x]\),
+                                                                                  
+
+                                                                                  
+</p><!--l. 228--><p class="indent" >  To prove this, we can use Gauss&#x2019;s Lemma. Note that given a nonzero polynomial in \(R[x]\),
 we can &#xFB01;rst remove all common factors in the coe&#xFB03;cients so that the gcd of
 the coe&#xFB03;cients is \(1\), which is called a <span 
 class="cmbx-12">primitive </span>polynomial. Then we have the
 following:
 </p>
   <div class="newtheorem">
-<!--l. 229--><p class="noindent" ><span class="head">
+<!--l. 230--><p class="noindent" ><span class="head">
 <a 
- id="x1-4003r3"></a>
+ id="x1-5003r3"></a>
 <span 
 class="cmbx-12">Lemma 4.3 </span>&#x0028;Gauss&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -908,12 +939,9 @@ class="cmti-12">in</span> \(R[x]\)<span
 class="cmti-12">, where either factor can be assumed to be</span>
 <span 
 class="cmti-12">primitive.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
-<!--l. 232--><p class="indent" >  <span class="head">
+<!--l. 233--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>For the &#xFB01;rst statement, reduce mod every prime element \(p\), and note that the
 product of nonzero polynomials is nonzero. For the second, assume \(f\) is primitive by
@@ -923,19 +951,22 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 236--><p class="indent" >  Then we can prove:
+<!--l. 237--><p class="indent" >  Then we can prove:
 </p>
   <div class="newtheorem">
-<!--l. 237--><p class="noindent" ><span class="head">
+<!--l. 238--><p class="noindent" ><span class="head">
 <a 
- id="x1-4004r4"></a>
+ id="x1-5004r4"></a>
 <span 
 class="cmbx-12">Proposition 4.4.</span>  </span>\(R[X]\) <span 
 class="cmti-12">is a UFD i&#xFB00;</span> \(R\) <span 
 class="cmti-12">is.</span>
 </p>
   <div class="proof">
-<!--l. 241--><p class="indent" >  <span class="head">
+<!--l. 242--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Certainly \(R \subset R[X]\) shows that if \(R[X]\) is a UFD, \(R\) is, since factorization in \(R\) stay in \(R\). For
 the converse, since every element has only &#xFB01;nitely many indeterminates, it su&#xFB03;ces to
@@ -944,29 +975,26 @@ First note that \(p \in R\) remains prime in \(R[x]\). Moreover, we can factor n
 into irreducibles by &#xFB01;rst taking out common factors, and then using Gauss&#x2019;s Lemma.
 Now primitive irreducibles \(p\) are prime since if \(p|ab\), WLOG, \(p|a\) in \(\Frac (R)[x]\) as it is a UFD. Then \(px = a\),
 but by Gauss&#x2019;s lemma \(x \in R[x]\). By Lemma <a 
-href="#x1-2014r14">2.14<!--tex4ht:ref: monoidfactorization --></a> we&#x2019;re done. <span class="qed"><span 
+href="#x1-3014r14">2.14<!--tex4ht:ref: monoidfactorization --></a> we&#x2019;re done. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
   <h3 class="sectionHead"><span class="titlemark">5. </span> <a 
- id="x1-50005"></a>Noetherian rings</h3>
-<!--l. 247--><p class="noindent" >Noetherian rings are nice rings as we have already seen, and are quite common. Moreover,
+ id="x1-60005"></a>Noetherian rings</h3>
+<!--l. 248--><p class="noindent" >Noetherian rings are nice rings as we have already seen, and are quite common. Moreover,
 they are closed under quite a few operations:
 </p>
   <div class="newtheorem">
-<!--l. 249--><p class="noindent" ><span class="head">
+<!--l. 250--><p class="noindent" ><span class="head">
 <a 
- id="x1-5001r1"></a>
+ id="x1-6001r1"></a>
 <span 
 class="cmbx-12">Lemma 5.1.</span>  </span><span 
 class="cmti-12">Noetherian rings are closed under localization and quotients.</span>
 </p>
   <div class="proof">
-<!--l. 252--><p class="indent" >  <span class="head">
+<!--l. 253--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from the correspondence of ideals. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -974,16 +1002,19 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 256--><p class="noindent" ><span class="head">
+<!--l. 257--><p class="noindent" ><span class="head">
 <a 
- id="x1-5002r2"></a>
+ id="x1-6002r2"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Proposition 5.2.</span>  </span>\(R\) <span 
 class="cmti-12">is Noetherian i&#xFB00;</span> \(R[[x]]\) <span 
 class="cmti-12">is.</span>
 </p>
   <div class="proof">
-<!--l. 260--><p class="indent" >  <span class="head">
+<!--l. 261--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(R[[x]]\) is, certainly \(R\) is, as the ideals are a sublattice. For the converse, use the same
 proof as for \(R[x]\) except with the ideals \(J_n\) being the ideal of \(c\) occurring as &#xFB01;rst coe&#xFB03;cients
@@ -991,17 +1022,14 @@ of power series in the \(x^n\) term <span class="qed"><span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 264--><p class="indent" >  Before proving the next proposition, here is another characterization of prime ideals. We
+<!--l. 265--><p class="indent" >  Before proving the next proposition, here is another characterization of prime ideals. We
 say that \(a|b\) for ideals if \(a \supset b\).
 </p>
   <div class="newtheorem">
-<!--l. 266--><p class="noindent" ><span class="head">
+<!--l. 267--><p class="noindent" ><span class="head">
 <a 
- id="x1-5003r3"></a>
+ id="x1-6003r3"></a>
 <span 
 class="cmbx-12">Lemma 5.3.</span>  </span> \(\pp \) <span 
 class="cmti-12">is prime i&#xFB00;</span> \(\pp |ab \implies \pp |a\) <span 
@@ -1012,7 +1040,7 @@ class="cmti-12">. In fact,</span> \(\pp |ab \iff \pp |a\cap b\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 269--><p class="indent" >  <span class="head">
+<!--l. 270--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(\pp \) is prime, and \(\pp |ab\) or \(\pp |a\cap b\), but \(\pp \nmid a,\pp \nmid b\), choose \(x \in a-\pp ,y \in b-\pp \). Since \(xy \in \pp \), this is a contradiction. Conversely,
 if either of the latter two properties holds, then applying it to principle ideals shows
@@ -1021,12 +1049,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 273--><p class="indent" >  The following lemma gives an important use of the ideal quotient.
+<!--l. 274--><p class="indent" >  The following lemma gives an important use of the ideal quotient.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 274--><p class="noindent" ><span class="head">
+<!--l. 275--><p class="noindent" ><span class="head">
 <a 
- id="x1-5004r4"></a>
+ id="x1-6004r4"></a>
 <span 
 class="cmbx-12">Lemma 5.4.</span>  </span><span 
 class="cmti-12">If</span> \((I:a)= (r_\alpha )\) <span 
@@ -1036,26 +1067,23 @@ class="cmti-12">, then</span> \((r_\alpha a,s_\beta ) = I\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 277--><p class="indent" >  <span class="head">
+<!--l. 278--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By de&#xFB01;nition it is contained in \(I\). Now write \(c \in I\) as \(\sum c_i(s_i+j_ia)\). Then since \(c-\sum c_is_i \in J\), \(\sum c_i j_i \in (I:a)\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
-<!--l. 281--><p class="noindent" ><span class="head">
+<!--l. 282--><p class="noindent" ><span class="head">
 <a 
- id="x1-5005r5"></a>
+ id="x1-6005r5"></a>
 <span 
 class="cmbx-12">Corollary 5.5.</span>  </span>\(R\) <span 
 class="cmti-12">is Noetherian i&#xFB00; every prime ideal is &#xFB01;nitely generated.</span>
 </p>
   <div class="proof">
-<!--l. 285--><p class="indent" >  <span class="head">
+<!--l. 286--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose  all  prime  ideals  are  &#xFB01;nitely  generated.  Then  suppose  \(R\)  were  not
 Noetherian, and let \(I\) be a maximal counterexample. \(I\) is not prime, so \(ab \in I, a,b \notin I\) for some \(a,b\). Then
@@ -1065,11 +1093,14 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 289--><p class="indent" >  Another nice property of Noetherian rings is they have only &#xFB01;nitely many <span 
+<!--l. 290--><p class="indent" >  Another nice property of Noetherian rings is they have only &#xFB01;nitely many <span 
 class="cmbx-12">minimal</span>
 <span 
 class="cmbx-12">primes</span>, or prime ideals that are minimal in the poset of primes. Minimal primes exist by
 Zorn&#x2019;s Lemma. To make the proof of this more motivated, we can introduce some notions
+                                                                                  
+
+                                                                                  
 from algebraic geometry. The <span 
 class="cmbx-12">Jacobson radical </span>is the intersection of all the
 maximal ideals, and the <span 
@@ -1081,18 +1112,15 @@ class="cmbx-12">radical </span>if \(x^k \in I \implies x \in I\). Note that redu
 ideals.
 </p>
   <div class="newtheorem">
-<!--l. 291--><p class="noindent" ><span class="head">
+<!--l. 292--><p class="noindent" ><span class="head">
 <a 
- id="x1-5006r6"></a>
+ id="x1-6006r6"></a>
 <span 
 class="cmbx-12">Lemma 5.6.</span>  </span><span 
 class="cmti-12">The nilradical consists of exactly the nilpotent elements.</span>
 </p>
   <div class="proof">
-<!--l. 294--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 295--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(a\) is nilpotent, \(a^n = 0\) for some \(n\), and by induction, we see that \(a\) is in every prime.
 Conversely if \(a\) is not nilpotent, we can localize away from \(a\) to get a nontrivial ring.
@@ -1103,9 +1131,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 298--><p class="noindent" ><span class="head">
+<!--l. 299--><p class="noindent" ><span class="head">
 <a 
- id="x1-5007r7"></a>
+ id="x1-6007r7"></a>
 <span 
 class="cmbx-12">Corollary 5.7.</span>  </span><span 
 class="cmti-12">Radical ideals are exactly the ideals that are the intersection of the prime</span>
@@ -1113,18 +1141,21 @@ class="cmti-12">Radical ideals are exactly the ideals that are the intersection 
 class="cmti-12">ideals.</span>
 </p>
   <div class="proof">
-<!--l. 301--><p class="indent" >  <span class="head">
+<!--l. 302--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Look at the quotient and use our alternate characterization of the nilradical.
+                                                                                  
+
+                                                                                  
 <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 305--><p class="noindent" ><span class="head">
+<!--l. 306--><p class="noindent" ><span class="head">
 <a 
- id="x1-5008r8"></a>
+ id="x1-6008r8"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 5.8.</span>  </span><span 
 class="cmti-12">The </span><span 
@@ -1137,19 +1168,16 @@ class="cmti-12">with the topology where the closed sets are of the form</span> \
 class="cmti-12">.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 309--><p class="indent" >  There is more structure that we can put but we will not need it now. Note that the
+<!--l. 310--><p class="indent" >  There is more structure that we can put but we will not need it now. Note that the
 maximal ideals are the closed points of \(\Spec (R)\). There is a correspondence between ideals and
 subsets of \(\Spec \). Given an ideal \(I\), we can consider \(Z(I)\), the set of primes containing \(I\), and
 conversely given a subset \(X \subset \Spec \), we can consider \(I(X)\), the intersection of all the primes it
 contains.
 </p>
   <div class="newtheorem">
-<!--l. 311--><p class="noindent" ><span class="head">
+<!--l. 312--><p class="noindent" ><span class="head">
 <a 
- id="x1-5009r9"></a>
+ id="x1-6009r9"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 5.9.</span>  </span><span 
 class="cmti-12">A closed subset</span> \(X\) <span 
@@ -1163,19 +1191,22 @@ class="cmti-12">for some</span> \(i\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 315--><p class="indent" >  The following lemma is a trivial version of Hilbert&#x2019;s Nullstellensatz, that is much easier
+<!--l. 316--><p class="indent" >  The following lemma is a trivial version of Hilbert&#x2019;s Nullstellensatz, that is much easier
 to prove since it is for arbitrary rings.
 </p>
   <div class="newtheorem">
-<!--l. 317--><p class="noindent" ><span class="head">
+<!--l. 318--><p class="noindent" ><span class="head">
 <a 
- id="x1-5010r10"></a>
+ id="x1-6010r10"></a>
 <span 
 class="cmbx-12">Lemma 5.10.</span>  </span>\(I\) <span 
 class="cmti-12">and</span> \(Z\) <span 
 class="cmti-12">are an adjunction between subsets of</span> \(\Spec (R)\) <span 
 class="cmti-12">and ideals of</span> \(R\) <span 
 class="cmti-12">that induces an</span>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">equivalence between radical ideals and closed subsets of</span> \(\Spec (R)\)<span 
 class="cmti-12">. In particular the unit is the</span>
@@ -1185,22 +1216,19 @@ class="cmti-12">closure and the counit is the radical of an ideal. Moreover prim
 class="cmti-12">irreducible closed subsets.</span>
 </p>
   <div class="proof">
-<!--l. 320--><p class="indent" >  <span class="head">
+<!--l. 321--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Everything except the last statement follows from the previous corollary. The
 last statement follows from Lemma <a 
-href="#x1-5003r3">5.3<!--tex4ht:ref: charprime --></a>. <span class="qed"><span 
+href="#x1-6003r3">5.3<!--tex4ht:ref: charprime --></a>. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
-<!--l. 324--><p class="noindent" ><span class="head">
+<!--l. 325--><p class="noindent" ><span class="head">
 <a 
- id="x1-5011r11"></a>
+ id="x1-6011r11"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 5.11.</span>  </span><span 
 class="cmti-12">A Noetherian space is one satisfying descending chain condition</span>
@@ -1208,12 +1236,12 @@ class="cmti-12">A Noetherian space is one satisfying descending chain condition<
 class="cmti-12">on closed sets.</span>
 </p>
   </div>
-<!--l. 328--><p class="indent" >  A Noetherian ring has a Noetherian spectrum.
+<!--l. 329--><p class="indent" >  A Noetherian ring has a Noetherian spectrum.
 </p>
   <div class="newtheorem">
-<!--l. 330--><p class="noindent" ><span class="head">
+<!--l. 331--><p class="noindent" ><span class="head">
 <a 
- id="x1-5012r12"></a>
+ id="x1-6012r12"></a>
 <span 
 class="cmbx-12">Proposition 5.12.</span>  </span><span 
 class="cmti-12">A ring with Noetherian spectrum has &#xFB01;nitely many minimal</span>
@@ -1221,7 +1249,10 @@ class="cmti-12">A ring with Noetherian spectrum has &#xFB01;nitely many minimal<
 class="cmti-12">primes.</span>
 </p>
   <div class="proof">
-<!--l. 333--><p class="indent" >  <span class="head">
+<!--l. 334--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>The nilradical is the intersection of all minimal primes, so it corresponds to
 a closed set that is the union of all minimal primes. Then we can decompose the
@@ -1232,29 +1263,26 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 337--><p class="indent" >  Add things about primary decomposition of an ideal
+<!--l. 338--><p class="indent" >  Add things about primary decomposition of an ideal
 </p>
   <h3 class="sectionHead"><span class="titlemark">6. </span> <a 
- id="x1-60006"></a>Tensor products</h3>
-                                                                                  
-
-                                                                                  
-<!--l. 340--><p class="noindent" >Given a homomorphism \(f: R \to S\), via composition \(R \to S \to End(O)\), every \(S\)-module structure on \(O\) induces an
+ id="x1-70006"></a>Tensor products</h3>
+<!--l. 341--><p class="noindent" >Given a homomorphism \(f: R \to S\), via composition \(R \to S \to End(O)\), every \(S\)-module structure on \(O\) induces an
 \(R\)-module structure. In particular, \(f\) gives a functor \(f^* :S\)-Mod\(\to R\)-Mod, and the map \(f\mapsto f^*\) is a functor
 from \(\Ring \to \Cat \). This is analogous to the functor \(\Grp \to \Cat \) for group actions.
-</p><!--l. 342--><p class="indent" >  Given an \(S\)-module \(N\), the <span 
+</p><!--l. 343--><p class="indent" >  Given an \(S\)-module \(N\), the <span 
 class="cmbx-12">tensor product </span>with respect to \(N\) is the left adjoint of the
 functor \(f^*\Hom _S(N,-)\). In fact, we have an isomorphism \(\Hom _S(M\otimes _fN,P) \cong \Hom _R(M,f^*\Hom _S(N,P))\) that is natural in \(M,N,P\). If the map \(f\) is clear, it is also
 sometimes denoted \(M \otimes _SN\).
-</p><!--l. 344--><p class="indent" >  The tensor product also behaves nicely with respect to \(f\) in that is associative. More
+</p><!--l. 345--><p class="indent" >  The tensor product also behaves nicely with respect to \(f\) in that is associative. More
 precisely, if we have \(R \xrightarrow{f} S \xrightarrow{g} T\), then we have the isomorphism \((M \otimes _f N)\otimes _gP \cong M \otimes _{g\circ f}(N\otimes _g P)\), which is coherent and natural in \(M,N,P\).
 Moreover, the tensor product preserves biproducts, meaning that there are natural
 isomorphisms \(M \otimes (N\oplus N') \cong (M \otimes N) \oplus (M \otimes N')\) and \((M\oplus M') \otimes N \cong (M \otimes N) \oplus (M' \otimes N)\).
-</p><!--l. 346--><p class="indent" >  Let&#x2019;s construct the tensor product \(M \otimes _f N\) now. It will be a quotient of the module freely
+</p><!--l. 347--><p class="indent" >  Let&#x2019;s construct the tensor product \(M \otimes _f N\) now. It will be a quotient of the module freely
 generated by elements denoted \(m\otimes n\), with \(m\in M,n \in N\). The relations will be \(rm\otimes n = m\otimes f(r)n\) for \(r \in R\), \(m\otimes n+m\otimes n' = m\otimes (n+n')\), \(m\otimes n+m'\otimes n = (m+m')\otimes n\). The action
 of \(S\) will be given by \(s(m\otimes n) = m\otimes sn\). Now given a map \(g:M\otimes _f N\to P\), the corresponding map \(g':M \to f^*Hom_S(N,P)\) is given by
 \(g'(m)(n) = g(m\otimes n)\).
-</p><!--l. 348--><p class="indent" >  It is worth mentioning a few special cases. We call \(M \otimes _f S\) the <span 
+</p><!--l. 349--><p class="indent" >  It is worth mentioning a few special cases. We call \(M \otimes _f S\) the <span 
 class="cmbx-12">extension of scalars </span>of \(M\) from \(R\)
 to \(S\) &#x0028;via \(f\)&#x0029;. For example, if \(A\) is a monoid and \(I\) an ideal in \(R\), then there are natural
 isomorphisms \(M \otimes _{A^{-1}R} A^{-1}R \cong A^{-1}M\) and \(M \otimes _{R/I}R/I \cong M/IM\). Note also that extending a free module gives a free module.
@@ -1262,32 +1290,32 @@ Finally another special case is when \(f\) is the identity. Then the tensor prod
 often written here \(\otimes _R\) or \(\otimes \), along with \(R\) as the identity, gives a symmetric monoidal
 structure to \(R\)-Mod &#x0028;as mentioned before, \(R\)-algebras are monoids under this monoidal
 structure&#x0029;.
-</p><!--l. 351--><p class="indent" >  We would like to generalize the tensor product construction for two \(R\)-modules to a
+</p><!--l. 352--><p class="indent" >  We would like to generalize the tensor product construction for two \(R\)-modules to a
 collection of modules over an arbitrary index set \(I\). To do this, we must realize that this
 special case is genuinely di&#xFB00;erent from the general tensor product since it is symmetric. In
+                                                                                  
+
+                                                                                  
 particular, there is another way to phrase the universal property. Given \(R\)-modules, \(M,N\), we can
 say that a function \(M\times N \to P\) is <span 
 class="cmbx-12">bilinear </span>if it is linear when only one of \(M\) or \(N\) varies. Then if
 Bilin\((M,N)\) is the functor taking \(P\) to the set of bilinear maps \(M \times N \to P\), Bilin\((M,N)\) is represented by
 \(M\otimes N\).
-</p><!--l. 353--><p class="indent" >  Rephrasing it this way makes it easy to generalize to arbitrary index sets. If \(I\) is an index
+</p><!--l. 354--><p class="indent" >  Rephrasing it this way makes it easy to generalize to arbitrary index sets. If \(I\) is an index
 set, let \(M_I\) be a set of modules indexed by \(I\), and say that a function \(\prod _I M_I \to P\) is <span 
 class="cmbx-12">I-multilinear </span>if it is
 linear when only one index varies. If Multi\(_I(M_I)\) is the corresponding functor in this situation,
 then \(\bigotimes _IM_I\) is the representing object.
-</p><!--l. 355--><p class="indent" >  The construction of \(\bigotimes _IM_I\) is more or less the same as that of \(M_I\). Namely, consider the free
+</p><!--l. 356--><p class="indent" >  The construction of \(\bigotimes _IM_I\) is more or less the same as that of \(M_I\). Namely, consider the free
 module generated by elements of the form \(\bigotimes m_I\), and mod out by the same relations. Now given
 a multilinear map \(g\). send \(\bigotimes m_I\) to wherever \(g\) sends \((m_I)\).
-</p><!--l. 357--><p class="indent" >  There are other nice properties of in&#xFB01;nite tensor products. For example, if \(A_I\) are sets
+</p><!--l. 358--><p class="indent" >  There are other nice properties of in&#xFB01;nite tensor products. For example, if \(A_I\) are sets
 indexed by \(I\), and \(M_{A_I}\) are indexed modules, then there is a natural isomorphism \(\bigotimes _I(\bigotimes _{A_I}M_{A_I}) \cong \bigotimes _{\coprod _I A_I} M_{A_I}\) &#x0028;this is a
-                                                                                  
-
-                                                                                  
 general associativity&#x0029;. The reason natural makes sense is because tensor product is also
 functorial, since given \(M_I,N_I\), and maps \(g_i:M_i\to N_i\), then we get a map \(\bigotimes _IM_I \to \bigotimes _IN_I\), that is constructed by considering
 the multilinear map \((m_i) \mapsto \bigotimes g_i(m_i)\). Now we can try to construct the coproduct of \(R\)-algebras
 \(R_i, i \in I\).
-</p><!--l. 359--><p class="indent" >  The underlying \(R\)-module of \(\coprod _I R_I\) will be the submodule of \(\bigotimes _I R_I\) generated by simple
+</p><!--l. 360--><p class="indent" >  The underlying \(R\)-module of \(\coprod _I R_I\) will be the submodule of \(\bigotimes _I R_I\) generated by simple
 tensors where all but &#xFB01;nitely many of the entries are \(1\). The identity will be \(\bigotimes _I 1_I\), and
 multiplication will be the tensor product of multiplication on each \(R_I\). Concretely, that
 means that \((\bigotimes r_I)(\bigotimes s_I) = (\bigotimes r_Is_I)\). Associativity follows from the general associativity of the tensor
@@ -1298,15 +1326,18 @@ Existence follows from seeing that the only possible homomorphism is indeed a
 homomorphism.
 </p>
   <h3 class="sectionHead"><span class="titlemark">7. </span> <a 
- id="x1-70007"></a>Dimension and Integral extensions</h3>
-<!--l. 362--><p class="noindent" >Whenever \(R\subset S\) are rings, we say \(S\) is an <span 
+ id="x1-80007"></a>Dimension and Integral extensions</h3>
+<!--l. 363--><p class="noindent" >Whenever \(R\subset S\) are rings, we say \(S\) is an <span 
 class="cmbx-12">extension </span>of \(R\) &#x0028;sometimes written \(S/R\)&#x0029;. We would like to
 understand how the two rings of an extension relate to each other.
 </p>
   <div class="newtheorem">
-<!--l. 364--><p class="noindent" ><span class="head">
+<!--l. 365--><p class="noindent" ><span class="head">
 <a 
- id="x1-7001r1"></a>
+ id="x1-8001r1"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">De&#xFB01;nition 7.1.</span>  </span><span 
 class="cmti-12">The </span><span 
@@ -1322,16 +1353,13 @@ class="cmti-12">of a ring is the supremum of the</span>
 class="cmti-12">heights of all the primes.</span>
 </p>
   </div>
-<!--l. 368--><p class="indent" >  Note that the height of a prime is the dimension of the localization at the
+<!--l. 369--><p class="indent" >  Note that the height of a prime is the dimension of the localization at the
 prime.
 </p>
   <div class="newtheorem">
-<!--l. 370--><p class="noindent" ><span class="head">
+<!--l. 371--><p class="noindent" ><span class="head">
 <a 
- id="x1-7002r2"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-8002r2"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 7.2.</span>  </span><span 
 class="cmti-12">Let</span> \(S\) <span 
@@ -1354,9 +1382,9 @@ class="cmti-12">if every element of it is.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 374--><p class="noindent" ><span class="head">
+<!--l. 375--><p class="noindent" ><span class="head">
 <a 
- id="x1-7003r3"></a>
+ id="x1-8003r3"></a>
 <span 
 class="cmbx-12">Lemma 7.3.</span>  </span> <span 
 class="cmti-12">TFAE:</span>
@@ -1374,7 +1402,7 @@ class="cmti-12">is contained in some ring</span> \(T \supset R\) <span
 class="cmti-12">&#xFB01;nitely generated as an</span> \(R\)<span 
 class="cmti-12">-module.</span></dd></dl>
   <div class="proof">
-<!--l. 382--><p class="indent" >  <span class="head">
+<!--l. 383--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>For \(1 \implies 2\) note that \(R[s]\) is generated as an \(R\) module by &#xFB01;nitely many powers of \(s\). For \(2 \implies 1\)
 multiplication by \(s\) is an endomorphism, by the determinant trick, multiplication by
@@ -1382,11 +1410,14 @@ some polynomial of \(s\) is identically \(0\), but then \(s\) is a root of that 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
   <div class="newtheorem">
-<!--l. 386--><p class="noindent" ><span class="head">
+<!--l. 387--><p class="noindent" ><span class="head">
 <a 
- id="x1-7006r4"></a>
+ id="x1-8006r4"></a>
 <span 
 class="cmbx-12">Corollary 7.4.</span>  </span><span 
 class="cmti-12">The elements of</span> \(S\) <span 
@@ -1397,10 +1428,7 @@ class="cmti-12">is a &#xFB01;eld, they form a</span>
 class="cmti-12">&#xFB01;eld. Finally, integrality is transitive.</span>
 </p>
   <div class="proof">
-<!--l. 388--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 389--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>For the &#xFB01;rst statement, note that \(R[s,t]\) is &#xFB01;nitely generated as an \(R\)-module if \(s,t\) are
 integral, so that \(s+t,st\) are integral. If \(R\) is a &#xFB01;eld and \(s\neq 0\) satis&#xFB01;es the polynomial \(a_nx^n+\dots +a_1x + a_0\), \(s^{-1}\) satis&#xFB01;es \(a_0x^n+\dots + a_{n-1}x+a_n = 0\).
@@ -1410,18 +1438,18 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 392--><p class="indent" >  Thus we can make sense of the <span 
+<!--l. 393--><p class="indent" >  Thus we can make sense of the <span 
 class="cmbx-12">integral closure </span>of \(R\) in \(S\) &#x0028;denoted \(I_S(R)\)&#x0029;, namely the subring
 of integral elements. We say that \(R\) is <span 
 class="cmbx-12">integrally closed </span>in \(S\) if it is its integral closure. If \(S\) is
 unspeci&#xFB01;ed, and \(R\) a domain, we assume that \(S = \Frac (R)\).
-</p><!--l. 394--><p class="indent" >  There is an easy way to tell if an element is integral over an integrally closed
+</p><!--l. 395--><p class="indent" >  There is an easy way to tell if an element is integral over an integrally closed
 domain.
 </p>
   <div class="newtheorem">
-<!--l. 396--><p class="noindent" ><span class="head">
+<!--l. 397--><p class="noindent" ><span class="head">
 <a 
- id="x1-7007r5"></a>
+ id="x1-8007r5"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 7.5.</span>  </span><span 
 class="cmti-12">The </span><span 
@@ -1435,9 +1463,12 @@ class="cmti-12">is a root.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 400--><p class="noindent" ><span class="head">
+<!--l. 401--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
 <a 
- id="x1-7008r6"></a>
+ id="x1-8008r6"></a>
 <span 
 class="cmbx-12">Lemma 7.6.</span>  </span>\(s\) <span 
 class="cmti-12">is integral over a domain</span> \(R\) <span 
@@ -1449,13 +1480,10 @@ class="cmti-12">has coe&#xFB03;cients in</span> \(I(R)\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 403--><p class="indent" >  <span class="head">
+<!--l. 404--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(s\) is integral, it is algebraic. Now consider the minimal polynomial \(g\) of \(s\) over \(R\).
 If it is degree \(n\), then \(\Frac (R)[s]\) is an \(n\) dimensional \(\Frac [R]\) vector space, with basis \(1,s,\dots ,s^{n-1}\). Multiplication by
-                                                                                  
-
-                                                                                  
 \(s\) is an endomorphism whose matrix in this basis consists of elements integral. Then
 the characteristic polynomial of this is the minimal polynomial, and has integral
 coe&#xFB03;cients. The converse is obvious. <span class="qed"><span 
@@ -1464,15 +1492,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 407--><p class="noindent" ><span class="head">
+<!--l. 408--><p class="noindent" ><span class="head">
 <a 
- id="x1-7009r7"></a>
+ id="x1-8009r7"></a>
 <span 
 class="cmbx-12">Lemma 7.7.</span>  </span><span 
 class="cmti-12">UFDs are integrally closed.</span>
 </p>
   <div class="proof">
-<!--l. 410--><p class="indent" >  <span class="head">
+<!--l. 411--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose \(x^n+\dots +a_0 \in R[x]\) has a root in \(\Frac (R)\), where \(R\) is a UFD. WLOG assume \(a_0 \neq 0\), and suppose the
 root is \(\frac{a}{b}\) with \(\gcd (a,b) = 1\). Then \(-a_0 = (\frac{a}{b})^n+\dots +a_1\frac a b\) has a \(b\) in the denominator, so \(b = 1\). <span class="qed"><span 
@@ -1480,12 +1508,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 414--><p class="indent" >  Integral extensions behave nicely with respect to prime ideals.
+<!--l. 415--><p class="indent" >  Integral extensions behave nicely with respect to prime ideals.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 416--><p class="noindent" ><span class="head">
+<!--l. 417--><p class="noindent" ><span class="head">
 <a 
- id="x1-7010r8"></a>
+ id="x1-8010r8"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 7.8.</span>  </span><span 
 class="cmti-12">If</span> \(R\subset S\) <span 
@@ -1497,15 +1528,12 @@ class="cmti-12">if</span> \(\qq \cap R = \pp \)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 420--><p class="indent" >  We can also write \(S_\pp \) to denote \((R-\pp )^{-1}S\).
+<!--l. 421--><p class="indent" >  We can also write \(S_\pp \) to denote \((R-\pp )^{-1}S\).
 </p>
   <div class="newtheorem">
-<!--l. 422--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 423--><p class="noindent" ><span class="head">
 <a 
- id="x1-7011r9"></a>
+ id="x1-8011r9"></a>
 <span 
 class="cmbx-12">Lemma 7.9.</span>  </span> <span 
 class="cmti-12">If</span> \(S/R\) <span 
@@ -1518,7 +1546,7 @@ class="cmti-12">proper ideal of</span> \(S\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 425--><p class="indent" >  <span class="head">
+<!--l. 426--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(1 \in \aa S\), write \(1 = \sum _1^n a_is_i\), \(a_i \in \aa , s_i \in S\). By Nakayama&#x2019;s Lemma, it follows that \(R[s_i]=0\), a contradiction. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -1526,9 +1554,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 429--><p class="noindent" ><span class="head">
+<!--l. 430--><p class="noindent" ><span class="head">
 <a 
- id="x1-7012r10"></a>
+ id="x1-8012r10"></a>
 <span 
 class="cmbx-12">Proposition 7.10 </span>&#x0028;Lying over&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -1542,22 +1570,22 @@ class="cmti-12">for some prime</span> \(\qq \subset Q\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 432--><p class="indent" >  <span class="head">
+<!--l. 433--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Note that \(S_{\pp }\) is an integral extension of \(R_{\pp }\), so that by Lemma <a 
-href="#x1-7011r9">7.9<!--tex4ht:ref: locringintextn --></a> \(\pp S_{\pp }\) is a proper ideal
+href="#x1-8011r9">7.9<!--tex4ht:ref: locringintextn --></a> \(\pp S_{\pp }\) is a proper ideal
 of \(S_{\pp }\). Thus it is contained in a maximal ideal \(\qq S_\pp \), and \(\qq \cap R\) must be \(\pp \). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 436--><p class="noindent" ><span class="head">
+<!--l. 437--><p class="noindent" ><span class="head">
 <a 
- id="x1-7013r11"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-8013r11"></a>
 <span 
 class="cmbx-12">Proposition 7.11 </span>&#x0028;Going up&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -1572,7 +1600,7 @@ class="cmti-12">lies above</span> \(\pp _2\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 440--><p class="indent" >  <span class="head">
+<!--l. 441--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Apply the previous proposition to \(\qq _2\), \(R/{\pp _1}\), and \(S/{\qq _1}\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -1580,9 +1608,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 444--><p class="noindent" ><span class="head">
+<!--l. 445--><p class="noindent" ><span class="head">
 <a 
- id="x1-7014r12"></a>
+ id="x1-8014r12"></a>
 <span 
 class="cmbx-12">Proposition 7.12 </span>&#x0028;Incomparability&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -1595,41 +1623,41 @@ class="cmti-12">then</span> \(\qq _1 \cap R \subsetneq \qq _2 \cap R\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 447--><p class="indent" >  <span class="head">
+<!--l. 448--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Consider the extension \(S/\qq _1\) over \(R/\qq _1\cap R\). \(\qq _2/\qq _1\) is a nonzero ideal, so if \(0 \neq a \in \qq _2/\qq _1\) is a nonzero element
 that is the root of monic polynomial \(g\), we can assume \(g\) has nonzero constant term \(c\).
+                                                                                  
+
+                                                                                  
 Then \(0 \neq -c = (g-c)(a) \in \qq _2\cap R/\qq _1\cap R\), so \(\qq _2 \cap R \subsetneq \qq _1 \cap R\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 451--><p class="noindent" ><span class="head">
+<!--l. 452--><p class="noindent" ><span class="head">
 <a 
- id="x1-7015r13"></a>
+ id="x1-8015r13"></a>
 <span 
 class="cmbx-12">Corollary 7.13.</span>  </span><span 
 class="cmti-12">Integral extensions preserve dimension.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
-<!--l. 454--><p class="indent" >  <span class="head">
+<!--l. 455--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from lying over, going up, and incomparability. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 458--><p class="indent" >  The next nice property of integral extensions only holds for integrally closed
+<!--l. 459--><p class="indent" >  The next nice property of integral extensions only holds for integrally closed
 rings.
 </p>
   <div class="newtheorem">
-<!--l. 460--><p class="noindent" ><span class="head">
+<!--l. 461--><p class="noindent" ><span class="head">
 <a 
- id="x1-7016r14"></a>
+ id="x1-8016r14"></a>
 <span 
 class="cmbx-12">Lemma 7.14.</span>  </span><span 
 class="cmti-12">A localization</span> \(M^{-1}R\) <span 
@@ -1639,17 +1667,20 @@ class="cmti-12">is an integrally closed</span>
 class="cmti-12">domain.</span>
 </p>
   <div class="proof">
-<!--l. 463--><p class="indent" >  <span class="head">
+<!--l. 464--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>WLOG, \(M^{-1}R\) is nontrivial, i.e. \(0 \notin M\). Then \(\Frac (R) = \Frac (M^{-1}R)\). Now suppose \(x \in \Frac (M^{-1}R)\) is integral over <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 467--><p class="noindent" ><span class="head">
+<!--l. 468--><p class="noindent" ><span class="head">
 <a 
- id="x1-7017r15"></a>
+ id="x1-8017r15"></a>
 <span 
 class="cmbx-12">Proposition 7.15 </span>&#x0028;Going down&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -1664,12 +1695,9 @@ class="cmti-12">, then there is a</span> \(\qq _1 \subsetneq \qq _2\) <span
 class="cmti-12">lying above</span>
 \(\pp _1\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
-<!--l. 470--><p class="indent" >  <span class="head">
+<!--l. 471--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>
   <span class="qed"><span 
@@ -1678,11 +1706,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">8. </span> <a 
- id="x1-80008"></a>Valuation rings</h3>
+ id="x1-90008"></a>Valuation rings</h3>
   <div class="newtheorem">
-<!--l. 476--><p class="noindent" ><span class="head">
+<!--l. 477--><p class="noindent" ><span class="head">
 <a 
- id="x1-8001r1"></a>
+ id="x1-9001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 8.1.</span>  </span><span 
 class="cmti-12">An  </span><span 
@@ -1696,9 +1724,12 @@ class="cmti-12">.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 480--><p class="noindent" ><span class="head">
+<!--l. 481--><p class="noindent" ><span class="head">
 <a 
- id="x1-8002r2"></a>
+ id="x1-9002r2"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Lemma 8.2.</span>  </span><span 
 class="cmti-12">An ordered abelian group is determined by a collection of positive elements</span>
@@ -1708,12 +1739,9 @@ class="cmti-12">closed under addition that have trichotomy: every element is eit
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 483--><p class="indent" >  <span class="head">
+<!--l. 484--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Given an ordered abelian group, the positive elements certainly are closed
-                                                                                  
-
-                                                                                  
 under addition, and satisfy trichotomy. Conversely, we can de&#xFB01;ne \(a \geq b \iff a-b \geq 0\). Transitivity is
 equivalent to being closed under addition, totality is equivalent to trichotomy. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -1721,15 +1749,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 487--><p class="noindent" ><span class="head">
+<!--l. 488--><p class="noindent" ><span class="head">
 <a 
- id="x1-8003r3"></a>
+ id="x1-9003r3"></a>
 <span 
 class="cmbx-12">Lemma 8.3.</span>  </span><span 
 class="cmti-12">An abelian group can be ordered i&#xFB00; it is nontorsion.</span>
 </p>
   <div class="proof">
-<!--l. 490--><p class="indent" >  <span class="head">
+<!--l. 491--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If it is ordered, there can be no torsion elements, as if \(a\) is torsion, WLOG, \(a \geq 0\),
 but since \(na = 0\), and \(a \leq 2a \dots \leq na\), \(a = 0\). Conversely, given a nontorsion abelian group \(G\), consider the poset
@@ -1742,11 +1770,14 @@ in \(H\). <span class="qed"><span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
   <div class="newtheorem">
-<!--l. 495--><p class="noindent" ><span class="head">
+<!--l. 496--><p class="noindent" ><span class="head">
 <a 
- id="x1-8004r4"></a>
+ id="x1-9004r4"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 8.4.</span>  </span><span 
 class="cmti-12">A </span><span 
@@ -1756,10 +1787,7 @@ class="cmti-12">is one where any set of</span>
 class="cmti-12">positive elements has an in&#xFB01;mum.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 499--><p class="noindent" >The forgetful functor from complete ordered abelian groups to ordered abelian groups has
+<!--l. 500--><p class="noindent" >The forgetful functor from complete ordered abelian groups to ordered abelian groups has
 a left adjoint, the <span 
 class="cmbx-12">Dedekind completion</span>. To construct it for a given \(G\), call a subset \(I \subset G\) a
 <span 
@@ -1769,16 +1797,16 @@ and \(J\). The inverse of \(I\) is \(\{x|x+I \geq 0\}\). The inclusion \(g \maps
 the union.
 </p>
   <div class="newtheorem">
-<!--l. 501--><p class="noindent" ><span class="head">
+<!--l. 502--><p class="noindent" ><span class="head">
 <a 
- id="x1-8005r5"></a>
+ id="x1-9005r5"></a>
 <span 
 class="cmbx-12">Lemma 8.5.</span>  </span><span 
 class="cmti-12">A well ordered abelian group is either trivial or</span> \(\ZZ \)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 504--><p class="indent" >  <span class="head">
+<!--l. 505--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If it is nontrivial, let \(a\) be a positive element. WLOG, we can assume that for
 \(n \in \NN \), there is no \(x\) such that \(nx = a\), as otherwise choose \(a = x\). If we could do this process in&#xFB01;nitely
@@ -1790,10 +1818,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 508--><p class="noindent" ><span class="head">
+<!--l. 509--><p class="noindent" ><span class="head">
 <a 
- id="x1-8006r6"></a>
+ id="x1-9006r6"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 8.6.</span>  </span><span 
 class="cmti-12">A  </span><span 
@@ -1809,17 +1840,14 @@ class="cmti-12">is preimage</span>
 class="cmti-12">of the non-negative elements.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 512--><p class="indent" >  Note that in a valuation ring, \(a|b\) i&#xFB00; \(\nu (a) \leq \nu (b)\). In particular, two nonzero elements are
+<!--l. 513--><p class="indent" >  Note that in a valuation ring, \(a|b\) i&#xFB00; \(\nu (a) \leq \nu (b)\). In particular, two nonzero elements are
 associates i&#xFB00; they have the same valuation, and so units of \(R\) are those with valuation
 \(0\).
 </p>
   <div class="newtheorem">
-<!--l. 514--><p class="noindent" ><span class="head">
+<!--l. 515--><p class="noindent" ><span class="head">
 <a 
- id="x1-8007r7"></a>
+ id="x1-9007r7"></a>
 <span 
 class="cmbx-12">Proposition 8.7.</span>  </span><span 
 class="cmti-12">TFAE:</span>
@@ -1843,7 +1871,7 @@ class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(R\) <span 
 class="cmti-12">is a domain and the &#x0028;principle&#x0029; ideals are totally ordered by inclusion.</span></dd></dl>
   <div class="proof">
-<!--l. 522--><p class="indent" >  <span class="head">
+<!--l. 523--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>\(1 \implies 3\) since ideals correspond to Dedekind cuts of \(\Gamma \) via the valuation. Note that
 principle ideals correspond to elements of \(\Gamma \) in the completion. \(3 \implies 2\) as if \(a,b \in R\), then \((a)\subset (b)\) or \((b) \subset (a)\) so that
@@ -1852,13 +1880,16 @@ image of \(R_z\). <span class="qed"><span
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
-<!--l. 526--><p class="indent" >  Note as a consequence that \(\nu (a+b) \geq \min (\nu (a),\nu (b))\) if \(a,b,a+b \neq 0\), and that the valuation is essentially unique.
+<!--l. 527--><p class="indent" >  Note as a consequence that \(\nu (a+b) \geq \min (\nu (a),\nu (b))\) if \(a,b,a+b \neq 0\), and that the valuation is essentially unique.
 </p>
   <div class="newtheorem">
-<!--l. 528--><p class="noindent" ><span class="head">
+<!--l. 529--><p class="noindent" ><span class="head">
 <a 
- id="x1-8011r8"></a>
+ id="x1-9011r8"></a>
 <span 
 class="cmbx-12">Corollary 8.8.</span>  </span><span 
 class="cmti-12">A valuation ring is an integrally closed local Bezout domain of dimension</span>
@@ -1866,11 +1897,8 @@ class="cmti-12">A valuation ring is an integrally closed local Bezout domain of 
 class="cmti-12">at most</span> \(1\)<span 
 class="cmti-12">.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
-<!--l. 531--><p class="indent" >  <span class="head">
+<!--l. 532--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>There can only be one maximal ideal as the ideals are totally ordered, and
 since &#xFB01;nite sets have minima it is Bezout by the remark in the previous proof. If \(0 \neq x \in \Frac (R)\) is
@@ -1880,8 +1908,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 535--><p class="indent" >  valuation rings are &#x201D;maximal&#x201D;.
-</p><!--l. 537--><p class="indent" >  If the valuation ring \(R\) is Noetherian, then the set of positive elements must
+<!--l. 536--><p class="indent" >  valuation rings are &#x201D;maximal&#x201D;.
+</p><!--l. 538--><p class="indent" >  If the valuation ring \(R\) is Noetherian, then the set of positive elements must
 be well ordered, as given a set of positive elements, the generator of the ideal
 they generate is principle, so any set of positive elements has a lower bound
 contained in the set. Thus either the valuation is trivial, in which case the ring is a
@@ -1890,15 +1918,18 @@ class="cmbx-12">discrete valuation ring </span>or
 DVR.
 </p>
   <h3 class="sectionHead"><span class="titlemark">9. </span> <a 
- id="x1-90009"></a>Dedekind domains</h3>
-<!--l. 540--><p class="noindent" >Often we don&#x2019;t have unique factorization of elements in our ring. For example, the classic
+ id="x1-100009"></a>Dedekind domains</h3>
+<!--l. 541--><p class="noindent" >Often we don&#x2019;t have unique factorization of elements in our ring. For example, the classic
 example is \(\ZZ [\sqrt{-5}]\), where \((1+\sqrt{-5})*(1-\sqrt{5}) = 2*3\), but in this case, and many others, we have the next nicest thing:
 unique factorization of ideals.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 542--><p class="noindent" ><span class="head">
+<!--l. 543--><p class="noindent" ><span class="head">
 <a 
- id="x1-9001r1"></a>
+ id="x1-10001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 9.1.</span>  </span><span 
 class="cmti-12">A </span><span 
@@ -1909,12 +1940,9 @@ class="cmti-12">ideals in prime ideals.</span>
 </p>
   </div>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
-<!--l. 546--><p class="noindent" ><span class="head">
+<!--l. 547--><p class="noindent" ><span class="head">
 <a 
- id="x1-9002r2"></a>
+ id="x1-10002r2"></a>
 <span 
 class="cmbx-12">Lemma 9.2.</span>  </span>\(\pp |a\) <span 
 class="cmti-12">i&#xFB00;</span> \(\pp |a\) <span 
@@ -1922,15 +1950,15 @@ class="cmti-12">in the monoid of ideals under multiplication</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 550--><p class="noindent" ><span class="head">
+<!--l. 551--><p class="noindent" ><span class="head">
 <a 
- id="x1-9003r3"></a>
+ id="x1-10003r3"></a>
 <span 
 class="cmbx-12">Lemma 9.3.</span>  </span><span 
 class="cmti-12">Factorization in a Dedekind domain is unique.</span>
 </p>
   <div class="proof">
-<!--l. 554--><p class="indent" >  <span class="head">
+<!--l. 555--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>
   <span class="qed"><span 
@@ -1939,10 +1967,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">10. </span> <a 
- id="x1-1000010"></a>Module Theory for Dedekind domains and Canonical forms</h3>
+ id="x1-1100010"></a>Module Theory for Dedekind domains and Canonical forms</h3>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">11. </span> <a 
- id="x1-1100011"></a>Fields</h3>
-<!--l. 562--><p class="noindent" >Fields are simple objects in the category of rings. Since they are integral domains, their
+ id="x1-1200011"></a>Fields</h3>
+<!--l. 563--><p class="noindent" >Fields are simple objects in the category of rings. Since they are integral domains, their
 characteristic is either a prime \(p\) or \(0\). Much of the way we study &#xFB01;elds relies on the fact that
 their module theory is very simple, in particular, all modules are free. Moreover, any
 morphism of &#xFB01;elds is injective since the kernels are proper ideals. Thus our basic notion is
@@ -1951,17 +1982,14 @@ class="cmbx-12">&#xFB01;eld extension</span> \(L/F\), which is just an inclusion
 \(F\)-vector space, so has a dimension which we call the <span 
 class="cmbx-12">degree </span>of the extension,
 denoted \([L:F]\). Note that by Lemma <a 
-href="#x1-7003r3">7.3<!--tex4ht:ref: integralequiv --></a> a &#xFB01;nite degree extension &#x0028;which we can just call
+href="#x1-8003r3">7.3<!--tex4ht:ref: integralequiv --></a> a &#xFB01;nite degree extension &#x0028;which we can just call
 &#xFB01;nite&#x0029; is algebraic. We will start by studying algebraic extensions, mostly &#xFB01;nite
 ones.
-                                                                                  
-
-                                                                                  
 </p>
   <div class="newtheorem">
-<!--l. 564--><p class="noindent" ><span class="head">
+<!--l. 565--><p class="noindent" ><span class="head">
 <a 
- id="x1-11001r1"></a>
+ id="x1-12001r1"></a>
 <span 
 class="cmbx-12">Lemma 11.1.</span>  </span> <span 
 class="cmti-12">If</span> \(M/L/K\) <span 
@@ -1969,7 +1997,7 @@ class="cmti-12">are two extensions of &#xFB01;elds, then</span> \([M:K] = [M:L][
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 568--><p class="indent" >  <span class="head">
+<!--l. 569--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Take a basis of \(L/K\), and a basis of \(M/L\), and the product of the two sets will be a
 basis of \(M/K\). <span class="qed"><span 
@@ -1977,36 +2005,36 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 572--><p class="indent" >  We say that an extension \(L/K\) is <span 
+<!--l. 573--><p class="indent" >  We say that an extension \(L/K\) is <span 
 class="cmbx-12">simple </span>if it is generated over \(K\) by one element, \(\alpha \), which we
 call the <span 
 class="cmbx-12">primitive element</span>. The <span 
 class="cmbx-12">degree </span>of \(\alpha \) is then \([L:K] = [K(\alpha ):K]\).
 </p>
   <div class="newtheorem">
-<!--l. 574--><p class="noindent" ><span class="head">
+<!--l. 575--><p class="noindent" ><span class="head">
 <a 
- id="x1-11002r2"></a>
+ id="x1-12002r2"></a>
 <span 
 class="cmbx-12">Lemma 11.2.</span>  </span><span 
 class="cmti-12">The degree of an element divides the degree of the &#xFB01;eld extension.</span>
 </p>
+                                                                                  
+
+                                                                                  
   <div class="proof">
-<!--l. 577--><p class="indent" >  <span class="head">
+<!--l. 578--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Apply Lemma <a 
-href="#x1-11001r1">11.1<!--tex4ht:ref: degreemult --></a> to the fact that we have the extensions \(L/K(\alpha )/K\). <span class="qed"><span 
+href="#x1-12001r1">11.1<!--tex4ht:ref: degreemult --></a> to the fact that we have the extensions \(L/K(\alpha )/K\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
-<!--l. 581--><p class="noindent" ><span class="head">
+<!--l. 582--><p class="noindent" ><span class="head">
 <a 
- id="x1-11003r3"></a>
+ id="x1-12003r3"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 11.3.</span>  </span> <span 
 class="cmti-12">The </span><span 
@@ -2021,9 +2049,9 @@ class="cmti-12">-linear map.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 585--><p class="noindent" ><span class="head">
+<!--l. 586--><p class="noindent" ><span class="head">
 <a 
- id="x1-11004r4"></a>
+ id="x1-12004r4"></a>
 <span 
 class="cmbx-12">Lemma 11.4.</span>  </span><span 
 class="cmti-12">The degree of</span> \(\alpha \) <span 
@@ -2031,7 +2059,7 @@ class="cmti-12">is the degree of its minimal polynomial</span> \(\mu _K(\alpha )
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 588--><p class="indent" >  <span class="head">
+<!--l. 589--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Just note that the span of \(1,\alpha ,\dots , \alpha ^{\deg (\alpha )-1}\) form a &#xFB01;eld containing \(a\), giving one inequality, and
 the other inequality comes from applying the Cayley-Hamilton Theorem to \(\chi _L(\alpha )\). <span class="qed"><span 
@@ -2039,12 +2067,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 592--><p class="indent" >  We already have enough to prove an interesting fact:
+<!--l. 593--><p class="indent" >  We already have enough to prove an interesting fact:
+                                                                                  
+
+                                                                                  
 </p>
   <div class="newtheorem">
-<!--l. 594--><p class="noindent" ><span class="head">
+<!--l. 595--><p class="noindent" ><span class="head">
 <a 
- id="x1-11005r5"></a>
+ id="x1-12005r5"></a>
 <span 
 class="cmbx-12">Theorem 11.5 </span>&#x0028;L&#x00FC;roth&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -2055,29 +2086,26 @@ class="cmti-12">is isomorphic to</span>
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 597--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 598--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>If \(K(t)/L/K\) are extensions, with \(L \neq K\), \(L\) contains some rational function \(f/g\), where \(f,g\) are relatively
 prime. \(g(t)f/g-f(t)\) then shows that \(K(t)\) is a simple &#xFB01;nite extension of \(L\), and its degree is \(\min _{f/g \in L}(\max (\deg f,\deg g))\). Then a
 minimizing \(f/g\) and using Lemma <a 
-href="#x1-11001r1">11.1<!--tex4ht:ref: degreemult --></a>, \(L = K(f/g)\). <span class="qed"><span 
+href="#x1-12001r1">11.1<!--tex4ht:ref: degreemult --></a>, \(L = K(f/g)\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 601--><p class="noindent" ><span class="head">
+<!--l. 602--><p class="noindent" ><span class="head">
 <a 
- id="x1-11006r6"></a>
+ id="x1-12006r6"></a>
 <span 
 class="cmbx-12">Corollary 11.6.</span>  </span>\(\chi _L(\alpha ) = \mu _L(\alpha )^{\frac{[L:K]}{\deg{\alpha }}}\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 604--><p class="indent" >  <span class="head">
+<!--l. 605--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from doing the proof of Lemma \(\ref{degreemult}\) on \(L/K(\alpha )/K\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -2085,9 +2113,12 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 608--><p class="noindent" ><span class="head">
+<!--l. 609--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
 <a 
- id="x1-11007r7"></a>
+ id="x1-12007r7"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 11.7.</span>  </span><span 
 class="cmti-12">A &#xFB01;eld is </span><span 
@@ -2102,12 +2133,9 @@ class="cmti-12">algebraically closed.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 613--><p class="noindent" ><span class="head">
+<!--l. 614--><p class="noindent" ><span class="head">
 <a 
- id="x1-11008r8"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-12008r8"></a>
 <span 
 class="cmbx-12">Lemma 11.8.</span>  </span><span 
 class="cmti-12">A &#xFB01;eld is algebraically closed i&#xFB00; any polynomial factors into linear</span>
@@ -2115,7 +2143,7 @@ class="cmti-12">A &#xFB01;eld is algebraically closed i&#xFB00; any polynomial f
 class="cmti-12">terms.</span>
 </p>
   <div class="proof">
-<!--l. 616--><p class="indent" >  <span class="head">
+<!--l. 617--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This is immediate, since nonlinear irreducibles \(f\) correspond to simple nontrivial
 extensions via \(K[x]/(f(x))\). <span class="qed"><span 
@@ -2123,14 +2151,14 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 620--><p class="indent" >  We use \(\bar{K}\) to denote the algebraic closure of \(K\). The algebraic closure behaves similarly to
+<!--l. 621--><p class="indent" >  We use \(\bar{K}\) to denote the algebraic closure of \(K\). The algebraic closure behaves similarly to
 the &#x201D;universal cover&#x201D; of a space. In particular, we would like every algebraic extension to
 be describable in terms of an algebraic closure.
 </p>
   <div class="newtheorem">
-<!--l. 622--><p class="noindent" ><span class="head">
+<!--l. 623--><p class="noindent" ><span class="head">
 <a 
- id="x1-11009r9"></a>
+ id="x1-12009r9"></a>
 <span 
 class="cmbx-12">Lemma 11.9 </span>&#x0028;Embedding Lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -2142,8 +2170,11 @@ class="cmti-12">closure, then there is an embedding of</span> \(K\)<span
 class="cmti-12">-algebras</span> \(L \hookrightarrow \bar{K}\)<span 
 class="cmti-12">.</span>
 </p>
+                                                                                  
+
+                                                                                  
   <div class="proof">
-<!--l. 626--><p class="indent" >  <span class="head">
+<!--l. 627--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Consider the poset of embeddings of sub&#xFB01;elds use Zorn&#x2019;s Lemma to choose a
 maximal one, and note that we can always embed a simple extension, so that the
@@ -2152,13 +2183,10 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
-<!--l. 630--><p class="noindent" ><span class="head">
+<!--l. 631--><p class="noindent" ><span class="head">
 <a 
- id="x1-11010r10"></a>
+ id="x1-12010r10"></a>
 <span 
 class="cmbx-12">Corollary 11.10 </span>&#x0028;Extending Lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -2168,7 +2196,7 @@ class="cmti-12">extends to one of</span>
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 633--><p class="indent" >  <span class="head">
+<!--l. 634--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Apply  the  embedding  lemma,  and  note  that  the  embedding  must  be  an
 isomorphism as \(\bar{K}\) is algebraically closed. <span class="qed"><span 
@@ -2177,15 +2205,18 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 637--><p class="noindent" ><span class="head">
+<!--l. 638--><p class="noindent" ><span class="head">
 <a 
- id="x1-11011r11"></a>
+ id="x1-12011r11"></a>
 <span 
 class="cmbx-12">Proposition 11.11.</span>  </span><span 
 class="cmti-12">Algebraic closures exist and are unique up to isomorphism.</span>
 </p>
   <div class="proof">
-<!--l. 641--><p class="indent" >  <span class="head">
+<!--l. 642--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Given a &#xFB01;eld \(F\), write \(F = F_0\). Now inductively given \(F_i\) produce a &#xFB01;eld \(F_{i+1}\) by adjoining an
 element \(g_\alpha \) to \(F_i\) for each irreducible polynomial \(f_\alpha \) over \(F_i\), and modding out by a maximal
@@ -2195,19 +2226,16 @@ embedding is an isomorphism as \(L\) is algebraically closed. <span class="qed">
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 645--><p class="indent" >  Note that &#xFB01;elds don&#x2019;t have many limits, but if we consider the category of &#xFB01;elds
+<!--l. 646--><p class="indent" >  Note that &#xFB01;elds don&#x2019;t have many limits, but if we consider the category of &#xFB01;elds
 embedded in some &#xFB01;xed algebraic closure, then we get a lattice, which does have limits
 and colimits. The product of some &#xFB01;elds \(F_i\) is then their intersection, and the coproduct is
 called their <span 
 class="cmbx-12">compositum</span>.
 </p>
   <h3 class="sectionHead"><span class="titlemark">12. </span> <a 
- id="x1-1200012"></a>Separability</h3>
-<!--l. 649--><p class="noindent" >Note that there might be a lot of embeddings \(L/K \to \bar{K}/K\). In fact, there generally are a lot. We say
+ id="x1-1300012"></a>Separability</h3>
+<!--l. 650--><p class="noindent" >Note that there might be a lot of embeddings \(L/K \to \bar{K}/K\). In fact, there generally are a lot. We say
 that the <span 
 class="cmbx-12">separable degree </span>of an extension \(L/K\) &#x0028;written \([L:K]_s\)&#x0029; is the number of embeddings of \(L\)
 into \(\bar{K}\), which is well de&#xFB01;ned by the previous proposition. A &#xFB01;nite extension is <span 
@@ -2218,9 +2246,9 @@ simple extension is. The next two lemmas imply that these notions of separable
 agree.
 </p>
   <div class="newtheorem">
-<!--l. 651--><p class="noindent" ><span class="head">
+<!--l. 652--><p class="noindent" ><span class="head">
 <a 
- id="x1-12001r1"></a>
+ id="x1-13001r1"></a>
 <span 
 class="cmbx-12">Lemma 12.1.</span>  </span> <span 
 class="cmti-12">For</span> \(M/L/K\)<span 
@@ -2228,7 +2256,10 @@ class="cmti-12">,</span> \([M:L]_s[L:K]_s = [M:K]_s\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 654--><p class="indent" >  <span class="head">
+<!--l. 655--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Just note that \(\bar{L} = \bar{K}\), and that extending an embedding from \(K\) to \(L\) and then to \(M\) is
 the same as extending from \(K\) to \(M\). <span class="qed"><span 
@@ -2237,18 +2268,15 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 658--><p class="noindent" ><span class="head">
+<!--l. 659--><p class="noindent" ><span class="head">
 <a 
- id="x1-12002r2"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-13002r2"></a>
 <span 
 class="cmbx-12">Lemma 12.2.</span>  </span>\([M:L]_s|[M:L]\) <span 
 class="cmti-12">for a &#xFB01;nite extension.</span>
 </p>
   <div class="proof">
-<!--l. 661--><p class="indent" >  <span class="head">
+<!--l. 662--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By multiplicativity, one reduces to the case of a simple extension, where this
 follows from the fact that if the minimal polynomial of \(\alpha \) factors in the algebraic
@@ -2258,7 +2286,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 665--><p class="indent" >  This lemma shows that the following notion is useful. A polynomial of degree \(n\) over a
+<!--l. 666--><p class="indent" >  This lemma shows that the following notion is useful. A polynomial of degree \(n\) over a
 &#xFB01;eld \(F\) is called <span 
 class="cmbx-12">separable </span>if it has \(n\) roots in the algebraic closure. Additionally, elements
 with the same minimal polynomial are called <span 
@@ -2266,20 +2294,23 @@ class="cmbx-12">conjugate</span>. The proof of the previous lemma
 gives the following:
 </p>
   <div class="newtheorem">
-<!--l. 667--><p class="noindent" ><span class="head">
+<!--l. 668--><p class="noindent" ><span class="head">
 <a 
- id="x1-12003r3"></a>
+ id="x1-13003r3"></a>
 <span 
 class="cmbx-12">Lemma 12.3.</span>  </span><span 
 class="cmti-12">Every  element  of  a  separable  extension  has  a  separable  minimal</span>
 <span 
 class="cmti-12">polynomial, and adjoining roots of separable polynomials gives separable extensions.</span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 671--><p class="noindent" ><span class="head">
+<!--l. 672--><p class="noindent" ><span class="head">
 <a 
- id="x1-12004r4"></a>
+ id="x1-13004r4"></a>
 <span 
 class="cmbx-12">Corollary 12.4.</span>  </span> <span 
 class="cmti-12">Given</span> \(M/L/K\)<span 
@@ -2291,10 +2322,7 @@ class="cmti-12">are separable. The compositum of</span>
 class="cmti-12">separable extensions is separable.</span>
 </p>
   <div class="proof">
-                                                                                  
-
-                                                                                  
-<!--l. 674--><p class="indent" >  <span class="head">
+<!--l. 675--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The  &#xFB01;rst  statement  follows  from  the  &#xFB01;nite  case,  which  follows  from
 multiplicativity. The second statement follows from the &#xFB01;nite case, which follows
@@ -2304,9 +2332,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 678--><p class="noindent" ><span class="head">
+<!--l. 679--><p class="noindent" ><span class="head">
 <a 
- id="x1-12005r5"></a>
+ id="x1-13005r5"></a>
 <span 
 class="cmbx-12">Lemma 12.5.</span>  </span><span 
 class="cmti-12">TFAE for an irreducible polynomial</span> \(f\) <span 
@@ -2315,7 +2343,7 @@ class="cmti-12">&#x0028;the &#xFB01;rst two are equivalent</span>
 <span 
 class="cmti-12">for arbitrary</span> \(f\)<span 
 class="cmti-12">&#x0029;:</span>
-</p><!--l. 682--><p class="indent" >
+</p><!--l. 683--><p class="indent" >
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    <span 
 class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
@@ -2332,7 +2360,10 @@ class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(f' \neq 0\)<span 
 class="cmti-12">.</span></dd></dl>
   <div class="proof">
-<!--l. 687--><p class="indent" >  <span class="head">
+<!--l. 688--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>\(f\) is separable i&#xFB00; \(f\) has no double roots in the algebraic closure i&#xFB00; \(f,f'\) are coprime.
 It is clear that it is equivalent for \(f,f'\) to be coprime and \(f' \neq 0\) by degree considerations and
@@ -2341,19 +2372,16 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 691--><p class="indent" >  Note that \(f' = 0\) happens for irreducible \(f\) i&#xFB00; we are in char \(p\) or \(f\) is a polynomial of
+<!--l. 692--><p class="indent" >  Note that \(f' = 0\) happens for irreducible \(f\) i&#xFB00; we are in char \(p\) or \(f\) is a polynomial of
 \(x^p\).
-                                                                                  
-
-                                                                                  
-</p><!--l. 693--><p class="indent" >  Now by the basic properties of separable extensions, it follows that given an extension \(L/K\),
+</p><!--l. 694--><p class="indent" >  Now by the basic properties of separable extensions, it follows that given an extension \(L/K\),
 there is a maximal separable subextension, consisting of the elements separable over \(K\). We
 call this the <span 
 class="cmbx-12">separable closure </span>of \(K\) in \(L\). The separable closure of \(K\) in \(\bar{K}\) is just called the
 separable closure, denoted \(K^{\sep }\). It is the maximal separable extension of \(K\), since any separable
 extension embeds in \(\bar{K}\), but must land in \(K^{\sep }\). Note that in characteristic \(0\), these are identical
 extensions.
-</p><!--l. 695--><p class="indent" >  Complementary to separable extensions are <span 
+</p><!--l. 696--><p class="indent" >  Complementary to separable extensions are <span 
 class="cmbx-12">purely inseparable </span>extensions, which are
 algebraic extensions where every &#xFB01;nite subextension has separability degree \(1\). We have seen
 that every extension \(L/K\) splits into \(L/L\cap K^{\sep }/K\). The extension \(L/L\cap K^{\sep }\) is purely inseparable. To see this, note it
@@ -2364,9 +2392,9 @@ In fact we get the following equivalent characterization of purely inseparable
 extensions:
 </p>
   <div class="newtheorem">
-<!--l. 697--><p class="noindent" ><span class="head">
+<!--l. 698--><p class="noindent" ><span class="head">
 <a 
- id="x1-12009r6"></a>
+ id="x1-13009r6"></a>
 <span 
 class="cmbx-12">Proposition 12.6.</span>  </span><span 
 class="cmti-12">An extension of char</span> \(p\) <span 
@@ -2379,13 +2407,16 @@ class="cmti-12">and some</span> \(k\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 701--><p class="indent" >  In most cases we want to deal with separable extensions, which are considered nice.
+<!--l. 702--><p class="indent" >  In most cases we want to deal with separable extensions, which are considered nice.
 Hence the following de&#xFB01;nition
 </p>
   <div class="newtheorem">
-<!--l. 703--><p class="noindent" ><span class="head">
+                                                                                  
+
+                                                                                  
+<!--l. 704--><p class="noindent" ><span class="head">
 <a 
- id="x1-12010r7"></a>
+ id="x1-13010r7"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 12.7.</span>  </span><span 
 class="cmti-12">A </span><span 
@@ -2393,17 +2424,14 @@ class="cmbxti-10x-x-120">perfect &#xFB01;eld </span><span
 class="cmti-12">is a &#xFB01;eld where every extension is separable.</span>
 </p>
   </div>
-<!--l. 707--><p class="indent" >  A ring of characteristic \(p\) has an endomorphism called the Frobenius endomorphism, \(Fr\),
+<!--l. 708--><p class="indent" >  A ring of characteristic \(p\) has an endomorphism called the Frobenius endomorphism, \(Fr\),
 sending \(x \mapsto x^p\). By the binomial theorem, this is indeed a ring homomorphism, and if the ring is
 reduced, it is injective.
-                                                                                  
-
-                                                                                  
 </p>
   <div class="newtheorem">
-<!--l. 709--><p class="noindent" ><span class="head">
+<!--l. 710--><p class="noindent" ><span class="head">
 <a 
- id="x1-12011r8"></a>
+ id="x1-13011r8"></a>
 <span 
 class="cmbx-12">Proposition 12.8.</span>  </span><span 
 class="cmti-12">The perfect &#xFB01;elds are exactly those where</span> \(Fr\) <span 
@@ -2413,22 +2441,25 @@ class="cmti-12">of characteristic</span> \(0\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 713--><p class="indent" >  <span class="head">
+<!--l. 714--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from our characterization of purely inseparable extensions. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 717--><p class="indent" >  We can ask the question &#x201D;when is a &#xFB01;nite extension simple?&#x201D; It is not true in general.
+<!--l. 718--><p class="indent" >  We can ask the question &#x201D;when is a &#xFB01;nite extension simple?&#x201D; It is not true in general.
 For example, consider \(L = \FF _p(t^{\frac{1}{p}},{u}^{\frac{1}{p}})/\FF _p(t,u) = K\), a degree \(p^2\) purely inseparable extension. If this were simple, it would
 be generated by an element whose \(p^{th}\) power was not in \(K\), but this is true of every element of
 \(L\).
 </p>
   <div class="newtheorem">
-<!--l. 719--><p class="noindent" ><span class="head">
+<!--l. 720--><p class="noindent" ><span class="head">
 <a 
- id="x1-12012r9"></a>
+ id="x1-13012r9"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">Lemma 12.9.</span>  </span> <span 
 class="cmti-12">The group of automorphisms of</span> \(\bar{K}\) <span 
@@ -2438,20 +2469,17 @@ class="cmti-12">act transitively on the conjugates</span>
 class="cmti-12">of each element.</span>
 </p>
   <div class="proof">
-<!--l. 722--><p class="indent" >  <span class="head">
+<!--l. 723--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from the embedding lemma. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
   <div class="newtheorem">
-<!--l. 726--><p class="noindent" ><span class="head">
+<!--l. 727--><p class="noindent" ><span class="head">
 <a 
- id="x1-12013r10"></a>
+ id="x1-13013r10"></a>
 <span 
 class="cmbx-12">Corollary 12.10.</span>  </span> <span 
 class="cmti-12">The conjugates of</span> \(f(\alpha _i)\) <span 
@@ -2466,7 +2494,7 @@ class="cmti-12">is a conjugate of</span> \(\alpha _i\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 730--><p class="indent" >  <span class="head">
+<!--l. 731--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from the previous lemma. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -2474,9 +2502,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 734--><p class="noindent" ><span class="head">
+<!--l. 735--><p class="noindent" ><span class="head">
 <a 
- id="x1-12014r11"></a>
+ id="x1-13014r11"></a>
 <span 
 class="cmbx-12">Lemma 12.11.</span>  </span><span 
 class="cmti-12">The degree of an automorphism of</span> \(L\) <span 
@@ -2484,8 +2512,11 @@ class="cmti-12">&#xFB01;xing a &#xFB01;nite index sub&#xFB01;eld</span> \(K\) <s
 class="cmti-12">divides</span>
 \([L:K]_s\)
 </p>
+                                                                                  
+
+                                                                                  
   <div class="proof">
-<!--l. 737--><p class="indent" >  <span class="head">
+<!--l. 738--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Note that an automorphism is determined by its action \(L\), which sends elements
 to their conjugates. <span class="qed"><span 
@@ -2494,12 +2525,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 741--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 742--><p class="noindent" ><span class="head">
 <a 
- id="x1-12015r12"></a>
+ id="x1-13015r12"></a>
 <span 
 class="cmbx-12">Proposition 12.12.</span>  </span><span 
 class="cmti-12">If</span> \(L/K\) <span 
@@ -2507,13 +2535,13 @@ class="cmti-12">is a &#xFB01;nite separable extension, then</span> \(L\) <span
 class="cmti-12">is simple.</span>
 </p>
   <div class="proof">
-<!--l. 744--><p class="indent" >  <span class="head">
+<!--l. 745--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We may as well assume \(K\) is in&#xFB01;nite, as if it is &#xFB01;nite we can assume \(K = \FF _p\) and since
 the order of \(Fr\) divides the degree over \(\FF _p\) by the previous lemma, every element is the
 root of \(x^{p^k}-x\). Now since there can be at most \(p^l\) roots to \(x^{p^l}-x\) for each \(l\), so the multiplicative
 group must by cyclic, and any generator is a primitive element.
-</p><!--l. 746--><p class="indent" >  If \(K\) is in&#xFB01;nite, then it su&#xFB03;ces by induction to show that \(K(a,b) = K(c)\) if \(a,b\) are separable. Consider
+</p><!--l. 747--><p class="indent" >  If \(K\) is in&#xFB01;nite, then it su&#xFB03;ces by induction to show that \(K(a,b) = K(c)\) if \(a,b\) are separable. Consider
 elements of the form \(a+kb, k \in K\). We can consider the subset of \(k \in K\) such that the characteristic
 polynomial of \(a+kb\) is irreducible. Let \(a_i, b_i\) be the conjugates of \(a,b\) respectively, which we can
 assume are distinct. Now the things of the form \(a_j+kb_i\) are all conjugates, so if they are all
@@ -2523,24 +2551,24 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 750--><p class="indent" >  This proof secretly uses some Galois theory, and we will see another one later. This one
+<!--l. 751--><p class="indent" >  This proof secretly uses some Galois theory, and we will see another one later. This one
 is useful for computations.
+                                                                                  
+
+                                                                                  
 </p>
   <h3 class="sectionHead"><span class="titlemark">13. </span> <a 
- id="x1-1300013"></a>Normal extensions</h3>
-<!--l. 754--><p class="noindent" >We would like to understand the automorphisms of a &#xFB01;eld extension \(L/K\), namely the
+ id="x1-1400013"></a>Normal extensions</h3>
+<!--l. 755--><p class="noindent" >We would like to understand the automorphisms of a &#xFB01;eld extension \(L/K\), namely the
 automorphisms of \(L\) as a \(K\)-algebra, which we denote \(\Aut (L/K)\). Sometimes these don&#x2019;t exist, as in the
 case of \(\QQ (2^{\frac{1}{3}})/\QQ \), but other times they do, such as in the case of \(\QQ (\sqrt{a})/\QQ \). When we try to see why this
 property doesn&#x2019;t hold for \(\QQ (2^{\frac{1}{3}})\), we see it is because the conjugates of \(2^{\frac{1}{3}}\) are not contained in the
 &#xFB01;eld.
 </p>
   <div class="newtheorem">
-<!--l. 756--><p class="noindent" ><span class="head">
+<!--l. 757--><p class="noindent" ><span class="head">
 <a 
- id="x1-13001r1"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-14001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 13.1.</span>  </span><span 
 class="cmti-12">We say a polynomial over</span> \(K\) <span 
@@ -2552,9 +2580,9 @@ class="cmti-12">into linear terms.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 760--><p class="noindent" ><span class="head">
+<!--l. 761--><p class="noindent" ><span class="head">
 <a 
- id="x1-13002r2"></a>
+ id="x1-14002r2"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 13.2.</span>  </span><span 
 class="cmti-12">An algebraic extension</span> \(L/K\) <span 
@@ -2568,9 +2596,9 @@ class="cmti-12">splits.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 764--><p class="noindent" ><span class="head">
+<!--l. 765--><p class="noindent" ><span class="head">
 <a 
- id="x1-13003r3"></a>
+ id="x1-14003r3"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 13.3.</span>  </span><span 
 class="cmti-12">We call the </span><span 
@@ -2583,9 +2611,12 @@ class="cmti-12">.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 768--><p class="noindent" ><span class="head">
+<!--l. 769--><p class="noindent" ><span class="head">
 <a 
- id="x1-13004r4"></a>
+ id="x1-14004r4"></a>
+                                                                                  
+
+                                                                                  
 <span 
 class="cmbx-12">De&#xFB01;nition 13.4.</span>  </span><span 
 class="cmti-12">We say that two embedded algebraic extensions</span> \(L/K,\tilde{L}\) <span 
@@ -2599,16 +2630,13 @@ class="cmti-12">to</span> \(\bar{L}\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 772--><p class="indent" >  From the extension lemma it follows that two extensions are isomorphic i&#xFB00; they are
+<!--l. 773--><p class="indent" >  From the extension lemma it follows that two extensions are isomorphic i&#xFB00; they are
 conjugate.
 </p>
   <div class="newtheorem">
-<!--l. 774--><p class="noindent" ><span class="head">
+<!--l. 775--><p class="noindent" ><span class="head">
 <a 
- id="x1-13005r5"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-14005r5"></a>
 <span 
 class="cmbx-12">Proposition 13.5.</span>  </span><span 
 class="cmti-12">TFAE:</span>
@@ -2642,7 +2670,7 @@ class="cmti-12">&#x0028;5&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(L\) <span 
 class="cmti-12">has only one conjugate.</span></dd></dl>
   <div class="proof">
-<!--l. 783--><p class="indent" >  <span class="head">
+<!--l. 784--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The &#xFB01;rst two are clearly equivalent since roots correspond to points in the
 algebraic closure. If all the conjugates are in \(L\), since automorphisms of \(\bar{K}/K\) send conjugates
@@ -2653,12 +2681,15 @@ and a splitting &#xFB01;eld is by de&#xFB01;nition normal. The last statement is
 to the third. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
+                                                                                  
+
+                                                                                  
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 787--><p class="noindent" ><span class="head">
+<!--l. 788--><p class="noindent" ><span class="head">
 <a 
- id="x1-13011r6"></a>
+ id="x1-14011r6"></a>
 <span 
 class="cmbx-12">Corollary 13.6 </span>&#x0028;Extension Lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -2670,43 +2701,43 @@ class="cmti-12">to one of</span> \(L\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 791--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 792--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>It extends to the algebraic closure, and then restricts to \(L\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 795--><p class="indent" >  Note that since \(Aut(\bar{K}/K)\) acts transitively on conjugates and restricts to automorphism of any
+<!--l. 796--><p class="indent" >  Note that since \(Aut(\bar{K}/K)\) acts transitively on conjugates and restricts to automorphism of any
 normal extension, normal extensions act transitively on the conjugates. Also note that
 purely inseparable extensions are normal.
 </p>
   <div class="newtheorem">
-<!--l. 797--><p class="noindent" ><span class="head">
+<!--l. 798--><p class="noindent" ><span class="head">
 <a 
- id="x1-13012r7"></a>
+ id="x1-14012r7"></a>
 <span 
 class="cmbx-12">Corollary 13.7.</span>  </span><span 
 class="cmti-12">Splitting &#xFB01;elds are unique up to isomorphism.</span>
 </p>
   <div class="proof">
-<!--l. 800--><p class="indent" >  <span class="head">
+<!--l. 801--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>They can embed into the Galois closure in one way. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
-<!--l. 804--><p class="indent" >  The algebraic closure is the splitting &#xFB01;eld of every polynomial, and the separable closure
+<!--l. 805--><p class="indent" >  The algebraic closure is the splitting &#xFB01;eld of every polynomial, and the separable closure
 is the splitting &#xFB01;eld of every separable polynomial.
 </p>
   <div class="newtheorem">
-<!--l. 806--><p class="noindent" ><span class="head">
+<!--l. 807--><p class="noindent" ><span class="head">
 <a 
- id="x1-13013r8"></a>
+ id="x1-14013r8"></a>
 <span 
 class="cmbx-12">Corollary 13.8.</span>  </span> <span 
 class="cmti-12">If</span> \(M/L/K\) <span 
@@ -2716,24 +2747,21 @@ class="cmti-12">is normal. The compositum and</span>
 <span 
 class="cmti-12">intersection of normal extensions is normal.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
-<!--l. 809--><p class="indent" >  <span class="head">
+<!--l. 810--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The &#xFB01;rst statement is obvious from the third equivalent version of normal.
 The  statement  about  composita  follows  from  Lemma  <a 
-href="#x1-12013r10">12.10<!--tex4ht:ref: conj of generated --></a>,  and  the  one  about
+href="#x1-13013r10">12.10<!--tex4ht:ref: conj of generated --></a>,  and  the  one  about
 intersections is obvious. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 813--><p class="noindent" ><span class="head">
+<!--l. 814--><p class="noindent" ><span class="head">
 <a 
- id="x1-13014r9"></a>
+ id="x1-14014r9"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 13.9.</span>  </span><span 
 class="cmti-12">The </span><span 
@@ -2745,17 +2773,20 @@ class="cmti-12">extension of</span> \(K\) <span
 class="cmti-12">containing</span> \(K\)
 </p>
   </div>
-<!--l. 817--><p class="indent" >  By Corollary <a 
-href="#x1-12013r10">12.10<!--tex4ht:ref: conj of generated --></a> it is obtained by adjoining the conjugates of generating
+<!--l. 818--><p class="indent" >  By Corollary <a 
+href="#x1-13013r10">12.10<!--tex4ht:ref: conj of generated --></a> it is obtained by adjoining the conjugates of generating
 elements of the extension. In particular, the normal closure of a &#xFB01;nite extension is
 &#xFB01;nite.
+                                                                                  
+
+                                                                                  
 </p>
   <h3 class="sectionHead"><span class="titlemark">14. </span> <a 
- id="x1-1400014"></a>Galois extensions</h3>
+ id="x1-1500014"></a>Galois extensions</h3>
   <div class="newtheorem">
-<!--l. 820--><p class="noindent" ><span class="head">
+<!--l. 821--><p class="noindent" ><span class="head">
 <a 
- id="x1-14001r1"></a>
+ id="x1-15001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 14.1.</span>  </span><span 
 class="cmti-12">An extension is </span><span 
@@ -2764,12 +2795,9 @@ class="cmti-12">if it is normal and separable.</span>
 </p>
   </div>
   <div class="newtheorem">
-<!--l. 824--><p class="noindent" ><span class="head">
+<!--l. 825--><p class="noindent" ><span class="head">
 <a 
- id="x1-14002r2"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-15002r2"></a>
 <span 
 class="cmbx-12">Corollary 14.2.</span>  </span><span 
 class="cmti-12">The composita and intersections of Galois extensions is Galois. If</span> \(M/L/K\) <span 
@@ -2780,29 +2808,32 @@ class="cmti-12">is Galois,</span> \(M/L\) <span
 class="cmti-12">is Galois.</span>
 </p>
   <div class="proof">
-<!--l. 827--><p class="indent" >  <span class="head">
+<!--l. 828--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The corresponding properties hold for normal and separable extensions. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 831--><p class="noindent" >For a Galois extension we write \(\Gal (L/K)\) for \(\Aut (L/K)\), and call it the <span 
+<!--l. 832--><p class="noindent" >For a Galois extension we write \(\Gal (L/K)\) for \(\Aut (L/K)\), and call it the <span 
 class="cmbx-12">Galois group</span>. The normal closure
 for a separable extension is called the <span 
 class="cmbx-12">Galois closure</span>.
-</p><!--l. 833--><p class="indent" >  For a subgroup \(H \subset \Aut (L/K)\), we let \(L^H\), denote the <span 
+</p><!--l. 834--><p class="indent" >  For a subgroup \(H \subset \Aut (L/K)\), we let \(L^H\), denote the <span 
 class="cmbx-12">&#xFB01;xed &#xFB01;eld</span>, or the sub&#xFB01;eld &#xFB01;xed by \(H\).
 </p>
   <div class="newtheorem">
-<!--l. 837--><p class="noindent" ><span class="head">
+<!--l. 838--><p class="noindent" ><span class="head">
 <a 
- id="x1-14003r3"></a>
+ id="x1-15003r3"></a>
 <span 
 class="cmbx-12">Proposition 14.3.</span>  </span><span 
 class="cmti-12">TFAE for a &#xFB01;nite extension &#x0028;the &#xFB01;rst three are equivalent in</span>
 <span 
 class="cmti-12">general&#x0029;:</span>
+                                                                                  
+
+                                                                                  
           </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    <span 
 class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
@@ -2824,12 +2855,9 @@ class="cmti-12">&#x0028;4&#x0029;</span> </dt><dd
 class="enumerate-enumitem">\(|\Gal (L/K)| = [L:K]\)<span 
 class="cmti-12">.</span></dd></dl>
   <div class="proof">
-<!--l. 846--><p class="indent" >  <span class="head">
+<!--l. 847--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The &#xFB01;rst two are clearly equivalent. The third is implied by the &#xFB01;rst since the
-                                                                                  
-
-                                                                                  
 Galois group acts transitively on the conjugates and every element not in \(K\) has more
 than one conjugate i&#xFB00; the extension is separable. Conversely, if \(L^{\Aut (L/K)} = K\), for any \(\alpha \in L\) where \(\alpha _i\) are
 its conjugates in \(L\), the polynomial \(\Pi _i(t-\alpha _i)\) is \(\Aut (L/K)\)-invariant, so has coe&#xFB03;cients in \(K\), so \(\alpha \) is separable
@@ -2843,28 +2871,31 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 852--><p class="indent" >  If \(M/L/K\) are normal extensions, there is a map \(\Aut (M/K) \to \Aut (L/K)\) given by restriction, which is surjective by the
+<!--l. 853--><p class="indent" >  If \(M/L/K\) are normal extensions, there is a map \(\Aut (M/K) \to \Aut (L/K)\) given by restriction, which is surjective by the
 extension lemma. We get the exact sequence: </p>
 <div class="center" 
 >
-<!--l. 853--><p class="noindent" >
-</p><!--l. 856--><p class="noindent" >                                 <img 
+<!--l. 854--><p class="noindent" >
+</p><!--l. 857--><p class="noindent" >                                 <img 
 src="Rings_Modules_Fields0x.svg" alt="1             Aut&#x0028;M &#x2215;L &#x0029;        Aut&#x0028;M  &#x2215;K &#x0029;       Aut&#x0028;L &#x2215;K &#x0029;   1 "  />
 </p></div>
-<!--l. 859--><p class="indent" >  We can endow \(\Aut (M/K)\) with the <span 
+<!--l. 860--><p class="indent" >  We can endow \(\Aut (M/K)\) with the <span 
 class="cmbx-12">pro&#xFB01;nite topology</span>, where we view it as the limit of all the
 &#xFB01;nite normal intermediate extensions. If the extension is &#xFB01;nite this is the discrete topology.
 The Galois group of the algebraic closure with this topology is called the <span 
 class="cmbx-12">absolute Galois</span>
 <span 
 class="cmbx-12">group </span>of the &#xFB01;eld.
-</p><!--l. 861--><p class="indent" >  We can slightly strengthen the statement of \((3)\) in the previous proposition. This is the key
+                                                                                  
+
+                                                                                  
+</p><!--l. 862--><p class="indent" >  We can slightly strengthen the statement of \((3)\) in the previous proposition. This is the key
 to Galois Theory.
 </p>
   <div class="newtheorem">
-<!--l. 863--><p class="noindent" ><span class="head">
+<!--l. 864--><p class="noindent" ><span class="head">
 <a 
- id="x1-14008r4"></a>
+ id="x1-15008r4"></a>
 <span 
 class="cmbx-12">Lemma 14.4.</span>  </span><span 
 class="cmti-12">If</span> \(L/K\) <span 
@@ -2874,10 +2905,7 @@ class="cmti-12">, then</span> \([\Gal (L/K):H] = [L^H:K]\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 867--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 868--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Choose a primitive element \(\alpha \) of \(L/L^H\), and consider \(\Pi _i(t-\alpha _i)\) as before where the product
 is over the \(H\)-conjugates of \(\alpha \). This polynomial has coe&#xFB03;cients in \(L^H\), so is the minimal
@@ -2887,9 +2915,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 871--><p class="noindent" ><span class="head">
+<!--l. 872--><p class="noindent" ><span class="head">
 <a 
- id="x1-14009r5"></a>
+ id="x1-15009r5"></a>
 <span 
 class="cmbx-12">Theorem 14.5 </span>&#x0028;Fundamental Theorem of Galois Theory&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -2908,25 +2936,25 @@ class="cmti-12">the subgroup. This is a bijection, and restricts to a bijective 
 class="cmti-12">normal intermediate extensions and normal closed subgroups.</span>
 </p>
   <div class="proof">
-<!--l. 875--><p class="indent" >  <span class="head">
+<!--l. 876--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>First assume our extension is &#xFB01;nite.
-</p><!--l. 877--><p class="indent" >  For a subset \(H \subset \Gal (M/K)\) we can ask which elements of \(\Gal (M/K)\) &#xFB01;x \(M^H\). Certainly the subgroup generated
+                                                                                  
+
+                                                                                  
+</p><!--l. 878--><p class="indent" >  For a subset \(H \subset \Gal (M/K)\) we can ask which elements of \(\Gal (M/K)\) &#xFB01;x \(M^H\). Certainly the subgroup generated
 by \(H\) does, and the previous results give \([\Gal (M/K):H] = [M^H:K] = [M:K]/[M:M^H] = [\Gal (M/K):\Gal (M^H/K)]\), so \(H = \Gal (M^H/K)\). Conversely, given an intermediate
 extension, by the extension lemma it is the &#xFB01;xed &#xFB01;eld of the automorphisms that &#xFB01;x
 it.
-</p><!--l. 879--><p class="indent" >  In this correspondence, our subgroup \(H\) is normal i&#xFB00; for an automorphism \(\tau \) that &#xFB01;xes
+</p><!--l. 880--><p class="indent" >  In this correspondence, our subgroup \(H\) is normal i&#xFB00; for an automorphism \(\tau \) that &#xFB01;xes
 \(M^H\), and \(\sigma \) that &#xFB01;xes \(K\), \(\tau \sigma M^H = \sigma M^H\) i&#xFB00; automorphisms &#xFB01;xing \(M^H/H\) &#xFB01;x every conjugate of \(M^H/H\) i&#xFB00; \(M^H\) contains its
 conjugates i&#xFB00; \(M^H\) is normal.
-</p><!--l. 882--><p class="indent" >  The extension to in&#xFB01;nite groups is purely formal: it is easy to see that the &#xFB01;xed
+</p><!--l. 883--><p class="indent" >  The extension to in&#xFB01;nite groups is purely formal: it is easy to see that the &#xFB01;xed
 &#xFB01;eld of any intermediate extension is closed, since if \(\tau _i \to \tau \) and each \(\tau _i\) &#xFB01;xes \(\alpha \), then \(\tau \) does too.
 Now if there is an element not in a closed subgroup \(H\) &#xFB01;xing its &#xFB01;xed &#xFB01;eld, there is
 some open set containing \(H\) missing it, which arises from picking &#xFB01;nitely many subsets
 of the Galois group of &#xFB01;nite sub extensions, which amounts to picking some subset
 of the Galois group of their compositum. Then the element doesn&#x2019;t &#xFB01;x something in
-                                                                                  
-
-                                                                                  
 this &#xFB01;nite subextension by &#xFB01;nite Galois theory. The rest of the argument proceeds
 as before. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -2934,9 +2962,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 886--><p class="noindent" ><span class="head">
+<!--l. 887--><p class="noindent" ><span class="head">
 <a 
- id="x1-14010r6"></a>
+ id="x1-15010r6"></a>
 <span 
 class="cmbx-12">Corollary 14.6.</span>  </span><span 
 class="cmti-12">Given  an  intermediate  extension</span>  \(L\)  <span 
@@ -2947,7 +2975,7 @@ class="cmti-12">,</span> \(\Aut (L/K) = N_{\Gal (M/K)}(H)/H\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 890--><p class="indent" >  <span class="head">
+<!--l. 891--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Automorphisms of \(M\) that &#xFB01;x \(L\) as a set are the same as \(\sigma \in \Gal (M/K)\) such that \(\tau \sigma L = \sigma L\) for each
 automorphism \(\tau \) &#xFB01;xing \(L\). This is exactly the normalizer of \(H\). <span class="qed"><span 
@@ -2955,9 +2983,12 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">15. </span> <a 
- id="x1-1500015"></a>First Applications</h3>
-<!--l. 896--><p class="noindent" >Let&#x2019;s understand &#xFB01;nite &#xFB01;elds. They are &#xFB01;nite extensions of \(\FF _p\), and we have already seen in
+ id="x1-1600015"></a>First Applications</h3>
+<!--l. 897--><p class="noindent" >Let&#x2019;s understand &#xFB01;nite &#xFB01;elds. They are &#xFB01;nite extensions of \(\FF _p\), and we have already seen in
 the proof of the primitive element theorem that every element is the root of \(x^{p^k}-x\). Since this
 polynomial is separable, our &#xFB01;eld is the splitting &#xFB01;eld of \(x^{p^k}-x\). Indeed such a &#xFB01;eld exists, as
 given the splitting &#xFB01;eld, the roots of \(x^{p^k}-x\) form a sub&#xFB01;eld &#x0028;since it is the &#xFB01;xed points
@@ -2966,12 +2997,9 @@ It is degree \(k\), and \(Fr\) generates its cyclic Galois group. Thus we get th
 proposition:
 </p>
   <div class="newtheorem">
-<!--l. 898--><p class="noindent" ><span class="head">
+<!--l. 899--><p class="noindent" ><span class="head">
 <a 
- id="x1-15001r1"></a>
-                                                                                  
-
-                                                                                  
+ id="x1-16001r1"></a>
 <span 
 class="cmbx-12">Proposition 15.1.</span>  </span><span 
 class="cmti-12">There is a unique &#xFB01;nite &#xFB01;eld of size</span> \(p^k\) <span 
@@ -2993,13 +3021,13 @@ class="cmti-12">closure, and the absolute Galois group is</span> \(\hat{\ZZ }\)<
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 902--><p class="indent" >  We can use Galois theory to get an algebraic proof of the fundamental theorem of
+<!--l. 903--><p class="indent" >  We can use Galois theory to get an algebraic proof of the fundamental theorem of
 algebra:
 </p>
   <div class="newtheorem">
-<!--l. 904--><p class="noindent" ><span class="head">
+<!--l. 905--><p class="noindent" ><span class="head">
 <a 
- id="x1-15002r2"></a>
+ id="x1-16002r2"></a>
 <span 
 class="cmbx-12">Lemma 15.2.</span>  </span><span 
 class="cmti-12">Every &#xFB01;eld extension of</span> \(K\) <span 
@@ -3009,26 +3037,26 @@ class="cmti-12">is of the form</span> \(K(\sqrt{a})\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 907--><p class="indent" >  <span class="head">
+<!--l. 908--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>This follows from the quadratic formula. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
+                                                                                  
+
+                                                                                  
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 911--><p class="noindent" ><span class="head">
+<!--l. 912--><p class="noindent" ><span class="head">
 <a 
- id="x1-15003r3"></a>
+ id="x1-16003r3"></a>
 <span 
 class="cmbx-12">Theorem 15.3.</span>  </span>\(\CC \) <span 
 class="cmti-12">is algebraically closed.</span>
 </p>
   <div class="proof">
-<!--l. 915--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+<!--l. 916--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose we have a &#xFB01;nite Galois extension of \(\CC \). If its degree is a power of \(2\), there
 is an index two subgroup of its Galois group, corresponding to a degree \(2\) extension,
@@ -3039,12 +3067,12 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 919--><p class="indent" >  We can also get a nice proof of the primitive element theorem.
+<!--l. 920--><p class="indent" >  We can also get a nice proof of the primitive element theorem.
 </p>
   <div class="newtheorem">
-<!--l. 921--><p class="noindent" ><span class="head">
+<!--l. 922--><p class="noindent" ><span class="head">
 <a 
- id="x1-15004r4"></a>
+ id="x1-16004r4"></a>
 <span 
 class="cmbx-12">Lemma 15.4.</span>  </span><span 
 class="cmti-12">A   &#xFB01;nite   separable   extension   has   &#xFB01;nitely   many   intermediate</span>
@@ -3052,29 +3080,29 @@ class="cmti-12">A   &#xFB01;nite   separable   extension   has   &#xFB01;nitely 
 class="cmti-12">extensions.</span>
 </p>
   <div class="proof">
-<!--l. 925--><p class="indent" >  <span class="head">
+<!--l. 926--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Its  Galois  closure  is  &#xFB01;nite,  and  its  intermediate  extensions  correspond  to
 certain subgroups of its &#xFB01;nite Galois group. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                  
+
+                                                                                  
 </p>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 929--><p class="noindent" ><span class="head">
+<!--l. 930--><p class="noindent" ><span class="head">
 <a 
- id="x1-15005r5"></a>
+ id="x1-16005r5"></a>
 <span 
 class="cmbx-12">Theorem 15.5.</span>  </span><span 
 class="cmti-12">A &#xFB01;nite extension is simple i&#xFB00; there are &#xFB01;nitely many intermediate</span>
 <span 
 class="cmti-12">extensions.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
-<!--l. 933--><p class="indent" >  <span class="head">
+<!--l. 934--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We have already dealt with &#xFB01;nite &#xFB01;elds, so we assume the &#xFB01;elds are in&#xFB01;nite.
 If there are &#xFB01;nitely many intermediate extensions of \(L/K\), this follows since any element
@@ -3086,13 +3114,13 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 937--><p class="indent" >  A good &#xFB01;rst example of extensions we can study are cyclotomic extensions, where we
+<!--l. 938--><p class="indent" >  A good &#xFB01;rst example of extensions we can study are cyclotomic extensions, where we
 adjoin roots of unity.
 </p>
   <div class="newtheorem">
-<!--l. 939--><p class="noindent" ><span class="head">
+<!--l. 940--><p class="noindent" ><span class="head">
 <a 
- id="x1-15006r6"></a>
+ id="x1-16006r6"></a>
 <span 
 class="cmbx-12">Lemma 15.6.</span>  </span><span 
 class="cmti-12">The torsion multiplicative subgroup of an algebraically closed &#xFB01;eld is</span>
@@ -3103,7 +3131,10 @@ class="cmti-12">in characteristic</span> \(p\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 943--><p class="indent" >  <span class="head">
+<!--l. 944--><p class="indent" >  <span class="head">
+                                                                                  
+
+                                                                                  
 <span 
 class="cmti-12">Proof.</span> </span>Just note the polynomial \(x^k-1\) is separable i&#xFB00; \(k \neq 0\) in the &#xFB01;eld, and that there can only
 be at most \(k\) roots. <span class="qed"><span 
@@ -3111,12 +3142,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 947--><p class="indent" >  The <span 
+<!--l. 948--><p class="indent" >  The <span 
 class="cmbx-12">cyclotomic polynomial</span> \(\phi _n(x)\) is the minimal polynomial over \(\QQ \) of a primitive \(n^{th}\) root of
 unity, \(\zeta _n\). We will see that it can be constructed explicitly &#x0028;and depends only on \(n\)&#x0029; by the
-                                                                                  
-
-                                                                                  
 equation \(\Pi _{d|n}\phi _d(x) = x^n-1\). To do this we will need the <span 
 class="cmbx-12">discriminant </span>of a polynomial \(f \in K[x]\), which is given by \(a^{2\deg (f)-2}\prod _{i&lt;j} (\alpha _i-\alpha _j)^2\),
 where \(\alpha _i\) are the roots of \(f\) in the algebraic closure counted with multiplicity, and \(a\) is the
@@ -3125,9 +3153,9 @@ and is invariant under the Galois action, so gives an element of \(K\) for a sep
 polynomial.
 </p>
   <div class="newtheorem">
-<!--l. 949--><p class="noindent" ><span class="head">
+<!--l. 950--><p class="noindent" ><span class="head">
 <a 
- id="x1-15007r7"></a>
+ id="x1-16007r7"></a>
 <span 
 class="cmbx-12">Proposition 15.7.</span>  </span><span 
 class="cmti-12">The cyclotomic polynomial</span> \(\phi _n\) <span 
@@ -3145,19 +3173,22 @@ class="cmti-12">in</span> \(\FF _p^\times \)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 953--><p class="indent" >  <span class="head">
+<!--l. 954--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>For positive characteristic, since we know the multiplicative group is cyclic of
 order \(p^l-1\), if there is a root, \(k|p^l-1\), and conversely if \(k|p^l-1\), then \(x^k-1|x^{p^l}-x\), of which \(\FF _{p^l}\) is the splitting &#xFB01;eld.
-</p><!--l. 955--><p class="indent" >  For characteristic \(0\), we will &#xFB01;rst prove that if \(\phi _n(\zeta _n) = 0\), \(\phi _n(\zeta _n^p) = 0\) for \(p \nmid n\) since primes generate \(\ZZ /n\ZZ ^\times \). To see
+</p><!--l. 956--><p class="indent" >  For characteristic \(0\), we will &#xFB01;rst prove that if \(\phi _n(\zeta _n) = 0\), \(\phi _n(\zeta _n^p) = 0\) for \(p \nmid n\) since primes generate \(\ZZ /n\ZZ ^\times \). To see
 this we will &#xFB01;rst compute the discriminant of \(x^n-1\). \[ \prod _{i&lt;j}(\zeta _n^i-\zeta _n^j)^2 = (-1)^{\frac{n(n-1)}{2}}\prod _{i\neq j}\zeta _n^i(1-\zeta _n^{j-i}) = (-1)^{\frac{n(n-1)}{2}}\prod _{i}\zeta _n^i\prod _{j\neq 0}(1-\zeta _n^{j})\]\[ = (-1)^{\frac{n(n-1)}{2}}\prod _{i}\zeta _n^in = n^n(-1)^{\frac{(n+2)(n-1)}{2}} \] Now if \(\zeta _n^p\) isn&#x2019;t a root of \(\phi _n\) then \(\phi _n(\zeta _n^p) |n^n\) because
 \(\phi _n(x) = \prod (x-\zeta _n^{k_i})\) for some \(k_i\) &#x0028;the \(|\) makes sense in the integral closure of \(\ZZ \)&#x0029;. However, \(\phi _n(\zeta _n^p) \equiv \phi _n(\zeta _n)^p = 0 \pmod{p}\), so \(p\) divides \(n^n\), a
 contradiction. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                  
+
+                                                                                  
   </div>
-<!--l. 963--><p class="indent" >  A classical problem is determining whether or not an irreducible polynomial \(f\) has a root \(\alpha \)
+<!--l. 964--><p class="indent" >  A classical problem is determining whether or not an irreducible polynomial \(f\) has a root \(\alpha \)
 that can be expressed in the &#xFB01;eld \(K\) via radicals. Note that a radical is a extension, so
 that we would like to know when \(K(\alpha )/K\) is contained in an extension that is a chain of
 <span 
@@ -3166,15 +3197,12 @@ of unity a bit, we can use Galois theory to answer this question. We say that
 the <span 
 class="cmbx-12">Galois group </span>of a polynomial \(f\) is the automorphism group of its splitting
 &#xFB01;eld.
-</p><!--l. 966--><p class="indent" >  Un&#xFB01;nished, need Kummer theory
+</p><!--l. 967--><p class="indent" >  Un&#xFB01;nished, need Kummer theory
 </p>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
-<!--l. 967--><p class="noindent" ><span class="head">
+<!--l. 968--><p class="noindent" ><span class="head">
 <a 
- id="x1-15008r8"></a>
+ id="x1-16008r8"></a>
 <span 
 class="cmbx-12">Theorem 15.8.</span>  </span><span 
 class="cmti-12">If char</span>\((K) \nmid \deg (f)!\) <span 
@@ -3184,7 +3212,7 @@ class="cmti-12">, its roots are expressible by</span>
 class="cmti-12">radicals i&#xFB00; its Galois group is solvable.</span>
 </p>
   <div class="proof">
-<!--l. 971--><p class="indent" >  <span class="head">
+<!--l. 972--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Note we can assume the polynomial is separable, as the purely inseparable
 part will not change the automorphism group, and will not change the ability to
@@ -3199,14 +3227,17 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 975--><p class="indent" >  A nice property of &#xFB01;nite Galois extensions is that they have a <span 
+<!--l. 976--><p class="indent" >  A nice property of &#xFB01;nite Galois extensions is that they have a <span 
 class="cmbx-12">normal basis</span>, that is a
 basis consisting of conjugates.
 </p>
+                                                                                  
+
+                                                                                  
   <div class="newtheorem">
-<!--l. 977--><p class="noindent" ><span class="head">
+<!--l. 978--><p class="noindent" ><span class="head">
 <a 
- id="x1-15009r9"></a>
+ id="x1-16009r9"></a>
 <span 
 class="cmbx-12">Lemma 15.9 </span>&#x0028;Linear independence of characters&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -3221,10 +3252,7 @@ class="cmti-12">for any nontrivial linear</span>
 class="cmti-12">combination.</span>
 </p>
   <div class="proof">
-                                                                                  
-
-                                                                                  
-<!--l. 980--><p class="indent" >  <span class="head">
+<!--l. 981--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose this were the case, and choose a relation \(\sum _i a_i\chi _i = 0\) with the minimal number
 of nonzero \(a_i\) Now given any two \(\chi _i,\chi _j\) whose \(a_i,a_j\) are nonzero, &#xFB01;nd a \(h\) such that \(\chi _i(h) \neq \chi _j(h)\). Then \(\sum _i a_i\chi _i(gh) = \sum _i a_i\chi _i(g)\chi _i(h) = 0\), so we
@@ -3235,9 +3263,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
   <div class="newtheorem">
-<!--l. 984--><p class="noindent" ><span class="head">
+<!--l. 985--><p class="noindent" ><span class="head">
 <a 
- id="x1-15010r10"></a>
+ id="x1-16010r10"></a>
 <span 
 class="cmbx-12">Corollary 15.10 </span>&#x0028;Normal basis theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -3247,13 +3275,16 @@ class="cmti-12">has a normal basis i&#xFB00; it is</span>
 class="cmti-12">Galois.</span>
 </p>
   <div class="proof">
-<!--l. 987--><p class="indent" >  <span class="head">
+<!--l. 988--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Certainly the condition is necessary. First assume the extension is cyclic, so
 that we can view \(L/K\) as a \(K[\sigma ]\) module where \(\sigma \) generates the Galois group. \(\sigma ^n-1\) annihilates the
 module, and by linear independence of characters no smaller polynomial of \(\sigma \) can.
 Thus \(L \cong K[\sigma ]/(\sigma ^n-1)\) as modules, so any generating element produces a normal basis.
-</p><!--l. 990--><p class="indent" >  Now assume the &#xFB01;eld is in&#xFB01;nite. It su&#xFB03;ces to &#xFB01;nd an \(\alpha \in L\) that satis&#xFB01;es the property \(\sigma _i\sigma _j(\alpha )\) is
+                                                                                  
+
+                                                                                  
+</p><!--l. 991--><p class="indent" >  Now assume the &#xFB01;eld is in&#xFB01;nite. It su&#xFB03;ces to &#xFB01;nd an \(\alpha \in L\) that satis&#xFB01;es the property \(\sigma _i\sigma _j(\alpha )\) is
 an invertible matrix, as then any relation \(\sum c_i\sigma _i = 0\) can be multiplied by each \(\sigma _j\) to see the \(c_i\) are
 0. Choose a basis \(e_i\) of \(L/K\), and consider the polynomial \(\Delta (c_1,\dots ,c_n) = \det (\sigma _i\sigma _j(\sum c_ie_i))=\det (\sum c_i\sigma _i\sigma _j(e_i))\). If the polynomial \(\Delta \) is nonzero,
 since \(K\) is in&#xFB01;nite, there is a choice of \(c_i \in K\) that \(\Delta \) is nonzero on, providing a normal basis.
@@ -3263,11 +3294,8 @@ we can choose some \(c_i \in L\) such that \(\sum _k c_k\sigma _i(e_k) = \delta 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 995--><p class="indent" >  Normal bases can help explicitly &#xFB01;nd primitive elements of intermediate extensions. We
+<!--l. 996--><p class="indent" >  Normal bases can help explicitly &#xFB01;nd primitive elements of intermediate extensions. We
 call an element that is part of a normal basis a <span 
 class="cmbx-12">normal element</span>. We say that the <span 
 class="cmbx-12">trace</span>
@@ -3278,9 +3306,9 @@ that when the extension is Galois, we can write the trace as \(\Tr _{L/K}(\alpha
 \(\N _{L/K}(\alpha ) = \prod _{\tau \in \Gal (L/K)}\tau (\alpha )\).
 </p>
   <div class="newtheorem">
-<!--l. 997--><p class="noindent" ><span class="head">
+<!--l. 998--><p class="noindent" ><span class="head">
 <a 
- id="x1-15011r11"></a>
+ id="x1-16011r11"></a>
 <span 
 class="cmbx-12">Proposition 15.11.</span>  </span><span 
 class="cmti-12">If</span> \(\alpha \) <span 
@@ -3293,7 +3321,7 @@ class="cmti-12">is a primitive element. If</span> \(L\) <span
 class="cmti-12">is a normal, then this is a normal element.</span>
 </p>
   <div class="proof">
-<!--l. 1001--><p class="indent" >  <span class="head">
+<!--l. 1002--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>The  &#xFB01;rst  statement  follows  since  there  are  \([L:K]\)  conjugates  of  \(\Tr _{M/L}(\alpha )\).  The  second
 statement follows since the conjugates of \(\alpha \) are linearly independent over \(K\). <span class="qed"><span 
@@ -3301,15 +3329,18 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
+                                                                                  
+
+                                                                                  
   <h3 class="sectionHead"><span class="titlemark">16. </span> <a 
- id="x1-1600016"></a>Symmetric Polynomials</h3>
-<!--l. 1007--><p class="noindent" >The symmetric polynomials have been behind the scenes so far in Galois Theory. We will
+ id="x1-1700016"></a>Symmetric Polynomials</h3>
+<!--l. 1008--><p class="noindent" >The symmetric polynomials have been behind the scenes so far in Galois Theory. We will
 turn to their study.
 </p>
   <div class="newtheorem">
-<!--l. 1009--><p class="noindent" ><span class="head">
+<!--l. 1010--><p class="noindent" ><span class="head">
 <a 
- id="x1-16001r1"></a>
+ id="x1-17001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 16.1.</span>  </span><span 
 class="cmti-12">The </span><span 
@@ -3323,20 +3354,17 @@ class="cmti-12">&#x0029; where</span> \(\sigma _{i,n}\) <span
 class="cmti-12">is the</span> \(i^{th}\) <span 
 class="cmti-12">graded part of</span> \(\Pi _1^n (t-x_i)\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
-<!--l. 1013--><p class="indent" >  Note these polynomials are invariant under the \(S_n\) action that permutes the
+<!--l. 1014--><p class="indent" >  Note these polynomials are invariant under the \(S_n\) action that permutes the
 \(x_i\). We say that a <span 
 class="cmbx-12">symmetric polynomial </span>is one that is invariant under this \(S_n\)
 action.
 </p>
   <div class="newtheorem">
-<!--l. 1015--><p class="noindent" ><span class="head">
+<!--l. 1016--><p class="noindent" ><span class="head">
 <a 
- id="x1-16002r2"></a>
+ id="x1-17002r2"></a>
 <span 
 class="cmbx-12">Theorem 16.2.</span>  </span><span 
 class="cmti-12">Any symmetric polynomial in</span> \(n\) <span 
@@ -3349,7 +3377,7 @@ class="cmti-12">action is</span> \(R[\sigma _1,\dots ,\sigma _n]\)<span
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-<!--l. 1018--><p class="indent" >  <span class="head">
+<!--l. 1019--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>We can prove this directly via a division algorithm. We put an ordering on
 monomials \(\Pi _i x_i^{a_i}\) such that \((a_1,\dots ,a_n) &gt; (b_1,\dots ,b_n)\) if the &#xFB01;rst term where they di&#xFB00;er, \(a_i&gt;b_i\). Now given a symmetric
@@ -3359,15 +3387,18 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 1022--><p class="indent" >  We can now consider the generic Galois extension, \(K(x_1,\dots ,x_n)/K(\sigma _1,\dots ,\sigma _n)\). The action of \(S_n\) by the previous
+                                                                                  
+
+                                                                                  
+<!--l. 1023--><p class="indent" >  We can now consider the generic Galois extension, \(K(x_1,\dots ,x_n)/K(\sigma _1,\dots ,\sigma _n)\). The action of \(S_n\) by the previous
 theorem leaves \(K(\sigma _1,\dots ,\sigma _n)\) &#xFB01;xed, so the Galois group is \(S_n\). The minimal polynomial of the \(x_i\) is \(\prod _i(t-x_i) = \sum _i t^i\sigma _i\), so is
 degree \(n\)
-</p><!--l. 1024--><p class="indent" >  \(S_n\) is solvable for \(n\leq 4\), so we can generally solve a degree \(4\) or less polynomial using radicals.
+</p><!--l. 1025--><p class="indent" >  \(S_n\) is solvable for \(n\leq 4\), so we can generally solve a degree \(4\) or less polynomial using radicals.
 Note that
-</p><!--l. 1026--><p class="indent" >  .
-</p><!--l. 1028--><p class="indent" >  .
-</p><!--l. 1030--><p class="indent" >  .
-</p><!--l. 1034--><p class="indent" >  Given a Galois element, an intermediate subextension, one can compute the minimal
+</p><!--l. 1027--><p class="indent" >  .
+</p><!--l. 1029--><p class="indent" >  .
+</p><!--l. 1031--><p class="indent" >  .
+</p><!--l. 1035--><p class="indent" >  Given a Galois element, an intermediate subextension, one can compute the minimal
 polynomial of the trace to the intermediate extension
 </p>
    

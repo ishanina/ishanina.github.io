@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
 <link rel="stylesheet" type="text/css" href="Riemannian_Geometry.css" /> 
 <meta name="src" content="Riemannian_Geometry.tex" /> 
- <script> window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand']] } }; </script> 
+<script>window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand'] } }; </script> 
  <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
 >
@@ -14,6 +14,7 @@
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
+\newcommand{\cK}{\mathcal{K}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -61,8 +62,8 @@
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
 
-\newcommand{\pushout}{\arrow[dr, phantom, "\ulcorner", very near start]}
-\newcommand{\pullback}{\arrow[ul, phantom, "\llcorner", very near start]}
+\newcommand{\pushout}{\arrow[ul, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[dr, phantom, "\lrcorner", very near start]}
 
 \newcommand{\simp}[1]{#1^{\Delta^{op}}}
 

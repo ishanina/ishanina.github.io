@@ -27,6 +27,8 @@
 # Talks
 
 [Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
+
+[Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/Proof_of_Cobordism_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
 # Other
 
 [Diagonal Argument](Other/Diagonal Argument/Diagonal_Argument.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Diagonal Argument.pdf)

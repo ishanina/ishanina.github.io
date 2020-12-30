@@ -23,6 +23,7 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\LL}{\mathbb{L}}
 \newcommand{\HH}{\mathbb{H}}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\SP}{\mathbb{S}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
@@ -80,6 +81,7 @@
 
 
 %Math operators
+\newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
 \newcommand{\Cob}{\mathop{\rm Cob}\nolimits}
@@ -96,9 +98,10 @@
 \newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
 \newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
 \newcommand{\Free}{\mathop{\rm Free}\nolimits}
-\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
-\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
-\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\Map}{\mathop{\rm Map}\nolimits}
+\newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
+\newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
+\newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -260,7 +263,7 @@ is:
  id="x1-2001r1"></a>
 <span 
 class="cmbx-12">Theorem 1.1 </span>&#x0028;Baez-Dolan, Hopkins-Lurie&#x0029;<span 
-class="cmbx-12">.</span>  </span>  \(Fun^{\otimes }(\Bord _n^{X,\xi },C) = Maps_{O(n)}(\tilde{X},C^{\cong })\)<span 
+class="cmbx-12">.</span>  </span>  \(Fun^{\otimes }(\Bord _n^{X,\xi },C) = \Map _{O(n)}(\tilde{X},C^{\cong })\)<span 
 class="cmti-12">,  where</span>  \(C\)  <span 
 class="cmti-12">is  a  symmetric  monoidal</span>
 \((\infty ,n)\)<span 
@@ -282,7 +285,7 @@ Thom spectrum \(MTG\) of the negative of the canonical bundle.
  id="x1-2002r2"></a>
 <span 
 class="cmbx-12">Theorem 1.2 </span>&#x0028;GMTW&#x0029;<span 
-class="cmbx-12">.</span>  </span>\(Fun^{\otimes }(\Bord _{n}^{BG},X) = Maps(\Sigma ^nMTG,X)\)<span 
+class="cmbx-12">.</span>  </span>\(Fun^{\otimes }(\Bord _{n}^{BG},X) = \Map (\Sigma ^nMTG,X)\)<span 
 class="cmti-12">, where</span> \(X\) <span 
 class="cmti-12">is a spectrum.</span>
 </p>
@@ -457,7 +460,7 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
  id="x1-50004"></a>Reduction to Unoriented Case</h3>
 <!--l. 75--><p class="noindent" >\(\Bord _n=\Bord _n^{BO(n)}\) will be the unoriented bordism category.
-</p><!--l. 77--><p class="indent" >  The right hand side of the cobordism hypothesis is \(Maps_{O(n)}(\tilde{X},C^{\cong })\), which is the same as \(Maps_{O(n)}(EO(n),(C^{\cong })^{\tilde{X}}\). So naively,
+</p><!--l. 77--><p class="indent" >  The right hand side of the cobordism hypothesis is \(\Map _{O(n)}(\tilde{X},C^{\cong })\), which is the same as \(\Map _{O(n)}(EO(n),(C^{\cong })^{\tilde{X}}\). So naively,
 we could try to reduce to the unoriented case by replacing \(C\) by a category \(C^{X,\xi }\) such that \((C^{X,\xi })^{\cong } = (C^{\cong })^{\tilde{X}}\), and
 such that \(Fun^{\otimes }(\Bord _n^{X.\xi },C) = Fun^{\otimes }(\Bord _n,C^{X,\xi })\), and the general case would follow immediately.
 </p><!--l. 79--><p class="indent" >  This strategy doesn&#x2019;t work exactly, but a relative version of it does: There
@@ -509,8 +512,8 @@ dimension \(n-1\) with boundary with maps given by the space of cobordisms &#x00
 necessarily trivial on the boundary&#x0029;. The map between them is given by taking the
 boundary.
 </p><!--l. 100--><p class="indent" >  Let&#x2019;s see how this replacement works for \(n=1\). \(\Bord _1=\Cob _{\partial }^{un}(1)\). The map \(\Bord _1 \to \Bord _2\) is essentially surjective, and for
-any \(X,Y\) in \(\Bord _2\), the category \(Maps_{\Bord _2}(X,Y)\) is equivalent to \(Maps_{\Bord _2}(1,Y\otimes X^{\vee })\). This means that to recover the map
-to \(\Bord _2\) we just need to remember \(Y \mapsto Maps_{\Bord _2}(1,Y)\) as a lax monoidal functor \(\Bord _1 \to \Cat _{(\infty ,1)}\). But by a version of
+any \(X,Y\) in \(\Bord _2\), the category \(\Map _{\Bord _2}(X,Y)\) is equivalent to \(\Map _{\Bord _2}(1,Y\otimes X^{\vee })\). This means that to recover the map
+to \(\Bord _2\) we just need to remember \(Y \mapsto \Map _{\Bord _2}(1,Y)\) as a lax monoidal functor \(\Bord _1 \to \Cat _{(\infty ,1)}\). But by a version of
 the Grothendieck construction, this is equivalent to a coCartesion &#xFB01;bration to \(\Bord _1\),
 and one can show this gives exactly something equivalent to \(\Cob _{\partial }^{un}(2)\). This example can
 be spiced up to give a general correspondence between skeletal sequences and
@@ -662,9 +665,9 @@ an inductive de&#xFB01;nition. For example \(n=0\) it is just a functor into abe
                                                                                   
 
                                                                                   
-require a functor from \(Maps(x,y)\) into abelian groups as well as a map local systems on \(Maps(x,y)\times Maps(y,z)\) from the
-product of the pullbacks of the local system on \(Maps(x,y)\) and \(Maps(y,z)\) to the pullback of the local system on
-\(Maps(x,z)\).
+require a functor from \(\Map (x,y)\) into abelian groups as well as a map local systems on \(\Map (x,y)\times \Map (y,z)\) from the
+product of the pullbacks of the local system on \(\Map (x,y)\) and \(\Map (y,z)\) to the pullback of the local system on
+\(\Map (x,z)\).
 </p><!--l. 147--><p class="indent" >  The de&#xFB01;nition of cohomology on a local system is also inductive, and can be thought
 of as the homotopy classes of sections of a &#xFB01;bration of \((\infty ,n)\)-categories whose &#xFB01;bres
 are Eilenberg-MacLane spaces. There are a few subtleties, for example that we

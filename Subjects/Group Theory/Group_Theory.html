@@ -23,6 +23,7 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\LL}{\mathbb{L}}
 \newcommand{\HH}{\mathbb{H}}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\SP}{\mathbb{S}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
@@ -80,6 +81,10 @@
 
 
 %Math operators
+\newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
+\newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
+\newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
+\newcommand{\Cob}{\mathop{\rm Cob}\nolimits}
 \newcommand{\Set}{\mathop{\rm Set}\nolimits}
 \newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
 \newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
@@ -93,9 +98,10 @@
 \newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
 \newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
 \newcommand{\Free}{\mathop{\rm Free}\nolimits}
-\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
-\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
-\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\Map}{\mathop{\rm Map}\nolimits}
+\newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
+\newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
+\newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -231,8 +237,8 @@ href="#x1-60005" id="QQ2-1-6">Nilpotent Groups</a></span><br /><span class="sect
 href="#x1-70006" id="QQ2-1-7">Semidirect Products, Presentations,
 and Examples</a></span><br /><span class="sectionToc" >&#x00A0;7.&#x00A0;&#x00A0;<a 
 href="#x1-80007" id="QQ2-1-8">The Symmetric Group</a></span><br /><span class="sectionToc" >&#x00A0;8.&#x00A0;&#x00A0;<a 
-href="#x1-90008" id="QQ2-1-9">Finite subgroups of
-\(\o:mathop:{\rm SU}\nolimits (2),\o:mathop:{\rm SO}\nolimits (3)\)</a></span><br /><span class="sectionToc" >&#x00A0;9.&#x00A0;&#x00A0;<a 
+href="#x1-90008" id="QQ2-1-9">Finite subgroups of SU&#x0028;2&#x0029;,
+SO&#x0028;3&#x0029;</a></span><br /><span class="sectionToc" >&#x00A0;9.&#x00A0;&#x00A0;<a 
 href="#x1-100009" id="QQ2-1-10">Composition series and Jordan H&#x00F6;lder</a></span><br /><span class="sectionToc" >&#x00A0;10.&#x00A0;&#x00A0;<a 
 href="#x1-1100010" id="QQ2-1-11">Groups of small
 order</a></span><br /><span class="sectionToc" >&#x00A0;11.&#x00A0;&#x00A0;<a 
@@ -1321,7 +1327,7 @@ yield \(A_n\).
                                                                                   
 </p>
   <h3 class="sectionHead"><span class="titlemark">8. </span> <a 
- id="x1-90008"></a>Finite subgroups of \(\SU (2),\SOr (3)\)</h3>
+ id="x1-90008"></a>Finite subgroups of SU&#x0028;2&#x0029;, SO&#x0028;3&#x0029;</h3>
 <!--l. 365--><p class="noindent" >Let&#x2019;s try to classify the &#xFB01;nite subgroups of \(\SU (2)\), which consists of matrices of the form \(\begin{pmatrix} a &amp; b \\ -\overline{b} &amp; \overline{a} \end{pmatrix}\) where \(|a|^2+|b|^2 = 1\).
 Note that \(\SU (2)/\{\pm 1\} = \SOr (3)\), so every &#xFB01;nite subgroup is either a subgroup of \(\SOr (3)\) or the pullback of one. One
 family of subgroups of \(\SOr (3)\) is \(C_n\), and another is \(D_n\). We can get three more \(E_6,E_7,E_8\) by looking at the

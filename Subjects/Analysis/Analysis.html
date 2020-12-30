@@ -23,6 +23,7 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\LL}{\mathbb{L}}
 \newcommand{\HH}{\mathbb{H}}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\SP}{\mathbb{S}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
@@ -80,6 +81,10 @@
 
 
 %Math operators
+\newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
+\newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
+\newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
+\newcommand{\Cob}{\mathop{\rm Cob}\nolimits}
 \newcommand{\Set}{\mathop{\rm Set}\nolimits}
 \newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
 \newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
@@ -93,9 +98,10 @@
 \newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
 \newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
 \newcommand{\Free}{\mathop{\rm Free}\nolimits}
-\newcommand{\Maps}{\mathop{\rm Maps}\nolimits}
-\newcommand{\LMaps}{\mathop{\rm LMaps}\nolimits}
-\newcommand{\RMaps}{\mathop{\rm RMaps}\nolimits}
+\newcommand{\Map}{\mathop{\rm Map}\nolimits}
+\newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
+\newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
+\newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -1300,7 +1306,8 @@ class="cmti-12">exists.</span>
 <span 
 class="cmti-12">Proof.</span> </span>It su&#xFB03;ces to prove this when \(n=1\) as being di&#xFB00;erentiable is equivalent to being
 di&#xFB00;erentiable in each component. Now &#xFB01;x an \(h\) in a small enough ball. We have by
-Proposition \(\ref{mvt}\): \[f(a_1+h_1,\dots ,a_i+h_i,a_{i+1},\dots ,a_n) - f(a_1+h_1,\dots ,a_{i-1}+h_{i-1},a_{i},\dots ,a_n)\] \[= h_i\partial _if(a_1+h_1,\dots ,a_{i-1}+h_i, \alpha _i,a_{i+1},\dots ,a_n)\] where \(\alpha _i \in (a_i,a_i+h_i)\). Now we have \[f(a+h)-f(a) = \sum _ih_i\partial _if(a_1+h_1,\dots a_{i-1}+h_{i-1},\alpha _i,a_{i+1}+h_{i+1},\dots ,a_n) \] \[=h(\partial _if(a)) + \ee \] where \[\frac{\Vert \ee \Vert }{\Vert h\Vert } \leq \sum _i\Vert \partial _if(a_i+h_i,\dots ,\alpha _i,\dots ,a_n)-\partial _if(a)\Vert \] which tends to \(0\) as \(h \to 0\) by continuity of
+Proposition <a 
+href="#x1-4002r2">4.2<!--tex4ht:ref: mvt --></a>: \[f(a_1+h_1,\dots ,a_i+h_i,a_{i+1},\dots ,a_n) - f(a_1+h_1,\dots ,a_{i-1}+h_{i-1},a_{i},\dots ,a_n)\] \[= h_i\partial _if(a_1+h_1,\dots ,a_{i-1}+h_i, \alpha _i,a_{i+1},\dots ,a_n)\] where \(\alpha _i \in (a_i,a_i+h_i)\). Now we have \[f(a+h)-f(a) = \sum _ih_i\partial _if(a_1+h_1,\dots a_{i-1}+h_{i-1},\alpha _i,a_{i+1}+h_{i+1},\dots ,a_n) \] \[=h(\partial _if(a)) + \ee \] where \[\frac{\Vert \ee \Vert }{\Vert h\Vert } \leq \sum _i\Vert \partial _if(a_i+h_i,\dots ,\alpha _i,\dots ,a_n)-\partial _if(a)\Vert \] which tends to \(0\) as \(h \to 0\) by continuity of
 the partial derivatives. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
                                                                                   

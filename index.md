@@ -37,8 +37,6 @@
 
 [Eulers Descent](Other/Eulers Descent/Eulers_Descent.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Eulers Descent.pdf)
 
-[Filtered and Sifted](Other/Filtered and Sifted/Filtered_and_Sifted.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Filtered and Sifted.pdf)
-
 [Grobner Bases](Other/Grobner Bases/Grobner_Bases.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Grobner Bases.pdf)
 
 [Group Extensions](Other/Group Extensions/Group_Extensions.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Group Extensions.pdf)

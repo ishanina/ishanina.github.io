@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -226,17 +238,15 @@ class="cmr-10">ISHAN LEVY</span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Fundamental group of \(S^1\)</h3>
-<!--l. 10--><p class="noindent" >So far, we are only able to prove that the fundamental groups of some spaces are
-trivial. A common feature in algebraic topology is that given an invariant, we can
-compute it for a lot of spaces given that we know it for only a few. In order
-to get started in our case, we will need to know the fundamental group of the
-circle \(S^1\). Then the Seifert van-Kampen theorem will compute it for many more
-spaces.
-</p><!--l. 12--><p class="indent" >  A natural guess for what the fundamental group of the circle is is that it is
-isomorphic to \(\ZZ \), where the integer counts the number of times the loop winds
-around the circle in the counterclockwise direction. Indeed, that is the case.
-But how do we prove this? We will need a lemma, which will not be proven
-here.
+<!--l. 10--><p class="noindent" >So far, we are only able to prove that the fundamental groups of some spaces are trivial. A
+common feature in algebraic topology is that given an invariant, we can compute it for a lot of
+spaces given that we know it for only a few. In order to get started in our case, we will need to
+know the fundamental group of the circle \(S^1\). Then the Seifert van-Kampen theorem will compute it
+for many more spaces.
+</p><!--l. 12--><p class="indent" >  A natural guess for what the fundamental group of the circle is is that it is isomorphic to \(\ZZ \), where
+the integer counts the number of times the loop winds around the circle in the counterclockwise
+direction. Indeed, that is the case. But how do we prove this? We will need a lemma, which will
+not be proven here.
 </p>
   <div class="newtheorem">
 <!--l. 14--><p class="noindent" ><span class="head">
@@ -247,38 +257,35 @@ class="cmbx-12">Lemma 1.1 </span>&#x0028;Homotopy lifting property&#x0029;<span
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Let</span> \(X\) <span 
 class="cmti-12">be a simply connected space, let</span> \(c:\RR \to S^1\) <span 
-class="cmti-12">be the</span>
-<span 
-class="cmti-12">map</span> \(x \to e^{2\pi ix}\)<span 
+class="cmti-12">be the map</span> \(x \to e^{2\pi ix}\)<span 
 class="cmti-12">. If</span> \(\tilde{f}_0:X \to \RR \) <span 
-class="cmti-12">is any map, and</span> \(f_t\) <span 
+class="cmti-12">is</span>
+<span 
+class="cmti-12">any map, and</span> \(f_t\) <span 
 class="cmti-12">is any homotopy of</span> \(f_t\) <span 
 class="cmti-12">of</span> \(f_0 = c \circ \tilde{f}_0\)<span 
 class="cmti-12">, then there is a unique homotopy</span> \(\tilde{f}_t\) <span 
-class="cmti-12">such</span>
+class="cmti-12">such that</span> \(c \circ \tilde{f}_t = f_t\)<span 
+class="cmti-12">. This is</span>
 <span 
-class="cmti-12">that</span> \(c \circ \tilde{f}_t = f_t\)<span 
-class="cmti-12">. This is summarized below.</span> </p>
-                                                                                  
-
-                                                                                  
+class="cmti-12">summarized below.</span> </p>
 <div class="center" 
 >
 <!--l. 16--><p class="noindent" >
+                                                                                         
+                                                                                         
 </p><!--l. 20--><p class="noindent" >         <img 
 src="The_Seifert_Van_Kampen_Theorem0x.svg" alt="    X           &#x211D;
-
-
     X  &#x00D7; I      S1
 
- &#x02DC;&#x02DC;
-ifc&#x2203;f0!tft "  />
+
+ifc&#x2203;f0&#x02DC;!t&#x02DC;ft "  />
 </p></div>
   </div>
 <!--l. 24--><p class="indent" >  Let&#x2019;s choose \(1 \in S^1\) to be the base-point, and \(0 \in \RR \) as a base-point so that \(e^0 = 1\). Applying the lemma to
-any loop \(\gamma \) in \(S^1\) with base-point at \(1\), we &#xFB01;nd that the loop lifts to some path \(\tilde{\gamma }\) in \(\RR \). We don&#x2019;t
-know where the path ends, but since it is a lift, it must end on some \(x|e^{2\pi i x} = 1\), which is an integer.
-Now let \(\Omega S^1\) be the set of loops in \(S^1\), and consider the function \(P(\gamma )\) that takes a loop \(\gamma \) to
+any loop \(\gamma \) in \(S^1\) with base-point at \(1\), we &#xFB01;nd that the loop lifts to some path \(\tilde{\gamma }\) in \(\RR \). We
+don&#x2019;t know where the path ends, but since it is a lift, it must end on some \(x|e^{2\pi i x} = 1\), which is an
+integer. Now let \(\Omega S^1\) be the set of loops in \(S^1\), and consider the function \(P(\gamma )\) that takes a loop \(\gamma \) to
 \(\tilde{\gamma }(1)\).
 </p>
   <div class="newtheorem">
@@ -293,9 +300,9 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 30--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>We can apply the homotopy lifting property to a homotopy \(\gamma _t\) of \(\gamma \), to get a
-homotopy of the lift \(\tilde{\gamma _t}\). Now \(\tilde{\gamma }_t(1)\) is a map \(I \to c^{-1}(1) = \ZZ \), which is a discrete set, so it must be constant,
-and so \(P(\gamma )\) is constant across the homotopy. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>We can apply the homotopy lifting property to a homotopy \(\gamma _t\) of \(\gamma \), to get a homotopy of
+the lift \(\tilde{\gamma _t}\). Now \(\tilde{\gamma }_t(1)\) is a map \(I \to c^{-1}(1) = \ZZ \), which is a discrete set, so it must be constant, and so \(P(\gamma )\) is constant
+across the homotopy. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -304,9 +311,6 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 34--><p class="noindent" ><span class="head">
 <a 
  id="x1-1003r3"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Theorem 1.3.</span>  </span>\(P(\gamma )\) <span 
 class="cmti-12">induces a group isomorphism</span> \(\pi _1(S_1) \to \ZZ \)<span 
@@ -315,11 +319,13 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 37--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>If  \(f\star g\)  is  the  composite  of  paths,  then  it  is  easy  to  see  that  \(c\circ (\bar{f} \star \bar{g}) = f \star g\),  so  that  \(P(\gamma )\)  is  a
-homomorphism.  The  homomorphism  is  clearly  surjective,  as  \(\RR \)  is  path  connected,
-so  connecting  \(0\)  to  \(n\)  and  projecting  down,  we  get  a  loop  getting  sent  to  \(n\).  The
-homomorphism is injective, as if \(P(\gamma ) = 0\), then the lift of \(\gamma \) is a loop in \(\RR \). \(\pi _1(\RR ) = 0\), so we can homotope
-it to a constant map, and projecting the homotopy via \(c\), \(\gamma \) is nulhomotopic. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>If \(f\star g\) is the composite of paths, then it is easy to see that \(c\circ (\bar{f} \star \bar{g}) = f \star g\), so that \(P(\gamma )\) is a homomorphism.
+The homomorphism is clearly surjective, as \(\RR \) is path connected, so connecting \(0\) to \(n\) and
+projecting down, we get a loop getting sent to \(n\). The homomorphism is injective, as if \(P(\gamma ) = 0\), then
+                                                                                         
+                                                                                         
+the lift of \(\gamma \) is a loop in \(\RR \). \(\pi _1(\RR ) = 0\), so we can homotope it to a constant map, and projecting the
+homotopy via \(c\), \(\gamma \) is nulhomotopic. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -332,9 +338,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 class="cmbx-12">Exercise 1.3.1.</span>  </span><span 
 class="cmti-12">The natural quotient map</span> \(S^2 \to \RR \PP ^2\)<span 
 class="cmti-12">, like the map</span> \(c\)<span 
-class="cmti-12">, satis&#xFB01;es the homotopy</span>
+class="cmti-12">, satis&#xFB01;es the homotopy lifting</span>
 <span 
-class="cmti-12">lifting property. Assuming that</span> \(\pi _1(S^2) = 0\)<span 
+class="cmti-12">property. Assuming that</span> \(\pi _1(S^2) = 0\)<span 
 class="cmti-12">, compute</span> \(\pi _1(\RR \PP ^2)\) <span 
 class="cmti-12">using the method used for</span> \(S^1\)<span 
 class="cmti-12">.</span>
@@ -353,26 +359,24 @@ class="cmti-12">has a &#xFB01;xed point.</span>
 </p>
   <div class="proof">
 <!--l. 49--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
 <span 
-class="cmti-12">Proof.</span> </span>If  not,  we  can  consider  the  ray  starting  from  \(f(x)\)  toward  \(x\),  and  let  \(g(x\)&#x0029;  be  its
-intersection point with the boundary \(S^1\). Since \(g|_{S^1}\) is the identity, if \(i\) is the inclusion \(S^1 \to D^2\), then
-\(g \circ i = 1_{S^1}\). Applying the fundamental group, we get homomorphisms \(\ZZ \to \{*\} \to \ZZ \) such that the composite
-is the identity, which is clearly impossible. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>If not, we can consider the ray starting from \(f(x)\) toward \(x\), and let \(g(x\)&#x0029; be its intersection
+point with the boundary \(S^1\). Since \(g|_{S^1}\) is the identity, if \(i\) is the inclusion \(S^1 \to D^2\), then \(g \circ i = 1_{S^1}\). Applying the
+fundamental group, we get homomorphisms \(\ZZ \to \{*\} \to \ZZ \) such that the composite is the identity, which
+is clearly impossible. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Seifert van-Kampen theorem</h3>
-<!--l. 56--><p class="noindent" >The Seifert van-Kampen theorem allows one to compute fundamental groups of a space
-knowing fundamental groups on an open cover. Here we will consider when \(X\) is
-the union of two path-connected open sets \(U,V\), and the intersection \(U\cap V\) is also path
-connected.
+<!--l. 56--><p class="noindent" >The Seifert van-Kampen theorem allows one to compute fundamental groups of a space knowing
+fundamental groups on an open cover. Here we will consider when \(X\) is the union of two
+path-connected open sets \(U,V\), and the intersection \(U\cap V\) is also path connected.
 </p><!--l. 58--><p class="indent" >  We have the inclusions of fundmental groups:
 </p>
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 60--><p class="noindent" >
@@ -380,8 +384,8 @@ connected.
 src="The_Seifert_Van_Kampen_Theorem1x.svg" alt="                &#x03C0;1&#x0028;U&#x0029;
 
 
-&#x03C0;1 &#x0028;U  &#x2229; V &#x0029;                  &#x03C0;1&#x0028;X &#x0029;
 
+&#x03C0;1 &#x0028;U  &#x2229; V &#x0029;                  &#x03C0;1&#x0028;X &#x0029;
 
 
                 &#x03C0;1&#x0028;V&#x0029; "  />
@@ -398,31 +402,28 @@ class="cmti-12">of groups</span> \(G,G'\) <span
 class="cmti-12">along a group</span> \(H\) <span 
 class="cmti-12">with maps</span> \(g,g'\) <span 
 class="cmti-12">into</span> \(G,G'\) <span 
-class="cmti-12">is de&#xFB01;ned</span>
+class="cmti-12">is de&#xFB01;ned to be a</span>
 <span 
-class="cmti-12">to be a group denoted</span> \(G\star _{H}G'\) <span 
+class="cmti-12">group denoted</span> \(G\star _{H}G'\) <span 
 class="cmti-12">with maps</span> \(f,f'\) <span 
 class="cmti-12">from</span> \(G,G'\) <span 
 class="cmti-12">into it such that</span> \(f'\circ g' = f \circ g\) <span 
-class="cmti-12">satisfying the following</span>
-                                                                                  
-
-                                                                                  
+class="cmti-12">satisfying the following universal property:</span>
 <span 
-class="cmti-12">universal property: given group homomorphisms</span> \(h,h'\) <span 
+class="cmti-12">given group homomorphisms</span> \(h,h'\) <span 
 class="cmti-12">from</span> \(G,G'\) <span 
 class="cmti-12">to a group</span> \(J\) <span 
 class="cmti-12">such that</span> \(h'\circ g' = h \circ g\)<span 
-class="cmti-12">, there</span>
-<span 
-class="cmti-12">is a unique homomorphism</span> \(G\star _{H}G' \to J\) <span 
+class="cmti-12">, there is a unique homomorphism</span>
+\(G\star _{H}G' \to J\) <span 
 class="cmti-12">such that the diagram below commutes:</span>
 </p>
 <div class="center" 
 >
 <!--l. 70--><p class="noindent" >
 </p><!--l. 74--><p class="noindent" >              <img 
-src="The_Seifert_Van_Kampen_Theorem2x.svg" alt="  H        G            G &#x22C6;H G &#x2032;
+src="The_Seifert_Van_Kampen_Theorem2x.svg" alt="  H        G            G &#x22C6;  G &#x2032;
+                           H
 
 
 ggfh&#x2203;fh&#x2032;!&#x2032;&#x2032;         G &#x2032;          J "  />
@@ -439,6 +440,8 @@ class="cmti-12">The pushout is unique up to a canonical isomorphism.</span>
 </div>
 <div class="newtheorem">
 <!--l. 82--><p class="noindent" ><span class="head">
+                                                                                         
+                                                                                         
 <a 
  id="x1-2003r2"></a>
 <span 
@@ -447,10 +450,9 @@ class="cmti-12">Say that</span> \(G = \langle x_i|r_i\rangle , G' = \langle y_j|
 class="cmti-12">, and Suppose that</span> \(H\) <span 
 class="cmti-12">is generated by</span> \(s_k\) <span 
 class="cmti-12">and</span> \(i_U(s_k), i_V(s_k)\) <span 
-class="cmti-12">are the images</span>
-<span 
-class="cmti-12">in</span> \(G,G'\)<span 
-class="cmti-12">. Then</span> \(G\star _HG' = \langle x_i,y_i|r_i,r'_j,i_U(s_k)i_U(s_k)^{-1}\rangle \)<span 
+class="cmti-12">are the images in</span> \(G,G'\)<span 
+class="cmti-12">. Then</span>
+\(G\star _HG' = \langle x_i,y_i|r_i,r'_j,i_U(s_k)i_U(s_k)^{-1}\rangle \)<span 
 class="cmti-12">.</span>
 </p>
 </div>
@@ -462,72 +464,63 @@ class="cmti-12">.</span>
 class="cmbx-12">Theorem 2.2 </span>&#x0028;Seifert van-Kampen&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Suppose</span> \(U,V\) <span 
-class="cmti-12">are in the situation described above.</span>
+class="cmti-12">are in the situation described above. Then</span> \(\pi _1(X)\)
 <span 
-class="cmti-12">Then</span> \(\pi _1(X)\) <span 
 class="cmti-12">is the pushout of the group</span> \(\pi _1(U),\pi _1(V)\) <span 
 class="cmti-12">along</span> \(\pi _1(U\cap V)\)<span 
 class="cmti-12">.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 89--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>We will verify the universal property. Fix a base point \(x \in U\cap V\), and for every point in \(y \in X\),
-let \(\gamma _y\) be a path from \(y\) to \(x\) that stays in \(U\). if \(y \in U\) and in \(V\) if \(y \in V\). Suppose there are homomorphism
-\(h,h':\pi _1(U),\pi _1(V) \to J\) that agree on \(\pi _1(U\cap V)\). Given a loop \(\gamma : I \to X\), by compactness we can cut it into &#xFB01;nitely many
-intervals such that each subinterval \([t_i,t_{i+1}]\) lies in only either \(U\) or \(V\) &#x0028;\(t_0 = 0, t_n = 1\)&#x0029;. Now let \(\xi _i\) be the path
-\(I \to X\). given by some parameterization of \(\gamma \) on the interval \([t_i,t_{i+1}]\). Then \(\gamma \simeq C(\gamma ,t_i):=\xi _0 \star \gamma _{\xi _0(1)} \star \gamma _{\xi _0(1)}^{-1}\star \xi _1 \star \gamma _{\xi _1(1)} \star \gamma _{\xi _1(1)}^{-1} \star \dots \star \xi _{n-1}\). This shows that if
-the desired homomorphism \(f:\pi _1(X) \to J\) existed, it would be unique, as \(C(\gamma ,t_i)\) is a concatenation of
-loops lying in either \(U\) or \(V\). To show existence, we can de&#xFB01;ne the homomorphism using
-the formula above. To show this is well de&#xFB01;ned, &#xFB01;rst note it doesn&#x2019;t depend on \(\gamma _{y}\), as
-changing the path and taking the quotient of the two paths, there is a clear homotopy
-to a trivial map that stays in \(U\) or \(V\) on each subinterval. them will change \(C(\gamma ,t_i)\) by something
-that is nulhomotopic in \(\pi _1(U\cap V)\). Next, it will be shown that this isn&#x2019;t dependant on the
-cutting into &#xFB01;nitely many intervals. To see this, note that given two cuts \(t_i,t'_i\), \(C(\gamma ,t_i) \equiv C(\gamma ,t_i\cup t'_i)\) via a
-homotopy that stays in \(U,V\) whenever \(\gamma \) does. Since \(h,h'\) agree on \(\pi _1(U\cap V)\), whenever a subinterval
-lies in \(U\cap V\), it doesn&#x2019;t matter if we switch the homomorphism to come from \(U\) or \(V\). Thus \(f(C(\gamma ,t_i) = f(C(\gamma ,t_i\cup t'_i))= f(C(\gamma ,t'_i))\).
-Now if \(\gamma _r\) is a homotopy, then consider the equivalence classes of \(r \in [0,1]\) given by identifying
-elements that \(f\) agrees on. A small neighborhood of each \(r\) will remain in the same
-homotopy class by doing the construction of \(f\) on a small neighborhood \([r-\ee ,r+\ee ]\times I\), so that each
-piece becomes homotopic by connectedness, the homotopy class is constant across
-the homotopy. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>We will verify the universal property. Fix a base point \(x \in U\cap V\), and for every point in \(y \in X\), let \(\gamma _y\) be
+a path from \(y\) to \(x\) that stays in \(U\). if \(y \in U\) and in \(V\) if \(y \in V\). Suppose there are homomorphism \(h,h':\pi _1(U),\pi _1(V) \to J\) that agree
+on \(\pi _1(U\cap V)\). Given a loop \(\gamma : I \to X\), by compactness we can cut it into &#xFB01;nitely many intervals such that each
+subinterval \([t_i,t_{i+1}]\) lies in only either \(U\) or \(V\) &#x0028;\(t_0 = 0, t_n = 1\)&#x0029;. Now let \(\xi _i\) be the path \(I \to X\). given by some parameterization
+of \(\gamma \) on the interval \([t_i,t_{i+1}]\). Then \(\gamma \simeq C(\gamma ,t_i):=\xi _0 \star \gamma _{\xi _0(1)} \star \gamma _{\xi _0(1)}^{-1}\star \xi _1 \star \gamma _{\xi _1(1)} \star \gamma _{\xi _1(1)}^{-1} \star \dots \star \xi _{n-1}\). This shows that if the desired homomorphism \(f:\pi _1(X) \to J\) existed, it would
+be unique, as \(C(\gamma ,t_i)\) is a concatenation of loops lying in either \(U\) or \(V\). To show existence, we can
+de&#xFB01;ne the homomorphism using the formula above. To show this is well de&#xFB01;ned, &#xFB01;rst note it
+doesn&#x2019;t depend on \(\gamma _{y}\), as changing the path and taking the quotient of the two paths, there is a
+clear homotopy to a trivial map that stays in \(U\) or \(V\) on each subinterval. them will change \(C(\gamma ,t_i)\) by
+something that is nulhomotopic in \(\pi _1(U\cap V)\). Next, it will be shown that this isn&#x2019;t dependant on the
+cutting into &#xFB01;nitely many intervals. To see this, note that given two cuts \(t_i,t'_i\), \(C(\gamma ,t_i) \equiv C(\gamma ,t_i\cup t'_i)\) via a homotopy
+that stays in \(U,V\) whenever \(\gamma \) does. Since \(h,h'\) agree on \(\pi _1(U\cap V)\), whenever a subinterval lies in \(U\cap V\), it doesn&#x2019;t
+matter if we switch the homomorphism to come from \(U\) or \(V\). Thus \(f(C(\gamma ,t_i) = f(C(\gamma ,t_i\cup t'_i))= f(C(\gamma ,t'_i))\). Now if \(\gamma _r\) is a homotopy, then
+consider the equivalence classes of \(r \in [0,1]\) given by identifying elements that \(f\) agrees on. A small
+neighborhood of each \(r\) will remain in the same homotopy class by doing the construction
+of \(f\) on a small neighborhood \([r-\ee ,r+\ee ]\times I\), so that each piece becomes homotopic by connectedness, the
+homotopy class is constant across the homotopy. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
 </div>
-<!--l. 93--><p class="noindent" >Remark: there is a version of this theorem that doesn&#x2019;t require the open sets and their
-intersections to be connected. However, in order to do so, one has to use multiple
-base-points and consider groupoids instead of groups. For example, \(\pi _1(S^1)\) could have been
-computed this way. That version of van-Kampen&#x2019;s theorem is more &#xFB02;exible in that one can
-simplify computation using multiple base-points.
-</p><!--l. 95--><p class="indent" >  We can use this to compute \(\pi _1\) for many spaces. For example, let \(p,q\) be the north and south
-poles of \(S^2\), and let \(U = S^2-q, V=S^2-q\). \(U\cap V\) is path-connected, and \(U,V\) have trivial \(\pi _1\), so we see \(S^2\) has trivial \(\pi _1\) by the
-theorem. Similarly, \(\pi _1(S^n)=0,n\geq 2\).
+<!--l. 93--><p class="noindent" >Remark: there is a version of this theorem that doesn&#x2019;t require the open sets and their intersections
+to be connected. However, in order to do so, one has to use multiple base-points and consider
+groupoids instead of groups. For example, \(\pi _1(S^1)\) could have been computed this way. That version of
+van-Kampen&#x2019;s theorem is more &#xFB02;exible in that one can simplify computation using multiple
+                                                                                         
+                                                                                         
+base-points.
+</p><!--l. 95--><p class="indent" >  We can use this to compute \(\pi _1\) for many spaces. For example, let \(p,q\) be the north and south poles of \(S^2\),
+and let \(U = S^2-q, V=S^2-q\). \(U\cap V\) is path-connected, and \(U,V\) have trivial \(\pi _1\), so we see \(S^2\) has trivial \(\pi _1\) by the theorem. Similarly,
+\(\pi _1(S^n)=0,n\geq 2\).
 </p><!--l. 97--><p class="indent" >  Let \(X\vee Y\), the wedge sum of \(X, Y\) be the space given by gluing \(X,Y\) together along a base-point. If the
-base-points have neighborhoods that are contractible, then letting \(U\) be a neighborhood of \(X\),
-                                                                                  
-
-                                                                                  
-and \(V\) a neighborhood of \(Y\), we get that \(\pi _1(X\vee Y) = \pi _1(X)\star \pi _1(Y)\), where \(\star \) is the free product, which is the pushout
-over a trivial group.
-</p><!--l. 99--><p class="indent" >  Let&#x2019;s compute the fundamental groups of all the surfaces. All the surfaces are connected
-sums of \(\RR \PP ^2\)s and \(T^2\)s. Recall that we can realize these surfaces as a quotient of the disk where
-we put a word on the edges, and identify intervals on the boundary that have the
-same letter &#x0028;in an oriented way&#x0029;. The word on the boundary for \(\RR \PP ^2\) is \(aa\) and the
-word for \(T^2\) is \(aba^{-1}b^{-1}\). If \(w,w'\) are words for surface \(S,S'\), then \(S\#S'\) has \(ww'\) as a word &#x0028;the letters should
-be changed so that \(w,w'\) use di&#xFB00;erent letters&#x0029;. Recall that every closed surface is
-either a connected sum of \(T^2\)s or \(\RR \PP ^2\)s. To compute the fundamental group of these
-surfaces realized as a quotient of a disk, let \(U\) be the disk with the center point
-removed, so that it is homotopy equivalent to the boundary, which is a wedge
-sum of circles, so has fundamental group freely generated by each letter in the
-word. Let \(V\) be the interior of the disk, which has trivial fundamental group. \(U\cap V\)
-is homotopy equivalent to a circle, so has fundamental group \(\ZZ \), generated by
-a loop going around the circle once. By Seifert van Kampen, if the boundary
-has letters \(a_1,\dots a_n\), and the word on the boundary is \(w\), then the fundamental group is \(\langle a_1,\dots ,a_n|w\rangle \).
-For example, we get that \(\pi _1(T^2) = \langle a,b|aba^{-1}b^{-1}\rangle \),\(\pi _1(\RR \PP ^2\#\RR \PP ^2) = \langle a,b|aabb\rangle \). The next exercise gives another way to compute
+base-points have neighborhoods that are contractible, then letting \(U\) be a neighborhood of \(X\), and \(V\) a
+neighborhood of \(Y\), we get that \(\pi _1(X\vee Y) = \pi _1(X)\star \pi _1(Y)\), where \(\star \) is the free product, which is the pushout over a trivial
+group.
+</p><!--l. 99--><p class="indent" >  Let&#x2019;s compute the fundamental groups of all the surfaces. All the surfaces are connected sums of
+\(\RR \PP ^2\)s and \(T^2\)s. Recall that we can realize these surfaces as a quotient of the disk where we put a word on
+the edges, and identify intervals on the boundary that have the same letter &#x0028;in an oriented way&#x0029;.
+The word on the boundary for \(\RR \PP ^2\) is \(aa\) and the word for \(T^2\) is \(aba^{-1}b^{-1}\). If \(w,w'\) are words for surface \(S,S'\), then \(S\#S'\) has \(ww'\) as a
+word &#x0028;the letters should be changed so that \(w,w'\) use di&#xFB00;erent letters&#x0029;. Recall that every closed surface
+is either a connected sum of \(T^2\)s or \(\RR \PP ^2\)s. To compute the fundamental group of these surfaces realized
+as a quotient of a disk, let \(U\) be the disk with the center point removed, so that it is
+homotopy equivalent to the boundary, which is a wedge sum of circles, so has fundamental
+group freely generated by each letter in the word. Let \(V\) be the interior of the disk, which
+has trivial fundamental group. \(U\cap V\) is homotopy equivalent to a circle, so has fundamental
+group \(\ZZ \), generated by a loop going around the circle once. By Seifert van Kampen, if
+the boundary has letters \(a_1,\dots a_n\), and the word on the boundary is \(w\), then the fundamental
+group is \(\langle a_1,\dots ,a_n|w\rangle \). For example, we get that \(\pi _1(T^2) = \langle a,b|aba^{-1}b^{-1}\rangle \),\(\pi _1(\RR \PP ^2\#\RR \PP ^2) = \langle a,b|aabb\rangle \). The next exercise gives another way to compute
 \(\pi _1(T^2)\).
 </p>
   <div class="newtheorem">
@@ -540,34 +533,29 @@ class="cmti-12">Show that</span> \(\pi _1(X\times Y) = \pi _1(X)\times \pi _1(Y)
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 106--><p class="indent" >  Why are the surfaces in the classi&#xFB01;cation theorem actually di&#xFB00;erent? It is hard to
-compare fundamental groups directly, but we can compare them by computing their
-abelianizations, which is the universal way to make the group abelian. Given a
-presentation of a group, we can present the abelianization by interpreting multiplication as
-a commutative operation. For example, the abelianization of \(\pi _1(\RR \PP ^2\#\RR \PP ^2)\) is \(\langle a,b|2a+2b\rangle \), which is isomorphic as an
-abelian group to \(\ZZ \oplus \ZZ /2\ZZ \). This distinguishes it from the torus, whose fundamental group is
-\(\ZZ \oplus \ZZ \).
+<!--l. 106--><p class="indent" >  Why are the surfaces in the classi&#xFB01;cation theorem actually di&#xFB00;erent? It is hard to compare
+fundamental groups directly, but we can compare them by computing their abelianizations, which
+is the universal way to make the group abelian. Given a presentation of a group, we can present
+the abelianization by interpreting multiplication as a commutative operation. For example, the
+abelianization of \(\pi _1(\RR \PP ^2\#\RR \PP ^2)\) is \(\langle a,b|2a+2b\rangle \), which is isomorphic as an abelian group to \(\ZZ \oplus \ZZ /2\ZZ \). This distinguishes it from the
+torus, whose fundamental group is \(\ZZ \oplus \ZZ \).
 </p>
   <div class="newtheorem">
 <!--l. 108--><p class="noindent" ><span class="head">
 <a 
  id="x1-2006r2"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Exercise 2.2.2.</span>  </span><span 
-class="cmti-12">A closed surface is classi&#xFB01;ed by the abelianization of its fundamental</span>
-<span 
-class="cmti-12">group.</span>
+class="cmti-12">A closed surface is classi&#xFB01;ed by the abelianization of its fundamental group.</span>
+                                                                                         
+                                                                                         
 </p>
   </div>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

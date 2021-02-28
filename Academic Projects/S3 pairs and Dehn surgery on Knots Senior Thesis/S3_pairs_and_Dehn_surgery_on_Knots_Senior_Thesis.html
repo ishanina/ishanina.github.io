@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -213,9 +225,8 @@
 \newcommand{\hgt}{\mathop{\rm ht}\nolimits}
 \newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
 \newcommand{\id}{\mathop{\rm id}\nolimits} \)</p>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 10--><p class="noindent" >
@@ -226,263 +237,235 @@ class="cmbx-12x-x-144">-pairs and Dehn surgery on knots</span>
 class="cmbx-12x-x-120">Ishan Levy</span>
 </p><!--l. 20--><p class="noindent" ><span 
 class="cmbx-12x-x-120">Abstract</span>
-</p><!--l. 24--><p class="noindent" >Two general ways are explained to produce pairs of knots \(K,K'\) in \(S^3\) and a \(\gamma \in \QQ \) such that the \(\gamma \)
-surgery of \(K\) coincides with the \(\pm \gamma \) surgery of \(K'\). They are similar in that the key
-ingredient in the construction is an \(S^3\)-pair, a pair of framed knots whose surgery
-yields \(S^3\). They generalize some techniques in the literature, and give plenty of
-&#xFB02;exibility on choosing both the knots and their framings. Examples are given with
-a focus on a special case that works for \(0\) surgeries of many ribbon knots.
-</p><!--l. 27--><p class="noindent" >I would like to thank Prof. Peter Ozsv&#x00E1;th for advising me and meeting weekly to
-talk about this thesis.
+</p><!--l. 24--><p class="noindent" >Two general ways are explained to produce pairs of knots \(K,K'\) in \(S^3\) and a \(\gamma \in \QQ \) such that the \(\gamma \) surgery
+of \(K\) coincides with the \(\pm \gamma \) surgery of \(K'\). They are similar in that the key ingredient in the
+construction is an \(S^3\)-pair, a pair of framed knots whose surgery yields \(S^3\). They generalize some
+techniques in the literature, and give plenty of &#xFB02;exibility on choosing both the knots and
+their framings. Examples are given with a focus on a special case that works for \(0\) surgeries
+of many ribbon knots.
+</p><!--l. 27--><p class="noindent" >I would like to thank Prof. Peter Ozsv&#x00E1;th for advising me and meeting weekly to talk
+about this thesis.
 </p><!--l. 31--><p class="noindent" >Mathematics Department<br />
 Princeton University<br />
 5/6/2019
 </p>
 </div>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Introduction</h3>
-<!--l. 39--><p class="noindent" >One way to produce compact orientable \(3\)-manifolds is to perform Dehn surgery on knots in
-\(S^3\). Namely, let \(K = S^1 \subset S^3\) be a smoothly embedded knot in \(S^3\), and let \(N(K)\) be a closed tubular
-neighborhood of \(K\) di&#xFB00;eomorphic to \(S^1 \times D^2\). Then a <span 
-class="cmbx-12">Dehn surgery </span>of \(K\) is the manifold
-obtained by removing \(N(K)\) and glueing it back in via some orientation preserving
-di&#xFB00;eomorphism between the boundary tori. Note that &#x201C;\(K\)&#x201D; naturally sits inside the
-new manifold as well. The di&#xFB00;eomorphism type of the new manifold &#x0028;with the
-knot inside it&#x0029; is only dependant on the image of the <span 
-class="cmbx-12">meridian </span>of \(N(K)\), which is
-the circle on the boundary that bounds a disk. The isotopy class of the image
-depends only on the homology class in \(H_1(T^2)\). A basis for \(H_1(T^2)\) is given by \(\mu \), the oriented
-meridian of \(K\) and \(l\), the <span 
-class="cmbx-12">canonical longitude </span>of \(K\) which is the knot characterized
-by the fact that \(K\) and \(l\) bound an embedded annulus and have linking number
-\(0\). If the homology class of the image of the meridian is \(p \mu + ql\) we can say that this
-is a \(\frac p q\) surgery of \(K\). Thus the Dehn surgeries of \(K\) are naturally parameterized by
+<!--l. 39--><p class="noindent" >One way to produce compact orientable \(3\)-manifolds is to perform Dehn surgery on knots in \(S^3\).
+Namely, let \(K = S^1 \subset S^3\) be a smoothly embedded knot in \(S^3\), and let \(N(K)\) be a closed tubular neighborhood of \(K\)
+di&#xFB00;eomorphic to \(S^1 \times D^2\). Then a <span 
+class="cmbx-12">Dehn surgery </span>of \(K\) is the manifold obtained by removing \(N(K)\) and glueing it
+back in via some orientation preserving di&#xFB00;eomorphism between the boundary tori. Note that &#x201C;\(K\)&#x201D;
+naturally sits inside the new manifold as well. The di&#xFB00;eomorphism type of the new manifold &#x0028;with
+the knot inside it&#x0029; is only dependant on the image of the <span 
+class="cmbx-12">meridian </span>of \(N(K)\), which is the circle on the
+boundary that bounds a disk. The isotopy class of the image depends only on the homology class
+in \(H_1(T^2)\). A basis for \(H_1(T^2)\) is given by \(\mu \), the oriented meridian of \(K\) and \(l\), the <span 
+class="cmbx-12">canonical longitude </span>of \(K\)
+which is the knot characterized by the fact that \(K\) and \(l\) bound an embedded annulus and
+have linking number \(0\). If the homology class of the image of the meridian is \(p \mu + ql\) we can say
+that this is a \(\frac p q\) surgery of \(K\). Thus the Dehn surgeries of \(K\) are naturally parameterized by
 \(\QQ \cup \infty \).
 </p><!--l. 41--><p class="indent" >  More generally, a <span 
 class="cmbx-12">framed link </span>in \(S^3\) is a link \(L = K_1 \cup \dots \cup K_n\) with a rational number \(r_i\) associated to each
-component \(K_i\). By doing \(r_i\) surgery on each \(K_i\), one obtains a manifold called the surgery on the
-framed link. If the framings are integers, it is called an integer surgery. Integer surgery has
-an interpretation in terms of handle attachments. If \(S^3 = \partial D^4\), then one can attach a \(2\)-handle to
-\(D^4\) along a knot \(K\) equipped with a trivialization of its normal bundle in \(S^3\). These
-trivializations correspond to the integers by looking at the linking number of a constant
-section with the knot. The resulting \(4\)-manifold after attaching the handle is called
-the \(n\) <span 
-class="cmbx-12">trace </span>of the knot &#x0028;\(n\) the framing&#x0029;, and its boundary is the \(n\) surgery of the
-knot.
-</p><!--l. 43--><p class="indent" >  It is a classical theorem proven separately by Lickorish and Wallace in the 1960s that
-any closed orientable \(3\)-manifold can be produced from surgery on a framed link &#x005B;<a id="page.1"></a><a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-lickorishcomb3mfd" >Lic62</a>;
-<a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-Wallace" >Wal60</a>&#x005D;. In fact, the framings can all be made to be \(\pm 1\)! This leads to the question of when
-surgery on two framed links yields the same \(3\)-manifold. Kirby solved this problem in the
-1970s &#x005B;<a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-Kirbycalculus" >Kir78</a>&#x005D; by developing a complete set of moves on framed links that preserve the
-\(3\)-manifold it represents and can go between any two representations of a \(3\)-manifold as
-surgery on a framed link.
-</p><!--l. 45--><p class="indent" >  There are two Kirby moves other than isotopies for integer-framed knots. The &#xFB01;rst move
-allows one to add or remove \(\pm 1\)-framed unknots. The second is the more nontrivial
-one, called sliding a knot \(K_1\) over \(K_2\), de&#xFB01;ned as follows. Let \(l\) be the longitude of \(K_2\)
-in \(S^3\) with linking number the framing of \(K_2\). Then along some band connecting \(K_1\)
-and \(l\), take their connected sum. This allows us to simultaneously orient \(K_1,l\) with
-an induced orientation from the band giving a well de&#xFB01;ned linking number \(\lk (K_1,l)\).
-Finally, replace \(K_1,K_2\) with the connect sum knot and \(K_2\), where the new knot has framing
+component \(K_i\). By doing \(r_i\) surgery on each \(K_i\), one obtains a manifold called the surgery on the framed
+link. If the framings are integers, it is called an integer surgery. Integer surgery has an
+interpretation in terms of handle attachments. If \(S^3 = \partial D^4\), then one can attach a \(2\)-handle to \(D^4\) along a knot \(K\)
+equipped with a trivialization of its normal bundle in \(S^3\). These trivializations correspond to the
+integers by looking at the linking number of a constant section with the knot. The resulting
+\(4\)-manifold after attaching the handle is called the \(n\) <span 
+class="cmbx-12">trace </span>of the knot &#x0028;\(n\) the framing&#x0029;, and its
+boundary is the \(n\) surgery of the knot.
+</p><!--l. 43--><p class="indent" >  It is a classical theorem proven separately by Lickorish and Wallace in the 1960s that any closed
+orientable \(3\)-manifold can be produced from surgery on a framed link &#x005B;<a id="page.1"></a><a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-lickorishcomb3mfd" >Lic62</a>; <a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-Wallace" >Wal60</a>&#x005D;. In fact, the
+framings can all be made to be \(\pm 1\)! This leads to the question of when surgery on two
+framed links yields the same \(3\)-manifold. Kirby solved this problem in the 1970s &#x005B;<a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-Kirbycalculus" >Kir78</a>&#x005D;
+by developing a complete set of moves on framed links that preserve the \(3\)-manifold it
+represents and can go between any two representations of a \(3\)-manifold as surgery on a framed
+link.
+</p><!--l. 45--><p class="indent" >  There are two Kirby moves other than isotopies for integer-framed knots. The &#xFB01;rst move allows
+one to add or remove \(\pm 1\)-framed unknots. The second is the more nontrivial one, called sliding a knot \(K_1\)
+over \(K_2\), de&#xFB01;ned as follows. Let \(l\) be the longitude of \(K_2\) in \(S^3\) with linking number the framing of \(K_2\). Then
+along some band connecting \(K_1\) and \(l\), take their connected sum. This allows us to simultaneously
+orient \(K_1,l\) with an induced orientation from the band giving a well de&#xFB01;ned linking number
+\(\lk (K_1,l)\). Finally, replace \(K_1,K_2\) with the connect sum knot and \(K_2\), where the new knot has framing
 \(r_1+r_2+2\lk (K_1,l)\).
-</p><!--l. 47--><p class="indent" >  In addition to these two which are for integer framings, there is a third move for
-                                                                                  
-
-                                                                                  
-converting between rational and integral framed links shown in Figure <a 
+</p><!--l. 47--><p class="indent" >  In addition to these two which are for integer framings, there is a third move for converting
+between rational and integral framed links shown in Figure <a 
 href="#x1-10011">1<!--tex4ht:ref: rationalframing --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10011"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 50--><p class="noindent" ><img 
 src="Rational_to_Integral.png" alt="pict"  
- width="322.50345pt"  />
+ width="352.31625pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
-class="content"> The move shown above lets us convert from rationally framed knots to
-integrally framed knots and back. By writing a rational number \(\frac p q\) in the continued
-fraction form \([a_1,\dots ,a_n]\), where \([a_1,\dots ,a_n] = a_1-\frac 1{[a_2,\dots ,a_n]}\) we can eventually reduce rationally framed links to integer
-framed links.</span></figcaption><!--tex4ht:label?: x1-10011 -->
-                                                                                  
-
-                                                                                  
+class="content"> The move shown above lets us convert from rationally framed knots to integrally
+framed knots and back. By writing a rational number \(\frac p q\) in the continued fraction form \([a_1,\dots ,a_n]\), where
+\([a_1,\dots ,a_n] = a_1-\frac 1{[a_2,\dots ,a_n]}\) we can eventually reduce rationally framed links to integer framed links.</span></figcaption><!--tex4ht:label?: x1-10011 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 56--><p class="indent" >  There are some important moves that are composites of these basic moves. One is called
-<span 
+<!--l. 56--><p class="indent" >  There are some important moves that are composites of these basic moves. One is
+called <span 
 class="cmbx-12">blowing up/down</span>, which is shown in Figure <a 
-href="#x1-10022">2<!--tex4ht:ref: blowingup --></a>, coming from sliding all the strands
-through a \(\pm 1\)-framed unknot to separate the unknot, and then removing the unknot. Another
-composite move is that whenever there is a \(0\)-framed unknot that bounds an embedded disk
-intersecting some other framed knot in one point, both knots can be removed
-from the diagram without a&#xFB00;ecting the \(3\)-manifold. This composite move is called
+href="#x1-10022">2<!--tex4ht:ref: blowingup --></a>, coming from sliding all the
+strands through a \(\pm 1\)-framed unknot to separate the unknot, and then removing the unknot.
+Another composite move is that whenever there is a \(0\)-framed unknot that bounds an
+embedded disk intersecting some other framed knot in one point, both knots can be
+removed from the diagram without a&#xFB00;ecting the \(3\)-manifold. This composite move is called
 <span 
 class="cmbx-12">cancelling</span>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10022"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 59--><p class="noindent" ><img 
 src="BlowingDown.png" alt="pict"  
- width="322.50345pt"  />
+ width="352.31625pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
-class="content"> Examples of the blowing down composite operation is shown, as is the
-e&#xFB00;ect on framings.</span></figcaption><!--tex4ht:label?: x1-10022 -->
-                                                                                  
-
-                                                                                  
+class="content"> Examples of the blowing down composite operation is shown, as is the e&#xFB00;ect on
+framings.</span></figcaption><!--tex4ht:label?: x1-10022 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 65--><p class="indent" >  Even though this is a complete set of moves, much is still left to be understood about
-the relationship between knots and links and their surgeries. One may wonder how much
-information about \(K\) is retained by the manifold \(S^3_\gamma (K)\), the \(\gamma \) surgery on \(K\), where \(\gamma \in \QQ \) is the
-framing on \(K\). For example, it isn&#x2019;t hard to see that the Alexander module can be
-recovered from the \(0\) surgery of a knot. A conjecture related to knot surgeries is
-the Property R conjecture, which claims that no nontrivial knot can yield \(S^2\times S^1\) via \(0\)
-surgery. This was resolved in 1983 with Gabai&#x2019;s work on foliations &#x005B;<a id="page.8"></a><a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-gabaifoliations" >Gab87</a>&#x005D;. He
-showed that the zero surgery of a knot detects its Seifert genus, which detects the
-unknot. Later work showed that the any knot admitting an \(r\) surgery for \(r \in \QQ \) that is
-orientation preserving di&#xFB00;eomorphic to \(S^3_r(0_1)\) must also be the unknot &#x005B;<a 
+<!--l. 65--><p class="indent" >  Even though this is a complete set of moves, much is still left to be understood about the
+relationship between knots and links and their surgeries. One may wonder how much information
+about \(K\) is retained by the manifold \(S^3_\gamma (K)\), the \(\gamma \) surgery on \(K\), where \(\gamma \in \QQ \) is the framing on \(K\). For example, it
+isn&#x2019;t hard to see that the Alexander module can be recovered from the \(0\) surgery of a knot. A
+conjecture related to knot surgeries is the Property R conjecture, which claims that no nontrivial
+knot can yield \(S^2\times S^1\) via \(0\) surgery. This was resolved in 1983 with Gabai&#x2019;s work on foliations
+&#x005B;<a id="page.7"></a><a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-gabaifoliations" >Gab87</a>&#x005D;. He showed that the zero surgery of a knot detects its Seifert genus, which
+detects the unknot. Later work showed that the any knot admitting an \(r\) surgery for \(r \in \QQ \) that
+is orientation preserving di&#xFB00;eomorphic to \(S^3_r(0_1)\) must also be the unknot &#x005B;<a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-culler" >Cul+87</a>; <a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-gordonluecke" >GL89</a>;
 <a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-kronheimerlens" >Kro+07</a>&#x005D;.
-</p><!--l. 67--><p class="indent" >  How special is the unknot in that it is characterized by its surgeries? Let a knot \(K\) be
-called \(\gamma \)<span 
-class="cmbx-12">-injective </span>if whenever there is an orientation preserving di&#xFB00;eomorphism between \(S^3_\gamma (K')\)
-and \(S^3_\gamma (K)\), then \(K = K'\). The result mentioned earlier shows that the unknot is \(\gamma \)-injective
-for any \(\gamma \), and this is also known to be true for the trefoil, and the &#xFB01;gure eight
-&#x005B;<a 
+</p><!--l. 67--><p class="indent" >  How special is the unknot in that it is characterized by its surgeries? Let a knot \(K\) be called
+\(\gamma \)<span 
+class="cmbx-12">-injective </span>if whenever there is an orientation preserving di&#xFB00;eomorphism between \(S^3_\gamma (K')\) and \(S^3_\gamma (K)\), then \(K = K'\). The
+result mentioned earlier shows that the unknot is \(\gamma \)-injective for any \(\gamma \), and this is also known to be
+true for the trefoil, and the &#xFB01;gure eight &#x005B;<a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-OStreffig8" >OS06</a>&#x005D;.
-</p><!--l. 69--><p class="indent" >  However, these knots are special in that they are small, so it is easier to characterize
-them in terms of invariants which may be visible in their surgeries. The framing \(\gamma \) matters a
-lot for uniqueness. It is known for example that any torus knot is determined by its \(0\)
-surgery &#x005B;<a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-rollspunknots" >Ter93</a>&#x005D;. One might expect that as a knot type \(K\) becomes more complicated, it
-becomes more likely that for some \(\gamma \), \(K\) will not be \(\gamma \)-injective. To provide more evidence
-toward this, good techniques are required for producing knots sharing surgeries. There has
-been work by various people producing knots with the same surgeries, for example see
-&#x005B;<a 
+</p><!--l. 69--><p class="indent" >  However, these knots are special in that they are small, so it is easier to characterize them in
+terms of invariants which may be visible in their surgeries. The framing \(\gamma \) matters a lot for
+uniqueness. It is known for example that any torus knot is determined by its \(0\) surgery &#x005B;<a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-rollspunknots" >Ter93</a>&#x005D;. One
+might expect that as a knot type \(K\) becomes more complicated, it becomes more likely that for some
+\(\gamma \), \(K\) will not be \(\gamma \)-injective. To provide more evidence toward this, good techniques are required for
+producing knots sharing surgeries. There has been work by various people producing knots with
+the same surgeries, for example see &#x005B;<a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-satknots" >Bra80</a>; <a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-lickorishconst" >Lic76</a>; <a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-infiniteknots" >Oso06</a>; <a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-dual0surgery" >Ter94</a>&#x005D;. Two examples are particularly notable in that they are
-general methods that actually produce distinct knots with di&#xFB00;eomorphic \(\gamma \) traces. The &#xFB01;rst
-method, called <span 
-class="cmbx-12">annulus twisting</span>, can be used to produce in&#xFB01;nitely many knots with the
-same \(\gamma \) trace where \(\gamma \in \{-4,0,4\}\) &#x005B;<a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-annulustwisting" >Abe+12</a>&#x005D;. It is a somewhat limited technique in the sense that
-there is not good control over the framing, but it has been re&#xFB01;ned on the level
-of \(3\)-manifolds for example in &#x005B;<a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-lueckeannulus" >Abe+14</a>&#x005D; to work in a bit more generality. The
-second method originates from the idea of <span 
-class="cmbx-12">dual patterns </span>due to Gompf and
-Miyazaki &#x005B;<a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-dual0surgery" >Ter94</a>&#x005D;. Two examples are
+particularly notable in that they are general methods that actually produce distinct knots
+with di&#xFB00;eomorphic \(\gamma \) traces. The &#xFB01;rst method, called <span 
+class="cmbx-12">annulus twisting</span>, can be used to
+produce in&#xFB01;nitely many knots with the same \(\gamma \) trace where \(\gamma \in \{-4,0,4\}\) &#x005B;<a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-annulustwisting" >Abe+12</a>&#x005D;. It is a somewhat
+limited technique in the sense that there is not good control over the framing, but it
+has been re&#xFB01;ned on the level of \(3\)-manifolds for example in &#x005B;<a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-lueckeannulus" >Abe+14</a>&#x005D; to work in a bit
+more generality. The second method originates from the idea of <span 
+class="cmbx-12">dual patterns </span>due to
+Gompf and Miyazaki &#x005B;<a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-dualpatterns" >GM95</a>&#x005D;, and can be used to produce pairs of knots with the same \(0\)
 trace.
-</p><!--l. 71--><p class="indent" >  Here two methods are presented that generalize both annulus twisting and the dual
-patterns construction by relaxing the di&#xFB00;eomorphism to one on the surgery rather than
-the trace. These give much more &#xFB02;exibility on both the type of knots for which the
-methods work, and the framings for which the knots produced will share a surgery. Both
-methods use the same fundamental ingredient, called an \(S^3\)-pair. Afterwards, nontrivial
-examples are given, and some special attention is given to a common special case of both
-constructions that works for many ribbon knots. The &#xFB01;rst method works without
-                                                                                  
-
-                                                                                  
-modi&#xFB01;cation for integer-framed knots in an integer homology \(3\)-sphere, and the
-latter for rationally-framed knots in any compact \(3\)-manifold, but here only \(S^3\) is
+</p><!--l. 71--><p class="indent" >  Here two methods are presented that generalize both annulus twisting and the dual patterns
+construction by relaxing the di&#xFB00;eomorphism to one on the surgery rather than the trace. These
+give much more &#xFB02;exibility on both the type of knots for which the methods work, and the framings
+for which the knots produced will share a surgery. Both methods use the same fundamental
+ingredient, called an \(S^3\)-pair. Afterwards, nontrivial examples are given, and some special attention is
+given to a common special case of both constructions that works for many ribbon knots. The &#xFB01;rst
+method works without modi&#xFB01;cation for integer-framed knots in an integer homology \(3\)-sphere,
+and the latter for rationally-framed knots in any compact \(3\)-manifold, but here only \(S^3\) is
 considered.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Band presentations and integer surgeries</h3>
-<!--l. 75--><p class="noindent" >Suppose \(L\) is a framed link in \(S^3\) consisting of two knots \(A,B\) with framings \(f_a,f_b \in \ZZ \) represent \(S^3\). This data,
-denoted either \(L\) or \((A,B)\), is called an \(S^3\)<span 
-class="cmbx-12">-pair</span>. Given an \(S^3\)-pair \(L\), a knot \(K\) is said to have an \(L\)<span 
-class="cmbx-12">-band</span>
-<span 
-class="cmbx-12">presentation </span>if it is obtained by connecting \(A\) and \(B\) with a band. Given a \(L\)-band presented
-knot \(K\), one can orient \(A\) and \(B\) &#x0028;up to reversing them both&#x0029; by having the orientation
-be compatible with the band. Then the linking matrix \(\begin{pmatrix} f_a &amp; l_{ab} \\ l_{ab} &amp; f_b \end{pmatrix}\) of \(L\) with this \(S^3\)-pair is
+<!--l. 75--><p class="noindent" >Suppose \(L\) is a framed link in \(S^3\) consisting of two knots \(A,B\) with framings \(f_a,f_b \in \ZZ \) represent \(S^3\). This
+data, denoted either \(L\) or \((A,B)\), is called an \(S^3\)<span 
+class="cmbx-12">-pair</span>. Given an \(S^3\)-pair \(L\), a knot \(K\) is said to have
+an \(L\)<span 
+class="cmbx-12">-band presentation </span>if it is obtained by connecting \(A\) and \(B\) with a band. Given a
+\(L\)-band presented knot \(K\), one can orient \(A\) and \(B\) &#x0028;up to reversing them both&#x0029; by having the
+                                                                                         
+                                                                                         
+orientation be compatible with the band. Then the linking matrix \(\begin{pmatrix} f_a &amp; l_{ab} \\ l_{ab} &amp; f_b \end{pmatrix}\) of \(L\) with this \(S^3\)-pair is
 well-de&#xFB01;ned.
-</p><!--l. 78--><p class="indent" >  There are many di&#xFB00;erent types of \(S^3\)-pairs. A basic example comes from \(A,B\) being a
-cancelling pair of handles &#x0028;represented by any integer-framed knot and its \(0\)-framed
-meridian&#x0029;. This example gives every knot \(K\) some sort of band presentation, such as the one
-shown in Figure <a 
+</p><!--l. 78--><p class="indent" >  There are many di&#xFB00;erent types of \(S^3\)-pairs. A basic example comes from \(A,B\) being a cancelling pair
+of handles &#x0028;represented by any integer-framed knot and its \(0\)-framed meridian&#x0029;. This
+example gives every knot \(K\) some sort of band presentation, such as the one shown in Figure
+<a 
 href="#x1-20013">3<!--tex4ht:ref: trivialband --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20013"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 81--><p class="noindent" ><img 
 src="trivialband.png" alt="pict"  
- width="257.99883pt"  />
+ width="281.84871pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;3:</span><span  
-class="content"> Given a knot \(K\), one can build a &#x201C;trivial&#x201D; band presentation for it such as
-the one shown.</span></figcaption><!--tex4ht:label?: x1-20013 -->
-                                                                                  
-
-                                                                                  
+class="content"> Given a knot \(K\), one can build a &#x201C;trivial&#x201D; band presentation for it such as the one
+shown.</span></figcaption><!--tex4ht:label?: x1-20013 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 86--><p class="indent" >  More generally, any crossing change of a knot \(K\) to \(K'\) and an integer \(n\) gives \(K\) a band
-presentation. This can be seen in Figure <a 
-href="#x1-20024">4<!--tex4ht:ref: crosschange --></a>. Namely, the crossing change can be viewed as
-connecting \(K'\) to a meridian of \(K\). If one then views that meridian as a cancelling
-\(1\)-handle for \(K'\) which is \(n\)-framed, this is a band presentation of \(K\). \(\gamma \) in this case is \(n \pm 2\), and \(\ee = 1\)
-so there is a lot of freedom over which surgery will be shared by the resulting
-knot.
+<!--l. 86--><p class="indent" >  More generally, any crossing change of a knot \(K\) to \(K'\) and an integer \(n\) gives \(K\) a band presentation.
+This can be seen in Figure <a 
+href="#x1-20024">4<!--tex4ht:ref: crosschange --></a>. Namely, the crossing change can be viewed as connecting \(K'\) to a
+meridian of \(K\). If one then views that meridian as a cancelling \(1\)-handle for \(K'\) which is \(n\)-framed, this is a
+band presentation of \(K\). \(\gamma \) in this case is \(n \pm 2\), and \(\ee = 1\) so there is a lot of freedom over which surgery will be
+shared by the resulting knot.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20024"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 89--><p class="noindent" ><img 
 src="crossingchange.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;4:</span><span  
 class="content"> It is shown above how to get a band presentation from a crossing change.</span></figcaption><!--tex4ht:label?: x1-20024 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 95--><p class="indent" >  Another family of examples shown in Figure <a 
-href="#x1-20045">5<!--tex4ht:ref: parallelbandpres --></a> called \(B^K_n\) comes from the following lemma,
-which will be useful in the proof of the main theorem.
+href="#x1-20045">5<!--tex4ht:ref: parallelbandpres --></a> called \(B^K_n\) comes from the following lemma, which
+will be useful in the proof of the main theorem.
 </p>
   <div class="newtheorem">
 <!--l. 97--><p class="noindent" ><span class="head">
@@ -496,62 +479,56 @@ class="cmti-12">, and let</span> \(A,B\) <span
 class="cmti-12">be knots</span> \(K,K'\) <span 
 class="cmti-12">with framings</span> \(n\) <span 
 class="cmti-12">and</span> \(n+2\) <span 
-class="cmti-12">such</span>
+class="cmti-12">such that</span> \(A,B\) <span 
+class="cmti-12">bound</span>
 <span 
-class="cmti-12">that</span> \(A,B\) <span 
-class="cmti-12">bound an annulus disjoint from</span> \(L\) <span 
+class="cmti-12">an annulus disjoint from</span> \(L\) <span 
 class="cmti-12">and such that if one orients</span> \(A\) <span 
 class="cmti-12">and</span> \(B\) <span 
-class="cmti-12">with respect</span>
+class="cmti-12">with respect to an orientation</span>
 <span 
-class="cmti-12">to an orientation on the annulus, their linking number is</span> \(-(n+1)\)<span 
+class="cmti-12">on the annulus, their linking number is</span> \(-(n+1)\)<span 
 class="cmti-12">. Then</span> \(L\) <span 
 class="cmti-12">and</span> \(L \cup A \cup B\) <span 
-class="cmti-12">represent the</span>
-<span 
-class="cmti-12">same 3-manifold.</span>
+class="cmti-12">represent the same 3-manifold.</span>
 </p>
   <div class="proof">
 <!--l. 101--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Given the conditions in the theorem, \(A\) speci&#xFB01;es \(B\) up to isotopy as a longitude.
-Start with \(L\), and add \(A\) with a cancelling \(1\)-handle, which will not change the \(3\)-manifold.
-On the level of \(3\)-manifolds, this is the same as adding \(A\) with a \(0\)-framed meridian \(\mu \).
-Then choose an orientation of \(\mu \) and \(A\) such that the linking number between the two is
-\(1\), and let \(D_\mu \) be the embedded disk with boundary \(\mu \) that geometrically intersects \(A\) once.
-Now let \(B\) be the knot obtained by sliding \(\mu \) over \(A\) if \(\ee = 1\) and \(-A\) if \(\ee = -1\) along the band whose core
-is on \(D\) such that \(A \cup B\) bound an annulus. The sliding is all local, so the annulus will be
-disjoint from the rest of \(L\). This will also result in the desired framings. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Given the conditions in the theorem, \(A\) speci&#xFB01;es \(B\) up to isotopy as a longitude. Start
+with \(L\), and add \(A\) with a cancelling \(1\)-handle, which will not change the \(3\)-manifold. On the level of
+\(3\)-manifolds, this is the same as adding \(A\) with a \(0\)-framed meridian \(\mu \). Then choose an orientation
+of \(\mu \) and \(A\) such that the linking number between the two is \(1\), and let \(D_\mu \) be the embedded disk
+with boundary \(\mu \) that geometrically intersects \(A\) once. Now let \(B\) be the knot obtained by sliding \(\mu \)
+over \(A\) if \(\ee = 1\) and \(-A\) if \(\ee = -1\) along the band whose core is on \(D\) such that \(A \cup B\) bound an annulus. The sliding is
+all local, so the annulus will be disjoint from the rest of \(L\). This will also result in the desired
+framings. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20045"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 108--><p class="noindent" ><img 
 src="parallelbandpres.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;5:</span><span  
 class="content"> A family of \(S^3\)-pairs depending on a knot \(K\) and integer \(n\) called \(B^K_n\).</span></figcaption><!--tex4ht:label?: x1-20045 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 115--><p class="indent" >  Given a band presentation of a knot \(K\) with \(S^3\)-pairs \(L=(A,B)\), call the sum of the entries in the
-linking matrix the <span 
-class="cmbx-12">induced framing</span>, denoted \(\gamma = f_a + f_b + 2l_{ab}\). For a \(B^K_n\)-band presented knot,
-the induced framing is either \(4n+4\) or \(0\) depending on the orientation of the band.
-One can then produce two knots \(L_a(K),L_b(K)\) which we will later see share a surgery with
-\(K\).
+<!--l. 115--><p class="indent" >  Given a band presentation of a knot \(K\) with \(S^3\)-pairs \(L=(A,B)\), call the sum of the entries in the linking
+matrix the <span 
+class="cmbx-12">induced framing</span>, denoted \(\gamma = f_a + f_b + 2l_{ab}\). For a \(B^K_n\)-band presented knot, the induced framing is either \(4n+4\)
+or \(0\) depending on the orientation of the band. One can then produce two knots \(L_a(K),L_b(K)\) which we will later
+see share a surgery with \(K\).
 </p>
   <div class="newtheorem">
 <!--l. 117--><p class="noindent" ><span class="head">
@@ -559,16 +536,15 @@ One can then produce two knots \(L_a(K),L_b(K)\) which we will later see share a
  id="x1-2005r1"></a>
 <span 
 class="cmbx-12">Construction 2.1.1 </span>&#x0028;Band twisting&#x0029;<span 
-class="cmbx-12">.</span>  </span>Let \(K\) be a knot with an \(L\)-band presentation.
-Let \(A', B'\) be longitudes of \(A\) and \(B\) respectively corresponding to framings \(f_a + 1\) and \(f_b - 1\), and give them
-the framings \(f_a,f_b\) respectively. Connect \(A\) and \(B\) along the band that produces \(K\), to obtain \(K\)
-along with two framed knots \(A',B'\). Since \(A \cup B\) represents \(S^3\), \(K\) in the framed link \(K \cup A' \cup B'\) will represent
-another &#x0028;possibly di&#xFB00;erent&#x0029; knot type in \(S^3\), which will be denoted \(L_a(K)\). By reversing the
-roles of \(A,B\), one also obtains \(L_b(K)\).
+class="cmbx-12">.</span>  </span>Let \(K\) be a knot with an \(L\)-band presentation. Let \(A', B'\) be
+longitudes of \(A\) and \(B\) respectively corresponding to framings \(f_a + 1\) and \(f_b - 1\), and give them the framings
+\(f_a,f_b\) respectively. Connect \(A\) and \(B\) along the band that produces \(K\), to obtain \(K\) along with two framed
+knots \(A',B'\). Since \(A \cup B\) represents \(S^3\), \(K\) in the framed link \(K \cup A' \cup B'\) will represent another &#x0028;possibly di&#xFB00;erent&#x0029; knot
+type in \(S^3\), which will be denoted \(L_a(K)\). By reversing the roles of \(A,B\), one also obtains \(L_b(K)\).
 </p>
   </div>
-<!--l. 122--><p class="indent" >  The main theorem about band twisting is below: the resulting knot has a surgery that
-agrees with the \(\gamma \) surgery of \(K\).
+<!--l. 122--><p class="indent" >  The main theorem about band twisting is below: the resulting knot has a surgery that agrees
+with the \(\gamma \) surgery of \(K\).
 </p>
   <div class="newtheorem">
 <!--l. 123--><p class="noindent" ><span class="head">
@@ -579,44 +555,41 @@ class="cmbx-12">Theorem 2.2.</span>  </span><span
 class="cmti-12">Let</span> \(K\) <span 
 class="cmti-12">be a knot with an</span> \(L\)<span 
 class="cmti-12">-band presentation, and let</span> \(\ee = l_{ab}^2-f_af_b\) <span 
-class="cmti-12">be the negative of</span>
+class="cmti-12">be the negative of the</span>
 <span 
-class="cmti-12">the determinant of the linking matrix. Then</span> \(S^3_{\ee \gamma }(L_a(K)) \cong S^3_{\ee \gamma }(L_b(K)) \cong S^3_{\gamma } (K)\)<span 
+class="cmti-12">determinant of the linking matrix. Then</span> \(S^3_{\ee \gamma }(L_a(K)) \cong S^3_{\ee \gamma }(L_b(K)) \cong S^3_{\gamma } (K)\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 127--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>By reversing the roles of \(A,B\), it su&#xFB03;ces to show that \(S^3_{\ee \gamma }(L_a(K)) \cong S^3_{\gamma } (K)\). The proof will be done
-via handle calculus, and is shown schematically in Figure <a 
-href="#x1-20076">6<!--tex4ht:ref: proofmainthm --></a>. Begin with a \(\gamma \)-framed
-oriented \(K\), built by attaching a band to \(A\) and \(B\). First, by Lemma <a 
-href="#x1-2003r1">2.1<!--tex4ht:ref: addlinkedpair --></a>, one can add to
-the diagram \(f_a\) and \(f_a+2\)-framed oriented longitudes of \(A\) named \(A'\) and \(B''\) respectively, such that
-the linking numbers between any pair of \(A,A',B''\) are \(f_a+1\). Since \(K\) is the union of \(A\) and \(B\) along a
-band, \(\lk (K,B'') = \lk (A,B'') + \lk (B,B'') = l_{ab} + f_a+1\).
-                                                                                  
-
-                                                                                  
-</p><!--l. 129--><p class="indent" >  Now slide \(B''\) over \(-K\) along a band obtained as a subset of the natural annulus with
-boundary \(A \cup B''\), and denote the resulting knot \(B'\) &#x0028;this annulus is disjoint from \(A'\)&#x0029;. By using
-the rest of the annulus and the band connecting \(A\) and \(B\), an isotopy is produced between
-\(-B'\) and a longitude of \(B\). It&#x2019;s framing is going to be \(\gamma + 2\lk (-K,B'') + f_a + 2 = f_a + f_b + 2l_{ab} -2(l_{ab} + f_a + 1) + f_a + 2 = f_b\). Moreover, \(\lk (-B',B) = -\lk (B',B) = \lk (B',A)-\lk (B',K) = -l_{ab} - \lk (B'',K) + \gamma \) \(= -l_{ab} - (l_{ab} + f_a+1) + f_a+ f_b + 2l_{ab} = f_b -1\).
-</p><!--l. 131--><p class="indent" >  Thus some integer surgery \(\gamma '\) of \(L_a(K)\) agrees with the \(\gamma \) surgery of \(K\), and for homological
-reasons \(\gamma ' = \pm \gamma \). One can compute \(\gamma '\) in the following way: since \(A' \cup B'\) represent \(S^3\), \(L_a(K)\) is a knot in \(S^3\)
-that can be isotoped inside any small neighborhood. Choosing a neighborhood that
-is outside of \(A'\cup B'\), one gets an isotopy corresponding to a series of handle slides that splits
-\(L_a(K)\) from \(\gamma '\), and the goal is to compute the framing on \(L_a(K)\) after that isotopy. In order to do
-this, one only needs to know how many times it was slid over \(A',B'\). But after the isotopy,
-the linking number of \(L_a(K)\) with \(A',B'\) is \(0\), and this is a linear constraint that determines how
-many times \(L_a(K)\) needs to be slid.
-</p><!--l. 133--><p class="indent" >  Both  the  number  of  slides  and  the  amount  each  slide  a&#xFB00;ects  the  framing  are
-polynomial functions, so \(\frac{\gamma '}\gamma \) is a rational function in the variables \(f_a, f_b,\) and \(l_{ab}\) on the variety
-cut out by \(f_a f_b-l_{ab}^2 = \pm 1\). The integer points are Zariski dense on the open set that the rational
-function is de&#xFB01;ned \((\gamma \neq 0)\), and their image via \(g\) is \(\pm 1\), so the whole variety&#x2019;s image is \(\pm 1\). The
-variety has two components, the determinant \(\pm 1\) parts, and so the function is constant
-on each component. By computing\(\frac{\gamma '}\gamma \) for any two examples with \(\pm 1\) determinants such as
-when the linking matrix is \(\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1\end{pmatrix}\) and \(\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1\end{pmatrix}\), one sees that \(\frac{\gamma '}\gamma \) is the function \(\ee \). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>By reversing the roles of \(A,B\), it su&#xFB03;ces to show that \(S^3_{\ee \gamma }(L_a(K)) \cong S^3_{\gamma } (K)\). The proof will be done via handle
+calculus, and is shown schematically in Figure <a 
+href="#x1-20076">6<!--tex4ht:ref: proofmainthm --></a>. Begin with a \(\gamma \)-framed oriented \(K\), built by
+attaching a band to \(A\) and \(B\). First, by Lemma <a 
+href="#x1-2003r1">2.1<!--tex4ht:ref: addlinkedpair --></a>, one can add to the diagram \(f_a\) and \(f_a+2\)-framed
+oriented longitudes of \(A\) named \(A'\) and \(B''\) respectively, such that the linking numbers between any
+pair of \(A,A',B''\) are \(f_a+1\). Since \(K\) is the union of \(A\) and \(B\) along a band, \(\lk (K,B'') = \lk (A,B'') + \lk (B,B'') = l_{ab} + f_a+1\).
+</p><!--l. 129--><p class="indent" >  Now slide \(B''\) over \(-K\) along a band obtained as a subset of the natural annulus with boundary
+\(A \cup B''\), and denote the resulting knot \(B'\) &#x0028;this annulus is disjoint from \(A'\)&#x0029;. By using the rest of the
+annulus and the band connecting \(A\) and \(B\), an isotopy is produced between \(-B'\) and a longitude of
+\(B\). It&#x2019;s framing is going to be \(\gamma + 2\lk (-K,B'') + f_a + 2 = f_a + f_b + 2l_{ab} -2(l_{ab} + f_a + 1) + f_a + 2 = f_b\). Moreover, \(\lk (-B',B) = -\lk (B',B) = \lk (B',A)-\lk (B',K) = -l_{ab} - \lk (B'',K) + \gamma \) \(= -l_{ab} - (l_{ab} + f_a+1) + f_a+ f_b + 2l_{ab} = f_b -1\).
+</p><!--l. 131--><p class="indent" >  Thus some integer surgery \(\gamma '\) of \(L_a(K)\) agrees with the \(\gamma \) surgery of \(K\), and for homological reasons \(\gamma ' = \pm \gamma \).
+One can compute \(\gamma '\) in the following way: since \(A' \cup B'\) represent \(S^3\), \(L_a(K)\) is a knot in \(S^3\) that can be isotoped
+inside any small neighborhood. Choosing a neighborhood that is outside of \(A'\cup B'\), one gets an
+isotopy corresponding to a series of handle slides that splits \(L_a(K)\) from \(\gamma '\), and the goal is to compute
+the framing on \(L_a(K)\) after that isotopy. In order to do this, one only needs to know how many
+                                                                                         
+                                                                                         
+times it was slid over \(A',B'\). But after the isotopy, the linking number of \(L_a(K)\) with \(A',B'\) is \(0\), and this is a
+linear constraint that determines how many times \(L_a(K)\) needs to be slid.
+</p><!--l. 133--><p class="indent" >  Both the number of slides and the amount each slide a&#xFB00;ects the framing are polynomial
+functions, so \(\frac{\gamma '}\gamma \) is a rational function in the variables \(f_a, f_b,\) and \(l_{ab}\) on the variety cut out by \(f_a f_b-l_{ab}^2 = \pm 1\). The
+integer points are Zariski dense on the open set that the rational function is de&#xFB01;ned \((\gamma \neq 0)\), and
+their image via \(g\) is \(\pm 1\), so the whole variety&#x2019;s image is \(\pm 1\). The variety has two components, the
+determinant \(\pm 1\) parts, and so the function is constant on each component. By computing\(\frac{\gamma '}\gamma \) for
+any two examples with \(\pm 1\) determinants such as when the linking matrix is \(\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1\end{pmatrix}\) and \(\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1\end{pmatrix}\), one sees that
+\(\frac{\gamma '}\gamma \) is the function \(\ee \). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -628,34 +601,30 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 137--><p class="noindent" >
 </p><!--l. 138--><p class="noindent" ><img 
 src="AB.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="K.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="KB'A'.png" alt="pict"  
- width="290.25114pt"  /> <img 
+ width="317.08247pt"  /> <img 
 src="KB''A'.png" alt="pict"  
- width="290.25114pt"  /></p></div>
+ width="317.08247pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;6:</span><span  
 class="content"> This is a schematic drawing of the proof of Theorem <a 
-href="#x1-2006r2">2.2<!--tex4ht:ref: mainthm --></a>. In the top left
-is shown are the framed knots \(A\) and \(B\), which are oriented in a coherent manner with
-respect to the band, which is shown via dotted lines. The top right shows the knot
-\(K\). The &#xFB01;rst step of the proof is shown on the bottom left, where two new framed
-oriented knots \(A',B'\) are introduced, which are longitudes of \(A\). On the bottom right, \(B'\) has
-been slid over \(K\) to obtain \(B''\). \(K\), now viewed in the \(S^3\) obtained by surgery on \(A'\) and \(B'\) is a
-potentially di&#xFB00;erent knot.</span></figcaption><!--tex4ht:label?: x1-20076 -->
+href="#x1-2006r2">2.2<!--tex4ht:ref: mainthm --></a>. In the top left is shown
+are the framed knots \(A\) and \(B\), which are oriented in a coherent manner with respect to the
+band, which is shown via dotted lines. The top right shows the knot \(K\). The &#xFB01;rst step of the
+proof is shown on the bottom left, where two new framed oriented knots \(A',B'\) are introduced,
+which are longitudes of \(A\). On the bottom right, \(B'\) has been slid over \(K\) to obtain \(B''\). \(K\), now viewed
+in the \(S^3\) obtained by surgery on \(A'\) and \(B'\) is a potentially di&#xFB00;erent knot.</span></figcaption><!--tex4ht:label?: x1-20076 -->
   </figure>
   </div>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Dualizing knots and integer surgeries</h3>
-<!--l. 152--><p class="noindent" >In this section it will be more convenient to use the \((A,B)\) notation for \(S^3\)-pairs. The second
-construction, called dualizing, works given a framed link \(Q\) and two disjoint &#x0028;rationally&#x0029;
-                                                                                  
-
-                                                                                  
-framed knots \(K_1,K_2\) such that \(Q \cup K_i, i = 1,2\) yield \(S^3\) upon surgery. Let us call \((Q,K_1,K_2)\) a <span 
-class="cmbx-12">dualizing triple</span>. The key
-observation is the lemma below:
+<!--l. 152--><p class="noindent" >In this section it will be more convenient to use the \((A,B)\) notation for \(S^3\)-pairs. The second construction,
+called dualizing, works given a framed link \(Q\) and two disjoint &#x0028;rationally&#x0029; framed knots \(K_1,K_2\) such that \(Q \cup K_i, i = 1,2\)
+yield \(S^3\) upon surgery. Let us call \((Q,K_1,K_2)\) a <span 
+class="cmbx-12">dualizing triple</span>. The key observation is the lemma
+below:
 </p>
   <div class="newtheorem">
 <!--l. 154--><p class="noindent" ><span class="head">
@@ -666,10 +635,10 @@ class="cmbx-12">Lemma 3.1.</span>  </span><span
 class="cmti-12">Given a dualizing triple</span> \((Q,K_1,K_2)\)<span 
 class="cmti-12">,</span> \(K_1\)<span 
 class="cmti-12">, viewed inside the</span> \(S^3\) <span 
-class="cmti-12">produced from surgery</span>
+class="cmti-12">produced from surgery on</span> \(Q \cup K_2\)<span 
+class="cmti-12">, has</span>
 <span 
-class="cmti-12">on</span> \(Q \cup K_2\)<span 
-class="cmti-12">, has the same surgery as</span> \(K_2\) <span 
+class="cmti-12">the same surgery as</span> \(K_2\) <span 
 class="cmti-12">viewed inside the</span> \(S^3\) <span 
 class="cmti-12">produced from surgery on</span> \(Q \cup K_1\)<span 
 class="cmti-12">.</span>
@@ -679,12 +648,13 @@ class="cmti-12">.</span>
 <span 
 class="cmti-12">Proof.</span> </span>Both of their surgeries are the \(3\)-manifold produced by surgery on \(Q \cup K_1 \cup K_2\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                         
+                                                                                         
 </p>
   </div>
   </div>
-<!--l. 162--><p class="indent" >  Thus given a dualizing triple, the lemma provides a way to produce two &#x0028;possibly
-di&#xFB00;erent&#x0029; knots sharing a surgery. Here is a construction for producing dualizing
-triples.
+<!--l. 162--><p class="indent" >  Thus given a dualizing triple, the lemma provides a way to produce two &#x0028;possibly di&#xFB00;erent&#x0029;
+knots sharing a surgery. Here is a construction for producing dualizing triples.
 </p>
   <div class="newtheorem">
 <!--l. 164--><p class="noindent" ><span class="head">
@@ -692,21 +662,17 @@ triples.
  id="x1-3002r1"></a>
 <span 
 class="cmbx-12">Construction 3.1.1 </span>&#x0028;Dualizing&#x0029;<span 
-class="cmbx-12">.</span>  </span>Let \(K_1\cup Q\) be a framed link representing \(S^3\), and let \(K_2\) be a
-framed knot disjoint to \(K_1\) isotopic in \(S^3(Q)\) to \(K_1\). Then \((Q,K_1,K_2)\) form a dualizing triple.
+class="cmbx-12">.</span>  </span>Let \(K_1\cup Q\) be a framed link representing \(S^3\), and let \(K_2\) be a framed
+knot disjoint to \(K_1\) isotopic in \(S^3(Q)\) to \(K_1\). Then \((Q,K_1,K_2)\) form a dualizing triple.
 </p>
   </div>
-<!--l. 168--><p class="indent" >  Indeed because \(K_1\) is isotopic to \(K_2\) in \(S^3(Q)\), surgery on \(Q \cup K_2\) is di&#xFB00;eomorphic to surgery on \(Q \cup K_1\)
-which is di&#xFB00;eomorphic to \(S^3\) by assumption. What may be surprising is that this
-construction can produce many nontrivial examples, as will be shown in the next
-section.
+<!--l. 168--><p class="indent" >  Indeed because \(K_1\) is isotopic to \(K_2\) in \(S^3(Q)\), surgery on \(Q \cup K_2\) is di&#xFB00;eomorphic to surgery on \(Q \cup K_1\) which is
+di&#xFB00;eomorphic to \(S^3\) by assumption. What may be surprising is that this construction can produce
+many nontrivial examples, as will be shown in the next section.
 </p><!--l. 170--><p class="indent" >  Two dualizing triples \((Q,K_1,K_2), (Q',K_1',K_2')\) are <span 
 class="cmbx-12">equivalent </span>if there are orientation preserving di&#xFB00;eomorphisms
-between the surgeries of \(Q,Q'\) sending \(K_1\cup K_2\) to \(K_1' \cup K_2'\) as framed knots. Equivalent dualizing triples
-produce the same pairs of knots sharing a surgery.
-                                                                                  
-
-                                                                                  
+between the surgeries of \(Q,Q'\) sending \(K_1\cup K_2\) to \(K_1' \cup K_2'\) as framed knots. Equivalent dualizing triples produce the
+same pairs of knots sharing a surgery.
 </p>
   <div class="newtheorem">
 <!--l. 172--><p class="noindent" ><span class="head">
@@ -716,112 +682,103 @@ produce the same pairs of knots sharing a surgery.
 class="cmbx-12">Lemma 3.2.</span>  </span><span 
 class="cmti-12">Every dualizing triple</span> \((Q,K_1,K_2)\) <span 
 class="cmti-12">where</span> \(K_1\) <span 
-class="cmti-12">has an integer framing is equivalent to</span>
+class="cmti-12">has an integer framing is equivalent to a triple</span> \((Q',K'_1,K'_2)\)
 <span 
-class="cmti-12">a triple</span> \((Q',K'_1,K'_2)\) <span 
 class="cmti-12">where</span> \(Q'\) <span 
 class="cmti-12">has only one component and an integer framing.</span>
 </p>
   <div class="proof">
 <!--l. 176--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Surgery on \(Q\) is di&#xFB00;eomorphic to surgery on the \(Q \cup K_1 \cup \mu \), where \(\mu \) is the meridian of \(K_1\) with
-a \(0\)-framing, since it cancels with \(K_1\). But since \(K_1 \cup L\) yields \(S^3\), \(\mu \) can be viewed in the surgered
-manifold as a knot \(\mu '\) in \(S^3\) with an integer framing, and its surgery will be the same as
-\(Q\)&#x2019;s. If \(\phi \) is this di&#xFB00;eomorphism between the surgeries, and \(K_1,K_2\) are viewed as knots in the
-surgery of \(Q\), then \((Q,K_1,K_2)\) is equivalent to \((\mu ',\phi (K_1),\phi (K_2))\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Surgery on \(Q\) is di&#xFB00;eomorphic to surgery on the \(Q \cup K_1 \cup \mu \), where \(\mu \) is the meridian of \(K_1\) with a
+\(0\)-framing, since it cancels with \(K_1\). But since \(K_1 \cup L\) yields \(S^3\), \(\mu \) can be viewed in the surgered manifold
+as a knot \(\mu '\) in \(S^3\) with an integer framing, and its surgery will be the same as \(Q\)&#x2019;s. If \(\phi \) is this
+di&#xFB00;eomorphism between the surgeries, and \(K_1,K_2\) are viewed as knots in the surgery of \(Q\), then \((Q,K_1,K_2)\) is
+equivalent to \((\mu ',\phi (K_1),\phi (K_2))\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 180--><p class="indent" >  Thus the dualizing construction for integer framings really amounts to taking
-an \(S^3\)-pair \((K,K_1)\), and isotoping \(K_1\) in the surgery of \(K\) to obtain \(K_2\) and the dualizing triple
-\((K,K_1,K_2)\).
-</p><!--l. 182--><p class="indent" >  The reason this method is called dualizing is that it is analogous to &#x005B;<a id="page.21"></a><a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-dualpatterns" >GM95</a>&#x005D; mentioned
-earlier, where a notion of duality is developed of certain patterns by looking at knots in \(S^2\times S^1\).
-Their notion of duality can essentially be obtained from this one by taking \(Q\) to be the dual
-circle of a \(1\)-handle attached to \(S^3\), and taking each \(K_i\) to be a cancelling \(2\)-handle.
-Rather than looking at surgeries of \(K_1,K_2\), however, they consider \(K_i\) as a knot inside \(S^3(Q)-K_{3-i} \cong S^1\times B^2\)
-for \(i = 1,2\), which up to conventions on how the di&#xFB00;eomorphisms to \(S^1\times B^2\) are made are a
-pair of dual patterns. Here there is a duality associated to any \(S^3\)-pair \((K_1,K_2)\) de&#xFB01;ned for
-knots in \(S^3(K_2)-K_1\) that is are isotopic in \(S^3(K_2)\) to \(K_1\). This construction was originally used to
-produce potential counterexamples to the slice-ribbon conjecture, but later was
-used to construct examples of knots that give the same \(0\) trace/surgery &#x005B;<a 
+<!--l. 180--><p class="indent" >  Thus the dualizing construction for integer framings really amounts to taking an \(S^3\)-pair \((K,K_1)\), and
+isotoping \(K_1\) in the surgery of \(K\) to obtain \(K_2\) and the dualizing triple \((K,K_1,K_2)\).
+                                                                                         
+                                                                                         
+</p><!--l. 182--><p class="indent" >  The reason this method is called dualizing is that it is analogous to &#x005B;<a id="page.19"></a><a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-dualpatterns" >GM95</a>&#x005D; mentioned earlier,
+where a notion of duality is developed of certain patterns by looking at knots in \(S^2\times S^1\). Their notion of
+duality can essentially be obtained from this one by taking \(Q\) to be the dual circle of a \(1\)-handle
+attached to \(S^3\), and taking each \(K_i\) to be a cancelling \(2\)-handle. Rather than looking at surgeries of
+\(K_1,K_2\), however, they consider \(K_i\) as a knot inside \(S^3(Q)-K_{3-i} \cong S^1\times B^2\) for \(i = 1,2\), which up to conventions on how the
+di&#xFB00;eomorphisms to \(S^1\times B^2\) are made are a pair of dual patterns. Here there is a duality associated to any
+\(S^3\)-pair \((K_1,K_2)\) de&#xFB01;ned for knots in \(S^3(K_2)-K_1\) that is are isotopic in \(S^3(K_2)\) to \(K_1\). This construction was originally
+used to produce potential counterexamples to the slice-ribbon conjecture, but later
+was used to construct examples of knots that give the same \(0\) trace/surgery &#x005B;<a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-infiniteknots" >Oso06</a>;
 <a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-piccirilloconcordance" >MP18</a>&#x005D;.
 </p>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
  id="x1-40004"></a>Examples and Questions</h3>
-                                                                                  
-
-                                                                                  
-<!--l. 185--><p class="noindent" >In this section examples are given of using band twisting and dualizing to produce knots
-sharing surgeries.
+<!--l. 185--><p class="noindent" >In this section examples are given of using band twisting and dualizing to produce knots sharing
+surgeries.
 </p><!--l. 187--><p class="indent" >  Consider the family of \(S^3\)-pairs \(B^K_n\) mentioned earlier. If \(K\) is the unknot \(0_1\), and \(n\) is \(2\) or \(-2\), then the
-notion of band presentation agrees with that in &#x005B;<a id="page.22"></a><a 
+notion of band presentation agrees with that in &#x005B;<a id="page.20"></a><a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-annulustwisting" >Abe+12</a>&#x005D;. Moreover the band twisting
-construction presented above coincides in this case with annulus twisting presented there.
-Annulus twisting produces in&#xFB01;nitely many knots sharing a surgery, and it can be
+construction presented above coincides in this case with annulus twisting presented
+there. Annulus twisting produces in&#xFB01;nitely many knots sharing a surgery, and it can be
 generalized via \(A^n := B^{0_1}_n\), shown in Figure <a 
-href="#x1-40017">7<!--tex4ht:ref: anntwistgeneral --></a>. Namely, \(A^n_a(K)\) for any \(A^n\)-band presented knot inherits a
-natural \(A^n\)-presentation from that on \(K\) by using the same band. Thus the process can be
-applied many times to a \(A^n\)-band presented knot \(P\) to obtain an integer-indexed family of
-knots \(P_r\) with \(A^n(P_r) = P_{r+1}\). </p><figure class="figure"> 
+href="#x1-40017">7<!--tex4ht:ref: anntwistgeneral --></a>. Namely, \(A^n_a(K)\) for any \(A^n\)-band presented knot inherits a natural
+\(A^n\)-presentation from that on \(K\) by using the same band. Thus the process can be applied many
+times to a \(A^n\)-band presented knot \(P\) to obtain an integer-indexed family of knots \(P_r\) with \(A^n(P_r) = P_{r+1}\).
+</p><figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-40017"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 189--><p class="noindent" ><img 
 src="band.png" alt="pict"  
- width="225.75636pt"  />
+ width="246.62567pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;7:</span><span  
-class="content"> This is a family of \(S^3\)-pairs that generalizes annulus twisting in that it can
-produce an integer-indexed family of knots sharing a surgery. After doing surgery on
-the \(\frac{-1} n\)-framed unknot the resulting \(3\)-manifold is still \(S^3\), and \(A\) and \(B\) are exactly the link \(A^n\). The
-band twisting operation \(A^n_a(K)\) can then be viewed as applying a twisting di&#xFB00;eomorphism
-in a neighborhood of the annulus bounded by \(A\) and \(B\), so that the resulting knot will
-still be \(A^n\)-band presented.</span></figcaption><!--tex4ht:label?: x1-40017 -->
-                                                                                  
-
-                                                                                  
+class="content"> This is a family of \(S^3\)-pairs that generalizes annulus twisting in that it can produce
+an integer-indexed family of knots sharing a surgery. After doing surgery on the \(\frac{-1} n\)-framed
+unknot the resulting \(3\)-manifold is still \(S^3\), and \(A\) and \(B\) are exactly the link \(A^n\). The band twisting
+operation \(A^n_a(K)\) can then be viewed as applying a twisting di&#xFB00;eomorphism in a neighborhood of
+the annulus bounded by \(A\) and \(B\), so that the resulting knot will still be \(A^n\)-band presented.</span></figcaption><!--tex4ht:label?: x1-40017 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 195--><p class="indent" >  Consider the case \(n = -1, K = 0_1\). Here the induced framing is \(0\), and giving a \(A^{-1}\)-band presented knot is
-the same as giving a ribbon presentation of a knot with two minima. The knot is
-produced by taking a two component unlink and attaching a band between the two
-components. The band twisting operation is given by applying \(1\) surgery on a
-canonical longitude of one of the unknotted components, and \(-1\) surgery on a canonical
-longitude of the other. The factor that seems to determine whether or not a di&#xFB00;erent
-knot can be produced is the geometric intersection number of the core of the
-band with the disjoint disks that each of the unknots bound. If the geometric
-intersection number is \(1\), then the band twist does not change the knot type, as
-the two knots on which \(1\) and \(-1\) surgery are being performed are isotopic in the
+<!--l. 195--><p class="indent" >  Consider the case \(n = -1, K = 0_1\). Here the induced framing is \(0\), and giving a \(A^{-1}\)-band presented knot is the same
+as giving a ribbon presentation of a knot with two minima. The knot is produced by taking a two
+component unlink and attaching a band between the two components. The band twisting
+operation is given by applying \(1\) surgery on a canonical longitude of one of the unknotted
+components, and \(-1\) surgery on a canonical longitude of the other. The factor that seems to
+determine whether or not a di&#xFB00;erent knot can be produced is the geometric intersection
+number of the core of the band with the disjoint disks that each of the unknots bound. If
+the geometric intersection number is \(1\), then the band twist does not change the knot
+type, as the two knots on which \(1\) and \(-1\) surgery are being performed are isotopic in the
 complement of the knot with linking number \(0\), so by Lemma <a 
 href="#x1-2003r1">2.1<!--tex4ht:ref: addlinkedpair --></a> do not change the
 knot.
-</p><!--l. 198--><p class="indent" >  When the geometric intersection number is larger than \(1\), actually distinct knots can be
-produced. For example shown in Figure <a 
-href="#x1-40069">9<!--tex4ht:ref: 88example --></a> is an \(A^{-1}\)-band presentation of the knot \(8_8\), and the
-result of one band twist, which gives a distinct knot sharing the \(0\) surgery. In Figure <a 
-href="#x1-40058">8<!--tex4ht:ref: vassiliev --></a> is a
-table giving invariants of the knots produced from applying this construction to other
-ribbon knots. If \(P\) is a \(A^n\)-band presented knot, let \(P_r\) be as above the result of \(r\) twists. Some
-questions that arise are:
+</p><!--l. 198--><p class="indent" >  When the geometric intersection number is larger than \(1\), actually distinct knots can be produced.
+For example shown in Figure <a 
+href="#x1-40069">9<!--tex4ht:ref: 88example --></a> is an \(A^{-1}\)-band presentation of the knot \(8_8\), and the result of one band
+twist, which gives a distinct knot sharing the \(0\) surgery. In Figure <a 
+href="#x1-40058">8<!--tex4ht:ref: vassiliev --></a> is a table giving invariants
+of the knots produced from applying this construction to other ribbon knots. If \(P\) is a
+\(A^n\)-band presented knot, let \(P_r\) be as above the result of \(r\) twists. Some questions that arise
+are:
 </p>
   <div class="newtheorem">
 <!--l. 200--><p class="noindent" ><span class="head">
 <a 
  id="x1-4002r1"></a>
 <span 
-class="cmbx-12">Question 4.0.1.</span>  </span>Let \(\gamma \) be a &#xFB01;nite type invariant of order \(l\). Is the function that takes
-an integer \(r\) to \(\gamma (P_r)\) always a polynomial of degree at most \(l-2\)?
+class="cmbx-12">Question 4.0.1.</span>  </span>Let \(\gamma \) be a &#xFB01;nite type invariant of order \(l\). Is the function that takes an
+integer \(r\) to \(\gamma (P_r)\) always a polynomial of degree at most \(l-2\)?
 </p>
   </div>
   <div class="newtheorem">
@@ -829,35 +786,31 @@ an integer \(r\) to \(\gamma (P_r)\) always a polynomial of degree at most \(l-2
 <a 
  id="x1-4003r2"></a>
 <span 
-class="cmbx-12">Question 4.0.2.</span>  </span>In the \(n = -1\) case, if the geometric intersection number of the band is at
-least \(2\) with one of the disjoint disks that \(A\) and \(B\) bound, do \(P_r\) represent in&#xFB01;nitely many
-knot types?
+class="cmbx-12">Question 4.0.2.</span>  </span>In the \(n = -1\) case, if the geometric intersection number of the band is at least \(2\)
+with one of the disjoint disks that \(A\) and \(B\) bound, do \(P_r\) represent in&#xFB01;nitely many knot types?
 </p>
   </div>
 <!--l. 208--><p class="indent" >  Moreover, a general &#x0028;though imprecise&#x0029; question about band twisting is:
-                                                                                  
-
-                                                                                  
 </p>
   <div class="newtheorem">
 <!--l. 210--><p class="noindent" ><span class="head">
 <a 
  id="x1-4004r3"></a>
 <span 
-class="cmbx-12">Question 4.0.3.</span>  </span>Given an \(S^3\)-pair \(L\), for any \(L\)-band presented knot \(K\) with a su&#xFB03;ciently
+class="cmbx-12">Question 4.0.3.</span>  </span>Given  an  \(S^3\)-pair  \(L\),  for  any  \(L\)-band  presented  knot  \(K\)  with  a  su&#xFB03;ciently
 complicated &#x0028;?&#x0029; band, is \(L_a(K)\) not the same as \(K\)?
+                                                                                         
+                                                                                         
 </p>
   </div>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-40058"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <div class="tabular"> <table id="TBL-1" class="tabular" 
  
 ><colgroup id="TBL-1-1g"><col 
@@ -1067,167 +1020,151 @@ class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><h
  style="vertical-align:baseline;" id="TBL-1-29-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-29-1"  
 class="td11">     </td></tr></table></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;8:</span><span  
-class="content">In the table, the knot \(K(n), n \in \ZZ \), means the knot obtained by applying a \(A^{-1}\)-band twist
-\(n\) times to a standard ribbon presentation of \(K\). The invariant \(Vl\) is shown for \(3 \leq l \leq 6\), which
-is the unnormalized Vassiliev invariant coming from the Jones polynomial given by
-terms in the series expansion of \(J(e^q)\) at 0. Moreover, the degrees of the polynomials of
-the function \(r \mapsto Vl(K(r))\) are shown for each \(l\) and \(K\).</span></figcaption><!--tex4ht:label?: x1-40058 -->
-                                                                                  
-
-                                                                                  
+class="content">In the table, the knot \(K(n), n \in \ZZ \), means the knot obtained by applying a \(A^{-1}\)-band twist \(n\) times
+to a standard ribbon presentation of \(K\). The invariant \(Vl\) is shown for \(3 \leq l \leq 6\), which is the unnormalized
+Vassiliev invariant coming from the Jones polynomial given by terms in the series expansion
+of \(J(e^q)\) at 0. Moreover, the degrees of the polynomials of the function \(r \mapsto Vl(K(r))\) are shown for each \(l\) and
+\(K\).</span></figcaption><!--tex4ht:label?: x1-40058 -->
+                                                                                         
+                                                                                         
   </figure>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-40069"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 259--><p class="noindent" ><img 
 src="8_8example.png" alt="pict"  
- width="354.75577pt"  />
+ width="387.55002pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;9:</span><span  
-class="content"> \(8_8\), shown on the left, is obtained from the knot on the right by a \(A_{-1}\)-band
-twist. The induced framing is \(0\), and so the \(0\) traces are the same. The two knots can
-be distinguished by their Jones polynomials.</span></figcaption><!--tex4ht:label?: x1-40069 -->
-                                                                                  
-
-                                                                                  
+class="content"> \(8_8\), shown on the left, is obtained from the knot on the right by a \(A_{-1}\)-band twist. The
+induced framing is \(0\), and so the \(0\) traces are the same. The two knots can be distinguished by
+their Jones polynomials.</span></figcaption><!--tex4ht:label?: x1-40069 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 266--><p class="indent" >  As another example, here is an explicit di&#xFB00;eomorphism between \(2\) surgery and \(-2\) surgeries
-of some other ribbon knots. In the example shown in Figure <a 
-href="#x1-400710">10<!--tex4ht:ref: pm2surgeries --></a>, the \(2\) surgery of \(K_s\) agrees
-with the \(-2\) surgery of \(K_{s-3}\). To see this, one can view use the \(S^3\)-pair \(L\) consisting of a two
-component unlink with both components having framing \(1\). Thus the induced framing is \(2\)
-and \(\ee \) is \(-1\), and one &#xFB01;nds \(L_a(K_s) = L_b(K_s) = K_{s-3}\). The knots can be distinguished by the fact that the quadratic
-term of the Conway polynomial changes sign between the cases \(s\) is odd and even.
-This example includes many small knots such as \(K_{-5} = 10_{140}, K_{-2} = 6_1, K_{-1} = 3_1 \# \bar{3_1}, K_{1} = 8_{20}, K_2 = 9_{46}\), and furthermore note that
-\(\bar K_{s} = K_{-s-2}\).
+<!--l. 266--><p class="indent" >  As another example, here is an explicit di&#xFB00;eomorphism between \(2\) surgery and \(-2\) surgeries of some
+other ribbon knots. In the example shown in Figure <a 
+href="#x1-400710">10<!--tex4ht:ref: pm2surgeries --></a>, the \(2\) surgery of \(K_s\) agrees with the \(-2\) surgery of
+\(K_{s-3}\). To see this, one can view use the \(S^3\)-pair \(L\) consisting of a two component unlink with both
+components having framing \(1\). Thus the induced framing is \(2\) and \(\ee \) is \(-1\), and one &#xFB01;nds \(L_a(K_s) = L_b(K_s) = K_{s-3}\). The knots can
+be distinguished by the fact that the quadratic term of the Conway polynomial changes sign
+between the cases \(s\) is odd and even. This example includes many small knots such as \(K_{-5} = 10_{140}, K_{-2} = 6_1, K_{-1} = 3_1 \# \bar{3_1}, K_{1} = 8_{20}, K_2 = 9_{46}\), and
+furthermore note that \(\bar K_{s} = K_{-s-2}\).
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-400710"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 269--><p class="noindent" ><img 
 src="61example1.png" alt="pict"  
- width="193.50403pt"  /> <img 
+ width="211.39189pt"  /> <img 
 src="61example2.png" alt="pict"  
- width="193.50403pt"  /> <img 
+ width="211.39189pt"  /> <img 
 src="61example3.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;10:</span><span  
-class="content"> This is an example of a family of ribbon knots \(K_s\) such that \(S^3_2(K_s) = S^3_{-2}(K_{s-3})\). This is done by
-band twisting as demonstrated in the &#xFB01;rst &#xFB01;gure. After blowing down and isotoping,
-\(K_{s-3}\) is the end result.</span></figcaption><!--tex4ht:label?: x1-400710 -->
-                                                                                  
-
-                                                                                  
+class="content"> This is an example of a family of ribbon knots \(K_s\) such that \(S^3_2(K_s) = S^3_{-2}(K_{s-3})\). This is done by band
+twisting as demonstrated in the &#xFB01;rst &#xFB01;gure. After blowing down and isotoping, \(K_{s-3}\) is the end
+result.</span></figcaption><!--tex4ht:label?: x1-400710 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 278--><p class="indent" >  For dualizing, nontrivial examples have been used and produced in &#x005B;<a id="page.35"></a><a 
+<!--l. 278--><p class="indent" >  For dualizing, nontrivial examples have been used and produced in &#x005B;<a id="page.33"></a><a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-infiniteknots" >Oso06</a>; <a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-piccirilloconcordance" >MP18</a>&#x005D;. In
-fact, one of the &#xFB01;rst published examples of distinct knots sharing surgeries due to Lickorish
-&#x005B;<a 
-href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-lickorishconst" >Lic76</a>&#x005D; is a special of the construction in the degenerate case that for the \(S^3\)-pair is a
-split link, and one of the framed knots in the \(S^3\)-pair represents \(S^3\). In this case,
-the other knot must also represent \(S^3\), and hence be a \(\frac 1 n\)-framed unknot for some
-\(n \in \ZZ -0\).
-</p><!--l. 280--><p class="indent" >  Moreover, the examples from before of band twisting on the \(B_{-1}^{0_1}\)-presented knots can be
-viewed as an example of dualizing. Begin with the \(S^3\)-pair consisting of \(1\)-framed
-knot and a \(0\)-framed meridian. Slide the meridian over the \(K,K_1\), and then slide the
-\(-1\)-framed unknot over the \(1\)-framed unknot to obtain a ribbon knot \(K_2\) &#x0028;indeed, the two
-disjoint disks that the unknots bound with the band form a ribbon disk&#x0029;. Applying
-the dualizing construction to \((K,K_1,K_2)\) yields a band twist, as demonstrated in Figure
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-piccirilloconcordance" >MP18</a>&#x005D;. In fact, one
+of the &#xFB01;rst published examples of distinct knots sharing surgeries due to Lickorish &#x005B;<a 
+href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html#X0-lickorishconst" >Lic76</a>&#x005D; is a
+special of the construction in the degenerate case that for the \(S^3\)-pair is a split link, and one of the
+framed knots in the \(S^3\)-pair represents \(S^3\). In this case, the other knot must also represent \(S^3\), and hence
+be a \(\frac 1 n\)-framed unknot for some \(n \in \ZZ -0\).
+</p><!--l. 280--><p class="indent" >  Moreover, the examples from before of band twisting on the \(B_{-1}^{0_1}\)-presented knots can be viewed as
+an example of dualizing. Begin with the \(S^3\)-pair consisting of \(1\)-framed knot and a \(0\)-framed meridian.
+Slide the meridian over the \(K,K_1\), and then slide the \(-1\)-framed unknot over the \(1\)-framed unknot to obtain
+a ribbon knot \(K_2\) &#x0028;indeed, the two disjoint disks that the unknots bound with the band form a ribbon
+disk&#x0029;. Applying the dualizing construction to \((K,K_1,K_2)\) yields a band twist, as demonstrated in Figure
 <a 
 href="#x1-400811">11<!--tex4ht:ref: ribbondualizing --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-400811"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 283--><p class="noindent" ><img 
 src="dualribbon1.png" alt="pict"  
- width="128.9994pt"  /> <img 
+ width="140.92435pt"  /> <img 
 src="dualribbon2.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="dualribbon3.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="dualribbon4.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="dualribbon5.png" alt="pict"  
- width="322.50345pt"  />
+ width="352.31625pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;11:</span><span  
-class="content"> It is demonstrated above that a \(A^{-1}\)-band twist can be obtained via dualizing.
-Begin with a \(1\)-framed unknot and a \(0\)-framed meridian, and isotope as shown here
-for the case of \(6_1\). Then the dual knot will be the band twist of the ribbon knot as
-computed in the last two &#xFB01;gures.</span></figcaption><!--tex4ht:label?: x1-400811 -->
-                                                                                  
-
-                                                                                  
+class="content"> It is demonstrated above that a \(A^{-1}\)-band twist can be obtained via dualizing. Begin
+with a \(1\)-framed unknot and a \(0\)-framed meridian, and isotope as shown here for the case of \(6_1\).
+Then the dual knot will be the band twist of the ribbon knot as computed in the last two
+&#xFB01;gures.</span></figcaption><!--tex4ht:label?: x1-400811 -->
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 293--><p class="indent" >  Finally shown in Figure <a 
-href="#x1-400912">12<!--tex4ht:ref: compexample --></a> is another example produced from a more complicated \(S^3\)-pair,
-a \(-3\)-framed left handed trefoil, and a \(0\)-framed meridian. The two knots can be distinguished
-by their Alexander polynomial, and share a \(-8\) surgery.
+href="#x1-400912">12<!--tex4ht:ref: compexample --></a> is another example produced from a more complicated \(S^3\)-pair, a
+\(-3\)-framed left handed trefoil, and a \(0\)-framed meridian. The two knots can be distinguished by their
+Alexander polynomial, and share a \(-8\) surgery.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-400912"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 296--><p class="noindent" ><img 
 src="-3framed.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="-3framed2.png" alt="pict"  
- width="225.75636pt"  /> <img 
+ width="246.62567pt"  /> <img 
 src="-3framed3.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="-3framed4.png" alt="pict"  
- width="225.75636pt"  />
+ width="246.62567pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;12:</span><span  
-class="content"> This is a more complicated example of dualizing. The &#xFB01;rst picture shows
-the \(S^3\)-pair used, a \(-3\)-framed left handed trefoil knot and a \(0\)-framed meridian. The isotopy
-is indicated in the &#xFB01;rst and second picture, and the resulting knot is shown in the
-third. The last picture shows the dual knot, which shares a \(-8\) surgery and can be
-distinguished from the &#xFB01;rst via the Alexander polynomial for example.</span></figcaption><!--tex4ht:label?: x1-400912 -->
-                                                                                  
-
-                                                                                  
+class="content"> This is a more complicated example of dualizing. The &#xFB01;rst picture shows the \(S^3\)-pair
+used, a \(-3\)-framed left handed trefoil knot and a \(0\)-framed meridian. The isotopy is indicated in
+the &#xFB01;rst and second picture, and the resulting knot is shown in the third. The last picture
+shows the dual knot, which shares a \(-8\) surgery and can be distinguished from the &#xFB01;rst via the
+Alexander polynomial for example.</span></figcaption><!--tex4ht:label?: x1-400912 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 305--><p class="indent" >  Similarly to band twisting, one might expect the following &#x0028;imprecise&#x0029; question to be
-true of dualizing:
+<!--l. 305--><p class="indent" >  Similarly to band twisting, one might expect the following &#x0028;imprecise&#x0029; question to be true of
+dualizing:
 </p>
   <div class="newtheorem">
 <!--l. 307--><p class="noindent" ><span class="head">
 <a 
  id="x1-4010r4"></a>
 <span 
-class="cmbx-12">Question 4.0.4.</span>  </span>Given an \(S^3\)-pair \(L\), for any su&#xFB03;ciently complicated &#x0028;?&#x0029; isotopy of one
-of the components, does dualizing yield a distinct pair of knots?
+class="cmbx-12">Question 4.0.4.</span>  </span>Given an \(S^3\)-pair \(L\), for any su&#xFB03;ciently complicated &#x0028;?&#x0029; isotopy of one of the
+components, does dualizing yield a distinct pair of knots?
 </p>
   </div>
 <!--l. 311--><p class="indent" >  I pledge my honor that this thesis is in accordance with university policy.
@@ -1238,94 +1175,93 @@ of the components, does dualizing yield a distinct pair of knots?
              </p><dl class="thebibliography"><dt id="X0-annulustwisting" class="thebibliography">
 &#x005B;Abe+12&#x005D;  </dt><dd 
 id="bib-1" class="thebibliography">
-           <!--l. 314--><p class="indent" >   <a id="page.41"></a><a 
+           <!--l. 314--><p class="indent" >   <a id="page.39"></a><a 
 href="S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html" id="X0-" ></a>Tetsuya Abe et al. <span 
-class="cmti-12">Annulus twist and di&#xFB00;eomorphic 4-manifolds</span>. 2012.
-           arXiv: <a 
+class="cmti-12">Annulus twist and di&#xFB00;eomorphic 4-manifolds</span>. 2012. arXiv:
+           <a 
 href="https://arxiv.org/abs/1209.0361" >1209.0361 <span 
 class="cmtt-12">&#x005B;math.GT&#x005D;</span></a>.
              </p></dd><dt id="X0-lueckeannulus" class="thebibliography">
 &#x005B;Abe+14&#x005D;  </dt><dd 
 id="bib-2" class="thebibliography">
-           <!--l. 314--><p class="indent" >   Tetsuya  Abe  et  al.  <span 
-class="cmti-12">In&#xFB01;nitely  many  knots  admitting  the  same</span>
+           <!--l. 314--><p class="indent" >   Tetsuya Abe et al. <span 
+class="cmti-12">In&#xFB01;nitely many knots admitting the same integer surgery</span>
            <span 
-class="cmti-12">integer surgery and a 4-dimensional extension</span>. 2014. arXiv: <a 
-href="https://arxiv.org/abs/1409.4851" >1409.4851
-           <span 
+class="cmti-12">and a 4-dimensional extension</span>. 2014. arXiv: <a 
+href="https://arxiv.org/abs/1409.4851" >1409.4851 <span 
 class="cmtt-12">&#x005B;math.GT&#x005D;</span></a>.
              </p></dd><dt id="X0-satknots" class="thebibliography">
 &#x005B;Bra80&#x005D;    </dt><dd 
 id="bib-3" class="thebibliography">
-           <!--l. 314--><p class="indent" >   W. R. Brakes. &#x201C;Manifolds with multiple knot-surgery descriptions&#x201D;.
-           In: <span 
-class="cmti-12">Mathematical Proceedings of the Cambridge Philosophical Society </span>87
-           &#x0028;1980&#x0029;.
+           <!--l. 314--><p class="indent" >   W.  R.  Brakes.  &#x201C;Manifolds  with  multiple  knot-surgery  descriptions&#x201D;.  In:
+           <span 
+class="cmti-12">Mathematical Proceedings of the Cambridge Philosophical Society </span>87 &#x0028;1980&#x0029;.
              </p></dd><dt id="X0-culler" class="thebibliography">
 &#x005B;Cul+87&#x005D;  </dt><dd 
 id="bib-4" class="thebibliography">
            <!--l. 314--><p class="indent" >   Marc Culler et al. &#x201C;Dehn surgery on knots&#x201D;. In: <span 
-class="cmti-12">Annals of Mathematics</span>
-           125.2 &#x0028;1987&#x0029;, pp. 237&#x2013;300.
+class="cmti-12">Annals of Mathematics </span>125.2
+           &#x0028;1987&#x0029;, pp. 237&#x2013;300.
              </p></dd><dt id="X0-gabaifoliations" class="thebibliography">
 &#x005B;Gab87&#x005D;    </dt><dd 
 id="bib-5" class="thebibliography">
-           <!--l. 314--><p class="indent" >   David Gabai. &#x201C;Foliations and the topology of 3-manifolds&#x201D;. In: <span 
-class="cmti-12">Journal</span>
+           <!--l. 314--><p class="indent" >   David  Gabai.  &#x201C;Foliations  and  the  topology  of  3-manifolds&#x201D;.  In:  <span 
+class="cmti-12">Journal of</span>
            <span 
-class="cmti-12">of Di&#xFB00;erential Geometry </span>26 &#x0028;1987&#x0029;, pp. 479&#x2013;536.
-                                                                                  
-
-                                                                                  
+class="cmti-12">Di&#xFB00;erential Geometry </span>26 &#x0028;1987&#x0029;, pp. 479&#x2013;536.
              </p></dd><dt id="X0-dualpatterns" class="thebibliography">
 &#x005B;GM95&#x005D;    </dt><dd 
 id="bib-6" class="thebibliography">
-           <!--l. 314--><p class="indent" >   R. Gompf and K Miyazaki. &#x201C;Some well-disguised ribbon knots&#x201D;. In:
+           <!--l. 314--><p class="indent" >   R. Gompf and K Miyazaki. &#x201C;Some well-disguised ribbon knots&#x201D;. In: <span 
+class="cmti-12">Topology</span>
            <span 
-class="cmti-12">Topology and its Applications </span>64.2 &#x0028;1995&#x0029;, pp. 117&#x2013;131.
+class="cmti-12">and its Applications </span>64.2 &#x0028;1995&#x0029;, pp. 117&#x2013;131.
              </p></dd><dt id="X0-gordonluecke" class="thebibliography">
 &#x005B;GL89&#x005D;    </dt><dd 
 id="bib-7" class="thebibliography">
-           <!--l. 314--><p class="indent" >   Cameron Gordon and John Luecke. &#x201C;Knots are determined by their
+           <!--l. 314--><p class="indent" >   Cameron  Gordon  and  John  Luecke.  &#x201C;Knots  are  determined  by  their
            complements&#x201D;. In: <span 
 class="cmti-12">Bull. Amer. Math. Soc. </span>20.1 &#x0028;1989&#x0029;, pp. 83&#x2013;87.
+                                                                                         
+                                                                                         
              </p></dd><dt id="X0-Kirbycalculus" class="thebibliography">
 &#x005B;Kir78&#x005D;    </dt><dd 
 id="bib-8" class="thebibliography">
-           <!--l. 314--><p class="indent" >   Robion Kirby. &#x201C;A Calculus for framed links in S3&#x201D;. In: <span 
+           <!--l. 314--><p class="indent" >   Robion  Kirby.  &#x201C;A  Calculus  for  framed  links  in  S3&#x201D;.  In:  <span 
 class="cmti-12">Inventiones</span>
            <span 
 class="cmti-12">mathematicae </span>45 &#x0028;1978&#x0029;, pp. 36&#x2013;56.
              </p></dd><dt id="X0-kronheimerlens" class="thebibliography">
 &#x005B;Kro+07&#x005D;  </dt><dd 
 id="bib-9" class="thebibliography">
-           <!--l. 314--><p class="indent" >   Peter Kronheimer et al. &#x201C;Monopoles and Lens space surgeries&#x201D;. In:
+           <!--l. 314--><p class="indent" >   Peter Kronheimer et al. &#x201C;Monopoles and Lens space surgeries&#x201D;. In: <span 
+class="cmti-12">Annals of</span>
            <span 
-class="cmti-12">Annals of Mathematics </span>165 &#x0028;2007&#x0029;, pp. 457&#x2013;546.
+class="cmti-12">Mathematics </span>165 &#x0028;2007&#x0029;, pp. 457&#x2013;546.
              </p></dd><dt id="X0-lickorishcomb3mfd" class="thebibliography">
 &#x005B;Lic62&#x005D;     </dt><dd 
 id="bib-10" class="thebibliography">
-           <!--l. 314--><p class="indent" >   W. B. R. Lickorish. &#x201C;A Representation of Orientable Combinatorial
+           <!--l. 314--><p class="indent" >   W.   B.   R.   Lickorish.   &#x201C;A   Representation   of   Orientable   Combinatorial
            3-Man&#xFB01;olds&#x201D;. In: <span 
 class="cmti-12">Annals of Mathematics </span>76.3 &#x0028;1962&#x0029;.
              </p></dd><dt id="X0-lickorishconst" class="thebibliography">
 &#x005B;Lic76&#x005D;     </dt><dd 
 id="bib-11" class="thebibliography">
            <!--l. 314--><p class="indent" >   W.  B.  R.  Lickorish.  &#x201C;Surgery  on  Knots&#x201D;.  In:  <span 
-class="cmti-12">Proceedings  of  the</span>
+class="cmti-12">Proceedings of the American</span>
            <span 
-class="cmti-12">American Mathematical Society </span>60 &#x0028;1976&#x0029;.
+class="cmti-12">Mathematical Society </span>60 &#x0028;1976&#x0029;.
              </p></dd><dt id="X0-piccirilloconcordance" class="thebibliography">
 &#x005B;MP18&#x005D;    </dt><dd 
 id="bib-12" class="thebibliography">
-           <!--l. 314--><p class="indent" >   Allison N. Miller and Lisa Piccirillo. &#x201C;Knot traces and concordance&#x201D;.
-           In:  <span 
-class="cmti-12">Journal  of  Topology  </span>11.1  &#x0028;2018&#x0029;,  201&#x2013;220.  <span 
+           <!--l. 314--><p class="indent" >   Allison  N.  Miller  and  Lisa  Piccirillo.  &#x201C;Knot  traces  and  concordance&#x201D;.
+           In:   <span 
+class="cmti-12">Journal   of   Topology   </span>11.1   &#x0028;2018&#x0029;,   201&#x2013;220.   <span 
 class="cmcsc-10x-x-120"><span 
 class="small-caps">i</span><span 
 class="small-caps">s</span><span 
 class="small-caps">s</span><span 
-class="small-caps">n</span></span>:  1753-8416.  <span 
+class="small-caps">n</span></span>:   1753-8416.   <span 
 class="cmcsc-10x-x-120"><span 
 class="small-caps">d</span><span 
 class="small-caps">o</span><span 
@@ -1341,47 +1277,43 @@ class="cmtt-12">http://dx.doi.org/10.1112/topo.12054</span></a>.
              </p></dd><dt id="X0-infiniteknots" class="thebibliography">
 &#x005B;Oso06&#x005D;    </dt><dd 
 id="bib-13" class="thebibliography">
-           <!--l. 314--><p class="indent" >   J. K. Osoinach. &#x201C;Manifolds obtained by surgery on an in&#xFB01;nite number
-           of knots in S3&#x201D;. In: <span 
+           <!--l. 314--><p class="indent" >   J. K. Osoinach. &#x201C;Manifolds obtained by surgery on an in&#xFB01;nite number of knots
+           in S3&#x201D;. In: <span 
 class="cmti-12">Topology </span>45.3 &#x0028;2006&#x0029;, pp. 725&#x2013;733.
              </p></dd><dt id="X0-OStreffig8" class="thebibliography">
 &#x005B;OS06&#x005D;     </dt><dd 
 id="bib-14" class="thebibliography">
            <!--l. 314--><p class="indent" >   Peter Ozsvath and Zoltan Szabo. <span 
-class="cmti-12">The Dehn surgery characterization</span>
+class="cmti-12">The Dehn surgery characterization of the</span>
            <span 
-class="cmti-12">of  the  trefoil  and  the  &#xFB01;gure  eight  knot</span>.  2006.  arXiv:  <a 
-href="https://arxiv.org/abs/math/0604079" >math/0604079
-           <span 
+class="cmti-12">trefoil and the &#xFB01;gure eight knot</span>. 2006. arXiv: <a 
+href="https://arxiv.org/abs/math/0604079" >math/0604079 <span 
 class="cmtt-12">&#x005B;math.GT&#x005D;</span></a>.
              </p></dd><dt id="X0-rollspunknots" class="thebibliography">
 &#x005B;Ter93&#x005D;    </dt><dd 
 id="bib-15" class="thebibliography">
-                                                                                  
-
-                                                                                  
            <!--l. 314--><p class="indent" >   Masakazu Teragaito. &#x201C;Roll-spun knots&#x201D;. In: <span 
-class="cmti-12">Mathematical Proceedings</span>
+class="cmti-12">Mathematical Proceedings of the</span>
            <span 
-class="cmti-12">of the Cambridge Philosophical Society </span>113.1 &#x0028;1993&#x0029;, pp. 91&#x2013;96.
+class="cmti-12">Cambridge Philosophical Society </span>113.1 &#x0028;1993&#x0029;, pp. 91&#x2013;96.
              </p></dd><dt id="X0-dual0surgery" class="thebibliography">
 &#x005B;Ter94&#x005D;    </dt><dd 
 id="bib-16" class="thebibliography">
-           <!--l. 314--><p class="indent" >   Masakazu Teragaito. &#x201C;Homology handles with multiple knot-surgery
+           <!--l. 314--><p class="indent" >   Masakazu   Teragaito.   &#x201C;Homology   handles   with   multiple   knot-surgery
            descriptions&#x201D;. In: <span 
 class="cmti-12">Topology and its Applications </span>56 &#x0028;1994&#x0029;, pp. 249&#x2013;257.
              </p></dd><dt id="X0-Wallace" class="thebibliography">
 &#x005B;Wal60&#x005D;    </dt><dd 
 id="bib-17" class="thebibliography">
-           <!--l. 314--><p class="indent" >   A.  H.  Wallace.  &#x201C;Modi&#xFB01;cations  and  Cobounding  Manifolds&#x201D;.  In:
+           <!--l. 314--><p class="indent" >   A.  H.  Wallace.  &#x201C;Modi&#xFB01;cations  and  Cobounding  Manifolds&#x201D;.  In:  <span 
+class="cmti-12">Canadian</span>
            <span 
-class="cmti-12">Canadian Journal of Mathematics </span>12 &#x0028;1960&#x0029;.</p></dd></dl>
+class="cmti-12">Journal of Mathematics </span>12 &#x0028;1960&#x0029;.</p></dd></dl>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

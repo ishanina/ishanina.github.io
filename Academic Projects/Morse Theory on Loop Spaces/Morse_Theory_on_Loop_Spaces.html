@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -227,47 +239,45 @@ class="cmr-10">ISHAN LEVY</span>
 class="cmti-12">Date</span>:&#x00A0;12/8/17.</p></div></div></div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Setup and Critical Points</h3>
-<!--l. 10--><p class="noindent" >A natural object of study in algebraic topology is the space of loops \(\Omega X\) of a space, which is
-adjoint to the suspension \(\Sigma \), so in particular we have nice properties such as \(\pi _n\Omega X = \pi _{n+1}X\). Instead of
-studying the loop space, we may instead like to study the space of paths between two
-points on \(X\), which is homotopy equivalent to the loop space if \(X\) is path connected. Our goal
-is to use Morse theory to learn about a CW-structure on the loop space \(\Omega M\) of a smooth
-manifold \(M\). To begin with, instead of considering the entire loop space, we will consider \(\Omega ^*M\),
-the space &#x0028;to be topologized later&#x0029; of piecewise smooth paths from \(p\) to \(q\), two &#xFB01;xed points on
+<!--l. 10--><p class="noindent" >A natural object of study in algebraic topology is the space of loops \(\Omega X\) of a space. The functor \(\Omega \) is
+adjoint to the suspension \(\Sigma \), giving nice properties such as \(\pi _n\Omega X = \pi _{n+1}X\). Instead of studying the loop space, we
+may instead like to study the space of paths between two points on \(X\), which is homotopy
+equivalent to the loop space if the points lie in the same path component. Our goal is
+to use Morse theory to learn about a CW-structure on the loop space \(\Omega M\) of a smooth
+manifold \(M\). To begin with, instead of considering the entire loop space, we will consider \(\Omega ^*M\), the
+space &#x0028;to be topologized later&#x0029; of piecewise smooth paths from \(p\) to \(q\), two &#xFB01;xed points on
 \(M\).
-</p><!--l. 12--><p class="indent" >  We should think about \(\Omega ^* M\) as an &#x201D;in&#xFB01;nite dimensional manifold&#x201D;, but to avoid doing
-Morse theory on it directly we will ultimately use instead a &#xFB01;nite dimensional
-approximation of it. Our Morse function will be the energy function \(E(\gamma ) = \int \Vert \gamma '\Vert ^2\). Analogously to the
-&#xFB01;nite dimensional case, the tangent space \(T_\gamma \) of a path \(\gamma \) will be the space of vector
-&#xFB01;elds on \(\gamma \) that vanish at the end points, as these correspond to the derivatives of
-variations.
-</p><!--l. 14--><p class="indent" >  The &#xFB01;rst thing we need to do is &#xFB01;gure out what the critical points of \(E\) are. To do this, we
-need to compute the derivative of the \(E\):
+</p><!--l. 12--><p class="indent" >  We should think about \(\Omega ^* M\) as an &#x201C;in&#xFB01;nite dimensional manifold&#x201D;, but to avoid doing Morse theory
+on it directly we will ultimately use instead a &#xFB01;nite dimensional approximation of it. Our Morse
+function will be the energy function \(E(\gamma ) = \int \Vert \gamma '\Vert ^2\). Analogously to the &#xFB01;nite dimensional case, the tangent space \(T_\gamma \)
+of a path \(\gamma \) will be the space of vector &#xFB01;elds on \(\gamma \) that vanish at the end points, as these correspond
+to the derivatives of variations.
+</p><!--l. 14--><p class="indent" >  The &#xFB01;rst thing we need to do is &#xFB01;gure out what the critical points of \(E\) are. To do this, we need to
+compute the derivative of the \(E\):
 </p>
   <div class="newtheorem">
 <!--l. 16--><p class="noindent" ><span class="head">
 <a 
  id="x1-1001r1"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Lemma 1.1 </span>&#x0028;First Variation Formula&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
 class="cmti-12">Let</span> \(t_i\) <span 
-class="cmti-12">be a subdivision on which the vector</span>
+class="cmti-12">be a subdivision on which the vector &#xFB01;eld</span> \(W \in T_\gamma \) <span 
+class="cmti-12">is</span>
 <span 
-class="cmti-12">&#xFB01;eld</span> \(W \in T_\gamma \) <span 
-class="cmti-12">is smooth, and let</span> \(\Delta _i\gamma '\) <span 
+class="cmti-12">smooth, and let</span> \(\Delta _i\gamma '\) <span 
 class="cmti-12">denote the jump of</span> \(\gamma '\) <span 
 class="cmti-12">at</span> \(t_i\)<span 
 class="cmti-12">. Then</span> \(E'(W) = -2\sum _i\langle W,\Delta _i\gamma '\rangle -2\int _0^1\langle W,\gamma ''(t)\rangle \)
 </p>
   <div class="proof">
 <!--l. 21--><p class="indent" >  <span class="head">
+                                                                                         
+                                                                                         
 <span 
-class="cmti-12">Proof.</span> </span>Let \(\gamma _u(t)\) be a variation that corresponds to \(W\). Then \(E'(W) = \frac{d}{du}E(\gamma _u(t))= \int _0^1\frac{d}{du}\langle \frac{d}{dt}\gamma _u(t),\frac{d}{dt}\gamma _u(t)\rangle \) \[ =2\int _{0}^{1} \langle \frac{D}{du}\frac{d}{dt}\gamma _u(t),\frac{d}{dt}\gamma _u(t)\rangle =2\sum _i\int _{t_i}^{t_{i+1}} \langle \frac{D}{dt}\frac{d}{du}\gamma _u(t),\frac{d}{dt}\gamma _u(t)\rangle \] \[= -2\sum _i\langle \frac{d}{du}\gamma _u(t),\Delta _i\frac{d}{dt}\gamma _u(t)\rangle - 2\int _0^1\langle \frac{d}{du}\gamma _u(t),\frac{D}{dt}\frac{d}{dt}\gamma _u(t)\rangle \] which yields the formula
-setting \(u = 0\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Let \(\gamma _u(t)\) be a variation that corresponds to \(W\). Then \(E'(W) = \frac{d}{du}E(\gamma _u(t))= \int _0^1\frac{d}{du}\langle \frac{d}{dt}\gamma _u(t),\frac{d}{dt}\gamma _u(t)\rangle \) \[ =2\int _{0}^{1} \langle \frac{D}{du}\frac{d}{dt}\gamma _u(t),\frac{d}{dt}\gamma _u(t)\rangle =2\sum _i\int _{t_i}^{t_{i+1}} \langle \frac{D}{dt}\frac{d}{du}\gamma _u(t),\frac{d}{dt}\gamma _u(t)\rangle \] \[= -2\sum _i\langle \frac{d}{du}\gamma _u(t),\Delta _i\frac{d}{dt}\gamma _u(t)\rangle - 2\int _0^1\langle \frac{d}{du}\gamma _u(t),\frac{D}{dt}\frac{d}{dt}\gamma _u(t)\rangle \] which yields the formula setting \(u = 0\).
+<span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -285,24 +295,20 @@ class="cmti-12">are the geodesics.</span>
 <!--l. 32--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By Lemma <a 
-href="#x1-1001r1">1.1<!--tex4ht:ref: fvf --></a>, geodesics are critical points. Conversely if \(\gamma \) is critical, choosing
-\(W\) in the direction of \(\gamma '\) but vanishing at the discontinuities, we \(\gamma \) is piecewise geodesic,
-but then by choosing \(W\) in the direction of discontinuities of \(\gamma '\), we see indeed there are
-no jumps in \(\gamma '\) so by uniqueness of solutions to ODEs, \(\gamma \) is a geodesic. <span class="qed"><span 
+href="#x1-1001r1">1.1<!--tex4ht:ref: fvf --></a>, geodesics are critical points. Conversely if \(\gamma \) is critical, choosing \(W\) in
+the direction of \(\gamma '\) but vanishing at the discontinuities, we \(\gamma \) is piecewise geodesic, but then by
+choosing \(W\) in the direction of discontinuities of \(\gamma '\), we see indeed there are no jumps in \(\gamma '\) so by
+uniqueness of solutions to ODEs, \(\gamma \) is a geodesic. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>The Hessian and its null space</h3>
-                                                                                  
-
-                                                                                  
-<!--l. 37--><p class="noindent" >Next we would like to make a notion of the Hessian at a critical point, and study its null
-space and index. Then, analogously to the &#xFB01;nite dimensional case, if \(\gamma _{u,w}(t)\) is a 2-parameter
-variation, with \(\frac{d}{du}\gamma _{u,w}(t) = W_2, \frac{d}{dw}\gamma _{u,w}(t) = W_1\) at \((u,w) =(0,0)\), de&#xFB01;ne the Hessian as \(H(\gamma _{u,w}(t)) = H(W_1,W_2) = \frac{d}{du}\frac{d}{dw}E(\gamma _{u,w}(t))\). This is clearly symmetric bilinear,
-and to see that it is well de&#xFB01;ned, we can compute a formula in terms of \(W_1\) and
-\(W_1\).
+<!--l. 37--><p class="noindent" >Next we would like to make a notion of the Hessian at a critical point, and study its null space and
+index. Then, analogously to the &#xFB01;nite dimensional case, if \(\gamma _{u,w}(t)\) is a 2-parameter variation, with \(\frac{d}{du}\gamma _{u,w}(t) = W_2, \frac{d}{dw}\gamma _{u,w}(t) = W_1\) at \((u,w) =(0,0)\),
+de&#xFB01;ne the Hessian as \(H(\gamma _{u,w}(t)) = H(W_1,W_2) = \frac{d}{du}\frac{d}{dw}E(\gamma _{u,w}(t))\). This is clearly symmetric bilinear, and to see that it is well de&#xFB01;ned, we can
+compute a formula in terms of \(W_1\) and \(W_1\).
 </p>
   <div class="newtheorem">
 <!--l. 40--><p class="noindent" ><span class="head">
@@ -312,27 +318,29 @@ and to see that it is well de&#xFB01;ned, we can compute a formula in terms of \
 class="cmbx-12">Lemma 2.1 </span>&#x0028;Second Variation Formula&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
 class="cmti-12">Let</span> \(\gamma _{u,w}(t)\) <span 
-class="cmti-12">be a 2-parameter variation as above, and</span>
+class="cmti-12">be a 2-parameter variation as above, and let</span> \(t_i\) <span 
+class="cmti-12">be</span>
 <span 
-class="cmti-12">let</span> \(t_i\) <span 
-class="cmti-12">be the discontinuities of</span> \(\frac{D}{dt}W_2\)<span 
+class="cmti-12">the discontinuities of</span> \(\frac{D}{dt}W_2\)<span 
 class="cmti-12">. Then</span> \(H(W_1,W_2) = -2\sum _i\langle W_1,\Delta _i\frac{D}{dt}W_2\rangle -\int _0^1\langle W_1, \frac{D^2}{dt^2}W_2+R(\gamma ',W_2,\gamma ')\rangle \)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
+                                                                                         
+                                                                                         
 <!--l. 43--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>From Lemma <a 
-href="#x1-1001r1">1.1<!--tex4ht:ref: fvf --></a> using the fact that \(\gamma \) is geodesic, at \(w = 0\) we get: \[H(W_1,W_2) = -2\sum _i\langle \frac{d}{dw}\gamma _{u,0},\Delta _i\frac{D}{du}\frac{d}{dt}\gamma _{u,0}\rangle -2\int _0^1\langle \frac{d}{dw}\gamma _{u,0},\frac{D}{du}\frac{D}{dt}\frac{d}{dt}\gamma _{u,0}(t)\rangle \] which after
-rearranging, and commuting the \(\frac{D}{du}\) and \(\frac{D}{dt}\) we get the formula. <span class="qed"><span 
+href="#x1-1001r1">1.1<!--tex4ht:ref: fvf --></a> using the fact that \(\gamma \) is geodesic, at \(w = 0\) we get: \[H(W_1,W_2) = -2\sum _i\langle \frac{d}{dw}\gamma _{u,0},\Delta _i\frac{D}{du}\frac{d}{dt}\gamma _{u,0}\rangle -2\int _0^1\langle \frac{d}{dw}\gamma _{u,0},\frac{D}{du}\frac{D}{dt}\frac{d}{dt}\gamma _{u,0}(t)\rangle \] which after rearranging,
+and commuting the \(\frac{D}{du}\) and \(\frac{D}{dt}\) we get the formula. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
 <!--l. 49--><p class="indent" >  Now a <span 
-class="cmbx-12">Jacobi &#xFB01;eld </span>on a geodesic \(\gamma '\) is a vector &#xFB01;eld satisfying the second order linear
-di&#xFB00;erential equation called the Jacobi equation, \(\frac{D^2}{dt^2}J+R(\gamma ',J,\gamma ') = 0\). As it is second order linear, the space of
-solutions is \(2n\) dimensional. The proof of Corollary <a 
+class="cmbx-12">Jacobi &#xFB01;eld </span>on a geodesic \(\gamma '\) is a vector &#xFB01;eld satisfying the second order linear di&#xFB00;erential
+equation called the Jacobi equation, \(\frac{D^2}{dt^2}J+R(\gamma ',J,\gamma ') = 0\). As it is second order linear, the space of solutions is \(2n\)
+dimensional. The proof of Corollary <a 
 href="#x1-1002r2">1.2<!--tex4ht:ref: crit --></a> gives:
 </p>
   <div class="newtheorem">
@@ -346,12 +354,9 @@ class="cmti-12">.</span>
 </p>
   </div>
 <!--l. 55--><p class="indent" >  We say that \(p,q\) on \(\gamma \) are <span 
-class="cmbx-12">conjugate </span>of multiplicity \(\nu &gt;0\) if \(\nu \) is the dimension of the space of
-Jacobi &#xFB01;elds vanishing at \(p,q\). Thus \(\gamma \) is nondegenerate if the endpoints are nonconjugate. We
-                                                                                  
-
-                                                                                  
-can characterize Jacobi &#xFB01;elds in another way: namely they arise from variations through
+class="cmbx-12">conjugate </span>of multiplicity \(\nu &gt;0\) if \(\nu \) is the dimension of the space of Jacobi
+&#xFB01;elds vanishing at \(p,q\). Thus \(\gamma \) is nondegenerate if the endpoints are nonconjugate. We can
+characterize Jacobi &#xFB01;elds in another way: namely they arise from variations through
 geodesics.
 </p>
   <div class="newtheorem">
@@ -360,22 +365,22 @@ geodesics.
  id="x1-2003r3"></a>
 <span 
 class="cmbx-12">Proposition 2.3.</span>  </span><span 
-class="cmti-12">Jacobi &#xFB01;elds are exactly those arising from variations through</span>
-<span 
-class="cmti-12">geodesics.</span>
+class="cmti-12">Jacobi &#xFB01;elds are exactly those arising from variations through geodesics.</span>
 </p>
   <div class="proof">
 <!--l. 60--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Given a variation through geodesics \(\gamma _u(t)\), \(0 = \frac{D}{du}\frac{D}{dt}\frac{d}{dt}\gamma _u(t) = \frac{D^2}{dt^2}\frac{d}{du}\gamma _u(t)+R(\frac{d}{dt}\gamma _u(t),\frac{d}{du}\gamma _u(t),\frac{d}{dt}\gamma _u(t))\) which shows the Jacobi equation is
-satis&#xFB01;ed. Now to show all Jacobi &#xFB01;elds arise as such, it su&#xFB03;ces to do this on an
-arbitrarily small piece of \(\gamma \), and then note that the variations of geodesics can be
-locally uniquely extended by compactness of \([0,1]\) and that the resulting extension will
-yield the unique extension of the Jacobi equation by uniqueness of solutions to ODEs.
-Then in a small enough neighborhood of \(\gamma (0)\) containing \(\gamma (\ee )\), all geodesics are minimal,
-so in particular, we can take the variation that takes the unique geodesics between
-two paths touching \(\gamma (0)\) and \(\gamma (\ee )\) with prescribed derivatives at \(\gamma (0)\) and \(\gamma (\ee )\). This yields \(2n\) linearly
-independent solutions of the Jacobi equation so it must yield all of them. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Given a variation through geodesics \(\gamma _u(t)\), \(0 = \frac{D}{du}\frac{D}{dt}\frac{d}{dt}\gamma _u(t) = \frac{D^2}{dt^2}\frac{d}{du}\gamma _u(t)+R(\frac{d}{dt}\gamma _u(t),\frac{d}{du}\gamma _u(t),\frac{d}{dt}\gamma _u(t))\) which shows the Jacobi equation is satis&#xFB01;ed.
+Now to show all Jacobi &#xFB01;elds arise as such, it su&#xFB03;ces to do this on an arbitrarily small
+piece of \(\gamma \), and then note that the variations of geodesics can be locally uniquely extended
+by compactness of \([0,1]\) and that the resulting extension will yield the unique extension of the
+Jacobi equation by uniqueness of solutions to ODEs. Then in a small enough neighborhood
+of \(\gamma (0)\) containing \(\gamma (\ee )\), all geodesics are minimal, so in particular, we can take the variation that
+                                                                                         
+                                                                                         
+takes the unique geodesics between two paths touching \(\gamma (0)\) and \(\gamma (\ee )\) with prescribed derivatives at
+\(\gamma (0)\) and \(\gamma (\ee )\). This yields \(2n\) linearly independent solutions of the Jacobi equation so it must yield all
+of them. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -392,21 +397,17 @@ class="cmbx-12">Proposition 2.4.</span>  </span> <span
 class="cmti-12">The nullity of</span> \(d\exp _p(v)\) <span 
 class="cmti-12">is the multiplicity of conjugacy of</span> \(p\) <span 
 class="cmti-12">and</span> \(\exp _p(v)\) <span 
-class="cmti-12">along the</span>
-<span 
-class="cmti-12">geodesic</span> \(\exp _p(v)\)<span 
+class="cmti-12">along the geodesic</span>
+\(\exp _p(v)\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   <div class="proof">
 <!--l. 70--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Given a curve \(\beta (u)\) at \(v\), we can consider the variation through geodesics \(\exp _p(t\beta (u))\). By
-restricting to an interval where geodesics are minimal, we see that this yields all
-Jacobi &#xFB01;elds that vanish at \(p\) by choosing di&#xFB00;erent \(\beta '(0)\). In particular, the Jacobi &#xFB01;eld
-vanishes at the ends i&#xFB00; \(d\exp _p(\beta '(0))=0\), so we get the result. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Given a curve \(\beta (u)\) at \(v\), we can consider the variation through geodesics \(\exp _p(t\beta (u))\). By restricting to
+an interval where geodesics are minimal, we see that this yields all Jacobi &#xFB01;elds that vanish
+at \(p\) by choosing di&#xFB00;erent \(\beta '(0)\). In particular, the Jacobi &#xFB01;eld vanishes at the ends i&#xFB00; \(d\exp _p(\beta '(0))=0\), so we get
+the result. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -426,24 +427,23 @@ class="cmti-12">Proof.</span> </span>This follows from the previous proposition 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                         
+                                                                                         
   </div>
 <!--l. 81--><p class="indent" >  From Proposition <a 
-href="#x1-2004r4">2.4<!--tex4ht:ref: conjugate --></a>, we can see that the multiplicity of conjugacy between two points
-on a geodesic can be at most \(n-1\). Indeed by choosing \(\beta '(0)\) pointing away from the origin, the
-resulting variation will have nonzero derivative at one end point. Alternatively one can
-directly see that the corresponding vector &#xFB01;eld \(t\gamma '(t)\) indeed satis&#xFB01;es the Jacobi equation but
-doesn&#x2019;t vanish at the second endpoint.
-</p><!--l. 83--><p class="indent" >  Indeed we can see in the case of \(S^n\), that two antipodal points are conjugate of multiplicity
-\(n-1\), as the space of minimal geodesics is a copy of \(S^{n-1}\) inside the tangent space. In fact one can
-exploit this fact to prove the Freudenthal Suspension Theorem.
-                                                                                  
-
-                                                                                  
+href="#x1-2004r4">2.4<!--tex4ht:ref: conjugate --></a>, we can see that the multiplicity of conjugacy between two points on a
+geodesic can be at most \(n-1\). Indeed by choosing \(\beta '(0)\) pointing away from the origin, the resulting
+variation will have nonzero derivative at one end point. Alternatively one can directly see that the
+corresponding vector &#xFB01;eld \(t\gamma '(t)\) indeed satis&#xFB01;es the Jacobi equation but doesn&#x2019;t vanish at the second
+endpoint.
+</p><!--l. 83--><p class="indent" >  Indeed we can see in the case of \(S^n\), that two antipodal points are conjugate of multiplicity \(n-1\), as the
+space of minimal geodesics is a copy of \(S^{n-1}\) inside the tangent space. In fact one can exploit this fact
+to prove the Freudenthal Suspension Theorem.
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Index Theorem</h3>
-<!--l. 85--><p class="noindent" >Now given a critical point, we would also like to be able to compute its index. Here \(\gamma \) is a
-critical point from \(p\) to \(q\). We have the following theorem:
+<!--l. 85--><p class="noindent" >Now given a critical point, we would also like to be able to compute its index. Here \(\gamma \) is a critical
+point from \(p\) to \(q\). We have the following theorem:
 </p>
   <div class="newtheorem">
 <!--l. 87--><p class="noindent" ><span class="head">
@@ -453,54 +453,51 @@ critical point from \(p\) to \(q\). We have the following theorem:
 class="cmbx-12">Theorem 3.1 </span>&#x0028;Index Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">The index of</span> \(\gamma \) <span 
-class="cmti-12">is the number of points conjugate to</span>
-\(p\) <span 
-class="cmti-12">counted with multiplicity. Moreover this index is &#xFB01;nite.</span>
+class="cmti-12">is the number of points conjugate to</span> \(p\) <span 
+class="cmti-12">counted</span>
+<span 
+class="cmti-12">with multiplicity. Moreover this index is &#xFB01;nite.</span>
 </p>
   <div class="proof">
 <!--l. 91--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>First we will approximate the tangent space \(T_\gamma \) by a &#xFB01;nite dimensional subspace.
-Namely, choose a subdivision of \(\gamma \), \(t_i\), such that \(\gamma \) restricted to each subinterval is in
-a neighborhood of minimal geodesics. Then we will split \(T_\gamma \) as \(T^\gamma _{t_i}\oplus T'\), where \(T_{t_i}\) consists of
-piecewise Jacobi &#xFB01;elds on each interval, and \(T'\) consists of vector &#xFB01;elds that vanish at
-the \(t_i\). Indeed given tangent vectors at each of the \(t_i\), there is a unique piecewise Jacobi
-&#xFB01;eld with those prescribed tangent vectors since the geodesic is minimal, so \(T_\gamma \) does
-split as such, and we also have \(T^\gamma _{t_i} \cong \bigoplus _1^{n-1}TM_{\gamma (t_i)}\) as a result.
-</p><!--l. 93--><p class="indent" >  Since \(\gamma \) is a minimal geodesic on each subinterval, and variations corresponding to
-elements of \(T'\) can be chosen to &#xFB01;x the endpoints, \(\gamma \) is a minimum of each of \(E\) on each
-of these variations, so \(H\) is positive semide&#xFB01;nite on \(T'\). Now if \(H(W,W) = 0\) for \(W \in T_i\), then \(W\) is in the null
-space of \(H\) by Lemma <a 
-href="#x1-2001r1">2.1<!--tex4ht:ref: svf --></a>, so is a Jacobi &#xFB01;eld, but then it must be \(0\). Thus \(H\) is positive
-de&#xFB01;nite on \(T'\) so we may focus our attention on \(T_{t_i}\). In particular, we already get that the
-index is &#xFB01;nite.
-</p><!--l. 95--><p class="indent" >  De&#xFB01;ne \(\lambda (t)\) to be the index of \(\gamma \) restricted to the subinterval \([0,t]\). It is clear that \(\lambda (t)\) is
-monotonically increasing as negative de&#xFB01;nite subspaces can be extended as \(0\) to further
-along the curve. Moreover, near \(0\), since \(\gamma \) is minimal, \(\lambda (t)=0\) as well. Now &#xFB01;xing a point \(\tau \)
-and choosing a subdivision with \(t_i&lt;\tau &lt;t_{i+1}\), note that \(T^{\gamma |_{[0,t]}}_{t_i} \cong \bigoplus _1^{i}TM_{\gamma (t_i)}\) is not dependant on \(t\) for \(t_i&lt;t&lt;t_{i+1}\). Then \(H\) varies
-continuously on \(T^{\gamma |_{[0,t]}}_{t_i}\) near \(\tau \). Then we get that \(\lambda (\tau -\ee )\geq \lambda (\tau )\) for small \(\ee \), but by monotonicity, this must
-be an equality. Indeed since we also know the null space is dimension \(\nu \), we also get \(\lambda (\tau +\ee )\leq \lambda (\tau )+\nu \),
-and to complete the proof it su&#xFB03;ces to prove the reverse inequality.
-</p><!--l. 97--><p class="indent" >  Now let \(Y_1 ,\dots ,Y_{\lambda (t)}\) be orthonormal and linearly independent such that \(H\) is negative de&#xFB01;nite
-                                                                                  
-
-                                                                                  
-on them, and extend them to \(t+\ee \) be setting them to \(0\). Let \(W_1,\dots ,W_\nu \) be linearly independent
-Jacobi &#xFB01;elds that vanish at \(t\), and extend them as well to \(t+\ee \) as \(0\). Then choose \(X_i\) such that
-\(\langle X_i(t),W_j(t)\rangle = \frac{1}{2}\delta _{ij}\). Looking at the Lemma <a 
-href="#x1-2001r1">2.1<!--tex4ht:ref: svf --></a> we get \(H(W_i,X_j) = \delta _{ij}, H(W_i,Y_j) = 0\). We can write \(H\) then as a matrix on the span of \(Y_1 ,\dots , Y_{\lambda (t)}, cX_1-c^{-1}W_1, \dots , cX_\nu -c^{-1}W_{\nu }\)
-as \[\begin{pmatrix} -I_{\lambda (t)} &amp; cB\\ cB^t &amp; -I_\nu +c^2A \end{pmatrix}\] which is certainly negative de&#xFB01;nite for small \(c\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>First we will approximate the tangent space \(T_\gamma \) by a &#xFB01;nite dimensional subspace. Namely,
+choose a subdivision of \(\gamma \), \(t_i\), such that \(\gamma \) restricted to each subinterval is in a neighborhood of
+minimal geodesics. Then we will split \(T_\gamma \) as \(T^\gamma _{t_i}\oplus T'\), where \(T_{t_i}\) consists of piecewise Jacobi &#xFB01;elds on each
+interval, and \(T'\) consists of vector &#xFB01;elds that vanish at the \(t_i\). Indeed given tangent vectors at
+each of the \(t_i\), there is a unique piecewise Jacobi &#xFB01;eld with those prescribed tangent vectors
+since the geodesic is minimal, so \(T_\gamma \) does split as such, and we also have \(T^\gamma _{t_i} \cong \bigoplus _1^{n-1}TM_{\gamma (t_i)}\) as a result.
+</p><!--l. 93--><p class="indent" >  Since \(\gamma \) is a minimal geodesic on each subinterval, and variations corresponding to elements
+of \(T'\) can be chosen to &#xFB01;x the endpoints, \(\gamma \) is a minimum of each of \(E\) on each of these variations,
+so \(H\) is positive semide&#xFB01;nite on \(T'\). Now if \(H(W,W) = 0\) for \(W \in T_i\), then \(W\) is in the null space of \(H\) by Lemma <a 
+href="#x1-2001r1">2.1<!--tex4ht:ref: svf --></a>, so
+is a Jacobi &#xFB01;eld, but then it must be \(0\). Thus \(H\) is positive de&#xFB01;nite on \(T'\) so we may focus our
+attention on \(T_{t_i}\). In particular, we already get that the index is &#xFB01;nite.
+</p><!--l. 95--><p class="indent" >  De&#xFB01;ne \(\lambda (t)\) to be the index of \(\gamma \) restricted to the subinterval \([0,t]\). It is clear that \(\lambda (t)\) is monotonically
+increasing as negative de&#xFB01;nite subspaces can be extended as \(0\) to further along the curve.
+Moreover, near \(0\), since \(\gamma \) is minimal, \(\lambda (t)=0\) as well. Now &#xFB01;xing a point \(\tau \) and choosing a subdivision
+with \(t_i&lt;\tau &lt;t_{i+1}\), note that \(T^{\gamma |_{[0,t]}}_{t_i} \cong \bigoplus _1^{i}TM_{\gamma (t_i)}\) is not dependant on \(t\) for \(t_i&lt;t&lt;t_{i+1}\). Then \(H\) varies continuously on \(T^{\gamma |_{[0,t]}}_{t_i}\) near \(\tau \). Then we get
+that \(\lambda (\tau -\ee )\geq \lambda (\tau )\) for small \(\ee \), but by monotonicity, this must be an equality. Indeed since we also know
+the null space is dimension \(\nu \), we also get \(\lambda (\tau +\ee )\leq \lambda (\tau )+\nu \), and to complete the proof it su&#xFB03;ces to prove the
+                                                                                         
+                                                                                         
+reverse inequality.
+</p><!--l. 97--><p class="indent" >  Now let \(Y_1 ,\dots ,Y_{\lambda (t)}\) be orthonormal and linearly independent such that \(H\) is negative de&#xFB01;nite on them,
+and extend them to \(t+\ee \) be setting them to \(0\). Let \(W_1,\dots ,W_\nu \) be linearly independent Jacobi &#xFB01;elds that
+vanish at \(t\), and extend them as well to \(t+\ee \) as \(0\). Then choose \(X_i\) such that \(\langle X_i(t),W_j(t)\rangle = \frac{1}{2}\delta _{ij}\). Looking at the Lemma
+<a 
+href="#x1-2001r1">2.1<!--tex4ht:ref: svf --></a> we get \(H(W_i,X_j) = \delta _{ij}, H(W_i,Y_j) = 0\). We can write \(H\) then as a matrix on the span of \(Y_1 ,\dots , Y_{\lambda (t)}, cX_1-c^{-1}W_1, \dots , cX_\nu -c^{-1}W_{\nu }\) as \[\begin{pmatrix} -I_{\lambda (t)} &amp; cB\\ cB^t &amp; -I_\nu +c^2A \end{pmatrix}\] which is certainly negative
+de&#xFB01;nite for small \(c\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
  id="x1-40004"></a>Approximating the loop space</h3>
-<!--l. 106--><p class="noindent" >Now we would like to use these results to learn about the topology of the loop space \(\Omega M\). First
-we would like to say that \(\Omega M\) is homotopy equivalent to our space of piecewise smooth
-paths \(\Omega ^* M\). To do this, &#xFB01;rst topologize \(\Omega ^*M\) with the metric \(d(\gamma _1,\gamma _2) = \sup _t\rho (\gamma _1(t),\gamma _2(t))+\int _0^1\Vert \gamma _1'-\gamma _2'\Vert ^2\) where the second term is
-to ensure that \(E\) is continuous, and \(\rho \) denotes the metric from the Riemannian
-metric.
+<!--l. 106--><p class="noindent" >Now we would like to use these results to learn about the topology of the loop space \(\Omega M\). First we
+would like to say that \(\Omega M\) is homotopy equivalent to our space of piecewise smooth paths \(\Omega ^* M\). To do this,
+&#xFB01;rst topologize \(\Omega ^*M\) with the metric \(d(\gamma _1,\gamma _2) = \sup _t\rho (\gamma _1(t),\gamma _2(t))+\int _0^1\Vert \gamma _1'-\gamma _2'\Vert ^2\) where the second term is to ensure that \(E\) is continuous, and \(\rho \)
+denotes the metric from the Riemannian metric.
 </p>
   <div class="newtheorem">
 <!--l. 108--><p class="noindent" ><span class="head">
@@ -514,25 +511,23 @@ class="cmti-12">is a homotopy equivalence.</span>
   <div class="proof">
 <!--l. 111--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>We cover \(M\) by geodesically convex neighborhoods, i.e. neighborhood such that
-any two points are connected by a unique minimal geodesic that lies entirely inside
-the neighborhood. Now let \(\Omega M_i\) be the collection of paths such that the \([\frac{k}{i},\frac{k+1}{i}]\) interval lies
-entirely inside one of these neighborhoods, and let \(\Omega ^*M_i = i^{-1}\Omega M_i\). Then \(\Omega ^*M\) is the homotopy direct
-limit of the \(\Omega ^*M_i\), and likewise for \(\Omega M\), so it su&#xFB03;ces to show that the inclusion \(i:\Omega ^*M_i \to \Omega M_i\) is a homotopy
-equivalence. To show this, our homotopy inverse \(j\) will take a path an return the
-unique geodesic that agrees on each \(\frac{k}{i}\). \(i \circ j\) is homotopic to the identity as given a path, we
-can continuously deform it to \(i \circ j\) in a natural way: namely at the point \(\frac{k}{i}&lt;r&lt;\frac{k+1}{i}\) let \(H_r(\gamma )(t)\) be \(\gamma (t)\) for \(t&gt;r\), on
-\([\frac{l}{i},\frac{l+1}i]\) and on \([\frac{k}{i},r]\), the unique minimal geodesic between those points. A similar construction
-shows that \(j \circ i\) is homotopic to the identity. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>We cover \(M\) by geodesically convex neighborhoods, i.e. neighborhood such that any two
+points are connected by a unique minimal geodesic that lies entirely inside the neighborhood.
+Now let \(\Omega M_i\) be the collection of paths such that the \([\frac{k}{i},\frac{k+1}{i}]\) interval lies entirely inside one of these
+neighborhoods, and let \(\Omega ^*M_i = i^{-1}\Omega M_i\). Then \(\Omega ^*M\) is the homotopy direct limit of the \(\Omega ^*M_i\), and likewise for \(\Omega M\), so it
+su&#xFB03;ces to show that the inclusion \(i:\Omega ^*M_i \to \Omega M_i\) is a homotopy equivalence. To show this, our homotopy
+inverse \(j\) will take a path an return the unique geodesic that agrees on each \(\frac{k}{i}\). \(i \circ j\) is homotopic
+to the identity as given a path, we can continuously deform it to \(i \circ j\) in a natural way: namely
+at the point \(\frac{k}{i}&lt;r&lt;\frac{k+1}{i}\) let \(H_r(\gamma )(t)\) be \(\gamma (t)\) for \(t&gt;r\), on \([\frac{l}{i},\frac{l+1}i]\) and on \([\frac{k}{i},r]\), the unique minimal geodesic between those points. A
+similar construction shows that \(j \circ i\) is homotopic to the identity. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
   </div>
-<!--l. 115--><p class="indent" >  Thus we can use \(\Omega ^*M\) to study the loop space. However, we would like to approximate \(\Omega ^*M\)
-further, so that we can do Morse theory on it. Namely, let \(\Omega ^c = E^{-1}[0,c]\), and \(\Int \Omega ^c = E^{-1}[0,c)\).
+<!--l. 115--><p class="indent" >  Thus we can use \(\Omega ^*M\) to study the loop space. However, we would like to approximate \(\Omega ^*M\) further, so
+that we can do Morse theory on it. Namely, let \(\Omega ^c = E^{-1}[0,c]\), and \(\Int \Omega ^c = E^{-1}[0,c)\).
+                                                                                         
+                                                                                         
 </p>
   <div class="newtheorem">
 <!--l. 116--><p class="noindent" ><span class="head">
@@ -542,45 +537,37 @@ further, so that we can do Morse theory on it. Namely, let \(\Omega ^c = E^{-1}[
 class="cmbx-12">Theorem 4.2.</span>  </span><span 
 class="cmti-12">Assume</span> \(M\) <span 
 class="cmti-12">complete.</span> \(\Int \Omega ^c\) <span 
-class="cmti-12">can be approximated by a &#xFB01;nite dimensional</span>
+class="cmti-12">can be approximated by a &#xFB01;nite dimensional manifold</span> \(B\)
 <span 
-class="cmti-12">manifold</span> \(B\) <span 
 class="cmti-12">in a natural way.</span> \(E\) <span 
 class="cmti-12">will be a smooth function on</span> \(B\)<span 
 class="cmti-12">, The tangent space of</span> \(B\) <span 
-class="cmti-12">will</span>
+class="cmti-12">will be the</span> \(T_{t_i}\)<span 
+class="cmti-12">, and the</span>
 <span 
-class="cmti-12">be the</span> \(T_{t_i}\)<span 
-class="cmti-12">, and the critical points and Hessian, will be as before. Moreover</span> \(\Int \Omega ^c\) <span 
-class="cmti-12">deformation</span>
-<span 
-class="cmti-12">retracts onto</span> \(B\)<span 
+class="cmti-12">critical points and Hessian, will be as before. Moreover</span> \(\Int \Omega ^c\) <span 
+class="cmti-12">deformation retracts onto</span> \(B\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 120--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>The metric ball of radius \(\sqrt{c}\) is compact as \(M\) is complete, and paths in \(\Int \Omega ^c\) lie there
-by the Cauchy Schwarz inequality. Thus it has a positive injectivity radius \(\ee \), and
-we can make a subdivision \(t_i\) such that \(t_{i+1}-t_i &lt; \frac{\ee ^2}{c}\). By the Cauchy Schwarz inequality again,
-we get that every element of \(\Int \Omega ^c\) is length \(&lt;\ee \) in each interval \([t_{i},t_{i+1}]\). Then we can let \(B\) be the
-subspace of piecewise geodesics on this subdivision. It is naturally a manifold as each
-path in \(B\) is determined by its values on the \(t_i\), so \(B\) embeds as an open subset of \(M \times \dots \times M\). Now
-we immediately see then that its critical points are unbroken geodesics, and that
-its tangent space at these critical points is exactly the \(T_{t_i}\) from the proof of the Index
-Theorem. A similar construction to Proposition <a 
-href="#x1-4001r1">4.1<!--tex4ht:ref: fullpathspace --></a> shows that \(B\) is a deformation
-retract of \(\Int \Omega ^c\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>The metric ball of radius \(\sqrt{c}\) is compact as \(M\) is complete, and paths in \(\Int \Omega ^c\) lie there by the
+Cauchy Schwarz inequality. Thus it has a positive injectivity radius \(\ee \), and we can make a
+subdivision \(t_i\) such that \(t_{i+1}-t_i &lt; \frac{\ee ^2}{c}\). By the Cauchy Schwarz inequality again, we get that every element
+of \(\Int \Omega ^c\) is length \(&lt;\ee \) in each interval \([t_{i},t_{i+1}]\). Then we can let \(B\) be the subspace of piecewise geodesics on
+this subdivision. It is naturally a manifold as each path in \(B\) is determined by its values on the
+\(t_i\), so \(B\) embeds as an open subset of \(M \times \dots \times M\). Now we immediately see then that its critical points are
+unbroken geodesics, and that its tangent space at these critical points is exactly the \(T_{t_i}\) from
+the proof of the Index Theorem. A similar construction to Proposition <a 
+href="#x1-4001r1">4.1<!--tex4ht:ref: fullpathspace --></a> shows that \(B\) is a
+deformation retract of \(\Int \Omega ^c\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 124--><p class="indent" >  The previous theorem implies that we can do our usual Morse theory on the &#xFB01;nite
-dimensional approximation to get results about the full loop space. As usual, we
-get:
-                                                                                  
-
-                                                                                  
+<!--l. 124--><p class="indent" >  The previous theorem implies that we can do our usual Morse theory on the &#xFB01;nite dimensional
+approximation to get results about the full loop space. As usual, we get:
 </p>
   <div class="newtheorem">
 <!--l. 126--><p class="noindent" ><span class="head">
@@ -589,22 +576,23 @@ get:
 <span 
 class="cmbx-12">Theorem 4.3 </span>&#x0028;Fundamental Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
-class="cmti-12">Let</span> \(p,q\) <span 
-class="cmti-12">be nonconjugate along any geodesic,</span>
+class="cmti-12">Let</span>  \(p,q\)  <span 
+class="cmti-12">be  nonconjugate  along  any  geodesic,  and</span>  \(M\)
 <span 
-class="cmti-12">and</span> \(M\) <span 
 class="cmti-12">complete. Then</span> \(\Omega M\) <span 
 class="cmti-12">has the homotopy type of a CW-complex with a</span> \(\lambda \)<span 
-class="cmti-12">-cell in each</span>
+class="cmti-12">-cell in each dimension for</span>
 <span 
-class="cmti-12">dimension for each geodesic with index</span> \(\lambda \)<span 
+class="cmti-12">each geodesic with index</span> \(\lambda \)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 130--><p class="indent" >  In the case of \(S^n\), any two distinct non-antipodal points are nonconjugate, and we can see
-that there is a unique geodesic of index \(k(n-1)\) for each \(k\).
+<!--l. 130--><p class="indent" >  In the case of \(S^n\), any two distinct non-antipodal points are nonconjugate, and we can see that
+there is a unique geodesic of index \(k(n-1)\) for each \(k\).
 </p>
   <div class="newtheorem">
+                                                                                         
+                                                                                         
 <!--l. 132--><p class="noindent" ><span class="head">
 <a 
  id="x1-4004r4"></a>
@@ -618,9 +606,8 @@ class="cmti-12">.</span>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

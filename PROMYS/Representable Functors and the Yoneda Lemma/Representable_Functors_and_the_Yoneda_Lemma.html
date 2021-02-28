@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -227,14 +239,13 @@ class="cmr-10">ISHAN LEVY</span>
 class="cmti-12">Date</span>:&#x00A0;7/31/2017.</p></div></div></div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Representable Functors</h3>
-<!--l. 11--><p class="noindent" >Often when studying categories, one likes to compare functors to other functors via
-natural transformations, to learn about everything involved. Essentially all of the
-important notions in category theory: limits, representations, adjoints, ends, and Kan
-extensions are ways of manifesting this idea. Today we will talk about representable
-functors, which are especially nice functors to Set. The Yoneda Lemma gives us a way to
-understand how representable functors relate to other functors, and gives a way
-to learn about a category by embedding it in a &#x201C;category of presheaves&#x201D; &#x0028;this
-can be seen as analogous to studying groups via actions or studying rings via
+<!--l. 11--><p class="noindent" >Often when studying categories, one likes to compare functors to other functors via natural
+transformations, to learn about everything involved. Essentially all of the important notions in
+category theory: limits, representations, adjoints, ends, and Kan extensions are ways of manifesting
+this idea. Today we will talk about representable functors, which are especially nice functors to
+Set. The Yoneda Lemma gives us a way to understand how representable functors relate to other
+functors, and gives a way to learn about a category by embedding it in a &#x201C;category of presheaves&#x201D;
+&#x0028;this can be seen as analogous to studying groups via actions or studying rings via
 modules&#x0029;.
 </p>
   <div class="newtheorem">
@@ -243,45 +254,40 @@ modules&#x0029;.
  id="x1-1001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 1.1.</span>  </span><span 
-class="cmti-12">A  </span><span 
-class="cmbxti-10x-x-120">representable  functor</span>  \(F:C \to Set\)  <span 
-class="cmti-12">is  a  functor  that  is  naturally</span>
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">representable functor</span> \(F:C \to Set\) <span 
+class="cmti-12">is a functor that is naturally isomorphic to a</span>
 <span 
-class="cmti-12">isomorphic to a Hom functor</span> \(C(a,-)\) <span 
+class="cmti-12">Hom functor</span> \(C(a,-)\) <span 
 class="cmti-12">for some object</span> \(a\)<span 
 class="cmti-12">. We say that</span> \(a\) <span 
 class="cmti-12">is the </span><span 
-class="cmbxti-10x-x-120">representing</span>
-<span 
-class="cmbxti-10x-x-120">object </span><span 
+class="cmbxti-10x-x-120">representing object </span><span 
 class="cmti-12">of</span> \(F\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 17--><p class="indent" >  Recall that naturally isomorphic functors should be thought of as essentially the same.
-Here are some examples of representable functors. The contravariant power set functor
-that takes a set to its set of subsets and a function to the function on power sets which is
-taking the preimage of a power set. This is represented by the object \(2\), the set of \(2\)
+<!--l. 17--><p class="indent" >  Recall that naturally isomorphic functors should be thought of as essentially the same. Here
+are some examples of representable functors. The contravariant power set functor that
+takes a set to its set of subsets and a function to the function on power sets which
+is taking the preimage of a power set. This is represented by the object \(2\), the set of \(2\)
 elements.
-</p><!--l. 19--><p class="indent" >  Consider the functor taking a topology to its set of open sets. This is a contravariant
-functor, because of how continuity is de&#xFB01;ned, and is represented by the Sierpinski space \(S\).
-The Sierpinski space is a topology with two points, \(a\) and \(b\), and one non trivial open set,
-namely the set containing \(a\). Every open set in a space \(X\) is determined by the
-preimage of \(a\) for a unique map from \(X\) to \(S\), so the Sierpinski space is the representing
-object.
-</p><!--l. 21--><p class="indent" >  Another example comes again from algebraic topology. Recall I de&#xFB01;ned the fundamental
-group \(\pi _1\), a functor from \(\Top ^* \to \Set \). In fact, we can consider a slightly di&#xFB00;erent category, \(\hTop ^*\),
-for which \(\pi _1\) &#x0028;and analogously \(\pi _n\)&#x0029; will be corepresentable. Namely, consider \(\Top ^*\), and
-identify two continuous maps if they are homotopic &#x0028;can be deformed to each
-other&#x0029;. This is well de&#xFB01;ned with respect to composition, so we can form a new
-category with these maps identi&#xFB01;ed, \(\hTop ^*\). Now by de&#xFB01;nition, \(\pi _1\), viewed as being from this
-category, is represented by \(S^1\). You might object, and say &#x201C;but isn&#x2019;t \(\pi _1\) to the category of
-groups, whereas a representable functor must be to the category of sets!&#x201D; This is a
-reasonable concern, but we can say that this representable functor factors through
-the category of groups i.e the diagram below commutes where \(F\) is the forgetful
+</p><!--l. 19--><p class="indent" >  Consider the functor taking a topology to its set of open sets. This is a contravariant functor,
+because of how continuity is de&#xFB01;ned, and is represented by the Sierpinski space \(S\). The Sierpinski
+space is a topology with two points, \(a\) and \(b\), and one non trivial open set, namely the set containing
+                                                                                         
+                                                                                         
+\(a\). Every open set in a space \(X\) is determined by the preimage of \(a\) for a unique map from \(X\) to \(S\), so the
+Sierpinski space is the representing object.
+</p><!--l. 21--><p class="indent" >  Another example comes again from algebraic topology. Recall I de&#xFB01;ned the fundamental group \(\pi _1\),
+a functor from \(\Top ^* \to \Set \). In fact, we can consider a slightly di&#xFB00;erent category, \(\hTop ^*\), for which \(\pi _1\) &#x0028;and analogously
+\(\pi _n\)&#x0029; will be corepresentable. Namely, consider \(\Top ^*\), and identify two continuous maps if they are
+homotopic &#x0028;can be deformed to each other&#x0029;. This is well de&#xFB01;ned with respect to composition, so we
+can form a new category with these maps identi&#xFB01;ed, \(\hTop ^*\). Now by de&#xFB01;nition, \(\pi _1\), viewed as being
+from this category, is represented by \(S^1\). You might object, and say &#x201C;but isn&#x2019;t \(\pi _1\) to the
+category of groups, whereas a representable functor must be to the category of sets!&#x201D;
+This is a reasonable concern, but we can say that this representable functor factors
+through the category of groups i.e the diagram below commutes where \(F\) is the forgetful
 functor:
 </p>
 <div class="center" 
@@ -291,62 +297,54 @@ functor:
 src="Representable_Functors_and_the_Yoneda_Lemma0x.svg" alt="    hTop &#x2217;      Grp
 
 
-   &#x2217;  1
-&#x03C0;hF1Top&#x2219;&#x0028;S ,&#x2212; &#x0029;      Set "  />
+&#x03C0;hFTop&#x2217;&#x2219;&#x0028;S1,&#x2212; &#x0029;      Set
+ 1 "  />
 </p></div>
-<!--l. 32--><p class="indent" >  It turns out this is because \(S^1\) is something called a cogroup object, which will not be
-de&#xFB01;ned now. For now we will colloquially call functors representable if we are in a similar
-situation to the one just described &#x0028;ie. the functor may not land in \(\Set \), but rather in some
-concrete category&#x0029;.
-</p><!--l. 34--><p class="indent" >  There is another functor people care about in algebraic topology, cohomology &#x0028;denoted \(H^n\).
-The Brown Representability Theorem is a theorem that gives a necessary and
-                                                                                  
-
-                                                                                  
-su&#xFB03;cient condition for representability of a functor from \(\Hotc ^*\), the homotopy category,
-which can be thought of as the subcategory of \(\hTop ^*\) consisting of nice enough spaces
-&#x0028;CW Complexes&#x0029;. In particular, Brown Representability says that cohomology is
-corepresentable.
-</p><!--l. 36--><p class="indent" >  We can use the fact that cohomology and homotopy are &#x0028;co&#x0029;representable to
-compute \(\pi _m(K(\ZZ ;n))\), where \(K(\ZZ ;n)\) is the corepresenting objects of \(H^n\). In particular, \(\pi _m(K(\ZZ ;n)) \cong \Hotc ^*(S^m,K(\ZZ ;n)) \cong H^n(S^m)\), and \(H^n(S^m)\) is \(\ZZ \) if \(n = m,0\) and \(0\)
-elsewhere.
-</p><!--l. 38--><p class="indent" >  Another example of a representable functor is the unit functor \((-)^*:\Ring \to \Grp \), that takes a ring to its
-group of units. The representing object is the ring \(\ZZ [x,x^{-1}]\). \(GL_n\) is a functor from \(\Ring \) to \(\Grp \) as well, and is
-also representable, by the object \(\ZZ [x_{ij}:1 \leq i,j \leq n, \det ^{-1}]\) where \(\det ^{-1}\) is the determinant written as a polynomial in the
+<!--l. 32--><p class="indent" >  It turns out this is because \(S^1\) is something called a cogroup object, which will not be de&#xFB01;ned now.
+For now we will colloquially call functors representable if we are in a similar situation to
+the one just described &#x0028;ie. the functor may not land in \(\Set \), but rather in some concrete
+category&#x0029;.
+</p><!--l. 34--><p class="indent" >  There is another functor people care about in algebraic topology, cohomology &#x0028;denoted \(H^n\). The
+Brown Representability Theorem is a theorem that gives a necessary and su&#xFB03;cient condition for
+representability of a functor from \(\Hotc ^*\), the homotopy category, which can be thought of as the
+subcategory of \(\hTop ^*\) consisting of nice enough spaces &#x0028;CW Complexes&#x0029;. In particular, Brown
+Representability says that cohomology is corepresentable.
+</p><!--l. 36--><p class="indent" >  We can use the fact that cohomology and homotopy are &#x0028;co&#x0029;representable to compute \(\pi _m(K(\ZZ ;n))\), where \(K(\ZZ ;n)\) is
+the corepresenting objects of \(H^n\). In particular, \(\pi _m(K(\ZZ ;n)) \cong \Hotc ^*(S^m,K(\ZZ ;n)) \cong H^n(S^m)\), and \(H^n(S^m)\) is \(\ZZ \) if \(n = m,0\) and \(0\) elsewhere.
+</p><!--l. 38--><p class="indent" >  Another example of a representable functor is the unit functor \((-)^*:\Ring \to \Grp \), that takes a ring to its group of
+units. The representing object is the ring \(\ZZ [x,x^{-1}]\). \(GL_n\) is a functor from \(\Ring \) to \(\Grp \) as well, and is also
+representable, by the object \(\ZZ [x_{ij}:1 \leq i,j \leq n, \det ^{-1}]\) where \(\det ^{-1}\) is the determinant written as a polynomial in the
 \(x_{ij}\).
-</p><!--l. 40--><p class="indent" >  Recall the functor \((-)^*: \Vect _F^{op} \to \Vect _F\), the dual functor. This is also a corepresentable functor, represented
-by \(F\) viewed as a one dimensional vector space over itself.
-</p><!--l. 42--><p class="indent" >  Many forgetful functors are representable. For example the forgetful functor
-from \(\Grp \) to \(\Set \) is represented by \(\ZZ \). The forgetful functor from \(\Ring \) to \(\Set \) is represented by
-\(\ZZ [x]\).
-</p><!--l. 44--><p class="indent" >  Finally, recall the examples I described in the previous lecture of turning categories of
-spaces into equivalent categories of rings. These are all representable. The functor taking
-an a&#xFB03;ne variety to its ring of functions is represented by \(\AA ^1\). The functor taking a Boolean
-algebra to its Stone space &#x0028;ie totally disconnected Hausdor&#xFB00;&#x0029; is represented by the initial
-Boolean algebra, \(2\). The functor taking a compact Hausdor&#xFB00; space to its C*-algebra is
-represented by \(\CC \).
+</p><!--l. 40--><p class="indent" >  Recall the functor \((-)^*: \Vect _F^{op} \to \Vect _F\), the dual functor. This is also a corepresentable functor, represented by \(F\)
+viewed as a one dimensional vector space over itself.
+</p><!--l. 42--><p class="indent" >  Many forgetful functors are representable. For example the forgetful functor from \(\Grp \) to \(\Set \) is
+represented by \(\ZZ \). The forgetful functor from \(\Ring \) to \(\Set \) is represented by \(\ZZ [x]\).
+</p><!--l. 44--><p class="indent" >  Finally, recall the examples I described in the previous lecture of turning categories of spaces
+into equivalent categories of rings. These are all representable. The functor taking an a&#xFB03;ne variety
+                                                                                         
+                                                                                         
+to its ring of functions is represented by \(\AA ^1\). The functor taking a Boolean algebra to its Stone
+space &#x0028;ie totally disconnected Hausdor&#xFB00;&#x0029; is represented by the initial Boolean algebra,
+\(2\). The functor taking a compact Hausdor&#xFB00; space to its C*-algebra is represented by
+\(\CC \).
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>The Yoneda Lemma</h3>
 <!--l. 47--><p class="noindent" >Note that I keep using the word &#x201C;the&#x201D; representing object. Is this representing object
 unique? It is, up to isomorphism, and this is an immediate consequence of the Yoneda
 Lemma. To begin thinking about the Yoneda Lemma, let us consider again our favorite
-representable functor, \(Set(-,2)\), the power set functor. In a previous lecture, I asked what are all
-the natural transformations from this to itself? It is not terribly hard to come up with a
+representable functor, \(Set(-,2)\), the power set functor. In a previous lecture, I asked what are all the
+natural transformations from this to itself? It is not terribly hard to come up with a
 few.
-</p><!--l. 49--><p class="indent" >  For each set X, we need a natural map from its power set to itself in order to de&#xFB01;ne a
-natural transformation. A few maps are as follows: the map taking every subset to the
-empty set. The identity. The map taking every subset to the entire set. The
-map taking every subset to the complement. One may check these are indeed
-natural transformations. But are they all? The Yoneda Lemma says yes. One
-may note that these natural transformations are in correspondence with the
-                                                                                  
-
-                                                                                  
-maps from \(2\) to itself. Indeed the complement corresponds to switching the two
-elements of \(2\), sending everything to the empty set or the entire set corresponds to
-sending both elements of \(2\) to either element, and the identity corresponds to the
-identity. The Yoneda Lemma generally gives a correspondence between natural
+</p><!--l. 49--><p class="indent" >  For each set X, we need a natural map from its power set to itself in order to de&#xFB01;ne a natural
+transformation. A few maps are as follows: the map taking every subset to the empty set. The
+identity. The map taking every subset to the entire set. The map taking every subset to the
+complement. One may check these are indeed natural transformations. But are they all?
+The Yoneda Lemma says yes. One may note that these natural transformations are in
+correspondence with the maps from \(2\) to itself. Indeed the complement corresponds to
+switching the two elements of \(2\), sending everything to the empty set or the entire set
+corresponds to sending both elements of \(2\) to either element, and the identity corresponds to
+the identity. The Yoneda Lemma generally gives a correspondence between natural
 transformations of representable functors and the image of the representing object. More
 precisely:
 </p>
@@ -356,26 +354,29 @@ precisely:
  id="x1-2001r1"></a>
 <span 
 class="cmbx-12">Proposition 2.1 </span>&#x0028;Yoneda Lemma&#x0029;<span 
-class="cmbx-12">.</span>  </span>  <span 
-class="cmti-12">Let</span>  \(C\)  <span 
-class="cmti-12">be  a  &#x0028;locally  small&#x0029;  category,  and</span>  \(F: C \to \Set \)  <span 
-class="cmti-12">a</span>
+class="cmbx-12">.</span>  </span> <span 
+class="cmti-12">Let</span> \(C\) <span 
+class="cmti-12">be a &#x0028;locally small&#x0029; category, and</span> \(F: C \to \Set \) <span 
+class="cmti-12">a functor. There</span>
 <span 
-class="cmti-12">functor.  There  is  a  bijection</span>  \(y\)  <span 
-class="cmti-12">between  the  set  of  natural  transformations  from</span>  \(C(a,-) \to F\)
-<span 
+class="cmti-12">is a bijection</span> \(y\) <span 
+class="cmti-12">between the set of natural transformations from</span> \(C(a,-) \to F\) <span 
 class="cmti-12">&#x0028;denoted</span> \(\Nat (C(a,-),F)\)<span 
 class="cmti-12">&#x0029; and</span> \(Fa\)<span 
-class="cmti-12">. The bijection is given by sending</span> \(\eta \in \Nat (C(a,-),F)\) <span 
+class="cmti-12">. The bijection</span>
+<span 
+class="cmti-12">is given by sending</span> \(\eta \in \Nat (C(a,-),F)\) <span 
 class="cmti-12">to</span> \(\eta _a(1_a)\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 55--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>The fact that this correspondence is injective is immediate from the below
+class="cmti-12">Proof.</span> </span>The  fact  that  this  correspondence  is  injective  is  immediate  from  the  below
 commutative diagram, if we chase around the identity element:
 </p>
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 57--><p class="noindent" >
@@ -389,18 +390,14 @@ src="Representable_Functors_and_the_Yoneda_Lemma2x.svg" alt="    C &#x0028;a,a&#
 
 
 f&#x03B7;a&#x03B7;bFf  F a           F b "  />
-                                                                                  
-
-                                                                                  
                  <img 
 src="Representable_Functors_and_the_Yoneda_Lemma3x.svg" alt="    1a                  f
 
 
-f&#x03B7;&#x03B7;Ff  &#x03B7; &#x0028;1 &#x0029;              F f&#x0028;&#x03B7; &#x0028;1 &#x0029;&#x0029; = &#x03B7; &#x0028;f &#x0029;
- ab   a  a                    a  a      b "  />
+f&#x03B7;&#x03B7;Fabf  &#x03B7;a&#x0028;1a&#x0029;              F f&#x0028;&#x03B7;a&#x0028;1a&#x0029;&#x0029; = &#x03B7;b&#x0028;f &#x0029; "  />
 </p></div>
-<!--l. 76--><p class="indent" >  To check surjectivity, just note that for each element \(x \in Fa\), sending \(x = \eta _a(1_a)\) and setting \(\eta _b(f) = Ff(x)\) does indeed
-de&#xFB01;ne a natural transformation, as seen in the diagram below:
+<!--l. 76--><p class="indent" >  To check surjectivity, just note that for each element \(x \in Fa\), sending \(x = \eta _a(1_a)\) and setting \(\eta _b(f) = Ff(x)\) does indeed de&#xFB01;ne a
+natural transformation, as seen in the diagram below:
 </p>
 <div class="center" 
 >
@@ -420,14 +417,17 @@ f&#x03B7;b&#x03B7;cFf  F b           F c "  />
 src="Representable_Functors_and_the_Yoneda_Lemma6x.svg" alt="    g                      f &#x2218; g
 
 
+
 f&#x03B7;&#x03B7;Fbcf F g&#x0028;x&#x0029;                 F f&#x0028;F g&#x0028;x&#x0029;&#x0029; = F &#x0028;f &#x2218; g&#x0029;&#x0028;x&#x0029; "  />
 </p></div>
   <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
-<!--l. 100--><p class="indent" >  Dualizing the Yoneda Lemma yields the same statement for \(C(-,a)\). Another important part of
-the Yoneda Lemma is that the bijection is natural.
+<!--l. 100--><p class="indent" >  Dualizing the Yoneda Lemma yields the same statement for \(C(-,a)\). Another important part of the
+Yoneda Lemma is that the bijection is natural.
+                                                                                         
+                                                                                         
 </p>
   <div class="newtheorem">
 <!--l. 102--><p class="noindent" ><span class="head">
@@ -435,19 +435,15 @@ the Yoneda Lemma is that the bijection is natural.
  id="x1-2002r2"></a>
 <span 
 class="cmbx-12">Proposition 2.2.</span>  </span><span 
-class="cmti-12">The Yoneda bijection</span> \(Y\) <span 
-class="cmti-12">is natural in</span> \(F\) <span 
-class="cmti-12">and</span> \(a\)<span 
-class="cmti-12">, ie the bijection given</span>
-                                                                                  
-
-                                                                                  
+class="cmti-12">The  Yoneda  bijection</span>  \(Y\)  <span 
+class="cmti-12">is  natural  in</span>  \(F\)  <span 
+class="cmti-12">and</span>  \(a\)<span 
+class="cmti-12">,  ie  the  bijection  given  in</span>
 <span 
-class="cmti-12">in Proposition </span><a 
+class="cmti-12">Proposition </span><a 
 href="#x1-2001r1"><span 
 class="cmti-12">2.1</span><!--tex4ht:ref: yoneda --></a> <span 
-class="cmti-12">is natural when viewed as a transformation between functors in</span> \(F\)
-<span 
+class="cmti-12">is natural when viewed as a transformation between functors in</span> \(F\) <span 
 class="cmti-12">and</span> \(a\)<span 
 class="cmti-12">.</span>
 </p>
@@ -462,6 +458,7 @@ class="cmti-12">Proof.</span> </span>We consider the diagram for naturality in F
 src="Representable_Functors_and_the_Yoneda_Lemma7x.svg" alt="  F
 
 
+
 &#x1D716; G "  />
                      <img 
 src="Representable_Functors_and_the_Yoneda_Lemma8x.svg" alt="         N at&#x0028;C &#x0028;a, &#x2212; &#x0029;,F &#x0029;      N at&#x0028;C &#x0028;a,&#x2212; &#x0029;,G&#x0029;
@@ -473,8 +470,7 @@ src="Representable_Functors_and_the_Yoneda_Lemma8x.svg" alt="         N at&#x002
 src="Representable_Functors_and_the_Yoneda_Lemma9x.svg" alt="    &#x03B3;                     &#x1D716; &#x22C5; &#x03B3;
 
 
-&#x1D716;YY&#x1D716;&#x22C5;&#x0028;aaa&#x2212;,F,G&#x0029;&#x03B3; &#x0028;1 &#x0029;                &#x1D716; &#x0028;&#x03B3; &#x0028;1 &#x0029;&#x0029; = &#x0028;&#x1D716; &#x22C5; &#x03B3;&#x0029; &#x0028;1 &#x0029;
-     a  a                  a  a  a          a  a "  />
+&#x1D716;YY&#x1D716;&#x22C5;&#x0028;aaa&#x2212;,F,G&#x0029;&#x03B3;a&#x0028;1a&#x0029;                &#x1D716;a&#x0028;&#x03B3;a&#x0028;1a&#x0029;&#x0029; = &#x0028;&#x1D716; &#x22C5; &#x03B3;&#x0029;a&#x0028;1a&#x0029; "  />
 </p></div>
 <!--l. 125--><p class="noindent" >and the corresponding one for naturality in a:
 </p>
@@ -486,15 +482,14 @@ src="Representable_Functors_and_the_Yoneda_Lemma10x.svg" alt=" a
 
 
 fb "  />
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
                      <img 
 src="Representable_Functors_and_the_Yoneda_Lemma11x.svg" alt="         N at&#x0028;C&#x0028;a,&#x2212; &#x0029;,F &#x0029;       N at&#x0028;C &#x0028;b,&#x2212; &#x0029;,F &#x0029;
 
 
-&#x0028;&#x2212;YYFf&#x0029;&#x22C5;Y&#x2212;1   F a                    F b
- a,b,FF f,C&#x0028;a,&#x2212;&#x0029; "  />
+    &#x2212;1
+&#x0028;&#x2212;YYFa,b,f&#x0029;&#x22C5;FFYf,C&#x0028;a,&#x2212;F&#x0029; a                    F b "  />
                        <img 
 src="Representable_Functors_and_the_Yoneda_Lemma12x.svg" alt="                                   &#x2212;1
     &#x03B3;                         &#x03B3; &#x22C5; Yf,C &#x0028;a,&#x2212;&#x0029;
@@ -508,9 +503,9 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 151--><p class="indent" >  In particular these allow us to answer our question about the power set functor. it is
-just the functor \(\Set (-,2)\), so Yoneda Lemma tells us that the natural transformations to itself are
-in bijection with \(2^2\), so indeed we had named them all.
+<!--l. 151--><p class="indent" >  In particular these allow us to answer our question about the power set functor. it is just the
+functor \(\Set (-,2)\), so Yoneda Lemma tells us that the natural transformations to itself are in bijection with \(2^2\),
+so indeed we had named them all.
 </p>
   <div class="newtheorem">
 <!--l. 153--><p class="noindent" ><span class="head">
@@ -524,21 +519,18 @@ class="cmti-12">is a contravariant functor to</span> \(\Set \)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 157--><p class="indent" >  Presheaf is a word that comes from the fact that they are a less structured &#x0028;pre&#x0029; version
-of an object people care more about, namely sheaves. The word sheaf is geometric in
-nature, namely a way of locally attaching information to a space in a way that preserves
-global structure and allows one to glue local information together. We won&#x2019;t need to worry
-about this way of thinking about presheaves, and can think about this in a purely
-categorical way right now. The Yoneda Lemma allows us to embed \(C\) into \(\Set ^{C^{op}}\), the category of
-presheaves, as follows:
+<!--l. 157--><p class="indent" >  Presheaf is a word that comes from the fact that they are a less structured &#x0028;pre&#x0029; version of an
+object people care more about, namely sheaves. The word sheaf is geometric in nature, namely a
+way of locally attaching information to a space in a way that preserves global structure and
+allows one to glue local information together. We won&#x2019;t need to worry about this way of
+thinking about presheaves, and can think about this in a purely categorical way right
+now. The Yoneda Lemma allows us to embed \(C\) into \(\Set ^{C^{op}}\), the category of presheaves, as
+follows:
 </p>
   <div class="newtheorem">
 <!--l. 159--><p class="noindent" ><span class="head">
 <a 
  id="x1-2004r4"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Corollary 2.4.</span>  </span> <span 
 class="cmti-12">There is a fully faithful functor</span> \(y\) <span 
@@ -550,11 +542,12 @@ class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 163--><p class="indent" >  <span class="head">
+                                                                                         
+                                                                                         
 <span 
-class="cmti-12">Proof.</span> </span>The fact that the bijection \(Y\) is a natural isomorphism amounts to the fact that
-\(y\) is fully faithful &#x0028;recall the fact that a functor induces a natural transformation on
-Hom functors, which is an isomorphism i&#xFB00; the functor is fully faithful&#x0029;. Indeed we
-have \(C(a,b) \cong \Nat (C(-,a),C(-,b))\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>The fact that the bijection \(Y\) is a natural isomorphism amounts to the fact that \(y\) is fully
+faithful &#x0028;recall the fact that a functor induces a natural transformation on Hom functors,
+which is an isomorphism i&#xFB00; the functor is fully faithful&#x0029;. Indeed we have \(C(a,b) \cong \Nat (C(-,a),C(-,b))\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -572,59 +565,53 @@ class="cmti-12">Representing objects are unique up to isomorphism.</span>
   <div class="proof">
 <!--l. 172--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>If two representable functors are naturally isomorphic, by Corollary <a 
-href="#x1-2004r4">2.4<!--tex4ht:ref: embed --></a>, the
+class="cmti-12">Proof.</span> </span>If  two  representable  functors  are  naturally  isomorphic,  by  Corollary  <a 
+href="#x1-2004r4">2.4<!--tex4ht:ref: embed --></a>,  the
 representing objects are as well. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
 <!--l. 176--><p class="indent" >  Here are some amusing applications of the Yoneda lemma:
-</p><!--l. 178--><p class="indent" >  Let us consider what happens in the case that \(C\) is a group. We get that \(G\) embeds as an
-object inside the category of right G-actions &#x0028;\(\Set ^{G^{op}}\)&#x0029;. In particular, G gets sent to the action of \(G\)
-                                                                                  
-
-                                                                                  
-on itself. The fact that this particular action is faithful is Cayley&#x2019;s Theorem: every group is
-isomorphic to a subgroup of \(S_G\).
-</p><!--l. 180--><p class="indent" >  How about in the case of a poset \(P\)? Well, we should think of the set of arrows in a poset
-as not landing in \(\Set \), but rather in the category \(2\), which has two objects, 0 and 1, and one
-non identity arrow from \(0\) to \(1\) &#x0028;we can think about it this way because every two objects
-have at most \(1\) arrow between them&#x0029;. The analog of the Yoneda Lemma for categories
-enriched over \(2\) &#x0028;ie the \(\Hom \) sets are in the category \(2\)&#x0029; gives an embedding from \(P\) into \(2^{P^{op}}\).
-Now note that a set is just a category with only identity arrows. If \(|P|\) is the set of
-objects of \(P\) &#x0028;thought of now as a category&#x0029;,\(2^{P^{op}}\) can be embedded into \(2^{|P|}\), the poset
-of subsets of \(P^{op}\). &#x0028;Exercise: Show that the functor category between posets is a
+</p><!--l. 178--><p class="indent" >  Let us consider what happens in the case that \(C\) is a group. We get that \(G\) embeds as an object
+inside the category of right G-actions &#x0028;\(\Set ^{G^{op}}\)&#x0029;. In particular, G gets sent to the action of \(G\) on itself. The
+fact that this particular action is faithful is Cayley&#x2019;s Theorem: every group is isomorphic to a
+subgroup of \(S_G\).
+</p><!--l. 180--><p class="indent" >  How about in the case of a poset \(P\)? Well, we should think of the set of arrows in a poset as not
+landing in \(\Set \), but rather in the category \(2\), which has two objects, 0 and 1, and one non identity arrow
+from \(0\) to \(1\) &#x0028;we can think about it this way because every two objects have at most \(1\) arrow between
+them&#x0029;. The analog of the Yoneda Lemma for categories enriched over \(2\) &#x0028;ie the \(\Hom \) sets are in the
+category \(2\)&#x0029; gives an embedding from \(P\) into \(2^{P^{op}}\). Now note that a set is just a category with only identity
+arrows. If \(|P|\) is the set of objects of \(P\) &#x0028;thought of now as a category&#x0029;,\(2^{P^{op}}\) can be embedded into \(2^{|P|}\),
+the poset of subsets of \(P^{op}\). &#x0028;Exercise: Show that the functor category between posets is a
 poset&#x0029;.
-</p><!--l. 182--><p class="indent" >  So in this case the Yoneda lemma proves that every poset is contained inside a poset
-of subsets of a set. Indeed the construction given by the Yoneda lemma is as
-follows: If \(P\) is a poset, consider the \(2^{|P|}\), which is the poset of subsets of \(P\). Then \(P\)
-embeds inside of it by sending \(p \in P\) to the set of things in \(P\) less than or equal to
-it.
-</p><!--l. 184--><p class="indent" >  We can also think of a ring \(R\) as a one object category enriched over \(\Ab \) &#x0028;This can also be
-done over \(\Ab \), the category of right R-modules&#x0029;. In other words, there is an object \(*\), and \(R(*,*)\) is
-the underlying abelian group of R, and composition is the bilinear multiplication. Then we
-can consider the analog of Yoneda Lemma for \(R\). In particular, \(\Ab ^{R^{op}}\) is the category of right
-\(R\)-modules. Then the Yoneda lemma says \(M \cong \Hom (R,M)\) for any right \(R\)-module \(M\) &#x0028;the isomorphism is as
-abelian groups&#x0029;. The Yoneda embedding says that \(R \cong \End _R(R)\), where \(\End _R(R)\) is the endomorphism ring of
-the \(R\)-module \(R\).
-</p><!--l. 186--><p class="indent" >  Another example is row operations. Let \(\Matr _n\) be as before, the category with objects the
-natural numbers and arrows from \(n\) to \(m\) the \(n \times m\) matrices. Consider the functor \(\Matr _n(n,-)\) that sends \(m\) to
-the set of \(n\) by \(m\) matrices. A row operation is a natural transformation from this
-functor to itself, so the Yoneda lemma says that this is given by multiplication on
-the left by a \(n \times n\) matrix, namely the elementary matrix corresponding to the row
-operation.
-</p><!--l. 188--><p class="indent" >  Finally, recall that the determinant is a natural transformation from \(GL_n\) to \((-)^*\), and that
-both of these functors are representable. Then the Yoneda lemma says that the
-determinant is given by a ring homomorphism from \(\ZZ [x,x^{-1}] \to \ZZ [x_{ij}:1 \leq i,j \leq n, \det ^{-1}]\), namely the one that sends
-\(x \to \det \).
+</p><!--l. 182--><p class="indent" >  So in this case the Yoneda lemma proves that every poset is contained inside a poset of subsets
+of a set. Indeed the construction given by the Yoneda lemma is as follows: If \(P\) is a poset, consider
+the \(2^{|P|}\), which is the poset of subsets of \(P\). Then \(P\) embeds inside of it by sending \(p \in P\) to the set of things in \(P\)
+less than or equal to it.
+                                                                                         
+                                                                                         
+</p><!--l. 184--><p class="indent" >  We can also think of a ring \(R\) as a one object category enriched over \(\Ab \) &#x0028;This can also be done over \(\Ab \),
+the category of right R-modules&#x0029;. In other words, there is an object \(*\), and \(R(*,*)\) is the underlying abelian
+group of R, and composition is the bilinear multiplication. Then we can consider the
+analog of Yoneda Lemma for \(R\). In particular, \(\Ab ^{R^{op}}\) is the category of right \(R\)-modules. Then the
+Yoneda lemma says \(M \cong \Hom (R,M)\) for any right \(R\)-module \(M\) &#x0028;the isomorphism is as abelian groups&#x0029;.
+The Yoneda embedding says that \(R \cong \End _R(R)\), where \(\End _R(R)\) is the endomorphism ring of the \(R\)-module
+\(R\).
+</p><!--l. 186--><p class="indent" >  Another example is row operations. Let \(\Matr _n\) be as before, the category with objects the natural
+numbers and arrows from \(n\) to \(m\) the \(n \times m\) matrices. Consider the functor \(\Matr _n(n,-)\) that sends \(m\) to the set of \(n\) by \(m\)
+matrices. A row operation is a natural transformation from this functor to itself, so the Yoneda
+lemma says that this is given by multiplication on the left by a \(n \times n\) matrix, namely the elementary
+matrix corresponding to the row operation.
+</p><!--l. 188--><p class="indent" >  Finally, recall that the determinant is a natural transformation from \(GL_n\) to \((-)^*\), and that both of these
+functors are representable. Then the Yoneda lemma says that the determinant is given by a ring
+homomorphism from \(\ZZ [x,x^{-1}] \to \ZZ [x_{ij}:1 \leq i,j \leq n, \det ^{-1}]\), namely the one that sends \(x \to \det \).
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

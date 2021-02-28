@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -226,31 +238,27 @@ class="cmr-10">ISHAN LEVY</span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Introduction</h3>
-<!--l. 12--><p class="noindent" >It is important to be able to resolve singularities of a variety \(V\), meaning &#xFB01;nding a
-nonsingular \(V'\) with a proper, birational morphism \(V'\to V\). It shows that every variety has a
-nonsingular projective model, and one can use this existence to try to transfer theory from
-nonsingular varieties to singular varieties. Resolution of singularities is known in
-characteristic \(0\) due to Hironaka &#x005B;<a id="page.1"></a><a 
-href="Resolving_Singularities_Globally_and_Locally.html#X0-hironaka64" >Hir64</a>&#x005D;, but not in positive characteristic beyond low
-dimensions &#x0028;although Hironaka recently claimed a proof in positive characteristic&#x0029;. The
-characteristic \(0\) result is itself very useful: it implies that given some homogeneous
-polynomials, there is a compact complex manifold that parameterizes their simultaneous
-zeros in projective space.
-</p><!--l. 14--><p class="indent" >  Here we will focus on methods to resolve singularities that work well in dimensions \(1\) and
-\(2\). We will work over an algebraically closed &#xFB01;eld \(k\), our varieties will always be irreducible,
-and point will usually mean closed point. One general way to try to resolve singularities is
-to blow up the variety. This can be motivated by realizing that any birational
-morphism of projective varieties is the blow up of some sheaf of ideals &#x0028;see for
-example Thm 7.17 Ch II of &#x005B;<a 
-href="Resolving_Singularities_Globally_and_Locally.html#X0-hartshorneag" >Har77</a>&#x005D;&#x0029;, so certainly any resolution should be of this
-form.
-</p><!--l. 16--><p class="indent" >  We can see this sheaf of ideals explicitly in the case of resolving curve singularities that
-look &#x201C;very cusp-like&#x201D;:
+<!--l. 12--><p class="noindent" >It is important to be able to resolve singularities of a variety \(V\), meaning &#xFB01;nding a nonsingular
+\(V'\) with a proper, birational morphism \(V'\to V\). It shows that every variety has a nonsingular
+projective model, and one can use this existence to try to transfer theory from nonsingular
+varieties to singular varieties. Resolution of singularities is known in characteristic \(0\) due to
+Hironaka &#x005B;<a id="page.1"></a><a 
+href="Resolving_Singularities_Globally_and_Locally.html#X0-hironaka64" >Hir64</a>&#x005D;, but not in positive characteristic beyond low dimensions &#x0028;although
+Hironaka recently claimed a proof in positive characteristic&#x0029;. The characteristic \(0\) result
+is itself very useful: it implies that given some homogeneous polynomials, there is a
+compact complex manifold that parameterizes their simultaneous zeros in projective
+space.
+</p><!--l. 14--><p class="indent" >  Here we will focus on methods to resolve singularities that work well in dimensions \(1\) and \(2\). We
+will work over an algebraically closed &#xFB01;eld \(k\), our varieties will always be irreducible, and point will
+usually mean closed point. One general way to try to resolve singularities is to blow up the variety.
+This can be motivated by realizing that any birational morphism of projective varieties is the blow
+up of some sheaf of ideals &#x0028;see for example Thm 7.17 Ch II of &#x005B;<a 
+href="Resolving_Singularities_Globally_and_Locally.html#X0-hartshorneag" >Har77</a>&#x005D;&#x0029;, so certainly any resolution
+should be of this form.
+</p><!--l. 16--><p class="indent" >  We can see this sheaf of ideals explicitly in the case of resolving curve singularities that look
+&#x201C;very cusp-like&#x201D;:
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
 <!--l. 18--><p class="noindent" ><span class="head">
 <a 
  id="x1-1001r1"></a>
@@ -259,84 +267,80 @@ class="cmbx-12">Proposition 1.1.</span>  </span><span
 class="cmti-12">Let</span> \(R\) <span 
 class="cmti-12">be an integral domain of dimension</span> \(1\)<span 
 class="cmti-12">, and</span> \(\tilde{R}\) <span 
-class="cmti-12">its normalization.</span>
+class="cmti-12">its normalization. Suppose</span> \(\tilde{R}\) <span 
+class="cmti-12">is a</span>
 <span 
-class="cmti-12">Suppose</span> \(\tilde{R}\) <span 
-class="cmti-12">is a DVR with valuation</span> \(\nu \) <span 
+class="cmti-12">DVR with valuation</span> \(\nu \) <span 
 class="cmti-12">and</span> \(\nu (R)\) <span 
 class="cmti-12">generates the value group</span> \(\ZZ \)<span 
-class="cmti-12">. Then there exist</span>
-<span 
-class="cmti-12">elements</span> \(a,b \in R\) <span 
+class="cmti-12">. Then there exist elements</span> \(a,b \in R\) <span 
 class="cmti-12">such that</span> \(\nu (a) = \nu (b)+1\)<span 
-class="cmti-12">, and for any such elements,</span> \(\tilde{R}\) <span 
+class="cmti-12">, and</span>
+<span 
+class="cmti-12">for any such elements,</span> \(\tilde{R}\) <span 
 class="cmti-12">is the blowup</span> \(B_{(a,b)}R\) <span 
-class="cmti-12">of the ideal</span>
-\((a,b)\)<span 
+class="cmti-12">of the ideal</span> \((a,b)\)<span 
 class="cmti-12">.</span>
+                                                                                         
+                                                                                         
 </p>
   <div class="proof">
 <!--l. 21--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Since \(\nu (R)\) generates the value group \(\ZZ \) and is a submonoid of \(\ZZ \), it follows that we can
-&#xFB01;nd \(a,b \in R\) such that \(\nu (a) = \nu (b)+1\). Now consider the blowup of the ideal \((a,b)\), given by \(\Proj (\bigoplus _i (a,b)^i)\). In the a&#xFB03;ne chart
-where \(a \neq 0\), we have the ring \(R[\frac b a] = \Frac (R)\), and in the a&#xFB03;ne chart \(b \neq 0\) we have \(R[\frac a b] = \tilde{R}\) since \(\frac a b\) is a uniformizer. The
-transition map is an identi&#xFB01;cation of the fraction &#xFB01;elds \(\Frac (R) = \Frac (\tilde{R})\), so indeed \(\tilde{R}\) is the blowup. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Since \(\nu (R)\) generates the value group \(\ZZ \) and is a submonoid of \(\ZZ \), it follows that we can &#xFB01;nd \(a,b \in R\)
+such that \(\nu (a) = \nu (b)+1\). Now consider the blowup of the ideal \((a,b)\), given by \(\Proj (\bigoplus _i (a,b)^i)\). In the a&#xFB03;ne chart where \(a \neq 0\), we
+have the ring \(R[\frac b a] = \Frac (R)\), and in the a&#xFB03;ne chart \(b \neq 0\) we have \(R[\frac a b] = \tilde{R}\) since \(\frac a b\) is a uniformizer. The transition map
+is an identi&#xFB01;cation of the fraction &#xFB01;elds \(\Frac (R) = \Frac (\tilde{R})\), so indeed \(\tilde{R}\) is the blowup. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 25--><p class="indent" >  For example, consider the map \(\AA ^1\to \AA ^2\) given by \(t \mapsto (t^b,t^a)\), where \(a&lt;b\) are coprime positive integers. This
-map is the normalization of its image, which in \(\AA ^2\) is given by \(x^a = y^b\). The map of \(k\)-algebras
-corresponding to this normalization is the inclusion \(k[z^a,z^b] \hookrightarrow k[z]\). To realize \(k[z]\) as a blowup, since \(a,b\) are
-coprime, choose some \(c\) such that both \(c\) and \(c+1\) are a positive linear combination of \(a,b\). Then we
-can blow up the ideal \((z^c,z^{c+1})\), and by the proposition the result should be the normalization. In
-this case we can compute the blowup even more explicitly. By de&#xFB01;nition it is \(\Proj (k[z^a,z^b]\oplus (z^c,z^{c+1}), \oplus \dots )\) and so we
+<!--l. 25--><p class="indent" >  For example, consider the map \(\AA ^1\to \AA ^2\) given by \(t \mapsto (t^b,t^a)\), where \(a&lt;b\) are coprime positive integers. This map is the
+normalization of its image, which in \(\AA ^2\) is given by \(x^a = y^b\). The map of \(k\)-algebras corresponding to
+this normalization is the inclusion \(k[z^a,z^b] \hookrightarrow k[z]\). To realize \(k[z]\) as a blowup, since \(a,b\) are coprime, choose
+some \(c\) such that both \(c\) and \(c+1\) are a positive linear combination of \(a,b\). Then we can blow
+up the ideal \((z^c,z^{c+1})\), and by the proposition the result should be the normalization. In this
+case we can compute the blowup even more explicitly. By de&#xFB01;nition it is \(\Proj (k[z^a,z^b]\oplus (z^c,z^{c+1}), \oplus \dots )\) and so we
 easily see it is the subset of \(\AA ^2 \times \PP ^1\) that is the image of \(\AA ^1\) under the map \((t^b,t^a;t^{c+1}:t^c) = (t^b,t^a;t:1)\), which is clearly an
 isomorphism.
-</p><!--l. 27--><p class="indent" >  This example gives another reason why blowing up is a good idea. For a singular
-codimension \(1\) point, the local ring isn&#x2019;t principle, though it should be in order to be
-regular. By the universal property of blowing up, the pullback of this ideal to the blowup
-will be locally principle. If the ideal is chosen carefully &#x0028;such as \((z^c,z^{c+1})\)&#x0029;, it will observe the
-singularity to the fullest extent, and forcing to be principle it will eliminate the
-singularity.
-</p><!--l. 29--><p class="indent" >  However we do not have to blow up all at once. We could instead try just blowing up
-the maximal ideal. Since \(a&lt;b\), we get that the blowup of the maximal ideal is locally given by \(\tilde{x}^a = y^{b-a}\).
-We could repeat this process many times, e&#xFB00;ectively running the Euclidean algorithm on \(a,b\).
-                                                                                  
-
-                                                                                  
+</p><!--l. 27--><p class="indent" >  This example gives another reason why blowing up is a good idea. For a singular codimension \(1\)
+point, the local ring isn&#x2019;t principle, though it should be in order to be regular. By the universal
+property of blowing up, the pullback of this ideal to the blowup will be locally principle. If the
+ideal is chosen carefully &#x0028;such as \((z^c,z^{c+1})\)&#x0029;, it will observe the singularity to the fullest extent, and forcing
+to be principle it will eliminate the singularity.
+</p><!--l. 29--><p class="indent" >  However we do not have to blow up all at once. We could instead try just blowing up the
+maximal ideal. Since \(a&lt;b\), we get that the blowup of the maximal ideal is locally given by \(\tilde{x}^a = y^{b-a}\). We
+could repeat this process many times, e&#xFB00;ectively running the Euclidean algorithm on \(a,b\).
 We will then eventually end up with the normalization when the Euclidean algorithm
 terminates. In fact in more generality a blowup of an ideal sheaf can be achieved via point
 blowups. For smooth surfaces, this amounts to the fact that a birational morphism of
 smooth surfaces is a composite of point blowups, the proof of which can be found in
 &#x005B;<a id="page.2"></a><a 
 href="Resolving_Singularities_Globally_and_Locally.html#X0-shafarevichag1" >Sha13</a>&#x005D;.
-</p><!--l. 31--><p class="indent" >  From now on we will stick to blowing up points. First we will consider a method of
-singularity resolution due to Albanese that in looks like a blowup, but &#xFB01;xes singularities in
-a more global way. Then we will examine two local methods of resolving curve
-singularities. All of these methods work to some extent in higher dimensions but not as
-well.
+</p><!--l. 31--><p class="indent" >  From now on we will stick to blowing up points. First we will consider a method of singularity
+resolution due to Albanese that in looks like a blowup, but &#xFB01;xes singularities in a more global way.
+Then we will examine two local methods of resolving curve singularities. All of these methods work
+to some extent in higher dimensions but not as well.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>The Albanese method of projections</h3>
-<!--l. 35--><p class="noindent" >For the Albanese method one starts with an \(n\)-dimensional variety \(X\) embedded into
-projective space \(\PP ^N\) such that it spans \(\PP ^N\) and is degree less than \((n!+1)(N+1-n)\). Such an embedding can
-always be found for a projective variety: take a very ample line bundle \(L\), and choose some
-incomplete globally generated linear system corresponding to \(L\) that sends \(X\) to a
-hypersurface \(X' \subset \PP ^{n+1}\) &#x0028;this can be achieved by projecting generically from the embedding of \(L\) for
-example&#x0029;. \(X'\) is given by a homogeneous polynomial \(F\) of degree \((L^n)\), where \((L^n)\) is the self intersection
-of the hyperplane class corresponding to the line bundle. Now using the \(m^{th}\) Veronese
-embedding, we can count the global sections of the line bundle corresponding to \(X'\)&#x2019;s
-embedding as at least the dimension of degree \(m\) polynomials that \(F\) doesn&#x2019;t divide. When \(m\geq (L^n)\),
-this is \(\binom{n+m+1}{n+1}-\binom{n+m+1-(L^n)}{n+1}\geq (L^n)\frac{(m+1-(L^n))^n}{n!}\). This gives a lower bound on \(h^0(X,L^{\otimes m})\), so for large \(m\) if \(X_m\) is \(X\) embedded via \(L^{\otimes m}\), we have
+                                                                                         
+                                                                                         
+<!--l. 35--><p class="noindent" >For the Albanese method one starts with an \(n\)-dimensional variety \(X\) embedded into projective space \(\PP ^N\)
+such that it spans \(\PP ^N\) and is degree less than \((n!+1)(N+1-n)\). Such an embedding can always be found for a
+projective variety: take a very ample line bundle \(L\), and choose some incomplete globally generated
+linear system corresponding to \(L\) that sends \(X\) to a hypersurface \(X' \subset \PP ^{n+1}\) &#x0028;this can be achieved by projecting
+generically from the embedding of \(L\) for example&#x0029;. \(X'\) is given by a homogeneous polynomial \(F\) of degree
+\((L^n)\), where \((L^n)\) is the self intersection of the hyperplane class corresponding to the line bundle. Now using
+the \(m^{th}\) Veronese embedding, we can count the global sections of the line bundle corresponding to \(X'\)&#x2019;s
+embedding as at least the dimension of degree \(m\) polynomials that \(F\) doesn&#x2019;t divide. When
+\(m\geq (L^n)\), this is \(\binom{n+m+1}{n+1}-\binom{n+m+1-(L^n)}{n+1}\geq (L^n)\frac{(m+1-(L^n))^n}{n!}\). This gives a lower bound on \(h^0(X,L^{\otimes m})\), so for large \(m\) if \(X_m\) is \(X\) embedded via \(L^{\otimes m}\), we have
 \(\deg (X_m) = m^n(L^n) &lt; (n!+1)((L^n)\frac{(m+1-(L^n))^n}{n!}-n)\).
-</p><!--l. 37--><p class="indent" >  Now given such an embedding, the Albanese method is the following: at the \(i^{th}\) step,
-we have a projection map \(\pi _i\) of varieties embedded in projective space from \(X\) to \(X_i\),
-with \(\pi _0\) the identity. Choose a point \(p_i \in X_i\) &#x0028;if it exists&#x0029; satisfying \(\deg (\pi _i)\mult _{p_i}X_i\geq n!+1\), and project from
-it, de&#xFB01;ning \(\pi _{i+1}\) as the projection to the closure of the image. The algorithm stops
-when there are no more \(p_i\) left, or the next projection would yield an \(X_i\) of smaller
-dimension.
+</p><!--l. 37--><p class="indent" >  Now given such an embedding, the Albanese method is the following: at the \(i^{th}\) step, we have a
+projection map \(\pi _i\) of varieties embedded in projective space from \(X\) to \(X_i\), with \(\pi _0\) the identity. Choose a
+point \(p_i \in X_i\) &#x0028;if it exists&#x0029; satisfying \(\deg (\pi _i)\mult _{p_i}X_i\geq n!+1\), and project from it, de&#xFB01;ning \(\pi _{i+1}\) as the projection to the closure of the
+image. The algorithm stops when there are no more \(p_i\) left, or the next projection would yield an \(X_i\) of
+smaller dimension.
 </p><!--l. 39--><p class="indent" >  To see the connection to blowing up, note that after a blowup, a projection map from \(\PP ^N\)
 to \(\PP ^{N-1}\) becomes a regular map. What is somewhat surprising then is that the Albanese
 method is able to resolve some singularities that aren&#x2019;t isolated. Namely, the following is
@@ -344,9 +348,6 @@ true:
 </p>
   <div class="newtheorem">
 <!--l. 41--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
 <a 
  id="x1-2001r1"></a>
 <span 
@@ -355,67 +356,66 @@ class="cmti-12">The Albanese method results with some</span> \(X_i\) <span
 class="cmti-12">with either</span> \(\deg (\pi _i)\mult _pX_i\leq n!\) <span 
 class="cmti-12">for all</span> \(p\)<span 
 class="cmti-12">, or</span> \(X_i\) <span 
-class="cmti-12">is</span>
+class="cmti-12">is a cone</span>
 <span 
-class="cmti-12">a cone with</span> \(\deg (\pi _i)\leq n!\)<span 
+class="cmti-12">with</span> \(\deg (\pi _i)\leq n!\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 45--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>First note that each of the \(X_i\) will span its corresponding projective space &#x0028;since
-it comes from a linear system on \(X\)&#x0029;.
-</p><!--l. 47--><p class="indent" >  Then note that \(\deg X_{i+1} \deg (X_i/X_{i+1}) = \deg X_i-\mult _{p_i}X_i\), by choosing a general plane of complementary codimension that
-intersects \(X_{i+1}\) at points where the projection from \(X_i\) is unrami&#xFB01;ed and regular. Then the
-pullback of this plane under the projection intersects \(\deg (X_i/X_{i+1})\) times for every intersection
-point, and moreover has a new intersection point at \(p_i\) of multiplicity \(\mult _{p_i}X_i\).
-</p><!--l. 49--><p class="indent" >  Now since \(X_i\) is in \(\PP ^{N-i}\) and it spans, we must have that \(\deg X_i\geq N+1-i-n\). Indeed, choose \(N+1-i-n\) linearly
-independent  points  on  \(X_i\),  and  they  span  a  plane  of  codimension  \(n\),  so  that  the
-intersection number with \(X_i\) is \(\geq N+1-i-n\).
-</p><!--l. 51--><p class="indent" >  At the \(i^{th}\) step of the algorithm, if a \(p_i\) exists, and \(X_i\) is not a cone centered at \(p_i\), then the
-projection map is generically &#xFB01;nite. By induction if \(\deg (\pi _i)\deg X_i &lt; (n!+1)(N+1-i-n)\), we have
+class="cmti-12">Proof.</span> </span>First note that each of the \(X_i\) will span its corresponding projective space &#x0028;since it comes
+from a linear system on \(X\)&#x0029;.
+</p><!--l. 47--><p class="indent" >  Then note that \(\deg X_{i+1} \deg (X_i/X_{i+1}) = \deg X_i-\mult _{p_i}X_i\), by choosing a general plane of complementary codimension that intersects
+\(X_{i+1}\) at points where the projection from \(X_i\) is unrami&#xFB01;ed and regular. Then the pullback of this
+plane under the projection intersects \(\deg (X_i/X_{i+1})\) times for every intersection point, and moreover has a
+new intersection point at \(p_i\) of multiplicity \(\mult _{p_i}X_i\).
+</p><!--l. 49--><p class="indent" >  Now since \(X_i\) is in \(\PP ^{N-i}\) and it spans, we must have that \(\deg X_i\geq N+1-i-n\). Indeed, choose \(N+1-i-n\) linearly independent
+points on \(X_i\), and they span a plane of codimension \(n\), so that the intersection number with \(X_i\) is
+\(\geq N+1-i-n\).
+</p><!--l. 51--><p class="indent" >  At the \(i^{th}\) step of the algorithm, if a \(p_i\) exists, and \(X_i\) is not a cone centered at \(p_i\), then the projection
+map is generically &#xFB01;nite. By induction if \(\deg (\pi _i)\deg X_i &lt; (n!+1)(N+1-i-n)\), we have
+                                                                                         
+                                                                                         
 </p><!--l. 54--><p class="indent" >  \[ \deg (\pi _{i+1})\deg X_{i+1} = \deg (\pi _i)(\deg X_i-\mult _{p_i}X_i)\]\[\leq \deg (\pi _i)\deg X_i - (n!+1) &lt; (n!+1)(N-i-n) \]
-</p><!--l. 57--><p class="indent" >  When the algorithm stops, since the &#xFB01;nal \(X_i\) still spans \(\PP ^{N-i}\), we must have that \(\deg (\pi _i) \leq n!\) since \(\deg X_0 &lt; (n!+1)(N+1-n)\)
-and \(\deg X_i \geq N+1-i-n\), and \(\pi _i\) is given by a projection on a plane for whih the total multiplicities of the
-intersection points with \(X\) is \(\geq (n!+1)i\).
+</p><!--l. 57--><p class="indent" >  When the algorithm stops, since the &#xFB01;nal \(X_i\) still spans \(\PP ^{N-i}\), we must have that \(\deg (\pi _i) \leq n!\) since \(\deg X_0 &lt; (n!+1)(N+1-n)\) and \(\deg X_i \geq N+1-i-n\),
+and \(\pi _i\) is given by a projection on a plane for whih the total multiplicities of the intersection
+points with \(X\) is \(\geq (n!+1)i\).
   <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 63--><p class="indent" >  We can see that this algorithm sees the resolution of singularities in a global way,
-namely via the degree of the embedding into projective space. This method can prove
-resolution of singularities in low dimensions. Before doing so, it is good to note that the
-problem of resolving singularities of complete varieties can be reduced to the case of
-projective varieties:
+<!--l. 63--><p class="indent" >  We can see that this algorithm sees the resolution of singularities in a global way, namely via the
+degree of the embedding into projective space. This method can prove resolution of
+singularities in low dimensions. Before doing so, it is good to note that the problem of
+resolving singularities of complete varieties can be reduced to the case of projective
+varieties:
 </p>
   <div class="newtheorem">
 <!--l. 65--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
 <a 
  id="x1-2002r2"></a>
 <span 
 class="cmbx-12">Lemma 2.2 </span>&#x0028;Chow&#x2019;s lemma&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">If</span> \(X\) <span 
-class="cmti-12">is a complete variety &#x0028;not necessarily projective&#x0029;,</span>
+class="cmti-12">is a complete variety &#x0028;not necessarily projective&#x0029;, there is</span>
 <span 
-class="cmti-12">there is a projective variety</span> \(X'\) <span 
+class="cmti-12">a projective variety</span> \(X'\) <span 
 class="cmti-12">with a surjective birational morphism</span> \(X' \to X\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 69--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Take a &#xFB01;nite a&#xFB03;ne cover of \(X\), \(U_1,\dots U_n\), and let \(V_i\) be a projective closure of \(U_i\). then let \(X'\)
-be the closure of the image of \(\bigcap U_i\) via the diagonal embedding into \(\prod _iV_i\times X\). Now the projection
-of \(X'\) onto \(X\) is a surjective morphism since \(X\) is complete, and is birational since it is
-an isomorphism for example on \(\bigcap U_i\). The projection of \(X'\) onto \(\PP ^N\) is an embedding. To see
-this, it su&#xFB03;ces to check locally on the open cover given by the preimages of \(U_i\) in the
-projection \(X' \to V_i\). But this is true because these open sets are contained in the graph of
-the map \(U_i\times \prod _{j\neq i}V_i \xrightarrow{\pi } U_i \hookrightarrow X\), for which the projection is an isomorphism. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Take a &#xFB01;nite a&#xFB03;ne cover of \(X\), \(U_1,\dots U_n\), and let \(V_i\) be a projective closure of \(U_i\). then let \(X'\) be the
+closure of the image of \(\bigcap U_i\) via the diagonal embedding into \(\prod _iV_i\times X\). Now the projection of \(X'\) onto \(X\) is
+a surjective morphism since \(X\) is complete, and is birational since it is an isomorphism for
+example on \(\bigcap U_i\). The projection of \(X'\) onto \(\PP ^N\) is an embedding. To see this, it su&#xFB03;ces to check locally
+on the open cover given by the preimages of \(U_i\) in the projection \(X' \to V_i\). But this is true because these
+open sets are contained in the graph of the map \(U_i\times \prod _{j\neq i}V_i \xrightarrow{\pi } U_i \hookrightarrow X\), for which the projection is an isomorphism.
+<span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -427,21 +427,20 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <span 
 class="cmbx-12">Corollary 2.3.</span>  </span><span 
 class="cmti-12">The Albanese method resolves curve singularities.</span>
+                                                                                         
+                                                                                         
 </p>
   <div class="proof">
 <!--l. 77--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Here \(n!=1\) so the resulting curve from the algorithm is nonsingular and birational
-to the original curve. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Here \(n!=1\) so the resulting curve from the algorithm is nonsingular and birational to the
+original curve. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
   </div>
-<!--l. 81--><p class="indent" >  To get a result about surfaces we need the following elementary property of
-multiplicities which can be found in Section 2.8 of &#x005B;<a id="page.5"></a><a 
+<!--l. 81--><p class="indent" >  To get a result about surfaces we need the following elementary property of multiplicities which
+can be found in Section 2.8 of &#x005B;<a id="page.5"></a><a 
 href="Resolving_Singularities_Globally_and_Locally.html#X0-kollarres" >Kol07</a>&#x005D;:
 </p>
   <div class="newtheorem">
@@ -463,81 +462,74 @@ class="cmti-12">.</span>
 <span 
 class="cmbx-12">Corollary 2.5.</span>  </span><span 
 class="cmti-12">Every surface</span> \(X\) <span 
-class="cmti-12">is birational to a projective normal surface with &#xFB01;nitely</span>
+class="cmti-12">is birational to a projective normal surface with &#xFB01;nitely many</span>
 <span 
-class="cmti-12">many double points.</span>
+class="cmti-12">double points.</span>
 </p>
   <div class="proof">
 <!--l. 90--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>We can run the Albanese algorithm to get a few cases. We will either get a
-degree \(1\) or \(2\) map, to a variety \(X'\) that is either smooth or a cone. If \(X'\) is a cone, it is
-birational to \(\PP ^1\times C\) for some curve \(C\), which we can choose to be the nonsingular model of
-the curve. In any case, we can take the normalization of \(X'\) in \(k(X)\), which by the proposition
-will have &#xFB01;nitely many double points. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>We can run the Albanese algorithm to get a few cases. We will either get a degree \(1\)
+or \(2\) map, to a variety \(X'\) that is either smooth or a cone. If \(X'\) is a cone, it is birational to \(\PP ^1\times C\) for
+some curve \(C\), which we can choose to be the nonsingular model of the curve. In any case, we
+can take the normalization of \(X'\) in \(k(X)\), which by the proposition will have &#xFB01;nitely many double
+points. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
+                                                                                         
+                                                                                         
   </div>
-<!--l. 105--><p class="indent" >  Let&#x2019;s try some simple examples of the Albanese method, that will again show that it is a
-global method. For example, were the Albanese method a local method, we would expect
-the multiplicity of isolated singularities to go down after a projection. But this is not
-necessarily the case. For example, consider the image of the map from \(\PP ^1\) into \(\PP ^n\) given by \((t^{m_1}:t^{m_2}s^{m_1-m_2}:\dots :t^{m_n}s^{m_1-m_n}:s^{m_1})\)
-where \(i &lt; j \implies m_i &gt; m_j\). If we project from the singular point \((0:0:\dots :1)\) of multiplicity \(m_n\), we get the map from \(\PP ^1\) given
-                                                                                  
-
-                                                                                  
-by \((t^{m_1-m_n}:t^{m_2-m_n}s^{m_1-m_2}:\dots s^{m_1-m_n})\). It does look like the map has gotten simpler, but if \(m_{n-1}-m_n&gt;m_n\), then the multiplicity of the
-singularity actually increases.
-</p><!--l. 107--><p class="indent" >  Another example of how this is a global method is how projecting from a point can
-actually remove singularities that weren&#x2019;t close to it. Consider the hypersurface in \(\PP ^3\) given
-by \(y^3z=x^4\). There is a map from \(\AA ^2\) to it given by \((t:s^3:s^4:1)\). Projecting from the point \((w:x:y:z) = (0:0:0:1)\) which is singular of
-multiplicity \(3\), composing this map from \(\AA ^2\) gives \((t:1:s)\). Thus the projection is a birational map to \(\PP ^2\),
-so it &#xFB01;xes all singularities.
+<!--l. 105--><p class="indent" >  Let&#x2019;s try some simple examples of the Albanese method, that will again show that it is a global
+method. For example, were the Albanese method a local method, we would expect the multiplicity
+of isolated singularities to go down after a projection. But this is not necessarily the case. For
+example, consider the image of the map from \(\PP ^1\) into \(\PP ^n\) given by \((t^{m_1}:t^{m_2}s^{m_1-m_2}:\dots :t^{m_n}s^{m_1-m_n}:s^{m_1})\) where \(i &lt; j \implies m_i &gt; m_j\). If we project from
+the singular point \((0:0:\dots :1)\) of multiplicity \(m_n\), we get the map from \(\PP ^1\) given by \((t^{m_1-m_n}:t^{m_2-m_n}s^{m_1-m_2}:\dots s^{m_1-m_n})\). It does look like
+the map has gotten simpler, but if \(m_{n-1}-m_n&gt;m_n\), then the multiplicity of the singularity actually
+increases.
+</p><!--l. 107--><p class="indent" >  Another example of how this is a global method is how projecting from a point can actually
+remove singularities that weren&#x2019;t close to it. Consider the hypersurface in \(\PP ^3\) given by \(y^3z=x^4\). There is a
+map from \(\AA ^2\) to it given by \((t:s^3:s^4:1)\). Projecting from the point \((w:x:y:z) = (0:0:0:1)\) which is singular of multiplicity \(3\),
+composing this map from \(\AA ^2\) gives \((t:1:s)\). Thus the projection is a birational map to \(\PP ^2\), so it &#xFB01;xes all
+singularities.
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Normalization, Method of maximal contact</h3>
-<!--l. 113--><p class="noindent" >Now we will focus on local methods that resolve singularities for curves. In fact we
-have already used one such method above: normalization. We used it to get only
-&#xFB01;nitely many double points on surfaces using the Albanese method. However it
-only resolves codimension \(1\) singularities in general, which for curves, is good
-enough.
-</p><!--l. 115--><p class="indent" >  Where does normalization come from? One way to answer this is to discover the notion
-by looking at &#x0028;compact&#x0029; Riemann surfaces. Riemann when considering these passed
-directly to the nonsingular models of curves. If one were able to do this for a singular
-curve \(C\), given a map \(C'\to C\) from a nonsingular curve, it should factor through the nonsingular
-model \(\tilde{C}\). Then if \(p \in C\) is a point, \(\tilde{p}\) a point in the normalization, and \(q\) a point in the preimage, the
-corresponding map \(\cO _{p}\) to \(\cO _{q}\) factors through \(\cO _{\tilde{p}}\). \(\cO _{q}\) is a DVR as \(C'\) is nonsingular, and \(\cO _{p},\cO _{\tilde{p}}\)
-share the same fraction &#xFB01;eld. This property characterizes the normalization: it
-is the largest subring of \(\Frac (R)\) such that any map from \(R\) to a DVR factors through
+<!--l. 113--><p class="noindent" >Now we will focus on local methods that resolve singularities for curves. In fact we have already
+used one such method above: normalization. We used it to get only &#xFB01;nitely many double points on
+surfaces using the Albanese method. However it only resolves codimension \(1\) singularities in general,
+which for curves, is good enough.
+</p><!--l. 115--><p class="indent" >  Where does normalization come from? One way to answer this is to discover the notion by
+looking at &#x0028;compact&#x0029; Riemann surfaces. Riemann when considering these passed directly to the
+nonsingular models of curves. If one were able to do this for a singular curve \(C\), given a map \(C'\to C\) from a
+nonsingular curve, it should factor through the nonsingular model \(\tilde{C}\). Then if \(p \in C\) is a point, \(\tilde{p}\) a point in
+the normalization, and \(q\) a point in the preimage, the corresponding map \(\cO _{p}\) to \(\cO _{q}\) factors through \(\cO _{\tilde{p}}\). \(\cO _{q}\) is a
+DVR as \(C'\) is nonsingular, and \(\cO _{p},\cO _{\tilde{p}}\) share the same fraction &#xFB01;eld. This property characterizes the
+normalization: it is the largest subring of \(\Frac (R)\) such that any map from \(R\) to a DVR factors through
 it.
-</p><!--l. 117--><p class="indent" >  For Riemann surfaces there is another way to see the normalized sheaf of rings directly
-in the singular model. Note that the normalization map is biholomorphic away from the
-singular points. By the Riemann extension theorem, the sheaf of holomorphic functions on
-the nonsingular model is then the same as the sheaf of holomorphic functions on the
-singular model that are bounded near the singular points. Producing the actual
-nonsingular model is not much more di&#xFB03;cult. By N&#x00F6;ther normalization, one can produce
-a &#xFB01;nite map \(C \to \PP ^1\). If \(x\) is the image of a singular point \(p\), there is a small deleted neighborhood of \(x\)
-for which the &#xFB01;nite map is unrami&#xFB01;ed, hence a covering map. We know that all connected
-covers of the unit disk with a point removed are given by \(z \mapsto z^n\). Thus we can replace local
-charts of the covering maps by copies of the unit disk with the map \(z \mapsto z^n\). But by
-the Riemann extension theorem this map can be extended to the entire unit
+</p><!--l. 117--><p class="indent" >  For Riemann surfaces there is another way to see the normalized sheaf of rings directly in the
+singular model. Note that the normalization map is biholomorphic away from the singular points.
+By the Riemann extension theorem, the sheaf of holomorphic functions on the nonsingular model
+is then the same as the sheaf of holomorphic functions on the singular model that are bounded
+near the singular points. Producing the actual nonsingular model is not much more di&#xFB03;cult. By
+N&#x00F6;ther normalization, one can produce a &#xFB01;nite map \(C \to \PP ^1\). If \(x\) is the image of a singular point \(p\), there is
+a small deleted neighborhood of \(x\) for which the &#xFB01;nite map is unrami&#xFB01;ed, hence a covering map. We
+know that all connected covers of the unit disk with a point removed are given by \(z \mapsto z^n\). Thus we
+can replace local charts of the covering maps by copies of the unit disk with the map \(z \mapsto z^n\).
+But by the Riemann extension theorem this map can be extended to the entire unit
 disk.
-</p><!--l. 119--><p class="indent" >  Computing the normalization of a curve algebraically is not necessarily easy, but it can
-                                                                                  
-
-                                                                                  
-be done by repeatedly blowing up the curve at points. When we blowup, the
-sum of the multiplicities of the exceptional points in the blowup is at most the
-multiplicity of the original singular point. Thus it only needs to be proved that there
-can not be an in&#xFB01;nite number of blowups where the singularity&#x2019;s multiplicity is
-constant.
-</p><!--l. 121--><p class="indent" >  When the curve \(C\) is embedded in a smooth surface \(S\), there is a nice way to do this that
-actually gives a bound on the number of times needed to blow up to reduce the
-multiplicity \(m\) of the point \(p\), called the method of maximal contact. Here we need to &#xFB01;nd a
-curve \(H\neq C\) smooth at \(p\) called a curve of maximal contact such that if \(S'\to S\) is a birational morphism,
-the birational transform of \(H\) will intersect the preimages of \(p\) with multiplicity
-\(m\).
+</p><!--l. 119--><p class="indent" >  Computing the normalization of a curve algebraically is not necessarily easy, but it can be done
+by repeatedly blowing up the curve at points. When we blowup, the sum of the multiplicities of the
+exceptional points in the blowup is at most the multiplicity of the original singular point. Thus it
+                                                                                         
+                                                                                         
+only needs to be proved that there can not be an in&#xFB01;nite number of blowups where the
+singularity&#x2019;s multiplicity is constant.
+</p><!--l. 121--><p class="indent" >  When the curve \(C\) is embedded in a smooth surface \(S\), there is a nice way to do this that actually
+gives a bound on the number of times needed to blow up to reduce the multiplicity \(m\) of the point \(p\),
+called the method of maximal contact. Here we need to &#xFB01;nd a curve \(H\neq C\) smooth at \(p\) called a curve of
+maximal contact such that if \(S'\to S\) is a birational morphism, the birational transform of \(H\) will intersect
+the preimages of \(p\) with multiplicity \(m\).
 </p>
   <div class="newtheorem">
 <!--l. 123--><p class="noindent" ><span class="head">
@@ -551,50 +543,45 @@ class="cmti-12">of multiplicity</span> \(m\) <span
 class="cmti-12">and</span> \((CH)_p\) <span 
 class="cmti-12">is the local</span>
 <span 
-class="cmti-12">intersection number, then at most</span> \(\frac{(CH)_p} m\) <span 
-class="cmti-12">blowups are needed to lower the multiplicity of</span>
+class="cmti-12">intersection  number,  then  at  most</span>  \(\frac{(CH)_p} m\)  <span 
+class="cmti-12">blowups  are  needed  to  lower  the  multiplicity  of  the</span>
 <span 
-class="cmti-12">the singularity. Moreover, if</span> \(x,y\) <span 
+class="cmti-12">singularity. Moreover, if</span> \(x,y\) <span 
 class="cmti-12">are local coordinates for</span> \(S\) <span 
 class="cmti-12">such that</span> \(f(x,y)\) <span 
-class="cmti-12">is a local equation</span>
+class="cmti-12">is a local equation for</span> \(C\) <span 
+class="cmti-12">with</span> \(y^m\)
 <span 
-class="cmti-12">for</span> \(C\) <span 
-class="cmti-12">with</span> \(y^m\) <span 
 class="cmti-12">appearing with nonzero coe&#xFB03;cient, then</span> \(\frac{\partial ^{m-1}f}{\partial y^{m-1}}\) <span 
 class="cmti-12">is a curve of maximal contact.</span>
 </p>
   <div class="proof">
 <!--l. 127--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Let \(\pi \) be the blowup with center \(p\). Then if \(E\) is the exceptional divisor, \(\pi ^*H = H'+E\), \(\pi ^*C = C'+mE\) where \(H',C'\)
-are the birational transforms. Then since pulling back commutes with intersection, \(CH-C'H' = (CH)_p-(C'H')_p = C'E+mH'E-m = m\).
-Thus after \(\frac{(CH)_p} m\) blowups there can be no points of multiplicity \(m\). To see that \(\frac{\partial ^{m-1}f}{\partial y^{m-1}}\) is a curve of
-maximal contact, consider the chart in the blowup given by \(\tilde{y} = xy\). Then the local equation
-for \(C'\) is \(\tilde{f} = x^{-m}f(x,x\tilde{y})\). Repeatedly applying the chain rule shows that \(\frac{\partial ^{m-1} \tilde{f}}{\partial \tilde{y}^{m-1}} = x^{-1}\frac{\partial ^{m-1}{f}}{\partial{y}^{m-1}}\), so that \(\frac{\partial ^{m-1} \tilde{f}}{\partial \tilde{y}^{m-1}}\) is the local equation
-for \(H'\). Thus if the blowup still has multiplicity \(m\), \(H'\) will intersect the new singular point.
-Since any birational map of surfaces is a composite of point blowups, we are done.
-<span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Let \(\pi \) be the blowup with center \(p\). Then if \(E\) is the exceptional divisor, \(\pi ^*H = H'+E\), \(\pi ^*C = C'+mE\) where \(H',C'\) are
+the birational transforms. Then since pulling back commutes with intersection, \(CH-C'H' = (CH)_p-(C'H')_p = C'E+mH'E-m = m\). Thus after
+\(\frac{(CH)_p} m\) blowups there can be no points of multiplicity \(m\). To see that \(\frac{\partial ^{m-1}f}{\partial y^{m-1}}\) is a curve of maximal contact,
+consider the chart in the blowup given by \(\tilde{y} = xy\). Then the local equation for \(C'\) is \(\tilde{f} = x^{-m}f(x,x\tilde{y})\). Repeatedly
+applying the chain rule shows that \(\frac{\partial ^{m-1} \tilde{f}}{\partial \tilde{y}^{m-1}} = x^{-1}\frac{\partial ^{m-1}{f}}{\partial{y}^{m-1}}\), so that \(\frac{\partial ^{m-1} \tilde{f}}{\partial \tilde{y}^{m-1}}\) is the local equation for \(H'\). Thus if the blowup
+still has multiplicity \(m\), \(H'\) will intersect the new singular point. Since any birational map of
+surfaces is a composite of point blowups, we are done. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 131--><p class="indent" >  As an example, consider the curve given by \(y^a = x^b, a&lt;b\) in \(\AA ^2\). using \(x,y\) as local parameters,
-We get from above that \(y=0\) is a curve of maximal contact. Its local intersection
-number is \(\dim _kk[x,y]_{(x,y)}/(y^a-x^b,y) = b\), so we get that \(\frac b a\) is enough blowups to reduce the multiplicity, which we
-have already seen to be true since blowing up runs the Euclidean algorithm on
-\(a,b\).
-</p><!--l. 133--><p class="indent" >  We have seen that there are many di&#xFB00;erent ways one can resolve singularities. Usually,
-one has an invariant such as the degree or a local intersection number, that measures
-the complexity of the singularities, and show that it gets smaller as one does
-some operation to the variety &#x0028;such as blowing up or projecting from a singular
-point&#x0029;. It is interesting that it is possible to do this with both global and local
-invariants such as in the two very di&#xFB00;erent ways shown here. These methods for
-resolving singularities often give better results when aided by other methods such as
+<!--l. 131--><p class="indent" >  As an example, consider the curve given by \(y^a = x^b, a&lt;b\) in \(\AA ^2\). using \(x,y\) as local parameters, We get from above
+that \(y=0\) is a curve of maximal contact. Its local intersection number is \(\dim _kk[x,y]_{(x,y)}/(y^a-x^b,y) = b\), so we get that \(\frac b a\) is enough
+blowups to reduce the multiplicity, which we have already seen to be true since blowing up runs
+the Euclidean algorithm on \(a,b\).
+</p><!--l. 133--><p class="indent" >  We have seen that there are many di&#xFB00;erent ways one can resolve singularities. Usually, one has
+an invariant such as the degree or a local intersection number, that measures the complexity of the
+singularities, and show that it gets smaller as one does some operation to the variety &#x0028;such as
+blowing up or projecting from a singular point&#x0029;. It is interesting that it is possible to do this with
+both global and local invariants such as in the two very di&#xFB00;erent ways shown here. These methods
+for resolving singularities often give better results when aided by other methods such as
 normalization.
+                                                                                         
+                                                                                         
 </p>
   <h3 class="sectionHead"><a 
  id="x1-40003"></a>References</h3>
@@ -602,35 +589,33 @@ normalization.
            </p><dl class="thebibliography"><dt id="X0-hartshorneag" class="thebibliography">
 &#x005B;Har77&#x005D;  </dt><dd 
 id="bib-1" class="thebibliography">
-         <!--l. 136--><p class="indent" >   <a id="page.9"></a><a 
+         <!--l. 136--><p class="indent" >   <a id="page.8"></a><a 
 href="Resolving_Singularities_Globally_and_Locally.html" id="X0-" ></a>Robin Hartshorne. <span 
 class="cmti-12">Algebraic Geometry</span>. Springer-Verlag New York, 1977.
            </p></dd><dt id="X0-hironaka64" class="thebibliography">
 &#x005B;Hir64&#x005D;  </dt><dd 
 id="bib-2" class="thebibliography">
-         <!--l. 136--><p class="indent" >   Heisuke Hironaka. &#x201C;Resolution of Singularities of an Algebraic Variety
-         Over a Field of Characteristic Zero: I&#x201D;. In: <span 
-class="cmti-12">Annals of Mathematics, Second</span>
-         <span 
-class="cmti-12">Series </span>79.1 &#x0028;1964&#x0029;, pp. 109&#x2013;203.
+         <!--l. 136--><p class="indent" >   Heisuke Hironaka. &#x201C;Resolution of Singularities of an Algebraic Variety Over a
+         Field of Characteristic Zero: I&#x201D;. In: <span 
+class="cmti-12">Annals of Mathematics, Second Series  </span>79.1
+         &#x0028;1964&#x0029;, pp. 109&#x2013;203.
            </p></dd><dt id="X0-kollarres" class="thebibliography">
 &#x005B;Kol07&#x005D;  </dt><dd 
 id="bib-3" class="thebibliography">
-         <!--l. 136--><p class="indent" >   J&#x00E1;nos  Koll&#x00E1;r.  <span 
-class="cmti-12">Lectures  on  Resolution  of  Singularities</span>.  Princeton
-         University Press, 2007.
+         <!--l. 136--><p class="indent" >   J&#x00E1;nos Koll&#x00E1;r. <span 
+class="cmti-12">Lectures on Resolution of Singularities</span>. Princeton University
+         Press, 2007.
            </p></dd><dt id="X0-shafarevichag1" class="thebibliography">
 &#x005B;Sha13&#x005D;  </dt><dd 
 id="bib-4" class="thebibliography">
-         <!--l. 136--><p class="indent" >   Igor R Shafarevich. <span 
-class="cmti-12">Basic Algebraic Geometry I</span>. Springer-Verlag Berlin
+         <!--l. 136--><p class="indent" >   Igor  R  Shafarevich.  <span 
+class="cmti-12">Basic  Algebraic  Geometry  I</span>.  Springer-Verlag  Berlin
          Heidelberg, 2013.</p></dd></dl>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

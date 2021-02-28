@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -229,114 +241,107 @@ class="cmti-12">Date</span>:&#x00A0;7/19/17.</p></div></div></div>
  id="x1-10001"></a>Ideas behind Category Theory</h3>
 <!--l. 11--><p class="noindent" >In the mid 20<sup class="textsuperscript"><span 
 class="cmr-10x-x-109">th</span></sup> century, a lot of math was happening, &#xFB01;elds like algebraic topology and
-homological algebra were developing, and people realized that there were ways of
-talking and thinking about math that simpli&#xFB01;ed what they were doing. Then in
-1945, Mac Lane and Eilenberg launched category theory by de&#xFB01;ning a category,
-functor, and natural transformation. Since then category theory and categorical
-thinking has been prevalent in all sorts of mathematics. It is a very &#x201C;clean&#x201D; sort
-of mathematics: you take a problem into a more general, easier to work with,
-context, and use properties of this general context to deduce what you want.
-Rarely are there many ugly technical lemmas, rather the power comes from the
+homological algebra were developing, and people realized that there were ways of talking and
+thinking about math that simpli&#xFB01;ed what they were doing. Then in 1945, Mac Lane and Eilenberg
+launched category theory by de&#xFB01;ning a category, functor, and natural transformation. Since then
+category theory and categorical thinking has been prevalent in all sorts of mathematics. It is
+a very &#x201C;clean&#x201D; sort of mathematics: you take a problem into a more general, easier
+to work with, context, and use properties of this general context to deduce what you
+want. Rarely are there many ugly technical lemmas, rather the power comes from the
 de&#xFB01;nitions.
-</p><!--l. 13--><p class="indent" >  Note: I do not expect everyone to understand every example I give in this lecture series.
-Because category theory is so widespread, it is possible to give examples in many di&#xFB00;erent
-&#xFB01;elds, and to expect my audience to have the background to understand each of these
-examples is asking a lot. Instead, many examples will likely be algebraic or topological in
-nature, and I hope that my audience will attempt to understand all of my examples even if
+</p><!--l. 13--><p class="indent" >  Note: I do not expect everyone to understand every example I give in this lecture series. Because
+category theory is so widespread, it is possible to give examples in many di&#xFB00;erent &#xFB01;elds, and to
+expect my audience to have the background to understand each of these examples is
+asking a lot. Instead, many examples will likely be algebraic or topological in nature,
+and I hope that my audience will attempt to understand all of my examples even if
 succeeding proves to be impossible for some of them. Indeed I believe that the more
-examples of a categorical idea you have thought carefully about, the better you
-understand it.
-</p><!--l. 15--><p class="indent" >  Here are two examples of solving a problem that are categorical in their approach. The
-&#xFB01;rst, known as Bu&#xFB00;on&#x2019;s Needle, is the following: suppose we drop a needle of length 1 onto
-                                                                                  
-
-                                                                                  
-a collection of lines spaces 1 apart from one another. What is the probability of the needle
+examples of a categorical idea you have thought carefully about, the better you understand
+it.
+</p><!--l. 15--><p class="indent" >  Here are two examples of solving a problem that are categorical in their approach. The &#xFB01;rst,
+known as Bu&#xFB00;on&#x2019;s Needle, is the following: suppose we drop a needle of length 1 onto a
+collection of lines spaces 1 apart from one another. What is the probability of the needle
 intersecting one of the lines? To answer this, we &#xFB01;rst observe that the probability of the
 needle hitting a line is the same as the expectation, since the needle cannot hit two
 lines.
-</p><!--l. 17--><p class="indent" >  We can ask, what is the expected number of lines a noodle hits, where a noodle is like a
-needle except it doesn&#x2019;t have to be straight or length one. Since expectation is linear, the
-answer will be proportional to the length of the noodle. Here we have done something
-categorical: changing to the more convenient context of noodles and expectation, which
-gives us more &#xFB02;exibility in approaching the problem.
-</p><!--l. 19--><p class="indent" >  If we choose our noodle to be the circle of diameter 1, the expected number of lines hit
-is 2. Then by linearity the expectation our original line has expectation \(\frac{2}{\pi }\), and so this is also
-its probability. Picking out the circle as a particularly nice object is another categorical
-element in the proof.
+</p><!--l. 17--><p class="indent" >  We can ask, what is the expected number of lines a noodle hits, where a noodle is like a needle
+except it doesn&#x2019;t have to be straight or length one. Since expectation is linear, the answer will be
+proportional to the length of the noodle. Here we have done something categorical: changing to the
+                                                                                         
+                                                                                         
+more convenient context of noodles and expectation, which gives us more &#xFB02;exibility in approaching
+the problem.
+</p><!--l. 19--><p class="indent" >  If we choose our noodle to be the circle of diameter 1, the expected number of lines hit is 2.
+Then by linearity the expectation our original line has expectation \(\frac{2}{\pi }\), and so this is also its
+probability. Picking out the circle as a particularly nice object is another categorical element in the
+proof.
 </p><!--l. 21--><p class="indent" >  The second is as follows: Let \(T\) be the set of &#x0028;possibly empty&#x0029; binary rooted trees. \(T\) is in
-bijection with \(T^2 + 1\): pairs of binary rooted trees with an extra element as follows: a tree in \(T\) is
-either empty &#x0028;corresponding to 1&#x0029; or has a root, which splits into two &#x0028;possibly empty&#x0029;
-binary rooted trees &#x0028;corresponding to \(T^2\)&#x0029;. Working in the semi-ring \(\NN [T]/(T=T^2+1)\) we can prove that \(T = T^7\),
-giving us an explicit bijection between \(T\) and \(T^7\). That this can be done is hinted to by the fact
-that \(T = T^2+1 \implies T = e^{\frac{2\pi i}{6}} \implies T^7 = T\). This proof is a kind of categori&#xFB01;cation, taking some mathematical context
-and describing it in a general &#x0028;and abstract&#x0029; context to reveal insights about
+bijection with \(T^2 + 1\): pairs of binary rooted trees with an extra element as follows: a tree
+in \(T\) is either empty &#x0028;corresponding to 1&#x0029; or has a root, which splits into two &#x0028;possibly
+empty&#x0029; binary rooted trees &#x0028;corresponding to \(T^2\)&#x0029;. Working in the semi-ring \(\NN [T]/(T=T^2+1)\) we can prove
+that \(T = T^7\), giving us an explicit bijection between \(T\) and \(T^7\). That this can be done is hinted to
+by the fact that \(T = T^2+1 \implies T = e^{\frac{2\pi i}{6}} \implies T^7 = T\). This proof is a kind of categori&#xFB01;cation, taking some mathematical
+context and describing it in a general &#x0028;and abstract&#x0029; context to reveal insights about
 it.
-</p><!--l. 23--><p class="indent" >  So what is category theory? One description is the study of structure. Wherever there is
-structure, it is possible that a categorical viewpoint may be helpful. However, it is also a
-way of thinking as described in the two earlier paragraphs. Because category theory likes
-to look at mathematical objects at its bare bones, it is often quite abstract. Hence I
-think that in order to truly understand and appreciate it, it is necessary to have
-plenty of examples to work with, which I intend to provide during this lecture
+</p><!--l. 23--><p class="indent" >  So what is category theory? One description is the study of structure. Wherever there
+is structure, it is possible that a categorical viewpoint may be helpful. However, it is
+also a way of thinking as described in the two earlier paragraphs. Because category
+theory likes to look at mathematical objects at its bare bones, it is often quite abstract.
+Hence I think that in order to truly understand and appreciate it, it is necessary to
+have plenty of examples to work with, which I intend to provide during this lecture
 series.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>What is a category?</h3>
-<!--l. 26--><p class="noindent" >When we do mathematics, we tend not to study objects in isolation. For example,
-we don&#x2019;t just study sets, but also the functions between them. We don&#x2019;t just
-study groups, but also the homomorphisms between them. We don&#x2019;t study just
-topological spaces, but the continuous functions between them. Hence the notion of a
-category:
+<!--l. 26--><p class="noindent" >When we do mathematics, we tend not to study objects in isolation. For example, we don&#x2019;t just
+study sets, but also the functions between them. We don&#x2019;t just study groups, but also the
+homomorphisms between them. We don&#x2019;t study just topological spaces, but the continuous
+functions between them. Hence the notion of a category:
 </p>
-                                                                                  
-
-                                                                                  
   <div class="newtheorem">
 <!--l. 28--><p class="noindent" ><span class="head">
 <a 
  id="x1-2001r1"></a>
 <span 
 class="cmbx-12">De&#xFB01;nition 2.1.</span>  </span><span 
-class="cmti-12">A </span><span 
+class="cmti-12">A  </span><span 
 class="cmbxti-10x-x-120">category</span> \(C\) <span 
-class="cmti-12">is a collection of objects</span> \(O_C\) <span 
-class="cmti-12">and arrows &#x0028;sometimes called</span>
+class="cmti-12">is  a  collection  of  objects</span>  \(O_C\)  <span 
+class="cmti-12">and  arrows  &#x0028;sometimes  called</span>
 <span 
 class="cmti-12">morphisms or maps&#x0029;</span> \(A_C\) <span 
 class="cmti-12">such that each arrow points from one object to another. If</span> \(a,b,c \in O_C\)<span 
-class="cmti-12">,</span> \(f\)
+class="cmti-12">,</span> \(f\) <span 
+class="cmti-12">is an</span>
 <span 
-class="cmti-12">is an arrow from</span> \(a\) <span 
+class="cmti-12">arrow from</span> \(a\) <span 
 class="cmti-12">to</span> \(b\)<span 
 class="cmti-12">,</span> \(g\) <span 
 class="cmti-12">is an arrow from</span> \(b\) <span 
 class="cmti-12">to</span> \(c\)<span 
-class="cmti-12">, we can compose these arrows to get</span>
-<span 
-class="cmti-12">can arrow</span> \(g\circ f\) <span 
-class="cmti-12">from</span> \(a\) <span 
+class="cmti-12">, we can compose these arrows to get can arrow</span> \(g\circ f\) <span 
+class="cmti-12">from</span>
+\(a\) <span 
 class="cmti-12">to</span> \(c\)<span 
-class="cmti-12">. This composition is associative. Finally, we require that every</span>
+class="cmti-12">. This composition is associative. Finally, we require that every object</span> \(a\) <span 
+class="cmti-12">of the category</span>
 <span 
-class="cmti-12">object</span> \(a\) <span 
-class="cmti-12">of the category has an arrow from it to itself called</span> \(1_a\)<span 
-class="cmti-12">, which is an identity with</span>
-<span 
-class="cmti-12">composition.</span>
+class="cmti-12">has an arrow from it to itself called</span> \(1_a\)<span 
+class="cmti-12">, which is an identity with composition.</span>
 </p>
   </div>
-<!--l. 32--><p class="indent" >  We can denote the set of arrows in \(C\) from \(a\) to \(b\) in \(C(a,b)\) &#x0028;some use \(\Hom (a,b)\)&#x0029;, and write \(\dom{f}=a\) and \(\cod{f}=b\) &#x0028;domain
-and codomain&#x0029;. As shorthand, we say \(a,b \in C\) and \(f:a\to b\) is an arrow. What are examples of categories?
-Familiar ones are the category of sets, groups, topological spaces, rings, totally ordered
-sets, varieties, abelian groups, R-modules&#x0028;&#xFB01;gure out what the arrows are&#x0029;. In category
-theory, it is emphasized that the arrows are more important than the objects: For
-example, we don&#x2019;t care what a particular group is, rather just its isomorphism
-class and how it relates to other groups. However, these examples might make
-it seem that arrows should be thought of as a kind of function, which is not
-always the best viewpoint. For example, a partial order is just a category in which
-there is at most one arrow between any two objects &#x0028;an arrow from \(a\) to \(b\) can be
-interpreted as \(a \leq b\). Finally, consider a category with just one object such that every
-arrow has a right and left inverse with respect to composition. This is just a
+<!--l. 32--><p class="indent" >  We can denote the set of arrows in \(C\) from \(a\) to \(b\) in \(C(a,b)\) &#x0028;some use \(\Hom (a,b)\)&#x0029;, and write \(\dom{f}=a\) and \(\cod{f}=b\) &#x0028;domain and
+codomain&#x0029;. As shorthand, we say \(a,b \in C\) and \(f:a\to b\) is an arrow. What are examples of categories? Familiar
+                                                                                         
+                                                                                         
+ones are the category of sets, groups, topological spaces, rings, totally ordered sets, varieties,
+abelian groups, R-modules&#x0028;&#xFB01;gure out what the arrows are&#x0029;. In category theory, it is emphasized
+that the arrows are more important than the objects: For example, we don&#x2019;t care what a
+particular group is, rather just its isomorphism class and how it relates to other groups.
+However, these examples might make it seem that arrows should be thought of as a kind
+of function, which is not always the best viewpoint. For example, a partial order is
+just a category in which there is at most one arrow between any two objects &#x0028;an arrow
+from \(a\) to \(b\) can be interpreted as \(a \leq b\). Finally, consider a category with just one object such
+that every arrow has a right and left inverse with respect to composition. This is just a
 group.
 </p><!--l. 34--><p class="indent" >  Here are some notions that you are probably familiar with that can be described
 categorically.
@@ -349,63 +354,53 @@ categorically.
 class="cmbx-12">De&#xFB01;nition 2.2.</span>  </span><span 
 class="cmti-12">An </span><span 
 class="cmbxti-10x-x-120">isomorphism </span><span 
-class="cmti-12">is a morphism &#x0028;arrow&#x0029; with a left and right</span>
-<span 
-class="cmti-12">inverse.</span>
+class="cmti-12">is a morphism &#x0028;arrow&#x0029; with a left and right inverse.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 40--><p class="indent" >  This matches the de&#xFB01;nition of isomorphism that you are used to in familiar categories.
-For example, in the category of sets, \(\Set \), this is just a bijection. In the category of groups, \(\Grp \),
-and rings \(\Ring \) or \(\CRing \) &#x0028;C for commutative&#x0029;, it is an isomorphism, and in the category of
-topological spaces, \(\Top \), it is just a homeomorphism.
+<!--l. 40--><p class="indent" >  This matches the de&#xFB01;nition of isomorphism that you are used to in familiar categories. For
+example, in the category of sets, \(\Set \), this is just a bijection. In the category of groups, \(\Grp \), and rings \(\Ring \) or \(\CRing \)
+&#x0028;C for commutative&#x0029;, it is an isomorphism, and in the category of topological spaces, \(\Top \), it is just a
+homeomorphism.
 </p><!--l. 42--><p class="indent" >  Suppose \(f\) is an arrow. Then \(g\) is a <span 
-class="cmbx-12">section </span>of \(f\) if it is a right inverse, ie \(f \circ g = 1_{\cod{f}}\). This
-word also is familiar in our various contexts. For example in \(\Set \), this is essentially
-a choice function. In \(\Top \), which is probably where the word originates from, this
-is just an embedding of a space inside something that can collapse to it. For
-example, If you consider a closed manifold, you can consider its orientation double
-cover. The manifold is orientable if and only if there is a section of this cover.
+class="cmbx-12">section </span>of \(f\) if it is a right inverse, ie \(f \circ g = 1_{\cod{f}}\). This word also is familiar
+in our various contexts. For example in \(\Set \), this is essentially a choice function. In \(\Top \), which is probably
+where the word originates from, this is just an embedding of a space inside something that can
+collapse to it. For example, If you consider a closed manifold, you can consider its orientation
+double cover. The manifold is orientable if and only if there is a section of this cover.
 </p><figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20031"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 44--><p class="noindent" >
 </p><!--l. 45--><p class="noindent" ><img 
 src="Section.png" alt="pict"  
- width="277.34825pt"  /></p></div>
+ width="302.98682pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
-class="content">By locally orienting a manifold with boundary such as the M&#x00F6;bius band
-or the 2-sphere &#x0028;\(S^2\)&#x0029;, we can move around the space while remembering our orientation
-and construct another space that covers it. In the picture above, from The M&#x00F6;bius
-band we construct an untwisted band with a map from the band to the M&#x00F6;bius
-band, and from \(S^2\) we construct two disjoint copies of \(S^2\) &#x0028;\(S^2 \coprod S^2\)&#x0029; with a similar map. These
-covering spaces that we construct come with continuous maps to the original. Our
-original space is orientable &#x0028;eg. the M&#x00F6;bius band is not and \(S^2\) is because of \(e\)&#x0029; if and
-only if we can make a continuous section of this map.</span></figcaption><!--tex4ht:label?: x1-20031 -->
-                                                                                  
-
-                                                                                  
+class="content">By locally orienting a manifold with boundary such as the M&#x00F6;bius band or the
+2-sphere &#x0028;\(S^2\)&#x0029;, we can move around the space while remembering our orientation and construct
+another space that covers it. In the picture above, from The M&#x00F6;bius band we construct an
+untwisted band with a map from the band to the M&#x00F6;bius band, and from \(S^2\) we construct
+two disjoint copies of \(S^2\) &#x0028;\(S^2 \coprod S^2\)&#x0029; with a similar map. These covering spaces that we construct come
+with continuous maps to the original. Our original space is orientable &#x0028;eg. the M&#x00F6;bius band
+is not and \(S^2\) is because of \(e\)&#x0029; if and only if we can make a continuous section of this map.</span></figcaption><!--tex4ht:label?: x1-20031 -->
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 50--><p class="indent" >  Similarly, one may de&#xFB01;ne a <span 
-class="cmbx-12">retraction </span>of \(f\) to be an arrow \(g\) that is a left inverse. Note
-that this de&#xFB01;nition is opposite to that of a section. This will be made precise later as
-duality in category theory.
+class="cmbx-12">retraction </span>of \(f\) to be an arrow \(g\) that is a left inverse. Note that this
+de&#xFB01;nition is opposite to that of a section. This will be made precise later as duality in category
+theory.
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>What is a functor?</h3>
-<!--l. 53--><p class="noindent" >Now let&#x2019;s de&#xFB01;ne the second important concept, functor. A functor should be thought of as
-a morphism of categories.
+<!--l. 53--><p class="noindent" >Now let&#x2019;s de&#xFB01;ne the second important concept, functor. A functor should be thought of as a
+morphism of categories.
 </p>
   <div class="newtheorem">
 <!--l. 55--><p class="noindent" ><span class="head">
@@ -421,9 +416,9 @@ class="cmti-12">is a function taking</span> \(O_C\) <span
 class="cmti-12">to</span> \(O_D\)<span 
 class="cmti-12">, and</span> \(A_C\) <span 
 class="cmti-12">to</span> \(A_D\)<span 
-class="cmti-12">.</span>
+class="cmti-12">. We can</span>
 <span 
-class="cmti-12">We can write</span> \(Ff\) <span 
+class="cmti-12">write</span> \(Ff\) <span 
 class="cmti-12">and</span> \(Fa\) <span 
 class="cmti-12">if</span> \(a \in O_C\) <span 
 class="cmti-12">and</span> \(f \in A_C\)<span 
@@ -432,34 +427,32 @@ class="cmti-12">and</span> \(Ff \circ Fg = F(f\circ g)\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 59--><p class="indent" >  Note that when \(C\) and \(D\) are groups, this is just a group homomorphism. What are
-examples of functors? Algebraic topology in a sense is all about studying functors. For
-example consider the category \(\Top ^*\), which is just pairs \((X,x_0)\) of topological spaces with a base point.
-Morphisms here are just continuous maps that take base points to base points. Now we
-can consider, up to a continuous deformation, oriented paths on \(X\) that start and end at \(x_0\).
-We can add these paths by concatenation and this gives us a group, called the
-fundamental group, written \(\pi _1(X,x_0)\). This is a functor, as given a morphism \(f\) from \((X,x_0)\) to \((Y,y_0)\)
-we get a homomorphism on their fundamental group \(\pi _1(f)\) from \(\pi _1(X,x_0)\) to \(\pi _1(Y,y_0)\) by sending a
-path on \(X\) through \(f\). We can easily check that this satis&#xFB01;es the properties of a
+<!--l. 59--><p class="indent" >  Note that when \(C\) and \(D\) are groups, this is just a group homomorphism. What are examples of
+functors? Algebraic topology in a sense is all about studying functors. For example consider the
+category \(\Top ^*\), which is just pairs \((X,x_0)\) of topological spaces with a base point. Morphisms here are just
+continuous maps that take base points to base points. Now we can consider, up to a continuous
+deformation, oriented paths on \(X\) that start and end at \(x_0\). We can add these paths by concatenation
+and this gives us a group, called the fundamental group, written \(\pi _1(X,x_0)\). This is a functor, as given a
+morphism \(f\) from \((X,x_0)\) to \((Y,y_0)\) we get a homomorphism on their fundamental group \(\pi _1(f)\) from \(\pi _1(X,x_0)\) to \(\pi _1(Y,y_0)\) by
+sending a path on \(X\) through \(f\). We can easily check that this satis&#xFB01;es the properties of a
 functor.
-</p><!--l. 61--><p class="indent" >  So why do algebraic topologists care about functors? Well they allow one to study
-topological spaces more easily. For example, one might wonder if the torus, \(S^1\times S^1\) and the
-sphere, \(S^2\), are homeomorphic spaces. One might have a hard time showing directly that
-these two spaces are homeomorphic, but one can easily see this from the fact that \(\pi _1\) is a
-functor. For if \(f\) and \(g\) are inverse maps that are homeomorphisms between \(S^1\times S^1\) to \(S^2\), \(\pi _1\) is
-compatible with composition, so \(\pi _1f\) and \(\pi _2f\) will be isomorphisms between the fundamental
-groups of the two spaces. But one can actually compute the fundamental groups of these
-spaces, which are \(\ZZ ^2\) and the trivial group \(\{1\}\) respectively, which are di&#xFB00;erent groups. Thus the
-two spaces cannot be homeomorphic.
-                                                                                  
-
-                                                                                  
+</p><!--l. 61--><p class="indent" >  So why do algebraic topologists care about functors? Well they allow one to study topological
+spaces more easily. For example, one might wonder if the torus, \(S^1\times S^1\) and the sphere, \(S^2\), are
+homeomorphic spaces. One might have a hard time showing directly that these two spaces are
+homeomorphic, but one can easily see this from the fact that \(\pi _1\) is a functor. For if \(f\) and \(g\) are
+inverse maps that are homeomorphisms between \(S^1\times S^1\) to \(S^2\), \(\pi _1\) is compatible with composition, so
+\(\pi _1f\) and \(\pi _2f\) will be isomorphisms between the fundamental groups of the two spaces. But
+one can actually compute the fundamental groups of these spaces, which are \(\ZZ ^2\) and the
+trivial group \(\{1\}\) respectively, which are di&#xFB00;erent groups. Thus the two spaces cannot be
+homeomorphic.
 </p><!--l. 63--><p class="indent" >  This used the fact that:
 </p>
   <div class="newtheorem">
 <!--l. 64--><p class="noindent" ><span class="head">
 <a 
  id="x1-3002r2"></a>
+                                                                                         
+                                                                                         
 <span 
 class="cmbx-12">Proposition 3.2.</span>  </span> <span 
 class="cmti-12">Functors send isomorphisms to isomorphisms</span>
@@ -474,42 +467,38 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
 <!--l. 70--><p class="indent" >  This is a simple proposition, but it demonstrates how functors preserve structure of a
 category.
-</p><!--l. 72--><p class="indent" >  Here is another slightly less trivial topological example. Consider the disk \(D^2\). One may
-ask, does every map from the disk to itself have a &#xFB01;xed point? This can be proven using \(\pi _1\),
-and its n-dimensional analog can be proven similarly using another functor, called
-cohomology. We do the following: suppose that a map \(f\) existed from \(D^2\) to \(D^2\) that didn&#x2019;t
-have a &#xFB01;xed point. Then we could draw the line between \(x\) to \(f(x)\) and on the side
-of the line where x is, we would get a point on the boundary, \(S^1\). Doing this for
-all \(x \in D^2\) would give a continuous map \(g\) from \(D^2\) to \(S^1\), that restricted to \(S^1\) is the identity.
-</p><figure class="figure"> 
+</p><!--l. 72--><p class="indent" >  Here is another slightly less trivial topological example. Consider the disk \(D^2\). One may ask, does
+every map from the disk to itself have a &#xFB01;xed point? This can be proven using \(\pi _1\), and its
+n-dimensional analog can be proven similarly using another functor, called cohomology. We do the
+following: suppose that a map \(f\) existed from \(D^2\) to \(D^2\) that didn&#x2019;t have a &#xFB01;xed point. Then we could
+draw the line between \(x\) to \(f(x)\) and on the side of the line where x is, we would get a point on the
+boundary, \(S^1\). Doing this for all \(x \in D^2\) would give a continuous map \(g\) from \(D^2\) to \(S^1\), that restricted to \(S^1\) is the
+identity. </p><figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-30032"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 74--><p class="noindent" >
 </p><!--l. 75--><p class="noindent" ><img 
 src="Brouwer.png" alt="pict"  
- width="277.34825pt"  /></p></div>
+ width="302.98682pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
-class="content">If a map \(f\) from \(D^2\) to itself doesn&#x2019;t have a &#xFB01;xed point, we can create a retraction
-to \(S^1\), the boundary.</span></figcaption><!--tex4ht:label?: x1-30032 -->
-                                                                                  
-
-                                                                                  
+class="content">If a map \(f\) from \(D^2\) to itself doesn&#x2019;t have a &#xFB01;xed point, we can create a retraction to \(S^1\),
+the boundary.</span></figcaption><!--tex4ht:label?: x1-30032 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 79--><p class="indent" >  This is a retraction, as we can consider the inclusion \(i\) from \(S^1\) to \(D^2\), and \(g \circ i = 1_{S^1}\). However using \(\pi _1\) we
-can show that this is impossible. choose a base point \(x \in S^1\). \(\pi _1(S^1,x)=\ZZ \) and \(\pi _1(D^2,x)\) is \(\{1\}\). We can easily see that
-similarly to Proposition <a 
-href="#x1-3002r2">3.2<!--tex4ht:ref: easy --></a> functors send sections and retractions to sections and
-retractions. Then if such an \(f\) existed, we would get the diagram below after sending the
-retraction to \(\Grp \) via the fundamental group:
+<!--l. 79--><p class="indent" >  This is a retraction, as we can consider the inclusion \(i\) from \(S^1\) to \(D^2\), and \(g \circ i = 1_{S^1}\). However using \(\pi _1\) we can
+show that this is impossible. choose a base point \(x \in S^1\). \(\pi _1(S^1,x)=\ZZ \) and \(\pi _1(D^2,x)\) is \(\{1\}\). We can easily see that similarly to
+Proposition <a 
+href="#x1-3002r2">3.2<!--tex4ht:ref: easy --></a> functors send sections and retractions to sections and retractions. Then if such an \(f\)
+existed, we would get the diagram below after sending the retraction to \(\Grp \) via the fundamental
+group:
 </p>
 <div class="center" 
 >
@@ -518,23 +507,22 @@ retraction to \(\Grp \) via the fundamental group:
 src="Categories_and_Functors0x.svg" alt="  &#x2124;         &#x007B;1&#x007D;
 
 
-
 f1g&#x2124;          &#x2124; "  />
 </p></div>
-<!--l. 87--><p class="noindent" >This diagram is called a commutative diagram. What it means is that any composition of
-paths that start and end in the same place are equal. In this case it just means \(g \circ f = 1_\ZZ \). However
-clearly this diagram should be impossible as it implies that there is a group
-homomorphism from \(\{1\}\) to \(\ZZ \) that is surjective, which is certainly not the case. Thus we have
-proven that there must be a &#xFB01;xed point.
+<!--l. 87--><p class="noindent" >This diagram is called a commutative diagram. What it means is that any composition of paths that
+start and end in the same place are equal. In this case it just means \(g \circ f = 1_\ZZ \). However clearly this diagram
+should be impossible as it implies that there is a group homomorphism from \(\{1\}\) to \(\ZZ \) that is
+surjective, which is certainly not the case. Thus we have proven that there must be a &#xFB01;xed
+point.
 </p><!--l. 89--><p class="indent" >  The notion of a commutative diagram is an important one, and is worth discussing a bit
-more before moving on. Even though in this particular example, it might have been easier
-to write the equation down instead of drawing a diagram, as one studies more complicated
-things, diagrams &#x0028;and commutative ones&#x0029; become concise presentations of what could have
-been a lot of symbols. Part of the mindset of category theory is to be able to describe
-what is going on in terms of a diagram. In fact, in a sense, a diagram is really
-itself just a functor. For example, I will tell you what functor the diagram above
-is. I will de&#xFB01;ne a category I call the split idempotent category, or \(\SIdem \), with two
-objects, \(A\) and \(B\), and three non identity arrows \(k\) and \(l\). It looks like the following:
+more before moving on. Even though in this particular example, it might have been
+easier to write the equation down instead of drawing a diagram, as one studies more
+complicated things, diagrams &#x0028;and commutative ones&#x0029; become concise presentations
+of what could have been a lot of symbols. Part of the mindset of category theory is
+to be able to describe what is going on in terms of a diagram. In fact, in a sense, a
+diagram is really itself just a functor. For example, I will tell you what functor the
+diagram above is. I will de&#xFB01;ne a category I call the split idempotent category, or \(\SIdem \), with
+two objects, \(A\) and \(B\), and three non identity arrows \(k\) and \(l\). It looks like the following:
 </p>
 <div class="center" 
 >
@@ -542,16 +530,15 @@ objects, \(A\) and \(B\), and three non identity arrows \(k\) and \(l\). It look
 </p><!--l. 95--><p class="noindent" >      <img 
 src="Categories_and_Functors1x.svg" alt="kll&#x2218;Ak         B "  />
 </p></div>
-<!--l. 97--><p class="noindent" >Composition works such that \(k \circ l = 1_A\). Now the &#xFB01;rst diagram I drew is the following functor: it sends
-\(k\) to \(g\) and \(l\) to \(f\), and on objects &#x0028;though this is redundant&#x0029; it sends \(A\) to \(\ZZ \) and \(B\) to \(\{1\}\). The fact
-                                                                                  
-
-                                                                                  
-that the triangle commutes is encoded in the fact that \(k \circ l = 1_A\). One may similarly view all
-diagrams as a functor from an appropriate category.
-</p><!--l. 99--><p class="indent" >  Now let&#x2019;s look at an example in which viewing something categorically using
-commutative diagrams is incredibly concise: consider the diagonalization argument. I claim
-it can be summed up in the following commutative square: </p>
+<!--l. 97--><p class="noindent" >Composition works such that \(k \circ l = 1_A\). Now the &#xFB01;rst diagram I drew is the following functor: it sends \(k\) to \(g\) and
+\(l\) to \(f\), and on objects &#x0028;though this is redundant&#x0029; it sends \(A\) to \(\ZZ \) and \(B\) to \(\{1\}\). The fact that the triangle
+commutes is encoded in the fact that \(k \circ l = 1_A\). One may similarly view all diagrams as a functor from an
+appropriate category.
+</p><!--l. 99--><p class="indent" >  Now let&#x2019;s look at an example in which viewing something categorically using commutative
+diagrams is incredibly concise: consider the diagonalization argument. I claim it can be summed up
+in the following commutative square: </p>
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 100--><p class="noindent" >
@@ -559,15 +546,15 @@ it can be summed up in the following commutative square: </p>
 src="Categories_and_Functors2x.svg" alt="    X  &#x00D7; X      W
 
 
+
 e&#x0028;&#x0394;&#x03D5;e&#x0028;&#x2212;&#x2212;,,&#x2212;xX&#x0029;&#x0029;           W "  />
 </p></div>
-<!--l. 109--><p class="indent" >  Here is how this can prove, for example, Cantor&#x2019;s Theorem. Suppose that \(X\) were in
-bijection with \(W^X\). We have an evaluation map \(e(-,-)\) from \(X\times W^X\) to \(W\) that takes \(x \in X\) and \(f \in W^X\) &#x0028;viewed as a
-function \(W \to X\)&#x0029; and evaluates it on \(x\). But now that \(X\) and \(W^X\) are in bijection, this can be seen as just
-a map from \(X\times X\) to \(W\). The evaluation map has a very special property: any map from \(X\)
-to \(W\) is of the form \(e(-,x)\) for some \(x \in X \cong W^X\). In the diagram above, let \(\phi \) be any map from \(W\) to
-itself, and let \(\Delta \) be the diagonal map, taking \(x\) to \((x,x)\). We know that the composite \(\phi \circ e(-,-)\circ \Delta \)
-is of the form \(e(-,x)\). What happens if we chase x around the diagram? Let&#x2019;s try it.
+<!--l. 109--><p class="indent" >  Here is how this can prove, for example, Cantor&#x2019;s Theorem. Suppose that \(X\) were in bijection with
+\(W^X\). We have an evaluation map \(e(-,-)\) from \(X\times W^X\) to \(W\) that takes \(x \in X\) and \(f \in W^X\) &#x0028;viewed as a function \(W \to X\)&#x0029; and evaluates it on
+\(x\). But now that \(X\) and \(W^X\) are in bijection, this can be seen as just a map from \(X\times X\) to \(W\). The evaluation map
+has a very special property: any map from \(X\) to \(W\) is of the form \(e(-,x)\) for some \(x \in X \cong W^X\). In the diagram above, let \(\phi \)
+be any map from \(W\) to itself, and let \(\Delta \) be the diagonal map, taking \(x\) to \((x,x)\). We know that the
+composite \(\phi \circ e(-,-)\circ \Delta \) is of the form \(e(-,x)\). What happens if we chase x around the diagram? Let&#x2019;s try it.
 </p>
 <div class="center" 
 >
@@ -579,76 +566,65 @@ src="Categories_and_Functors3x.svg" alt="    &#x0028;x,x&#x0029;              e&
 
 e&#x0394;&#x03D5;e&#x0028;&#x2212;&#x0028;&#x2212; ,&#x2212;,xx&#x0029;&#x0029;                  &#x03D5; &#x2218; e&#x0028;x,x&#x0029; = e&#x0028;x,x &#x0029; "  />
 </p></div>
-<!--l. 118--><p class="noindent" >Going one way around we get \(\phi \circ e(x,x)\) and on the other we get \(e(x,x)\), so since the diagram commutes,
-these must be equal. Thus there is a &#xFB01;xed point of \(\phi \). But \(\phi \) is arbitrary, so \(W\) must be the set
-containing one element.
-</p><!--l. 120--><p class="indent" >  If one is not familiar with this style of proof, it may seem strange. &#x201C;Why would anyone
-want to give this strange argument when I can just prove this normally?&#x201D; Well it turns out
-viewing the diagonalization argument in this light makes the argument generalizable to
-other contexts &#x0028;a common theme in category theory&#x0029;. For example, we can show that the
-impossibility of solving the halting problem using the same diagram. Now, we with to
-                                                                                  
-
-                                                                                  
-interpret \(X\) as the set of natural numbers, \(W\) as the set \(\{T,F\}\) and \(\phi \) as the function swapping \(T\) and \(F\). \(e\)
-will now be a program that supposedly can solve the halting problem: it takes
-in a natural number \(x\), and a &#x0028;code for a&#x0029; program \(y\), and halts if and only if \(y\)
-halts on \(x\). It takes values in \(W\) as \(T\) if it halts and \(F\) if it doesn&#x2019;t. Now this e has
-the analogous property to \(W^X\): if \(x \in X\) is a program that takes values in \(W\), it is of the
-form \(e(-,x)\). Then by the exact same argument, \(\phi \) must have a &#xFB01;xed point, which is
+<!--l. 118--><p class="noindent" >Going one way around we get \(\phi \circ e(x,x)\) and on the other we get \(e(x,x)\), so since the diagram commutes, these must
+be equal. Thus there is a &#xFB01;xed point of \(\phi \). But \(\phi \) is arbitrary, so \(W\) must be the set containing one
+element.
+</p><!--l. 120--><p class="indent" >  If one is not familiar with this style of proof, it may seem strange. &#x201C;Why would anyone want to
+give this strange argument when I can just prove this normally?&#x201D; Well it turns out viewing the
+diagonalization argument in this light makes the argument generalizable to other contexts &#x0028;a
+common theme in category theory&#x0029;. For example, we can show that the impossibility of solving the
+halting problem using the same diagram. Now, we with to interpret \(X\) as the set of natural numbers, \(W\)
+as the set \(\{T,F\}\) and \(\phi \) as the function swapping \(T\) and \(F\). \(e\) will now be a program that supposedly can
+solve the halting problem: it takes in a natural number \(x\), and a &#x0028;code for a&#x0029; program \(y\),
+and halts if and only if \(y\) halts on \(x\). It takes values in \(W\) as \(T\) if it halts and \(F\) if it doesn&#x2019;t.
+Now this e has the analogous property to \(W^X\): if \(x \in X\) is a program that takes values in \(W\), it is
+of the form \(e(-,x)\). Then by the exact same argument, \(\phi \) must have a &#xFB01;xed point, which is
 impossible.
 </p><!--l. 122--><p class="indent" >  In this way, the categorical proof of the diagonalization argument really gets to why the
 argument works, as it easily applies to analogous situations.
 </p><!--l. 124--><p class="indent" >  Let&#x2019;s get back to examples of functors. From each of the categories \(\CRing \),\(\Grp \), and \(\Top \) is a <span 
 class="cmbx-12">forgetful</span>
 <span 
-class="cmbx-12">functor </span>to \(\Set \): it takes a group for example, to its underlying set, and a homomorphism to
-its underlying function. These are not interesting in of themselves, but are interesting in
-relation to other functors. A category equipped with a forgetful functor to \(\Set \) is
-called a <span 
-class="cmbx-12">concrete category</span>. For example, perhaps you are familiar with the
-discrete/indiscrete topologies, or the free group. These are functors from \(\Set \) to \(\Top \) and \(\Grp \) which
-are intimately related with these forgetful functors, but I won&#x2019;t be talking about that this
-time.
-</p><!--l. 126--><p class="indent" >  My last example for now of a functor is the covariant Hom functor. If \(C\) is a category, and
-\(a\) is an object in it, we can consider the functor \(C(a,-)\) which takes \(b \in C\) &#x0028;I will now just say \(C\) instead of
-\(O_C\)&#x0029; to \(C(a,b)\). on arrows, it takes \(f:b \to c\) to the function from \(C(a,b)\) to \(C(a,c)\) that takes an arrow from \(a\) to \(b\) and
-composes it with \(f\). What if we tried to de&#xFB01;ne a functor \(C(-,a)\) similarly? Well we can do it,
-except notice something interesting happens. Now, a map \(b \to c\) induces a map \(C(c,a) \to C(b,a)\): the
-direction of arrow has switched! Then this cannot be a functor, right? Well it
-is, if you are careful about which two categories it is a functor between &#x0028;this
-will be discussed in more detail later&#x0029;. A functor that switches the direction of
-arrows is called a <span 
-class="cmbx-12">contravariant functor</span>. A functor that does not switch the
-direction of arrows is <span 
+class="cmbx-12">functor </span>to \(\Set \): it takes a group for example, to its underlying set, and a homomorphism to its
+underlying function. These are not interesting in of themselves, but are interesting in relation to
+other functors. A category equipped with a forgetful functor to \(\Set \) is called a <span 
+class="cmbx-12">concrete category</span>.
+                                                                                         
+                                                                                         
+For example, perhaps you are familiar with the discrete/indiscrete topologies, or the free group.
+These are functors from \(\Set \) to \(\Top \) and \(\Grp \) which are intimately related with these forgetful functors, but I
+won&#x2019;t be talking about that this time.
+</p><!--l. 126--><p class="indent" >  My last example for now of a functor is the covariant Hom functor. If \(C\) is a category, and \(a\) is an
+object in it, we can consider the functor \(C(a,-)\) which takes \(b \in C\) &#x0028;I will now just say \(C\) instead of \(O_C\)&#x0029; to \(C(a,b)\). on
+arrows, it takes \(f:b \to c\) to the function from \(C(a,b)\) to \(C(a,c)\) that takes an arrow from \(a\) to \(b\) and composes it with \(f\).
+What if we tried to de&#xFB01;ne a functor \(C(-,a)\) similarly? Well we can do it, except notice something
+interesting happens. Now, a map \(b \to c\) induces a map \(C(c,a) \to C(b,a)\): the direction of arrow has switched! Then this
+cannot be a functor, right? Well it is, if you are careful about which two categories it is a
+functor between &#x0028;this will be discussed in more detail later&#x0029;. A functor that switches
+the direction of arrows is called a <span 
+class="cmbx-12">contravariant functor</span>. A functor that does not
+switch the direction of arrows is <span 
 class="cmbx-12">covariant</span>. Then the functor \(C(-,a)\) is contravariant while \(C(a,-)\) is
 covariant.
-</p><!--l. 128--><p class="indent" >  Given two functors, one may compose them in the obvious way. Indeed, one still
-gets a functor, and this composition is obviously associative. Additionally, every
-category \(C\) has an identity functor \(1_C\) which is de&#xFB01;ned the obvious way. In this way we
-can make the category \(\Cat \) which consists of categories and the functors between
-them.
+</p><!--l. 128--><p class="indent" >  Given two functors, one may compose them in the obvious way. Indeed, one still gets a functor,
+and this composition is obviously associative. Additionally, every category \(C\) has an identity functor \(1_C\)
+which is de&#xFB01;ned the obvious way. In this way we can make the category \(\Cat \) which consists of
+categories and the functors between them.
 </p><!--l. 130--><p class="indent" >  One note is that we sometimes care about the sizes of the sets we are working with. For
-example, there are a *lot* of objects and arrows in \(\Set \), large enough that we need to describe
-\(\Set \) in a larger universe of sets. Because of this, we call \(\Set \) a <span 
-class="cmbx-12">large category</span>. Any category
-that can be described in \(\Set \) &#x0028;ie the sets of objects and arrows are in \(\Set \)&#x0029; is called a
-                                                                                  
-
-                                                                                  
-<span 
-class="cmbx-12">small category</span>. Any category \(C\) for which \(C(a,b)\) can be described in \(\Set \) are called <span 
-class="cmbx-12">locally</span>
-<span 
-class="cmbx-12">small categories</span>. We shouldn&#x2019;t worry about these distinctions too much right
-now.
+example, there are a *lot* of objects and arrows in \(\Set \), large enough that we need to describe \(\Set \) in a
+larger universe of sets. Because of this, we call \(\Set \) a <span 
+class="cmbx-12">large category</span>. Any category that can be
+described in \(\Set \) &#x0028;ie the sets of objects and arrows are in \(\Set \)&#x0029; is called a <span 
+class="cmbx-12">small category</span>. Any category \(C\)
+for which \(C(a,b)\) can be described in \(\Set \) are called <span 
+class="cmbx-12">locally small categories</span>. We shouldn&#x2019;t worry about
+these distinctions too much right now.
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

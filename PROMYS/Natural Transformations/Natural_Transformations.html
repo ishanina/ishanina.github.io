@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -227,10 +239,10 @@ class="cmr-10">ISHAN LEVY</span>
 class="cmti-12">Date</span>:&#x00A0;7/23/2017.</p></div></div></div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>What is a natural transformation?</h3>
-<!--l. 11--><p class="noindent" >Let&#x2019;s introduce the &#xFB01;nal essential categorical concept, the natural transformation. This is
-an extremely important concept, I believe Mac Lane has said that he de&#xFB01;ned the notion of
-category so that he could make precise a functor, and he de&#xFB01;ned a functor to make precise
-the notion of a natural transformation.
+<!--l. 11--><p class="noindent" >Let&#x2019;s introduce the &#xFB01;nal essential categorical concept, the natural transformation. This is an
+extremely important concept, I believe Mac Lane has said that he de&#xFB01;ned the notion of category so
+that he could make precise a functor, and he de&#xFB01;ned a functor to make precise the notion of a
+natural transformation.
 </p>
   <div class="newtheorem">
 <!--l. 13--><p class="noindent" ><span class="head">
@@ -243,55 +255,51 @@ class="cmti-12">and</span> \(G\) <span
 class="cmti-12">from</span> \(C\) <span 
 class="cmti-12">to</span> \(D\)<span 
 class="cmti-12">, a </span><span 
-class="cmbxti-10x-x-120">natural transformation</span> \(\eta \)
-<span 
+class="cmbxti-10x-x-120">natural transformation</span> \(\eta \) <span 
 class="cmti-12">from</span> \(F\) <span 
-class="cmti-12">to</span> \(G\) <span 
+class="cmti-12">to</span>
+\(G\) <span 
 class="cmti-12">is for each object</span> \(x\) <span 
 class="cmti-12">of</span> \(C\)<span 
 class="cmti-12">, an arrow</span> \(\eta _x\) <span 
 class="cmti-12">from</span> \(Fx\) <span 
 class="cmti-12">to</span> \(Gx\) <span 
-class="cmti-12">such that the following diagram</span>
-<span 
-class="cmti-12">commutes for all</span> \(x,y,f\)<span 
+class="cmti-12">such that the following diagram commutes for all</span>
+\(x,y,f\)<span 
 class="cmti-12">:</span>
 </p>
 <div class="center" 
 >
 <!--l. 15--><p class="noindent" >
-                                                                                  
-
-                                                                                  
 </p><!--l. 21--><p class="noindent" >        <img 
 src="Natural_Transformations0x.svg" alt="  F x        F y
 
 
-F&#x03B7;&#x03B7;GffGx         Gy
- xy "  />
+F&#x03B7;&#x03B7;GfxyfGx         Gy "  />
 </p></div>
 <!--l. 24--><p class="indent" >  <span 
 class="cmti-12">We write</span> \(\eta : F \Rightarrow G\) <span 
 class="cmti-12">to denote a natural transformation.</span>
 </p>
   </div>
-<!--l. 26--><p class="indent" >  Natural transformation is a wonderful way of formalizing an intuitive sense of natural.
-For example, if \(V\) is a vector space over a &#xFB01;eld \(F\), there is a dual vector space \(V^*\) which is the
-vector space of linear maps from \(V\) to \(F\). Perhaps you know that if \(V\) is &#xFB01;nite dimensional, it is
-isomorphic to its dual. However these aren&#x2019;t canonically isomorphic: in order to make an
-isomorphism, you have to <span 
-class="cmbx-12">choose </span>a basis and then identify them. Natural transformation
-makes precise when this is canonical. For example, if \(\Vect _F\) is the category of F-vector spaces,
-then \((-)^*\), the dual, is a contravariant functor from \(\Vect _F\) to itself. On arrows, \((-)^*\) does the same thing
-as the \(\Hom \) functor \(C(-,F)\). We can compose \((-)^*\) with itself to get the covariant double dual
-functor \((-)^{**}\). If \(f\) is a map from \(V\) to \(W\), then the double dual makes a map from \(V^{**}\) to \(W^{**}\) as
-follows: given a map \(g\) that takes maps \(h\) from \(V\) to \(F\) to \(F\), we get the map \(f^{**}(g)\) that takes
-maps \(k:V\to F\) to \(g(k\circ f)\). We can de&#xFB01;ne a natural transformation \(\eta \) from \(1_{\Vect _F}\) to the double dual \((-)^{**}\):
-given \(v \in V\), we send it to the element of \(V^{**}\) that takes an element of \(V^{*}\), and evaluates it
-at \(v\). This is an isomorphism if the vector space is &#xFB01;nite dimension, and note
-that it is canonical: there was no need to make any choices. Then, we should
-expect this collection of maps \(\eta _V, V \in \Vect _F\) to be a natural transformation. And indeed it is,
-as one can check by following an element around the diagram that we want to
+                                                                                         
+                                                                                         
+<!--l. 26--><p class="indent" >  Natural transformation is a wonderful way of formalizing an intuitive sense of natural. For
+example, if \(V\) is a vector space over a &#xFB01;eld \(F\), there is a dual vector space \(V^*\) which is the vector space of
+linear maps from \(V\) to \(F\). Perhaps you know that if \(V\) is &#xFB01;nite dimensional, it is isomorphic to its dual.
+However these aren&#x2019;t canonically isomorphic: in order to make an isomorphism, you have to
+<span 
+class="cmbx-12">choose </span>a basis and then identify them. Natural transformation makes precise when this
+is canonical. For example, if \(\Vect _F\) is the category of F-vector spaces, then \((-)^*\), the dual, is a
+contravariant functor from \(\Vect _F\) to itself. On arrows, \((-)^*\) does the same thing as the \(\Hom \) functor \(C(-,F)\). We
+can compose \((-)^*\) with itself to get the covariant double dual functor \((-)^{**}\). If \(f\) is a map from \(V\)
+to \(W\), then the double dual makes a map from \(V^{**}\) to \(W^{**}\) as follows: given a map \(g\) that takes
+maps \(h\) from \(V\) to \(F\) to \(F\), we get the map \(f^{**}(g)\) that takes maps \(k:V\to F\) to \(g(k\circ f)\). We can de&#xFB01;ne a natural
+transformation \(\eta \) from \(1_{\Vect _F}\) to the double dual \((-)^{**}\): given \(v \in V\), we send it to the element of \(V^{**}\) that takes an
+element of \(V^{*}\), and evaluates it at \(v\). This is an isomorphism if the vector space is &#xFB01;nite
+dimension, and note that it is canonical: there was no need to make any choices. Then,
+we should expect this collection of maps \(\eta _V, V \in \Vect _F\) to be a natural transformation. And indeed
+it is, as one can check by following an element around the diagram that we want to
 commute:
 </p>
 <div class="center" 
@@ -300,30 +308,28 @@ commute:
 </p><!--l. 34--><p class="noindent" >        <img 
 src="Natural_Transformations1x.svg" alt="  V           W
 
-    &#x2217;&#x2217;          &#x2217;&#x2217;
-1&#x03B7;&#x03B7;fVeVW&#x2217;&#x2217;VctF f=f       W "  />
+
+1&#x03B7;&#x03B7;fVeVW&#x2217;&#x2217;VctF&#x2217;&#x2217;f=f       W &#x2217;&#x2217; "  />
 </p></div>
 <!--l. 36--><p class="noindent" >Lets follow around an element \(v \in V\):
 </p>
 <div class="center" 
 >
-                                                                                  
-
-                                                                                  
 <!--l. 38--><p class="noindent" >
 </p><!--l. 44--><p class="noindent" >                              <img 
 src="Natural_Transformations2x.svg" alt="         v                               f &#x0028;v &#x0029;
 
 
-f&#x03B7;&#x03B7;f&#x2217;&#x2217;      h : h&#x0028;g&#x0029; = g&#x0028;v&#x0029;                 k : k &#x0028;g&#x0029; = h&#x0028;g &#x2218; f&#x0029;,k : k &#x0028;g &#x0029; = g&#x0028;f&#x0028;v&#x0029;&#x0029;
- VW "  />
+f&#x03B7;&#x03B7;fVW&#x2217;&#x2217;      h : h&#x0028;g&#x0029; = g&#x0028;v&#x0029;                 k : k &#x0028;g&#x0029; = h&#x0028;g &#x2218; f&#x0029;,k : k &#x0028;g &#x0029; = g&#x0028;f&#x0028;v&#x0029;&#x0029; "  />
 </p></div>
-<!--l. 47--><p class="indent" >  Another example is the abelianization. Given a group \(G\), we can de&#xFB01;ne a subgroup called
-the commutator subgroup \([G,G] = \{aba^{-1}b^{-1}| a,b\in G\}\). The abelianization of \(G\) is the group \(G/[G,G]\). This is a functor as if \(f: G \to H\) is a
+<!--l. 47--><p class="indent" >  Another example is the abelianization. Given a group \(G\), we can de&#xFB01;ne a subgroup called the
+commutator subgroup \([G,G] = \{aba^{-1}b^{-1}| a,b\in G\}\). The abelianization of \(G\) is the group \(G/[G,G]\). This is a functor as if \(f: G \to H\) is a
 homomorphism, we can compose with the projection \(H \to H/[H,H]\) to get a map \(G \to H/[H,H]\). \([G,G]\) is in the kernel of
-this map, so we get then a map \(G/[G,G] \to H/[H,H]\). This is the map that the abelianization sends \(f\) to. Now
-the projection \(\pi _G: G \to G/[G,G]\) is a natural transformation as the diagram below commutes &#x0028;by
+this map, so we get then a map \(G/[G,G] \to H/[H,H]\). This is the map that the abelianization sends \(f\) to.
+Now the projection \(\pi _G: G \to G/[G,G]\) is a natural transformation as the diagram below commutes &#x0028;by
 de&#xFB01;nition&#x0029;:
+                                                                                         
+                                                                                         
 </p>
 <div class="center" 
 >
@@ -332,27 +338,22 @@ de&#xFB01;nition&#x0029;:
 src="Natural_Transformations3x.svg" alt="  G           G &#x2215;&#x005B;G, G &#x005D;
 
 
-
 &#x03C0;G&#x03C0;H H           H &#x2215; &#x005B;H, H &#x005D; "  />
 </p></div>
 <!--l. 58--><p class="indent" >  As a third example, consider the category \(\omega \) which is the poset category of \(\NN \) with the usual
-ordering. Consider a diagram consisting of a sequence of sets \(S_n\) with injective maps from \(S_n \to S_{n+1}\).
-This can be thought of as a sequence of sets increasing in size &#x0028;each containing the
-previous&#x0029;. Recall that diagrams are just functors, and in this case, \(\omega \) is the category for
-which this is a functor &#x0028;we can call this functor \(F\). Let \(\widehat{\cup S_i}\) be the constant functor taking \(\omega \) to \(\cup S_i\),
-and all the arrows to the identity. Then consider the natural transformation \(\eta : F \Rightarrow \widehat{\cup S_i}\) that sends
-each \(S_i\) with the subset it corresponds to in the union. I leave this as an easy exercise
-to check that this is a natural transformation &#x0028;draw it!&#x0029;. This kind of natural
-transformation is called a <span 
+ordering. Consider a diagram consisting of a sequence of sets \(S_n\) with injective maps from \(S_n \to S_{n+1}\). This can
+be thought of as a sequence of sets increasing in size &#x0028;each containing the previous&#x0029;. Recall that
+diagrams are just functors, and in this case, \(\omega \) is the category for which this is a functor &#x0028;we can call
+this functor \(F\). Let \(\widehat{\cup S_i}\) be the constant functor taking \(\omega \) to \(\cup S_i\), and all the arrows to the identity. Then
+consider the natural transformation \(\eta : F \Rightarrow \widehat{\cup S_i}\) that sends each \(S_i\) with the subset it corresponds to in the
+union. I leave this as an easy exercise to check that this is a natural transformation &#x0028;draw it!&#x0029;. This
+kind of natural transformation is called a <span 
 class="cmbx-12">cocone </span>&#x0028;this will be discussed in more depth when we do
 &#x0028;co&#x0029;limits&#x0029;.
 </p><!--l. 60--><p class="indent" >  Finally, consider the determinant of a &#x0028;invertible&#x0029; matrix, \(\det ^n\). I claim this is a natural
-transformation. Consider the two functors from \(\CRing \) to \(\Grp \): one taking \(K\) to \(GL_n(K)\), and the other taking
-it to \(K^*\) &#x0028;check that these are functors&#x0029;. Then \(\det ^n_K\) is for each element of \(\CRing \) a map from \(GL_n(K)\) to \(K^*\)
-sending a linear transformation to its determinant. The diagram is the same as
-                                                                                  
-
-                                                                                  
+transformation. Consider the two functors from \(\CRing \) to \(\Grp \): one taking \(K\) to \(GL_n(K)\), and the other
+taking it to \(K^*\) &#x0028;check that these are functors&#x0029;. Then \(\det ^n_K\) is for each element of \(\CRing \) a map from \(GL_n(K)\)
+to \(K^*\) sending a linear transformation to its determinant. The diagram is the same as
 always:
 </p>
 <div class="center" 
@@ -362,37 +363,36 @@ always:
 src="Natural_Transformations4x.svg" alt="    GLnF        F &#x2217;
 
 
-dGfdetL&#x2217;etnnnfGL  K       K &#x2217;
-  FK    n "  />
+dGfdetL&#x2217;etnnnfGLnK        K &#x2217;
+  FK "  />
 </p></div>
 <!--l. 71--><p class="indent" >  Given two categories \(C, D\), we can form the <span 
-class="cmbx-12">product category</span>, \(C\times D\) where the objects are
-pairs of objects, the arrows are pairs of arrows, and composition is de&#xFB01;ned as
-usual.
-</p><!--l. 73--><p class="indent" >  Now consider the contravariant powerset \(\Set (-,2)\) &#x0028;2 is a set with two elements, we can view this
-functor as \(2^{(-)}\)&#x0029;. As an exercise, try to &#xFB01;nd all the natural transformations from this functor to
-itself &#x0028;this will come up again in a later lecture&#x0029;.
+class="cmbx-12">product category</span>, \(C\times D\) where the objects are pairs of
+objects, the arrows are pairs of arrows, and composition is de&#xFB01;ned as usual.
+</p><!--l. 73--><p class="indent" >  Now consider the contravariant powerset \(\Set (-,2)\) &#x0028;2 is a set with two elements, we can view this functor
+as \(2^{(-)}\)&#x0029;. As an exercise, try to &#xFB01;nd all the natural transformations from this functor to itself &#x0028;this will
+come up again in a later lecture&#x0029;.
 </p>
   <div class="newtheorem">
 <!--l. 75--><p class="noindent" ><span class="head">
 <a 
  id="x1-1002r2"></a>
+                                                                                         
+                                                                                         
 <span 
 class="cmbx-12">De&#xFB01;nition 1.2.</span>  </span><span 
 class="cmti-12">Suppose</span> \(F,G,H\) <span 
 class="cmti-12">are functors in</span> \(\Cat (C,D)\)<span 
 class="cmti-12">. Then if</span> \(\eta :F \Rightarrow G\) <span 
 class="cmti-12">and</span> \(\nu :G \Rightarrow H\) <span 
-class="cmti-12">are natural transformations,</span>
+class="cmti-12">are natural transformations, then</span>
 <span 
-class="cmti-12">then we can form the </span><span 
+class="cmti-12">we can form the </span><span 
 class="cmbxti-10x-x-120">vertical composite</span><span 
 class="cmti-12">,</span> \(\nu \cdot \eta \)<span 
 class="cmti-12">, a natural transformation from</span> \(F\) <span 
 class="cmti-12">to</span> \(H\)<span 
-class="cmti-12">,</span>
-<span 
-class="cmti-12">de&#xFB01;ned by</span> \(\nu \cdot \eta _a = \nu _a \circ \eta _a\)<span 
+class="cmti-12">, de&#xFB01;ned by</span> \(\nu \cdot \eta _a = \nu _a \circ \eta _a\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
@@ -404,19 +404,15 @@ class="cmti-12">.</span>
 src="Natural_Transformations5x.svg" alt="   Fa        Ga        Ha
 
 
-&#x03B7;FG&#x03BD;H&#x03B7;&#x03BD;fff Fb        Gb        Hb
- aabb "  />
+&#x03B7;FG&#x03BD;H&#x03B7;&#x03BD;affafbb Fb        Gb        Hb "  />
 </p></div>
-<!--l. 89--><p class="indent" >  This turns \(\Cat (C,D)\) into a category, which we call the functor category. We can write this as \(D^C\).
-                                                                                  
-
-                                                                                  
-An isomorphism in \(\Cat (C,D)\) is called a natural isomorphism. Alternatively, it is a natural
-transformation \(\eta \) where each \(\eta _a\) is an isomorphism.
-</p><!--l. 91--><p class="indent" >  I use the word vertical composite, because there is also a horizontal composite. It can be
-seen as follows:
-</p><!--l. 93--><p class="indent" >  Given the diagram below, we would like to create a natural transformation \(\nu \eta : F' \circ F \Rightarrow G' \circ G\) sometimes
-written \(\nu \circ \eta \). </p>
+<!--l. 89--><p class="indent" >  This turns \(\Cat (C,D)\) into a category, which we call the functor category. We can write this as \(D^C\). An
+isomorphism in \(\Cat (C,D)\) is called a natural isomorphism. Alternatively, it is a natural transformation \(\eta \)
+where each \(\eta _a\) is an isomorphism.
+</p><!--l. 91--><p class="indent" >  I use the word vertical composite, because there is also a horizontal composite. It can be seen as
+follows:
+</p><!--l. 93--><p class="indent" >  Given the diagram below, we would like to create a natural transformation \(\nu \eta : F' \circ F \Rightarrow G' \circ G\) sometimes written \(\nu \circ \eta \).
+</p>
 <div class="center" 
 >
 <!--l. 94--><p class="noindent" >
@@ -433,11 +429,12 @@ FG&#x03B7;FG&#x03BD; C             D              E "  />
 src="Natural_Transformations7x.svg" alt="    F &#x2032;F a       F &#x2032;Ga
 
 
- &#x2032;&#x2032;    &#x2032;           &#x2032;
-F&#x03BD;&#x03BD;GFG&#x03B7;aa&#x03B7;aaG F a       G  Ga "  />
+F&#x03BD;&#x03BD;G&#x2032;FG&#x2032;&#x03B7;aa&#x03B7;aaG &#x2032;F a       G &#x2032;Ga "  />
 </p></div>
 <!--l. 118--><p class="noindent" >This commutes as \(\nu \) is natural for \(\eta _a\). This suggests the following de&#xFB01;nition:
 </p>
+                                                                                         
+                                                                                         
   <div class="newtheorem">
 <!--l. 120--><p class="noindent" ><span class="head">
 <a 
@@ -446,21 +443,17 @@ F&#x03BD;&#x03BD;GFG&#x03B7;aa&#x03B7;aaG F a       G  Ga "  />
 class="cmbx-12">De&#xFB01;nition 1.3.</span>  </span><span 
 class="cmti-12">Suppose</span> \(F,G,F',G',\eta ,\nu \) <span 
 class="cmti-12">are as above, we can form the </span><span 
-class="cmbxti-10x-x-120">horizontal composite</span> \(\nu \eta :F' \circ F \to G'\circ G\)
-<span 
+class="cmbxti-10x-x-120">horizontal composite</span> \(\nu \eta :F' \circ F \to G'\circ G\) <span 
 class="cmti-12">so that</span> \((\nu \eta )_a = \nu _{Ga} \circ F'\eta _a = G'\eta _a \circ \nu _{Fa}\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 124--><p class="indent" >  It remains to check this is a natural transformation, but this should be obvious if you
-draw the appropriate diagram &#x0028;for a natural transformation&#x0029;. If \(F: C \to D\), \(G,H: D \to E\) are functors and \(\eta : G \Rightarrow H\) a
-natural transformation then the natural transformation \(\eta F\) denotes the horizontal composite
-\(\eta 1_F\), and similarly if \(J: E \to X\) is a functor, then \(J\eta \) denotes \(1_J\eta \).
-</p><!--l. 126--><p class="indent" >  Horizontal composites and vertical composites are related through the interchange law,
-which says \((\tau \eta )\cdot (\tau '\eta ')=(\tau \cdot \tau ')(\eta \cdot \eta ')\). It can be described as the diagram below:
+<!--l. 124--><p class="indent" >  It remains to check this is a natural transformation, but this should be obvious if you draw the
+appropriate diagram &#x0028;for a natural transformation&#x0029;. If \(F: C \to D\), \(G,H: D \to E\) are functors and \(\eta : G \Rightarrow H\) a natural transformation
+then the natural transformation \(\eta F\) denotes the horizontal composite \(\eta 1_F\), and similarly if \(J: E \to X\) is a functor,
+then \(J\eta \) denotes \(1_J\eta \).
+</p><!--l. 126--><p class="indent" >  Horizontal composites and vertical composites are related through the interchange law, which
+says \((\tau \eta )\cdot (\tau '\eta ')=(\tau \cdot \tau ')(\eta \cdot \eta ')\). It can be described as the diagram below:
 </p>
 <div class="center" 
 >
@@ -477,41 +470,39 @@ src="Natural_Transformations8x.svg" alt="                                       
 >
 <!--l. 140--><p class="noindent" >
 </p><!--l. 147--><p class="noindent" >                             <img 
-src="Natural_Transformations9x.svg" alt="                 &#x2032;            &#x2032;            &#x2032;
-   &#x2219;            F Ga        F  Ha        G  Ha
+src="Natural_Transformations9x.svg" alt="   &#x2219;            F&#x2032;Ga        F &#x2032;Ha        G &#x2032;Ha
 
 
    F &#x2032;F a        &#x2219;           &#x2219;            &#x2219;            H &#x2032;Ha
 
 
-F&#x03C4;&#x2032;H&#x03C4;HFF&#x03C4;&#x2032;GG&#x03C4;H&#x2032;&#x03B7;aa&#x2032;&#x03B7;&#x2032;&#x03B7;a&#x2032;&#x03B7;aa&#x2032;a&#x2032;aa&#x2219;            F&#x2032;Ga        G &#x2032;Ga        G &#x2032;Ha "  />
+F&#x03C4;&#x2032;&#x03C4;FF&#x03C4;&#x2032;G&#x03C4;&#x2032;&#x03B7;&#x2032;&#x03B7;&#x2032;&#x03B7;&#x2032;&#x03B7;&#x2032;&#x2032;&#x2219;            F&#x2032;Ga        G &#x2032;Ga        G &#x2032;Ha
+HHGHaaaaaaaa "  />
 </p></div>
-<!--l. 150--><p class="indent" >  The path on the top is the natural transformation \((\tau \cdot \tau ')(\eta \cdot \eta ')\), and the path on the bottom is \((\tau \eta )\cdot (\tau '\eta ')\). The
-middle rectangle commutes as \(\tau '\) is a natural transformation.
+<!--l. 150--><p class="indent" >  The path on the top is the natural transformation \((\tau \cdot \tau ')(\eta \cdot \eta ')\), and the path on the bottom is \((\tau \eta )\cdot (\tau '\eta ')\). The middle
+rectangle commutes as \(\tau '\) is a natural transformation.
 </p><!--l. 153--><p class="indent" >  As a &#xFB01;nal note, there is an analogy between natural transformations and homotopies.
-</p><!--l. 155--><p class="indent" >  If \(X\) and \(Y\) are topological spaces, and \(f\) and \(g\) are maps &#x0028;continuous, as always&#x0029; from \(X\) to \(Y\), a
-                                                                                  
-
-                                                                                  
-homotopy from \(f\) to \(g\) is a map from \(X \times [0,1]\) to \(Y\) that at \(0\) restricts to \(f\) and at \(1\) restricts to \(g\). The
-de&#xFB01;nition of a natural transformation can be presented analogously: Let \(2\) be the category
-with \(2\) objects, called \(0\) and \(1\) and one non identity arrow from 0 to 1 &#x0028;we can say the arrow
+                                                                                         
+                                                                                         
+</p><!--l. 155--><p class="indent" >  If \(X\) and \(Y\) are topological spaces, and \(f\) and \(g\) are maps &#x0028;continuous, as always&#x0029; from \(X\) to \(Y\), a homotopy
+from \(f\) to \(g\) is a map from \(X \times [0,1]\) to \(Y\) that at \(0\) restricts to \(f\) and at \(1\) restricts to \(g\). The de&#xFB01;nition
+of a natural transformation can be presented analogously: Let \(2\) be the category with \(2\)
+objects, called \(0\) and \(1\) and one non identity arrow from 0 to 1 &#x0028;we can say the arrow
 category, as this is the category that represents the diagram consisting of a generic
 arrow&#x0029;.
-</p><!--l. 157--><p class="indent" >  If \(C\) and \(D\) are categories, and \(F\) and \(G\) are functors from \(C\) to \(D\), a natural transformation is a
-functor from \(F\) to \(G\) is a functor from \(C\times 2\) to \(D\) that on \(0\) restricts to \(F\) and on \(1\) restricts to
+</p><!--l. 157--><p class="indent" >  If \(C\) and \(D\) are categories, and \(F\) and \(G\) are functors from \(C\) to \(D\), a natural transformation
+is a functor from \(F\) to \(G\) is a functor from \(C\times 2\) to \(D\) that on \(0\) restricts to \(F\) and on \(1\) restricts to
 \(G\).
 </p><!--l. 159--><p class="indent" >  Check that these two de&#xFB01;nitions of natural transformations are equivalent and note the
 similarity with homotopies. In a way, a natural transformation is categori&#xFB01;cation of
 homotopy.
 </p><!--l. 161--><p class="indent" >  Finally let&#x2019;s end with an interesting non-example. Let \(\FinSet _g\) be the category of &#xFB01;nite sets and
-bijections between them. Consider two functors to Set, the &#xFB01;rst, \(\Aut \), takes \(X\) to the set
-of bijections from \(X\) to itself, on maps, it takes \(f: X \to Y\) to the function that takes \(\phi :X \to X\) to \(f \circ \phi \circ f^{-1}: Y \to Y\).
-The second, \(\Ord \), takes \(X\) to the set of total orders on \(X\), and on maps takes \(f\) to the
-total order on \(Y\) induced by the bijection. These two functors send isomorphic
-objects to isomorphic sets, but are not naturally isomorphic: in fact, there isn&#x2019;t
-even a natural transformation between them! For, let&#x2019;s consider \(f\), the nontrivial
-bijection from a set \(\{a,b\}\) to itself. If there was a natural transformation, we would
+bijections between them. Consider two functors to Set, the &#xFB01;rst, \(\Aut \), takes \(X\) to the set of bijections
+from \(X\) to itself, on maps, it takes \(f: X \to Y\) to the function that takes \(\phi :X \to X\) to \(f \circ \phi \circ f^{-1}: Y \to Y\). The second, \(\Ord \), takes \(X\) to the set of
+total orders on \(X\), and on maps takes \(f\) to the total order on \(Y\) induced by the bijection. These two
+functors send isomorphic objects to isomorphic sets, but are not naturally isomorphic: in
+fact, there isn&#x2019;t even a natural transformation between them! For, let&#x2019;s consider \(f\), the
+nontrivial bijection from a set \(\{a,b\}\) to itself. If there was a natural transformation, we would
 have
 </p>
 <div class="center" 
@@ -525,83 +516,70 @@ src="Natural_Transformations10x.svg" alt="        &#x007B;1,&#x0028;a, b&#x0029;
 A&#x03B7;&#x03B7;Fubctf&#x0028;f&#x0029;  &#x007B;a &#x003C;  b,b &#x003C; a &#x007D;      &#x007B;a &#x003C; b,b &#x003C; a &#x007D; "  />
 </p></div>
 <!--l. 171--><p class="noindent" >\(\Aut (f)\)is the identity, but \(Ff\) is not, so this diagram cannot commute.
-</p><!--l. 173--><p class="indent" >  The fact that this bijection is not natural has an interesting interpretation in the
-context of a combinatorics problem. In particular, let&#x2019;s count the number of trees on a set
-of \(n\) elements, which we&#x2019;ll call \(T_n\). Let \(|\cdot |\) denote cardinality of a set. Consider the
-product \(T_n \times n \times n\), consisting of a tree on the set \(n\), as well as a head and a tail &#x0028;shown in Fig
-<a 
+</p><!--l. 173--><p class="indent" >  The fact that this bijection is not natural has an interesting interpretation in the context of a
+combinatorics problem. In particular, let&#x2019;s count the number of trees on a set of \(n\) elements, which
+we&#x2019;ll call \(T_n\). Let \(|\cdot |\) denote cardinality of a set. Consider the product \(T_n \times n \times n\), consisting of a tree on the set \(n\),
+as well as a head and a tail &#x0028;shown in Fig <a 
 href="#x1-10052">2<!--tex4ht:ref: tree --></a>&#x0029;.
 </p>
-                                                                                  
-
-                                                                                  
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10041"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 176--><p class="noindent" >
 </p><!--l. 177--><p class="noindent" ><img 
 src="Trees.png" alt="pict"  
- width="167.69824pt"  /></p></div>
+ width="183.20056pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
-class="content">A tree, on 11 elements, with a skeleton, indicated by the bold lines, is
-determined by the total ordering on the skeleton and the trees coming out of each
-point on the skeleton.</span></figcaption><!--tex4ht:label?: x1-10041 -->
-                                                                                  
-
-                                                                                  
+class="content">A tree, on 11 elements, with a skeleton, indicated by the bold lines, is determined
+by the total ordering on the skeleton and the trees coming out of each point on the skeleton.</span></figcaption><!--tex4ht:label?: x1-10041 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 182--><p class="indent" >  Note that since there is a unique path between any two points in a tree, we can draw
-an arrow from the tail to the head, yielding a total ordering on a subset of 1
-to n, ie. a skeleton, as well as trees coming out of each point. Note that the
-skeleton and the trees coming out of each point completely determine \(T_n \times n \times n\). Then
-as total orders are in bijections with permutations, we can consider the set of
-permutations with trees coming out of them, a typical example in the &#xFB01;gure
+<!--l. 182--><p class="indent" >  Note that since there is a unique path between any two points in a tree, we can draw an arrow
+from the tail to the head, yielding a total ordering on a subset of 1 to n, ie. a skeleton, as well as
+trees coming out of each point. Note that the skeleton and the trees coming out of each point
+completely determine \(T_n \times n \times n\). Then as total orders are in bijections with permutations, we can consider
+the set of permutations with trees coming out of them, a typical example in the &#xFB01;gure
 below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10052"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <div class="center" 
 >
 <!--l. 185--><p class="noindent" >
 </p><!--l. 186--><p class="noindent" ><img 
 src="Endofunction.png" alt="pict"  
- width="277.34825pt"  /></p></div>
+ width="302.98682pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
 class="content">A permutation on 2, 3, and 5 with trees coming out of it.</span></figcaption><!--tex4ht:label?: x1-10052 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 192--><p class="indent" >  These are in bijection with functions from the set of n elements to itself, as a function
-determines such a tree by writing where everything goes, which eventually &#x0028;after applying
-the function enough times&#x0029; determines the cycles and the trees coming out of them. Thus \(T_n \times n \times n\)
-is in bijection with the set of functions from \(\{1,... ,n\}\) to itself, which is \(n^n\). Thus \(|T_n| = n^{n-2}\) &#x0028;This is known as
-Cayley&#x2019;s Theorem&#x0029;. Perhaps the reason this proof does something nontrivial is because it
-used this bijection which was unnatural.
+determines such a tree by writing where everything goes, which eventually &#x0028;after applying the
+function enough times&#x0029; determines the cycles and the trees coming out of them. Thus \(T_n \times n \times n\) is in
+bijection with the set of functions from \(\{1,... ,n\}\) to itself, which is \(n^n\). Thus \(|T_n| = n^{n-2}\) &#x0028;This is known as Cayley&#x2019;s
+Theorem&#x0029;. Perhaps the reason this proof does something nontrivial is because it used this bijection
+which was unnatural.
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

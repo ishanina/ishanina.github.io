@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -226,96 +238,89 @@ class="cmr-10">ISHAN LEVY</span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Introduction</h3>
-<!--l. 11--><p class="noindent" >The Galois correspondence for &#xFB01;elds gives an equivalence between &#xFB01;nite extensions and
-continuous actions of the absolute Galois group. There is a similar theorem in topology
-which can be stated as follows: for every reasonable space, &#xFB01;nite covering maps
-correspond to continuous actions of the pro&#xFB01;nite completion of the fundamental
+<!--l. 11--><p class="noindent" >The Galois correspondence for &#xFB01;elds gives an equivalence between &#xFB01;nite extensions and continuous
+actions of the absolute Galois group. There is a similar theorem in topology which can be stated as
+follows: for every reasonable space, &#xFB01;nite covering maps correspond to continuous actions of the
+pro&#xFB01;nite completion of the fundamental group.
+</p><!--l. 13--><p class="indent" >  These correspondences are highly analogous: the &#xFB01;rst comes from looking at the maps from the
+&#xFB01;eld extension into a separable closure and acting on them by the Galois group, or by looking at
+maps from the universal cover to the space, and acting on them by the fundamental
 group.
-</p><!--l. 13--><p class="indent" >  These correspondences are highly analogous: the &#xFB01;rst comes from looking at the maps
-from the &#xFB01;eld extension into a separable closure and acting on them by the Galois group,
-or by looking at maps from the universal cover to the space, and acting on them by the
-fundamental group.
-</p><!--l. 15--><p class="indent" >  We will see that in the case of compact Riemann surfaces, this relationship
-is especially strong. A compact Riemann surface is determined by its &#xFB01;eld of
-meromorphic functions &#x0028;function &#xFB01;eld&#x0029;, which is a transcendence degree \(1\) &#xFB01;eld
-extension of \(\CC \), and we will see that Galois theory for the function &#xFB01;eld will tell us
-about &#xFB01;nite branched covers of the Riemann surface. This relationship is clari&#xFB01;ed
-after realizing that compact Riemann surfaces all come from some projective
+</p><!--l. 15--><p class="indent" >  We will see that in the case of compact Riemann surfaces, this relationship is especially strong.
+A compact Riemann surface is determined by its &#xFB01;eld of meromorphic functions &#x0028;function &#xFB01;eld&#x0029;,
+which is a transcendence degree \(1\) &#xFB01;eld extension of \(\CC \), and we will see that Galois theory for the
+function &#xFB01;eld will tell us about &#xFB01;nite branched covers of the Riemann surface. This relationship is
+clari&#xFB01;ed after realizing that compact Riemann surfaces all come from some projective
 variety.
 </p><!--l. 17--><p class="indent" >  The &#xFB01;rst thing we will see is that branched covers are determined by their topological
 data.
 </p>
   <div class="newtheorem">
-                                                                                  
-
-                                                                                  
 <!--l. 19--><p class="noindent" ><span class="head">
 <a 
  id="x1-1001r1"></a>
 <span 
 class="cmbx-12">Theorem 1.1.</span>  </span><span 
-class="cmti-12">Given  a  &#xFB01;nite  topological  branched  cover  of  a  compact  Riemann</span>
+class="cmti-12">Given a &#xFB01;nite topological branched cover of a compact Riemann surface,</span>
 <span 
-class="cmti-12">surface,  there  is  a  unique  holomorphic  structure  on  it  making  the  covering</span>
-<span 
-class="cmti-12">holomorphic.</span>
+class="cmti-12">there is a unique holomorphic structure on it making the covering holomorphic.</span>
 </p>
   <div class="proof">
+                                                                                         
+                                                                                         
 <!--l. 23--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>After removing the &#xFB01;bres of the branch points this is true because the map is
-a local homeomorphism. In order to put holomorphic charts on those &#xFB01;bres, observe
-that near each branch point we have a &#xFB01;nite cover of a punctured disk, which locally
-looks like a disk covering itself via \(z \to z^k\), so we can put back in the branch points using
-charts that look like \(z \to z^k\). Given two ways to &#xFB01;ll in the branch points, we can make a
-holomorphic isomorphism from one cover to the other away from the branch points,
-which extend to the branch points by the Riemann extension theorem. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>After removing the &#xFB01;bres of the branch points this is true because the map is a local
+homeomorphism. In order to put holomorphic charts on those &#xFB01;bres, observe that near each
+branch point we have a &#xFB01;nite cover of a punctured disk, which locally looks like a disk
+covering itself via \(z \to z^k\), so we can put back in the branch points using charts that look like \(z \to z^k\).
+Given two ways to &#xFB01;ll in the branch points, we can make a holomorphic isomorphism from
+one cover to the other away from the branch points, which extend to the branch points by
+the Riemann extension theorem. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 27--><p class="indent" >  Any nonconstant map of compact Riemann surfaces is a &#xFB01;nite branched cover, and any
-&#xFB01;nite branched cover as we have seen comes from a unique Riemann surface, so these are
-the same thing &#x0028;i.e we have an equivalence of categories&#x0029;.
-</p><!--l. 29--><p class="indent" >  Note that we also have that the topological automorphisms of a branched cover are
-holomorphic. Indeed, given a topological automorphism, there is both a unique
-holomorphic structure making the automorphism a branched cover, and making the cover
-holomorphic, but the &#xFB01;rst implies the second, so by uniqueness, these are the
-same.
-</p><!--l. 31--><p class="indent" >  Now we will use a theorem that is obtained from analysis to study maps of compact
-Riemann surfaces further.
+<!--l. 27--><p class="indent" >  Any nonconstant map of compact Riemann surfaces is a &#xFB01;nite branched cover, and any &#xFB01;nite
+branched cover as we have seen comes from a unique Riemann surface, so these are the same thing
+&#x0028;i.e we have an equivalence of categories&#x0029;.
+</p><!--l. 29--><p class="indent" >  Note that we also have that the topological automorphisms of a branched cover are holomorphic.
+Indeed, given a topological automorphism, there is both a unique holomorphic structure making
+the automorphism a branched cover, and making the cover holomorphic, but the &#xFB01;rst implies the
+second, so by uniqueness, these are the same.
+</p><!--l. 31--><p class="indent" >  Now we will use a theorem that is obtained from analysis to study maps of compact Riemann
+surfaces further.
 </p>
   <div class="newtheorem">
 <!--l. 33--><p class="noindent" ><span class="head">
 <a 
  id="x1-1002r2"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Theorem 1.2 </span>&#x0028;Riemann existence theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Given</span> \(x_1,\dots , x_n\) <span 
 class="cmti-12">on a Riemann surface</span> \(C\)<span 
 class="cmti-12">, and</span> \(a_1,\dots , a_n \in \PP ^1\)<span 
-class="cmti-12">,</span>
+class="cmti-12">, there is</span>
 <span 
-class="cmti-12">there is a meromorphic function on</span> \(C\) <span 
+class="cmti-12">a meromorphic function on</span> \(C\) <span 
 class="cmti-12">taking</span> \(x_i\) <span 
 class="cmti-12">to</span> \(a_i\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 37--><p class="indent" >  It is not hard to see that this follows from the fact that any two points can be
-distinguished by meromorphic functions.
+<!--l. 37--><p class="indent" >  It is not hard to see that this follows from the fact that any two points can be distinguished by
+meromorphic functions.
 </p><!--l. 39--><p class="indent" >  The meromorphic functions form a &#xFB01;eld &#x0028;we don&#x2019;t count the constant map to in&#xFB01;nity as
-meromorphic&#x0029;, which we denote \(M(C)\). Given a nonconstant map \(C_1 \to C_2\) of compact Riemann surfaces,
-we can pullback meromorphic functions from \(C_2\) to \(C_1\). Since a meromorphic function is
-determined locally, and there are points where the map is locally an isomorphism, we get
-an inclusion \(M(C_2) \to M(C_1)\).
+meromorphic&#x0029;, which we denote \(M(C)\). Given a nonconstant map \(C_1 \to C_2\) of compact Riemann surfaces, we can
+pullback meromorphic functions from \(C_2\) to \(C_1\). Since a meromorphic function is determined
+locally, and there are points where the map is locally an isomorphism, we get an inclusion
+\(M(C_2) \to M(C_1)\).
 </p>
   <div class="newtheorem">
 <!--l. 41--><p class="noindent" ><span class="head">
+                                                                                         
+                                                                                         
 <a 
  id="x1-1003r3"></a>
 <span 
@@ -327,26 +332,21 @@ class="cmti-12">.</span>
   <div class="proof">
 <!--l. 45--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>First we will show that every meromorphic function on \(C_1\) is the zero of a
-polynomial in \(M(C_1)[x]\) of degree \(d\), that of the map \(C_1 \to C_2\).
-</p><!--l. 47--><p class="indent" >  If the function \(f\) is nonconstant, at every unrami&#xFB01;ed point of \(C_2\), we can take a small
-neighborhood, and look at the preimage, which will be \(d\) copies of that neighborhood,
-each with a function \(f_1,\dots ,f_d\). We can consider the functions \(e_1,\dots , e_d\) on the neighborhood in \(C_2\) that are
-the elementary symmetric functions on the \(f_i\). Since we can glue these together locally,
-the \(e_i\) de&#xFB01;ne a meromorphic function on the unrami&#xFB01;ed points of \(C_2\), which extend to all
-of \(C_2\) by the Riemann extension theorem. Then \(f\) satis&#xFB01;es \(x^d+\sum e_ix^{d-i} = 0\). To see this, it su&#xFB03;ces by the
-identity principle to observe it locally at an unrami&#xFB01;ed point, which is true because
-at an unrami&#xFB01;ed point, the polynomial factors as \(\prod _1^n(x-a_i)\), where \(a_i\) is a cyclic permutation of
-\(f\).
-</p><!--l. 49--><p class="indent" >  Thus by the primitive element theorem, the degree is at most \(d\), as every element
-is degree at most \(d\). It su&#xFB03;ces to produce an element of degree \(d\). By the Riemann
-                                                                                  
-
-                                                                                  
-existence theorem, for an unrami&#xFB01;ed point \(p\), there is a meromorphic function \(f\) taking
-distinct values on the &#xFB01;bres. It cannot have degree less than \(d\). Indeed, all the \(a_i\) must
-be roots of the minimal polynomial as they all vanish when any one of them does.
-<span class="qed"><span 
+class="cmti-12">Proof.</span> </span>First we will show that every meromorphic function on \(C_1\) is the zero of a polynomial
+in \(M(C_1)[x]\) of degree \(d\), that of the map \(C_1 \to C_2\).
+</p><!--l. 47--><p class="indent" >  If  the  function  \(f\)  is  nonconstant,  at  every  unrami&#xFB01;ed  point  of  \(C_2\),  we  can  take  a  small
+neighborhood, and look at the preimage, which will be \(d\) copies of that neighborhood, each
+with a function \(f_1,\dots ,f_d\). We can consider the functions \(e_1,\dots , e_d\) on the neighborhood in \(C_2\) that are the
+elementary symmetric functions on the \(f_i\). Since we can glue these together locally, the \(e_i\) de&#xFB01;ne
+a meromorphic function on the unrami&#xFB01;ed points of \(C_2\), which extend to all of \(C_2\) by the Riemann
+extension theorem. Then \(f\) satis&#xFB01;es \(x^d+\sum e_ix^{d-i} = 0\). To see this, it su&#xFB03;ces by the identity principle to observe
+it locally at an unrami&#xFB01;ed point, which is true because at an unrami&#xFB01;ed point, the polynomial
+factors as \(\prod _1^n(x-a_i)\), where \(a_i\) is a cyclic permutation of \(f\).
+</p><!--l. 49--><p class="indent" >  Thus by the primitive element theorem, the degree is at most \(d\), as every element is degree
+at most \(d\). It su&#xFB03;ces to produce an element of degree \(d\). By the Riemann existence theorem, for
+an unrami&#xFB01;ed point \(p\), there is a meromorphic function \(f\) taking distinct values on the &#xFB01;bres.
+It cannot have degree less than \(d\). Indeed, all the \(a_i\) must be roots of the minimal polynomial
+as they all vanish when any one of them does. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -360,38 +360,38 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <span 
 class="cmbx-12">Theorem 1.4.</span>  </span><span 
 class="cmti-12">Given a &#xFB01;nite &#xFB01;eld extension</span> \(K/M(C_2)\)<span 
-class="cmti-12">, there is a map of Riemann surfaces</span> \(C_1 \to C_2\)
+class="cmti-12">, there is a map of Riemann surfaces</span> \(C_1 \to C_2\) <span 
+class="cmti-12">such</span>
 <span 
-class="cmti-12">such that the induced &#xFB01;eld extension is exactly</span> \(K/M(C_2)\)<span 
+class="cmti-12">that the induced &#xFB01;eld extension is exactly</span> \(K/M(C_2)\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 60--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Take a primitive element of the &#xFB01;eld extension, \(f\) with minimal polynomial \(p\). \(f\)
-is relatively prime to its derivative, so \(fa+f'b=1\). Away from the poles of the coe&#xFB03;cients of \(a,b\),
-\(f\) and \(f'\) cannot have common zeros, so have distinct roots. Remove these points and
-those where \(f' = 0\). Now we can produce a sheaf on the complement of these points where
-a section is a function on the open set satisfying the polynomial relation. This is a
-locally constant sheaf by the implicit function theorem, as \(f' \neq 0\), and has \(d\) stalks as the
-roots are distinct. This gives a holomorphic cover of the complement of these points,
-and we can &#xFB01;ll in the &#xFB01;nitely many points to form a branched cover of \(C_2\). The degree
-is clearly \(d\), and moreover there is a tautological function on it that is a solution to \(p(f)=0\),
-namely the one that sends the stalk to its value. This is the cover we want. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Take  a  primitive  element  of  the  &#xFB01;eld  extension,  \(f\)  with  minimal  polynomial  \(p\).  \(f\)  is
+relatively prime to its derivative, so \(fa+f'b=1\). Away from the poles of the coe&#xFB03;cients of \(a,b\), \(f\) and \(f'\) cannot
+                                                                                         
+                                                                                         
+have common zeros, so have distinct roots. Remove these points and those where \(f' = 0\). Now we
+can produce a sheaf on the complement of these points where a section is a function on the
+open set satisfying the polynomial relation. This is a locally constant sheaf by the implicit
+function theorem, as \(f' \neq 0\), and has \(d\) stalks as the roots are distinct. This gives a holomorphic
+cover of the complement of these points, and we can &#xFB01;ll in the &#xFB01;nitely many points to form
+a branched cover of \(C_2\). The degree is clearly \(d\), and moreover there is a tautological function on
+it that is a solution to \(p(f)=0\), namely the one that sends the stalk to its value. This is the cover
+we want. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 64--><p class="indent" >  In other words, maps of compact Riemann surfaces are exactly the same as &#xFB01;nite &#xFB01;eld
-extensions of the function &#xFB01;eld!
-                                                                                  
-
-                                                                                  
-</p><!--l. 66--><p class="indent" >  In particular, we can interpret Galois theory of the function &#xFB01;eld in terms of branched
-covers. Field automorphisms correspond to automorphisms of the branched cover. If we
-take the quotient of the Riemann surface by the action of the group of cover
-automorphisms, the resulting Riemann surface&#x2019;s function &#xFB01;eld is exactly the &#xFB01;xed &#xFB01;eld of
-the corresponding automorphism of &#xFB01;elds.
+<!--l. 64--><p class="indent" >  In other words, maps of compact Riemann surfaces are exactly the same as &#xFB01;nite &#xFB01;eld extensions
+of the function &#xFB01;eld!
+</p><!--l. 66--><p class="indent" >  In particular, we can interpret Galois theory of the function &#xFB01;eld in terms of branched covers.
+Field automorphisms correspond to automorphisms of the branched cover. If we take the quotient
+of the Riemann surface by the action of the group of cover automorphisms, the resulting Riemann
+surface&#x2019;s function &#xFB01;eld is exactly the &#xFB01;xed &#xFB01;eld of the corresponding automorphism of
+&#xFB01;elds.
 </p>
   <div class="newtheorem">
 <!--l. 68--><p class="noindent" ><span class="head">
@@ -399,18 +399,18 @@ the corresponding automorphism of &#xFB01;elds.
  id="x1-1005r5"></a>
 <span 
 class="cmbx-12">Theorem 1.5.</span>  </span><span 
-class="cmti-12">Compact  Riemann  surfaces  are  equivalent  to  &#xFB01;nitely  generated</span>
+class="cmti-12">Compact Riemann surfaces are equivalent to &#xFB01;nitely generated transcendence</span>
 <span 
-class="cmti-12">transcendence degree</span> \(1\) \(\CC \)<span 
+class="cmti-12">degree</span> \(1\) \(\CC \)<span 
 class="cmti-12">-algebras.</span>
 </p>
   <div class="proof">
 <!--l. 72--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>A  meromorphic  function  is  a  &#xFB01;nite  map  to  \(\PP ^1\).  By  the  Riemann  existence
-theorem, nontrivial meromorphic functions exist, and so the function &#xFB01;eld is a &#xFB01;nite
-extension of \(M(\PP ^1) = \CC (t)\) which is exactly a transcendence degree \(1\) extension of \(\CC \). If one is a little
-more careful, this gives an equivalence of categories. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>A meromorphic function is a &#xFB01;nite map to \(\PP ^1\). By the Riemann existence theorem,
+nontrivial meromorphic functions exist, and so the function &#xFB01;eld is a &#xFB01;nite extension of \(M(\PP ^1) = \CC (t)\)
+which is exactly a transcendence degree \(1\) extension of \(\CC \). If one is a little more careful, this
+gives an equivalence of categories. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -419,6 +419,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   <div class="newtheorem">
 <!--l. 78--><p class="noindent" ><span class="head">
+                                                                                         
+                                                                                         
 <a 
  id="x1-1006r6"></a>
 <span 
@@ -427,36 +429,31 @@ class="cmti-12">Compact Riemann surfaces are the same as smooth projective curve
 </p>
   <div class="proof">
 <!--l. 82--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
 <span 
-class="cmti-12">Proof.</span> </span>Let \(f\) be a primitive element of \(M(C)\) over \(t\), some &#xFB01;nite map to \(\PP ^1\). Then consider
-the map \(C \to \PP ^2\) given by \((f:t:1)\). As we saw in Theorem <a 
-href="#x1-1004r4">1.4<!--tex4ht:ref: construct --></a>, we can choose the function \(f\) to
-distinguish &#xFB01;bres of the map to \(\PP ^1\) generically, so the generic element of the image of
-this map has \(1\) preimage. The image is a singular variety given by the polynomial
-equation that \(f\) satis&#xFB01;es. By resolving the singularities of this variety &#x0028;there are plenty
-of ways to do this&#x0029;, we can obtain a projective curve such that if we lift the map to
-the resolution, we get an isomorphism with our Riemann surface. In particular, note
-that the functions \(f,t\) are rational functions on this curve, and every rational function
-is meromorphic, so its &#xFB01;eld of rational functions is exactly that of \(C\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Let \(f\) be a primitive element of \(M(C)\) over \(t\), some &#xFB01;nite map to \(\PP ^1\). Then consider the map \(C \to \PP ^2\)
+given by \((f:t:1)\). As we saw in Theorem <a 
+href="#x1-1004r4">1.4<!--tex4ht:ref: construct --></a>, we can choose the function \(f\) to distinguish &#xFB01;bres of
+the map to \(\PP ^1\) generically, so the generic element of the image of this map has \(1\) preimage. The
+image is a singular variety given by the polynomial equation that \(f\) satis&#xFB01;es. By resolving the
+singularities of this variety &#x0028;there are plenty of ways to do this&#x0029;, we can obtain a projective
+curve such that if we lift the map to the resolution, we get an isomorphism with our Riemann
+surface. In particular, note that the functions \(f,t\) are rational functions on this curve, and every
+rational function is meromorphic, so its &#xFB01;eld of rational functions is exactly that of \(C\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 86--><p class="indent" >  Algebraically, the &#xFB01;eld of rational functions of a variety has all the information of the
-variety up to taking dense open sets, which in this case means removing &#xFB01;nitely many
-points. This is why one should expect the &#xFB01;eld extensions to correspond to branched
-covers: there is an algebraic curve with the same function &#xFB01;eld such that the branched
-cover is an actual algebraic cover.
+<!--l. 86--><p class="indent" >  Algebraically, the &#xFB01;eld of rational functions of a variety has all the information of the variety up
+to taking dense open sets, which in this case means removing &#xFB01;nitely many points. This is why one
+should expect the &#xFB01;eld extensions to correspond to branched covers: there is an algebraic
+curve with the same function &#xFB01;eld such that the branched cover is an actual algebraic
+cover.
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

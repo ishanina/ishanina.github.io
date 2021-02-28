@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -226,31 +238,26 @@ class="cmr-10">ISHAN LEVY</span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Dehn surgery</h3>
-<!--l. 10--><p class="noindent" >We can view the construction of the lens spaces \(L(p,q)\) as follows: we &#xFB01;rst remove a
-neighborhood of a standard circle in \(S^3\), and reattaching the neighborhood by a certain
-di&#xFB00;eomorphism of the torus, which here is speci&#xFB01;ed by \(p\) and \(q\). This process is
-called <span 
-class="cmbx-12">rational Dehn surgery</span>. If the meridian of the removed torus is sent
-to some longitude on the complement, it is called <span 
-class="cmbx-12">integral Dehn surgery</span>.
-These notions make sense in an arbitrary \(3\)-manifold, but if the \(3\)-manifold is \(S^3\),
-we can assign a rational number to rational surgery and an integer to integral
-surgery. To do this note that on the boundary of the neighborhood of the circle,
-there is a canonical longitude, namely the one that is trivial in homology of the
-complement of the circle. Then the rational surgery \(\frac p q\) is given by sending the meridian of
-the removed solid torus to \(q\) times the longitude plus \(p\) times the meridian. If \(q = 1\),
-then indeed the surgery sends the meridian to a longitude, and is given by an
+<!--l. 10--><p class="noindent" >We can view the construction of the lens spaces \(L(p,q)\) as follows: we &#xFB01;rst remove a neighborhood of a
+standard circle in \(S^3\), and reattaching the neighborhood by a certain di&#xFB00;eomorphism of the torus,
+which here is speci&#xFB01;ed by \(p\) and \(q\). This process is called <span 
+class="cmbx-12">rational Dehn surgery</span>. If the meridian of
+the removed torus is sent to some longitude on the complement, it is called <span 
+class="cmbx-12">integral Dehn</span>
+<span 
+class="cmbx-12">surgery</span>. These notions make sense in an arbitrary \(3\)-manifold, but if the \(3\)-manifold is \(S^3\), we can
+assign a rational number to rational surgery and an integer to integral surgery. To do this note that
+on the boundary of the neighborhood of the circle, there is a canonical longitude, namely the one
+that is trivial in homology of the complement of the circle. Then the rational surgery \(\frac p q\) is given by
+sending the meridian of the removed solid torus to \(q\) times the longitude plus \(p\) times the
+meridian. If \(q = 1\), then indeed the surgery sends the meridian to a longitude, and is given by an
 integer.
-</p><!--l. 12--><p class="indent" >  More generally, given a link in a \(3\)-manifold, we can do rational surgery on it as described
-above, which is clearly well de&#xFB01;ned up to isotopy.
-</p><!--l. 14--><p class="indent" >  In fact any &#x0028;orientable closed&#x0029; \(3\)-manifold can come from integral surgery on any other.
-This follows from a hard to prove theorem about mapping class groups of tori. Namely,
-recall that the Dehn twists generated \(\SL _2(Z)\) in homology, and hence as we saw generate
-the orientated mapping class group of the torus. This is true for higher genus
-surfaces:
-                                                                                  
-
-                                                                                  
+</p><!--l. 12--><p class="indent" >  More generally, given a link in a \(3\)-manifold, we can do rational surgery on it as described above,
+which is clearly well de&#xFB01;ned up to isotopy.
+</p><!--l. 14--><p class="indent" >  In fact any &#x0028;orientable closed&#x0029; \(3\)-manifold can come from integral surgery on any other. This
+follows from a hard to prove theorem about mapping class groups of tori. Namely, recall that the
+Dehn twists generated \(\SL _2(Z)\) in homology, and hence as we saw generate the orientated mapping class
+group of the torus. This is true for higher genus surfaces:
 </p>
   <div class="newtheorem">
 <!--l. 16--><p class="noindent" ><span class="head">
@@ -259,10 +266,12 @@ surfaces:
 <span 
 class="cmbx-12">Theorem 1.1.</span>  </span><span 
 class="cmti-12">Dehn twists on the circles shown below on the genus</span> \(g\) <span 
-class="cmti-12">surface generate</span>
+class="cmti-12">surface generate the</span>
 <span 
-class="cmti-12">the mapping class group of the surface.</span>
+class="cmti-12">mapping class group of the surface.</span>
 </p>
+                                                                                         
+                                                                                         
   <figure class="figure"> 
 <a 
  id="x1-10021"></a>
@@ -271,57 +280,52 @@ class="cmti-12">the mapping class group of the surface.</span>
 <!--l. 20--><p class="noindent" >
 </p><!--l. 21--><p class="noindent" ><img 
 src="Mapping_Class_Group.png" alt="pict"  
- width="451.50288pt"  /></p></div>
+ width="493.2406pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
-class="content">Doing Dehn twists on these curves generate the mapping class group of the
-genus \(g\) surface.</span></figcaption><!--tex4ht:label?: x1-10021 -->
+class="content">Doing Dehn twists on these curves generate the mapping class group of the genus \(g\)
+surface.</span></figcaption><!--tex4ht:label?: x1-10021 -->
   </figure>
   </div>
 <!--l. 29--><p class="indent" >  Thus given two Heegaard splittings of the same genus, we can do Dehn twists along
-these circles to move between them. However, changing the attaching map of a genus \(g\)
-handlebody by a Dehn twist on a circle amounts to doing integral surgery on that circle.
-To see this, take a neighborhood of the circle \(\gamma \), translate the circle to a \(\gamma '\) that is on the
-boundary of this neighborhood, and reglue in the neighborhood such that the meridian
-is sent to the meridian plus this longitude. This does nothing to each of the
+these circles to move between them. However, changing the attaching map of a genus
+\(g\) handlebody by a Dehn twist on a circle amounts to doing integral surgery on that
+circle. To see this, take a neighborhood of the circle \(\gamma \), translate the circle to a \(\gamma '\) that is
+on the boundary of this neighborhood, and reglue in the neighborhood such that the
+meridian is sent to the meridian plus this longitude. This does nothing to each of the
 handlebodies, but clearly changes the gluing map by a Dehn twist as shown in Figure <a 
 href="#x1-10032">2<!--tex4ht:ref: Dehn_Surgery_Twist --></a>.
 </p><figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10032"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 31--><p class="noindent" ><img 
 src="Dehn_Surgery_Twist.png" alt="pict"  
- width="225.75636pt"  />
+ width="246.62567pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
-class="content"> The Dehn twist on a circle for the attaching map of a surface in a \(3\)-manifold
-can be obtained by taking a neighborhood of the circle, and doing the integral surgery
-where the meridian is sent to the curve that wraps around the longitude once, as
-shown above.</span></figcaption><!--tex4ht:label?: x1-10032 -->
-                                                                                  
-
-                                                                                  
+class="content"> The Dehn twist on a circle for the attaching map of a surface in a \(3\)-manifold can
+be obtained by taking a neighborhood of the circle, and doing the integral surgery where the
+meridian is sent to the curve that wraps around the longitude once, as shown above.</span></figcaption><!--tex4ht:label?: x1-10032 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 37--><p class="indent" >  There is a \(4\)-manifold picture of what is happening in integral Dehn surgery. Namely, it
-gives an oriented cobordism between the old and new \(3\)-manifolds \(M, M'\) as follows: start with the
-product \(M\times [0,1]\), and we can attach a \(2\)-handle to the part of the boundary \(M \times 1\) that will yield \(M'\) as
-follows: we have \(\partial (D^2\times D^2) = S^1 \times D^2 \cup _{S^1\times S^1} D^2\times S^1\). We attach \(D^2\times S^1\) to the neighborhood of the circle we are doing surgery on,
-sending the standard longitude of \(D^2\times S^1\) to a longitude \(l\). Then this \(D^2\times S^1\) is no longer part of the
-boundary of the resulting \(4\)-manifold, but rather \(S^1\times D^2\) is, and it is attached to the
-rest of the \(3\)-manifold boundary along its boundary \(S^1\times S^1\) by sending its meridian to
-\(l\).
+<!--l. 37--><p class="indent" >  There is a \(4\)-manifold picture of what is happening in integral Dehn surgery. Namely, it gives an
+oriented cobordism between the old and new \(3\)-manifolds \(M, M'\) as follows: start with the product \(M\times [0,1]\), and
+we can attach a \(2\)-handle to the part of the boundary \(M \times 1\) that will yield \(M'\) as follows: we have \(\partial (D^2\times D^2) = S^1 \times D^2 \cup _{S^1\times S^1} D^2\times S^1\). We
+attach \(D^2\times S^1\) to the neighborhood of the circle we are doing surgery on, sending the standard longitude
+of \(D^2\times S^1\) to a longitude \(l\). Then this \(D^2\times S^1\) is no longer part of the boundary of the resulting \(4\)-manifold, but
+rather \(S^1\times D^2\) is, and it is attached to the rest of the \(3\)-manifold boundary along its boundary \(S^1\times S^1\) by sending
+its meridian to \(l\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Kirby diagrams</h3>
-<!--l. 41--><p class="noindent" >Since Dehn twists generate the mapping class group, we can start with a Heegaard
-splitting of \(S^3\) of high enough genus, and do enough integral surgeries on it to get any
-\(3\)-manifold. \(S^3\) bounds \(D^4\), so we get the following theorem:
+<!--l. 41--><p class="noindent" >Since Dehn twists generate the mapping class group, we can start with a Heegaard splitting of \(S^3\) of
+high enough genus, and do enough integral surgeries on it to get any \(3\)-manifold. \(S^3\) bounds \(D^4\), so we get
+the following theorem:
 </p>
   <div class="newtheorem">
 <!--l. 43--><p class="noindent" ><span class="head">
@@ -330,371 +334,326 @@ splitting of \(S^3\) of high enough genus, and do enough integral surgeries on i
 <span 
 class="cmbx-12">Theorem 2.1.</span>  </span><span 
 class="cmti-12">Every</span> \(3\)<span 
-class="cmti-12">-manifold can be constructed by doing integral surgery on a</span>
+class="cmti-12">-manifold can be constructed by doing integral surgery on a link in</span> \(S^3\)<span 
+class="cmti-12">.</span>
 <span 
-class="cmti-12">link in</span> \(S^3\)<span 
-class="cmti-12">. Moreover, doing this surgery gives an oriented cobordism to</span> \(0\) <span 
-class="cmti-12">via a simply</span>
-<span 
-class="cmti-12">connected</span> \(4\)<span 
+class="cmti-12">Moreover, doing this surgery gives an oriented cobordism to</span> \(0\) <span 
+class="cmti-12">via a simply connected</span> \(4\)<span 
 class="cmti-12">-manifold.</span>
 </p>
   </div>
 <!--l. 47--><p class="indent" >  Thus we can represent a \(3\)-manifold by a <span 
-class="cmbx-12">framed link</span>, which is a link where every
-component has an integer attached to it. The integer speci&#xFB01;es what kind of integral
-surgery it is. If we draw the link, it is called a <span 
-class="cmbx-12">Kirby diagram</span>. The link speci&#xFB01;es how to
-attach \(2\)-handles to \(D^4\) to get a \(4\)-manifold with boundary the \(3\)-manifold. More generally we
-can have rationally framed knots, but these don&#x2019;t represent \(4\)-manifolds, only
-\(3\)-manifolds. We can also attach \(1\)-handles, which can be drawn as a pair of balls,
-where we remember whether the orientations on the two components agree or
+class="cmbx-12">framed link</span>, which is a link where every component
+has an integer attached to it. The integer speci&#xFB01;es what kind of integral surgery it is. If we draw
+the link, it is called a <span 
+class="cmbx-12">Kirby diagram</span>. The link speci&#xFB01;es how to attach \(2\)-handles to \(D^4\) to get a
+\(4\)-manifold with boundary the \(3\)-manifold. More generally we can have rationally framed knots, but
+these don&#x2019;t represent \(4\)-manifolds, only \(3\)-manifolds. We can also attach \(1\)-handles, which can be drawn
+as a pair of balls, where we remember whether the orientations on the two components agree or
 don&#x2019;t.
 </p><!--l. 49--><p class="indent" >  For example, a rational framing of the lens space \(L(p,q)\) is given by the following:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20023"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 52--><p class="noindent" ><img 
 src="Lens_Space.png" alt="pict"  
- width="161.25171pt"  />
+ width="176.15813pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;3:</span><span  
 class="content"> Rational framing of \(L(p,q)\).</span></figcaption><!--tex4ht:label?: x1-20023 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 58--><p class="indent" >  To turn this &#x0028;or any rationally framed link&#x0029; into an integrally framed link, we can use
-the fact that the following operation on Kirby diagrams preserves the \(3\)-manifold
+<!--l. 58--><p class="indent" >  To turn this &#x0028;or any rationally framed link&#x0029; into an integrally framed link, we can
+use the fact that the following operation on Kirby diagrams preserves the \(3\)-manifold
 represented:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20034"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 61--><p class="noindent" ><img 
 src="Rational_to_Integral.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;4:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-20034 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 67--><p class="indent" >  To see this, note that after doing \(k\) surgery on the larger knot, the longitude of the
-neighborhood of that knot is sent to the meridian. Thus our \(\frac p q\) framed unknot can be slid
-into the surged torus so that it lies at the center of the torus. Then we can make the
-neighborhood of the unknot be exactly the torus that was surged in, so that doing the
-surgery only changes the attaching map. To see how it changes the attaching map, note
-that since \(\frac p q\) surgery speci&#xFB01;es the attaching map from the exterior to the torus, we
-need to put in a \(\begin{bmatrix} 0 &amp; 1\\ 1 &amp; 0 \end{bmatrix}\) to account for the fact that we are changing the attaching
-map from the interior to the exterior. We compute the new attaching map as:
+<!--l. 67--><p class="indent" >  To see this, note that after doing \(k\) surgery on the larger knot, the longitude of the neighborhood
+of that knot is sent to the meridian. Thus our \(\frac p q\) framed unknot can be slid into the surged torus so
+that it lies at the center of the torus. Then we can make the neighborhood of the unknot be
+exactly the torus that was surged in, so that doing the surgery only changes the attaching map. To
+see how it changes the attaching map, note that since \(\frac p q\) surgery speci&#xFB01;es the attaching map from the
+exterior to the torus, we need to put in a \(\begin{bmatrix} 0 &amp; 1\\ 1 &amp; 0 \end{bmatrix}\) to account for the fact that we are changing the
+attaching map from the interior to the exterior. We compute the new attaching map as:
 \[ \begin{bmatrix} -1 &amp; 0\\ k &amp; 1 \end{bmatrix}\begin{bmatrix} 0 &amp; 1\\ 1 &amp; 0 \end{bmatrix}\begin{bmatrix} -q &amp; \bullet \\ p &amp; \bullet \end{bmatrix} = \begin{bmatrix} -p &amp; \bullet \\ pk-q &amp; \bullet \end{bmatrix} \]
-</p><!--l. 82--><p class="indent" >  We don&#x2019;t really care about what the dots are, and we see that we are left with \(\frac{pk-q} p = k-\frac q p\) surgery
-on the knot. Thus we can inductively de&#xFB01;ne a continued fraction expansion of a rational
-number by \([x_0] = x_0\) and \([x_0,\dots ,x_n] = x_0-\frac 1{[x_1,\dots ,x_n]}\). If \(\frac p q = [x_0,\dots x_n]\), then by induction we have the following two diagrams represent the
-same \(3\)-manifold:
+</p><!--l. 82--><p class="indent" >  We don&#x2019;t really care about what the dots are, and we see that we are left with \(\frac{pk-q} p = k-\frac q p\) surgery on the
+knot. Thus we can inductively de&#xFB01;ne a continued fraction expansion of a rational number by \([x_0] = x_0\)
+and \([x_0,\dots ,x_n] = x_0-\frac 1{[x_1,\dots ,x_n]}\). If \(\frac p q = [x_0,\dots x_n]\), then by induction we have the following two diagrams represent the same
+\(3\)-manifold:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20045"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 85--><p class="noindent" ><img 
 src="Continued_Fraction.png" alt="pict"  
- width="290.25114pt"  />
+ width="317.08247pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;5:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-20045 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 91--><p class="indent" >  We can construct lots of interesting examples of Seifert &#xFB01;bre spaces by starting with \(S^1\times S^2\),
-and replacing little neighborhoods \(S^1\times N\) with the standard &#xFB01;bred tori, which amounts to doing
-rational surgery. Since \(S^1\times S^2\) is obtained from \(0\) surgery on an unknot, these Seifert manifolds,
-denoted \(M((a_1,b_1),\dots ,(a_n,b_n))\) have the Kirby diagram shown below:
+<!--l. 91--><p class="indent" >  We can construct lots of interesting examples of Seifert &#xFB01;bre spaces by starting with \(S^1\times S^2\), and
+replacing little neighborhoods \(S^1\times N\) with the standard &#xFB01;bred tori, which amounts to doing rational
+surgery. Since \(S^1\times S^2\) is obtained from \(0\) surgery on an unknot, these Seifert manifolds, denoted \(M((a_1,b_1),\dots ,(a_n,b_n))\) have the
+Kirby diagram shown below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20056"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 94--><p class="noindent" ><img 
 src="Seifert_Manifold.png" alt="pict"  
- width="128.9994pt"  />
+ width="140.92435pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;6:</span><span  
 class="content"> Kirby diagram of the Seifert manifold \(M((a_1,b_1),\dots ,(a_n,b_n))\)</span></figcaption><!--tex4ht:label?: x1-20056 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 100--><p class="indent" >  All these \(3\)-manifolds are all examples of plumbed \(3\)-manifolds, namely those that bound a
 plumbed \(4\)-manifold.
 </p><!--l. 102--><p class="indent" >  We say that the \(4\)-manifold associated to a Kirby a diagram is <span 
-class="cmbx-12">plumbed </span>if it is given by
-a weighted graph, where each edge is an unknot where the weight speci&#xFB01;es the
-framing, and an edge denotes that the knots are Hopf linked, like the ones in Figure
-<a 
+class="cmbx-12">plumbed </span>if it is given by a
+weighted graph, where each edge is an unknot where the weight speci&#xFB01;es the framing, and an edge
+denotes that the knots are Hopf linked, like the ones in Figure <a 
 href="#x1-20067">7<!--tex4ht:ref: hopf --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20067"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 105--><p class="noindent" ><img 
 src="Hopf.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;7:</span><span  
 class="content"> A Hopf link.</span></figcaption><!--tex4ht:label?: x1-20067 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 111--><p class="indent" >  We can describe the \(4\)-manifold associated to this diagram as follows: for each vertex
-with weight \(k\), start with the manifold \(E_n\), the disc bundle associated to a complex
-line bundle over \(S^2 = \CC \PP ^1\) with Euler class \(k\). Now whenever two edges \(e_1,e_2\) are connected,
-trivialize two neighborhoods of each of the associated disk bundles to get two
-copies \(D^2\times D^2\) and identify them via \((x,y)_1 = (y,x)_2\) &#x0028;this identi&#xFB01;cation is called a <span 
-class="cmbx-12">plumbing</span>&#x0029;. It is
-easy to see that this is the same \(4\)-manifold after realizing that \(E_k\) is the manifold
-obtained from doing \(k\) surgery on an unknot to \(S^3 = \partial D^4\). The Seifert manifolds \(M((a_1,b_1),\dots ,(a_n,b_n))\) are all
-plumbed, which is seen by taking a continued fraction expansion of the \(\frac{a_i}{b_i}\) as in Figure
-<a 
-href="#x1-20045">5<!--tex4ht:ref: Continued_Fraction --></a>. More generally, one can plumb any disk bundles of oriented surfaces, and
-conversely given any collection of transversely intersecting oriented surfaces in a
+<!--l. 111--><p class="indent" >  We can describe the \(4\)-manifold associated to this diagram as follows: for each vertex with weight
+\(k\), start with the manifold \(E_n\), the disc bundle associated to a complex line bundle over \(S^2 = \CC \PP ^1\)
+with Euler class \(k\). Now whenever two edges \(e_1,e_2\) are connected, trivialize two neighborhoods
+of each of the associated disk bundles to get two copies \(D^2\times D^2\) and identify them via \((x,y)_1 = (y,x)_2\) &#x0028;this
+identi&#xFB01;cation is called a <span 
+class="cmbx-12">plumbing</span>&#x0029;. It is easy to see that this is the same \(4\)-manifold after
+realizing that \(E_k\) is the manifold obtained from doing \(k\) surgery on an unknot to \(S^3 = \partial D^4\). The Seifert
+manifolds \(M((a_1,b_1),\dots ,(a_n,b_n))\) are all plumbed, which is seen by taking a continued fraction expansion of the \(\frac{a_i}{b_i}\)
+as in Figure <a 
+href="#x1-20045">5<!--tex4ht:ref: Continued_Fraction --></a>. More generally, one can plumb any disk bundles of oriented surfaces,
+and conversely given any collection of transversely intersecting oriented surfaces in a
 \(4\)-manifold, a tubular neighborhood of their union will be a plumbing of their normal
 bundles.
-</p><!--l. 113--><p class="indent" >  We can extend our Kirby diagrams to include more \(4\)-manifolds. Namely, note that so far
-we can only add \(2\)-handles. To add \(1\)-handles, one can represent a framed \(S^0\) in the diagram by
-two balls, where we remember that they are connected, and remember if the orientation is
-preserved or reversed.
+</p><!--l. 113--><p class="indent" >  We can extend our Kirby diagrams to include more \(4\)-manifolds. Namely, note that so far we can
+only add \(2\)-handles. To add \(1\)-handles, one can represent a framed \(S^0\) in the diagram by two balls, where
+we remember that they are connected, and remember if the orientation is preserved or
+reversed.
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Kirby calculus</h3>
-<!--l. 117--><p class="noindent" >It is quite nice that we can represent \(3\)-manifold using Kirby diagrams, but there are a lot
-of basic questions we can ask about these diagrams. For example, when do two Kirby
-diagrams give the same manifold? There are two operations on diagrams, called the <span 
-class="cmbx-12">Kirby</span>
-<span 
-class="cmbx-12">moves</span>, that we can do that give the same \(3\)-manifold.
+<!--l. 117--><p class="noindent" >It is quite nice that we can represent \(3\)-manifold using Kirby diagrams, but there are a lot of basic
+questions we can ask about these diagrams. For example, when do two Kirby diagrams give the
+same manifold? There are two operations on diagrams, called the <span 
+class="cmbx-12">Kirby moves</span>, that we can do
+that give the same \(3\)-manifold.
 </p><!--l. 119--><p class="indent" >  The &#xFB01;rst thing to note is that if the diagram has two components that are <span 
-class="cmbx-12">unlinked</span>,
-meaning that they can be separated from each other, the manifold we get is the same as
-the connected sum of the corresponding manifold for each component. The &#xFB01;rst Kirby
-move, \(K1\), is given by adding or removing an unlinked \(\pm 1\) framed knot from the diagram, which
-by our realization that \(S^3\) is \(L(1,\pm 1)\) amounts to taking a connected sum with \(S^3\), giving the
-same manifold. Note however that the \(4\)-manifold that the \(3\)-manifold bounds is
-changed.
+class="cmbx-12">unlinked</span>, meaning
+that they can be separated from each other, the manifold we get is the same as the connected sum
+of the corresponding manifold for each component. The &#xFB01;rst Kirby move, \(K1\), is given by adding or
+removing an unlinked \(\pm 1\) framed knot from the diagram, which by our realization that \(S^3\) is \(L(1,\pm 1)\) amounts to
+taking a connected sum with \(S^3\), giving the same manifold. Note however that the \(4\)-manifold that the
+\(3\)-manifold bounds is changed.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-30018"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 122--><p class="noindent" ><img 
 src="K1.png" alt="pict"  
- width="128.9994pt"  />
+ width="140.92435pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;8:</span><span  
 class="content"> The &#xFB01;rst Kirby move</span></figcaption><!--tex4ht:label?: x1-30018 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 128--><p class="indent" >  The second Kirby move, is called sliding over, and requires the notion of <span 
 class="cmbx-12">linking</span>
 <span 
 class="cmbx-12">number</span> \(L(K_1,K_2)\) of two oriented knots \(K_1, K_2\) in a homology sphere. There are several notions of linking
-number that are easily seen to be equivalent. The &#xFB01;rst can be seen by looking at a knot
-projection, taking the number of positive crossings minus the number of negative crossings
-that occur between the two components, and dividing by \(2\). It is clear that the linking
-number is symmetric and changes sign if we change the orientation of one of the
+number that are easily seen to be equivalent. The &#xFB01;rst can be seen by looking at a
+knot projection, taking the number of positive crossings minus the number of negative
+crossings that occur between the two components, and dividing by \(2\). It is clear that the
+linking number is symmetric and changes sign if we change the orientation of one of the
 knots.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-30029"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 131--><p class="noindent" ><img 
 src="PNCrossing.png" alt="pict"  
- width="128.9994pt"  />
+ width="140.92435pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;9:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-30029 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 136--><p class="indent" >  The second de&#xFB01;nition is to &#xFB01;rst remove one of the knots from \(S^3\). The &#xFB01;rst homology has a
-canonical generator, given by the meridian &#x0028;this needs the knot and \(S^3\) to be oriented&#x0029;. Then
-we can de&#xFB01;ne the linking number to be the homology class that \(K_2\) represents in the
+canonical generator, given by the meridian &#x0028;this needs the knot and \(S^3\) to be oriented&#x0029;.
+Then we can de&#xFB01;ne the linking number to be the homology class that \(K_2\) represents in the
 complement. It is easy to see that via a projection, this coincides with the previous
 de&#xFB01;nition.
 </p><!--l. 138--><p class="indent" >  The third de&#xFB01;nition uses a <span 
-class="cmbx-12">Seifert surface</span>, which is a &#x0028;connected orientable&#x0029; surface
-with boundary \(K_2\). It will later be seen that these always exist, but given one, we can perturb
-it to intersect \(K_1\) transversely, and de&#xFB01;ne the linking number to be the intersection number.
-To see that this is the same, just note that if we remove small neighborhoods of the
-intersection points from the Seifert surface, we get a surface that shows that \(K_2\) is
-homologous to some sum of meridians.
+class="cmbx-12">Seifert surface</span>, which is a &#x0028;connected orientable&#x0029; surface with
+boundary \(K_2\). It will later be seen that these always exist, but given one, we can perturb it to
+intersect \(K_1\) transversely, and de&#xFB01;ne the linking number to be the intersection number. To see that
+this is the same, just note that if we remove small neighborhoods of the intersection points from
+the Seifert surface, we get a surface that shows that \(K_2\) is homologous to some sum of
+meridians.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-300310"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 141--><p class="noindent" ><img 
 src="Seifert_Linking_Number.png" alt="pict"  
- width="96.74709pt"  />
+ width="105.69055pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;10:</span><span  
-class="content"> Counting signed intersection points of the Seifert surface with the other
-link component computes the linking number to be 2.</span></figcaption><!--tex4ht:label?: x1-300310 -->
-                                                                                  
-
-                                                                                  
+class="content"> Counting signed intersection points of the Seifert surface with the other link
+component computes the linking number to be 2.</span></figcaption><!--tex4ht:label?: x1-300310 -->
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 147--><p class="indent" >  Now that we have a notion of linking number, we can de&#xFB01;ne the <span 
-class="cmbx-12">canonical</span>
-<span 
-class="cmbx-12">longitude </span>of a knot to be a parallel knot with linking number \(0\). An example is shown
-below:
+class="cmbx-12">canonical longitude </span>of a knot
+to be a parallel knot with linking number \(0\). An example is shown below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-300411"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 150--><p class="noindent" ><img 
 src="Longitude.png" alt="pict"  
- width="161.25171pt"  />
+ width="176.15813pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;11:</span><span  
 class="content"> A left-handed trefoil with its canonical longitude</span></figcaption><!--tex4ht:label?: x1-300411 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 155--><p class="indent" >  More generally, given an integer \(n\), there is a unique longitude with homology class \(n\), and
-we can call this the \(n\) framed longitude.
-</p><!--l. 157--><p class="indent" >  Now the second Kirby move \(K2\), called sliding over, can be de&#xFB01;ned as follows:
-temporarily orient two components \(L_1,L_2\) of the knot with framings \(n_1,n_2\), take the longitude
-representing \(n_2\) on \(L_2\), and take the connected sum with \(L_1\). The new knot will have
-framing \(n_1+n_2+2L(L_1,L_2)\), which corresponds to the fact that the homology class added by the slid
-\(2\)-handle is the sum of the homology classes of the original \(2\)-handles. On the level of
-\(3\)-manifolds we can note that after having done surgery on \(L_2\), the longitude we
-have taken bounds a disk, so we are simply isotoping \(L_1\) inside the new surged
-manifold, and the change in framing makes sure that the attaching map stays the
+<!--l. 155--><p class="indent" >  More generally, given an integer \(n\), there is a unique longitude with homology class \(n\), and we can
+call this the \(n\) framed longitude.
+</p><!--l. 157--><p class="indent" >  Now the second Kirby move \(K2\), called sliding over, can be de&#xFB01;ned as follows: temporarily orient
+two components \(L_1,L_2\) of the knot with framings \(n_1,n_2\), take the longitude representing \(n_2\) on \(L_2\), and take the
+connected sum with \(L_1\). The new knot will have framing \(n_1+n_2+2L(L_1,L_2)\), which corresponds to the fact that the
+homology class added by the slid \(2\)-handle is the sum of the homology classes of the original
+\(2\)-handles. On the level of \(3\)-manifolds we can note that after having done surgery on \(L_2\),
+the longitude we have taken bounds a disk, so we are simply isotoping \(L_1\) inside the new
+surged manifold, and the change in framing makes sure that the attaching map stays the
 same.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-300512"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 160--><p class="noindent" ><img 
 src="K2.png" alt="pict"  
- width="387.00807pt"  />
+ width="422.7838pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;12:</span><span  
-class="content"> The second Kirby move. First orient both the unknot and the trefoil,
-we choose a longitude of the trefoil with linking number \(3\), and take the connected
-sum with the unknot. Since the linking number of the unknot and the trefoil is \(-1\), we
-change the framing to \(2+3+2(-1) = 3\).</span></figcaption><!--tex4ht:label?: x1-300512 -->
-                                                                                  
-
-                                                                                  
+class="content"> The second Kirby move. First orient both the unknot and the trefoil, we choose a
+longitude of the trefoil with linking number \(3\), and take the connected sum with the unknot.
+Since the linking number of the unknot and the trefoil is \(-1\), we change the framing to \(2+3+2(-1) = 3\).</span></figcaption><!--tex4ht:label?: x1-300512 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 166--><p class="indent" >  These Kirby moves have interpretations in terms of the 4-manifolds that bound the
-three manifold. The &#xFB01;rst one amounts to attaching a \(2\)-handle that doesn&#x2019;t actually change
-the di&#xFB00;eomorphism type of the boundary, alternatively taking a boundary connected sum
-with \(E_{\pm 1}\) which doesn&#x2019;t change the boundary, and the second amounts to sliding a \(2\) handle
-over another as in the picture below:
+<!--l. 166--><p class="indent" >  These Kirby moves have interpretations in terms of the 4-manifolds that bound the three
+manifold. The &#xFB01;rst one amounts to attaching a \(2\)-handle that doesn&#x2019;t actually change the
+di&#xFB00;eomorphism type of the boundary, alternatively taking a boundary connected sum with \(E_{\pm 1}\) which
+doesn&#x2019;t change the boundary, and the second amounts to sliding a \(2\) handle over another as in the
+picture below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-300613"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 169--><p class="noindent" ><img 
 src="K24Manifold.png" alt="pict"  
- width="387.00807pt"  />
+ width="422.7838pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;13:</span><span  
-class="content"> The second Kirby move in terms of the \(4\)-manifold represented amounts
-to sliding one of the \(2\)-handles over the other.</span></figcaption><!--tex4ht:label?: x1-300613 -->
-                                                                                  
-
-                                                                                  
+class="content"> The second Kirby move in terms of the \(4\)-manifold represented amounts to sliding
+one of the \(2\)-handles over the other.</span></figcaption><!--tex4ht:label?: x1-300613 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 175--><p class="indent" >  Note that because we are just sliding the handle, this doesn&#x2019;t actually change the
-\(4\)-manifold. We can &#xFB01;nd di&#xFB00;erent representations of the same \(3\)-manifold via these two moves
-and better yet, these are guaranteed to give all the representations:
+<!--l. 175--><p class="indent" >  Note that because we are just sliding the handle, this doesn&#x2019;t actually change the \(4\)-manifold. We
+can &#xFB01;nd di&#xFB00;erent representations of the same \(3\)-manifold via these two moves and better yet, these
+are guaranteed to give all the representations:
 </p>
   <div class="newtheorem">
 <!--l. 177--><p class="noindent" ><span class="head">
@@ -704,101 +663,87 @@ and better yet, these are guaranteed to give all the representations:
 class="cmbx-12">Theorem 3.1 </span>&#x0028;Kirby&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Any two Kirby diagrams of the same oriented</span> \(3\)<span 
-class="cmti-12">-manifold are</span>
+class="cmti-12">-manifold are related</span>
 <span 
-class="cmti-12">related through a &#xFB01;nite number of Kirby moves.</span>
+class="cmti-12">through a &#xFB01;nite number of Kirby moves.</span>
 </p>
   </div>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
  id="x1-40004"></a>More examples</h3>
 <!--l. 183--><p class="noindent" >Here are some more examples of Kirby calculus. We can use it to produce \(4\)-manifolds with
-boundary with any &#xFB01;nitely presented fundamental group. Namely add \(1\)-handles for each
-generator, and \(2\)-handles for each relation, where the knot represents the element of the
-fundamental group you want to kill. By drawing any such knot, we get plenty of such
-\(4\)-manifolds with a given fundamental group. If for example the number of relations is equal
-to the number of generators, and the boundary is \(S^3\), we can add a \(4\)-handle to
-get something homeomorphic to \(S^4\) &#x0028;by the topological \(4\)-dimensional Poincar&#x00E9;
-conjecture&#x0029; but not obviously di&#xFB00;eomorphic to it. Plenty of potential exotic \(S^4\)s
-come from this. As a note, it is possible to produce closed \(4\)-manifolds with any
-fundamental group, by realizing it as the boundary of a \(5\)-manifold built out of
+boundary with any &#xFB01;nitely presented fundamental group. Namely add \(1\)-handles for each generator,
+and \(2\)-handles for each relation, where the knot represents the element of the fundamental group you
+want to kill. By drawing any such knot, we get plenty of such \(4\)-manifolds with a given fundamental
+group. If for example the number of relations is equal to the number of generators, and the
+boundary is \(S^3\), we can add a \(4\)-handle to get something homeomorphic to \(S^4\) &#x0028;by the topological
+\(4\)-dimensional Poincar&#x00E9; conjecture&#x0029; but not obviously di&#xFB00;eomorphic to it. Plenty of
+potential exotic \(S^4\)s come from this. As a note, it is possible to produce closed \(4\)-manifolds
+with any fundamental group, by realizing it as the boundary of a \(5\)-manifold built out of
 \(0,1,2\)-cells.
-</p><!--l. 185--><p class="indent" >  As a second example, given a \(4\)-manifold \((M,\partial M)\) built from only a \(0\)-handle and some \(2\)-handles,
-we can produce a Kirby diagram of its <span 
-class="cmbx-12">double</span>, i.e the manifold produced by taking two
-copies of \(M\) and gluing them together via the identity map on the boundary. This adds
-\(2\)-handles and then a \(4\)-handle to our manifold giving something closed. To &#xFB01;nd the Kirby
-diagram of the new manifold, we can observe that the cores of the new \(2\)-handles are
-attached along the cocore direction of the corresponding \(2\)-handles, so after pushing this
-into \(S^3\) it appears as a meridian. It framing is \(0\), as the new homology classes are represented
-by a sphere consisting of a cocore of a old handle and the core of a new handle,
-which are a trivial disk bundle on a disk that the attaching map of the cocore
-bounds. For example, the doubling process of a Kirby diagram is shown in Figure
+</p><!--l. 185--><p class="indent" >  As a second example, given a \(4\)-manifold \((M,\partial M)\) built from only a \(0\)-handle and some \(2\)-handles, we can
+produce a Kirby diagram of its <span 
+class="cmbx-12">double</span>, i.e the manifold produced by taking two copies of \(M\) and
+gluing them together via the identity map on the boundary. This adds \(2\)-handles and then a \(4\)-handle
+to our manifold giving something closed. To &#xFB01;nd the Kirby diagram of the new manifold, we can
+observe that the cores of the new \(2\)-handles are attached along the cocore direction of the
+corresponding \(2\)-handles, so after pushing this into \(S^3\) it appears as a meridian. It framing is \(0\), as the
+new homology classes are represented by a sphere consisting of a cocore of a old handle and the
+core of a new handle, which are a trivial disk bundle on a disk that the attaching map of the
+cocore bounds. For example, the doubling process of a Kirby diagram is shown in Figure
 <a 
 href="#x1-400114">14<!--tex4ht:ref: double --></a>.
-                                                                                  
-
-                                                                                  
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-400114"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 188--><p class="noindent" ><img 
 src="KDiag.png" alt="pict"  
- width="257.99883pt"  /> <img 
+ width="281.84871pt"  /> <img 
 src="Double.png" alt="pict"  
- width="257.99883pt"  />
+ width="281.84871pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;14:</span><span  
-class="content"> Doubling the \(4\)-manifold adds \(0\)-framed \(2\)-handles along the meridians of each
-knot.</span></figcaption><!--tex4ht:label?: x1-400114 -->
-                                                                                  
-
-                                                                                  
+class="content"> Doubling the \(4\)-manifold adds \(0\)-framed \(2\)-handles along the meridians of each knot.</span></figcaption><!--tex4ht:label?: x1-400114 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 195--><p class="indent" >  If we double a disk bundle on a sphere of Euler class \(n\), we get a \(S^2\) bundle over \(S^2\), which are
-classi&#xFB01;ed by \(\pi _1(\Diff (S^2)) = \pi _1(SO(3)) = \ZZ /2\ZZ \). To &#xFB01;gure out which one is which we can use Kirby calculus, Namely the
-double is given by two Hopf linked handles where the framing of one is \(0\) and the other is \(n\).
-Now by sliding the \(n\) over the \(0\), we can change \(n\) mod \(2\) to either \(0\) or \(1\). If it is \(0\), we have \(S^2 \times S^2\) &#x0028;the
-double of the trivial disk bundle&#x0029;, and if it is \(1\), it is the blowup of \(\PP ^2\) at a point, i.e. \(\CC \PP ^2\# \overline{\CC \PP ^2}\). This is
-shown in Figure <a 
+<!--l. 195--><p class="indent" >  If we double a disk bundle on a sphere of Euler class \(n\), we get a \(S^2\) bundle over \(S^2\), which are classi&#xFB01;ed
+by \(\pi _1(\Diff (S^2)) = \pi _1(SO(3)) = \ZZ /2\ZZ \). To &#xFB01;gure out which one is which we can use Kirby calculus, Namely the double is given by two
+Hopf linked handles where the framing of one is \(0\) and the other is \(n\). Now by sliding the \(n\) over
+the \(0\), we can change \(n\) mod \(2\) to either \(0\) or \(1\). If it is \(0\), we have \(S^2 \times S^2\) &#x0028;the double of the trivial
+disk bundle&#x0029;, and if it is \(1\), it is the blowup of \(\PP ^2\) at a point, i.e. \(\CC \PP ^2\# \overline{\CC \PP ^2}\). This is shown in Figure
+<a 
 href="#x1-400215">15<!--tex4ht:ref: spherebundle --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-400215"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 198--><p class="noindent" ><img 
 src="Disk_Bundle_Double.png" alt="pict"  
- width="128.9994pt"  /> <img 
+ width="140.92435pt"  /> <img 
 src="S2bundles.png" alt="pict"  
- width="451.50288pt"  />
+ width="493.2406pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;15:</span><span  
-class="content"> Doubling the \(4\)-manifold adds \(0\)-framed \(2\)-handles along the meridians of each
-knot.</span></figcaption><!--tex4ht:label?: x1-400215 -->
-                                                                                  
-
-                                                                                  
+class="content"> Doubling the \(4\)-manifold adds \(0\)-framed \(2\)-handles along the meridians of each knot.</span></figcaption><!--tex4ht:label?: x1-400215 -->
+                                                                                         
+                                                                                         
   </figure>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

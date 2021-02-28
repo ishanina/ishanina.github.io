@@ -1,0 +1,1086 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Chromatic Homotopy and Telescopic Localization</title> 
+<meta  charset="UTF-8"" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Chromatic_Homotopy_and_Telescopic_Localization.css" /> 
+<meta name="src" content="Chromatic_Homotopy_and_Telescopic_Localization.tex" /> 
+<script>window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand'] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
+</head><body 
+>
+  <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[ul, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[dr, phantom, "\lrcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
+\newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
+\newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
+\newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
+\newcommand{\Cob}{\mathop{\rm Cob}\nolimits}
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Map}{\mathop{\rm Map}\nolimits}
+\newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
+\newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
+\newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)</p>
+  <div class="maketitle">
+  <h2 class="titleHead">
+CHROMATIC HOMOTOPY AND TELESCOPIC LOCALIZATION
+  </h2>
+  <div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+  <div class="date" >
+<!--l. 8--><p class="indent" >  <span 
+class="cmti-12">Date</span>:&#x00A0;2/25/2021.</p></div></div></div>
+  <h3 class="sectionHead"><a 
+ id="x1-1000"></a>Contents</h3>
+  <div class="tableofcontents"><span class="sectionToc" ><a 
+href="#x1-1000" id="QQ2-1-1">Contents</a></span><br /><span class="sectionToc" >&#x00A0;1.&#x00A0;&#x00A0;<a 
+href="#x1-20001" id="QQ2-1-2">MU and \(\mathcal{M}_{fg}\)</a></span><br /><span class="sectionToc" >&#x00A0;2.&#x00A0;&#x00A0;<a 
+href="#x1-30002" id="QQ2-1-3">Important Cohomology Theories and
+Theorems</a></span><br /><span class="sectionToc" >&#x00A0;3.&#x00A0;&#x00A0;<a 
+href="#x1-40003" id="QQ2-1-4">Chromatic Localizations</a></span><br /><span class="sectionToc" >&#x00A0;4.&#x00A0;&#x00A0;<a 
+href="#x1-50004" id="QQ2-1-5">Telescopic Localization
+and the Bous&#xFB01;eld Kuhn functor</a></span><br />
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-20001"></a>MU and \(\cM _{fg}\)</h3>
+<!--l. 12--><p class="noindent" >A ring spectrum \(R\) is <span 
+class="cmbx-12">complex oriented </span>if it is a equipped with a ring map \(MU \to R\). Such a map provides
+the cohomology theory \(R^*\) with Chern classes for complex vector bundles satisfying a Whitney sum
+formula.
+</p><!--l. 14--><p class="indent" >  Given two line bundles \(L_1,L_2:X \to BU(1)\), there is a universal formula for the Chern class of their tensor
+product:
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization0x.svg" alt="c1&#x0028;L1 &#x2297;  L2&#x0029; = FR &#x0028;c1&#x0028;L1 &#x0029;,c1&#x0028;L2 &#x0029;&#x0029;  " class="math-display"  /></center> \(F_R\) is a
+power series in two variables with coe&#xFB03;cients in \(R^*\), and encodes the structure of a &#x0028;1-dimensional
+commutative&#x0029; <span 
+class="cmbx-12">formal group law</span>. A formal group law is an abelian group structure on the formal
+\(R\)-scheme \(\Spf (R[[x]])\). More concretely, this means that \(F_R\) satis&#xFB01;es group axioms, such as associativity:
+                                                                                         
+                                                                                         
+\(F_R(x,F_R(y,z)) = F_R(F_R(x,y),z)\).
+<!--l. 18--><p class="indent" >  An important result of Quillen says that \(MU\), the universal complex oriented ring spectrum, has the
+universal formal group law. In particular, \(MU_* = L\), where \(L\) is the Lazard ring, de&#xFB01;ned by the universal
+property \(\Hom (L,R) = FGL(R)\), where \(FGL\) is the set of formal group laws on \(R\).
+</p><!--l. 20--><p class="indent" >  However, the connection between \(MU\) and formal group laws doesn&#x2019;t stop there. Recall we have the
+Adams-Novikov spectral sequence:
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization1x.svg" alt="E2 = ExtMU  &#x2217;MU &#x0028;M U &#x2217;,M  U&#x2217;X &#x0029; =&#x21D2;  &#x03C0;&#x2217;X  " class="math-display"  /></center> The \(E_2\)
+term can be interpreted in terms of formal groups &#x0028;which are formal group schemes
+Zariski-locally isomorphic to a formal group law&#x0029;. The \(\Ext \) in the spectral sequence is taken in the
+category of comodules over the &#x0028;graded&#x0029; Hopf algebroid \((MU_*,MU_*MU)\). However, this Hopf algebroid
+presents \(\cM _{fg}\), the moduli stack of formal groups. \(\cM _{fg}\) has a line bundle \(\omega \) that is the Lie algebra
+of the universal formal group. Then the Adams-Novikov \(E_2\) term can be reinterpreted
+as
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization2x.svg" alt="E2 =  H &#x2217;&#x0028;&#x2133;fg; &#x0028;M  U&#x2217;X &#x0029;even/odd &#x2297; &#x03C9; &#x2297;&#x2217;&#x0029; = &#x21D2; &#x03C0;&#x2217;X  " class="math-display"  /></center>
+Where we treat the even and odd degree parts of \(MU_*X\) as a quasicoherent sheaf on \(\cM _{fg}\).
+<!--l. 26--><p class="indent" >  Thus via \(MU\), stable homotopy is tied to formal groups.
+</p><!--l. 28--><p class="indent" >  The study of formal groups simpli&#xFB01;es a bit when localized at a prime. \((\cM _{fg})_{(p)}\) has a simpler
+presentation as a graded Hopf algebroid \((BP_*,BP_*BP)\), where \(BP_*\) is the ring \(\ZZ _{(p)}[v_1,v_2,\dots ]\), with \(|v_i| = 2(p^i-1)\). In fact this Hopf algebroid &#x0028;as
+suggested by the notation&#x0029; comes from a ring spectrum called \(BP\). In fact, \(MU_{(p)}\) decomposes into
+summands that are shifts of \(BP\).
+</p><!--l. 30--><p class="indent" >  \((\cM _{fg})_{(p)}\) is a well understood stack. We can draw a picture of its points \(\Spc ((\cM _{fg})_{(p)})\) </p>
+<div class="center" 
+>
+<!--l. 31--><p class="noindent" >
+</p>
+                                                                                         
+                                                                                         
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+ 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1" /><col 
+id="TBL-1-2" /><col 
+id="TBL-1-3" /><col 
+id="TBL-1-4" /><col 
+id="TBL-1-5" /><col 
+id="TBL-1-6" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-1"  
+class="td11">0</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-2"  
+class="td11">1</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-3"  
+class="td11">2</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-4"  
+class="td11">3</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-5"  
+class="td11">\(\cdots \)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-6"  
+class="td11">\(\infty \)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-1"  
+class="td11"> \(\cdot \) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-2"  
+class="td11">\(\cdot \)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-3"  
+class="td11">\(\cdot \)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-4"  
+class="td11">\(\cdot \)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-5"  
+class="td11">\(\cdots \)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-6"  
+class="td11">\(\cdot \)</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-3-1"  
+class="td11">  </td></tr></table>
+</div></div>
+<!--l. 38--><p class="indent" >  There is one for each natural number and a point \(\infty \). One way to interpret each point is that it
+classi&#xFB01;ed a formal group over an algebraically closed &#xFB01;eld up to isomorphism. The point \(n\)
+corresponds to a <span 
+class="cmbx-12">height</span> \(n\) <span 
+class="cmbx-12">formal group</span>. For example, when \(p=3\), a height \(n\) formal group is one such
+that if we choose coordinates so that the formal group is de&#xFB01;ned by a power series \(F\), then \(F(x,F(x,x)) = ux^{3^n} + \dots \) where \(u\) is
+a unit and \(\dots \) indicates higher order terms.
+</p><!--l. 40--><p class="indent" >  The point \(0\) classi&#xFB01;es a formal group in characteristic \(0\), and the rest of the points classify formal
+groups in characteristic \(p\).
+</p><!--l. 42--><p class="indent" >  Another way to interpret the picture is that it classi&#xFB01;es invariant prime ideals of \(BP_*\) in the Hopf
+algebroid \((BP_*,BP_*BP)\). The point \(n\) corresponds to the ideal \((v_0,v_1,\dots ,v_{n-1})\) where \(v_0 = p\).
+</p><!--l. 44--><p class="indent" >  The space also has a topology, where the open sets are the intervals from \(0\) to \(n\). In particular,
+specialization increases height.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-30002"></a>Important Cohomology Theories and Theorems</h3>
+<!--l. 47--><p class="noindent" >Two important families of complex oriented cohomology theories are Morava E-theory and Morava
+K-theory.
+</p><!--l. 49--><p class="indent" >  The \(n^{th}\) Morava E-theory, denoted \(E_n\), is an \(\EE _{\infty }\)-ring spectrum that depends on a choice of perfect &#xFB01;eld \(k\)
+and formal group law on \(k\) of height \(n\). However, none of the choices will matter for anything said
+here about it. Its coe&#xFB03;cient ring is \((E_n) _* = W(k)[[v_1,\dots ,v_{n-1}]][\beta ^{\pm 1}]\) where \(|\beta | = 2\), and \(W(k)\) denotes the Witt vectors of \(k\), and its formal group
+law is the universal deformation of the formal group law on \(k\), which was studied by Lubin and
+Tate.
+</p><!--l. 51--><p class="indent" >  One of its important properties is that \((E_n)_*(X)=0\) if and only if \(BP_*(X)\) is supported at height \(\geq n+1\) on \(\cM _{fg}\). Thus it detects
+information from height \(0\) to height \(n\).
+</p><!--l. 53--><p class="indent" >  The \(n^{th}\) Morava K-theory, denoted \(K(n)\), is an \(\EE _1\)-ring spectrum with coe&#xFB03;cient group \(K(n)_* = \FF _p[v_n^{\pm 1}]\). Once again, there
+are di&#xFB00;erent versions of it, but the di&#xFB00;erent versions will not be relevant here. \(K(n)\) can be constructed
+from \(BP\) by iteratively taking co&#xFB01;bres by \(v_i\) for \(i \neq n\) and inverting \(v_n\). \(K(\infty )\) is just \(H\FF _p\). An important property of \(K(n)\) is
+that it is a <span 
+class="cmbx-12">&#xFB01;eld</span>, since its homotopy groups are a graded &#xFB01;eld. This means that any module over \(K(n)\) is
+free.
+</p><!--l. 55--><p class="indent" >  \(K(n)\) detects information at height \(n\). For example, \((E_n)_*(X)=0\iff (\oplus _0^n K(n))_*X = 0\).
+</p><!--l. 57--><p class="indent" >  Next, we turn to some fundamental results in chromatic homotopy theory. The &#xFB01;rst is the
+nilpotence theorem, due to Devinatz, Hopkins, and Smith.
+</p>
+  <div class="newtheorem">
+<!--l. 59--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+<span 
+class="cmbx-12">Theorem 2.1 </span>&#x0028;Nilpotence Theorem v1&#x0029;<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Let</span> \(R\) <span 
+class="cmti-12">be a ring spectrum, and</span> \(\alpha \in \pi _n(R)\) <span 
+class="cmti-12">be an element sent</span>
+<span 
+class="cmti-12">to</span> \(0\) <span 
+class="cmti-12">in</span> \(MU_n(R)\)<span 
+class="cmti-12">. Then</span> \(\alpha \) <span 
+class="cmti-12">is nilpotent.</span>
+</p>
+  </div>
+                                                                                         
+                                                                                         
+<!--l. 62--><p class="indent" >  This says that \(MU\) is able to detect nilpotence of rings. An equivalent version of the theorem
+is
+</p>
+  <div class="newtheorem">
+<!--l. 63--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3002r2"></a>
+<span 
+class="cmbx-12">Theorem 2.2 </span>&#x0028;Nilpotence Theorem v2&#x0029;<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Let</span> \(f:X \to Y\) <span 
+class="cmti-12">be a map of &#xFB01;nite spectra such that</span> \(f\otimes MU\) <span 
+class="cmti-12">is</span> \(0\)<span 
+class="cmti-12">. Then</span>
+\(f^{\otimes n}:X^{\otimes n} \to Y^{\otimes n}\) <span 
+class="cmti-12">is null for</span> \(n \gg 0\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 66--><p class="indent" >  This formulation emphasizes the fact that \(MU\) detects nilpotence phenomena for &#xFB01;nite spectra.
+When working \(p\)-locally, \(MU_*f = 0\) i&#xFB00; \(BP_*f = 0\) i&#xFB00; \(K(n)_*f=0\) for all \(n\).
+</p>
+  <div class="newtheorem">
+<!--l. 68--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3003r3"></a>
+<span 
+class="cmbx-12">De&#xFB01;nition 2.3.</span>  </span><span 
+class="cmti-12">A &#xFB01;nite complex/spectrum</span> \(X\) <span 
+class="cmti-12">is </span><span 
+class="cmbxti-10x-x-120">type</span> \(n\) <span 
+class="cmti-12">if</span> \(K(i)_*(X) = 0\) <span 
+class="cmti-12">for all</span> \(i &lt;n\) <span 
+class="cmti-12">and</span> \(K(n)_*X \neq 0\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 72--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3004r1"></a>
+<span 
+class="cmbx-12">Remark 2.3.1.</span>  </span>Every nonzero \(p\)-local &#xFB01;nite spectrum is type \(n\) for some \(n\). This is because for
+\(i&gt;&gt;0\), the \(K(i)\)-based Atiyah-Hirzebruch spectral sequence degenerates for degree reasons for a &#xFB01;xed
+&#xFB01;nite spectrum \(X\), so \(K(i)_*(X) = (H\FF _p)_*(X)\otimes _{(H\FF _p)_*}K(i)_* \neq 0\).
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 76--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3005r2"></a>
+<span 
+class="cmbx-12">Remark 2.3.2.</span>  </span>For  a  &#xFB01;nite  spectrum  \(X\),  \(K(m)_*X = 0 \implies K(m-1)_*(X) = 0\).  This  is  essentially  because  its  \(MU\)-homology  is  a
+<span 
+class="cmti-12">coherent </span>sheaf over \(\cM _{fg}\), so has closed support. This shows that for a type \(n\) spectrum \(X\), \(K(m)_*(X) \neq 0\) for \(m\geq n\).
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 80--><p class="noindent" ><span class="head">
+                                                                                         
+                                                                                         
+<a 
+ id="x1-3006r4"></a>
+<span 
+class="cmbx-12">De&#xFB01;nition 2.4.</span>  </span><span 
+class="cmti-12">Let</span> \(C\) <span 
+class="cmti-12">be a stable</span> \(\infty \)<span 
+class="cmti-12">-category. A </span><span 
+class="cmbxti-10x-x-120">thick subcategory</span> \(C' \to C\) <span 
+class="cmti-12">is a stable subcategory</span>
+<span 
+class="cmti-12">closed under retracts.</span>
+</p>
+  </div>
+  <div class="newtheorem">
+<!--l. 84--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3007r1"></a>
+<span 
+class="cmbx-12">Example 2.4.1.</span>  </span>Let \(\Sp ^{\omega }_{(p)}\) be the category of \(p\)-local &#xFB01;nite spectra, and let \(\Sp _{\geq n}\) be the category of
+type \(\geq n\) spectra. Then \(\Sp _{\geq n} \to \Sp ^{\omega }_{(p)}\) is a thick subcategory.
+</p>
+  </div>
+<!--l. 88--><p class="indent" >  It turns out these are all the examples. This is the content of the following result, which is a
+corollary of the nilpotence theorem, due to Hopkins and Smith.
+</p>
+  <div class="newtheorem">
+<!--l. 89--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3008r5"></a>
+<span 
+class="cmbx-12">Theorem 2.5 </span>&#x0028;Thick subcategory Theorem&#x0029;<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Let</span> \(C \subset \Sp ^\omega _{(p)}\) <span 
+class="cmti-12">be a nonzero thick subcategory. Then</span> \(C = \Sp _{\geq n}\) <span 
+class="cmti-12">for</span>
+<span 
+class="cmti-12">some</span> \(n\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 93--><p class="indent" >  It is true that \(\Sp _{\geq n}\) are distinct as \(n\) varies, but showing this requires a bit more work.
+</p>
+  <div class="newtheorem">
+<!--l. 95--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3009r6"></a>
+<span 
+class="cmbx-12">De&#xFB01;nition 2.6.</span>  </span><span 
+class="cmti-12">Let</span> \(X\) <span 
+class="cmti-12">be a &#xFB01;nite complex/spectrum. A</span> \(v_n\)<span 
+class="cmbxti-10x-x-120">-self map</span> \(v_n:\Sigma ^d X \to X\) <span 
+class="cmti-12">is a map that</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">induces</span> \(0\) <span 
+class="cmti-12">on</span> \(K(m)_*\) <span 
+class="cmti-12">for</span> \(m \neq n\)<span 
+class="cmti-12">.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;2&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">induces an isomorphism on</span> \(K(n)_*\)<span 
+class="cmti-12">.</span></dd></dl>
+  </div>
+<!--l. 103--><p class="indent" >  The use of \(v_n\) as a name for the \(v_n\)-self map is slightly misleading: a more appropriate name is \(v_n^k\),
+because when they exist, they can be chosen to induce multiplication by a power of \(v_n\) on
+\(K(n)_*\).
+                                                                                         
+                                                                                         
+</p><!--l. 105--><p class="indent" >  Using a construction due to Smith, Hopkins and Smith proved the following result:
+</p>
+  <div class="newtheorem">
+<!--l. 106--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3012r7"></a>
+<span 
+class="cmbx-12">Theorem 2.7 </span>&#x0028;Periodicity Theorem&#x0029;<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">Every type</span> \(n\) <span 
+class="cmti-12">spectrum admits a</span> \(v_n\)<span 
+class="cmti-12">-self map.</span>
+</p>
+  </div>
+<!--l. 110--><p class="indent" >  From this theorem, it is easy to see why \(\Sp _{\geq n}\) are distinct. For example, the sphere \(\SP \) is a type \(0\) but not
+type \(1\) spectrum. Given a type \(n\) but not type \(n+1\) spectrum, we can take the co&#xFB01;bre of a \(v_n\)-self map to
+obtain a type \(n+1\) but not type \(n+2\)-spectrum, thereby inductively distinguishing the categories
+\(\Sp _{\geq n}\).
+</p><!--l. 112--><p class="indent" >  \(v_n\)-self maps are well behaved. After replacing one with a su&#xFB03;ciently large power, we can assume
+</p>
+          <ul class="itemize1">
+       <li class="itemize">the \(v_n\)-self map induces multiplication by \(v_n^i\) on \(K(n)_*\).
+          </li>
+       <li class="itemize">the \(v_n\)-self map is central in \(\End _*(X) = \pi _*X\otimes DX\).</li></ul>
+<!--l. 118--><p class="indent" >  Given a map of &#xFB01;nite type \(n\)-spectra \(f:X \to Y\) equipped with a \(v_n\)-self map, we can replace the \(v_n\)-self maps by
+an iterate to make the diagram below commute: </p>
+<div class="center" 
+>
+<!--l. 119--><p class="noindent" >
+</p><!--l. 123--><p class="noindent" >         <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization3x.svg" alt="    &#x03A3;dX        &#x03A3;dY
+
+
+fvvfnn  X          Y "  />
+</p></div>
+<!--l. 126--><p class="indent" >  In this sense, \(v_n\)-self maps are almost functorial. Note that if we take \(f\) above to be the identity, we
+see that \(v_n\)-self maps are also unique up to taking iterations.
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-40003"></a>Chromatic Localizations</h3>
+<!--l. 129--><p class="noindent" >The moduli stack of formal groups is &#xFB01;ltered by the open substacks of formal groups of height \(\leq n\).
+Chromatic localizations are a way to turn this algebraic &#xFB01;ltration into a topological one, and their
+study was pioneered by Doug Ravenel. To talk about them, we will brie&#xFB02;y review Bous&#xFB01;eld
+localizations of the category \(\Sp \).
+</p><!--l. 131--><p class="indent" >  Given a spectrum \(X\), there is an adjunction
+                                                                                         
+                                                                                         
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization4x.svg" alt="LX  : Sp &#x21CB;  SpX  : i  " class="math-display"  /></center> such
+that
+          <ul class="itemize1">
+       <li class="itemize">\(L_X\) inverts \(X\)<span 
+class="cmbx-12">-equivalences</span>: that is morphisms \(f\) such that \(f\otimes X\) is an equivalence.
+          </li>
+       <li class="itemize">\(L_X\) kills &#x0028;sends to \(0\)&#x0029; the \(X\)<span 
+class="cmbx-12">-acyclic objects</span>, i.e those objects \(Y\) such that \(Y\otimes X = 0\).
+          </li>
+       <li class="itemize">\(i\) is fully faithful, so \(\Sp _X\) is a re&#xFB02;ective subcategory of \(\Sp \).
+          </li>
+       <li class="itemize">The essential image of \(i\) consists of \(X\)<span 
+class="cmbx-12">-local spectra</span>, that is objects \(Z\) such that there
+       are no nonzero maps from \(X\)-acyclic objects to \(Z\).</li></ul>
+<!--l. 140--><p class="noindent" >The composite \(i\circ L_X\) will often be shortened to \(L_X\). The unit of the adjunction gives a natural map \(Y \to L_XY\),
+characterized by the fact that it is an \(X\)-equivalence to an \(X\)-local object.
+</p><!--l. 142--><p class="indent" >  The construction \(L_X\) doesn&#x2019;t depend on all of \(X\) but rather on the <span 
+class="cmbx-12">Bous&#xFB01;eld class</span>, that is
+\(\langle X\rangle = \{X\text{-acyclic objects}\}\).
+</p><!--l. 144--><p class="indent" >  We can often break up a Bous&#xFB01;eld localization into smaller pieces, and glue them back
+together.
+</p>
+  <div class="newtheorem">
+<!--l. 146--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4001r1"></a>
+<span 
+class="cmbx-12">Lemma 3.1.</span>  </span> <span 
+class="cmti-12">Suppose</span> \(L_E\) <span 
+class="cmti-12">preserves</span> \(F\)<span 
+class="cmti-12">-acyclic objects. Then</span> </p>
+<div class="center" 
+>
+<!--l. 147--><p class="noindent" >
+</p><!--l. 151--><p class="noindent" >           <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization5x.svg" alt="   LE &#x2295;F         LF X
+
+
+
+&#x231F;  LEX           LELF  X "  />
+</p></div>
+<!--l. 153--><p class="noindent" ><span 
+class="cmti-12">is a pullback square.</span>
+</p>
+  <div class="proof">
+<!--l. 155--><p class="indent" >  <span class="head">
+                                                                                         
+                                                                                         
+<span 
+class="cmti-12">Proof.</span> </span>Let \(P = L_EX\times _{L_EL_FX}L_FX\). </p>
+          <ul class="itemize1">
+       <li class="itemize">\(P\) is \(E\oplus F\) local. Indeed, if \(Z\) is \(E\oplus F\) acyclic, \(P^Z = 0 \otimes _0 0 = 0\).
+          </li>
+       <li class="itemize">\(X \to P\) is an \(E\oplus F\) equivalence. To see it is an \(E\)-equivalence, after tensoring with \(E\) it becomes
+          <center class="math-display" >
+       <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization6x.svg" alt="        &#x223C;
+X  &#x2297; E &#x2212;&#x2192;  X  &#x2297; E  &#x00D7;E &#x2297;LFX E &#x2297;  LF X
+       " class="math-display"  /></center> To  see  it  is  an  \(F\)-equivalence,  by  the  hypothesis  on  \(L_E\),  we  learn  that  the  natural
+       transformation \(Y \to L_EY\) is an \(F\)-equivalence. Thus after tensoring with \(F\), we get
+          <center class="math-display" >
+       <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization7x.svg" alt="       &#x223C;
+X &#x2297; F  &#x2212;&#x2192;  X  &#x2297; F &#x00D7;X &#x2297;F X  &#x2297; F
+       " class="math-display"  /></center></li></ul>
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+<!--l. 164--><p class="indent" >  If \(X\) is a type \(n\) spectrum, We can invert a \(v_n\)-self map to get \(X[v_n^{-1}]\), which is called the <span 
+class="cmbx-12">telescope </span>of \(X\) and
+denoted \(T(n)\). By the almost uniqueness of \(v_n\)-self maps, \(T(n)\) only depends on \(X\). Essentially by the thick
+subcategory theorem, \(\langle T(n)\rangle \) only depends on \(n\).
+</p><!--l. 166--><p class="indent" >  There are two &#xFB02;avors of chromatic localizations that are studied. The &#xFB01;rst are the telescopic and
+&#xFB01;nite localizations \(L_{T(n)}\) and \(L_{n}^f:=L_{\oplus _{0}^nT(i)}\). The second are the \(K(n)\) and \(E_n\) localizations \(L_{K(n)}\) and \(L_n:=L_{E(n)} = L_{\oplus _0^n K(n)}\). The hope is that we can
+understand stable homotopy via the towers of localizations
+                                                                                         
+                                                                                         
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization8x.svg" alt="X &#x2192;  &#x22C5;&#x22C5;&#x22C5; &#x2192;  LnX  &#x2192;  Ln&#x2212; 1X  &#x2192;  ...L1X  &#x2192;  L0X  " class="math-display"  /></center> &#x0028;and
+similarly for \(L_n^f\) in place of \(L_n\)&#x0029;.
+<!--l. 170--><p class="indent" >  The two &#xFB02;avors of localizations are related to each other. If \(Y\otimes T(n) = 0\), then \(X\otimes T(n) \otimes K(n) = 0\), but \(T(n)\otimes K(n)\) is a nonzero sum of
+copies of \(K(n)\), so \(X\otimes K(n) = 0\). Thus we get factorizations of the natural maps </p>
+<div class="center" 
+>
+<!--l. 171--><p class="noindent" >
+</p><!--l. 174--><p class="noindent" >          <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization9x.svg" alt="X &#x2192;  Lf X  &#x2192; L  X
+       n       n "  />
+,                  <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization10x.svg" alt="X  &#x2192;  LT&#x0028;n&#x0029;X &#x2192;  LK &#x0028;n&#x0029;X "  />
+</p></div>
+<!--l. 180--><p class="indent" >  An important property of \(L_nX\) is that it is colimit preserving:
+</p>
+  <div class="newtheorem">
+<!--l. 181--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4002r2"></a>
+<span 
+class="cmbx-12">Theorem 3.2 </span>&#x0028;Smashing Theorem&#x0029;<span 
+class="cmbx-12">.</span>  </span>\(L_nX = L_n\SP \otimes X\)
+</p>
+  </div>
+<!--l. 184--><p class="indent" >  The same is true of \(L_n^f\), but it is easier to prove, as will now be explained.
+</p>
+  <div class="newtheorem">
+<!--l. 186--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4003r3"></a>
+<span 
+class="cmbx-12">Lemma 3.3.</span>  </span><span 
+class="cmti-12">The</span> \(L_n^f\)<span 
+class="cmti-12">-acyclic spectra coincide with</span> \(\Ind (\Sp _{\geq n+1})\)<span 
+class="cmti-12">: that is they are &#xFB01;ltered colimits of type</span> \(\geq n+1\)
+<span 
+class="cmti-12">spectra.</span>
+</p>
+  <div class="proof">
+<!--l. 189--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>It is easy to see that \(\Ind (\Sp _{\geq n+1})\) consists of \(T(n)\)-acyclic spectra; we will show the reverse inclusion.
+                                                                                         
+                                                                                         
+First let \(n = 0\), and suppose \(X\) is \(T(0)\)-acyclic. Then there is a co&#xFB01;bre sequence
+</p><!--l. 191--><p class="indent" >
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization11x.svg" alt="X  &#x2192;  p&#x2212;1X  = X  &#x2297; T &#x0028;0 &#x0029; &#x2192; X  &#x2297; &#x1D54A;&#x2215;p&#x221E;
+" class="math-display"  /></center> where \(\SP /p^\infty \) is the colimit of \(\SP /p^n\) over all \(n\). Since \(X\otimes T(0)\) vanishes, we learn that \(X = \Sigma ^{-1}X\otimes \SP /p^\infty \). \(X\) is a &#xFB01;ltered colimit of
+&#xFB01;nite spectra, and after tensoring with \(\SP /p^n\), this becomes a &#xFB01;ltered colimit of type \(1\) spectra.
+<!--l. 194--><p class="indent" >  Now we can induct on \(n\). For example, let \(n=1\), and assume that in addition, \(X\) is \(T(1)\)-acyclic. Then
+there is a co&#xFB01;bre sequence
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization12x.svg" alt="X  &#x2297; &#x1D54A;&#x2215;pn &#x2192;  X  &#x2297; v&#x2212;11&#x1D54A; &#x2215;pn = X &#x2297;  T&#x0028;1&#x0029; &#x2192;  X &#x2297;  &#x1D54A;&#x2215;pn,v&#x221E;1
+" class="math-display"  /></center>, so since \(X\otimes T(1) = 0\), we learn that \(X = \Sigma ^{-2}X\otimes \SP /p^\infty ,v_1^{\infty }\), which is in \(\Ind (\Sp _{\geq 2})\). <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 199--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4004r1"></a>
+<span 
+class="cmbx-12">Remark 3.3.1.</span>  </span>The argument in the above lemma shows that there is a co&#xFB01;bre sequence
+</p>
+                                                                                         
+                                                                                         
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization13x.svg" alt="&#x03A3; &#x2212;1&#x2212;n&#x1D54A; &#x2215;v&#x221E;0 ,...v&#x221E;n &#x2192;  &#x1D54A; &#x2192;  Lfn &#x1D54A;
+" class="math-display"  /></center>
+  </div>
+<!--l. 204--><p class="indent" >  Since \(L_n^f\) kills a category that is generated by compact objects, it preserves &#xFB01;ltered colimits. It also
+preserves &#xFB01;nite colimits, so \(L_n^f\) preserves all colimits. The only colimits preserving endomorphisms of \(\Sp \)
+are given by tensoring, so we learn
+</p>
+  <div class="newtheorem">
+<!--l. 205--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4005r4"></a>
+<span 
+class="cmbx-12">Corollary 3.4.</span>  </span>\(L_n^fX = L_n^f\SP \otimes X\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 209--><p class="indent" >  The corollary above is one way to see that \(L_m^f\) preserves \(\oplus _{m+1}^nT(i)\)-acyclic objects. Thus we learn from
+Lemma <a 
+href="#x1-4001r1">3.1<!--tex4ht:ref: fracturesquare --></a>:
+</p>
+  <div class="newtheorem">
+<!--l. 210--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4006r5"></a>
+<span 
+class="cmbx-12">Corollary 3.5.</span>  </span><span 
+class="cmti-12">There is a pullback diagram</span> </p>
+<div class="center" 
+>
+<!--l. 212--><p class="noindent" >
+</p><!--l. 216--><p class="noindent" >              <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization14x.svg" alt="   LfnX             L &#x2295;n  T&#x0028;i&#x0029;X
+                       m+1
+
+
+&#x231F;  LfmX             LfmL &#x2295;nm+1T&#x0028;i&#x0029;X "  />
+</p></div>
+  </div>
+<!--l. 220--><p class="indent" >  Note that the same is true with \(K(n)\) replacing \(T(n)\) and \(L_n\) replacing \(L_n^f\) by the smashing theorem. These
+pullback squares allow one to reduce the study of \(L_n^f\) to the study of \(L_{T(n)}\).
+</p><!--l. 222--><p class="indent" >  The exact relation between \(L_{T(n)}\) and \(L_{K(n)}\) is not known. It was conjectured by Ravenel that there is no
+di&#xFB00;erence between the two.
+</p>
+  <div class="newtheorem">
+<!--l. 224--><p class="noindent" ><span class="head">
+                                                                                         
+                                                                                         
+<a 
+ id="x1-4007r6"></a>
+<span 
+class="cmbx-12">Conjecture 3.6 </span>&#x0028;Telescope conjecture&#x0029;<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">The map</span> \(L_{T(n)}X \to L_{K(n)}X\) <span 
+class="cmti-12">is an equivalence.</span>
+</p>
+  </div>
+<!--l. 228--><p class="indent" >  This conjecture is known to be true for \(n=1,0\), and many believe it to be false otherwise. Nevertheless,
+so long as we are concerned with rings or &#xFB01;nite spectra, the nilpotence theorem implies that \(T(n)\) and \(K(n)\)
+behave similarly.
+</p>
+  <div class="newtheorem">
+<!--l. 230--><p class="noindent" ><span class="head">
+<a 
+ id="x1-4008r7"></a>
+<span 
+class="cmbx-12">Lemma 3.7.</span>  </span><span 
+class="cmti-12">If</span> \(R\) <span 
+class="cmti-12">is a ring spectrum,</span> \(R\otimes T(n) = 0 \iff R\otimes K(n) = 0\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 233--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>Let \(V_n\) be a type \(n\) spectrum that is an \(\EE _1\)-ring. For example, one can start with any type \(n\)
+spectrum \(X\) and replace it with its endomorphism ring \(X\otimes DX\). Let \(v_n\) be a central \(v_n\)-self map, so that \(T(n) = V_n[v_n^{-1}]\) is a
+ring. Then \begin{align*} &amp; R\otimes T(n) = 0\\ \iff &amp; \text{the unit of $R\otimes T(n)$ is nilpotent}\\ \iff &amp; \text{the unit of $R\otimes T(n)\otimes K(m)$ is nilpotent for all $m$}\\ \iff &amp; \text{the unit of $R\otimes T(n)\otimes K(n)$ is nilpotent}\\ \iff &amp; R\otimes T(n)\otimes K(n) = 0\\ \iff &amp; R\otimes K(n) = 0 \end{align*}
+</p><!--l. 242--><p class="indent" >  Where in the second step, we use the nilpotence theorem, and in the last step we use the fact
+that \(T(n)\otimes K(n)\) is a free \(K(n)\)-module. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
+ id="x1-50004"></a>Telescopic Localization and the Bous&#xFB01;eld Kuhn functor</h3>
+<!--l. 247--><p class="noindent" >Now we will look the telescopic localization functors more in depth and see their to
+unstable homotopy theory. We will set \(n\geq 1\), and let \(V_n\) denote a type n <span 
+class="cmti-12">space </span>with a \(v_n\)-self map
+\(v_n:\Sigma ^dV_n\to V_n\).
+</p>
+  <div class="newtheorem">
+<!--l. 249--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5001r1"></a>
+<span 
+class="cmbx-12">De&#xFB01;nition 4.1.</span>  </span><span 
+class="cmti-12">For a space/spectrum</span> \(X\)<span 
+class="cmti-12">, the</span> \(v_n\)<span 
+class="cmbxti-10x-x-120">-periodic homotopy groups </span><span 
+class="cmti-12">with coe&#xFB03;cients</span>
+<span 
+class="cmti-12">in</span> \(V_n\)<span 
+class="cmti-12">, denoted</span> \(v_n^{-1}\pi _*(X;V_n)\) <span 
+class="cmti-12">are de&#xFB01;ned as</span> \(v_n^{-1}\pi _*(\Map _*(V_n,X))\)<span 
+class="cmti-12">.</span>
+                                                                                         
+                                                                                         
+</p>
+  </div>
+<!--l. 253--><p class="indent" >  It isn&#x2019;t hard to see that \(v_n^{-1}\pi _*(X;V_n)\) is the homotopy groups of a \(d\)-periodic spectrum called \(\Phi _{V_n}(X)\), given by the
+formula \(\colim _k \Sigma ^{\infty -kd}\Map _*(V_n,X)\) where the colimit is uses the map \(\Map _*(V_n,X) \to \Map _*(\Sigma ^dV_n,X)=\Omega ^{d}\Map _*(V_n,X)\) induced by \(v_n\).
+</p><!--l. 255--><p class="indent" >  Note that if \(X\) is a spectrum, then \(\Phi _{V_n}(X)\) is the spectrum \(X\otimes DV[v_n^{-1}] = X\otimes T(n)\).
+</p>
+  <div class="newtheorem">
+<!--l. 257--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5002r2"></a>
+<span 
+class="cmbx-12">De&#xFB01;nition 4.2.</span>  </span><span 
+class="cmti-12">If</span> \(f:X \to Y\) <span 
+class="cmti-12">is a map of spaces or spectra,</span> \(f\) <span 
+class="cmti-12">is a</span> \(v_n\)<span 
+class="cmbxti-10x-x-120">-periodic equivalence  </span><span 
+class="cmti-12">if</span> \(\Phi _{V_n}X \to \Phi _{V_n}Y\) <span 
+class="cmti-12">is an</span>
+<span 
+class="cmti-12">equivalence.</span>
+</p>
+  </div>
+<!--l. 261--><p class="indent" >  Essentially by the thick subcategory theorem, the notion of \(V_n\)-periodic equivalence only depends
+on \(n\).
+</p>
+  <div class="newtheorem">
+<!--l. 263--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5003r3"></a>
+<span 
+class="cmbx-12">Lemma 4.3.</span>  </span><span 
+class="cmti-12">Let</span> \(n\geq 1\)<span 
+class="cmti-12">, and</span> \(X\) <span 
+class="cmti-12">be a spectrum. Then</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
+class="enumerate-enumitem">\(\Phi _{V_n}X = \Phi _{V_n}\Omega ^\infty X\)<span 
+class="cmti-12">.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;2&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">The map</span> \(\tau _{\geq k}X \to X\) <span 
+class="cmti-12">is a</span> \(v_n\)<span 
+class="cmti-12">-periodic equivalence.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">The map</span> \(X \to X^{\wedge }_p\) <span 
+class="cmti-12">is a</span> \(v_n\)<span 
+class="cmti-12">-periodic equivalence.</span></dd></dl>
+  <div class="proof">
+<!--l. 271--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\((1)\): This follows from the adjunction between \(\Sigma ^\infty \) and \(\Omega ^\infty \).
+</p><!--l. 273--><p class="indent" >  \((2)\): The &#xFB01;bre is bounded above, and \(v_n^{-1}\pi _*(Y;V_n) = 0\) whenever \(Y\) is bounded above because \(|v_n|&gt;0\), and the homotopy
+groups of the mapping space are bounded above.
+</p><!--l. 275--><p class="indent" >  \((3)\): The &#xFB01;bre \(F \to X \to X^{\wedge }_p\) is \(\SP /p\)-acyclic. This means that it is killed by tensoring with \(\SP /p^m\) for all \(m\). But for any
+type \(n\) spectrum, some power of \(p\) acts by \(0\), so the same is true for \(T(n)\). Thus \(F\otimes \SP /p^k\otimes T(n) = F\otimes (T(n)\oplus \Sigma T(n)) = 0\) for \(k\gg 0\), so \(F\) is \(T(n)\)-acyclic.
+<span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+                                                                                         
+                                                                                         
+  </div>
+<!--l. 279--><p class="indent" >  The above lemma, along with the fact that \(\Phi _{V_n}X= X\otimes T(n)\) implies that for \(n\geq 1\), \(L_{T(n)}X\) only depends on \(\Omega ^\infty X\) as an
+\(\EE _{\infty }\)-space. A wonderful insight of Bous&#xFB01;eld and Kuhn is that in fact it only depends on \(\Omega ^\infty X\) as a
+space!
+</p><!--l. 281--><p class="indent" >  To see this, we start by thinking about the construction taking a pair of a type \(n\) space and \(v_n\)-self
+map \((V_n,v_n)\) to the functor \(\Phi _{V_n}:S_* \to \Sp \). If we replace \(v_n\) by an iterate, it is easy to see that it doesn&#x2019;t change
+\(\Phi _{V_n}\), so since \(v_n\)-self maps are unique, the data of \(v_n\) is not important in the construciton of
+\(\Phi _{V_n}\).
+</p><!--l. 283--><p class="indent" >  Secondly, if we replace \(V_n\) by \(\Sigma V_n\), \(\Phi _{V_n}\) changes to \(\Phi _{\Sigma V_n} = \Sigma ^{-1}\Phi _{V_n}\). Thus \(\Phi _{V_n}\) only depends on the spectrum \(\Sigma ^\infty V_n\).
+</p><!--l. 285--><p class="indent" >  These observations can be souped up to construct a functor
+</p><!--l. 287--><p class="indent" >
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization15x.svg" alt="Sp&#x2265;n &#x2192;  Fun &#x0028;S&#x2217;,Sp &#x0029;  " class="math-display"  /></center> that
+sends a type \(n\) spectrum \(V\) to \(\Phi _V\).
+  <div class="newtheorem">
+<!--l. 289--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5007r4"></a>
+<span 
+class="cmbx-12">De&#xFB01;nition 4.4.</span>  </span><span 
+class="cmti-12">The </span><span 
+class="cmbxti-10x-x-120">Bous&#xFB01;eld-Kuhn functor</span> \(\Phi \) <span 
+class="cmti-12">is a functor</span> \(S_* \to \Sp \) <span 
+class="cmti-12">given by</span> \(\Phi := \lim _{V \to \SP }\Phi _V\)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 293--><p class="indent" >  Another way to describe it is that you right Kan extend the functor \( \Sp _{\geq n} \to \Fun (S_*,\Sp )\) along the inclusion to \(\Sp \), and
+evaluate on \(\SP \). An important property of \(\Phi \) is that it realizes the factorization of \(L_{T(n)}\) through \(\Omega ^\infty \) as a
+space:
+</p>
+  <div class="newtheorem">
+<!--l. 295--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5008r5"></a>
+<span 
+class="cmbx-12">Proposition 4.5.</span>  </span>\(\Phi \Omega ^{\infty }X = L_{T(n)}X\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 298--><p class="indent" >  <span class="head">
+                                                                                         
+                                                                                         
+<span 
+class="cmti-12">Proof.</span> </span>We have from the de&#xFB01;nition and our previous observations \(\Phi \Omega ^{\infty }X = \lim _{V \to \SP }\Phi _V X = \lim _{V \to \Sp } DV[v_n^{-1}]\otimes X\).
+</p><!--l. 300--><p class="indent" >  Each term in the limit is \(T(n)\)-local, so it agrees with \(L_{T(n)}(DV[v^{-1}]\otimes X) = L_{T(n)}(DV\otimes X) = L_{T(n)}(X^V)\).
+</p><!--l. 302--><p class="indent" >  Putting this together, we have
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization16x.svg" alt="    &#x221E;                 V
+&#x03A6; &#x03A9;  X  = Vlim&#x2192;&#x1D54A;LT &#x0028;n&#x0029;X
+" class="math-display"  /></center> Now I claim that \(T(n)\)-locally \(\SP \) is a &#xFB01;ltered colimit of type \(n\) spectra. This claim completes the
+proof, because it identi&#xFB01;es \(\lim _{V \to \SP }L_{T(n)}X^V\) with \(L_{T(n)}X^\SP = L_{T(n)}X\).
+<!--l. 304--><p class="indent" >  To see the claim we recall that we had a co&#xFB01;bre sequence
+</p><!--l. 306--><p class="indent" >
+</p>
+  <center class="math-display" >
+<img 
+src="Chromatic_Homotopy_and_Telescopic_Localization17x.svg" alt="&#x03A3; &#x2212;n&#x1D54A;&#x2215;p &#x221E;,...,v &#x221E;  &#x2192;  &#x1D54A; &#x2192;  Lf   &#x1D54A;
+                n&#x2212; 1          n&#x2212;1
+" class="math-display"  /></center> \(L_{n-1}^f\SP \) is \(T(n)\)-acyclic since \(T(n)\) is a &#xFB01;ltered colimit of type \(n\) spectra, which \(L_{n-1}^f\) kills. Thus applying \(L_{T(n)}\) to the
+co&#xFB01;bre sequence above, we get a formula for \(L_{T(n)}\SP \) as a &#xFB01;ltered colimit of &#x0028;\(T(n)\)-localizations of&#x0029; type \(n\)
+spectra. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+  </div>
+  </div>
+<!--l. 310--><p class="indent" >  Some other important facts about the Bous&#xFB01;eld-Kuhn functor are:
+</p>
+          <ul class="itemize1">
+       <li class="itemize">It inverts \(v_n\)-periodic equivalences, and takes values in \(T(n)\)-local spectra. This is indicated by the
+       factorization below, where \(S_*^{v_n}\) is the localization of pointed spaces at the \(v_n\)-periodic
+       equivalences. The factored map is also denoted \(\Phi \).
+                                                                                         
+                                                                                         
+       <div class="center" 
+>
+<!--l. 314--><p class="noindent" >
+</p><!--l. 318--><p class="noindent" >         <img 
+src="Chromatic_Homotopy_and_Telescopic_Localization18x.svg" alt="  S &#x2217;         Sp
+
+
+    vn
+&#x03A6;&#x03A6; S &#x2217;         SpT &#x0028;n&#x0029; "  />
+</p></div>
+          </li>
+       <li class="itemize">\(\Phi :S_*^{v_n} \to \Sp _{T(n)}\) preserves limits.</li></ul>
+<!--l. 323--><p class="indent" >  A consequence of the factorization in the proposition above is:
+</p>
+  <div class="newtheorem">
+<!--l. 325--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5009r6"></a>
+<span 
+class="cmbx-12">Corollary 4.6.</span>  </span><span 
+class="cmti-12">Let</span> \(f:X \to Y \in \Sp \) <span 
+class="cmti-12">be a map. If</span> \(\Sigma ^\infty \Omega ^\infty f\) <span 
+class="cmti-12">is a</span> \(T(n)\)<span 
+class="cmti-12">-equivalence, so is</span> \(f\)<span 
+class="cmti-12">.</span>
+</p>
+  <div class="proof">
+<!--l. 328--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>By assumption, \(L_{T(n)}\Sigma ^{\infty }\Omega ^\infty f\) is an equivalence. But this is equal to \(\Phi \Omega ^\infty \Sigma ^\infty \Omega ^\infty f\), and by the triangle identity
+for the adjunction between \(\Sigma ^\infty \) and \(\Omega ^\infty \), the map \(\Phi \Omega ^\infty f\) is a retract of \(\Phi \Omega ^\infty \Sigma ^\infty \Omega ^\infty f\). Thus \(\Phi \Omega ^{\infty }f = L_{T(n)}f\) is also an equivalence. <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+<!--l. 332--><p class="indent" >  The functor \(\Sigma ^\infty \Omega ^\infty \) doesn&#x2019;t <span 
+class="cmti-12">preserve</span> \(T(n)\)-local equivalences in general.
+</p>
+  <div class="newtheorem">
+<!--l. 334--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5010r1"></a>
+<span 
+class="cmbx-12">Example 4.6.1.</span>  </span>\(H\ZZ \) is \(T(n)\)-acyclic, but \(\Sigma ^\infty \Omega ^\infty H\ZZ \) is a sum of spheres, so is not.
+</p>
+  </div>
+<!--l. 338--><p class="indent" >  Nevertheless, for su&#xFB03;ciently connected maps, \(\Sigma ^\infty \Omega ^\infty \) does preserve \(T(n)\)-local equivalences. Here is a version
+of that statement for the &#xFB01;nite localizations.
+</p>
+  <div class="newtheorem">
+                                                                                         
+                                                                                         
+<!--l. 340--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5011r7"></a>
+<span 
+class="cmbx-12">Proposition 4.7.</span>  </span><span 
+class="cmti-12">Let</span> \(n\geq 1\)<span 
+class="cmti-12">. There is an</span> \(m\geq 2\) <span 
+class="cmti-12">such that:</span>
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;1&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">If F is an</span> \(m\)<span 
+class="cmti-12">-connected pointed space such that</span> \(v_i^{-1}\pi _*(F; V_i) = 0\) <span 
+class="cmti-12">for</span> \(0 \leq i \leq n\)<span 
+class="cmti-12">, then</span> \(F\) <span 
+class="cmti-12">is</span> \(L_n^f\)<span 
+class="cmti-12">-acyclic.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;2&#x0029;</span> </dt><dd 
+class="enumerate-enumitem"><span 
+class="cmti-12">If</span> \(f:X \to Y\) <span 
+class="cmti-12">is an</span> \(m\)<span 
+class="cmti-12">-connected map that is a</span> \(v_i\)<span 
+class="cmti-12">-periodic equivalence for</span> \(0 \leq i \leq n\)<span 
+class="cmti-12">, then</span> \(\Sigma ^\infty f\) <span 
+class="cmti-12">is an</span> \(L_n^f\) <span 
+class="cmti-12">equivalence.</span>
+          </dd><dt class="enumerate-enumitem">
+   <span 
+class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd 
+class="enumerate-enumitem">\(\Sigma ^\infty \Omega ^\infty \) <span 
+class="cmti-12">preserbes</span> \(m\)<span 
+class="cmti-12">-connected</span> \(L_n^f\) <span 
+class="cmti-12">equivalences.</span></dd></dl>
+  <div class="proof">
+<!--l. 348--><p class="indent" >  <span class="head">
+<span 
+class="cmti-12">Proof.</span> </span>\((1)\): Omitted. This relies on results of Bous&#xFB01;eld on unstable localization.
+</p><!--l. 350--><p class="indent" >  \((2)\): The &#xFB01;bre \(F\) satis&#xFB01;es the hypotheses of \((1)\). Then \(f\) can be identi&#xFB01;ed with \(\colim _YF \to \colim _Y*\), which is a \(T(n)\) equivalence
+since \(F\) is \(L_n^f\)-acyclic.
+</p><!--l. 352--><p class="indent" >  \((3)\): Apply \(\Omega ^\infty \) and \((2)\).
+  <span class="qed"><span 
+class="msam-10x-x-120">&#x25A1;</span></span>
+</p>
+  </div>
+  </div>
+  <div class="newtheorem">
+<!--l. 357--><p class="noindent" ><span class="head">
+<a 
+ id="x1-5015r1"></a>
+<span 
+class="cmbx-12">Remark 4.7.1.</span>  </span>In fact in the above proposition, \(m\) can be taken to be \(n+1\). This is a consequence
+of ambidexterity of the \(T(n)\)-local category, which was proven by Carmeli, Schlank, and Yanovski.
+</p>
+  </div>
+   
+</body> 
+</html>
+                                                                                         
+                                                                                         
+                                                                                         
+
+

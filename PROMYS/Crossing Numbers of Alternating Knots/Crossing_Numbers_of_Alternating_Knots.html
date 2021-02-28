@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -228,99 +240,87 @@ class="cmr-10">ISHAN LEVY</span>
  id="x1-10001"></a>Knots and Invariants</h3>
 <!--l. 10--><p class="noindent" >A <span 
 class="cmbx-12">knot </span>is a circle inside \(3\)-dimensional space. A <span 
-class="cmbx-12">link </span>is a collection of knots.
-Given a knot or link, we can look at it from an angle and try to draw a line
-corresponding to what we see. However whatever we see will not necessarily determine
-what our knot was, because the knot may cross over itself when viewed from the
-angle we are looking at it from. To &#xFB01;x this, we also need to put the crossing
-information in our drawing, namely whenever two strands pass through each other,
-we need to say which strand goes above which other strand. Such a drawing
-is called a <span 
+class="cmbx-12">link </span>is a collection of knots. Given a knot or link,
+we can look at it from an angle and try to draw a line corresponding to what we see. However
+whatever we see will not necessarily determine what our knot was, because the knot may cross
+over itself when viewed from the angle we are looking at it from. To &#xFB01;x this, we also
+need to put the crossing information in our drawing, namely whenever two strands pass
+through each other, we need to say which strand goes above which other strand. Such a
+drawing is called a <span 
 class="cmbx-12">projection </span>of our knot or link. Examples of projections are shown
 below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10011"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 13--><p class="noindent" ><img 
 src="Examples_of_Knots.png" alt="pict"  
- width="225.75636pt"  />
+ width="246.62567pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
-class="content">Some knots. \(3_1\) is also knot as the trefoil knot, and \(4_1\) is also known as the &#xFB01;gure
-eight knot</span></figcaption><!--tex4ht:label?: x1-10011 -->
+class="content">Some knots. \(3_1\) is also knot as the trefoil knot, and \(4_1\) is also known as the &#xFB01;gure eight
+knot</span></figcaption><!--tex4ht:label?: x1-10011 -->
 .
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 18--><p class="indent" >  We say that two knots are <span 
-class="cmbx-12">equivalent </span>if you can move around one knot without
-intersecting itself to get the other. Knot theory is about studying knots up to
-equivalence. For example, the knot below is not really knotted at all, indeed after
-moving it around, we can see that its projection is a circle. This knot is called the
-<span 
+class="cmbx-12">equivalent </span>if you can move around one knot without intersecting
+itself to get the other. Knot theory is about studying knots up to equivalence. For example, the
+knot below is not really knotted at all, indeed after moving it around, we can see that its
+projection is a circle. This knot is called the <span 
 class="cmbx-12">unknot</span>.
-</p><!--l. 20--><p class="indent" >  How can we go between projections of a knot? A theorem of Reidmeister says that apart
-from moving around strands in ways that don&#x2019;t a&#xFB00;ect the crossings, there are \(3\)-moves that
-get between any two projections, shown in Figure <a 
+</p><!--l. 20--><p class="indent" >  How can we go between projections of a knot? A theorem of Reidmeister says that apart from
+moving around strands in ways that don&#x2019;t a&#xFB00;ect the crossings, there are \(3\)-moves that get between
+any two projections, shown in Figure <a 
 href="#x1-10022">2<!--tex4ht:ref: reidmeister --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10022"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 23--><p class="noindent" ><img 
 src="Reidmeister_Moves.png" alt="pict"  
- width="483.75519pt"  />
+ width="528.47438pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-10022 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 28--><p class="indent" >  Thus if we want to study links, it su&#xFB03;ces to study projections of links up to doing
-Reidmeister moves. Here is an example of one way to do that. We say that a
-link is \(3\)<span 
-class="cmbx-12">-colorable </span>if we can give each arc in the diagram one of three colors
-such that all colors are used, and such that at each crossing the three di&#xFB00;erent
-strands that meet either all have the same color, or all have di&#xFB00;erent colors. The
-pictures below show that our ability to \(3\)-color is invariant under the Reidmeister
+<!--l. 28--><p class="indent" >  Thus if we want to study links, it su&#xFB03;ces to study projections of links up to doing Reidmeister
+moves. Here is an example of one way to do that. We say that a link is \(3\)<span 
+class="cmbx-12">-colorable </span>if we can give
+each arc in the diagram one of three colors such that all colors are used, and such that at each
+crossing the three di&#xFB00;erent strands that meet either all have the same color, or all have di&#xFB00;erent
+colors. The pictures below show that our ability to \(3\)-color is invariant under the Reidmeister
 moves:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10033"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 31--><p class="noindent" ><img 
 src="Tricolorability.png" alt="pict"  
- width="354.75577pt"  />
+ width="387.55002pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;3:</span><span  
 class="content">A proof that \(3\)-colorability is an invariant of a link.</span></figcaption><!--tex4ht:label?: x1-10033 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 36--><p class="indent" >  Moreover, the trefoil is \(3\)-colorable, and the unknot is not, so we have proved:
 </p>
@@ -334,205 +334,182 @@ class="cmti-12">The trefoil knot is not the same as the unknot.</span>
 </p>
   </div>
 <!--l. 42--><p class="indent" >  Another link invariant the <span 
-class="cmbx-12">crossing number</span>, or the smallest number of crossings that
-a knot can possibly have. This, unlike \(3\)-colorability, is not as easy to compute, but has the
-property that the only crossing number \(0\) knot is the unknot.
-</p><!--l. 44--><p class="indent" >  However, there is a special type of knot for which it is not as hard to compute, the
+class="cmbx-12">crossing number</span>, or the smallest number of crossings that a knot
+can possibly have. This, unlike \(3\)-colorability, is not as easy to compute, but has the property that
+the only crossing number \(0\) knot is the unknot.
+</p><!--l. 44--><p class="indent" >  However, there is a special type of knot for which it is not as hard to compute, the <span 
+class="cmbx-12">alternating</span>
 <span 
-class="cmbx-12">alternating knots</span>. These are the knots that have a diagram such that if we move along a
-strand of the knot, the strand will alternate at each crossing between being over or
-under the perpendicular strand. For example, the trefoil and the &#xFB01;gure \(8\) knot are
-alternating, and indeed many small knots are &#x0028;for example those with crossing
-number less than \(8\)&#x0029;, but as the knots get more complicated, fewer knots become
-alternating.
+class="cmbx-12">knots</span>. These are the knots that have a diagram such that if we move along a strand of the knot,
+the strand will alternate at each crossing between being over or under the perpendicular strand.
+For example, the trefoil and the &#xFB01;gure \(8\) knot are alternating, and indeed many small knots are &#x0028;for
+example those with crossing number less than \(8\)&#x0029;, but as the knots get more complicated, fewer
+knots become alternating.
 </p><!--l. 46--><p class="indent" >  Namely, suppose we have a diagram for an alternating knot that is <span 
-class="cmbx-12">reduced</span>, i.e. it has
-no unnecessary crossings. An unnecessary crossing is one that separates the knot diagram
+class="cmbx-12">reduced</span>, i.e. it has no
+unnecessary crossings. An unnecessary crossing is one that separates the knot diagram
 into two pieces. Here are some examples of alternating diagrams that are and aren&#x2019;t
 reduced:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10054"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 49--><p class="noindent" ><img 
 src="Reduced_Alternating_Diagram.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;4:</span><span  
-class="content">The diagram on the top is reduced and alternating, and the diagram on
-the bottom is alternating, but not reduced, as the crossing in the center separates
-the diagram into two pieces. If we untwist that crossing, we get the diagram on the
-top.</span></figcaption><!--tex4ht:label?: x1-10054 -->
-                                                                                  
-
-                                                                                  
+class="content">The diagram on the top is reduced and alternating, and the diagram on the bottom
+is alternating, but not reduced, as the crossing in the center separates the diagram into two
+pieces. If we untwist that crossing, we get the diagram on the top.</span></figcaption><!--tex4ht:label?: x1-10054 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 54--><p class="indent" >  Given an alternating diagram, we can make it become reduced by untwisting it at any
-crossing that separates it into two pieces. It is easily seen that the resulting diagram is still
-alternating. It was conjectured by Tait in the \(19^{th}\) century that a reduced alternating
-diagram of a knot has the minimal number of crossings. The goal will be to prove
-this.
+<!--l. 54--><p class="indent" >  Given an alternating diagram, we can make it become reduced by untwisting it at any crossing
+that separates it into two pieces. It is easily seen that the resulting diagram is still alternating. It
+was conjectured by Tait in the \(19^{th}\) century that a reduced alternating diagram of a knot has the
+minimal number of crossings. The goal will be to prove this.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>The Jones Polynomial</h3>
-<!--l. 59--><p class="noindent" >To prove this result, we will use a knot invariant called the Jones polynomial. It is a
-Laurent polynomial in the variable \(t^{1/2}\), and for an alternating knot will be able to tell us the
-crossing number of the knot.
-</p><!--l. 61--><p class="indent" >  To construct the Jones polynomial, we will &#xFB01;rst construct the Kau&#xFB00;man bracket. This is
-only an invariant of a diagram of the knot, not the knot itself. It is de&#xFB01;ned by the axioms
-shown below:
+<!--l. 59--><p class="noindent" >To prove this result, we will use a knot invariant called the Jones polynomial. It is a Laurent
+polynomial in the variable \(t^{1/2}\), and for an alternating knot will be able to tell us the crossing number
+of the knot.
+</p><!--l. 61--><p class="indent" >  To construct the Jones polynomial, we will &#xFB01;rst construct the Kau&#xFB00;man bracket. This is only an
+invariant of a diagram of the knot, not the knot itself. It is de&#xFB01;ned by the axioms shown
+below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20015"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 64--><p class="noindent" ><img 
 src="Kauffman_Bracket.png" alt="pict"  
- width="387.00807pt"  />
+ width="422.7838pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;5:</span><span  
-class="content"> The axioms de&#xFB01;ning the Kau&#xFB00;man bracket of a knot. In other words,
-the unknot has bracket \(1\), adding a disjoint unknot multiplies the bracket by \(q+q^{-1}\), and
-&#x201C;resolving&#x201D; a crossing of a link in two di&#xFB00;erent ways gives a relation on the Kau&#xFB00;man
-bracket.</span></figcaption><!--tex4ht:label?: x1-20015 -->
-                                                                                  
-
-                                                                                  
+class="content"> The axioms de&#xFB01;ning the Kau&#xFB00;man bracket of a knot. In other words, the unknot
+has bracket \(1\), adding a disjoint unknot multiplies the bracket by \(q+q^{-1}\), and &#x201C;resolving&#x201D; a crossing
+of a link in two di&#xFB00;erent ways gives a relation on the Kau&#xFB00;man bracket.</span></figcaption><!--tex4ht:label?: x1-20015 -->
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 70--><p class="indent" >  We can compute how it changes under the Reidmeister moves in Figure <a 
 href="#x1-20026">6<!--tex4ht:ref: kauffmanreidmeister --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20026"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 73--><p class="noindent" ><img 
 src="Kauffman_Reidmeister.png" alt="pict"  
- width="322.50345pt"  />
+ width="352.31625pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;6:</span><span  
-class="content"> Shown above are computations to see how the Kau&#xFB00;man bracket changes
-with the Reidmeister moves.</span></figcaption><!--tex4ht:label?: x1-20026 -->
-                                                                                  
-
-                                                                                  
+class="content"> Shown above are computations to see how the Kau&#xFB00;man bracket changes with the
+Reidmeister moves.</span></figcaption><!--tex4ht:label?: x1-20026 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 79--><p class="indent" >  To get an actual knot invariant out of it, we must orient the knot \(K\), i.e. choose a
-direction to move along the strand. Let \(n_+\) be the number of positive crossings, and \(n_-\) the
-number of negative crossings. The convention to decide whether a crossing is positive or
-negative is shown in Figure <a 
+<!--l. 79--><p class="indent" >  To get an actual knot invariant out of it, we must orient the knot \(K\), i.e. choose a direction to
+move along the strand. Let \(n_+\) be the number of positive crossings, and \(n_-\) the number of negative
+crossings. The convention to decide whether a crossing is positive or negative is shown in Figure
+<a 
 href="#x1-20037">7<!--tex4ht:ref: signconvention --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20037"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 82--><p class="noindent" ><img 
 src="Sign_Convention.png" alt="pict"  
- width="161.25171pt"  />
+ width="176.15813pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;7:</span><span  
-class="content">  Shown  above  is  the  convention  for  deciding  whether  a  crossing  of  an
-oriented knot is positive or negative.</span></figcaption><!--tex4ht:label?: x1-20037 -->
-                                                                                  
-
-                                                                                  
+class="content"> Shown above is the convention for deciding whether a crossing of an oriented knot
+is positive or negative.</span></figcaption><!--tex4ht:label?: x1-20037 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 88--><p class="indent" >  Then by our computation of how the Kau&#xFB00;man bracket changes under the Reidmeister
-moves, for an oriented knot \(K\) with diagram \(D_K\), the formula \(J(K)= (-1)^{n_-}q^{n_+-2n_-}\langle D_K\rangle \) gives a knot invariant of \(K\) called
-the <span 
-class="cmbx-12">Jones polynomial </span>of \(K\).
+<!--l. 88--><p class="indent" >  Then by our computation of how the Kau&#xFB00;man bracket changes under the Reidmeister moves,
+for an oriented knot \(K\) with diagram \(D_K\), the formula \(J(K)= (-1)^{n_-}q^{n_+-2n_-}\langle D_K\rangle \) gives a knot invariant of \(K\) called the <span 
+class="cmbx-12">Jones</span>
+<span 
+class="cmbx-12">polynomial </span>of \(K\).
 </p><!--l. 90--><p class="indent" >  To compute the Jones polynomial, we consider all <span 
-class="cmbx-12">resolutions </span>of the knot. Namely,
-crossing has two resolutions, the \(0\) and \(1\)-resolutions, where we replace the crossing with one
-of the pictures shown in Figure <a 
+class="cmbx-12">resolutions </span>of the knot. Namely, crossing has
+two resolutions, the \(0\) and \(1\)-resolutions, where we replace the crossing with one of the pictures shown
+in Figure <a 
 href="#x1-20048">8<!--tex4ht:ref: resolution --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20048"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 93--><p class="noindent" ><img 
 src="Resolutions.png" alt="pict"  
- width="225.75636pt"  />
+ width="246.62567pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;8:</span><span  
 class="content"> The two di&#xFB00;erent types of resolutions.</span></figcaption><!--tex4ht:label?: x1-20048 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 99--><p class="indent" >  By looking at all possible resolutions and using the axioms, let&#x2019;s compute the trefoil&#x2019;s
-Jones polynomial.
+<!--l. 99--><p class="indent" >  By looking at all possible resolutions and using the axioms, let&#x2019;s compute the trefoil&#x2019;s Jones
+polynomial.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20059"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 102--><p class="noindent" ><img 
 src="Trefoil_Computation.png" alt="pict"  
- width="516.0075pt"  />
+ width="563.70815pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;9:</span><span  
-class="content"> We compute the Jones polynomial of the left-handed trefoil from above as
-\(-q^{-6}((q+q^{-1})^2-3q(q+q^{-1})+3q^2-q^3(q+q^{-1})) = q^{-2}+q^{-6}-q^{-8}\).</span></figcaption><!--tex4ht:label?: x1-20059 -->
-                                                                                  
-
-                                                                                  
+class="content"> We compute the Jones polynomial of the left-handed trefoil from above as \(-q^{-6}((q+q^{-1})^2-3q(q+q^{-1})+3q^2-q^3(q+q^{-1})) = q^{-2}+q^{-6}-q^{-8}\).</span></figcaption><!--tex4ht:label?: x1-20059 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 108--><p class="indent" >  The Jones polynomial tells us something about the crossing number of a link. Namely,
-let the <span 
-class="cmbx-12">breadth </span>of a Laurent polynomial \(p\) be the largest di&#xFB00;erence in exponent of nonzero
-terms in \(J(L)\), which we will denote \(b(p)\). Note that if \(D_K\) is a knot diagram for \(K\), then \(b\langle D_K\rangle = b(J(K))\) is an invariant
-of the knot. We will soon see that the breadth of the Jones polynomial generally gives a
-lower bound on crossing number.
-</p><!--l. 110--><p class="indent" >  By looking at the Jones polynomial of the trefoil, we see that we must have \(c(3_1) = 3\), as
-\(6 = b(3_1) \leq 2c(K) \leq 6\).
-</p><!--l. 112--><p class="indent" >  This is a general phenomenon that holds for reduced alternating diagrams. The proof
-is to examine carefully our computation for the trefoil, and see that the same
-kind of computation will happen in any reduced alternating diagram. Namely,
-let us consider which terms can possibly contribute the largest and smallest
-powers of \(q\) to the Jones polynomial. Certainly the resolution consisting of only \(1\)s
-is always one of them. To see this, &#xFB01;rst note that as you change the number
-of \(1\)s in the resolution, the number of unknotted components of the resolution
-changes by exactly \(1\). Moreover, adding more \(0\)s will reduce the power of \(q\) that the
+<!--l. 108--><p class="indent" >  The Jones polynomial tells us something about the crossing number of a link. Namely, let the
+<span 
+class="cmbx-12">breadth </span>of a Laurent polynomial \(p\) be the largest di&#xFB00;erence in exponent of nonzero terms in \(J(L)\), which
+we will denote \(b(p)\). Note that if \(D_K\) is a knot diagram for \(K\), then \(b\langle D_K\rangle = b(J(K))\) is an invariant of the knot. We will soon
+see that the breadth of the Jones polynomial generally gives a lower bound on crossing
+number.
+</p><!--l. 110--><p class="indent" >  By looking at the Jones polynomial of the trefoil, we see that we must have \(c(3_1) = 3\), as \(6 = b(3_1) \leq 2c(K) \leq 6\).
+</p><!--l. 112--><p class="indent" >  This is a general phenomenon that holds for reduced alternating diagrams. The proof is to
+examine carefully our computation for the trefoil, and see that the same kind of computation will
+happen in any reduced alternating diagram. Namely, let us consider which terms can possibly
+contribute the largest and smallest powers of \(q\) to the Jones polynomial. Certainly the
+resolution consisting of only \(1\)s is always one of them. To see this, &#xFB01;rst note that as you
+change the number of \(1\)s in the resolution, the number of unknotted components of the
+resolution changes by exactly \(1\). Moreover, adding more \(0\)s will reduce the power of \(q\) that the
 resolution contributes. Now two things very special happen for reduced alternating
 diagrams.
 </p>
@@ -541,41 +518,39 @@ diagrams.
 <a 
  id="x1-2006r1"></a>
 <span 
-class="cmbx-12">Lemma 2.1.</span>  </span> <span 
-class="cmti-12">For a connected link diagram, the sum of the number of circles in the</span>
+class="cmbx-12">Lemma 2.1.</span>  </span>  <span 
+class="cmti-12">For  a  connected  link  diagram,  the  sum  of  the  number  of  circles  in  the</span>
 <span 
 class="cmti-12">resolution with only</span> \(1\)<span 
 class="cmti-12">s and only</span> \(0\)<span 
 class="cmti-12">s is at most</span> \(n+2\)<span 
-class="cmti-12">, with equality holding for an alternating</span>
+class="cmti-12">, with equality holding for an alternating diagram.</span>
 <span 
-class="cmti-12">diagram. In particular,</span> \(b(J(K)) \leq 2c(K)\)<span 
+class="cmti-12">In particular,</span> \(b(J(K)) \leq 2c(K)\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 118--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>The  second  statement  follows  from  the  &#xFB01;rst,  since  if  we  resolve  all  the
-crossings, the highest and lowest powers of \(q\) can come from the resolutions with only
-\(0\)s or only \(1\)s. Then there are \(n+2\) circles in total for these two resolutions, and since there
-are \(n\) crossings, the di&#xFB00;erence in \(q\) power that we get is \(n+2-1-1+n = 2n\), so \( 2c(K) \geq b(J(K))\).
-</p><!--l. 120--><p class="indent" >  For an alternating diagram, If su&#xFB03;ces to prove that for each region that the knot
-diagram divides the plane into, there is a unique circle in either the all \(1\)s or \(0\)s resolution
-that yields it. If we consider the bounding circle on each region, since the knot is
-                                                                                  
-
-                                                                                  
-alternating, it coincides with one of the resolutions of the knot. Moreover, since the
-boundary of each of the regions touches each part of the knot twice, this gives a
-bijective correspondence.
-</p><!--l. 122--><p class="indent" >  More generally, for any connected diagram, we can prove this by induction on the
-number of crossings. It is true for the standard unknot diagram, and if it is true for
-all connected diagrams with \(&lt; n\) crossings, and we have a diagram, with \(n\) crossings, we
-can choose any crossing, and do its \(1\) and \(0\) resolution. Note &#xFB01;rst that by induction
-one of these yields a connected diagram, say the \(0\)-resolution. Then let \(i_j\) denote the
-number of circles for the resolution where on the &#xFB01;rst crossing we do the \(i^{th}\) resolution,
-and on the rest of the crossings we do the \(j^{th}\) resolution. Then we have by induction
-that \(0_0+0_1 \leq n+1\) and \(|0_1-1_1|=1\) since they di&#xFB00;er by one resolution. Then \(0_0+1_1 \leq n+2\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>The second statement follows from the &#xFB01;rst, since if we resolve all the crossings, the
+highest and lowest powers of \(q\) can come from the resolutions with only \(0\)s or only \(1\)s. Then there
+are \(n+2\) circles in total for these two resolutions, and since there are \(n\) crossings, the di&#xFB00;erence in
+\(q\) power that we get is \(n+2-1-1+n = 2n\), so \( 2c(K) \geq b(J(K))\).
+</p><!--l. 120--><p class="indent" >  For an alternating diagram, If su&#xFB03;ces to prove that for each region that the knot diagram
+divides the plane into, there is a unique circle in either the all \(1\)s or \(0\)s resolution that yields it.
+If we consider the bounding circle on each region, since the knot is alternating, it coincides
+with one of the resolutions of the knot. Moreover, since the boundary of each of the regions
+touches each part of the knot twice, this gives a bijective correspondence.
+</p><!--l. 122--><p class="indent" >  More generally, for any connected diagram, we can prove this by induction on the number
+of crossings. It is true for the standard unknot diagram, and if it is true for all connected
+diagrams with \(&lt; n\) crossings, and we have a diagram, with \(n\) crossings, we can choose any crossing,
+and do its \(1\) and \(0\) resolution. Note &#xFB01;rst that by induction one of these yields a connected
+diagram, say the \(0\)-resolution. Then let \(i_j\) denote the number of circles for the resolution where
+                                                                                         
+                                                                                         
+on the &#xFB01;rst crossing we do the \(i^{th}\) resolution, and on the rest of the crossings we do the \(j^{th}\)
+resolution. Then we have by induction that \(0_0+0_1 \leq n+1\) and \(|0_1-1_1|=1\) since they di&#xFB00;er by one resolution. Then \(0_0+1_1 \leq n+2\).
+<span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -585,25 +560,25 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <a 
  id="x1-2007r2"></a>
 <span 
-class="cmbx-12">Lemma 2.2.</span>  </span> <span 
-class="cmti-12">For a reduced alternating diagram, the resolution with all</span> \(1\)<span 
-class="cmti-12">s has more</span>
+class="cmbx-12">Lemma 2.2.</span>  </span>  <span 
+class="cmti-12">For  a  reduced  alternating  diagram,  the  resolution  with  all</span>  \(1\)<span 
+class="cmti-12">s  has  more</span>
 <span 
 class="cmti-12">components than the one with all but one</span> \(1\)<span 
 class="cmti-12">s, and similarly the resolution with all</span> \(0\)<span 
-class="cmti-12">s</span>
+class="cmti-12">s has more</span>
 <span 
-class="cmti-12">has more components than all any with all but one</span> \(0\)<span 
+class="cmti-12">components than all any with all but one</span> \(0\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 130--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>The proof for the resolution with all \(0\)s is exactly the same, just use the knot
-where all the crossings are switched. Now suppose that all the crossings are resolved
-with the \(1\) resolutions. Now suppose that there is a crossing that we can change that
-separates a region into two regions. Then that circle looks like the circle below &#x0028;we
-imagine it bounding the region outside of it&#x0029;:
+class="cmti-12">Proof.</span> </span>The proof for the resolution with all \(0\)s is exactly the same, just use the knot where
+all the crossings are switched. Now suppose that all the crossings are resolved with the \(1\)
+resolutions. Now suppose that there is a crossing that we can change that separates a region
+into two regions. Then that circle looks like the circle below &#x0028;we imagine it bounding the
+region outside of it&#x0029;:
 </p>
   <figure class="figure"> 
 <a 
@@ -611,35 +586,33 @@ imagine it bounding the region outside of it&#x0029;:
 <div class="center" 
 >
 <!--l. 133--><p class="noindent" >
-                                                                                  
-
-                                                                                  
 </p><!--l. 134--><p class="noindent" ><img 
 src="Split.png" alt="pict"  
- width="96.74709pt"  /></p></div>
+ width="105.69055pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;10:</span><span  
-class="content"> The circle at top &#x0028;which we imagine as bounding the region of the knot
-outside of it&#x0029; splits into two when we change the resolution.</span></figcaption><!--tex4ht:label?: x1-200810 -->
+class="content"> The circle at top &#x0028;which we imagine as bounding the region of the knot outside
+of it&#x0029; splits into two when we change the resolution.</span></figcaption><!--tex4ht:label?: x1-200810 -->
   </figure>
-<!--l. 141--><p class="indent" >  I claim that by doing the \(0\) resolution to this crossing, the knot becomes disconnected.
-This is because since the two sides were originally in the same circle, and the interior of
-the circle is a region not touching the knot, so there is a path not touching the knot
-going from one side of the crossing to the other. Then by completing the path by
-making it intersect the crossing, we have split our knot into two pieces, so it is not
-reduced.
+<!--l. 141--><p class="indent" >  I claim that by doing the \(0\) resolution to this crossing, the knot becomes disconnected. This is
+because since the two sides were originally in the same circle, and the interior of the circle is a
+region not touching the knot, so there is a path not touching the knot going from one side of the
+crossing to the other. Then by completing the path by making it intersect the crossing, we have
+split our knot into two pieces, so it is not reduced.
 </p>
   <figure class="figure"> 
 <a 
  id="x1-200911"></a>
 <div class="center" 
 >
+                                                                                         
+                                                                                         
 <!--l. 144--><p class="noindent" >
 </p><!--l. 145--><p class="noindent" ><img 
 src="Circle.png" alt="pict"  
- width="128.9994pt"  /></p></div>
+ width="140.92435pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;11:</span><span  
-class="content"> In the situation above, we can draw a circle as shown here to split the
-knot into two pieces, demonstrating that it isn&#x2019;t reduced.</span></figcaption><!--tex4ht:label?: x1-200911 -->
+class="content"> In the situation above, we can draw a circle as shown here to split the knot into
+two pieces, demonstrating that it isn&#x2019;t reduced.</span></figcaption><!--tex4ht:label?: x1-200911 -->
   </figure>
   <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
@@ -662,76 +635,65 @@ class="cmti-12">crossings.</span>
 <!--l. 157--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Because of Lemma <a 
-href="#x1-2007r2">2.2<!--tex4ht:ref: allresolutions --></a>, by looking at how each resolution contributes to the
-highest and lowest terms of the Jones polynomial of \(K\), we see that there are no other
-                                                                                  
-
-                                                                                  
-terms that can cancel them out. Then we see that the inequality in Lemma <a 
-href="#x1-2006r1">2.1<!--tex4ht:ref: circles --></a> is an
-equality. <span class="qed"><span 
+href="#x1-2007r2">2.2<!--tex4ht:ref: allresolutions --></a>, by looking at how each resolution contributes to the highest
+and lowest terms of the Jones polynomial of \(K\), we see that there are no other terms that can
+cancel them out. Then we see that the inequality in Lemma <a 
+href="#x1-2006r1">2.1<!--tex4ht:ref: circles --></a> is an equality. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 161--><p class="indent" >  There is a faster way to compute the Jones polynomial. Namely, it satis&#xFB01;es the following
-relation for \(3\) links \(L_0, L_+,L_-\) that look the same except near one crossing, they di&#xFB00;er as shown in
-Figure <a 
+<!--l. 161--><p class="indent" >  There is a faster way to compute the Jones polynomial. Namely, it satis&#xFB01;es the following relation
+for \(3\) links \(L_0, L_+,L_-\) that look the same except near one crossing, they di&#xFB00;er as shown in Figure
+<a 
 href="#x1-201112">12<!--tex4ht:ref: close --></a>:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-201112"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 164--><p class="noindent" ><img 
 src="Close_Knots.png" alt="pict"  
- width="322.50345pt"  />
+ width="352.31625pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;12:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-201112 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 170--><p class="indent" >  It follows from the axioms of the Jones polynomial that these satisfy the relation shown
-in Figure <a 
+<!--l. 170--><p class="indent" >  It follows from the axioms of the Jones polynomial that these satisfy the relation shown in
+Figure <a 
 href="#x1-201213">13<!--tex4ht:ref: skein --></a>:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-201213"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 173--><p class="noindent" ><img 
 src="Skein.png" alt="pict"  
- width="451.50288pt"  />
+ width="493.2406pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;13:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-201213 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 179--><p class="indent" >  This can be used to compute \(J(8_{22})\) &#x0028;with some orientation&#x0029; more quickly, and the result is \(-q^2+2-q^{-2}+2q^{-4}-q^{-6}+q^{-8}-q^{-10}\). \(b(J(8_{22})) = 14 &lt; 16 = 2c(8_{22})\),
-so it is not an alternating knot.
+<!--l. 179--><p class="indent" >  This can be used to compute \(J(8_{22})\) &#x0028;with some orientation&#x0029; more quickly, and the result is \(-q^2+2-q^{-2}+2q^{-4}-q^{-6}+q^{-8}-q^{-10}\). \(b(J(8_{22})) = 14 &lt; 16 = 2c(8_{22})\), so it is
+not an alternating knot.
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

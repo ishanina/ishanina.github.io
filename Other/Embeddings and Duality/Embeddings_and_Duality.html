@@ -1,11 +1,11 @@
 <!DOCTYPE html> 
 <html lang="en" xml:lang="en" > 
-<head> <title>Non-embedding results via S-duality</title> 
+<head> <title>Non-embedding results via Spanier Whitehead Duality</title> 
 <meta  charset="UTF-8"" /> 
 <meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
 <meta name="viewport" content="width=device-width,initial-scale=1" /> 
-<link rel="stylesheet" type="text/css" href="Embeddings_and_S-Duality.css" /> 
-<meta name="src" content="Embeddings_and_S-Duality.tex" /> 
+<link rel="stylesheet" type="text/css" href="Embeddings_and_Duality.css" /> 
+<meta name="src" content="Embeddings_and_Duality.tex" /> 
 <script>window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand'] } }; </script> 
  <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
 </head><body 
@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -215,7 +227,7 @@
 \newcommand{\id}{\mathop{\rm id}\nolimits} \)</p>
   <div class="maketitle">
   <h2 class="titleHead">
-NON-EMBEDDING RESULTS VIA S-DUALITY
+NON-EMBEDDING RESULTS VIA SPANIER WHITEHEAD DUALITY
   </h2>
   <div class="authors"><span class="author" >
 <span 
@@ -223,13 +235,12 @@ class="cmr-10">ISHAN LEVY</span>
   </span></div>
 <div class="submaketitle">
 </div>
-  </div>What is the minimal dimension such that \(\CC \PP ^2\) or \(\HH \PP ^2\) can be embedded in Euclidean space? It
-turns out one gets the optimal answer by answering the corresponding stable problem,
-namely what is the minimal dimension such that a space with the stable homotopy type of
-\(\CC \PP ^2\) or \(\HH \PP ^2\) can be embedded in Euclidean space?<br 
+  </div>What is the minimal dimension such that \(\CC \PP ^2\) or \(\HH \PP ^2\) can be embedded in Euclidean space? It turns out
+one gets the optimal answer by answering the corresponding stable problem, namely what is the
+minimal dimension such that a space with the stable homotopy type of \(\CC \PP ^2\) or \(\HH \PP ^2\) can be embedded in
+Euclidean space?<br 
 class="newline" />
-<!--l. 11--><p class="indent" >  We can answer a generalization of this question as follows &#x0028;due to Hilton and
-Spanier&#x0029;:
+<!--l. 11--><p class="indent" >  We can answer a generalization of this question as follows &#x0028;due to Hilton and Spanier&#x0029;:
 </p>
   <div class="newtheorem">
 <!--l. 13--><p class="noindent" ><span class="head">
@@ -241,29 +252,28 @@ class="cmti-12">Let</span> \(f\) <span
 class="cmti-12">be a map</span> \(S^{m-1} \to S^n\)<span 
 class="cmti-12">, and let</span> \(C_f\) <span 
 class="cmti-12">denote the co&#xFB01;bre. Suppose that</span> \(f\) <span 
-class="cmti-12">cannot be</span>
+class="cmti-12">cannot be stably</span>
 <span 
-class="cmti-12">stably desuspended. Then the minimum dimension embedding of</span> \(C_f\) <span 
+class="cmti-12">desuspended. Then the minimum dimension embedding of</span> \(C_f\) <span 
 class="cmti-12">is</span> \(m+n+1\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 17--><p class="indent" >  In particular, \(\CC \PP ^2\) and \(\HH \PP ^2\) are co&#xFB01;bres of Hopf maps, which cannot stably be desuspended &#x0028;a
-stable desuspension is another map of spheres of lower dimension agreeing stably with \(f\)&#x0029;.
-Note that \(C_f\) can be embedded in \(S^{m+n+1}\) because the mapping cylinder of \(f\) embeds into the join of \(S^{m-1}\)
-and \(S^n\), which is \(S^{m+n}\), and the cylinder end can be coned o&#xFB00; in \(S^{m+n+1}\). So it su&#xFB03;ces to show one cannot
-embed into anything smaller.
-</p><!--l. 19--><p class="indent" >  First we consider the simplest cases. If \(m&lt;n+1\), then \(f\) is trivial, so, we must have \(n=0\), in which case
-                                                                                  
-
-                                                                                  
-the assertion is obvious. If \(m=n+1\), then \(n=1\). Then, one can use Alexander duality to observe that
-were there an embedding into \(S^3\), then the complement would have zero dimensional
-homology that is not free.
+<!--l. 17--><p class="indent" >  In particular, \(\CC \PP ^2\) and \(\HH \PP ^2\) are co&#xFB01;bres of Hopf maps, which cannot stably be desuspended &#x0028;a stable
+desuspension is another map of spheres of lower dimension agreeing stably with \(f\)&#x0029;. Note that \(C_f\) can
+be embedded in \(S^{m+n+1}\) because the mapping cylinder of \(f\) embeds into the join of \(S^{m-1}\) and \(S^n\), which is \(S^{m+n}\), and the
+cylinder end can be coned o&#xFB00; in \(S^{m+n+1}\). So it su&#xFB03;ces to show one cannot embed into anything
+smaller.
+</p><!--l. 19--><p class="indent" >  First we consider the simplest cases. If \(m&lt;n+1\), then \(f\) is trivial, so, we must have \(n=0\), in which case the
+assertion is obvious. If \(m=n+1\), then \(n=1\). Then, one can use Alexander duality to observe that were there an
+embedding into \(S^3\), then the complement would have zero dimensional homology that is not
+free.
 </p><!--l. 21--><p class="indent" >  Thus we can assume that \(n&gt;1, m&gt;n+1\).
 </p>
   <div class="newtheorem">
 <!--l. 23--><p class="noindent" ><span class="head">
+                                                                                         
+                                                                                         
 <a 
  id="x1-3r2"></a>
 <span 
@@ -276,44 +286,38 @@ class="cmti-12">can be stably desuspended.</span>
   <div class="proof">
 <!--l. 26--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Clearly  the  stable  homotopy  type  of  \(C_f\)  depends  only  on  that  of  \(f\),  proving
-one direction. On the other hand, if \(C_f\) can be stably desuspended to a space \(X\), a
-homology decomposition of \(X\) will be the co&#xFB01;bre of a map \(g\) between spheres. After
-suspending enough, these will be of the same dimension, and since the map between
-the middle skeleton has to extend to a homotopy equivalence between the two spaces,
-the  attaching  maps  di&#xFB00;er  by  a  unit  &#x0028;i.e  an  integer  multiple&#x0029;,  so  \(f\)  can  be  stably
-desuspended. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Clearly the stable homotopy type of \(C_f\) depends only on that of \(f\), proving one direction.
+On the other hand, if \(C_f\) can be stably desuspended to a space \(X\), a homology decomposition
+of \(X\) will be the co&#xFB01;bre of a map \(g\) between spheres. After suspending enough, these will be
+of the same dimension, and since the map between the middle skeleton has to extend to a
+homotopy equivalence between the two spaces, the attaching maps di&#xFB00;er by a unit &#x0028;i.e an
+integer multiple&#x0029;, so \(f\) can be stably desuspended. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 30--><p class="indent" >  The essential input of working stably is the following observation: the Spanier-Whitehead
-&#x0028;S&#x0029; dual of the co&#xFB01;bre of \(C_f\) &#x0028;denoted \(DC_f\)&#x0029; is \(\Sigma ^{-m-n}C_{\pm f}\), where the sign &#x0028;unimportant&#x0029; I think is \((-1)^{mn}\). To see
-this, the S dual of a map \(f\) between spheres is \(\pm f\), suspended to have the right degrees. We
-have a co&#xFB01;bre sequence, \(f:S^{m-1} \to S^n \to C_f\), which taking duals gives a &#xFB01;bre\(=\)cofbre sequence \(DC_f \to S^{-n} \to S^{1-m}\). Rearranging
-this shows that \(DC_f = \Sigma ^{-m-n} C_{\pm f}\). Now the complement of \(C_f\) inside \(S^{m+n}\) would be \(\Sigma ^{m+n-1}DC_f = \Sigma ^{-1} C_f\)! This completes the proof via
-the lemma.
+<!--l. 30--><p class="indent" >  The essential input of working stably is the following observation: the Spanier-Whitehead dual of
+the co&#xFB01;bre of \(C_f\) &#x0028;denoted \(DC_f\)&#x0029; is \(\Sigma ^{-m-n}C_{\pm f}\), where the sign &#x0028;unimportant&#x0029; I think is \((-1)^{mn}\). To see this, the
+dual of a map \(f\) between spheres is \(\pm f\), suspended to have the right degrees. We have a
+co&#xFB01;bre sequence, \(f:S^{m-1} \to S^n \to C_f\), which taking duals gives a co&#xFB01;bre sequence \(DC_f \to S^{-n} \to S^{1-m}\). Rearranging this shows
+that \(DC_f = \Sigma ^{-m-n} C_{\pm f}\). Now the complement of \(C_f\) inside \(S^{m+n}\) would be \(\Sigma ^{m+n-1}DC_f = \Sigma ^{-1} C_f\)! This completes the proof via the
+lemma.
 </p><!--l. 32--><p class="indent" >  The same argument gives the slightly stronger version:
 </p>
   <div class="newtheorem">
 <!--l. 34--><p class="noindent" ><span class="head">
 <a 
  id="x1-4r3"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Theorem 0.3.</span>  </span><span 
 class="cmti-12">Let</span> \(f\) <span 
 class="cmti-12">be a map</span> \(S^{m-1} \to S^n\)<span 
 class="cmti-12">, and let</span> \(C_f\) <span 
 class="cmti-12">denote the co&#xFB01;bre. Let</span> \(k\) <span 
-class="cmti-12">be the maximum</span>
+class="cmti-12">be the maximum number of</span>
 <span 
-class="cmti-12">number of times that</span> \(f\) <span 
-class="cmti-12">can be stably desuspended. Then the minimum dimension</span>
-<span 
-class="cmti-12">embedding of</span> \(C_f\) <span 
+class="cmti-12">times that</span> \(f\) <span 
+class="cmti-12">can be stably desuspended. Then the minimum dimension embedding of</span> \(C_f\) <span 
 class="cmti-12">is</span> \(m+n+1-k\)<span 
 class="cmti-12">.</span>
 </p>
@@ -321,9 +325,8 @@ class="cmti-12">.</span>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

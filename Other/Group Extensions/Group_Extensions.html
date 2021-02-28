@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -224,40 +236,34 @@ class="cmr-10">ISHAN LEVY</span>
 <div class="submaketitle">
 </div>
   </div>How can we classify extensions of a group \(G\) by \(H\)?
-<!--l. 10--><p class="indent" >  This problem can be understood from the point of view of homotopy theory by
-interpreting our groups as automorphisms of some type of object, so that \(BG\) becomes the
-groupoid of objects of that type. Then giving an extension \(1 \to H \to E \to G \to 1\) is the same as giving a pointed
-&#xFB01;bre sequence \(BE \to BG\), with &#xFB01;bre \(BH\). Such &#xFB01;brations correspond to pointed maps \(BG \to B\Aut (BH)\), giving the
-classi&#xFB01;cation. A split extension is the same as a pointed &#xFB01;bre sequence \(BE \to BG\) with a section,
-which corresponds to a pointed map from \(BG \to B\Aut _*(BH)\) where \(\Aut _*\) denotes automorphisms as a pointed
-space.
-</p><!--l. 12--><p class="indent" >  For example, extensions of \(\ZZ \) by \(H\) are the same as pointed maps \(B\ZZ \to B\Aut (BH)\) which is just \(\Aut (BH)\). \(\pi _0(\Aut (BH))\) is
-the same as the outer automorphisms \(\Out (H)\), giving the equivalence classes of such
-extensions.
-</p><!--l. 14--><p class="indent" >  The &#xFB01;bre of the map \(\Aut (BH) \to \Out (H)\) is the space of automorphisms of \(BH\) identi&#xFB01;able with the identity,
-which is the same as \(B\Aut _{\Aut (BH)} 1\). Delooping the group homorphism \(\Aut (BH) \to \Out (H)\), we see there is a &#xFB01;bre sequence
+<!--l. 10--><p class="indent" >  This problem can be understood from the point of view of homotopy theory by interpreting our
+groups as automorphisms of some type of object, so that \(BG\) becomes the groupoid of objects of that
+type. Then giving an extension \(1 \to H \to E \to G \to 1\) is the same as giving a pointed &#xFB01;bre sequence \(BE \to BG\), with &#xFB01;bre \(BH\). Such
+&#xFB01;brations correspond to pointed maps \(BG \to B\Aut (BH)\), giving the classi&#xFB01;cation. A split extension is the same as a
+pointed &#xFB01;bre sequence \(BE \to BG\) with a section, which corresponds to a pointed map from \(BG \to B\Aut _*(BH)\) where \(\Aut _*\) denotes
+automorphisms as a pointed space.
+</p><!--l. 12--><p class="indent" >  For example, extensions of \(\ZZ \) by \(H\) are the same as pointed maps \(B\ZZ \to B\Aut (BH)\) which is just \(\Aut (BH)\). \(\pi _0(\Aut (BH))\) is the same as the
+outer automorphisms \(\Out (H)\), giving the equivalence classes of such extensions.
+</p><!--l. 14--><p class="indent" >  The &#xFB01;bre of the map \(\Aut (BH) \to \Out (H)\) is the space of automorphisms of \(BH\) identi&#xFB01;able with the identity, which
+is the same as \(B\Aut _{\Aut (BH)} 1\). Delooping the group homorphism \(\Aut (BH) \to \Out (H)\), we see there is a &#xFB01;bre sequence
 \(B^2\Aut _{\Aut (BH)} 1 \to B\Aut (BH) \to B\Out (H)\).
 </p><!--l. 16--><p class="indent" >  Conjugation by an element of \(H\) is a natural transformation of the identity on \(BH\), giving a
 homomorphism \(f:H \to \Aut (BH)\). The center \(Z(H)\) is the &#xFB01;xed points of this action, i.e a path out of a &#xFB01;xed
-point \(x\), \(f:x \to a \in BH\) and an identi&#xFB01;cation of the action of \(H\) on \(f\) with the trivial action. For a given path,
-we can identify such identi&#xFB01;cations with automorphisms of the identity on \(BH\), so
+point \(x\), \(f:x \to a \in BH\) and an identi&#xFB01;cation of the action of \(H\) on \(f\) with the trivial action. For a given
+path, we can identify such identi&#xFB01;cations with automorphisms of the identity on \(BH\), so
 \(BZ(H) = B\Aut _{\Aut (BH)} 1\).
-</p><!--l. 18--><p class="indent" >  Thus, there is a &#xFB01;bre sequence \(B^2Z(H) \to B\Aut (BH) \to B\Out (H)\). Now suppose \(G,H\) are \(1\)-groups &#x0028;A weaker condition on \(G\)
-might also do&#x0029;. Given a central extension, or a pointed map \(BG \to B\Aut (BH)\), the action of \(G\) on \(H\) is the
-induced action on the loop spaces of the base points. That action is trivial i&#xFB00; the delooped
-map is trivial when \(1\)-truncated. But the \(1\)-truncation is \(B\Out (H)\), so from the &#xFB01;bre sequence we see
-                                                                                  
-
-                                                                                  
-that central extensions correspond to pointed maps \(BG \to B^2 Z(H) = K(H,2)\). In particular, equivalence classes of
-central extension correspond to \(H^2(BG;H)\).
+</p><!--l. 18--><p class="indent" >  Thus, there is a &#xFB01;bre sequence \(B^2Z(H) \to B\Aut (BH) \to B\Out (H)\). Now suppose \(G,H\) are \(1\)-groups &#x0028;A weaker condition on \(G\) might also
+do&#x0029;. Given a central extension, or a pointed map \(BG \to B\Aut (BH)\), the action of \(G\) on \(H\) is the induced action on the
+loop spaces of the base points. That action is trivial i&#xFB00; the delooped map is trivial when
+\(1\)-truncated. But the \(1\)-truncation is \(B\Out (H)\), so from the &#xFB01;bre sequence we see that central extensions
+correspond to pointed maps \(BG \to B^2 Z(H) = K(H,2)\). In particular, equivalence classes of central extension correspond to
+\(H^2(BG;H)\).
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

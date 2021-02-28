@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -227,8 +239,8 @@ class="cmr-10">ISHAN LEVY</span>
 class="cmti-12">Date</span>:&#x00A0;8/7/2017.</p></div></div></div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Holomorphic Functions</h3>
-<!--l. 11--><p class="noindent" >Let&#x2019;s recall the statements of two important theorems that we will need. Throughout the
-&#xFB01;rst part of the notes &#x0028;about holomorphic functions&#x0029;, we assume that \(f\) is a holomorphic
+<!--l. 11--><p class="noindent" >Let&#x2019;s recall the statements of two important theorems that we will need. Throughout the &#xFB01;rst
+part of the notes &#x0028;about holomorphic functions&#x0029;, we assume that \(f\) is a holomorphic
 function on an open set \(\Omega \), \(D\) is an open disk. \(D(z_0,r)\) indicates that this disk is centered at \(z_0\) of radius
 r.
 </p>
@@ -253,23 +265,23 @@ class="cmti-12">.</span>
 <span 
 class="cmbx-12">Theorem 1.2 </span>&#x0028;Cauchy&#x2019;s Integral Formul&#x00E6;&#x0029;<span 
 class="cmbx-12">.</span>  </span> \(f\) <span 
-class="cmti-12">has in&#xFB01;nitely many derivatives on</span> \(\Omega \)
+class="cmti-12">has in&#xFB01;nitely many derivatives on</span> \(\Omega \) <span 
+class="cmti-12">and for</span>
 <span 
-class="cmti-12">and for any circle</span> \(C \subset \Omega \) <span 
+class="cmti-12">any circle</span> \(C \subset \Omega \) <span 
 class="cmti-12">that is boundary of</span> \(D \subset \Omega \) <span 
 class="cmti-12">we have </span>\[ f^{(n)}(z) = \frac{n!}{2\pi i}\int _C\frac{f(\zeta )}{(\zeta -z)^{n+1}}d\zeta \] <span 
 class="cmti-12">for any</span> \(z\) <span 
 class="cmti-12">in the interior of</span> \(C\)<span 
 class="cmti-12">.</span>
-                                                                                  
-
-                                                                                  
 </p>
   </div>
 <!--l. 29--><p class="indent" >  As a consequence we have the following:
 </p>
   <div class="newtheorem">
 <!--l. 31--><p class="noindent" ><span class="head">
+                                                                                         
+                                                                                         
 <a 
  id="x1-1003r3"></a>
 <span 
@@ -279,9 +291,9 @@ class="cmti-12">If</span> \(\Omega \) <span
 class="cmti-12">contains the closure of</span> \(D(z_0,R)\)<span 
 class="cmti-12">, then </span>\[ |f^{(n)}(z)| \leq \frac{n!|f|_C}{2\pi R^n} \] <span 
 class="cmti-12">where</span> \(|f|_C\) <span 
-class="cmti-12">is the</span>
+class="cmti-12">is the maximum</span>
 <span 
-class="cmti-12">maximum modulus</span> \(f\) <span 
+class="cmti-12">modulus</span> \(f\) <span 
 class="cmti-12">attains on</span> \(C\)<span 
 class="cmti-12">.</span>
 </p>
@@ -309,24 +321,23 @@ class="cmti-12">Holomorphic functions are analytic.</span>
 <!--l. 55--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>Suppose \(f\) is holomorphic near \(z_0\). By Theorem <a 
-href="#x1-1002r2">1.2<!--tex4ht:ref: intformula --></a> we have \[ f(z) = \frac{1}{2\pi i}\int _C\frac{f(\zeta )}{\zeta -z}d\zeta \] where \(C\) is a small
-circle centered around \(z_0\), and \(z\) is inside the disk. Additionally \[ \frac{1}{\zeta -z} = \frac{1}{\zeta -z_0}\frac{1}{1-\frac{z-z_0}{\zeta - z_0}} \] and since \(z\) is inside the
-                                                                                  
-
-                                                                                  
-circle and \(\zeta \) is on the boundary, so we can expand as \[ \frac{1}{1-\frac{z-z_0}{\zeta - z_0}} = \sum _0^\infty \Big (\frac{z-z_0}{\zeta -z_0}\Big )^n \] which converges uniformly for
-all \(\zeta \in C\). Then from uniform convergence we switch the sum and integral and get \[ f(z) = \sum _0^\infty \frac{1}{2\pi i} \int _C \frac{f(\zeta )}{(\zeta -z_0)^{n+1}}d\zeta (z-z_0)^n = \sum _0^\infty \frac{1}{n!}f^{(n)}(z_0)(z-z_0)^n \] <span class="qed"><span 
+href="#x1-1002r2">1.2<!--tex4ht:ref: intformula --></a> we have \[ f(z) = \frac{1}{2\pi i}\int _C\frac{f(\zeta )}{\zeta -z}d\zeta \] where \(C\) is a small circle
+centered around \(z_0\), and \(z\) is inside the disk. Additionally \[ \frac{1}{\zeta -z} = \frac{1}{\zeta -z_0}\frac{1}{1-\frac{z-z_0}{\zeta - z_0}} \] and since \(z\) is inside the circle and
+\(\zeta \) is on the boundary, so we can expand as \[ \frac{1}{1-\frac{z-z_0}{\zeta - z_0}} = \sum _0^\infty \Big (\frac{z-z_0}{\zeta -z_0}\Big )^n \] which converges uniformly for all \(\zeta \in C\). Then from
+uniform convergence we switch the sum and integral and get \[ f(z) = \sum _0^\infty \frac{1}{2\pi i} \int _C \frac{f(\zeta )}{(\zeta -z_0)^{n+1}}d\zeta (z-z_0)^n = \sum _0^\infty \frac{1}{n!}f^{(n)}(z_0)(z-z_0)^n \] <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 74--><p class="indent" >  We can use the Cauchy Inequalities to deduce that a non-constant entire &#x0028;ie.
-holomorphic on \(\CC \)&#x0029; function is not bounded.
+<!--l. 74--><p class="indent" >  We can use the Cauchy Inequalities to deduce that a non-constant entire &#x0028;ie. holomorphic on \(\CC \)&#x0029;
+function is not bounded.
 </p>
   <div class="newtheorem">
 <!--l. 76--><p class="noindent" ><span class="head">
 <a 
  id="x1-1005r5"></a>
+                                                                                         
+                                                                                         
 <span 
 class="cmbx-12">Corollary 1.5 </span>&#x0028;Liouville&#x2019;s Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
@@ -336,9 +347,9 @@ class="cmti-12">is constant.</span>
   <div class="proof">
 <!--l. 80--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Fix \(z\) arbitrary. Let \(B\) be the bound on \(f\). Integrate around a large circle centered
-at \(z\) and use the Cauchy inequalities to get \(|f'(z)| \leq \frac{B}{R}\). Then letting \(R\) tend to in&#xFB01;nity, we get \(f'(z) = 0\) so
-\(f\) is constant by Corollary <a 
+class="cmti-12">Proof.</span> </span>Fix \(z\) arbitrary. Let \(B\) be the bound on \(f\). Integrate around a large circle centered at \(z\) and
+use the Cauchy inequalities to get \(|f'(z)| \leq \frac{B}{R}\). Then letting \(R\) tend to in&#xFB01;nity, we get \(f'(z) = 0\) so \(f\) is constant by
+Corollary <a 
 href="#x1-1004r4">1.4<!--tex4ht:ref: holanalytic --></a>. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -351,22 +362,19 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <span 
 class="cmbx-12">Theorem 1.6.</span>  </span> <span 
 class="cmti-12">Suppose</span> \(f\) <span 
-class="cmti-12">is holomorphic on a connected open set, and the set of</span>
+class="cmti-12">is holomorphic on a connected open set, and the set of zeros has</span>
 <span 
-class="cmti-12">zeros has a limit point, then</span> \(f = 0\)<span 
+class="cmti-12">a limit point, then</span> \(f = 0\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 87--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
 <span 
-class="cmti-12">Proof.</span> </span>Take a limit point \(z_0\) of the set of zeros of \(f\), and write \(f(z) = \sum _i^\infty a_n(z-z_0)^n\), where \(a_i \neq 0\). Then \[ f(z) = a_i(z-z_0)^i(1+g(z-z_0)) \] where \(g\) is
-analytic near \(z_0\) and \(g(z-z_0)\) goes to \(0\) as \(z \to z_0\). Then take a sequence of points \(\neq z_0\) converging to \(z_0\). But
-by the formula above, some of these points cannot be \(0\) as \(1+g(z-z_0)\) is nonzero near \(z_0\). Then \(f\) is
-\(0\) near \(z_0\). This shows that the set of limit points of the zeros of \(f\) is open. But it&#x2019;s also
-closed and \(f\) is holomorphic on a connected set. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Take a limit point \(z_0\) of the set of zeros of \(f\), and write \(f(z) = \sum _i^\infty a_n(z-z_0)^n\), where \(a_i \neq 0\). Then \[ f(z) = a_i(z-z_0)^i(1+g(z-z_0)) \] where \(g\) is analytic
+near \(z_0\) and \(g(z-z_0)\) goes to \(0\) as \(z \to z_0\). Then take a sequence of points \(\neq z_0\) converging to \(z_0\). But by the formula
+above, some of these points cannot be \(0\) as \(1+g(z-z_0)\) is nonzero near \(z_0\). Then \(f\) is \(0\) near \(z_0\). This shows that
+the set of limit points of the zeros of \(f\) is open. But it&#x2019;s also closed and \(f\) is holomorphic on a
+connected set. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -385,6 +393,8 @@ class="cmti-12">connected open set such that they agree on a set with a limit po
 <span 
 class="cmti-12">same.</span>
 </p>
+                                                                                         
+                                                                                         
   <div class="proof">
 <!--l. 97--><p class="indent" >  <span class="head">
 <span 
@@ -394,36 +404,32 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 101--><p class="indent" >  Analytic continuation is an important principle used to extend functions to larger parts
-of \(\CC \) by de&#xFB01;ning it over a small region and trying to extend it. One of the ways functions can
-be extended is the symmetry principle and in particular the Schwarz re&#xFB02;ection principle.
-Here is a converse of Goursat&#x2019;s Theorem that we will use to prove the symmetry
+<!--l. 101--><p class="indent" >  Analytic continuation is an important principle used to extend functions to larger parts of \(\CC \)
+by de&#xFB01;ning it over a small region and trying to extend it. One of the ways functions
+can be extended is the symmetry principle and in particular the Schwarz re&#xFB02;ection
+principle. Here is a converse of Goursat&#x2019;s Theorem that we will use to prove the symmetry
 principle.
 </p>
   <div class="newtheorem">
 <!--l. 103--><p class="noindent" ><span class="head">
 <a 
  id="x1-1008r8"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Theorem 1.8 </span>&#x0028;Morera&#x2019;s Theorem&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
 class="cmti-12">If</span> \(f\) <span 
 class="cmti-12">is continuous on</span> \(\Omega \) <span 
 class="cmti-12">and for any triangle</span> \(T\) <span 
-class="cmti-12">we</span>
+class="cmti-12">we have</span> \(\int _Tf(z)dz = 0\)
 <span 
-class="cmti-12">have</span> \(\int _Tf(z)dz = 0\) <span 
 class="cmti-12">then</span> \(f\) <span 
 class="cmti-12">is holomorphic.</span>
 </p>
   <div class="proof">
 <!--l. 107--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>By the proof of Goursat&#x2019;s Theorem, \(f\) has a primitive, and so the derivative of
-this primitive, \(f\), is by Corollary <a 
+class="cmti-12">Proof.</span> </span>By the proof of Goursat&#x2019;s Theorem, \(f\) has a primitive, and so the derivative of this
+primitive, \(f\), is by Corollary <a 
 href="#x1-1004r4">1.4<!--tex4ht:ref: holanalytic --></a> also holomorphic. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -445,27 +451,26 @@ class="cmti-12">are holomorphic functions such</span>
 <span 
 class="cmti-12">that</span> \(f^+\) <span 
 class="cmti-12">is holomorphic on a region of the upper half-plane, and</span> \(f^-\) <span 
-class="cmti-12">is holomorphic on the lower</span>
+class="cmti-12">is holomorphic on the</span>
 <span 
-class="cmti-12">half-plane such that they can be extended continuously to an interval of</span> \(\RR \) <span 
-class="cmti-12">such that they</span>
+class="cmti-12">lower half-plane such that they can be extended continuously to an interval of</span> \(\RR \) <span 
+class="cmti-12">such that</span>
+                                                                                         
+                                                                                         
 <span 
-class="cmti-12">agree on the boundary, then they can be extended to a holomorphic function on the</span>
+class="cmti-12">they agree on the boundary, then they can be extended to a holomorphic function on the</span>
 <span 
 class="cmti-12">union.</span>
 </p>
   <div class="proof">
 <!--l. 115--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>For any triangle in the union of the regions, we can split it into a bunch of
-triangles in the region where \(f^+\) and \(f^-\) are continuous &#x0028;and possibly also the boundary&#x0029;.
-Then we can approximate the triangles with ones in the interior &#x0028;where \(f^-\) and \(f^+\) are
-holomorphic&#x0029; and by Goursat&#x2019;s Theorem, the integral on these triangles is \(0\), so by
-continuity the integral on the triangles that do hit the boundary are also \(0\). Then any
-                                                                                  
-
-                                                                                  
-triangle&#x2019;s integral is \(0\), so the result follows from Theorem <a 
+class="cmti-12">Proof.</span> </span>For any triangle in the union of the regions, we can split it into a bunch of triangles
+in the region where \(f^+\) and \(f^-\) are continuous &#x0028;and possibly also the boundary&#x0029;. Then we can
+approximate the triangles with ones in the interior &#x0028;where \(f^-\) and \(f^+\) are holomorphic&#x0029; and by
+Goursat&#x2019;s Theorem, the integral on these triangles is \(0\), so by continuity the integral on the
+triangles that do hit the boundary are also \(0\). Then any triangle&#x2019;s integral is \(0\), so the result
+follows from Theorem <a 
 href="#x1-1008r8">1.8<!--tex4ht:ref: morera --></a>. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
@@ -482,11 +487,11 @@ class="cmbx-12">Theorem 1.10 </span>&#x0028;Schwarz re&#xFB02;ection principle&#
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Suppose that</span> \(f\) <span 
 class="cmti-12">is holomorphic on some</span> \(\Omega \) <span 
-class="cmti-12">in</span>
+class="cmti-12">in the upper</span>
 <span 
-class="cmti-12">the upper half-plane, and extends continuously to a real-valued function on an interval on</span>
+class="cmti-12">half-plane, and extends continuously to a real-valued function on an interval on the</span>
 <span 
-class="cmti-12">the boundary,</span> \(I\)<span 
+class="cmti-12">boundary,</span> \(I\)<span 
 class="cmti-12">. Then</span> \(f\) <span 
 class="cmti-12">can be extended to a holomorphic function on the region</span> \(\Omega \cup -\Omega \cup I\)<span 
 class="cmti-12">, where</span>
@@ -504,24 +509,22 @@ class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Meromorphic Functions</h3>
-<!--l. 127--><p class="noindent" >Sometimes we don&#x2019;t want to require such a strong condition as holomorphicity, but would
-rather have a function that is &#x201D;almost&#x201D; holomorphic, or meromorphic. I o&#xFB00;er two ways to
-think about this. One way is that a function can have three types of singularities:
-removable singularities, poles, and essential singularities. Removable singularities are as
-their name suggests removable &#x0028;ie the function can be extended to &#xFB01;ll in the hole&#x0029;.
-Essential singularities are wild, we would not like our notion of meromorphic to allow this.
-Poles, however, are quite reasonable and interesting singularities, hence we can allow
-these. Another way to think about meromorphic functions is as holomorphic
-functions, except these no longer land in the complex plane. Instead, we add a
-                                                                                  
-
-                                                                                  
-point at in&#xFB01;nity to \(\CC \), and call this \(\PP ^1\), the Riemann sphere. This has a complex
-analytic structure: it can be thought of as two open disks in \(\CC \) glued together. Then
-a meromorphic function is a holomorphic function from an open subset of \(\CC \) to
+<!--l. 127--><p class="noindent" >Sometimes we don&#x2019;t want to require such a strong condition as holomorphicity, but would rather
+have a function that is &#x201D;almost&#x201D; holomorphic, or meromorphic. I o&#xFB00;er two ways to think about
+                                                                                         
+                                                                                         
+this. One way is that a function can have three types of singularities: removable singularities, poles,
+and essential singularities. Removable singularities are as their name suggests removable &#x0028;ie the
+function can be extended to &#xFB01;ll in the hole&#x0029;. Essential singularities are wild, we would not
+like our notion of meromorphic to allow this. Poles, however, are quite reasonable and
+interesting singularities, hence we can allow these. Another way to think about meromorphic
+functions is as holomorphic functions, except these no longer land in the complex plane.
+Instead, we add a point at in&#xFB01;nity to \(\CC \), and call this \(\PP ^1\), the Riemann sphere. This has a
+complex analytic structure: it can be thought of as two open disks in \(\CC \) glued together.
+Then a meromorphic function is a holomorphic function from an open subset of \(\CC \) to
 \(\PP ^1\).
-</p><!--l. 129--><p class="indent" >  First let&#x2019;s study singularities. A singularity is a point such that \(f\) is de&#xFB01;ned around the
-point but not on that point. We have a few possibilities:
+</p><!--l. 129--><p class="indent" >  First let&#x2019;s study singularities. A singularity is a point such that \(f\) is de&#xFB01;ned around the point but
+not on that point. We have a few possibilities:
 </p>
   <div class="newtheorem">
 <!--l. 131--><p class="noindent" ><span class="head">
@@ -534,18 +537,18 @@ class="cmti-12">is </span><span
 class="cmbxti-10x-x-120">removable </span><span 
 class="cmti-12">if</span> \(f\) <span 
 class="cmti-12">is bounded near</span> \(z_0\)<span 
-class="cmti-12">. A singularity is</span>
+class="cmti-12">. A singularity is a </span><span 
+class="cmbxti-10x-x-120">pole</span>
 <span 
-class="cmti-12">a </span><span 
-class="cmbxti-10x-x-120">pole of order</span> \(i\) <span 
+class="cmbxti-10x-x-120">of order</span> \(i\) <span 
 class="cmti-12">if</span> \((z-z_0)^if\) <span 
 class="cmti-12">is bounded near</span> \(z_0\) <span 
 class="cmti-12">for some</span> \(i\)<span 
 class="cmti-12">. A singularity is </span><span 
 class="cmbxti-10x-x-120">essential </span><span 
-class="cmti-12">if it is</span>
+class="cmti-12">if it is neither of the</span>
 <span 
-class="cmti-12">neither of the other two.</span>
+class="cmti-12">other two.</span>
 </p>
   </div>
 <!--l. 135--><p class="indent" >  Now we can de&#xFB01;ne meromorphic:
@@ -558,13 +561,11 @@ class="cmti-12">neither of the other two.</span>
 class="cmbx-12">De&#xFB01;nition 2.2.</span>  </span>\(f\) <span 
 class="cmti-12">is meromorphic on an open set</span> \(\Omega \) <span 
 class="cmti-12">if there is a set of points</span> \(X \subset \Omega \) <span 
-class="cmti-12">without</span>
+class="cmti-12">without a limit</span>
 <span 
-class="cmti-12">a limit point such that</span> \(f\) <span 
+class="cmti-12">point such that</span> \(f\) <span 
 class="cmti-12">has removable singularities and poles on</span> \(X\) <span 
-class="cmti-12">and is holomorphic</span>
-<span 
-class="cmti-12">on</span> \(\Omega -X\)<span 
+class="cmti-12">and is holomorphic on</span> \(\Omega -X\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
@@ -578,13 +579,11 @@ class="cmti-12">Removable singularities are removable.</span>
 </p>
   <div class="proof">
 <!--l. 144--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <span 
-class="cmti-12">Proof.</span> </span>Suppose \(f\) is bounded near \(z_0\) &#x0028;WLOG set \(z_0 = 0\)&#x0029;. Then we have \(z^2f\) &#x0028;extended to be \(0\) at
-\(z_0\)&#x0029; is holomorphic near \(0\) but also at \(0\). Then \(f\) is of the form \[ \frac{a_{-2}}{z^2} + \frac{a_{-1}}{z} + a_0 + \cdots \] \(f\) is bounded near zero so \(a_{-2}\)
-and \(a_{-1}\) are \(0\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Suppose \(f\) is bounded near \(z_0\) &#x0028;WLOG set \(z_0 = 0\)&#x0029;. Then we have \(z^2f\) &#x0028;extended to be \(0\) at \(z_0\)&#x0029; is
+holomorphic near \(0\) but also at \(0\). Then \(f\) is of the form \[ \frac{a_{-2}}{z^2} + \frac{a_{-1}}{z} + a_0 + \cdots \] \(f\) is bounded near zero so \(a_{-2}\) and \(a_{-1}\) are \(0\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -609,10 +608,10 @@ class="cmti-12">.</span>
 <!--l. 156--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By Theorem <a 
-href="#x1-2003r3">2.3<!--tex4ht:ref: remove --></a> we have that \(f\) having a pole of order \(n\) at \(z_0\) is equivalent to \(f(z) = (z-z_0)^{-n}h(z)\) for
-some function \(h\) holomorphic near \(z_0\) that is nonzero at \(z_0\). Then \(f\) is meromorphic implies
-\(1/f = (z-z_0)^{n}(1/h)(z)\) is holomorphic. Conversely if \(1/f\) is holomorphic we can write \(1/f\) in the same way, and
-invert it to get \(f\) in the form we want. <span class="qed"><span 
+href="#x1-2003r3">2.3<!--tex4ht:ref: remove --></a> we have that \(f\) having a pole of order \(n\) at \(z_0\) is equivalent to \(f(z) = (z-z_0)^{-n}h(z)\) for some
+function \(h\) holomorphic near \(z_0\) that is nonzero at \(z_0\). Then \(f\) is meromorphic implies \(1/f = (z-z_0)^{n}(1/h)(z)\) is holomorphic.
+Conversely if \(1/f\) is holomorphic we can write \(1/f\) in the same way, and invert it to get \(f\) in the form
+we want. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -620,9 +619,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

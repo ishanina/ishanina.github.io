@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -223,41 +235,37 @@ class="cmr-10">ISHAN LEVY</span>
   </span></div>
 <div class="submaketitle">
 </div>
-  </div>What are all the vector bundles on \(\PP ^1\)? There are several related questions of this sort.
-One can ask for a complete classi&#xFB01;cation of vector bundles, or one can ask for something
+  </div>What are all the vector bundles on \(\PP ^1\)? There are several related questions of this sort. One
+can ask for a complete classi&#xFB01;cation of vector bundles, or one can ask for something
 easier such as the \(K\)-theory. As for what one can mean by vector bundles, they can be
 topological or analytic/algebraic. One would also like to know something about the
 structure on vector bundles: for example what does the tensor product do to isomorphism
 classes?
-<!--l. 11--><p class="indent" >  \(\PP ^1\) is the easiest nontrivial example of a space for which you can ask these questions, for
-which there is a nice answer.
+<!--l. 11--><p class="indent" >  \(\PP ^1\) is the easiest nontrivial example of a space for which you can ask these questions, for which
+there is a nice answer.
 </p><!--l. 13--><p class="indent" >  Aside from the trivial bundle, the basic example of a vector bundle on \(\PP ^1\) is \(\cO (-1)\), called the
-tautological bundle. If \(\PP ^1\) is the space of lines in a \(2\)-dimensional vector space, the &#xFB01;bre at a
-point for \(\cO (-1)\) is &#x0028;tautologically&#x0029; that line. The notation is meant to tell you that it is
-the dual of a bundle called \(\cO (1)\), called the hyperplane bundle, where the global
-&#x0028;algebraic&#x0029; sections correspond to hyperplanes &#x0028;i.e points&#x0029; in \(\PP ^1\). More generally
-\(\cO (n) = \cO (1)^{\otimes n}\).
+tautological bundle. If \(\PP ^1\) is the space of lines in a \(2\)-dimensional vector space, the &#xFB01;bre at a point for \(\cO (-1)\)
+is &#x0028;tautologically&#x0029; that line. The notation is meant to tell you that it is the dual of a bundle called \(\cO (1)\),
+called the hyperplane bundle, where the global &#x0028;algebraic&#x0029; sections correspond to hyperplanes &#x0028;i.e
+points&#x0029; in \(\PP ^1\). More generally \(\cO (n) = \cO (1)^{\otimes n}\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Topological Vector Bundles</h3>
-<!--l. 15--><p class="noindent" >Topologically, \(\PP ^1\) is \(S^2\). Since \(S^2\) is a suspension, complex vector bundles on \(S^2\) are given
-by \(\pi _2(BGL_n(\CC ))=\pi _1(GL_n(\CC ))=\ZZ \). The last equality can be interpreted as looking at how the determinant of
-a matrix varies in a loop. In particular, one &#xFB01;nds that \(\cO (1)\) is the generator when
-\(n=1\), and adding copies of the trivial bundle gives the generators for \(n&gt;1\). Using our
-classi&#xFB01;cation we get the relation \(\cO (n)\oplus \cO (m)=\cO (n')\oplus \cO (m')\) whenever \(n+m=n'+m'\). Then one &#xFB01;nds that the semiring of vector
-bundles is \(\NN [\gamma ,\gamma ^{-1}]/\gamma ^n+\gamma ^m=\gamma ^{n'}+\gamma ^{m'}\) for \(n+m=n'+m'\), where \(\gamma \) is \(\cO (1)\). Taking the Grothendieck group, this simpli&#xFB01;es to
-                                                                                  
-
-                                                                                  
+<!--l. 15--><p class="noindent" >Topologically, \(\PP ^1\) is \(S^2\). Since \(S^2\) is a suspension, complex vector bundles on \(S^2\) are given by \(\pi _2(BGL_n(\CC ))=\pi _1(GL_n(\CC ))=\ZZ \). The last
+equality can be interpreted as looking at how the determinant of a matrix varies in a loop. In
+particular, one &#xFB01;nds that \(\cO (1)\) is the generator when \(n=1\), and adding copies of the trivial bundle gives the
+generators for \(n&gt;1\). Using our classi&#xFB01;cation we get the relation \(\cO (n)\oplus \cO (m)=\cO (n')\oplus \cO (m')\) whenever \(n+m=n'+m'\). Then one &#xFB01;nds that the
+semiring of vector bundles is \(\NN [\gamma ,\gamma ^{-1}]/\gamma ^n+\gamma ^m=\gamma ^{n'}+\gamma ^{m'}\) for \(n+m=n'+m'\), where \(\gamma \) is \(\cO (1)\). Taking the Grothendieck group, this simpli&#xFB01;es to
 \(K_0(\PP ^1)= \ZZ [\gamma ]/(\gamma -1)^2\).
 </p><!--l. 17--><p class="indent" >  As a remark, we have done this calculation very sloppily. If you are really careful, the
-identi&#xFB01;cation \(K_0(\PP ^1)= \ZZ [\gamma ]/(\gamma -1)^2\) is so canonical that it can be done in families i.e. for a line bundle \(\xi \) over a
-space \(X\) one can show \(K_0(\PP (\xi +1)) = K_0(X)[\gamma ]/(\gamma -1)(\gamma \xi -1)\) &#x0028;see Atiyah&#x2019;s K-Theory book&#x0029;. When \(\xi \) is trivial, this gives
-a Kunneth formula in K-theory that gives Bott periodicity, with \(\gamma -1\) as the Bott
-class.
+identi&#xFB01;cation \(K_0(\PP ^1)= \ZZ [\gamma ]/(\gamma -1)^2\) is so canonical that it can be done in families i.e. for a line bundle \(\xi \) over a space \(X\) one
+can show \(K_0(\PP (\xi +1)) = K_0(X)[\gamma ]/(\gamma -1)(\gamma \xi -1)\) &#x0028;see Atiyah&#x2019;s K-Theory book&#x0029;. When \(\xi \) is trivial, this gives a Kunneth formula in
+K-theory that gives Bott periodicity, with \(\gamma -1\) as the Bott class.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Algebraic Vector Bundles</h3>
+                                                                                         
+                                                                                         
 <!--l. 19--><p class="noindent" >Algebraically the classi&#xFB01;cation is a bit more subtle. The goal is to prove:
 </p>
   <div class="newtheorem">
@@ -269,13 +277,13 @@ class="cmbx-12">Theorem 2.1.</span>  </span><span
 class="cmti-12">A vector bundle on</span> \(\PP ^1_k\) <span 
 class="cmti-12">is isomorphic to</span> \(\oplus _i\cO (n_i)\)<span 
 class="cmti-12">. Moreover the collection</span> \(n_i\) <span 
-class="cmti-12">are</span>
+class="cmti-12">are uniquely</span>
 <span 
-class="cmti-12">uniquely determined &#x0028;with multiplicity&#x0029;.</span>
+class="cmti-12">determined &#x0028;with multiplicity&#x0029;.</span>
 </p>
   </div>
-<!--l. 23--><p class="indent" >  The fact that these are distinct is easy. One can observe that each of these vector
-bundles \(\sF \) is determined by \(H^0(\PP ^1,\sF \otimes \cO (n))\).
+<!--l. 23--><p class="indent" >  The fact that these are distinct is easy. One can observe that each of these vector bundles \(\sF \) is
+determined by \(H^0(\PP ^1,\sF \otimes \cO (n))\).
 </p><!--l. 25--><p class="indent" >  Moreover, we will also show
 </p>
   <div class="newtheorem">
@@ -287,76 +295,66 @@ class="cmbx-12">Theorem 2.2.</span>  </span>\(K_0(\PP ^1)=\ZZ [\gamma ]/(\gamma 
 </p>
   </div>
 <!--l. 31--><p class="indent" >  This is the same result as in the topological setting.
-</p><!--l. 33--><p class="indent" >  There are 100 variations on the proof of these theorems, but we will start with an
-extremely elementary approach. Given any locally free sheaf on \(\PP ^1\), it must be trivial on the
-two open a&#xFB03;nes \(\AA ^1_0\) and \(\AA ^1_1\). Thus it is determined by a transition matrix lying in \(\GL _n(k[x,x^{-1}])\). When this
-transition matrix is \(x^n\), we get the line bundle \(\cO (n)\). However this transition matrix determined
-the line bundle only up to changing the trivializations on the a&#xFB03;ne charts. Algebraically
-                                                                                  
-
-                                                                                  
-this shows that what we are trying to study is the double cosets: \[ \GL _n(k[x])\backslash \GL _n(k[x,x^{-1}])/\GL _n(k[x^{-1}])\] This is a really concrete
-linear algebra problem: we want to study invertible matricies with coe&#xFB03;cients in \(k[x,x^{-1}]\) where we
-are allowed to do row operations with \(k[x]\) coe&#xFB03;cients and column operations with \(k[x^{-1}]\)
+</p><!--l. 33--><p class="indent" >  There are 100 variations on the proof of these theorems, but we will start with an extremely
+elementary approach. Given any locally free sheaf on \(\PP ^1\), it must be trivial on the two open
+a&#xFB03;nes \(\AA ^1_0\) and \(\AA ^1_1\). Thus it is determined by a transition matrix lying in \(\GL _n(k[x,x^{-1}])\). When this transition
+matrix is \(x^n\), we get the line bundle \(\cO (n)\). However this transition matrix determined the line
+bundle only up to changing the trivializations on the a&#xFB03;ne charts. Algebraically this
+shows that what we are trying to study is the double cosets: \[ \GL _n(k[x])\backslash \GL _n(k[x,x^{-1}])/\GL _n(k[x^{-1}])\] This is a really concrete
+linear algebra problem: we want to study invertible matricies with coe&#xFB03;cients in \(k[x,x^{-1}]\) where
+we are allowed to do row operations with \(k[x]\) coe&#xFB03;cients and column operations with \(k[x^{-1}]\)
 coe&#xFB03;cients.
-</p><!--l. 37--><p class="indent" >  Given such a matrix, we can without loss of generality multiply all the entries by
-\(x^n\) so that all the entries really lie in \(k[x]\) &#x0028;this is just for notational/psychological
-convenience&#x0029;. This amounts to tensoring our vector bundle with a large power of
-\(\cO (n)\).
-</p><!--l. 39--><p class="indent" >  Now via the Euclidean algorithm &#x0028;or really because \(k[x]\) is a PID&#x0029;, we can do row operations
-so that our matrix becomes upper triangular. Moreover, since the determinant must be of
-the form \(cx^n,c\in k\) and all the entries are polynomials, each diagonal entry must look like \(c'x^l\). We can
-scale the rows to eliminate the coe&#xFB03;cient \(c'\). Thus we have reduced to considering a matrix
-that looks like \[\begin{bmatrix} x^{f_1} &amp; A_{12} &amp; A_{13} &amp;\dots &amp; A_{1l}\\ &amp; x^{f_2} &amp; A_{23} &amp; \dots &amp; A_{2l}\\ &amp; &amp; x^{f_3} &amp; \dots &amp; A_{2l}\\ &amp; &amp; &amp; \ddots &amp; \vdots \\ &amp; &amp; &amp; &amp; x^{f_l} \end{bmatrix}\] Note that this already proves something interesting, namely
-that there is a &#xFB01;ltration of our vector bundle whose associated graded pieces are
-\(\cO (f_i)\). These extensions can be nontrivial, but we will show that by changing the
-&#xFB01;ltration, we can make it split. From now on assume \(j&gt;i\). We can do more row
-operations to further assume that \(A_{ij}\) has no monomials of power larger than \(x^{f_j}\).
-Futhermore by doing <span 
-class="cmti-12">column </span>operations, we can force \(A_{ij}\) to vanish modulo \(x^{f_{i}+1}\). If we
-have for example \(f_{j}\leq f_i\), then these two conditions on \(A_{ij}\) force it to vanish, showing the
+</p><!--l. 37--><p class="indent" >  Given such a matrix, we can without loss of generality multiply all the entries by \(x^n\) so that all the
+entries really lie in \(k[x]\) &#x0028;this is just for notational/psychological convenience&#x0029;. This amounts to
+tensoring our vector bundle with a large power of \(\cO (n)\).
+</p><!--l. 39--><p class="indent" >  Now via the Euclidean algorithm &#x0028;or really because \(k[x]\) is a PID&#x0029;, we can do row operations so that
+our matrix becomes upper triangular. Moreover, since the determinant must be of the form \(cx^n,c\in k\) and all
+the entries are polynomials, each diagonal entry must look like \(c'x^l\). We can scale the rows to eliminate
+the coe&#xFB03;cient \(c'\). Thus we have reduced to considering a matrix that looks like \[\begin{bmatrix} x^{f_1} &amp; A_{12} &amp; A_{13} &amp;\dots &amp; A_{1l}\\ &amp; x^{f_2} &amp; A_{23} &amp; \dots &amp; A_{2l}\\ &amp; &amp; x^{f_3} &amp; \dots &amp; A_{2l}\\ &amp; &amp; &amp; \ddots &amp; \vdots \\ &amp; &amp; &amp; &amp; x^{f_l} \end{bmatrix}\] Note that this
+already proves something interesting, namely that there is a &#xFB01;ltration of our vector bundle
+whose associated graded pieces are \(\cO (f_i)\). These extensions can be nontrivial, but we will
+show that by changing the &#xFB01;ltration, we can make it split. From now on assume \(j&gt;i\). We
+can do more row operations to further assume that \(A_{ij}\) has no monomials of power larger
+                                                                                         
+                                                                                         
+than \(x^{f_j}\). Futhermore by doing <span 
+class="cmti-12">column </span>operations, we can force \(A_{ij}\) to vanish modulo \(x^{f_{i}+1}\). If
+we have for example \(f_{j}\leq f_i\), then these two conditions on \(A_{ij}\) force it to vanish, showing the
 splitting.
-</p><!--l. 50--><p class="indent" >  Thus it will su&#xFB03;ce to show that if \(f_{i+1}&gt;f_i\) we can do operations to achieve \(f_{i+1}\leq f_i\) &#x0028;from which it will
-follow that \(f_j\leq f_i\)&#x0029;. We can arrange this by essentially focusing only on the \(2x2\) submatrix: \[\begin{bmatrix} x^{f_i}&amp; A_{i,i+1}\\ &amp; x^{f_{i+1}} \end{bmatrix}\] The
-lowest monomial in \(A_{i,i+1}\) is higher degree than \(x^{f_i}\), so we can simply switch the two columns
-around and rerun our algorithm to make it return to upper triangular form.
-The &#xFB01;rst diagonal entry becomes the gcd of \(A_{i,i+1},x^{f_{i+1}}\), which is a higher power of \(x\) than
-\(f_i\).
-</p><!--l. 57--><p class="indent" >  Observe that this last part of the computation actually shows more, namely that if \(n+m=n'+m'\),
-then \(\cO (n)\oplus \cO (m)\) has a &#xFB01;ltration whose associated graded pieces are \(\cO (n')\) and \(\cO (n')\). This quickly leads to the
-same \(K\)-theory computation as in the topological setting. The only other input
-necessary is the notion of degree, which shows that \(\cO (1)\) is linearly independent from
-\(\cO _{\PP ^1}\).
+</p><!--l. 50--><p class="indent" >  Thus it will su&#xFB03;ce to show that if \(f_{i+1}&gt;f_i\) we can do operations to achieve \(f_{i+1}\leq f_i\) &#x0028;from which it will follow
+that \(f_j\leq f_i\)&#x0029;. We can arrange this by essentially focusing only on the \(2x2\) submatrix: \[\begin{bmatrix} x^{f_i}&amp; A_{i,i+1}\\ &amp; x^{f_{i+1}} \end{bmatrix}\] The lowest monomial
+in \(A_{i,i+1}\) is higher degree than \(x^{f_i}\), so we can simply switch the two columns around and rerun our
+algorithm to make it return to upper triangular form. The &#xFB01;rst diagonal entry becomes the gcd of \(A_{i,i+1},x^{f_{i+1}}\),
+which is a higher power of \(x\) than \(f_i\).
+</p><!--l. 57--><p class="indent" >  Observe that this last part of the computation actually shows more, namely that if \(n+m=n'+m'\), then \(\cO (n)\oplus \cO (m)\) has a
+&#xFB01;ltration whose associated graded pieces are \(\cO (n')\) and \(\cO (n')\). This quickly leads to the same \(K\)-theory
+computation as in the topological setting. The only other input necessary is the notion of degree,
+which shows that \(\cO (1)\) is linearly independent from \(\cO _{\PP ^1}\).
 </p><!--l. 59--><p class="indent" >  Here is an alternate more beautiful proof that gives the &#xFB01;ltration that we want already
 with the property that \(f_{i+1}&gt;f_i\). The di&#xFB00;erence is that it uses cohomlogy instead of plain linear
-algebra. Given a locally free sheaf \(\sF \), we know that \(\sF (n)\) has global sections for \(n&gt;&gt;0\), and one can
-show that it has no global sections for \(n&lt;&lt;0\) &#x0028;either you can use Serre duality, or you can resolve
-\(\sF ^{\vee }(n)\) by sums of line bundles and dualize to make \(\sF (-n)\) embed in something with no global
-sections&#x0029;. Thus there is a critical value \(\sF (n)\) where it obtains global sections. A nonzero global
-                                                                                  
-
-                                                                                  
-section gives a map \(\cO _{\PP ^1} \to \sF (n)\). Taking the cokernel of all global sections, there can be no torsion, or
-else there would be a global section extending to a map from \(\cO (1)\) by examining
-the stalk near the torsion point, contradicting criticality of \(n\). This uses the fact
-that any positive divisor corresponds to \(\cO (m)\) for some \(m&gt;0\), which really requires genus
+algebra. Given a locally free sheaf \(\sF \), we know that \(\sF (n)\) has global sections for \(n&gt;&gt;0\), and one
+can show that it has no global sections for \(n&lt;&lt;0\) &#x0028;either you can use Serre duality, or you
+can resolve \(\sF ^{\vee }(n)\) by sums of line bundles and dualize to make \(\sF (-n)\) embed in something with
+no global sections&#x0029;. Thus there is a critical value \(\sF (n)\) where it obtains global sections. A
+nonzero global section gives a map \(\cO _{\PP ^1} \to \sF (n)\). Taking the cokernel of all global sections, there
+can be no torsion, or else there would be a global section extending to a map from \(\cO (1)\) by
+examining the stalk near the torsion point, contradicting criticality of \(n\). This uses the
+fact that any positive divisor corresponds to \(\cO (m)\) for some \(m&gt;0\), which really requires genus
 \(0\).
-</p><!--l. 61--><p class="indent" >  Thus the quotient is locally free, and by induction on rank it is a sum of line bundles \(\cO (n_i)\).
-This gives the desired &#xFB01;ltration and it su&#xFB03;ces to show that \(n_i&lt;0\), but this follows by examining
-the long exact sequence on cohomology, since \(\sF (n)\) has no global sections and \(H^1(\cO _{\PP ^1})=0\). Once again we
-are just using genus \(0\).
-</p><!--l. 63--><p class="indent" >  There is also a more hands free way to see that the &#xFB01;ltration splits as a direct sum. We
-simply note that for \(n\geq 0\), \(\Ext ^1(\cO (-n),\cO _{\PP ^1}) = \Ext ^1(\cO _{\PP ^1},\cO (n))=H^1(\cO (n))\) vanishes.
-</p><!--l. 65--><p class="indent" >  Vector bundles on \(\PP ^n\) in general don&#x2019;t split as sums of line bundles, but there is a
-cohomological criterion for when they do. Namely, \(\sF \) splits as line bundles i&#xFB00; \(H^i(\sF (m))\) vanishes for
-\(0&lt;i&lt;n\).
+</p><!--l. 61--><p class="indent" >  Thus the quotient is locally free, and by induction on rank it is a sum of line bundles \(\cO (n_i)\). This gives
+the desired &#xFB01;ltration and it su&#xFB03;ces to show that \(n_i&lt;0\), but this follows by examining the long exact
+sequence on cohomology, since \(\sF (n)\) has no global sections and \(H^1(\cO _{\PP ^1})=0\). Once again we are just using genus
+\(0\).
+</p><!--l. 63--><p class="indent" >  There is also a more hands free way to see that the &#xFB01;ltration splits as a direct sum. We simply
+note that for \(n\geq 0\), \(\Ext ^1(\cO (-n),\cO _{\PP ^1}) = \Ext ^1(\cO _{\PP ^1},\cO (n))=H^1(\cO (n))\) vanishes.
+</p><!--l. 65--><p class="indent" >  Vector bundles on \(\PP ^n\) in general don&#x2019;t split as sums of line bundles, but there is a cohomological
+criterion for when they do. Namely, \(\sF \) splits as line bundles i&#xFB00; \(H^i(\sF (m))\) vanishes for \(0&lt;i&lt;n\).
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

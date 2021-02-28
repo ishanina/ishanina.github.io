@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -224,10 +236,10 @@ class="cmr-10">ISHAN LEVY</span>
 <div class="submaketitle">
 </div>
   </div>Two rings are <span 
-class="cmbx-12">Morita equivalent </span>when their category of right modules are the same.
-An equivalence is automatically additive, since the sum can be described categorically as \(M \xrightarrow{\Delta } M \oplus M \xrightarrow{f \oplus g} M \oplus M \xrightarrow{\nabla } M\).
-Moreover, the notion is only interesting for non-commutative rings as the center of the
-ring can be recovered as the automorphisms of the identity functor. A nontrivial example
+class="cmbx-12">Morita equivalent </span>when their category of right modules are the same. An
+equivalence is automatically additive, since the sum can be described categorically as \(M \xrightarrow{\Delta } M \oplus M \xrightarrow{f \oplus g} M \oplus M \xrightarrow{\nabla } M\).
+Moreover, the notion is only interesting for non-commutative rings as the center of the ring
+can be recovered as the automorphisms of the identity functor. A nontrivial example
 is that for a division ring \(R\), \(\End (R^n)\) is Morita equivalent to \(R\). We will see that in a sense all
 examples are of this form via an alternate characterization of Morita equivalence. A
 <span 
@@ -243,26 +255,23 @@ projective.
 class="cmbx-12">Lemma 0.1.</span>  </span><span 
 class="cmti-12">A projective module</span> \(P\) <span 
 class="cmti-12">is &#xFB01;nitely generated i&#xFB00;</span> \(\Hom (P,-)\) <span 
-class="cmti-12">commutes with direct</span>
-<span 
-class="cmti-12">sums.</span>
+class="cmti-12">commutes with direct sums.</span>
 </p>
   <div class="proof">
 <!--l. 17--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>If it is &#xFB01;nitely generated, it is a summand of a &#xFB01;nitely generated free module,
-and \(\Hom \) commutes with sums for &#xFB01;nitely generated free modules. Conversely if \(\Hom (P,-)\) commutes
-                                                                                  
-
-                                                                                  
-with directs sums, note that there is a surjection from a free module that splits, and
-the splitting factors through a &#xFB01;nitely generated free module by assumption. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>If it is &#xFB01;nitely generated, it is a summand of a &#xFB01;nitely generated free module, and
+\(\Hom \) commutes with sums for &#xFB01;nitely generated free modules. Conversely if \(\Hom (P,-)\) commutes with
+directs sums, note that there is a surjection from a free module that splits, and the splitting
+factors through a &#xFB01;nitely generated free module by assumption. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 21--><p class="indent" >  The next thing we will need is the Eilenberg-Watts theorem, which is a kind of
-representability theorem:
+                                                                                         
+                                                                                         
+<!--l. 21--><p class="indent" >  The next thing we will need is the Eilenberg-Watts theorem, which is a kind of representability
+theorem:
 </p>
   <div class="newtheorem">
 <!--l. 23--><p class="noindent" ><span class="head">
@@ -271,25 +280,23 @@ representability theorem:
 <span 
 class="cmbx-12">Theorem 0.2.</span>  </span><span 
 class="cmti-12">The natural functor</span> \(R\text{-} \Mod \text{-} S \to \Hom _{ccon}(\Mod \text{-} R,\Mod \text{-} S)\) <span 
-class="cmti-12">given by the tensor product is an equivalence,</span>
+class="cmti-12">given by the tensor product is an equivalence, where</span> \(ccon\)
 <span 
-class="cmti-12">where</span> \(ccon\) <span 
 class="cmti-12">denotes the cocontinuous functors.</span>
 </p>
   <div class="proof">
 <!--l. 27--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>It is not hard to see that the maps is well de&#xFB01;ned. We will &#xFB01;rst see the functor
-is essentially surjective. Given a functor \(F\), consider \(F(R)\), which has a natural bi-module
-structure by using the \(R\)-module homomorphism given by left multiplication. Now
-there is a natural isomorphism \(\oplus _i R_i \otimes F(R) \cong F(\oplus _i R_i)\) because both functors commute with direct sums.
-There is a natural transformation \(M\otimes F(R) \to F(M)\) given by \(M \otimes F(R) \cong \Hom (R,M) \otimes F(R) \to F(M)\) where the last map is the natural
-one  given  by  applying  \(F\)  and  evaluating.  It  is  clearly  a  natural  isomorphism  for
-free modules as both functors preserve direct sums. In general, since both functors
-preserve cokernels and any module is a cokernel of a morphism of free modules,
-We see it is a natural isomorphism. Faithfulness is clear, and fullness follows again
-from the fact that both functors preserve sums and cokernels, so what happens on \(R\)
-determines everything. <span class="qed"><span 
+is  essentially  surjective.  Given  a  functor  \(F\),  consider  \(F(R)\),  which  has  a  natural  bi-module
+structure by using the \(R\)-module homomorphism given by left multiplication. Now there is a
+natural isomorphism \(\oplus _i R_i \otimes F(R) \cong F(\oplus _i R_i)\) because both functors commute with direct sums. There is a natural
+transformation \(M\otimes F(R) \to F(M)\) given by \(M \otimes F(R) \cong \Hom (R,M) \otimes F(R) \to F(M)\) where the last map is the natural one given by applying \(F\) and
+evaluating. It is clearly a natural isomorphism for free modules as both functors preserve
+direct sums. In general, since both functors preserve cokernels and any module is a cokernel
+of a morphism of free modules, We see it is a natural isomorphism. Faithfulness is clear, and
+fullness follows again from the fact that both functors preserve sums and cokernels, so what
+happens on \(R\) determines everything. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -298,31 +305,28 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 32--><p class="noindent" ><span class="head">
 <a 
  id="x1-4r3"></a>
-                                                                                  
-
-                                                                                  
 <span 
-class="cmbx-12">Theorem 0.3.</span>  </span>\(S\)  <span 
-class="cmti-12">is  Morita  equivalent  to</span>  \(R\)  <span 
-class="cmti-12">i&#xFB00;  there  is  a  left</span>  \(R\)<span 
-class="cmti-12">-module</span>  \(P\)  <span 
-class="cmti-12">that  is  a</span>
+class="cmbx-12">Theorem 0.3.</span>  </span>\(S\) <span 
+class="cmti-12">is Morita equivalent to</span> \(R\) <span 
+class="cmti-12">i&#xFB00; there is a left</span> \(R\)<span 
+class="cmti-12">-module</span> \(P\) <span 
+class="cmti-12">that is a progenerator</span>
 <span 
-class="cmti-12">progenerator such that</span> \(R = \End ^{op}(P)\)<span 
+class="cmti-12">such that</span> \(R = \End ^{op}(P)\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 36--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Since  progenerator  is  a  categorical  notion,  if  \(R\text{-} \Mod \xrightarrow{F} S \text{-} \Mod \)  is  an  equivalence,  \(F(R)\)  is  a
-progenerator in \(S\) and \(R \cong \End ^{op}_R(R) \cong \End ^{op}_{S}(F(R))\). Conversely let \(P\) be a progenerator and consider \(\End _R^{op}(P)\). \(P\) is a \((R\text{-}\End _R^{op}(P))\) bimodule,
-and \(\Hom (P,R)\) is a \((\End _R^{op}(P) \text{-} R)\) bimodule. If \(P \otimes \Hom (P,R) \cong R\) and \(\Hom (P,R) \otimes R \cong \End _R^{op}(P)\), then the tensor products with these bimodules will
-induce an equivalence.
-</p><!--l. 38--><p class="indent" >  There is a natural map \(P \otimes \Hom (P,R) \xrightarrow{\phi } R\). By using the fact that \(P\) is a generator on the maps \(R \xrightarrow{\pi ,0} R/\im \phi \), \(\phi \) is
-surjective. Similarly there is a natural map \(\Hom (P,R) \otimes P \xrightarrow{\varphi } \End _R^{op}(P)\). Note that if \(P\oplus Q = R^n\), then there is a similar
-map \(\Hom (P\oplus Q,R)\otimes (P \oplus Q) \to \End _R^{op}(P \oplus Q)\) that is an isomorphism, and by restricting to the corresponding summands, \(\varphi \) is
-an isomorphism. If \(\sum _j x_j \otimes g_j\) is an element that gets sent to \(1\), any element \(\sum _i p_i \otimes f_i \in P \otimes \Hom (P,R)\) is equal to \(\sum _{i,j} (p_i \otimes f_i) \phi (x_j\otimes g_j) = \sum _{i,j} \phi (p_i\otimes f_i)(x_j\otimes g_j)\), so \(\phi \) is
-injective. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Since progenerator is a categorical notion, if \(R\text{-} \Mod \xrightarrow{F} S \text{-} \Mod \) is an equivalence, \(F(R)\) is a progenerator in \(S\)
+and \(R \cong \End ^{op}_R(R) \cong \End ^{op}_{S}(F(R))\). Conversely let \(P\) be a progenerator and consider \(\End _R^{op}(P)\). \(P\) is a \((R\text{-}\End _R^{op}(P))\) bimodule, and \(\Hom (P,R)\) is a \((\End _R^{op}(P) \text{-} R)\) bimodule.
+If \(P \otimes \Hom (P,R) \cong R\) and \(\Hom (P,R) \otimes R \cong \End _R^{op}(P)\), then the tensor products with these bimodules will induce an equivalence.
+</p><!--l. 38--><p class="indent" >  There is a natural map \(P \otimes \Hom (P,R) \xrightarrow{\phi } R\). By using the fact that \(P\) is a generator on the maps \(R \xrightarrow{\pi ,0} R/\im \phi \), \(\phi \) is surjective.
+Similarly there is a natural map \(\Hom (P,R) \otimes P \xrightarrow{\varphi } \End _R^{op}(P)\). Note that if \(P\oplus Q = R^n\), then there is a similar map \(\Hom (P\oplus Q,R)\otimes (P \oplus Q) \to \End _R^{op}(P \oplus Q)\) that is an
+                                                                                         
+                                                                                         
+isomorphism, and by restricting to the corresponding summands, \(\varphi \) is an isomorphism. If \(\sum _j x_j \otimes g_j\) is
+an element that gets sent to \(1\), any element \(\sum _i p_i \otimes f_i \in P \otimes \Hom (P,R)\) is equal to \(\sum _{i,j} (p_i \otimes f_i) \phi (x_j\otimes g_j) = \sum _{i,j} \phi (p_i\otimes f_i)(x_j\otimes g_j)\), so \(\phi \) is injective. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -334,28 +338,25 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <span 
 class="cmbx-12">Corollary 0.4.</span>  </span>\(R,S\) <span 
 class="cmti-12">have equivalent categories of &#xFB01;nitely generated modules i&#xFB00;</span> \(R,S\) <span 
-class="cmti-12">are</span>
+class="cmti-12">are Morita</span>
 <span 
-class="cmti-12">Morita equivalent.</span>
+class="cmti-12">equivalent.</span>
 </p>
   <div class="proof">
 <!--l. 47--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>If  \(R,S\)  are  Morita  equivalent,  the  equivalence  is  given  by  tensoring  with  a
-&#xFB01;nitely generated module, so the &#xFB01;nitely generated module categories are equivalent.
-Conversely, by running the proof of the theorem above for &#xFB01;nitely generated modules,
-we see that if they are equivalent, there is a progenerator such that \(S\) is the &#x0028;opposite&#x0029;
-endomorphism ring, and so \(R,S\) are Morita equivalent. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>If \(R,S\) are Morita equivalent, the equivalence is given by tensoring with a &#xFB01;nitely generated
+module, so the &#xFB01;nitely generated module categories are equivalent. Conversely, by running the
+proof of the theorem above for &#xFB01;nitely generated modules, we see that if they are equivalent,
+there is a progenerator such that \(S\) is the &#x0028;opposite&#x0029; endomorphism ring, and so \(R,S\) are Morita
+equivalent. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
-                                                                                  
-
-                                                                                  
   </div>
   </div>
-<!--l. 51--><p class="indent" >  Given a &#xFB01;nite dimensional algebra \(A\) over a division ring \(k\), \(A\) might decompose as an \(A\)
-module into the sum of many modules \(e_iA\) where \(e_i\) are idempotents. If the modules \(e_iA\) are
-distinct for maximally chosen \(e_i\), \(A\) is said to be <span 
+<!--l. 51--><p class="indent" >  Given a &#xFB01;nite dimensional algebra \(A\) over a division ring \(k\), \(A\) might decompose as an \(A\) module into
+the sum of many modules \(e_iA\) where \(e_i\) are idempotents. If the modules \(e_iA\) are distinct for maximally
+chosen \(e_i\), \(A\) is said to be <span 
 class="cmbx-12">basic</span>.
 </p>
   <div class="newtheorem">
@@ -364,28 +365,29 @@ class="cmbx-12">basic</span>.
  id="x1-6r5"></a>
 <span 
 class="cmbx-12">Corollary 0.5.</span>  </span><span 
-class="cmti-12">Any  &#xFB01;nite  dimension  algebra</span>  \(A\)  <span 
-class="cmti-12">over  a  division  ring</span>  \(k\)  <span 
-class="cmti-12">is  Morita</span>
+class="cmti-12">Any &#xFB01;nite dimension algebra</span> \(A\) <span 
+class="cmti-12">over a division ring</span> \(k\) <span 
+class="cmti-12">is Morita equivalent to</span>
 <span 
-class="cmti-12">equivalent to a basic one.</span>
+class="cmti-12">a basic one.</span>
 </p>
   <div class="proof">
 <!--l. 57--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Let \(e\) be the sum of the idempotents of all distinct isomorphism classes of \(e_iA\).
-Then \(eAe\) is an algebra that is \(\End (eA)\), and \(eA\) is a progenerator, so \(eAe\) is Morita equivalent to \(A\).
-Moreover we have chosen \(eAe\) to be basic. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Let \(e\) be the sum of the idempotents of all distinct isomorphism classes of \(e_iA\). Then \(eAe\) is
+an algebra that is \(\End (eA)\), and \(eA\) is a progenerator, so \(eAe\) is Morita equivalent to \(A\). Moreover we have
+chosen \(eAe\) to be basic. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
+                                                                                         
+                                                                                         
 </p>
   </div>
   </div>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

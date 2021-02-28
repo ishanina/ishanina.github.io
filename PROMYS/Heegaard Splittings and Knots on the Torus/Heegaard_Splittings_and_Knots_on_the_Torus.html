@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -226,171 +238,152 @@ class="cmr-10">ISHAN LEVY</span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Heegaard splittings and Diagrams</h3>
-<!--l. 11--><p class="noindent" >Previously we saw that using Morse theory, we could classify manifolds of dimension \(\leq 2\).
-What happens in dimension \(3\)? For simplicity, we will consider orientable manifolds. An
-exercise from last time said that any \(3\)-manifold built out of only \(0\)-handles and \(1\)-handles is
-di&#xFB00;eomorphic to a ball with \(1\)-handles attached to it. If there are \(g\) \(1\)-handles, we call this a
-<span 
-class="cmbx-12">handlebody of genus</span> \(g\). Thus, say that we have a <span 
-class="cmbx-12">self-index Morse function</span> \(f\) on
-such a \(3\)-manifold \(M\), i.e one where the index \(i\) critical points happen when \(f\) takes
-the value \(i\). Then since \(f(3-x)\) is also a self-indexing Morse function, so \(f^{-1}(-\infty ,\frac 3 2]\) and \(f^{-1}[\frac 3 2,\infty )\) are both
-handlebodies, that have the same genus as they are glued along their boundary,
-which is an orientable surface of genus \(g\). We call this a <span 
+<!--l. 11--><p class="noindent" >Previously we saw that using Morse theory, we could classify manifolds of dimension \(\leq 2\). What
+happens in dimension \(3\)? For simplicity, we will consider orientable manifolds. An exercise from last
+time said that any \(3\)-manifold built out of only \(0\)-handles and \(1\)-handles is di&#xFB00;eomorphic to a ball with
+\(1\)-handles attached to it. If there are \(g\) \(1\)-handles, we call this a <span 
+class="cmbx-12">handlebody of genus</span> \(g\). Thus, say
+that we have a <span 
+class="cmbx-12">self-index Morse function</span> \(f\) on such a \(3\)-manifold \(M\), i.e one where the index \(i\) critical
+points happen when \(f\) takes the value \(i\). Then since \(f(3-x)\) is also a self-indexing Morse function, so \(f^{-1}(-\infty ,\frac 3 2]\)
+and \(f^{-1}[\frac 3 2,\infty )\) are both handlebodies, that have the same genus as they are glued along their
+boundary, which is an orientable surface of genus \(g\). We call this a <span 
 class="cmbx-12">Heegaard splitting </span>of
 \(M\).
-</p><!--l. 13--><p class="indent" >  Let&#x2019;s &#xFB01;nd Heegaard splittings of some simple \(3\)-manifolds, namely products of spheres. \(S^3\)
-has a genus \(0\) Heegaard splitting that consists of one \(0\)-handle and one \(3\)-handle, namely it
-consists of a ball and its complement in \(S^3\). Alternatively, we can add a cancelling \(1\) and
-\(2\)-handle so that we get two solid tori. This is the decomposition of \(S^3\) given by any
-standardly embedded solid torus and its complement. The meridian of one solid torus
-is attached to the longitude of the other. This process of adding a cancelling \(1\)
-and \(2\)-handle is called <span 
-class="cmbx-12">stabilization</span>. Two Heegaard splittings are called stably
-equivalent if after some amount of stabilization, they become the same &#x0028;i.e there is a
-di&#xFB00;eomorphism of the two handlebodies sending one Heegaard splitting to the
+</p><!--l. 13--><p class="indent" >  Let&#x2019;s &#xFB01;nd Heegaard splittings of some simple \(3\)-manifolds, namely products of spheres. \(S^3\) has a
+genus \(0\) Heegaard splitting that consists of one \(0\)-handle and one \(3\)-handle, namely it consists of a ball
+and its complement in \(S^3\). Alternatively, we can add a cancelling \(1\) and \(2\)-handle so that we get two
+solid tori. This is the decomposition of \(S^3\) given by any standardly embedded solid torus and its
+complement. The meridian of one solid torus is attached to the longitude of the other. This process
+of adding a cancelling \(1\) and \(2\)-handle is called <span 
+class="cmbx-12">stabilization</span>. Two Heegaard splittings are
+called stably equivalent if after some amount of stabilization, they become the same &#x0028;i.e
+there is a di&#xFB00;eomorphism of the two handlebodies sending one Heegaard splitting to the
 other&#x0029;.
-                                                                                  
-
-                                                                                  
-</p><!--l. 15--><p class="indent" >  There is a combinatorial way to draw Heegaard splittings. Namely, we view glueing the
-second handlebody to the &#xFB01;rst as attaching \(2\) and \(3\)-handles to a solid torus. The \(2\)-handles
-are speci&#xFB01;ed by knots on the boundary of the handlebody, and the \(3\)-handle requires no
-speci&#xFB01;cation, as there is one orientation preserving di&#xFB00;eomorphism of \(S^2\) up to
-isotopy, and it extends to \(B^3\). These circles give a way of drawing the Heegaard
-splitting, called a <span 
-class="cmbx-12">Heegaard diagram</span>. A way to draw a Heegaard diagram other
-than directly on a genus \(g\) surface is to imagine the compacti&#xFB01;ed plane as the
-boundary of a \(0\)-handle, and then attaching \(1\)-handles, as speci&#xFB01;ed by a thickened
-points &#x0028;i.e. circles&#x0029; to form a genus \(g\) handlebody, on which we can then draw
+</p><!--l. 15--><p class="indent" >  There is a combinatorial way to draw Heegaard splittings. Namely, we view glueing the second
+handlebody to the &#xFB01;rst as attaching \(2\) and \(3\)-handles to a solid torus. The \(2\)-handles are speci&#xFB01;ed by
+knots on the boundary of the handlebody, and the \(3\)-handle requires no speci&#xFB01;cation, as there is one
+orientation preserving di&#xFB00;eomorphism of \(S^2\) up to isotopy, and it extends to \(B^3\). These circles
+give a way of drawing the Heegaard splitting, called a <span 
+class="cmbx-12">Heegaard diagram</span>. A way to
+draw a Heegaard diagram other than directly on a genus \(g\) surface is to imagine the
+compacti&#xFB01;ed plane as the boundary of a \(0\)-handle, and then attaching \(1\)-handles, as speci&#xFB01;ed by a
+thickened points &#x0028;i.e. circles&#x0029; to form a genus \(g\) handlebody, on which we can then draw
+                                                                                         
+                                                                                         
 circles.
 </p><!--l. 17--><p class="indent" >  Indeed, any drawing of \(n\) circles on a surface of genus \(g\) is the Heegaard diagram of some
-\(3\)-manifold, as long as the circles are disjoint and homologically linearly independent. This
-follows from the fact that after making cuts along any such circles, the resulting surface is
-connected by the Meyer-Vietoris sequence, so must be a sphere with holes in it by
-looking at its Euler characteristic, so after attaching the \(2\)-handles, we can attach a
+\(3\)-manifold, as long as the circles are disjoint and homologically linearly independent.
+This follows from the fact that after making cuts along any such circles, the resulting
+surface is connected by the Meyer-Vietoris sequence, so must be a sphere with holes in it
+by looking at its Euler characteristic, so after attaching the \(2\)-handles, we can attach a
 \(3\)-handle.
-</p><!--l. 19--><p class="indent" >  Via Morse theory, we get a complete set of moves on Heegaard diagrams. The &#xFB01;rst move
-is an isotopy of the circles, and the second is adding/removing a cancelling pair of \(1\) and
-\(2\)-handles. This is shown in Figure <a 
+</p><!--l. 19--><p class="indent" >  Via Morse theory, we get a complete set of moves on Heegaard diagrams. The &#xFB01;rst move is an
+isotopy of the circles, and the second is adding/removing a cancelling pair of \(1\) and \(2\)-handles. This is
+shown in Figure <a 
 href="#x1-10011">1<!--tex4ht:ref: handlecancellation --></a>:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10011"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 22--><p class="noindent" ><img 
 src="Handle_Cancellation.png" alt="pict"  
- width="322.50345pt"  />
+ width="352.31625pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-10011 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 28--><p class="indent" >  The last move is a handle slide. Make a parallel translate one circle, and then connect
-sum it with another circle. This amounts to sliding the other circle over the disk that the
-&#xFB01;rst circle bounds. It is shown in Figure <a 
+<!--l. 28--><p class="indent" >  The last move is a handle slide. Make a parallel translate one circle, and then connect sum it
+with another circle. This amounts to sliding the other circle over the disk that the &#xFB01;rst circle
+bounds. It is shown in Figure <a 
 href="#x1-10022">2<!--tex4ht:ref: handleslide --></a>:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10022"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 31--><p class="noindent" ><img 
 src="Slide.png" alt="pict"  
- width="128.9994pt"  /> <img 
+ width="140.92435pt"  /> <img 
 src="Slide2.png" alt="pict"  
- width="290.25114pt"  />
+ width="317.08247pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-10022 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 38--><p class="indent" >  For example, in Figure <a 
 href="#x1-10033">3<!--tex4ht:ref: S3S2xS1 --></a> are some Heegaard diagrams for \(S^3\) and \(S^2\times S^1\):
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10033"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 41--><p class="noindent" ><img 
 src="Heegaard_Diagrams.png" alt="pict"  
- width="387.00807pt"  />
+ width="422.7838pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;3:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-10033 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 47--><p class="indent" >  Let&#x2019;s do a more complicated example. We can make a genus \(3\) Heegaard splitting of \(S^1\times S^1\times S^1\) by
 imagining it as a quotient of a cube. Then the Heegaard splitting is shown in Figure <a 
 href="#x1-10044">4<!--tex4ht:ref: S1S1S1 --></a>:
 </p><figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10044"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 49--><p class="noindent" ><img 
 src="S1xS1xS1.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;4:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-10044 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 55--><p class="indent" >  By cutting along the circles that are the edges of the cube, we get the Heegaard diagram
-in Figure <a 
+<!--l. 55--><p class="indent" >  By cutting along the circles that are the edges of the cube, we get the Heegaard diagram in
+Figure <a 
 href="#x1-10055">5<!--tex4ht:ref: S1S1S1diagram --></a>:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-10055"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 58--><p class="noindent" ><img 
 src="S1xS1xS1diagram.png" alt="pict"  
- width="257.99883pt"  />
+ width="281.84871pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;5:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-10055 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Knots on the torus</h3>
@@ -402,24 +395,24 @@ class="content"></span></figcaption><!--tex4ht:label?: x1-10055 -->
  id="x1-2001r1"></a>
 <span 
 class="cmbx-12">Proposition 2.1.</span>  </span><span 
-class="cmti-12">Every compact orientable</span> \(3\)<span 
-class="cmti-12">-manifold admits a Heegaard splitting.</span>
+class="cmti-12">Every  compact  orientable</span>  \(3\)<span 
+class="cmti-12">-manifold  admits  a  Heegaard  splitting.</span>
 <span 
 class="cmti-12">Moreover, any two such splittings are stably equivalent.</span>
 </p>
   </div>
 <!--l. 72--><p class="indent" >  We say the <span 
-class="cmbx-12">Heegaard genus </span>of \(M\) is the smallest genus Heegaard splitting that \(M\) admits.
-We have already seen that the only genus \(0\) \(3\)-manifold is \(S^3\), that \(S^2\times S^1\) is genus \(1\), and \(S^1\times S^1\times S^1\) is genus \(\leq 3\).
-However, note that if \(g(M)\) is the genus and \(\mu (M)\) is the minimal number of generators of \(\pi _1(M)\), then by
-van-Kampen&#x2019;s theorem, \(\mu (M) \leq g(M)\). Thus \(3 = \mu (S^1\times S^1\times S^1) = g(S^1\times S^1\times S^1)\).
-</p><!--l. 74--><p class="indent" >  Let&#x2019;s classify genus \(\leq 1\) \(3\)-manifolds. To do this, we can classify genus \(1\) Heegaard diagrams,
-which are knots on a torus.
-</p><!--l. 76--><p class="indent" >  I claim that knots on a torus are determined by their image in the fundamental group.
-First note that if the image in the fundamental group is nontrivial, i.e. \((p,q)\), it is primitive,
-meaning \(p,q\) are relatively prime. To see this, after a change of basis, it su&#xFB03;ces to assume
-that \((p,q) = (0,n), n&gt; 0\) is the image of a knot in the fundamental group and show that \(n = 1\). To do this we have
-the following lemma:
+class="cmbx-12">Heegaard genus </span>of \(M\) is the smallest genus Heegaard splitting that \(M\) admits. We have
+already seen that the only genus \(0\) \(3\)-manifold is \(S^3\), that \(S^2\times S^1\) is genus \(1\), and \(S^1\times S^1\times S^1\) is genus \(\leq 3\). However, note that if
+\(g(M)\) is the genus and \(\mu (M)\) is the minimal number of generators of \(\pi _1(M)\), then by van-Kampen&#x2019;s theorem, \(\mu (M) \leq g(M)\). Thus
+\(3 = \mu (S^1\times S^1\times S^1) = g(S^1\times S^1\times S^1)\).
+</p><!--l. 74--><p class="indent" >  Let&#x2019;s classify genus \(\leq 1\) \(3\)-manifolds. To do this, we can classify genus \(1\) Heegaard diagrams, which are
+knots on a torus.
+</p><!--l. 76--><p class="indent" >  I claim that knots on a torus are determined by their image in the fundamental group. First note
+that if the image in the fundamental group is nontrivial, i.e. \((p,q)\), it is primitive, meaning \(p,q\) are
+relatively prime. To see this, after a change of basis, it su&#xFB03;ces to assume that \((p,q) = (0,n), n&gt; 0\) is the image
+of a knot in the fundamental group and show that \(n = 1\). To do this we have the following
+lemma:
 </p>
   <div class="newtheorem">
 <!--l. 78--><p class="noindent" ><span class="head">
@@ -430,31 +423,30 @@ class="cmbx-12">Lemma 2.2.</span>  </span> <span
 class="cmti-12">Let</span> \(X\subset \RR ^2\) <span 
 class="cmti-12">be path connected, and</span> \(L\) <span 
 class="cmti-12">a line segment between two points in</span> \(X\)<span 
-class="cmti-12">, but</span>
+class="cmti-12">, but not</span>
 <span 
-class="cmti-12">not necessarily contained in</span> \(X\)<span 
+class="cmti-12">necessarily contained in</span> \(X\)<span 
 class="cmti-12">. Then for each</span> \(0 \leq \alpha \leq 1\)<span 
 class="cmti-12">, there is a parallel line to</span> \(L\) <span 
-class="cmti-12">also between</span>
+class="cmti-12">also between two points</span>
 <span 
-class="cmti-12">two points in</span> \(X\) <span 
+class="cmti-12">in</span> \(X\) <span 
 class="cmti-12">that is length either</span> \(\alpha |L|\) <span 
 class="cmti-12">or</span> \((1-\alpha )|L|\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 82--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
 <span 
-class="cmti-12">Proof.</span> </span>We can suppose \(X\) is a path between the endpoints of \(L\), which we can assume
-to be \((0,0),(1,0)\). Then since \(X\) is compact, \(X\) attains a maximum and minimum \(y\) coordinate, \(y_+,y_-\)
-respectively. Then consider the paths \(L_{-\alpha },L_{1-\alpha }\) where \(L_\beta \) is \(L\) except translated in the \(x\) direction
-by \(\beta \). Now since \(L\) attains the minimum and maximum, it separates the strip cut out
-by \(y_-\leq y \leq y_+\) into pieces. To prove the lemma it su&#xFB03;ces to show that \(L_{-\alpha }\) or \(L_{1-\alpha }\) intersect \(L\). But both
-contain a translate of the point with \(y_-\), which lie on di&#xFB00;erent sides of the strip, and
-are connected by \(L_{-\alpha } \cup L_{1-\alpha }\), so one of them must intersect the strip. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>We can suppose \(X\) is a path between the endpoints of \(L\), which we can assume to be \((0,0),(1,0)\).
+Then since \(X\) is compact, \(X\) attains a maximum and minimum \(y\) coordinate, \(y_+,y_-\) respectively. Then
+consider the paths \(L_{-\alpha },L_{1-\alpha }\) where \(L_\beta \) is \(L\) except translated in the \(x\) direction by \(\beta \). Now since \(L\) attains the
+minimum and maximum, it separates the strip cut out by \(y_-\leq y \leq y_+\) into pieces. To prove the lemma
+it su&#xFB03;ces to show that \(L_{-\alpha }\) or \(L_{1-\alpha }\) intersect \(L\). But both contain a translate of the point with \(y_-\), which
+                                                                                         
+                                                                                         
+lie on di&#xFB00;erent sides of the strip, and are connected by \(L_{-\alpha } \cup L_{1-\alpha }\), so one of them must intersect the
+strip. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -470,9 +462,10 @@ class="cmti-12">is a path in</span> \(\RR ^2\) <span
 class="cmti-12">from</span> \((0,0)\) <span 
 class="cmti-12">to</span> \((0,n)\)<span 
 class="cmti-12">, there are two points on</span> \(P\) <span 
-class="cmti-12">with the same</span> \(y\)
+class="cmti-12">with the same</span> \(y\) <span 
+class="cmti-12">coordinate</span>
 <span 
-class="cmti-12">coordinate whose</span> \(x\) <span 
+class="cmti-12">whose</span> \(x\) <span 
 class="cmti-12">coordinates are congruent mod</span> \(1\)<span 
 class="cmti-12">.</span>
 </p>
@@ -480,29 +473,25 @@ class="cmti-12">.</span>
 <!--l. 90--><p class="indent" >  <span class="head">
 <span 
 class="cmti-12">Proof.</span> </span>By applying the Lemma <a 
-href="#x1-2002r2">2.2<!--tex4ht:ref: pathconnRR2 --></a> with the correct \(\alpha \), we can get inductively that
-there are two points whose \(x\) coordinates di&#xFB00;er by \(n/m\) for any \(m \in \NN \). In particular setting \(n = m\)
-gives the result. <span class="qed"><span 
+href="#x1-2002r2">2.2<!--tex4ht:ref: pathconnRR2 --></a> with the correct \(\alpha \), we can get inductively that there are
+two points whose \(x\) coordinates di&#xFB00;er by \(n/m\) for any \(m \in \NN \). In particular setting \(n = m\) gives the result. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 94--><p class="indent" >  Now we must try to classify knots in the plane. To do this, we will use the following
-standard theorem in topology:
+<!--l. 94--><p class="indent" >  Now we must try to classify knots in the plane. To do this, we will use the following standard
+theorem in topology:
 </p>
   <div class="newtheorem">
 <!--l. 96--><p class="noindent" ><span class="head">
 <a 
  id="x1-2004r4"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">Theorem 2.4.</span>  </span><span 
 class="cmti-12">Any knot in</span> \(S^2\) <span 
-class="cmti-12">splits it into two components, the closure of each a</span>
+class="cmti-12">splits it into two components, the closure of each a standard</span>
 <span 
-class="cmti-12">standard disk.</span>
+class="cmti-12">disk.</span>
 </p>
   </div>
   <div class="newtheorem">
@@ -513,25 +502,27 @@ class="cmti-12">standard disk.</span>
 class="cmbx-12">Theorem 2.5.</span>  </span><span 
 class="cmti-12">Any two knots in</span> \(\RR ^2\) <span 
 class="cmti-12">or</span> \(S^2\) <span 
-class="cmti-12">are isotopic. If they are disjoint, the isotopy can</span>
+class="cmti-12">are isotopic. If they are disjoint, the isotopy can avoid</span>
 <span 
-class="cmti-12">avoid everything but the region between the knots.</span>
+class="cmti-12">everything but the region between the knots.</span>
 </p>
+                                                                                         
+                                                                                         
   <div class="proof">
 <!--l. 103--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>It doesn&#x2019;t really matter whether it is \(S^2\) or \(\RR ^2\), and by isotoping twice, it su&#xFB03;ces to
-assume the knots are disjoint. Then by applying the theorem above twice, the region
-between the two is di&#xFB00;eomorphic to an annulus. Then any such di&#xFB00;eomorphism gives
-an isotopy between the knots. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>It doesn&#x2019;t really matter whether it is \(S^2\) or \(\RR ^2\), and by isotoping twice, it su&#xFB03;ces to assume
+the knots are disjoint. Then by applying the theorem above twice, the region between the
+two is di&#xFB00;eomorphic to an annulus. Then any such di&#xFB00;eomorphism gives an isotopy between
+the knots. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 107--><p class="indent" >  It is easy to produce two types of knots in \(T^2\). Namely for any relatively prime \(p,q\), we can
-take the straight line segment in \(\RR ^2\) from \((0,0)\) to \((p,q)\), and modulo \(\ZZ ^2\) this will give a knot on the torus.
-Alternatively, we can take a small disk around a point, and the boundary will be a
-nulhomotopic knot. We will call these knots <span 
+<!--l. 107--><p class="indent" >  It is easy to produce two types of knots in \(T^2\). Namely for any relatively prime \(p,q\), we can take the
+straight line segment in \(\RR ^2\) from \((0,0)\) to \((p,q)\), and modulo \(\ZZ ^2\) this will give a knot on the torus. Alternatively, we
+can take a small disk around a point, and the boundary will be a nulhomotopic knot. We will call
+these knots <span 
 class="cmbx-12">standard.</span>
 </p>
   <div class="newtheorem">
@@ -540,32 +531,28 @@ class="cmbx-12">standard.</span>
  id="x1-2006r6"></a>
 <span 
 class="cmbx-12">Theorem 2.6.</span>  </span><span 
-class="cmti-12">Any smoothly embedded knot on the torus is isotopic to a standard</span>
-<span 
-class="cmti-12">one.</span>
+class="cmti-12">Any smoothly embedded knot on the torus is isotopic to a standard one.</span>
 </p>
-                                                                                  
-
-                                                                                  
   <div class="proof">
 <!--l. 113--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>If the torus is \(S^1 \times S^1\) where the knot is either nulhomotopic or in the homotopy class
-of \(S^1 \times 0\) &#x0028;this can be assumed after a change of basis&#x0029;, choose by Sard&#x2019;s theorem a knot of
-the form \(S^1 \times \alpha \) that transversely intersects the knot. Then view the torus as an annulus
-in \(\RR ^2\), where the inner circle is identi&#xFB01;ed with the outer circle, and both represent \(S^1 \times \alpha \).
-Find two intersection points of the knot with the boundary that are connected by
-an arc on the boundary and an arc on the knot bounding a region that doesn&#x2019;t
-contain more points on the knot. By the previous theorem, we can isotope the knot
-to remove those intersection points. To see that such intersection points must exist,
-simply note that the intersection number of the knot and \(S^1 \times \alpha \) is \(0\), so there must be one
-negative intersection following a positive intersection. If the region bounded by these
-intersection points contains another part of the knot, then any segment in that part
-of the knot must intersect the same boundary component of the annulus twice, so
-we can repeatedly look at smaller arcs until we get one that doesn&#x2019;t contain any
-others. After we have removed all such points, we either have a knot bounding a
-compact region of \(\RR ^2\) containing the inner circle of the annulus or not. Then by our
-understanding of knots in the plane, we see that the knot is standard.
+class="cmti-12">Proof.</span> </span>If the torus is \(S^1 \times S^1\) where the knot is either nulhomotopic or in the homotopy class of \(S^1 \times 0\)
+&#x0028;this can be assumed after a change of basis&#x0029;, choose by Sard&#x2019;s theorem a knot of the form
+\(S^1 \times \alpha \) that transversely intersects the knot. Then view the torus as an annulus in \(\RR ^2\), where the
+inner circle is identi&#xFB01;ed with the outer circle, and both represent \(S^1 \times \alpha \). Find two intersection
+points of the knot with the boundary that are connected by an arc on the boundary and
+an arc on the knot bounding a region that doesn&#x2019;t contain more points on the knot. By the
+previous theorem, we can isotope the knot to remove those intersection points. To see that
+such intersection points must exist, simply note that the intersection number of the knot and
+\(S^1 \times \alpha \) is \(0\), so there must be one negative intersection following a positive intersection. If the region
+bounded by these intersection points contains another part of the knot, then any segment
+in that part of the knot must intersect the same boundary component of the annulus twice,
+so we can repeatedly look at smaller arcs until we get one that doesn&#x2019;t contain any others.
+After we have removed all such points, we either have a knot bounding a compact region of \(\RR ^2\)
+containing the inner circle of the annulus or not. Then by our understanding of knots in the
+plane, we see that the knot is standard.
+                                                                                         
+                                                                                         
 </p><!--l. 115--><p class="indent" >  The proof is demonstrated in Figure <a 
 href="#x1-20076">6<!--tex4ht:ref: knottorus --></a>:
 </p>
@@ -577,57 +564,49 @@ href="#x1-20076">6<!--tex4ht:ref: knottorus --></a>:
 <!--l. 118--><p class="noindent" >
 </p><!--l. 119--><p class="noindent" ><img 
 src="TorusKnots.png" alt="pict"  
- width="419.25055pt"  /></p></div>
+ width="458.00684pt"  /></p></div>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;6:</span><span  
-class="content"> Shown above is a knot on a torus, which we view as an annulus with the
-inner and outer circles identi&#xFB01;ed. By picking portions of the knot and simplifying it,
-we end up with a knot in the plane, which we already know how to understand.</span></figcaption><!--tex4ht:label?: x1-20076 -->
+class="content"> Shown above is a knot on a torus, which we view as an annulus with the inner and
+outer circles identi&#xFB01;ed. By picking portions of the knot and simplifying it, we end up with a
+knot in the plane, which we already know how to understand.</span></figcaption><!--tex4ht:label?: x1-20076 -->
   </figure>
   <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 129--><p class="indent" >  Thus for a Heegaard diagram, for each \(p,q\) relatively prime, there is a knot on the torus
-that goes \(q\) times in the meridian direction and \(p\) times in the longitude direction. Note that
+<!--l. 129--><p class="indent" >  Thus for a Heegaard diagram, for each \(p,q\) relatively prime, there is a knot on the torus that
+goes \(q\) times in the meridian direction and \(p\) times in the longitude direction. Note that
 the number \(\frac p q\) is well-de&#xFB01;ned. We will call the \(3\)-manifold a lens space, and write it as
 \(L(p,q)\).
-</p><!--l. 131--><p class="indent" >  Note that we can assume \(p &gt; 0\), and that \(p\) is an invariant of \(L(p,q)\) &#x0028;look at the fundamental group&#x0029;.
-\(q\) is not, we can for example change bases, via the self di&#xFB00;eomorphism of the solid torus
-torus that twists along the meridian as shown in Figure <a 
+</p><!--l. 131--><p class="indent" >  Note that we can assume \(p &gt; 0\), and that \(p\) is an invariant of \(L(p,q)\) &#x0028;look at the fundamental group&#x0029;. \(q\) is not,
+we can for example change bases, via the self di&#xFB00;eomorphism of the solid torus torus that twists
+along the meridian as shown in Figure <a 
 href="#x1-20087">7<!--tex4ht:ref: dehntwist --></a>:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20087"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 134--><p class="noindent" ><img 
 src="Dehn_Twist.png" alt="pict"  
- width="257.99883pt"  />
+ width="281.84871pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;7:</span><span  
 class="content">A di&#xFB00;eomorphism of a torus &#x0028;or solid torus&#x0029; called a <span 
-class="cmbx-12">Dehn twist</span>. It can
-be given by \((a,b) \mapsto (a,ab)\) on \(S^1 \times D^2\) or its boundary. Dehn twists on \(\gamma \) and \(\lambda \) generate the mapping class
-group of the torus.</span></figcaption><!--tex4ht:label?: x1-20087 -->
-                                                                                  
-
-                                                                                  
+class="cmbx-12">Dehn twist</span>. It can be given
+by \((a,b) \mapsto (a,ab)\) on \(S^1 \times D^2\) or its boundary. Dehn twists on \(\gamma \) and \(\lambda \) generate the mapping class group of the torus.</span></figcaption><!--tex4ht:label?: x1-20087 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 140--><p class="indent" >  Via this di&#xFB00;eomorphism we see that \(L(p,q) = L(p,q-kp)\) for any \(k\), so we can assume that \(q&lt;p\). We
-can also switch which torus we are treating as the \(0\)-handle and \(1\)-handle, and
-so we get that \(L(p,q) = L(p,q^{-1})\) where the inverse is mod \(p\). \(L(p,q)\) and \(L(p,-q)\) are the same up to changing
-orientation.
-</p><!--l. 142--><p class="indent" >  Note that since the di&#xFB00;eomorphisms of the torus are determined by where they send the
-meridians, and we have classi&#xFB01;ed knots up to isotopy, we have essentially classi&#xFB01;ed
+<!--l. 140--><p class="indent" >  Via this di&#xFB00;eomorphism we see that \(L(p,q) = L(p,q-kp)\) for any \(k\), so we can assume that \(q&lt;p\). We can also switch which
+torus we are treating as the \(0\)-handle and \(1\)-handle, and so we get that \(L(p,q) = L(p,q^{-1})\) where the inverse is mod \(p\). \(L(p,q)\)
+and \(L(p,-q)\) are the same up to changing orientation.
+</p><!--l. 142--><p class="indent" >  Note that since the di&#xFB00;eomorphisms of the torus are determined by where they send
+the meridians, and we have classi&#xFB01;ed knots up to isotopy, we have essentially classi&#xFB01;ed
 di&#xFB00;eomorphisms of the torus up to isotopy. The components of the orientation preserving
 di&#xFB00;eomorphism group of a manifold \(M\) is called its mapping class group and denoted
 \(\MCG (M)\).
@@ -643,9 +622,9 @@ class="cmti-12">are determined by their action on homology &#x0028;or</span> \(\
 class="cmti-12">&#x0029;.</span>
 </p>
   </div>
-<!--l. 148--><p class="indent" >  If we use \((\gamma ,\lambda )\) as our basis for homology, then the Dehn twists act on homology by the
-matrices \(\begin{bmatrix} 1 &amp;&amp; \pm 1\\ 0 &amp;&amp; 1 \end{bmatrix}\) and \(\begin{bmatrix} 1 &amp;&amp; 0\\ \pm 1 &amp;&amp; 1 \end{bmatrix}\). These generate \(\SL _2(\ZZ )\), and since orientation preserving homeomorphisms act on \(H_1\)
-within \(\SL _2(\ZZ )\), we have
+<!--l. 148--><p class="indent" >  If we use \((\gamma ,\lambda )\) as our basis for homology, then the Dehn twists act on homology by the matrices \(\begin{bmatrix} 1 &amp;&amp; \pm 1\\ 0 &amp;&amp; 1 \end{bmatrix}\) and
+\(\begin{bmatrix} 1 &amp;&amp; 0\\ \pm 1 &amp;&amp; 1 \end{bmatrix}\). These generate \(\SL _2(\ZZ )\), and since orientation preserving homeomorphisms act on \(H_1\) within \(\SL _2(\ZZ )\), we
+have
 </p>
   <div class="newtheorem">
 <!--l. 155--><p class="noindent" ><span class="head">
@@ -657,74 +636,68 @@ class="cmti-12">, generated by Dehn twists on</span> \(\lambda , \gamma \)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 159--><p class="indent" >  Now view \(S^3\) as the unit sphere inside \(\CC ^2\), and we can consider the \(\ZZ /p\ZZ \) action given by
-multiplication by \((\zeta _p,\zeta _p^q)\), where \(\zeta _p\) is a primitive \(p^{th}\) root of unity.
+<!--l. 159--><p class="indent" >  Now view \(S^3\) as the unit sphere inside \(\CC ^2\), and we can consider the \(\ZZ /p\ZZ \) action given by multiplication by
+\((\zeta _p,\zeta _p^q)\), where \(\zeta _p\) is a primitive \(p^{th}\) root of unity.
 </p><!--l. 161--><p class="indent" >  This action is free, and the lens space is in fact the quotient. To see this, we can &#xFB01;rst
 consider an action of \(S^1\subset \CC ^\times \) on \(L(p,q)\) given by multiplication by \((x^{1/p},x^{q/p})\). This action is free on all \((w,z) \in L(p,q)\) except the
-circle where \(w = 0\), where the action wraps around the orbit \(q\) times. If \(z = 0\), there is one orbit, and if
-\(w \neq 0, z \neq 0\), there is a unique representative of each orbit of the form \((w,z), w \in (0,1), z \in S^1\), so we see that the quotient
-space is a cylinder with both ends capped o&#xFB00; with the points \(w = 0\) and \(z = 0\). In other words the
-                                                                                  
-
-                                                                                  
-lens space is an \(S^1\) bundle over a sphere that is locally trivial except maybe at
+circle where \(w = 0\), where the action wraps around the orbit \(q\) times. If \(z = 0\), there is one orbit,
+and if \(w \neq 0, z \neq 0\), there is a unique representative of each orbit of the form \((w,z), w \in (0,1), z \in S^1\), so we see that the
+quotient space is a cylinder with both ends capped o&#xFB00; with the points \(w = 0\) and \(z = 0\). In other
+words the lens space is an \(S^1\) bundle over a sphere that is locally trivial except maybe at
 \(w = 0,z = 0\).
 </p><!--l. 163--><p class="indent" >  Indeed it is not locally trivial over \(w = 0\), but nevertheless, it is in a nice form near that point.
-Namely, we can say that given a rational number \(\frac{q}{p}\), we can form an \(S^1\) bundle called the
+Namely, we can say that given a rational number \(\frac{q}{p}\), we can form an \(S^1\) bundle called the <span 
+class="cmbx-12">standard</span>
 <span 
-class="cmbx-12">standard &#xFB01;bred torus</span>. This is given by considering \(D^2\times \RR \) where we identify \((a\zeta _p^q,b)=(a,b+1)\). There is a
-natural action of \(\RR \) that descends to an action of \(S^1\), yielding a bundle that is trivial except
-maybe at \(0 \times \RR \), the exceptional &#xFB01;bre. Rational numbers di&#xFB00;ering by an integer give the
-same &#xFB01;bre bundle, and only \(0\) gives the trivial bundle &#x0028;or even a locally trivial
-bundle&#x0029;. We can see that the part of the lens space with \(|w|^2 \leq \frac 1 2\), \(|z|^2 \leq \frac 1 2\) are each standard
-&#xFB01;bred tori. Indeed, let \(kq+rp=1\), so that at \(|w| \leq \frac 1 2\), we have a map of \(S^1\) actions from the \(\frac r q\) &#xFB01;bred
-torus given by \((a,b) \mapsto (a\zeta _{pq}^b, \zeta _p^b\sqrt{1- |a|^2})\). This is a surjective map, so it shows that the lens space \(L(p,q)\) can be
-obtained by taking the standard &#xFB01;bred \(\frac r q\) solid torus, and identifying &#xFB01;bres on the
+class="cmbx-12">&#xFB01;bred torus</span>. This is given by considering \(D^2\times \RR \) where we identify \((a\zeta _p^q,b)=(a,b+1)\). There is a natural action of \(\RR \) that
+descends to an action of \(S^1\), yielding a bundle that is trivial except maybe at \(0 \times \RR \), the exceptional &#xFB01;bre.
+Rational numbers di&#xFB00;ering by an integer give the same &#xFB01;bre bundle, and only \(0\) gives the trivial
+                                                                                         
+                                                                                         
+bundle &#x0028;or even a locally trivial bundle&#x0029;. We can see that the part of the lens space with \(|w|^2 \leq \frac 1 2\), \(|z|^2 \leq \frac 1 2\) are
+each standard &#xFB01;bred tori. Indeed, let \(kq+rp=1\), so that at \(|w| \leq \frac 1 2\), we have a map of \(S^1\) actions from the \(\frac r q\)
+&#xFB01;bred torus given by \((a,b) \mapsto (a\zeta _{pq}^b, \zeta _p^b\sqrt{1- |a|^2})\). This is a surjective map, so it shows that the lens space \(L(p,q)\) can
+be obtained by taking the standard &#xFB01;bred \(\frac r q\) solid torus, and identifying &#xFB01;bres on the
 boundary.
-</p><!--l. 165--><p class="indent" >  This gives a Heegaard splitting of this \(3\)-manifold, as contracting circles along the
-boundary to points is the same as attaching in disks along the circles.
-</p><!--l. 167--><p class="indent" >  We have seen that the lens spaces have many decompositions as \(S^1\) bundles that are
-locally trivial except at a few &#xFB01;bres, where it is modeled from the standard &#xFB01;bred torus. A
-\(3\)-manifold that is constructed this way is called a <span 
-class="cmbx-12">Seifert &#xFB01;bre space</span>. Quite
-a lot of \(3\)-manifolds are Seifert &#xFB01;bre spaces, especially simple ones like the lens
-spaces.
-</p><!--l. 169--><p class="indent" >  The bundle map is of a Seifert &#xFB01;bre space is sometimes in itself of interest. For example
-when \(p=q=1\), this is just the Hopf &#xFB01;bration: the generator of \(\pi _3(S^2)\), and this &#xFB01;bration factors through \(\RR \PP ^3\),
-giving the Seifert &#xFB01;bration for \(p=2,q=1\). We can draw a picture of our explicit description of \(\RR \PP ^3\) given
-by a quotient of a standard &#xFB01;bred torus. Namely, take a solid torus, and collapse each line
-such as the one drawn below to a point. Then each disk turns into a copy of \(\RR \PP ^2\), except
-that each copy of \(\RR \PP ^2\) shares a circle in common. By removing one of these \(\RR \PP ^2\), we are
-left with an open disk times an open interval, which is the cell decomposition
+</p><!--l. 165--><p class="indent" >  This gives a Heegaard splitting of this \(3\)-manifold, as contracting circles along the boundary to
+points is the same as attaching in disks along the circles.
+</p><!--l. 167--><p class="indent" >  We have seen that the lens spaces have many decompositions as \(S^1\) bundles that are locally trivial
+except at a few &#xFB01;bres, where it is modeled from the standard &#xFB01;bred torus. A \(3\)-manifold that is
+constructed this way is called a <span 
+class="cmbx-12">Seifert &#xFB01;bre space</span>. Quite a lot of \(3\)-manifolds are Seifert &#xFB01;bre
+spaces, especially simple ones like the lens spaces.
+</p><!--l. 169--><p class="indent" >  The bundle map is of a Seifert &#xFB01;bre space is sometimes in itself of interest. For example when \(p=q=1\),
+this is just the Hopf &#xFB01;bration: the generator of \(\pi _3(S^2)\), and this &#xFB01;bration factors through \(\RR \PP ^3\),
+giving the Seifert &#xFB01;bration for \(p=2,q=1\). We can draw a picture of our explicit description of \(\RR \PP ^3\)
+given by a quotient of a standard &#xFB01;bred torus. Namely, take a solid torus, and collapse
+each line such as the one drawn below to a point. Then each disk turns into a copy
+of \(\RR \PP ^2\), except that each copy of \(\RR \PP ^2\) shares a circle in common. By removing one of these \(\RR \PP ^2\),
+we are left with an open disk times an open interval, which is the cell decomposition
 \(\RR \PP ^3 = \RR ^3\cup \RR \PP ^2\).
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20118"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 172--><p class="noindent" ><img 
 src="RP3.png" alt="pict"  
- width="322.50345pt"  />
+ width="352.31625pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;8:</span><span  
-class="content"> \(\RR \PP ^3\) as a quotient of a solid torus. Curves on the boundary parallel to \(\gamma \) are
-identi&#xFB01;ed to points. By removing an \(\RR \PP ^2\) we are left with a copy of \(\RR ^3\).</span></figcaption><!--tex4ht:label?: x1-20118 -->
-                                                                                  
-
-                                                                                  
+class="content"> \(\RR \PP ^3\) as a quotient of a solid torus. Curves on the boundary parallel to \(\gamma \) are identi&#xFB01;ed
+to points. By removing an \(\RR \PP ^2\) we are left with a copy of \(\RR ^3\).</span></figcaption><!--tex4ht:label?: x1-20118 -->
+                                                                                         
+                                                                                         
   </figure>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

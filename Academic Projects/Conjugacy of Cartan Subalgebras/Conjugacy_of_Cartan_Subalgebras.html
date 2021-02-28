@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -227,12 +239,11 @@ class="cmr-10">ISHAN LEVY</span>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Introduction</h3>
 <!--l. 10--><p class="noindent" >A <span 
-class="cmbx-12">Cartan subalgebra</span> \(\mf{h}\) of a &#x0028;&#xFB01;nite-dimensional&#x0029; Lie algebra \(\mf{g}\) is a nilpotent subalgebra
-of \(\mf{g}\) that is its own normalizer. In the case that \(\mf{g}\) is semi-simple, it is abelian,
-and is the Lie algebra analog of the maximal torus of a Lie group. It plays a
-central role in the structure theory of semi-simple Lie algebras, as the weights of \(\ad h\)
-acting on \(g\), called the roots, give the root system classifying the semi-simple Lie
-algebra.
+class="cmbx-12">Cartan subalgebra</span> \(\mf{h}\) of a &#x0028;&#xFB01;nite-dimensional&#x0029; Lie algebra \(\mf{g}\) is a nilpotent subalgebra of \(\mf{g}\) that is
+its own normalizer. In the case that \(\mf{g}\) is semi-simple, it is abelian, and is the Lie algebra analog of
+the maximal torus of a Lie group. It plays a central role in the structure theory of semi-simple Lie
+algebras, as the weights of \(\ad h\) acting on \(g\), called the roots, give the root system classifying the
+semi-simple Lie algebra.
 </p><!--l. 12--><p class="indent" >  It follows from the de&#xFB01;nition that a Cartan subalgebra is maximal as a nilpotent
 subalgebra.
 </p>
@@ -244,46 +255,43 @@ subalgebra.
 class="cmbx-12">Lemma 1.1.</span>  </span><span 
 class="cmti-12">If</span> \(\mf{h}\) <span 
 class="cmti-12">is a Cartan subalgebra, and</span> \(\mf{h} \subset \mf{h}'\) <span 
-class="cmti-12">is a nilpotent subalgebra, then</span>
-\(\mf{h} = \mf{h'}\)
+class="cmti-12">is a nilpotent subalgebra, then</span> \(\mf{h} = \mf{h'}\)
 </p>
   <div class="proof">
 <!--l. 17--><p class="indent" >  <span class="head">
-                                                                                  
-
-                                                                                  
 <span 
-class="cmti-12">Proof.</span> </span>Let \(\mf{h}'^i\) be the lower central series, For su&#xFB03;ciently large \(i\), \(\mf{h}'^i =0\) so that \(\mf{h}'^i \subset \mf{h}\). Now if \(\mf{h}'^i \subset \mf{h}\) then
-since \([\mf{h}'^{i-1},\mf{h}] \subset [\mf{h}'^{i-1},\mf{h}'] = \mf{h}'^{i}\), and \(\mf{h}\) is its own normalizer, \(\mf{h}^{i-1} \subset \mf{h}\). Thus inductively we obtain \(\mf{h}' = \mf{h}'^0 \subset \mf{h}\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Let \(\mf{h}'^i\) be the lower central series, For su&#xFB03;ciently large \(i\), \(\mf{h}'^i =0\) so that \(\mf{h}'^i \subset \mf{h}\). Now if \(\mf{h}'^i \subset \mf{h}\) then since \([\mf{h}'^{i-1},\mf{h}] \subset [\mf{h}'^{i-1},\mf{h}'] = \mf{h}'^{i}\),
+and \(\mf{h}\) is its own normalizer, \(\mf{h}^{i-1} \subset \mf{h}\). Thus inductively we obtain \(\mf{h}' = \mf{h}'^0 \subset \mf{h}\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 21--><p class="indent" >  There are many choices of Cartan subalgebras, so one way to know that data derived
-from the Cartan subalgebra is actually an invariant of the Lie algebra would be to know
-that for any two Cartan subalgebras, there is an automorphism of the Lie algebra taking
-one to the other. Indeed, this is true when the underlying &#xFB01;eld is algebraically closed and
-of characteristic \(0\), and the automorphism can be thought of as coming from conjugation in
-the associated algebraic group.
+                                                                                         
+                                                                                         
+<!--l. 21--><p class="indent" >  There are many choices of Cartan subalgebras, so one way to know that data derived from the
+Cartan subalgebra is actually an invariant of the Lie algebra would be to know that for any two
+Cartan subalgebras, there is an automorphism of the Lie algebra taking one to the other. Indeed,
+this is true when the underlying &#xFB01;eld is algebraically closed and of characteristic \(0\), and the
+automorphism can be thought of as coming from conjugation in the associated algebraic
+group.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Construction of Cartan subalgebras</h3>
-<!--l. 25--><p class="noindent" >A &#xFB01;rst step in understanding Cartan subalgebras is to understand how to construct
-them. It is instructive to look at the case of \(sl_n\). A Cartan subalgebra of \(sl_n\) is given by
-taking the diagonal matrices. One can observe that this Cartan subalgebra can
-essentially be recovered from a generic element inside it. Namely, given a diagonal
-matrix \(x \in sl_n\) with all distinct eigenvalues &#x0028;this is a generic condition&#x0029;, then the Cartan
-subalgebra can be described as exactly those elements of \(sl_n\) commuting with \(x\), as such
-matrices preserve the eigenspaces of \(x\), which are all 1-dimensional, hence must be
+<!--l. 25--><p class="noindent" >A &#xFB01;rst step in understanding Cartan subalgebras is to understand how to construct them. It is
+instructive to look at the case of \(sl_n\). A Cartan subalgebra of \(sl_n\) is given by taking the diagonal
+matrices. One can observe that this Cartan subalgebra can essentially be recovered from a generic
+element inside it. Namely, given a diagonal matrix \(x \in sl_n\) with all distinct eigenvalues &#x0028;this is a generic
+condition&#x0029;, then the Cartan subalgebra can be described as exactly those elements of \(sl_n\) commuting
+with \(x\), as such matrices preserve the eigenspaces of \(x\), which are all 1-dimensional, hence must be
 diagonal.
 </p><!--l. 27--><p class="indent" >  Cartan observed that the same process can be used to construct Cartan subalgebras in
 any Lie algebra. The genericity condition on \(x\) is captured in the notion of a <span 
 class="cmbx-12">regular</span>
 <span 
-class="cmbx-12">element</span>. Consider the characteristic polynomial \(\det (\lambda - \ad )\) of the adjoint representation of \(\mf{g}\). This is
-a polynomial \(c(\mf{g},\lambda )\) in \(\mf{g}\) and \(\lambda \) of the form \(\lambda ^d-tr(\ad x) \lambda ^{d-1}+....\pm \det (\ad x)\). Let \(c_i\) be the \(i^{th}\) coe&#xFB03;cient in the \(\lambda \)-variable: this is a
-polynomial of degree \(d-i\) in \(\mf{g}\), since the determinant is a homogeneous polynomial of
-degree \(d\). \(c_0 \equiv 0\) as \(x\) is always in the kernel of \(\ad x\). The <span 
+class="cmbx-12">element</span>. Consider the characteristic polynomial \(\det (\lambda - \ad )\) of the adjoint representation of \(\mf{g}\).
+This is a polynomial \(c(\mf{g},\lambda )\) in \(\mf{g}\) and \(\lambda \) of the form \(\lambda ^d-tr(\ad x) \lambda ^{d-1}+....\pm \det (\ad x)\). Let \(c_i\) be the \(i^{th}\) coe&#xFB03;cient in the \(\lambda \)-variable:
+this is a polynomial of degree \(d-i\) in \(\mf{g}\), since the determinant is a homogeneous polynomial
+of degree \(d\). \(c_0 \equiv 0\) as \(x\) is always in the kernel of \(\ad x\). The <span 
 class="cmbx-12">rank</span> \(r\) of \(\mf{g}\) is the smallest \(r\) such that
 \(c_r \neq 0\).
 </p>
@@ -291,9 +299,6 @@ class="cmbx-12">rank</span> \(r\) of \(\mf{g}\) is the smallest \(r\) such that
 <!--l. 29--><p class="noindent" ><span class="head">
 <a 
  id="x1-2001r1"></a>
-                                                                                  
-
-                                                                                  
 <span 
 class="cmbx-12">De&#xFB01;nition 2.1.</span>  </span><span 
 class="cmti-12">A regular element of</span> \(\mf{g}\) <span 
@@ -302,11 +307,10 @@ class="cmti-12">such that</span> \(c_r(x) \neq 0\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 33--><p class="indent" >  Since \(c_r\) is a nonzero polynomial, the set of regular elements is a non-empty
-Zariski-open set. Assuming that the &#xFB01;eld \(k\) we are working over is in&#xFB01;nite, there must
-then be a regular element \(x\) de&#xFB01;ned over \(k\). Now given a regular element, we can
-consider the &#x0028;generalized&#x0029; eigenspace decomposition \(\oplus _{\alpha \in \bar{k}} \mf{g}_\alpha \) with respect to \(\ad x\). Let \(\mf{h}\) be the
-\(0\)-eigenspace.
+<!--l. 33--><p class="indent" >  Since \(c_r\) is a nonzero polynomial, the set of regular elements is a non-empty Zariski-open set.
+Assuming that the &#xFB01;eld \(k\) we are working over is in&#xFB01;nite, there must then be a regular element \(x\)
+de&#xFB01;ned over \(k\). Now given a regular element, we can consider the &#x0028;generalized&#x0029; eigenspace
+decomposition \(\oplus _{\alpha \in \bar{k}} \mf{g}_\alpha \) with respect to \(\ad x\). Let \(\mf{h}\) be the \(0\)-eigenspace.
 </p>
   <div class="newtheorem">
 <!--l. 35--><p class="noindent" ><span class="head">
@@ -316,61 +320,60 @@ consider the &#x0028;generalized&#x0029; eigenspace decomposition \(\oplus _{\al
 class="cmbx-12">Theorem 2.2 </span>&#x0028;Construction of Cartan subalgebras&#x0029;<span 
 class="cmbx-12">.</span>  </span> <span 
 class="cmti-12">Using notation as above,</span> \(\mf{h}\) <span 
-class="cmti-12">is the</span>
+class="cmti-12">is the unique</span>
+                                                                                         
+                                                                                         
 <span 
-class="cmti-12">unique Cartan subalgebra containing</span> \(x\)<span 
+class="cmti-12">Cartan subalgebra containing</span> \(x\)<span 
 class="cmti-12">.</span>
 </p>
   <div class="proof">
 <!--l. 37--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Let \(V\) be the sum of the nonzero eigenspaces. Let \(\mf{h}_V\) be the subset of \(y \in \mf{h}\) such that
-\(\ad y\) is invertible on \(V\), and let \(\mf{h}_N\) be the subset of \(\mf{h}\) such that \(\ad |_h\) is not nilpotent. Being in \(\mf{h}_N\) is
-a Zariski open condition, since its complement is the vanishing locus of the \(c^h_i, i &lt; d\), where
-\(c^h_i\) are the \(c_i\) for \(\mf{h}\). Similarly being in \(\mf{h}_V\) is an open condition since invertability is an open
-condition on the determinant of \(\ad \) restricted to \(V\), which is a polynomial. If \(\mf{h}\) were not
-nilpotent, \(\mf{h}_N\) would be nonempty, and since \(x \in \mf{h}_V\), \(\exists y \in \mf{h}_V \cap \mf{h}_N\) &#x0028;\(y\) might be de&#xFB01;ned over a &#xFB01;nite extension
-of \(k\)&#x0029;. But then the \(0\)-eigenspace of \(\ad y\) is strictly smaller than the \(0\)-eigenspace of \(\ad x\), which is
-a contradictio since \(x\) is regular. Thus \(\mf{h}\) is nilpotent by Engel&#x2019;s theorem. Now suppose
-that \(y\) normalizes \(\mf{h}\). Then since \(\ad y(x) = -\ad x(y) \in \mf{h}\), but since \(\ad x|_V\) is invertible, the \(V\) component of \(y\) is \(0\), so \(y \in \mf{h}\).
-</p><!--l. 39--><p class="indent" >  To see uniqueness, observer that if \(x\) is in some \(\mf{h}'\) that is nilpotent, \(\ad{x}\) acts nilpotently,
-so \(\mf{h'} \subset \mf{h}\). Thus if \(\mf{h}'\) is a Cartan subalgebra, by maximality, \(\mf{h}'= \mf{h}\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Let \(V\) be the sum of the nonzero eigenspaces. Let \(\mf{h}_V\) be the subset of \(y \in \mf{h}\) such that \(\ad y\) is
+invertible on \(V\), and let \(\mf{h}_N\) be the subset of \(\mf{h}\) such that \(\ad |_h\) is not nilpotent. Being in \(\mf{h}_N\) is a Zariski open
+condition, since its complement is the vanishing locus of the \(c^h_i, i &lt; d\), where \(c^h_i\) are the \(c_i\) for \(\mf{h}\). Similarly
+being in \(\mf{h}_V\) is an open condition since invertability is an open condition on the determinant
+of \(\ad \) restricted to \(V\), which is a polynomial. If \(\mf{h}\) were not nilpotent, \(\mf{h}_N\) would be nonempty, and
+since \(x \in \mf{h}_V\), \(\exists y \in \mf{h}_V \cap \mf{h}_N\) &#x0028;\(y\) might be de&#xFB01;ned over a &#xFB01;nite extension of \(k\)&#x0029;. But then the \(0\)-eigenspace of \(\ad y\) is strictly
+smaller than the \(0\)-eigenspace of \(\ad x\), which is a contradictio since \(x\) is regular. Thus \(\mf{h}\) is nilpotent
+by Engel&#x2019;s theorem. Now suppose that \(y\) normalizes \(\mf{h}\). Then since \(\ad y(x) = -\ad x(y) \in \mf{h}\), but since \(\ad x|_V\) is invertible, the
+\(V\) component of \(y\) is \(0\), so \(y \in \mf{h}\).
+</p><!--l. 39--><p class="indent" >  To see uniqueness, observer that if \(x\) is in some \(\mf{h}'\) that is nilpotent, \(\ad{x}\) acts nilpotently, so \(\mf{h'} \subset \mf{h}\).
+Thus if \(\mf{h}'\) is a Cartan subalgebra, by maximality, \(\mf{h}'= \mf{h}\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-                                                                                  
-
-                                                                                  
-<!--l. 43--><p class="indent" >  Note that the dimension of the Cartan subalgebra produced this way is exactly the rank
-of \(\mf{g}\).
+<!--l. 43--><p class="indent" >  Note that the dimension of the Cartan subalgebra produced this way is exactly the rank of
+\(\mf{g}\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Conjugacy of Cartan subalgebras</h3>
-<!--l. 47--><p class="noindent" >To show that all Cartan subalgebras are equivalent, we need to assume that \(k\) is
-algebraically closed and characteristic \(0\) &#x0028;or the characteristic is at least su&#xFB03;ciently large
-with respect to the dimension of the Lie algebra&#x0029;, which we will assume from now on. We
-can consider the root space decomposition \(\mf{g} = \oplus _\alpha \mf{g}_\alpha \) with respect to a Cartan subalgebra \(\mf{h}\), which is
-the weight space decomposition of \(\ad \mf{h}\) on \(\mf{g}\). Since \(\ad{\mf{g}_\alpha }\) sends \(\mf{g}_\beta \) to \(\mf{g}_{\beta +\alpha }\), \(\ad \) applied to any element of
-a nonzero root space is a nilpotent derivation of \(\mf{g}\). Thus its exponential is an
-automorphism of \(\mf{g}\), that can be thought of as conjugation by the element in the
-associated algebraic group. The idea to show that any two Cartan subalgebras are
-conjugate is to use these automorphisms to show that all these automorphisms
-can conjugate \(\mf{h}\) to contain any of a Zariski open set of points in \(\mf{g}\). Since \(\mf{h}\) is an
-arbitrary Cartan subalgebra, and since regular elements are open, we can sent two
-Cartan subalgebras to ones that contain the same regular element, but then
-that Cartan subalgebra must be the one obtained from that regular element,
-hence the two original Cartan subalgebras can be related via an automorphism of
+<!--l. 47--><p class="noindent" >To show that all Cartan subalgebras are equivalent, we need to assume that \(k\) is algebraically closed
+and characteristic \(0\) &#x0028;or the characteristic is at least su&#xFB03;ciently large with respect to the
+dimension of the Lie algebra&#x0029;, which we will assume from now on. We can consider the root
+space decomposition \(\mf{g} = \oplus _\alpha \mf{g}_\alpha \) with respect to a Cartan subalgebra \(\mf{h}\), which is the weight space
+decomposition of \(\ad \mf{h}\) on \(\mf{g}\). Since \(\ad{\mf{g}_\alpha }\) sends \(\mf{g}_\beta \) to \(\mf{g}_{\beta +\alpha }\), \(\ad \) applied to any element of a nonzero root space is
+a nilpotent derivation of \(\mf{g}\). Thus its exponential is an automorphism of \(\mf{g}\), that can be
+thought of as conjugation by the element in the associated algebraic group. The idea to
+show that any two Cartan subalgebras are conjugate is to use these automorphisms to
+show that all these automorphisms can conjugate \(\mf{h}\) to contain any of a Zariski open
+set of points in \(\mf{g}\). Since \(\mf{h}\) is an arbitrary Cartan subalgebra, and since regular elements
+are open, we can sent two Cartan subalgebras to ones that contain the same regular
+element, but then that Cartan subalgebra must be the one obtained from that regular
+element, hence the two original Cartan subalgebras can be related via an automorphism of
 \(\mf{g}\).
-</p><!--l. 49--><p class="indent" >  To realize this idea, let \(x_1,\dots ,x_n\) be a basis of the sum of the nonzero root spaces of \(\mf{h}\), such that
-each one is in some root space. Indeed, the zero simultaneous eigenspace of \(\mf{h}\) will always be
-itself, as it will normalize \(\mf{h}\). Then \(e^{\ad x_i}\) is an automorphism of \(\mf{g}\), so we can consider the
-<span 
-class="cmbx-12">conjugation map</span> \(\mf{g} =\bigoplus _1^n kx_i \oplus \mf{h} \to \mf{g}\) sending \(t_i,h\) to \(\prod _1^ne^{\ad t_ix_i}h\) &#x0028;the product is ordered as the exponentials don&#x2019;t
-generally commute&#x0029;. Since each \(x_i\) is nilpotent, this map is actually a polynomial
-map.
-</p><!--l. 51--><p class="indent" >  We would like to show the image contains a nonempty Zariski open set, but in order to
-do this, we will need an algebro-geometric lemma that works as a kind of inverse function
+</p><!--l. 49--><p class="indent" >  To realize this idea, let \(x_1,\dots ,x_n\) be a basis of the sum of the nonzero root spaces of \(\mf{h}\), such that each one
+is in some root space. Indeed, the zero simultaneous eigenspace of \(\mf{h}\) will always be itself, as it will
+                                                                                         
+                                                                                         
+normalize \(\mf{h}\). Then \(e^{\ad x_i}\) is an automorphism of \(\mf{g}\), so we can consider the <span 
+class="cmbx-12">conjugation map</span> \(\mf{g} =\bigoplus _1^n kx_i \oplus \mf{h} \to \mf{g}\) sending \(t_i,h\) to \(\prod _1^ne^{\ad t_ix_i}h\)
+&#x0028;the product is ordered as the exponentials don&#x2019;t generally commute&#x0029;. Since each \(x_i\) is nilpotent, this
+map is actually a polynomial map.
+</p><!--l. 51--><p class="indent" >  We would like to show the image contains a nonempty Zariski open set, but in order to do
+this, we will need an algebro-geometric lemma that works as a kind of inverse function
 theorem:
 </p>
   <div class="newtheorem">
@@ -380,29 +383,24 @@ theorem:
 <span 
 class="cmbx-12">Lemma 3.1.</span>  </span><span 
 class="cmti-12">Given a morphism</span> \(\AA ^n \to \AA ^n\) <span 
-class="cmti-12">such that the Jacobian at a point is invertible, then the</span>
+class="cmti-12">such that the Jacobian at a point is invertible, then the image</span>
 <span 
-class="cmti-12">image contains an open set.</span>
-                                                                                  
-
-                                                                                  
+class="cmti-12">contains an open set.</span>
 </p>
   <div class="proof">
 <!--l. 55--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Suppose that the morphism is given by the polynomials \(f_1,\dots ,f_n\). WLOG, suppose
-that the Jacobian at \(0\), i.e. \((\partial _j f_i)\) is invertible. If the \(f_i\) satisfy a polynomial relation \(F(f_1,\dots ,f_n) = 0\), then \(\sum _i \partial _{f_i}F \partial _j f_i = 0\)
-for all \(j\), so \(\partial _{f_i}F\) is in the kernel of the Jacobian of the \(f_i\). Since the Jacobian is invertible
-at a point, it is invertible on a nonempty Zariski open set, and since \((\partial _{f_i}F)\) is nonzero on
-a Zariski open set, it follows that \((\partial _{f_i}F)\) must be identically zero in order to always be in
-the kernel of the Jacobian. But each \( \partial _{f_i}F\) is of smaller degree, so if we choose \(F\) to be of
-minimal degree, then we get a contradiction.
-</p><!--l. 57--><p class="indent" >  Thus the \(f_i\) are algebraically independent, so the morphism gives an inclusion of
-function &#xFB01;elds \(k(f_1,\dots ,f_n) \hookrightarrow k(x_1,\dots ,x_n)\). This extension is &#xFB01;nite, since both are &#xFB01;nitely generated, and have
-the same transcendence degree. Thus after inverting &#xFB01;nitely many elements of \(k[f_1,\dots ,f_n]\), which
-is the same as inverting their product, \(g\), we get that \(k[f_1,\dots ,f_n,g^{-1}] \hookrightarrow k[x_1,\dots ,x_n,g^{-1}]\) is &#xFB01;nite. A &#xFB01;nite morphism is
-surjective, so our morphism surjects onto the open set that is the complement of the
-zero locus of \(g\). <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>Suppose that the morphism is given by the polynomials \(f_1,\dots ,f_n\). WLOG, suppose that the
+Jacobian at \(0\), i.e. \((\partial _j f_i)\) is invertible. If the \(f_i\) satisfy a polynomial relation \(F(f_1,\dots ,f_n) = 0\), then \(\sum _i \partial _{f_i}F \partial _j f_i = 0\) for all \(j\), so \(\partial _{f_i}F\) is in
+the kernel of the Jacobian of the \(f_i\). Since the Jacobian is invertible at a point, it is invertible
+on a nonempty Zariski open set, and since \((\partial _{f_i}F)\) is nonzero on a Zariski open set, it follows that \((\partial _{f_i}F)\)
+must be identically zero in order to always be in the kernel of the Jacobian. But each \( \partial _{f_i}F\) is of
+smaller degree, so if we choose \(F\) to be of minimal degree, then we get a contradiction.
+</p><!--l. 57--><p class="indent" >  Thus the \(f_i\) are algebraically independent, so the morphism gives an inclusion of function
+&#xFB01;elds  \(k(f_1,\dots ,f_n) \hookrightarrow k(x_1,\dots ,x_n)\).  This  extension  is  &#xFB01;nite,  since  both  are  &#xFB01;nitely  generated,  and  have  the  same
+transcendence degree. Thus after inverting &#xFB01;nitely many elements of \(k[f_1,\dots ,f_n]\), which is the same
+as inverting their product, \(g\), we get that \(k[f_1,\dots ,f_n,g^{-1}] \hookrightarrow k[x_1,\dots ,x_n,g^{-1}]\) is &#xFB01;nite. A &#xFB01;nite morphism is surjective, so our
+morphism surjects onto the open set that is the complement of the zero locus of \(g\). <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -420,19 +418,17 @@ class="cmti-12">set.</span>
 </p>
   <div class="proof">
 <!--l. 64--><p class="indent" >  <span class="head">
+                                                                                         
+                                                                                         
 <span 
-class="cmti-12">Proof.</span> </span>If we can &#xFB01;nd a point where the Jacobian of this function is invertible, then
-by the previous lemma, the image contains a Zariski open set. Since the domain
-and codomain of the map have the same dimension, it will su&#xFB03;ce to show that the
-                                                                                  
-
-                                                                                  
-Jacobian is injective. To do this, we will compute the Jacobian of the function at
-a point \(a \in \mf{h}\), in the direction \(b_i,h\). Indeed, it is \(\frac{d}{dt}_{t=0} \prod _1^ne^{tb_i\ad x_i}(a+th) = \frac{d}{dt}_{t=0} \prod _1^n(1+tb_i\ad x_i)(a+th) = \sum _i b_i [x_i,a] + h\). This is guaranteed to be \(0\) for all nonzero
-choices of \(b_i,h\) as long as \([x_i,a] \neq 0\) for each \(i\), since the \(x_i\) are generalized eigenvectors of \(\ad{a}\). For each
-nonzero weight space, the elements of \(\mf{h}\) with \(0\) eigenvalue on that weight space is a
-hyperplane, and since &#xFB01;nitely many hyperplanes cannot cover the whole space, there
-is a point \(a\) satisfying the conditions we want. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>If we can &#xFB01;nd a point where the Jacobian of this function is invertible, then by the
+previous lemma, the image contains a Zariski open set. Since the domain and codomain of
+the map have the same dimension, it will su&#xFB03;ce to show that the Jacobian is injective. To
+do this, we will compute the Jacobian of the function at a point \(a \in \mf{h}\), in the direction \(b_i,h\). Indeed,
+it is \(\frac{d}{dt}_{t=0} \prod _1^ne^{tb_i\ad x_i}(a+th) = \frac{d}{dt}_{t=0} \prod _1^n(1+tb_i\ad x_i)(a+th) = \sum _i b_i [x_i,a] + h\). This is guaranteed to be \(0\) for all nonzero choices of \(b_i,h\) as long as \([x_i,a] \neq 0\) for each \(i\), since the \(x_i\) are
+generalized eigenvectors of \(\ad{a}\). For each nonzero weight space, the elements of \(\mf{h}\) with \(0\) eigenvalue
+on that weight space is a hyperplane, and since &#xFB01;nitely many hyperplanes cannot cover the
+whole space, there is a point \(a\) satisfying the conditions we want. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -443,9 +439,8 @@ class="msam-10x-x-120">&#x25A1;</span></span>
  id="x1-3003r3"></a>
 <span 
 class="cmbx-12">Theorem 3.3.</span>  </span><span 
-class="cmti-12">Any two Cartan subalgebras are conjugate via the group of automorphisms</span>
+class="cmti-12">Any two Cartan subalgebras are conjugate via the group of automorphisms of</span> \(\mf{g}\)
 <span 
-class="cmti-12">of</span> \(\mf{g}\) <span 
 class="cmti-12">generated by</span> \(e^{\ad{b}}\) <span 
 class="cmti-12">for</span> \(\ad{b}\) <span 
 class="cmti-12">nilpotent.</span>
@@ -453,13 +448,13 @@ class="cmti-12">nilpotent.</span>
   <div class="proof">
 <!--l. 71--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>If \(\mf{h},\mf{h}'\) are two Cartan subalgebras, according to the previous proposition, the
-image of conjugation of each contains a nonempty Zariski open set. Intersecting these
-two open sets with the open set of regular elements, we still get a nonempty open
-set, so there is an \(x\) regular, such that both \(\mf{h}, \mf{h}'\) can be conjugated to contain \(x\). But in
-Theorem <a 
-href="#x1-2002r2">2.2<!--tex4ht:ref: construction --></a> it was shown that there is a unique Cartan subalgebra containing any
-regular element, so both \(\mf{h}\) can be conjugated to the same Cartan subalgebra. <span class="qed"><span 
+class="cmti-12">Proof.</span> </span>If \(\mf{h},\mf{h}'\) are two Cartan subalgebras, according to the previous proposition, the image of
+conjugation of each contains a nonempty Zariski open set. Intersecting these two open sets
+with the open set of regular elements, we still get a nonempty open set, so there is an \(x\)
+regular, such that both \(\mf{h}, \mf{h}'\) can be conjugated to contain \(x\). But in Theorem <a 
+href="#x1-2002r2">2.2<!--tex4ht:ref: construction --></a> it was shown
+that there is a unique Cartan subalgebra containing any regular element, so both \(\mf{h}\) can be
+conjugated to the same Cartan subalgebra. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
@@ -469,15 +464,11 @@ class="msam-10x-x-120">&#x25A1;</span></span>
 <!--l. 76--><p class="noindent" >This is based on notes for Victor Kac&#x2019;s class Introduction to Lie Algebras.
 </p><!--l. 78--><p class="indent" >  http://math.mit.edu/classes/18.745/classnotes.html.
 </p>
-                                                                                  
-
-                                                                                  
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

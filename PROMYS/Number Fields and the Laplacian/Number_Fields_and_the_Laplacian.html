@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -215,8 +227,7 @@
 \newcommand{\id}{\mathop{\rm id}\nolimits} \)</p>
   <div class="maketitle">
   <h2 class="titleHead">
-ISOSPECTRAL MANIFOLDS/NUMBER FIELDS VIA GALOIS
-THEORY
+ISOSPECTRAL MANIFOLDS/NUMBER FIELDS VIA GALOIS THEORY
   </h2>
   <div class="authors"><span class="author" >
 <span 
@@ -228,32 +239,28 @@ class="cmr-10">ISHAN LEVY</span>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Number &#xFB01;elds</h3>
 <!--l. 10--><p class="noindent" >Two number &#xFB01;elds are <span 
-class="cmbx-12">arithmetically equivalent </span>if they have the same Dedekind zeta
-function \(\zeta _K(s) = \sum _I \frac{1}{N(I)^s}\). Note from the zeta function, we can recover the number of ideals of a particular
-norm. Indeed, for any convergent Dirichlet series \(\sum _i \frac{a_n}{n^s}\), the smallest nonzero \(a_j\) can be recovered
-by noticing that the function asymptotically behaves like \(\frac{a_j}{j^s}\), and after subtracting this term
-o&#xFB00; and repeating, all the terms can be recovered. Using the data of how many ideals there
-are of norm \(p^k\) for an rational prime \(p\), we can recover the &#x0028;unordered&#x0029; residual degrees \(f_1,\dots , f_k\) of the
-factors of all the primes above any rational prime \(p\). This information, is called
-the <span 
-class="cmbx-12">splitting type of</span> \(p\). This recovers information such as which primes split
-completely over \(\QQ \). Thus we can see for example that Galois extensions over \(\QQ \) are
-determined by their zeta functions, and the degree over \(\QQ \) is an invariant of the zeta
+class="cmbx-12">arithmetically equivalent </span>if they have the same Dedekind zeta function \(\zeta _K(s) = \sum _I \frac{1}{N(I)^s}\).
+Note from the zeta function, we can recover the number of ideals of a particular norm. Indeed, for
+any convergent Dirichlet series \(\sum _i \frac{a_n}{n^s}\), the smallest nonzero \(a_j\) can be recovered by noticing that the
+function asymptotically behaves like \(\frac{a_j}{j^s}\), and after subtracting this term o&#xFB00; and repeating, all the
+terms can be recovered. Using the data of how many ideals there are of norm \(p^k\) for an rational prime
+\(p\), we can recover the &#x0028;unordered&#x0029; residual degrees \(f_1,\dots , f_k\) of the factors of all the primes above any
+rational prime \(p\). This information, is called the <span 
+class="cmbx-12">splitting type of</span> \(p\). This recovers information such
+as which primes split completely over \(\QQ \). Thus we can see for example that Galois extensions over \(\QQ \)
+are determined by their zeta functions, and the degree over \(\QQ \) is an invariant of the zeta
 function.
-</p><!--l. 12--><p class="indent" >  To study further the problem of determining when \(\zeta _K(s) = \zeta _K'(s)\) we will let \(N\) be a common Galois
-extension over \(\QQ \) of both of them with Galois group \(G\), such that \(H,H'\) are the Galois groups over \(K,K\).
-Now we can give an interpretation of splitting type in terms of Galois theory. In particular,
+</p><!--l. 12--><p class="indent" >  To study further the problem of determining when \(\zeta _K(s) = \zeta _K'(s)\) we will let \(N\) be a common Galois extension
+over \(\QQ \) of both of them with Galois group \(G\), such that \(H,H'\) are the Galois groups over \(K,K\). Now we
+can give an interpretation of splitting type in terms of Galois theory. In particular,
 suppose that \(f_1,\dots ,f_k\) is the splitting type of some unrami&#xFB01;ed prime \(p\), and \(D\) is the decomposition
 group of some prime over \(p\). Then the action of \(G\) on the primes above \(p\) is the same as the
 action on right \(D\) cosets. Thus the sizes of the double cosets \(Ht_iD\) of \(H,D\) correspond to the \(f_i\) via \(f_i|H| = |Ht_iD|\)
 possibly after rearrangement this. The information of the sizes of the double cosets will be
 called the <span 
-class="cmbx-12">double coset type of &#x0028;H,D&#x0029;</span>. Since by Frobenius density theorem every cyclic
-                                                                                  
-
-                                                                                  
-subgroup is the decomposition group of in&#xFB01;nitely many primes, we have that the
-double coset type of \((H,D)\) is an invariant of the zeta function for any cyclic subgroup
+class="cmbx-12">double coset type of &#x0028;H,D&#x0029;</span>. Since by Frobenius density theorem every
+cyclic subgroup is the decomposition group of in&#xFB01;nitely many primes, we have that
+the double coset type of \((H,D)\) is an invariant of the zeta function for any cyclic subgroup
 \(D\).
 </p><!--l. 14--><p class="indent" >  The following lemma is purely group theoretic:
 </p>
@@ -261,45 +268,44 @@ double coset type of \((H,D)\) is an invariant of the zeta function for any cycl
 <!--l. 16--><p class="noindent" ><span class="head">
 <a 
  id="x1-1001r1"></a>
+                                                                                         
+                                                                                         
 <span 
 class="cmbx-12">Lemma 1.1.</span>  </span><span 
 class="cmti-12">Two subgroups</span> \(H,H'\) <span 
 class="cmti-12">of a &#xFB01;nite group</span> \(G\) <span 
-class="cmti-12">have the same double coset types for</span>
+class="cmti-12">have the same double coset types for any</span>
 <span 
-class="cmti-12">any cyclic subgroup</span> \(D\) <span 
+class="cmti-12">cyclic subgroup</span> \(D\) <span 
 class="cmti-12">i&#xFB00;</span> \(|H\cap [\alpha ]| = |H' \cap [\alpha ]|\) <span 
 class="cmti-12">for any conjugacy class</span> \([\alpha ]\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 20--><p class="indent" >  It shows that two arithmetically equivalent number &#xFB01;elds satisfy the lemma above for
-their corresponding subgroups. In fact, the converse is true.
-</p><!--l. 22--><p class="indent" >  To see this, note that for any unrami&#xFB01;ed prime \(p\), we can run the argument backwards to
-see that the number of ideals of norm that are powers of \(p\) is the same for both \(K,K'\). Thus the
-Euler products of \(\zeta _K(s),\zeta _K'(s)\) di&#xFB00;er only possibly by the rami&#xFB01;ed primes. Now we will deal with the
+<!--l. 20--><p class="indent" >  It shows that two arithmetically equivalent number &#xFB01;elds satisfy the lemma above for their
+corresponding subgroups. In fact, the converse is true.
+</p><!--l. 22--><p class="indent" >  To see this, note that for any unrami&#xFB01;ed prime \(p\), we can run the argument backwards to see that
+the number of ideals of norm that are powers of \(p\) is the same for both \(K,K'\). Thus the Euler
+products of \(\zeta _K(s),\zeta _K'(s)\) di&#xFB00;er only possibly by the rami&#xFB01;ed primes. Now we will deal with the
 rami&#xFB01;cation.
-</p><!--l. 24--><p class="indent" >  Let \(C_i\) be a decomposition group of the real place of \(\QQ \) &#x0028;generated by complex conjugation&#x0029;.
-The double cosets of \(H,H'\) with \(C\) then correspond to the real and complex places of \(K,K'\) &#x0028;in
-particular one of size \(2|H|\) is a complex embedding and one of size \(|H|\) is a real embedding&#x0029;. Thus
-we can recover the numbers \(r_1,r_2\) of real and complex places from the double coset type of this
+</p><!--l. 24--><p class="indent" >  Let \(C_i\) be a decomposition group of the real place of \(\QQ \) &#x0028;generated by complex conjugation&#x0029;. The
+double cosets of \(H,H'\) with \(C\) then correspond to the real and complex places of \(K,K'\) &#x0028;in particular one
+of size \(2|H|\) is a complex embedding and one of size \(|H|\) is a real embedding&#x0029;. Thus we can
+recover the numbers \(r_1,r_2\) of real and complex places from the double coset type of this
 subgroup.
-</p><!--l. 26--><p class="indent" >  Now to see that \(\zeta _K(s) = \zeta _K'(s)\), we will examine their functional equations.To see that they can&#x2019;t be
-di&#xFB00;erent, we will use the functional equation for the Dedekind zeta function. Now recall
-that if \(G_1 = \pi ^{-\frac{s}{2}}\Gamma (\frac{s}{2}), G_2 = (2\pi )^{1-s}\Gamma (s)\), then \(Z_K(s) = G_1(s)^{r_1}G_2(s)^{r_2}\zeta _K(s)\) has simple poles at \(0,1\), is holomorphic elsewhere, and satis&#xFB01;es the functional
-equation \(Z_K(s) = |D_K|^{\frac{1}{2}-s}Z_K(1-s)\). Taking the quotient for \(Z_K,Z_K'\), we get \(\frac{\zeta _K(s)}{\zeta _{K'}(s)} = |\frac{D_K}{D_{K'}}|^{\frac{1}{2}-s}\frac{\zeta _K(s)}{\zeta _{K'}(s)}\).
-</p><!--l. 28--><p class="indent" >  But \(\frac{\zeta _K(s)}{\zeta _{K'}(s)}\) is of the form \(\prod _1^n(1-\frac{1}{a_i^s})\prod _1^m(1-\frac{1}{b_j^s})^{-1}\) since there are &#xFB01;nitely many rami&#xFB01;ed primes, and the only such
-function that can satisfy such a functional equation is \(1\). Indeed, if we can&#x2019;t cancel any of
-the terms in the products, choose \(c\) to be the largest among the \(a_i\) or \(b_i\), we can observe from
-the functional equation that \(1-\frac{2k \pi i}{\log c}\) is either a pole or zero of \(\frac{\zeta _K(s)}{\zeta _{K'}(s)}\), which is clearly impossible. As a
+</p><!--l. 26--><p class="indent" >  Now to see that \(\zeta _K(s) = \zeta _K'(s)\), we will examine their functional equations.To see that they can&#x2019;t be di&#xFB00;erent,
+we will use the functional equation for the Dedekind zeta function. Now recall that if \(G_1 = \pi ^{-\frac{s}{2}}\Gamma (\frac{s}{2}), G_2 = (2\pi )^{1-s}\Gamma (s)\), then \(Z_K(s) = G_1(s)^{r_1}G_2(s)^{r_2}\zeta _K(s)\) has
+simple poles at \(0,1\), is holomorphic elsewhere, and satis&#xFB01;es the functional equation \(Z_K(s) = |D_K|^{\frac{1}{2}-s}Z_K(1-s)\). Taking the
+quotient for \(Z_K,Z_K'\), we get \(\frac{\zeta _K(s)}{\zeta _{K'}(s)} = |\frac{D_K}{D_{K'}}|^{\frac{1}{2}-s}\frac{\zeta _K(s)}{\zeta _{K'}(s)}\).
+</p><!--l. 28--><p class="indent" >  But \(\frac{\zeta _K(s)}{\zeta _{K'}(s)}\) is of the form \(\prod _1^n(1-\frac{1}{a_i^s})\prod _1^m(1-\frac{1}{b_j^s})^{-1}\) since there are &#xFB01;nitely many rami&#xFB01;ed primes, and the only such function
+that can satisfy such a functional equation is \(1\). Indeed, if we can&#x2019;t cancel any of the terms
+in the products, choose \(c\) to be the largest among the \(a_i\) or \(b_i\), we can observe from the
+functional equation that \(1-\frac{2k \pi i}{\log c}\) is either a pole or zero of \(\frac{\zeta _K(s)}{\zeta _{K'}(s)}\), which is clearly impossible. As a
 consequence, we also get the absolute values of the discriminants are the same. We have
 proven:
 </p>
   <div class="newtheorem">
 <!--l. 30--><p class="noindent" ><span class="head">
-                                                                                  
-
-                                                                                  
 <a 
  id="x1-1002r2"></a>
 <span 
@@ -307,52 +313,47 @@ class="cmbx-12">Theorem 1.2.</span>  </span><span
 class="cmti-12">Let</span> \(K,K'\) <span 
 class="cmti-12">be number &#xFB01;elds,</span> \(N\) <span 
 class="cmti-12">a common Galois extension over</span> \(\QQ \)<span 
-class="cmti-12">, and</span> \(H,H'\)
+class="cmti-12">, and</span> \(H,H'\) <span 
+class="cmti-12">the subgroups</span>
 <span 
-class="cmti-12">the subgroups corresponding to each. Then</span> \(K,K'\) <span 
+class="cmti-12">corresponding to each. Then</span> \(K,K'\) <span 
 class="cmti-12">are arithmetically equivalent i&#xFB00;</span> \(|H\cap [a]| = |H'\cap [a]|\) <span 
-class="cmti-12">for all</span>
-<span 
-class="cmti-12">conjugacy classes.</span>
+class="cmti-12">for all conjugacy classes.</span>
 </p>
   </div>
-<!--l. 34--><p class="indent" >  As an example, the Galois group of the polynomial \(x^8-3\) is \(\Hol (\ZZ /8\ZZ ) = \ZZ /8\ZZ \rtimes \ZZ /8\ZZ ^\times \). The subgroups \(\langle 0 \rangle \times \ZZ /8\ZZ ^\times \) and the
-subgroup \(\langle (4,\pm 3)\rangle \) satisfy the condition we want, but are not conjugate, so the corresponding
-sub&#xFB01;elds are distinct but arithmetically equivalent.
+<!--l. 34--><p class="indent" >  As an example, the Galois group of the polynomial \(x^8-3\) is \(\Hol (\ZZ /8\ZZ ) = \ZZ /8\ZZ \rtimes \ZZ /8\ZZ ^\times \). The subgroups \(\langle 0 \rangle \times \ZZ /8\ZZ ^\times \) and the subgroup \(\langle (4,\pm 3)\rangle \)
+satisfy the condition we want, but are not conjugate, so the corresponding sub&#xFB01;elds are distinct
+but arithmetically equivalent.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Riemannian Manifolds</h3>
+                                                                                         
+                                                                                         
 <!--l. 37--><p class="noindent" >Two compact Riemannian manifolds \(M,M'\) are <span 
-class="cmbx-12">isospectral </span>if they have the same
-eigenvalues of their &#x0028;Hodge&#x0029; Laplacian \(\Delta _M,\Delta _{M'}\). Here we will think of \(\Delta _M\) as acting on \(p\)-forms
-for some \(p\). Examples of isospectral manifolds have been known for a long time,
-such as Milnor&#x2019;s famous example of two isospectral &#xFB02;at tori, but many of the
-ways of producing these manifolds do not work in a lot of generality. Here is a
-method that yields a result highly analogous to the way of producing arithmetically
+class="cmbx-12">isospectral </span>if they have the same eigenvalues of their
+&#x0028;Hodge&#x0029; Laplacian \(\Delta _M,\Delta _{M'}\). Here we will think of \(\Delta _M\) as acting on \(p\)-forms for some \(p\). Examples of isospectral
+manifolds have been known for a long time, such as Milnor&#x2019;s famous example of two isospectral &#xFB02;at
+tori, but many of the ways of producing these manifolds do not work in a lot of generality. Here is
+a method that yields a result highly analogous to the way of producing arithmetically
 equivalent number &#xFB01;elds, and that can even produce topologically di&#xFB00;erent isospectral
 manifolds.
-</p><!--l. 39--><p class="indent" >  Namely, given a Riemannian manifold \(M\), we will &#xFB01;nd a condition for two covering spaces \(M_1,M_2 \to M\)
-to be isospectral. An amazing feature of this construction is that the condition is
-topological, so that \(M_1\) and \(M_2\) will be isospectral regardless of the metric on \(M\). Of course it
-is possible that for some metrics, \(M_1\) and \(M_2\) will also be isometric, but as long as
-\(M_1,M_2\) are topologically di&#xFB00;erent covers, generic metrics on \(M\) will have them not be
-isometric.
+</p><!--l. 39--><p class="indent" >  Namely, given a Riemannian manifold \(M\), we will &#xFB01;nd a condition for two covering spaces \(M_1,M_2 \to M\) to be
+isospectral. An amazing feature of this construction is that the condition is topological, so that \(M_1\)
+and \(M_2\) will be isospectral regardless of the metric on \(M\). Of course it is possible that for some metrics, \(M_1\)
+and \(M_2\) will also be isometric, but as long as \(M_1,M_2\) are topologically di&#xFB00;erent covers, generic metrics on \(M\)
+will have them not be isometric.
 </p><!--l. 41--><p class="indent" >  The &#xFB01;rst fact that we will use is that the spectrum of a Riemannian manifold \(M\) is entirely
-encoded in its analytic zeta function \(\zeta _M(s) = \sum _i \lambda _i^{-s}\), so we will try to understand how this function with
-respect to covers. To do this, consider the inverse of \(d+d^*\) on \(V_M\), from its image to the orthogonal
+encoded in its analytic zeta function \(\zeta _M(s) = \sum _i \lambda _i^{-s}\), so we will try to understand how this function with respect
+to covers. To do this, consider the inverse of \(d+d^*\) on \(V_M\), from its image to the orthogonal
 complement of the kernel. As an endomorphism of \(L^2_M(\bigwedge ^*TM)\) it is self adjoint and compact by
-Rellich compactness, so its square \((\Delta _M)^{-1}\) is trace class. It is diagonalizable so we can consider \((\Delta _M)^{-s}\)
-for \(\real (s)&gt;1\), which is also trace class, and moreover has trace equal to \(\zeta _M(s)\) when restricted to
+Rellich compactness, so its square \((\Delta _M)^{-1}\) is trace class. It is diagonalizable so we can consider
+\((\Delta _M)^{-s}\) for \(\real (s)&gt;1\), which is also trace class, and moreover has trace equal to \(\zeta _M(s)\) when restricted to
 \(p\)-forms.
-</p><!--l. 44--><p class="indent" >  Now let \(\tilde{M}\) a &#xFB01;nite Galois cover whose group of deck transformations is \(G\), and let \(M'\to M\) be a
-cover corresponding to a subgroup \(H \subset G\). We can identify \({V_{\tilde{M}}}^H\) with \(V_{M'}\) by pulling back functions and
-                                                                                  
-
-                                                                                  
-scaling by \(|H|^{-\frac 1 2}\) to preserve the inner product, where \((-)^H\) means the subspace &#xFB01;xed by \(H\).
-Thus using the formula for the projection to the &#xFB01;xed subspace, \[\zeta _{M'}(s) = \tr (\Delta _{M'}^{-s}) = \tr ({\Delta _{\tilde{M}}}^{-s}|{V_{\tilde{M}}}^H)\]\[ = \frac 1{|H|}\sum _{h \in H}\tr ({\Delta _{\tilde{M}}}^{-s}h) = \frac 1{|H|}\sum _{[g] \in G}|[g]\cap H|\tr ({\Delta _{\tilde{M}}}^{-s}g)\] where \([g] \in G\) are the
-conjugacy classes. Note that this formula only depends on \(|[g]\cap H|\) for each \([g] \in G\). Thus we have
-proven:
+</p><!--l. 44--><p class="indent" >  Now let \(\tilde{M}\) a &#xFB01;nite Galois cover whose group of deck transformations is \(G\), and let \(M'\to M\) be a cover
+corresponding to a subgroup \(H \subset G\). We can identify \({V_{\tilde{M}}}^H\) with \(V_{M'}\) by pulling back functions and scaling by \(|H|^{-\frac 1 2}\) to
+preserve the inner product, where \((-)^H\) means the subspace &#xFB01;xed by \(H\). Thus using the formula for the
+projection to the &#xFB01;xed subspace, \[\zeta _{M'}(s) = \tr (\Delta _{M'}^{-s}) = \tr ({\Delta _{\tilde{M}}}^{-s}|{V_{\tilde{M}}}^H)\]\[ = \frac 1{|H|}\sum _{h \in H}\tr ({\Delta _{\tilde{M}}}^{-s}h) = \frac 1{|H|}\sum _{[g] \in G}|[g]\cap H|\tr ({\Delta _{\tilde{M}}}^{-s}g)\] where \([g] \in G\) are the conjugacy classes. Note that this formula only
+depends on \(|[g]\cap H|\) for each \([g] \in G\). Thus we have proven:
 </p>
   <div class="newtheorem">
 <!--l. 47--><p class="noindent" ><span class="head">
@@ -360,8 +361,8 @@ proven:
  id="x1-2001r1"></a>
 <span 
 class="cmbx-12">Theorem 2.1.</span>  </span><span 
-class="cmti-12">Let</span> \(H_1, H_2\) <span 
-class="cmti-12">be subgroups of the fundamental group of a compact Riemannian</span>
+class="cmti-12">Let</span>  \(H_1, H_2\)  <span 
+class="cmti-12">be  subgroups  of  the  fundamental  group  of  a  compact  Riemannian</span>
 <span 
 class="cmti-12">manifold</span> \(M\) <span 
 class="cmti-12">such that</span> \(|[g]\cap H_1| = |[g] \cap H_2|\) <span 
@@ -379,26 +380,26 @@ manifolds.
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Questions</h3>
-<!--l. 54--><p class="noindent" >We have essentially the same result in what might seem like two very di&#xFB00;erent contexts.
-The &#xFB01;rst result made use of a functional equation of a zeta function, and the latter used a
-projection formula for the trace of an operator, since we had an interpretation of the zeta
-function as the trace of an operator.
-</p><!--l. 56--><p class="indent" >  Why is there an analogy in these two situations? Geometrically, a number &#xFB01;eld behaves
-a lot like an algebraic curve. Indeed, there are di&#xFB00;erential operators on compact Riemann
-surfaces whose zeta functions are analogous with Artin \(L\)-functions on arithmetic
-curves. So this leads to the question: is the Dedekind zeta function &#x0028;or more
-generally an Artin \(L\)-function&#x0029; the trace of an operator? This question is known as the
-Hilbert-Polya conjecture, and has led to a lot of research. Alain Connes has
-apparently such an operator on a non-commutative space, and claims that the
+                                                                                         
+                                                                                         
+<!--l. 54--><p class="noindent" >We have essentially the same result in what might seem like two very di&#xFB00;erent contexts. The &#xFB01;rst
+result made use of a functional equation of a zeta function, and the latter used a projection
+formula for the trace of an operator, since we had an interpretation of the zeta function as the
+trace of an operator.
+</p><!--l. 56--><p class="indent" >  Why is there an analogy in these two situations? Geometrically, a number &#xFB01;eld behaves a lot like
+an algebraic curve. Indeed, there are di&#xFB00;erential operators on compact Riemann surfaces whose
+zeta functions are analogous with Artin \(L\)-functions on arithmetic curves. So this leads to the
+question: is the Dedekind zeta function &#x0028;or more generally an Artin \(L\)-function&#x0029; the trace of an
+operator? This question is known as the Hilbert-Polya conjecture, and has led to a lot of research.
+Alain Connes has apparently such an operator on a non-commutative space, and claims that the
 Riemann hypothesis can be reformulated in terms of proving a trace formula for this
 operator.
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

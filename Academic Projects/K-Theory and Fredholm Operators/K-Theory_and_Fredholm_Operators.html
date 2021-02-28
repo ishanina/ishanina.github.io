@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -229,62 +241,57 @@ class="cmr-10">ISHAN LEVY</span>
 <!--l. 9--><p class="noindent" >Given a compact space \(X\), we can consider the commutative monoid of complex vector
 bundles on \(X\) under the Whitney sum operation. We can force it to become a group in the
 universal way, giving a group called \(K(X)\). This is a functor, so we can ask whether it is
-representable. If it is, the representing object should be a group up to homotopy. But in
-this case, it is represented by the space of Fredholm operators \(\sF \) on Hilbert space \(H\). In
-particular the composition operation is a commutative group operation on \(\sF \) up to
+representable. If it is, the representing object should be a group up to homotopy. But
+in this case, it is represented by the space of Fredholm operators \(\sF \) on Hilbert space \(H\).
+In particular the composition operation is a commutative group operation on \(\sF \) up to
 homotopy.
-</p><!--l. 11--><p class="indent" >  \(K(X)\) for a point is just \(\ZZ \), so in particular the components of the space of Fredholm operators
-should correspond to the integers, and this function from Fredholm operators to \(\ZZ \) is exactly
-the index of an operator. Hence in general we will want to construct a natural
-isomorphism \(\ind : [-,\sF ] \to K(-)\).
+</p><!--l. 11--><p class="indent" >  \(K(X)\) for a point is just \(\ZZ \), so in particular the components of the space of Fredholm operators should
+correspond to the integers, and this function from Fredholm operators to \(\ZZ \) is exactly the
+index of an operator. Hence in general we will want to construct a natural isomorphism
+\(\ind : [-,\sF ] \to K(-)\).
 </p><!--l. 13--><p class="indent" >  To do this, &#xFB01;rst suppose that we have a map \(f:X \to \sF \), and we &#xFB01;x a point \(x \in X\). We should note that
 the kernel of \(f(x) = f_x\) varies continuously in \(X\), in the sense that if \(V\) is a subspace on which \(f_x\) is
-injective, then nearby points will also be injective on \(V\). In particular, as \(X\) is compact, we can
-&#xFB01;nd a \(V\) of &#xFB01;nite codimension in \(H\) such that \(f_x\) is injective on \(V\) for all \(x \in X\). Then \(f_x(V)\) is a subbundle of \(X \times H\),
-and we can consider \(H/f_X(V)\), the bundle where the &#xFB01;bre of \(x\) is \(H/f_x(V)\). If \(V\) is codimension \(k\), we
-de&#xFB01;ne \(\ind _V(f) = k-[H/f_X(V)]\). To see this is well de&#xFB01;ned, we only need to observe that if we choose a
+injective, then nearby points will also be injective on \(V\). In particular, as \(X\) is compact,
+we can &#xFB01;nd a \(V\) of &#xFB01;nite codimension in \(H\) such that \(f_x\) is injective on \(V\) for all \(x \in X\). Then \(f_x(V)\) is a
+subbundle of \(X \times H\), and we can consider \(H/f_X(V)\), the bundle where the &#xFB01;bre of \(x\) is \(H/f_x(V)\). If \(V\) is codimension
+\(k\), we de&#xFB01;ne \(\ind _V(f) = k-[H/f_X(V)]\). To see this is well de&#xFB01;ned, we only need to observe that if we choose a
 codimension \(n\) subspace \(U \subset V\) then \(H/f_X(U) \cong f_X(U)^\perp \cong f_X(V)^\perp \oplus f_X(U ^\perp \cap V) \cong H/f_X(V) \oplus \CC ^n \times X\). We thus have \(k-[H/f_X(V)] = k+n - [H/f_X(U)]\), so for any \(V,W\), \(\ind _V(f) = \ind _{V\cap W}(f) = \ind _{W}(f)\). Moreover index is clearly
 natural.
 </p><!--l. 15--><p class="indent" >  Homotopy invariance comes from the commutative diagram: </p>
-                                                                                  
-
-                                                                                  
 <div class="center" 
 >
 <!--l. 16--><p class="noindent" >
+                                                                                         
+                                                                                         
 </p><!--l. 21--><p class="noindent" >                <img 
-src="K-Theory_and_Fredholm_Operators0x.svg" alt="      &#x005B;X, &#x2131; &#x005D;           K &#x0028;X &#x0029;
-
-
-      &#x005B;X  &#x00D7; I,&#x2131; &#x005D;       K &#x0028;X &#x00D7;  I&#x0029;
-
+src="K-Theory_and_Fredholm_Operators0x.svg" alt="      &#x005B;&#x005B;XX, &#x2131;&#x00D7; &#x005D;I,&#x2131; &#x005D;       KK &#x0028;&#x0028;XX &#x0029;&#x00D7;  I&#x0029;
 
 
       &#x005B;X, &#x2131; &#x005D;           K &#x0028;X &#x0029;
 
-ii&#x0028;&#x0028;&#x0028;&#x0028;indnd1111ndeeXXXXexx&#x00D7;&#x00D7;&#x00D7;&#x00D7;x&#x0028;&#x0028;0101&#x0028;f0ft&#x0029;&#x0029;&#x0029;&#x0029;f1&#x0029;&#x0029;&#x2217;&#x2217;&#x2217;&#x2217;&#x0029; "  />
+ii&#x0028;&#x0028;&#x0028;&#x0028;indnd1111ndeeexx&#x00D7;&#x00D7;&#x00D7;&#x00D7;x&#x0028;&#x0028;0101&#x0028;ff&#x0029;&#x0029;&#x0029;&#x0029;f&#x0029;&#x0029;&#x2217;&#x2217;&#x2217;&#x2217;&#x0029;
+  XXXX  0t1 "  />
 </p></div>
-<!--l. 23--><p class="noindent" >The vertical maps are isomorphisms and their composites are the identity on \([X,\sF ]\) and \(K(X)\), so \(\ind (f_0) = \ind (f_1)\). To
-see \(\ind \) is a homomorphism, let \(f,g: X \to \sF \). Then choose \(U,V\) to be &#xFB01;nite codimension subspaces on which \(f,g\)
-are respectively injective and such that \(g_X(V) \subset U\), so that \(fg\) is injective on \(V\). Then there is an exact
-sequence \(0 \to U/g_X(V) \to H/fg_X(V) \to H/f_X(U) \to 0\), so \(\ind (fg) = \codim V - [H/fg_X(V)] = \codim V - [U/g_X(V)] - [H/f_X(U)]\) \(= \codim U + \codim V -[H/g_X(U)] - [H/f_X(U)] = \ind (f) + \ind (g)\).
-</p><!--l. 25--><p class="indent" >  For surjectivity of the index, since it is a homomorphism we need every vector bundle \(V\)
-to be in the image, as well as \(n \in \ZZ \). The latter can be done by sending \(X\) to a single operator of
-index \(n\). To see \(V\) is in the image, &#xFB01;nd a vector bundle \(W\) such that \(V \oplus W = \CC ^n \times X\) and let \(\pi _V, \pi _W\) be the projection
+<!--l. 23--><p class="noindent" >The vertical maps are isomorphisms and their composites are the identity on \([X,\sF ]\) and \(K(X)\), so \(\ind (f_0) = \ind (f_1)\). To see \(\ind \) is a
+homomorphism, let \(f,g: X \to \sF \). Then choose \(U,V\) to be &#xFB01;nite codimension subspaces on which \(f,g\) are respectively
+injective and such that \(g_X(V) \subset U\), so that \(fg\) is injective on \(V\). Then there is an exact sequence \(0 \to U/g_X(V) \to H/fg_X(V) \to H/f_X(U) \to 0\), so \(\ind (fg) = \codim V - [H/fg_X(V)] = \codim V - [U/g_X(V)] - [H/f_X(U)]\)
+\(= \codim U + \codim V -[H/g_X(U)] - [H/f_X(U)] = \ind (f) + \ind (g)\).
+</p><!--l. 25--><p class="indent" >  For surjectivity of the index, since it is a homomorphism we need every vector bundle \(V\) to be in
+the image, as well as \(n \in \ZZ \). The latter can be done by sending \(X\) to a single operator of index
+\(n\). To see \(V\) is in the image, &#xFB01;nd a vector bundle \(W\) such that \(V \oplus W = \CC ^n \times X\) and let \(\pi _V, \pi _W\) be the projection
 maps. Now send \(x\) to the operator on \(H\otimes \CC ^n \cong H\) sending \(e_i \otimes v\) to \(e_{i+1} \otimes{\pi _W(v)} + e_i \otimes \pi _V(v)\). The index is \(-W\) which is \(V\) up to a trivial
 bundle.
-</p><!--l. 27--><p class="indent" >  Finally let&#x2019;s examine the kernel of the index. If something is in the kernel, there must be
-a &#xFB01;nite codimension subspace \(U \subset H\) with \(H/f_X(U)\) trivial. Let \(e_1,\dots e_n\) be a basis of \(U^\perp \) and let \(s_1,\dots s_n\) be trivializing
-sections of \(f_X(U)^\perp \). Consider the homotopy that has \(f_{x,t}(e_i) = f_x(e_i)(1-t) + s_i t\). It homotopes \(f\) to something that is an
-isomorphism on \(H\). Thus we have an exact sequence \([X ,\GL (H)] \to [X,\sF ] \to K(X) \to 0\). However, by Kuiper&#x2019;s theorem, \(\GL (H)\) is
-contractible, so the index is a natural isomorphism.
+</p><!--l. 27--><p class="indent" >  Finally let&#x2019;s examine the kernel of the index. If something is in the kernel, there must be a &#xFB01;nite
+codimension subspace \(U \subset H\) with \(H/f_X(U)\) trivial. Let \(e_1,\dots e_n\) be a basis of \(U^\perp \) and let \(s_1,\dots s_n\) be trivializing sections of \(f_X(U)^\perp \). Consider
+the homotopy that has \(f_{x,t}(e_i) = f_x(e_i)(1-t) + s_i t\). It homotopes \(f\) to something that is an isomorphism on \(H\). Thus we have an
+exact sequence \([X ,\GL (H)] \to [X,\sF ] \to K(X) \to 0\). However, by Kuiper&#x2019;s theorem, \(\GL (H)\) is contractible, so the index is a natural
+isomorphism.
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

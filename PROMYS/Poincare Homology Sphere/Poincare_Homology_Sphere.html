@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -226,261 +238,226 @@ class="cmr-10">ISHAN LEVY</span>
   </div>
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-10001"></a>Introduction</h3>
-<!--l. 11--><p class="noindent" >In dimension \(&lt;3\), any manifold with the homology of a sphere is in fact a sphere. However,
-this is not at all true in dimension \(3\). An easy way to see this is the following: given a Kirby
+<!--l. 11--><p class="noindent" >In dimension \(&lt;3\), any manifold with the homology of a sphere is in fact a sphere. However, this is
+not at all true in dimension \(3\). An easy way to see this is the following: given a Kirby
 diagram, the <span 
 class="cmbx-12">linking matrix </span>is the matrix \(M_{ij}\) where the o&#xFB00; diagonal terms are the linking
 numbers of the \(i^{th}\) and \(j^{th}\) &#x0028;oriented&#x0029; knot in the diagram, and the diagonal terms are the
-framings on the components. Then this matrix represents the intersection form
-on the second homology of the \(4\)-manifold. To see this, every time a \(2\)-handle is
-added, by the Mayer-Vietoris sequence, we add a \(\ZZ \) to homology. However the
-Mayer-Vietoris sequence gives an explicit generator of the new copy of \(\ZZ \). Namely
-take a surface in \(D^4\) that has boundary the knot, and glue it to the core of the
-\(2\)-handle to get a surface in the \(4\)-manifold. The self intersection of this can be
-computed by slightly translating the surface, in \(D^4\), and computing the intersection
-with the original surface. To see the intersection number is the linking number,
-one makes each surface Morse with respect to the distance from the center of
-\(D^4\), and then keeping track of how the linking number changes with the critical
+framings on the components. Then this matrix represents the intersection form on the
+second homology of the \(4\)-manifold. To see this, every time a \(2\)-handle is added, by the
+Mayer-Vietoris sequence, we add a \(\ZZ \) to homology. However the Mayer-Vietoris sequence gives an
+explicit generator of the new copy of \(\ZZ \). Namely take a surface in \(D^4\) that has boundary
+the knot, and glue it to the core of the \(2\)-handle to get a surface in the \(4\)-manifold. The
+self intersection of this can be computed by slightly translating the surface, in \(D^4\), and
+computing the intersection with the original surface. To see the intersection number is the
+linking number, one makes each surface Morse with respect to the distance from the
+center of \(D^4\), and then keeping track of how the linking number changes with the critical
 points.
-</p><!--l. 13--><p class="indent" >  If the \(4\)-manifold is simply connected &#x0028;which always happens if you attach \(2\)-handles&#x0029;, then
-the by Poincar&#x00E9; duality and the universal coe&#xFB03;cients theorem, \(H_3(M,\partial M) = 0\), so we have the exact
+</p><!--l. 13--><p class="indent" >  If the \(4\)-manifold is simply connected &#x0028;which always happens if you attach \(2\)-handles&#x0029;, then the
+by Poincar&#x00E9; duality and the universal coe&#xFB03;cients theorem, \(H_3(M,\partial M) = 0\), so we have the exact
 sequence:
 </p><!--l. 15--><p class="indent" >  \[0 \to H_2(\partial M) \to H_2(M) \to H_2(M,\partial M) \to H_1(\partial M) \to 0\]
-</p><!--l. 17--><p class="indent" >  If the intersection form is nondegenerate, then the image of \(H_2(\partial M)\) is \(0\), as anything in the
-                                                                                  
-
-                                                                                  
-image is clearly null in the intersection form. Thus the exact sequence above gives that \(H_2(\partial M) = H_1(\partial M) = 0\).
-Conversely if they are \(0\), the map in the middle is an isomorphism, so by Poincar&#x00E9; duality
-the intersection form is nondegenerate. Thus we get:
+</p><!--l. 17--><p class="indent" >  If the intersection form is nondegenerate, then the image of \(H_2(\partial M)\) is \(0\), as anything in the image is
+clearly null in the intersection form. Thus the exact sequence above gives that \(H_2(\partial M) = H_1(\partial M) = 0\). Conversely if they
+are \(0\), the map in the middle is an isomorphism, so by Poincar&#x00E9; duality the intersection form is
+nondegenerate. Thus we get:
 </p>
   <div class="newtheorem">
 <!--l. 19--><p class="noindent" ><span class="head">
 <a 
  id="x1-1001r1"></a>
+                                                                                         
+                                                                                         
 <span 
 class="cmbx-12">Theorem 1.1.</span>  </span><span 
 class="cmti-12">The linking matrix of a Kirby diagram has determinant</span> \(\pm 1\) <span 
-class="cmti-12">i&#xFB00; the</span>
-<span 
-class="cmti-12">associated</span> \(3\)<span 
+class="cmti-12">i&#xFB00; the associated</span>
+\(3\)<span 
 class="cmti-12">-manifold is an integral homology sphere.</span>
 </p>
   </div>
-<!--l. 23--><p class="indent" >  This makes it very easy to produce lots of homology \(3\)-spheres. Here we will study a
-very special one, called the Poincar&#x00E9; homology sphere, which will be denoted
-\(\Sigma (2,3,5)\).
+<!--l. 23--><p class="indent" >  This makes it very easy to produce lots of homology \(3\)-spheres. Here we will study a very special
+one, called the Poincar&#x00E9; homology sphere, which will be denoted \(\Sigma (2,3,5)\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Descriptions</h3>
-<!--l. 27--><p class="noindent" >The &#xFB01;rst description is as a plumbed \(3\)-manifold, namely that of the \(E_8\) graph shown
-below:
+<!--l. 27--><p class="noindent" >The &#xFB01;rst description is as a plumbed \(3\)-manifold, namely that of the \(E_8\) graph shown below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20011"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 30--><p class="noindent" ><img 
 src="Plumbing.png" alt="pict"  
- width="451.50288pt"  />
+ width="493.2406pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;1:</span><span  
-class="content">The \(E8\) graph, where the associated plumbed \(4\)-manifold has boundary the
-Poincar&#x00E9;</span></figcaption><!--tex4ht:label?: x1-20011 -->
-                                                                                  
-
-                                                                                  
+class="content">The \(E8\) graph, where the associated plumbed \(4\)-manifold has boundary the Poincar&#x00E9;</span></figcaption><!--tex4ht:label?: x1-20011 -->
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 35--><p class="indent" >  The second and third descriptions are as a Seifert &#xFB01;bre space and as \(-1\) surgery on the
-left-handed trefoil knot, both of which are shown below:
+<!--l. 35--><p class="indent" >  The second and third descriptions are as a Seifert &#xFB01;bre space and as \(-1\) surgery on the left-handed
+trefoil knot, both of which are shown below:
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20022"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 38--><p class="noindent" ><img 
 src="PoincareHomologySphereKirby.png" alt="pict"  
- width="387.00807pt"  />
+ width="422.7838pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;2:</span><span  
 class="content">Surgery descriptions of \(\Sigma (2,3,5)\).</span></figcaption><!--tex4ht:label?: x1-20022 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 44--><p class="indent" >  For the Seifert &#xFB01;bre space, it is an \(S^1\)-bundle over \(S^2\) which is locally trivial except at \(3\)
-exceptional &#xFB01;bres, where the stabilizer of the \(S^1\) action is \(5,3\), and \(2\) respectively.
-</p><!--l. 46--><p class="indent" >  The fourth description is the following: take \(\SOr (3)\), and quotient by the isometries of the
-icosahedron, shown in Figure <a 
+<!--l. 44--><p class="indent" >  For the Seifert &#xFB01;bre space, it is an \(S^1\)-bundle over \(S^2\) which is locally trivial except at \(3\) exceptional
+&#xFB01;bres, where the stabilizer of the \(S^1\) action is \(5,3\), and \(2\) respectively.
+</p><!--l. 46--><p class="indent" >  The fourth description is the following: take \(\SOr (3)\), and quotient by the isometries of the icosahedron,
+shown in Figure <a 
 href="#x1-20033">3<!--tex4ht:ref: icosahedron --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-20033"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 49--><p class="noindent" ><img 
 src="Icosahedron.png" alt="pict"  
- width="193.50403pt"  />
+ width="211.39189pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;3:</span><span  
 class="content"></span></figcaption><!--tex4ht:label?: x1-20033 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 55--><p class="indent" >  This description is especially concrete since \(\SOr (3)\) is the unit sphere bundle on the
-icosahedron.
-</p><!--l. 57--><p class="indent" >  The &#xFB01;fth description is the following: consider the singular surface in \(\AA ^3\) given by the
-equation \(x^2+y^3+z^5=0\). If you take a small ball around the origin and intersect it with this
-hypersurface, the intersection will be the Poincar&#x00E9; homology sphere.
-</p><!--l. 59--><p class="indent" >  The sixth description is \(3\) in \(1\): for any \(\{i,j,k\} = \{2,3,5\}\), \(\Sigma (2,3,5)\) is the \(i\)-fold branched cover of the \(j,k\) torus knot
-&#x0028;i.e. the knot representing \((j,k)\) in the fundamental group of the standard torus in
-\(S^3\).
+<!--l. 55--><p class="indent" >  This description is especially concrete since \(\SOr (3)\) is the unit sphere bundle on the icosahedron.
+</p><!--l. 57--><p class="indent" >  The &#xFB01;fth description is the following: consider the singular surface in \(\AA ^3\) given by the equation \(x^2+y^3+z^5=0\). If
+you take a small ball around the origin and intersect it with this hypersurface, the intersection will
+be the Poincar&#x00E9; homology sphere.
+</p><!--l. 59--><p class="indent" >  The sixth description is \(3\) in \(1\): for any \(\{i,j,k\} = \{2,3,5\}\), \(\Sigma (2,3,5)\) is the \(i\)-fold branched cover of the \(j,k\) torus knot &#x0028;i.e. the knot
+representing \((j,k)\) in the fundamental group of the standard torus in \(S^3\).
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Equivalences</h3>
-<!--l. 63--><p class="noindent" >The &#xFB01;rst step is to show that the &#xFB01;rst three are the same using Kirby calculus. Namely,
-whenever we have a \(\pm 1\) framed unknot, we can <span 
-class="cmbx-12">blow down</span>. This means that we &#xFB01;rst slide all
-adjacent handles over this handle to leave the \(v\) disjoint from everything else, and
-then use the &#xFB01;rst Kirby move to remove the unknotted \(2\)-handle. The reverse
-process is called blowing up. The e&#xFB00;ect of this on a graph is shown in Figure <a 
-href="#x1-30014">4<!--tex4ht:ref: blowup --></a>.
-</p><figure class="figure"> 
+<!--l. 63--><p class="noindent" >The &#xFB01;rst step is to show that the &#xFB01;rst three are the same using Kirby calculus. Namely, whenever
+we have a \(\pm 1\) framed unknot, we can <span 
+class="cmbx-12">blow down</span>. This means that we &#xFB01;rst slide all adjacent handles
+over this handle to leave the \(v\) disjoint from everything else, and then use the &#xFB01;rst Kirby move to
+remove the unknotted \(2\)-handle. The reverse process is called blowing up. The e&#xFB00;ect of this on a
+graph is shown in Figure <a 
+href="#x1-30014">4<!--tex4ht:ref: blowup --></a>. </p><figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-30014"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 66--><p class="noindent" ><img 
 src="Blowup.png" alt="pict"  
- width="290.25114pt"  />
+ width="317.08247pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;4:</span><span  
 class="content">The e&#xFB00;ect of blowing up on a plumbing graph.</span></figcaption><!--tex4ht:label?: x1-30014 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 71--><p class="indent" >  Now that we can blow up and down, we can show the &#xFB01;rst and last Kirby diagrams of
-the Poincar&#x00E9; homology sphere are the same by blowing up and down in Figure
+<!--l. 71--><p class="indent" >  Now that we can blow up and down, we can show the &#xFB01;rst and last Kirby diagrams
+of the Poincar&#x00E9; homology sphere are the same by blowing up and down in Figure
 <a 
 href="#x1-30025">5<!--tex4ht:ref: GraphCalculus --></a>.
 </p>
   <figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-30025"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 74--><p class="noindent" ><img 
 src="GraphCalculus.png" alt="pict"  
- width="225.75636pt"  />
+ width="246.62567pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;5:</span><span  
-class="content">We can change our Kirby diagram for the Poincar&#x00E9; homology sphere by
-blowing up and down. In the above pictures, an unlabeled vertex has weight \(-2\). By
-blowing up a \(1\) vertex on either side of the graph, we can then blow down many times,
-ultimately getting the second form of the Poincar&#x00E9; homology sphere.</span></figcaption><!--tex4ht:label?: x1-30025 -->
-                                                                                  
-
-                                                                                  
+class="content">We can change our Kirby diagram for the Poincar&#x00E9; homology sphere by blowing
+up and down. In the above pictures, an unlabeled vertex has weight \(-2\). By blowing up a \(1\)
+vertex on either side of the graph, we can then blow down many times, ultimately getting
+the second form of the Poincar&#x00E9; homology sphere.</span></figcaption><!--tex4ht:label?: x1-30025 -->
+                                                                                         
+                                                                                         
   </figure>
 <!--l. 80--><p class="indent" >  Finally, we can continue to blow down, obtaining the third description. </p><figure class="figure"> 
 
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <a 
  id="x1-30036"></a>
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
 <!--l. 82--><p class="noindent" ><img 
 src="235Calculus.png" alt="pict"  
- width="161.25171pt"  />
+ width="176.15813pt"  />
 </p>
 <figcaption class="caption" ><span class="id">Figure&#x00A0;6:</span><span  
 class="content">By blowing down \(3\) more times, we get \(-1\) surgery on a left-handed trefoil.</span></figcaption><!--tex4ht:label?: x1-30036 -->
-                                                                                  
-
-                                                                                  
+                                                                                         
+                                                                                         
   </figure>
-<!--l. 88--><p class="indent" >  Now lets give some indication of how to get from the &#xFB01;rst to the \(4^{th}\) and \(5^{th}\) description. We
-can consider quotienting \(\CC ^2\) by the <span 
-class="cmbx-12">binary icosahedral group</span>, which is the pullback of
-the symmetry group of the icosahedron &#x0028;\(A5\)&#x0029; via the covering map \(\SU (2) \to \SOr (3)\). If we take
-the quotient of the unit sphere, we will get exactly the \(3^{rd}\) description. However,
-we can &#xFB01;rst take the quotient, and then take the boundary of a small ball to
-get the equivalence with the \(4^{th}\) description. To see this, we can take the quotient
-algebraically, which makes sense since the group is &#xFB01;nite. We view the group acting on \(\CC [x,y]\),
-and &#xFB01;nd the polynomials &#xFB01;xed by its action. There are three polynomials \(f_1,f_2,f_3\) that
-will generate the &#xFB01;xed subalgebra, and these will satisfy exactly the relation
+<!--l. 88--><p class="indent" >  Now lets give some indication of how to get from the &#xFB01;rst to the \(4^{th}\) and \(5^{th}\) description. We can
+consider quotienting \(\CC ^2\) by the <span 
+class="cmbx-12">binary icosahedral group</span>, which is the pullback of the symmetry
+group of the icosahedron &#x0028;\(A5\)&#x0029; via the covering map \(\SU (2) \to \SOr (3)\). If we take the quotient of the unit sphere, we
+will get exactly the \(3^{rd}\) description. However, we can &#xFB01;rst take the quotient, and then take the
+boundary of a small ball to get the equivalence with the \(4^{th}\) description. To see this, we
+can take the quotient algebraically, which makes sense since the group is &#xFB01;nite. We
+view the group acting on \(\CC [x,y]\), and &#xFB01;nd the polynomials &#xFB01;xed by its action. There are three
+polynomials \(f_1,f_2,f_3\) that will generate the &#xFB01;xed subalgebra, and these will satisfy exactly the relation
 \(f_1^2+f_2^3+f_3^5=0\).
-</p><!--l. 90--><p class="indent" >  There are at least \(2\) ways to connect the fourth and &#xFB01;fth descriptions to the
-&#xFB01;rst three. In the fourth description, There is a natural \(S^1\) action on \(\SOr (3)\), given by
-clockwise rotation. On the Poincar&#x00E9; homology sphere, This action is almost
-free, except there are \(3\) points with nontrivial stabilizer. The centers of a vertex,
-edge, or face have nontrivial stabilizers of sizes \(5,2,3\) respectively. There is a unique
-Seifert &#xFB01;bred homology sphere over a sphere with this property &#x0028;this can be
-proved using Kirby calculus&#x0029;, so this shows that this description is the same as the
-second. One can also see the Seifert &#xFB01;bration directly in the equation \(x^2+y^3+z^5= 0\). Namely, \(S^1 = \RR /30\ZZ \)
-can act on the points via \(t(x,y,z) = (e^{\frac{2\pi i t}{2}}x,e^{\frac{2\pi i t}{3}}y,e^{\frac{2\pi i t}{5}}z)\). The points where \(z=0\) or \(x=0\) or \(y =0\) are clearly the exceptional
+</p><!--l. 90--><p class="indent" >  There are at least \(2\) ways to connect the fourth and &#xFB01;fth descriptions to the &#xFB01;rst three. In the
+fourth description, There is a natural \(S^1\) action on \(\SOr (3)\), given by clockwise rotation. On the
+Poincar&#x00E9; homology sphere, This action is almost free, except there are \(3\) points with
+nontrivial stabilizer. The centers of a vertex, edge, or face have nontrivial stabilizers of sizes \(5,2,3\)
+respectively. There is a unique Seifert &#xFB01;bred homology sphere over a sphere with this property
+&#x0028;this can be proved using Kirby calculus&#x0029;, so this shows that this description is the
+same as the second. One can also see the Seifert &#xFB01;bration directly in the equation \(x^2+y^3+z^5= 0\).
+Namely, \(S^1 = \RR /30\ZZ \) can act on the points via \(t(x,y,z) = (e^{\frac{2\pi i t}{2}}x,e^{\frac{2\pi i t}{3}}y,e^{\frac{2\pi i t}{5}}z)\). The points where \(z=0\) or \(x=0\) or \(y =0\) are clearly the exceptional
 &#xFB01;bres.
-</p><!--l. 92--><p class="indent" >  There is an algebro-geometric way to get from the &#xFB01;fth description to the &#xFB01;rst. Namely,
-consider the singular \(4\)-manifold that is a neighborhood of the origin in the \(5^{th}\) description.
-Then we can resolve the singularity by blowing up many times. In our particular
-case, when we blowup to resolve the singularity in a minimal way, there are \(8\)
-exceptional &#xFB01;bres, which transversely intersect as in the \(E_8\) graph, and have self
-intersection \(-2\). Then the preimage of the \(4\)-manifold under this blowup is a regular
-neighborhood of these exceptional &#xFB01;bres, which is by an example in a previous
-lecture the plumbing on the \(E_8\) graph. The boundary hasn&#x2019;t changed so it is still
+</p><!--l. 92--><p class="indent" >  There is an algebro-geometric way to get from the &#xFB01;fth description to the &#xFB01;rst. Namely, consider
+the singular \(4\)-manifold that is a neighborhood of the origin in the \(5^{th}\) description. Then we can resolve
+the singularity by blowing up many times. In our particular case, when we blowup to resolve the
+singularity in a minimal way, there are \(8\) exceptional &#xFB01;bres, which transversely intersect as in
+the \(E_8\) graph, and have self intersection \(-2\). Then the preimage of the \(4\)-manifold under this
+blowup is a regular neighborhood of these exceptional &#xFB01;bres, which is by an example in a
+previous lecture the plumbing on the \(E_8\) graph. The boundary hasn&#x2019;t changed so it is still
 \(\Sigma (2,3,5)\).
-</p><!--l. 94--><p class="indent" >  Finally, we can show that the \(4^{th}\) description is the same as the \(6^{th}\). Namely, consider
-the map from \(\Sigma (2,3,5) = \{(x,y,z) \in \CC ^3, x^2+y^3+z^5 = 0, |x|^2+|y|^2+|z|^2 = 1\}\) to \(S^3 = \{(x,y) \in \CC ^2, |x|^2+|y|^2 = 1\}\) given by \((x,y,z) \mapsto \frac{(x,y)}{|(x,y)|}\). This is the branched covering. To see this, since
-a nonzero complex number has \(5\) \(5^{th}\) roots, there are \(5\) &#xFB01;bres except at the trefoil,
-which is de&#xFB01;ned as the points for which \(x^2+y^3 = 0\). Moreover the derivative is surjective
-where it needs to be so it is a branched cover, and there is a clear \(\ZZ /5\ZZ \) action on
-the &#xFB01;bres given by multiplication on \(z\) by a \(5^{th}\) root of unity. Thus it is a normal
-branched cover with Galois group \(\ZZ /5\ZZ \), but there is only one of these, namely the \(5\)-fold
-                                                                                  
-
-                                                                                  
-cyclic branched cover. By permuting the \(2,3,5\), we can get the other branched cover
+</p><!--l. 94--><p class="indent" >  Finally, we can show that the \(4^{th}\) description is the same as the \(6^{th}\). Namely, consider the map from \(\Sigma (2,3,5) = \{(x,y,z) \in \CC ^3, x^2+y^3+z^5 = 0, |x|^2+|y|^2+|z|^2 = 1\}\)
+to \(S^3 = \{(x,y) \in \CC ^2, |x|^2+|y|^2 = 1\}\) given by \((x,y,z) \mapsto \frac{(x,y)}{|(x,y)|}\). This is the branched covering. To see this, since a nonzero complex number has \(5\) \(5^{th}\)
+roots, there are \(5\) &#xFB01;bres except at the trefoil, which is de&#xFB01;ned as the points for which \(x^2+y^3 = 0\). Moreover the
+derivative is surjective where it needs to be so it is a branched cover, and there is a
+clear \(\ZZ /5\ZZ \) action on the &#xFB01;bres given by multiplication on \(z\) by a \(5^{th}\) root of unity. Thus it is a
+normal branched cover with Galois group \(\ZZ /5\ZZ \), but there is only one of these, namely the
+\(5\)-fold cyclic branched cover. By permuting the \(2,3,5\), we can get the other branched cover
 descriptions.
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

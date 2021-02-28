@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -234,31 +246,28 @@ introduced adjoints, which were exactly the concept needed: Once they became bet
 known, people realized that this was an essential concept: it appeared everywhere in
 mathematics.
 </p><!--l. 12--><p class="indent" >  Here is an example of an adjoint: recall the two categories \(\Fld \) &#x0028;&#xFB01;elds&#x0029;, and \(\Dom _m\) &#x0028;domains with
-injections as arrows&#x0029;. We have \(U: \Fld \to \Dom _m\) the forgetful functor and \(\Frac : \Dom _m \to \Fld \), sending a domain to its &#xFB01;eld of
-fractions. Recall last time that the inclusion of \(R\) into \(U\Frac (R)\) is a universal arrow from \(R\) to \(\Frac \).
-Similarly, the isomorphism \(K \cong \Frac (UK)\) is a universal arrow from \(K\) to \(\Frac \). The fact that these two
-universal arrows exist is due to an adjunction. More precisely, the &#xFB01;rst universal
-arrow \(R \to U\Frac (R)\) gives \(\Dom _m(R,UK) \cong \Fld (\Frac (R),K)\), which is natural in \(K\). Note that the following diagram commutes:
-</p>
+injections as arrows&#x0029;. We have \(U: \Fld \to \Dom _m\) the forgetful functor and \(\Frac : \Dom _m \to \Fld \), sending a domain to its &#xFB01;eld of fractions.
+Recall last time that the inclusion of \(R\) into \(U\Frac (R)\) is a universal arrow from \(R\) to \(\Frac \). Similarly, the
+isomorphism \(K \cong \Frac (UK)\) is a universal arrow from \(K\) to \(\Frac \). The fact that these two universal arrows exist is due
+to an adjunction. More precisely, the &#xFB01;rst universal arrow \(R \to U\Frac (R)\) gives \(\Dom _m(R,UK) \cong \Fld (\Frac (R),K)\), which is natural in \(K\). Note that
+the following diagram commutes: </p>
 <div class="center" 
 >
 <!--l. 13--><p class="noindent" >
-                                                                                  
-
-                                                                                  
 </p><!--l. 17--><p class="noindent" >          <img 
 src="Adjoints0x.svg" alt="  R            U Frac&#x0028;R &#x0029;
 
 
-fiUiFSrac&#x0028;f&#x0029;        U Frac&#x0028;S&#x0029;
-RS "  />
+fiRUiSFSrac&#x0028;f&#x0029;        U Frac&#x0028;S&#x0029; "  />
 </p></div>
 <!--l. 19--><p class="noindent" >Note that \(i\) is not just a universal arrow, but also by this diagram a natural transformation
 from \(1_{\Dom _m}\) to \(U\Frac \). Then, from the second universal arrow \(K \to \Frac (UK)\) we get the same natural bijection \(\Dom _m(R,UK) \cong \Fld (\Frac (R),K)\),
-except now it is natural in \(R\). The fact that these bijections are the same shows that we end
-up with a bijection that is both natural in \(R\) and \(K\). This is an adjunction, and is the
-familiar universal property of the &#xFB01;eld of fractions. More generally, an adjunction
+except now it is natural in \(R\). The fact that these bijections are the same shows that we
+end up with a bijection that is both natural in \(R\) and \(K\). This is an adjunction, and is
+the familiar universal property of the &#xFB01;eld of fractions. More generally, an adjunction
 is:
+                                                                                         
+                                                                                         
 </p>
   <div class="newtheorem">
 <!--l. 21--><p class="noindent" ><span class="head">
@@ -271,15 +280,15 @@ class="cmti-12">be categories and</span> \(F:C \to D\)<span
 class="cmti-12">,</span> \(G:D \to C\) <span 
 class="cmti-12">be functors. An </span><span 
 class="cmbxti-10x-x-120">adjunction </span><span 
-class="cmti-12">is a bijection</span>
+class="cmti-12">is a bijection between</span>
 <span 
-class="cmti-12">between the functors</span> \(D(Fa,b)\) <span 
+class="cmti-12">the functors</span> \(D(Fa,b)\) <span 
 class="cmti-12">and</span> \(C(a,Gb)\) <span 
 class="cmti-12">that is natural in</span> \(a\) <span 
 class="cmti-12">and</span> \(b\) <span 
-class="cmti-12">&#x0028;ie it is a natural isomorphism</span>
+class="cmti-12">&#x0028;ie it is a natural isomorphism when viewed as a</span>
 <span 
-class="cmti-12">when viewed as a functor in</span> \(a\) <span 
+class="cmti-12">functor in</span> \(a\) <span 
 class="cmti-12">and</span> \(b\)<span 
 class="cmti-12">&#x0029;. We say</span> \(F\) <span 
 class="cmti-12">is </span><span 
@@ -289,15 +298,15 @@ class="cmti-12">and write</span> \(F \dashv G\)<span
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 25--><p class="indent" >  If we have an adjunction, we can set \(b = Fa\) to get \(D(Fa,Fa) \cong C(a,GFa)\). This gives us a universal arrow \(\epsilon _a\) to \(GF\) for
-each \(a \in C\), which is a natural transformation \(1_C \to GF\) called the <span 
-class="cmbx-12">unit</span>. Similarly setting \(a = Gb\), we get \(D(FGb,b) \cong C(Gb,Gb)\), which
-is a universal arrow \(\eta _b\) from \(FG\) to \(b\) for each \(b \in D\), giving a natural transformation \(FG \to 1_D\) called the
-<span 
-class="cmbx-12">counit</span>. For example, the unit of the adjunction \(\Frac \dashv U\) is just the collection of universal arrows
-described in the last lecture, namely \(\eta _R\) includes \(R\) into its &#xFB01;eld of fractions. All of the
-information of an adjunction is contained within the unit or counit, which is made precise
-by the following theorem.
+<!--l. 25--><p class="indent" >  If we have an adjunction, we can set \(b = Fa\) to get \(D(Fa,Fa) \cong C(a,GFa)\). This gives us a universal arrow \(\epsilon _a\) to \(GF\) for each \(a \in C\), which
+is a natural transformation \(1_C \to GF\) called the <span 
+class="cmbx-12">unit</span>. Similarly setting \(a = Gb\), we get \(D(FGb,b) \cong C(Gb,Gb)\), which is a universal arrow \(\eta _b\)
+from \(FG\) to \(b\) for each \(b \in D\), giving a natural transformation \(FG \to 1_D\) called the <span 
+class="cmbx-12">counit</span>. For example,
+the unit of the adjunction \(\Frac \dashv U\) is just the collection of universal arrows described in the
+last lecture, namely \(\eta _R\) includes \(R\) into its &#xFB01;eld of fractions. All of the information of an
+adjunction is contained within the unit or counit, which is made precise by the following
+theorem.
 </p>
   <div class="newtheorem">
 <!--l. 27--><p class="noindent" ><span class="head">
@@ -305,10 +314,10 @@ by the following theorem.
  id="x1-1002r2"></a>
 <span 
 class="cmbx-12">Theorem 1.2.</span>  </span><span 
-class="cmti-12">An adjunction</span> \(F \dashv G\) <span 
-class="cmti-12">is completely determined by the functors</span> \(F\)<span 
-class="cmti-12">,</span> \(G\)<span 
-class="cmti-12">, and the</span>
+class="cmti-12">An  adjunction</span>  \(F \dashv G\)  <span 
+class="cmti-12">is  completely  determined  by  the  functors</span>  \(F\)<span 
+class="cmti-12">,</span>  \(G\)<span 
+class="cmti-12">,  and  the</span>
 <span 
 class="cmti-12">unit. Dually it is determined by the counit. More precisely, the unit must be a natural</span>
 <span 
@@ -318,14 +327,11 @@ class="cmti-12">such that at every component it is universal to</span> \(G\)<spa
 class="cmti-12">.</span>
 </p>
   <div class="proof">
-                                                                                  
-
-                                                                                  
 <!--l. 31--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Suppose we have \(F\), \(G\), and the unit \(\eta \). The fact that \(\eta \) consists of universal arrows gives
-a natural bijection \(\nu :D(Fa,b) \cong C(a,Gb)\) that is natural in b. To get naturality in \(a\), we have that \(\eta \) is a natural
-transformation, so we want </p>
+class="cmti-12">Proof.</span> </span>Suppose we have \(F\), \(G\), and the unit \(\eta \). The fact that \(\eta \) consists of universal arrows gives a natural
+bijection \(\nu :D(Fa,b) \cong C(a,Gb)\) that is natural in b. To get naturality in \(a\), we have that \(\eta \) is a natural transformation, so
+we want </p>
 <div class="center" 
 >
 <!--l. 32--><p class="noindent" >
@@ -333,8 +339,11 @@ transformation, so we want </p>
 src="Adjoints1x.svg" alt="      D &#x0028;F a,b&#x0029;       D &#x0028;F c,b&#x0029;
 
 
+
 &#x2218;&#x03BD;&#x03BD;&#x2218;Fff   C&#x0028;a,Gb &#x0029;       C &#x0028;c,Gb &#x0029; "  />
 </p></div>
+                                                                                         
+                                                                                         
 <!--l. 38--><p class="noindent" >which commutes due to the following diagram: </p>
 <div class="center" 
 >
@@ -353,47 +362,44 @@ src="Adjoints2x.svg" alt="  c         GF c       F c
 class="msam-10x-x-120">&#x25A1;</span></span>
   </div>
   </div>
-<!--l. 49--><p class="indent" >  In the case of the &#xFB01;eld of fractions adjunction, the counit is an isomorphism. This is not
-a coincidence. Note that \(U:\Fld \to \Dom _m\) is a fully faithful functor, ie. \(\Fld \) is a full subcategory of \(\Dom _m\). we call a
-subcategory <span 
-class="cmbx-12">re&#xFB02;ective </span>if the inclusion has a left adjoint &#x0028;the re&#xFB02;ection&#x0029;. There is a general
-fact that a full re&#xFB02;ective subcategory has the counit an isomorphism &#x0028;this is a nice
-exercise&#x0029;. Another example of this is the abelianization, which is the left adjoint of the
-inclusion of \(\Ab \) into \(\Grp \).
-                                                                                  
-
-                                                                                  
-</p><!--l. 51--><p class="indent" >  Another important fact in practice is the triangle identities: \(\epsilon F \circ F\eta = 1_F\) and \(G\epsilon \circ \eta G = 1_G\). These are dual, so I
-will prove the &#xFB01;rst. \(\epsilon \) and \(\eta \) are universal arrows, so if \(\varphi : C(a,Gb) \to D(Fa,b)\) is our natural bijection, we
-have \(\varphi (f) = G(f) \circ \eta _a\) if \(f: Fa \to b\) is an arrow. Then the triangle identity is \(1_{Ga} = \varphi (\epsilon _a)\) by de&#xFB01;nition \(= G(\epsilon _a) \circ \eta _{Ga}\) by the formula
-above.
+<!--l. 49--><p class="indent" >  In the case of the &#xFB01;eld of fractions adjunction, the counit is an isomorphism. This is not a
+coincidence. Note that \(U:\Fld \to \Dom _m\) is a fully faithful functor, ie. \(\Fld \) is a full subcategory of \(\Dom _m\). we call a subcategory
+<span 
+class="cmbx-12">re&#xFB02;ective </span>if the inclusion has a left adjoint &#x0028;the re&#xFB02;ection&#x0029;. There is a general fact that a full
+re&#xFB02;ective subcategory has the counit an isomorphism &#x0028;this is a nice exercise&#x0029;. Another
+example of this is the abelianization, which is the left adjoint of the inclusion of \(\Ab \) into
+\(\Grp \).
+</p><!--l. 51--><p class="indent" >  Another important fact in practice is the triangle identities: \(\epsilon F \circ F\eta = 1_F\) and \(G\epsilon \circ \eta G = 1_G\). These are dual, so I will prove
+the &#xFB01;rst. \(\epsilon \) and \(\eta \) are universal arrows, so if \(\varphi : C(a,Gb) \to D(Fa,b)\) is our natural bijection, we have \(\varphi (f) = G(f) \circ \eta _a\) if \(f: Fa \to b\) is an arrow. Then
+the triangle identity is \(1_{Ga} = \varphi (\epsilon _a)\) by de&#xFB01;nition \(= G(\epsilon _a) \circ \eta _{Ga}\) by the formula above.
 </p>
   <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
  id="x1-20002"></a>Adjunctions are Everywhere</h3>
-<!--l. 54--><p class="noindent" >Adjoints are everywhere in mathematics. Another example is as follows: We have the
-forgetful functor \(U: \CRing \to \Set \). It has a left adjoint, namely, the functor \(\ZZ [-]\) taking a set \(X\) to its polynomial
-ring \(\ZZ [X]=\ZZ [x \in X]\). The natural bijection \(Set(X,UR)\cong \CRing (\ZZ [X],R)\) is the familiar universal property of polynomial rings. This
+<!--l. 54--><p class="noindent" >Adjoints are everywhere in mathematics. Another example is as follows: We have the forgetful
+functor \(U: \CRing \to \Set \). It has a left adjoint, namely, the functor \(\ZZ [-]\) taking a set \(X\) to its polynomial ring
+\(\ZZ [X]=\ZZ [x \in X]\). The natural bijection \(Set(X,UR)\cong \CRing (\ZZ [X],R)\) is the familiar universal property of polynomial rings. This
 works more generally: given a forgetful functor, we may call the left adjoint the free
 functor.
-</p><!--l. 56--><p class="indent" >  Let \(J,C\) be categories, and recall the diagonal functor \(\Delta : C \to C^J\). If \(C\) has all colimits of shape \(J\), the left
-adjoint is the functor that takes a functor \(F\) to its colimit, and similarly the right adjoint
-takes it to its limit &#x0028;if they all exist&#x0029;.
-</p><!--l. 58--><p class="indent" >  A special case is this: Consider a 1-place predicate \(P\): ie a function from a &#xFB01;xed set \(X\) to \(\Omega = \{\bot , \top \}\).
-We can treat \(X\) as a <span 
-class="cmbx-12">discrete </span>category, with only identity arrows, and treat \(\Omega \) as a
-poset, with \(\bot \leq \top \). Then \(\Omega ^X\) the functor category, is the poset of subsets of \(\Omega \) ordered by
-inclusion, and can also be thought of as the collection of 1-place predicates. Then we
-have the diagonal functor \(\Omega \), and the right adjoint is \(\forall x:P(x)\), and the left adjoint is \(\exists x:P(x)\):
-</p>
+</p><!--l. 56--><p class="indent" >  Let \(J,C\) be categories, and recall the diagonal functor \(\Delta : C \to C^J\). If \(C\) has all colimits of shape \(J\), the left adjoint
+is the functor that takes a functor \(F\) to its colimit, and similarly the right adjoint takes it to its limit
+&#x0028;if they all exist&#x0029;.
+</p><!--l. 58--><p class="indent" >  A special case is this: Consider a 1-place predicate \(P\): ie a function from a &#xFB01;xed set \(X\) to \(\Omega = \{\bot , \top \}\). We can
+treat \(X\) as a <span 
+class="cmbx-12">discrete </span>category, with only identity arrows, and treat \(\Omega \) as a poset, with \(\bot \leq \top \). Then \(\Omega ^X\) the
+functor category, is the poset of subsets of \(\Omega \) ordered by inclusion, and can also be thought of as the
+collection of 1-place predicates. Then we have the diagonal functor \(\Omega \), and the right adjoint is \(\forall x:P(x)\), and
+the left adjoint is \(\exists x:P(x)\): </p>
 <div class="center" 
 >
+                                                                                         
+                                                                                         
 <!--l. 59--><p class="noindent" >
 </p><!--l. 62--><p class="noindent" >          <img 
 src="Adjoints3x.svg" alt="                  X
 &#x0394;&#x2203;&#x2200; &#x03A9;              &#x03A9; "  />
 </p></div>
-<!--l. 65--><p class="indent" >  This is also a special case of adjoints on partial orders, called a Galois connection. In
-particular, we have the following:
+<!--l. 65--><p class="indent" >  This is also a special case of adjoints on partial orders, called a Galois connection. In particular,
+we have the following:
 </p>
   <div class="newtheorem">
 <!--l. 67--><p class="noindent" ><span class="head">
@@ -405,92 +411,86 @@ class="cmti-12">Let</span> \(P\) <span
 class="cmti-12">and</span> \(Q\) <span 
 class="cmti-12">be posets,</span> \(G:P \to Q\)<span 
 class="cmti-12">,</span> \(F:Q \to P\) <span 
-class="cmti-12">contravariant &#x0028;order reversing&#x0029; functors.</span>
-                                                                                  
-
-                                                                                  
+class="cmti-12">contravariant &#x0028;order reversing&#x0029; functors. These</span>
 <span 
-class="cmti-12">These functors are a </span><span 
+class="cmti-12">functors are a </span><span 
 class="cmbxti-10x-x-120">Galois connection </span><span 
 class="cmti-12">if they satisfy</span> \(Fa \geq b\) <span 
 class="cmti-12">i&#xFB00;</span> \(a \leq Gb\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 71--><p class="indent" >  Note that the triangle identities in this case amount to \(FGF = F\) and \(GFG = G\). The classic example
-of this is when a group \(G\) acts on a set \(S\). Then if \(2^{UG}\) is the lattice of subsets of the
-underlying group of \(G\), we get a functor \(F\) from \(2^{UG}\) to \(2^S\), which is just the &#xFB01;xed points of
-the subset. Conversely, we can take an element of \(2^S\) and send it to its stabilizer.
-This is order reversing, and \(Fa \geq b\) i&#xFB00; \(a \leq Gb\) as the &#xFB01;xed points of \(a\) contain \(b\) if and only if \(\forall x \in a, y \in b\), \(x.y=y\)
-if and only if \(a\) is contained in the stabilizer of \(b\). Note that due to the triangle
-identities we get an induced &#x0028;contravariant&#x0029; equivalence of subcategories, namely the
-images of \(F\) and \(G\). In the case of Galois theory, when the Galois group acts on
-the &#xFB01;eld, the main theorem of Galois theory identi&#xFB01;es these subcategories as
-the lattice of subgroups of the Galois group and the lattice of sub&#xFB01;elds &#x0028;and
-in addition identi&#xFB01;es a similar correspondence between normal subgroups and
+<!--l. 71--><p class="indent" >  Note that the triangle identities in this case amount to \(FGF = F\) and \(GFG = G\). The classic example of this is when
+a group \(G\) acts on a set \(S\). Then if \(2^{UG}\) is the lattice of subsets of the underlying group of \(G\),
+we get a functor \(F\) from \(2^{UG}\) to \(2^S\), which is just the &#xFB01;xed points of the subset. Conversely,
+we can take an element of \(2^S\) and send it to its stabilizer. This is order reversing, and \(Fa \geq b\)
+i&#xFB00; \(a \leq Gb\) as the &#xFB01;xed points of \(a\) contain \(b\) if and only if \(\forall x \in a, y \in b\), \(x.y=y\) if and only if \(a\) is contained in the
+stabilizer of \(b\). Note that due to the triangle identities we get an induced &#x0028;contravariant&#x0029;
+equivalence of subcategories, namely the images of \(F\) and \(G\). In the case of Galois theory, when
+the Galois group acts on the &#xFB01;eld, the main theorem of Galois theory identi&#xFB01;es these
+subcategories as the lattice of subgroups of the Galois group and the lattice of sub&#xFB01;elds
+&#x0028;and in addition identi&#xFB01;es a similar correspondence between normal subgroups and
 sub&#xFB01;elds&#x0029;.
-</p><!--l. 73--><p class="indent" >  Another interesting example of a Galois connection is Hilbert&#x2019;s Nullstellensatz. Here we
-have a correspondence between the lattice of ideals \(L\) of a polynomial ring \(K[x_1,...,x_n]\) &#x0028;\(K\) algebraically
-closed&#x0029; and the subsets of \(\AA ^n\), a&#xFB03;ne space. Hilbert&#x2019;s Nullstellensatz says that the functor
-taking an ideal to its locus and the one taking a subset of a&#xFB03;ne space to the ideal of
-functions that are zero on it are adjoints. In particular, the unit of this adjunction is the
-closure in the Zariski topology, and the counit is the radical of an ideal. This example
-shows that identifying the counit and unit of an adjunction is an important part of
-understanding the adjunction.
-</p><!--l. 75--><p class="indent" >  Another important type of adjunction is important and common enough for categories
-to have them to have a special name.
+</p><!--l. 73--><p class="indent" >  Another interesting example of a Galois connection is Hilbert&#x2019;s Nullstellensatz. Here we have a
+correspondence between the lattice of ideals \(L\) of a polynomial ring \(K[x_1,...,x_n]\) &#x0028;\(K\) algebraically closed&#x0029; and the
+subsets of \(\AA ^n\), a&#xFB03;ne space. Hilbert&#x2019;s Nullstellensatz says that the functor taking an ideal to
+its locus and the one taking a subset of a&#xFB03;ne space to the ideal of functions that are
+zero on it are adjoints. In particular, the unit of this adjunction is the closure in the
+Zariski topology, and the counit is the radical of an ideal. This example shows that
+identifying the counit and unit of an adjunction is an important part of understanding the
+adjunction.
+</p><!--l. 75--><p class="indent" >  Another important type of adjunction is important and common enough for categories to have
+them to have a special name.
 </p>
   <div class="newtheorem">
 <!--l. 77--><p class="noindent" ><span class="head">
 <a 
  id="x1-2002r2"></a>
+                                                                                         
+                                                                                         
 <span 
 class="cmbx-12">De&#xFB01;nition 2.2.</span>  </span><span 
 class="cmti-12">Suppose</span> \(C\) <span 
-class="cmti-12">is a category with &#xFB01;nite products, ie a terminal object</span>
+class="cmti-12">is a category with &#xFB01;nite products, ie a terminal object &#x0028;empty</span>
 <span 
-class="cmti-12">&#x0028;empty product&#x0029; and a right adjoint</span> \((-)\times (-)\) <span 
+class="cmti-12">product&#x0029; and a right adjoint</span> \((-)\times (-)\) <span 
 class="cmti-12">to the functor</span> \(\Delta : C \to C \times C\)<span 
 class="cmti-12">. Then</span> \(C\) <span 
 class="cmti-12">is </span><span 
 class="cmbxti-10x-x-120">cartesian closed </span><span 
-class="cmti-12">if</span>
+class="cmti-12">if the functor</span> \((-) \times b\) <span 
+class="cmti-12">has</span>
 <span 
-class="cmti-12">the functor</span> \((-) \times b\) <span 
-class="cmti-12">has a right adjoint for each</span> \(b \in C\)<span 
+class="cmti-12">a right adjoint for each</span> \(b \in C\)<span 
 class="cmti-12">. We write the right adjoint as</span> \((-)^b\)<span 
-class="cmti-12">. Explicitly,</span>
+class="cmti-12">. Explicitly, we have</span> \(C(a\times b,c) \cong D(a,c^b)\) <span 
+class="cmti-12">which is natural</span>
 <span 
-class="cmti-12">we have</span> \(C(a\times b,c) \cong D(a,c^b)\) <span 
-class="cmti-12">which is natural in</span> \(a,c\)<span 
+class="cmti-12">in</span> \(a,c\)<span 
 class="cmti-12">. We call</span> \(c^b\) <span 
 class="cmti-12">an </span><span 
 class="cmbxti-10x-x-120">exponential </span><span 
 class="cmti-12">object.</span>
 </p>
   </div>
-                                                                                  
-
-                                                                                  
 <!--l. 81--><p class="indent" >  The counit of this adjunction is a map \(e_c:c^b \times b \to c\) called the <span 
-class="cmbx-12">evaluation </span>map. Examples of
-cartesian closed categories are \(\Set \), \(\Cat \), \(k\Top \) &#x0028;compactly generated spaces&#x0029;, \(\Pos \).
-</p><!--l. 83--><p class="indent" >  The last important example I will give is the tensor-hom adjunction. Let \(R\)-\(\Mod \) be the
-category of left R-modules. Recall that \(\Hom (R,-)\) is a functor from \(R\)-Mod to itself. The left adjoint of
-this is called the tensor product. Explicitly, we have \(\Hom (S\otimes R, T) \cong \Hom (S,\Hom (R,T))\). This is an isomorphism of \(R\)-modules,
-and is actually natural in \(R,S,\) and \(T\).
+class="cmbx-12">evaluation </span>map. Examples of cartesian closed
+categories are \(\Set \), \(\Cat \), \(k\Top \) &#x0028;compactly generated spaces&#x0029;, \(\Pos \).
+</p><!--l. 83--><p class="indent" >  The last important example I will give is the tensor-hom adjunction. Let \(R\)-\(\Mod \) be the category of left
+R-modules. Recall that \(\Hom (R,-)\) is a functor from \(R\)-Mod to itself. The left adjoint of this is called the tensor
+product. Explicitly, we have \(\Hom (S\otimes R, T) \cong \Hom (S,\Hom (R,T))\). This is an isomorphism of \(R\)-modules, and is actually natural in \(R,S,\) and
+\(T\).
 </p><!--l. 86--><p class="indent" >  If we take the counit of this adjunction for vector spaces, we get an evaluation map \(ev:V \otimes \Hom (V,W) \to W\).
 Letting \(W = F\), we get the trace \(tr:V \otimes V^* \to F\). Then, applying the adjunction to this map, we get our map
 \(\eta :V \to V^{**}\).
-</p><!--l. 88--><p class="indent" >  Now we can also prove \(V \otimes W^* \cong \Hom (W,V)\) when \(V\) is &#xFB01;nite dimensional. In particular \(V \otimes W^* \cong V^{**} \otimes W^* \cong \Hom (V^* \otimes W,F) \cong \Hom (W,V^{**}) \cong \Hom (W,V)\). When \(W=V\)
-this gives \(\End (V) \cong V \otimes V^*\) which shows that the map I called trace above is the usual notion of
-trace.
+</p><!--l. 88--><p class="indent" >  Now we can also prove \(V \otimes W^* \cong \Hom (W,V)\) when \(V\) is &#xFB01;nite dimensional. In particular \(V \otimes W^* \cong V^{**} \otimes W^* \cong \Hom (V^* \otimes W,F) \cong \Hom (W,V^{**}) \cong \Hom (W,V)\). When \(W=V\) this gives \(\End (V) \cong V \otimes V^*\) which shows
+that the map I called trace above is the usual notion of trace.
 </p>
   <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
  id="x1-30003"></a>Theorems about adjunctions</h3>
-<!--l. 91--><p class="noindent" >Knowing that a functor is an adjunction is can be very useful. For example, recall the fact
-\(\ZZ [x,y] = \ZZ [x]\otimes _{\ZZ }\ZZ [y]\). This is actually a consequence of the functor taking a set to the polynomial ring on that
-set being a left adjoint.
+<!--l. 91--><p class="noindent" >Knowing that a functor is an adjunction is can be very useful. For example, recall the fact \(\ZZ [x,y] = \ZZ [x]\otimes _{\ZZ }\ZZ [y]\). This is
+actually a consequence of the functor taking a set to the polynomial ring on that set being a left
+adjoint.
 </p>
   <div class="newtheorem">
 <!--l. 93--><p class="noindent" ><span class="head">
@@ -502,14 +502,11 @@ class="cmti-12">A functor</span> \(F: C \to D\) <span
 class="cmbxti-10x-x-120">preserves limits </span><span 
 class="cmti-12">or is </span><span 
 class="cmbxti-10x-x-120">continuous </span><span 
-class="cmti-12">if for every limiting</span>
-<span 
-class="cmti-12">cone</span> \(K:J \to C\)<span 
+class="cmti-12">if for every limiting cone</span>
+\(K:J \to C\)<span 
 class="cmti-12">, the composite</span> \(F \circ K: J \to D\) <span 
 class="cmti-12">is a limiting cone. In other words,</span> \(F\lim (K) \cong \lim (FK)\) <span 
-class="cmti-12">&#x0028;these are isomorphisms of</span>
-<span 
-class="cmti-12">cones&#x0029;.</span>
+class="cmti-12">&#x0028;these are isomorphisms of cones&#x0029;.</span>
 </p>
   </div>
 <!--l. 97--><p class="indent" >  We have the following useful theorem about adjoints:
@@ -521,18 +518,17 @@ class="cmti-12">cones&#x0029;.</span>
 <span 
 class="cmbx-12">Theorem 3.2 </span>&#x0028;RAPL&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
-class="cmti-12">Right adjoints preserve limits. Dually left adjoints preserve</span>
+class="cmti-12">Right adjoints preserve limits. Dually left adjoints preserve colimits</span>
 <span 
-class="cmti-12">colimits &#x0028;LAPC&#x0029;.</span>
-                                                                                  
-
-                                                                                  
+class="cmti-12">&#x0028;LAPC&#x0029;.</span>
 </p>
+                                                                                         
+                                                                                         
   <div class="proof">
 <!--l. 102--><p class="indent" >  <span class="head">
 <span 
-class="cmti-12">Proof.</span> </span>Suppose \(G:C \to D\) has a left adjoint \(F:D \to C\), and \(K\) is a diagram in \(C\). Then the proof is indicated by
-this diagram: </p>
+class="cmti-12">Proof.</span> </span>Suppose \(G:C \to D\) has a left adjoint \(F:D \to C\), and \(K\) is a diagram in \(C\). Then the proof is indicated by this
+diagram: </p>
 <div class="center" 
 >
 <!--l. 103--><p class="noindent" >
@@ -549,31 +545,27 @@ src="Adjoints5x.svg" alt="      G lim &#x0028;K &#x0029;       S
 
 GGssG&#x03C0;&#x03C0;ijKijf   GKi             GKj "  />
 </p></div>
-<!--l. 113--><p class="noindent" >Our argument is as follows: Start with a limiting cone \(\lim (K)\) and apply \(G\) to it. Suppose we have
-another cone from \(S\) in \(D\). Then we can apply the adjunction to it to get a cone in \(C\) from \(FS\).
-Now in \(C\) there is a unique arrow making the diagram commute. applying the adjunction to
-this arrow, we get a map from \(S\) to \(G\lim (K)\) in \(D\) that commutes by naturality. For uniqueness, if
-there were another cone morphism from \(S\), applying the adjunction again would by
-naturality yield a cone morphism from \(FS\), which would have to be the same. Then the fact
-that the adjunction is a bijection means that the original cone morphism was the same as
-well. <span class="qed"><span 
+<!--l. 113--><p class="noindent" >Our argument is as follows: Start with a limiting cone \(\lim (K)\) and apply \(G\) to it. Suppose we have another
+cone from \(S\) in \(D\). Then we can apply the adjunction to it to get a cone in \(C\) from \(FS\). Now in \(C\)
+there is a unique arrow making the diagram commute. applying the adjunction to this
+arrow, we get a map from \(S\) to \(G\lim (K)\) in \(D\) that commutes by naturality. For uniqueness, if there
+were another cone morphism from \(S\), applying the adjunction again would by naturality
+yield a cone morphism from \(FS\), which would have to be the same. Then the fact that the
+adjunction is a bijection means that the original cone morphism was the same as well.
+<span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
-<!--l. 117--><p class="indent" >  As an exercise, you can try to prove that representable functors are also continuous.
-Indeed limits and colimits can &#x0028;and were originally&#x0029; be de&#xFB01;ned via the fact that
-representable functors are continuous.
+<!--l. 117--><p class="indent" >  As an exercise, you can try to prove that representable functors are also continuous. Indeed
+limits and colimits can &#x0028;and were originally&#x0029; be de&#xFB01;ned via the fact that representable functors are
+continuous.
 </p>
-                                                                                  
-
-                                                                                  
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

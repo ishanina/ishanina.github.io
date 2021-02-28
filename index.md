@@ -26,6 +26,8 @@
 [Simplicial](Subjects/Simplicial/Simplicial.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
 # Talks
 
+[Chromatic Homotopy and Telescopic Localization](Talks/Chromatic Homotopy and Telescopic Localization/Chromatic_Homotopy_and_Telescopic_Localization.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Chromatic Homotopy and Telescopic Localization.pdf)
+
 [Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
 
 [Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/Proof_of_Cobordism_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
@@ -33,13 +35,15 @@
 
 [Diagonal Argument](Other/Diagonal Argument/Diagonal_Argument.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Diagonal Argument.pdf)
 
-[Embedding Spanier Whitehead Duality](Other/Embedding Spanier Whitehead Duality/Embeddings_and_S-Duality.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Embedding Spanier Whitehead Duality.pdf)
+[Embeddings and Duality](Other/Embeddings and Duality/Embeddings_and_Duality.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Embeddings and Duality.pdf)
 
 [Eulers Descent](Other/Eulers Descent/Eulers_Descent.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Eulers Descent.pdf)
 
 [Grobner Bases](Other/Grobner Bases/Grobner_Bases.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Grobner Bases.pdf)
 
 [Group Extensions](Other/Group Extensions/Group_Extensions.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Group Extensions.pdf)
+
+[Invertibility Hypothesis](Other/Invertibility Hypothesis/Invertibility_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Invertibility Hypothesis.pdf)
 
 [Morita Equivalence](Other/Morita Equivalence/Morita_Equivalence.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Morita Equivalence.pdf)
 

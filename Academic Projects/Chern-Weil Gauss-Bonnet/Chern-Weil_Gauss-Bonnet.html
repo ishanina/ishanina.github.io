@@ -15,6 +15,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
@@ -81,6 +82,16 @@
 
 
 %Math operators
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
 \newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
 \newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
 \newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
@@ -102,6 +113,7 @@
 \newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
 \newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
 \newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
 \newcommand{\MU}{\mathop{\rm MU}\nolimits}
 \newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
 \newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
@@ -223,18 +235,16 @@ class="cmr-10">ISHAN LEVY</span>
   </span></div>
 <div class="submaketitle">
 </div>
-  </div>Given a manifold, Chern-Weil theory says that we can obtain characteristic
-classes by applying invariant polynomials on the curvature of a connection. We
-will see here an explicit proof &#x0028;without using the Chern-Weil homomorphism&#x0029;
-of the Gauss-Bonnet theorem for vector bundles, which is an example of the
-phenomenon.
+  </div>Given a manifold, Chern-Weil theory says that we can obtain characteristic classes by applying
+invariant polynomials on the curvature of a connection. We will see here an explicit proof &#x0028;without
+using the Chern-Weil homomorphism&#x0029; of the Gauss-Bonnet theorem for vector bundles, which is
+an example of the phenomenon.
 <!--l. 11--><p class="indent" >  Let \(E \to M\) be a rank \(2p\) real vector bundle with a metric and a metric connection \(\nabla \), and let \(\Omega _E\) be its
-curvature \(2\)-form. Then we can take the Pfa&#xFB03;an \(\Pf (\Omega _E)\) multiplied by a normalizing constant \((\frac{-1}{2\pi })^{p}\) of
-the curvature to get a \(d\)-form, whose cohomology class we should interpret by
-Chern-Weil theory as a characteristic class of the bundle. Indeed, we can call this
-class the geometric Euler class &#x0028;\(e_g(E)\)&#x0029;, and we can prove that it indeed coincides
-with the topological Euler class &#x0028;\(e_t(E)\)&#x0029;. This can be viewed as a generalization of
-Gauss-Bonnet:
+curvature \(2\)-form. Then we can take the Pfa&#xFB03;an \(\Pf (\Omega _E)\) multiplied by a normalizing constant \((\frac{-1}{2\pi })^{p}\) of the
+curvature to get a \(d\)-form, whose cohomology class we should interpret by Chern-Weil theory as a
+characteristic class of the bundle. Indeed, we can call this class the geometric Euler class &#x0028;\(e_g(E)\)&#x0029;, and we
+can prove that it indeed coincides with the topological Euler class &#x0028;\(e_t(E)\)&#x0029;. This can be viewed as a
+generalization of Gauss-Bonnet:
 </p>
   <div class="newtheorem">
 <!--l. 13--><p class="noindent" ><span class="head">
@@ -244,48 +254,43 @@ Gauss-Bonnet:
 class="cmbx-12">Theorem 0.1 </span>&#x0028;Gauss-Bonnet&#x0029;<span 
 class="cmbx-12">.</span>  </span><span 
 class="cmti-12">Given an even dimensional Riemannian manifold</span> \(M^{2p}\)<span 
-class="cmti-12">,</span>
+class="cmti-12">, if</span> \(\Omega \) <span 
+class="cmti-12">is</span>
 <span 
-class="cmti-12">if</span> \(\Omega \) <span 
-class="cmti-12">is the curvature, then</span> \(\int _{M} (\frac{-1}{2\pi })^{p} \Pf (\Omega ) = \chi (M)\)<span 
+class="cmti-12">the curvature, then</span> \(\int _{M} (\frac{-1}{2\pi })^{p} \Pf (\Omega ) = \chi (M)\)<span 
 class="cmti-12">.</span>
 </p>
   </div>
-<!--l. 17--><p class="indent" >  In the case that the bundle is the tangent bundle, and the metric is a Riemannian
-                                                                                  
-
-                                                                                  
-metric, this becomes the Gauss-Bonnet theorem. Indeed, the Euler class integrates to the
-Euler characteristic, and the geometric Euler class is an integral of the Pfa&#xFB03;an of the
-Riemann curvature tensor &#x0028;up to a constant&#x0029;.
-</p><!--l. 19--><p class="indent" >  The &#xFB01;rst thing to note is that the geometric Euler class is natural. It is easy to check
-that it commutes with pullbacks, and that \(e_g(E_1\oplus E_2) = e_g(E_1)\wedge e_g(E_2)\) &#x0028;Note: here the notation is abused
-since \(e_g\) seems to depend on the connection&#x0029;. Then by the splitting principle, it
-su&#xFB03;ces to show that \(e_g = e_t\) for oriented plane bundles, for which we can more explicitly
-calculate.
-</p><!--l. 21--><p class="indent" >  For a plane bundle \(E \xrightarrow{\pi } M\), let the connection be given in local neighborhood \(U_\alpha \) by the
-skew-symmetric matrix of 1-forms \((\theta _\alpha )_i^j=\omega _\alpha \). The curvature \(\Omega _\alpha = d \omega _\alpha - \omega _\alpha \wedge \omega _\alpha \) is given by the matrix \(\begin{pmatrix} (\theta _\alpha )_1^2 \wedge (\theta _\alpha )_1^2 &amp; d (\theta _\alpha )_1^2 \\ -d (\theta _\alpha )_1^2 &amp; (\theta _\alpha )_1^2 \wedge (\theta _\alpha )_1^2 \end{pmatrix}\) so that the
-Pfa&#xFB03;an is \(d(\theta _\alpha )_1^2\).
-</p><!--l. 27--><p class="indent" >  Now suppose we have a partition of unity \(\gamma _\alpha \) subordinate to the choice of local coordinate
-cover \(U_\alpha \), and let \(g_{\alpha \beta }\) be the transition functions with values in \(\SOr (2)\) that de&#xFB01;ne the vector
-bundle. Then by identifying \(\SOr (2) = \RR /2 \pi \ZZ \), we can think of the \(g_{\alpha \beta }\) as the angle the transition
-function rotates counterclockwise. By one construction &#x0028;eg. in Bott and Tu&#x2019;s
-book&#x0029; \(e_t\) is given by \(\frac{-1}{2\pi } \sum _\beta d \gamma _\beta d g_{\alpha \beta }\). If \(r_\alpha , r_\alpha '\) make up the local frame in \(U_\alpha \), since the connection is a
-metric connection, we have that \(d r_\alpha = (\theta _\alpha )_1^2 r'_\alpha \) &#x0028;here we view the connection as on the frame
+<!--l. 17--><p class="indent" >  In the case that the bundle is the tangent bundle, and the metric is a Riemannian metric, this
+becomes the Gauss-Bonnet theorem. Indeed, the Euler class integrates to the Euler characteristic,
+and the geometric Euler class is an integral of the Pfa&#xFB03;an of the Riemann curvature tensor &#x0028;up to
+a constant&#x0029;.
+</p><!--l. 19--><p class="indent" >  The &#xFB01;rst thing to note is that the geometric Euler class is natural. It is easy to check that it
+commutes with pullbacks, and that \(e_g(E_1\oplus E_2) = e_g(E_1)\wedge e_g(E_2)\) &#x0028;Note: here the notation is abused since \(e_g\) seems to depend on
+the connection&#x0029;. Then by the splitting principle, it su&#xFB03;ces to show that \(e_g = e_t\) for oriented plane
+bundles, for which we can more explicitly calculate.
+</p><!--l. 21--><p class="indent" >  For a plane bundle \(E \xrightarrow{\pi } M\), let the connection be given in local neighborhood \(U_\alpha \) by the skew-symmetric
+                                                                                         
+                                                                                         
+matrix of 1-forms \((\theta _\alpha )_i^j=\omega _\alpha \). The curvature \(\Omega _\alpha = d \omega _\alpha - \omega _\alpha \wedge \omega _\alpha \) is given by the matrix \(\begin{pmatrix} (\theta _\alpha )_1^2 \wedge (\theta _\alpha )_1^2 &amp; d (\theta _\alpha )_1^2 \\ -d (\theta _\alpha )_1^2 &amp; (\theta _\alpha )_1^2 \wedge (\theta _\alpha )_1^2 \end{pmatrix}\) so that the Pfa&#xFB03;an is \(d(\theta _\alpha )_1^2\).
+</p><!--l. 27--><p class="indent" >  Now suppose we have a partition of unity \(\gamma _\alpha \) subordinate to the choice of local coordinate cover \(U_\alpha \),
+and let \(g_{\alpha \beta }\) be the transition functions with values in \(\SOr (2)\) that de&#xFB01;ne the vector bundle. Then by
+identifying \(\SOr (2) = \RR /2 \pi \ZZ \), we can think of the \(g_{\alpha \beta }\) as the angle the transition function rotates counterclockwise. By
+one construction &#x0028;eg. in Bott and Tu&#x2019;s book&#x0029; \(e_t\) is given by \(\frac{-1}{2\pi } \sum _\beta d \gamma _\beta d g_{\alpha \beta }\). If \(r_\alpha , r_\alpha '\) make up the local frame in \(U_\alpha \), since the
+connection is a metric connection, we have that \(d r_\alpha = (\theta _\alpha )_1^2 r'_\alpha \) &#x0028;here we view the connection as on the frame
 bundle&#x0029;.
-</p><!--l. 29--><p class="indent" >  On the bundle since \(g_{\alpha \beta }\) is the transition function, we have \(d \pi ^* r_\alpha = (\pi ^* d r_\beta + \pi ^* g_{\alpha \beta }) \pi ^* r_\alpha '\). By injectivity of \(\pi ^*\) we obtain \(d r_\alpha = d r_\beta + d g_{\alpha \beta }r'_\alpha \).
-Thus we must have \(d g_{\alpha \beta } = (\theta _\alpha )_1^2- (\theta _\beta )_1^2\).
+</p><!--l. 29--><p class="indent" >  On the bundle since \(g_{\alpha \beta }\) is the transition function, we have \(d \pi ^* r_\alpha = (\pi ^* d r_\beta + \pi ^* g_{\alpha \beta }) \pi ^* r_\alpha '\). By injectivity of \(\pi ^*\) we obtain \(d r_\alpha = d r_\beta + d g_{\alpha \beta }r'_\alpha \). Thus we
+must have \(d g_{\alpha \beta } = (\theta _\alpha )_1^2- (\theta _\beta )_1^2\).
 </p><!--l. 31--><p class="indent" >  Then we have:
 </p><!--l. 35--><p class="indent" >  \[ \frac{-1}{2\pi } \sum _\beta d( \gamma _\beta d g_{\alpha \beta }) = \frac{-1}{2\pi } \sum _\beta d (\gamma _\beta ( (\theta _\alpha )_1^2- (\theta _\beta )_1^2)) = \frac{-1}{2\pi } d (\theta _\alpha )_1^2 + \frac 1{2\pi } d(\sum _\beta \gamma _\beta (\theta _\beta )_1^2) \]
-</p><!--l. 37--><p class="indent" >  The second resulting term de&#xFB01;nes a global form which is clearly exact, and we get that \(e_t\)
-is cohomologous to \(-\frac{1}{2\pi }d(\theta _\alpha )_1^2\), which is exactly \(e_g\).
+</p><!--l. 37--><p class="indent" >  The second resulting term de&#xFB01;nes a global form which is clearly exact, and we get that \(e_t\) is
+cohomologous to \(-\frac{1}{2\pi }d(\theta _\alpha )_1^2\), which is exactly \(e_g\).
 </p>
    
 </body> 
 </html>
-                                                                                  
-
-                                                                                  
-                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
 
 

@@ -1,8 +1,6 @@
 # Subjects
-<details>
-<summary>
+
 A collection of notes I have written about various subjects. These were not written to be read by anyone but myself. I hope you find them useful, but use at your own risk.
-</summary>
 
 [Analysis](Subjects/Analysis/Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analysis.pdf)
 
@@ -27,26 +25,19 @@ A collection of notes I have written about various subjects. These were not writ
 [Rings Modules Fields](Subjects/Rings Modules Fields/Rings_Modules_Fields.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)
 
 [Simplicial](Subjects/Simplicial/Simplicial.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
-</details>
 
 # Talks
-<details>
-<summary>
 Notes for some expository talks I have given.
-</summary>
   
 [Chromatic Homotopy and Telescopic Localization](Talks/Chromatic Homotopy and Telescopic Localization/Chromatic_Homotopy_and_Telescopic_Localization.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Chromatic Homotopy and Telescopic Localization.pdf)
 
 [Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
 
 [Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/Proof_of_Cobordism_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
-</details>
 
 # Other
-<details>
-<summary>
 Miscellaneous notes I have written.
-</summary>
+
 [Diagonal Argument](Other/Diagonal Argument/Diagonal_Argument.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Diagonal Argument.pdf)
 
 [Embeddings and Duality](Other/Embeddings and Duality/Embeddings_and_Duality.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Embeddings and Duality.pdf)
@@ -64,13 +55,10 @@ Miscellaneous notes I have written.
 [Projective Modules over Local Rings](Other/Projective Modules over Local Rings/Projective_Modules_over_Local_Rings.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Projective Modules over Local Rings.pdf)
 
 [Vector Bundles on P1](Other/Vector Bundles on P1/Vector_Bundles_on_P1.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Vector Bundles on P1.pdf)
-</details>
 
 # PROMYS
-<details>
-<summary>
 Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
-</summary>
+
 [Adjoints](PROMYS/Adjoints/Adjoints.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Adjoints.pdf)
 
 [But Dat Nullstellensatz Tho](PROMYS/But Dat Nullstellensatz Tho/But_Dat_Nullstellensatz_Tho.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/But Dat Nullstellensatz Tho.pdf)
@@ -120,14 +108,9 @@ Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 [Universals and Limits](PROMYS/Universals and Limits/Universals_and_Limits.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Universals and Limits.pdf)
 
 [What is Algebraic Geometry](PROMYS/What is Algebraic Geometry/What_is_Algebraic_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/What is Algebraic Geometry.pdf)
-</details>
 
 # Academic Projects
-<details>
-<summary>
 My senior thesis and junior paper at Princeton, as well as expository notes I have written for classes.
-</summary>
-
 
 [2nd Order Elliptic PDE](Academic Projects/2nd Order Elliptic PDE/2nd_Order_Elliptic_PDE.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/2nd Order Elliptic PDE.pdf)
 
@@ -156,9 +139,3 @@ My senior thesis and junior paper at Princeton, as well as expository notes I ha
 [S3 pairs and Dehn surgery on Knots Senior Thesis](Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis.pdf)
 
 [Serre Spectral Sequence and the Homology of Loop Spaces](Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces/Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces.pdf)
-
-</details>
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NzE5MDg1MF19
--->

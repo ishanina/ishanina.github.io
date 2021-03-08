@@ -130,3 +130,6 @@
 [S3 pairs and Dehn surgery on Knots Senior Thesis](Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis.pdf)
 
 [Serre Spectral Sequence and the Homology of Loop Spaces](Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces/Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces.pdf)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTE4NzE5MDg1MF19
+-->

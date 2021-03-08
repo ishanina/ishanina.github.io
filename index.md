@@ -1,3 +1,12 @@
+# Talks
+Notes for some expository talks I have given.
+  
+[Chromatic Homotopy and Telescopic Localization](Talks/Chromatic Homotopy and Telescopic Localization/Chromatic_Homotopy_and_Telescopic_Localization.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Chromatic Homotopy and Telescopic Localization.pdf)
+
+[Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
+
+[Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/Proof_of_Cobordism_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
+
 # Subjects
 
 A collection of notes I have written about various subjects. These were not written to be read by anyone but myself. I hope you find them useful, but use at your own risk.
@@ -25,15 +34,6 @@ A collection of notes I have written about various subjects. These were not writ
 [Rings Modules Fields](Subjects/Rings Modules Fields/Rings_Modules_Fields.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)
 
 [Simplicial](Subjects/Simplicial/Simplicial.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
-
-# Talks
-Notes for some expository talks I have given.
-  
-[Chromatic Homotopy and Telescopic Localization](Talks/Chromatic Homotopy and Telescopic Localization/Chromatic_Homotopy_and_Telescopic_Localization.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Chromatic Homotopy and Telescopic Localization.pdf)
-
-[Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
-
-[Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/Proof_of_Cobordism_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
 
 # Other
 Miscellaneous notes I have written.

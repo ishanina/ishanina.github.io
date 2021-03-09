@@ -1,3 +1,8 @@
+# Preprints
+[Eilenberg Mac Lane spectra as p-cyclonic Thom spectra](https://arxiv.org/abs/2103.04457)
+
+Abstract: Hopkins and Mahowald gave a simple description of the mod p Eilenberg Mac Lane spectrum H𝔽<sub>p</sub> as the free 𝔼<sub>2</sub>-algebra with an equivalence of p and 0. We show for each faithful 2-dimensional representation λ of a p-group G that the G-equivariant Eilenberg Mac Lane spectrum H<ins>𝔽</ins><sub>p</sub> is the free 𝔼<sub>λ</sub>-algebra with an equivalence of p and 0. This unifies and simplifies recent work of Behrens, Hahn, and Wilson, and extends it to include the dihedral 2-subgroups of O(2). The main new idea is that H<ins>𝔽</ins><sub>p</sub> has a simple description as a p-cyclonic module over THH(H𝔽<sub>p</sub>). We show our result is the best possible one in that it gives all groups G and representations V such that H<ins>𝔽</ins><sub>p</sub> is the free 𝔼<sub>V</sub>-algebra with an equivalence of p and 0.
+
 # Talks
 Notes for some expository talks I have given.
   
@@ -8,7 +13,6 @@ Notes for some expository talks I have given.
 [Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/Proof_of_Cobordism_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
 
 # Subjects
-
 A collection of notes I have written about various subjects. These were not written to be read by anyone but myself. I hope you find them useful, but use at your own risk.
 
 [Analysis](Subjects/Analysis/Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analysis.pdf)

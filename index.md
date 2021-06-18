@@ -63,13 +63,31 @@ Miscellaneous notes I have written.
 # PROMYS
 Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 
-[Adjoints](PROMYS/Adjoints/Adjoints.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Adjoints.pdf)
+2019
 
-[But Dat Nullstellensatz Tho](PROMYS/But Dat Nullstellensatz Tho/But_Dat_Nullstellensatz_Tho.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/But Dat Nullstellensatz Tho.pdf)
+[Number Fields and the Laplacian](PROMYS/Number Fields and the Laplacian/Number_Fields_and_the_Laplacian.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Number Fields and the Laplacian.pdf)
 
-[Categories and Functors](PROMYS/Categories and Functors/Categories_and_Functors.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Categories and Functors.pdf)
+[Local-Global Principle for nth Powers](PROMYS/Local-Global Principle for nth Powers/Local-Global_Principle_for_nth_Powers.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Local-Global Principle for nth Powers.pdf)
+
+[The Hilbert Class Field](PROMYS/The Hilbert Class Field/The_Hilbert_Class_Field.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/The Hilbert Class Field.pdf)
+
+[Lattices Quadratic Forms and Ideals](PROMYS/Lattices Quadratic Forms and Ideals/Lattices_Quadratic_Forms_and_Ideals.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Lattices Quadratic Forms and Ideals.pdf)
+
+[Fundamental Groupoids](PROMYS/Fundamental Groupoids/Fundamental_Groupoids.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Fundamental Groupoids.pdf)
+
+[Positive Definite Binary Quadratic Forms over Z](PROMYS/Positive Definite Binary Quadratic Forms over Z/Positive_Definite_Binary_Quadratic_Forms_over_Z.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Positive Definite Binary Quadratic Forms over Z.pdf)
+
+[The Seifert Van Kampen Thoerem](PROMYS/The Seifert Van Kampen Thoerem/The_Seifert_Van_Kampen_Theorem.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/The Seifert Van Kampen Thoerem.pdf)
+
+2018
+
+[Poincare Homology Sphere](PROMYS/Poincare Homology Sphere/Poincare_Homology_Sphere.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Poincare Homology Sphere.pdf)
 
 [Crossing Numbers of Alternating Knots](PROMYS/Crossing Numbers of Alternating Knots/Crossing_Numbers_of_Alternating_Knots.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Crossing Numbers of Alternating Knots.pdf)
+
+[Heegaard Splittings and Knots on the Torus](PROMYS/Heegaard Splittings and Knots on the Torus/Heegaard_Splittings_and_Knots_on_the_Torus.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Heegaard Splittings and Knots on the Torus.pdf)
+
+[Morse Theory and Handles](PROMYS/Morse Theory and Handles/Morse_Theory_and_Handles.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Morse Theory and Handles.pdf)
 
 [Dehn Surgery and Kirby Calculus](PROMYS/Dehn Surgery and Kirby Calculus/Dehn_Surgery_and_Kirby_Calculus.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Dehn Surgery and Kirby Calculus.pdf)
 
@@ -77,41 +95,29 @@ Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 
 [Divisors and Intersections](PROMYS/Divisors and Intersections/Divisors_and_Intersections.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Divisors and Intersections.pdf)
 
-[Duality and Equivalences](PROMYS/Duality and Equivalences/Duality_and_Equivalences.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Duality and Equivalences.pdf)
-
-[Fundamental Groupoids](PROMYS/Fundamental Groupoids/Fundamental_Groupoids.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Fundamental Groupoids.pdf)
-
-[Fundamental Groups and Covering Spaces](PROMYS/Fundamental Groups and Covering Spaces/Fundamental_Groups_and_Covering_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Fundamental Groups and Covering Spaces.pdf)
-
 [Galois Theory and Riemann Surfaces](PROMYS/Galois Theory and Riemann Surfaces/Galois_Theory_and_Riemann_Surfaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Galois Theory and Riemann Surfaces.pdf)
 
-[Heegaard Splittings and Knots on the Torus](PROMYS/Heegaard Splittings and Knots on the Torus/Heegaard_Splittings_and_Knots_on_the_Torus.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Heegaard Splittings and Knots on the Torus.pdf)
+[What is Algebraic Geometry](PROMYS/What is Algebraic Geometry/What_is_Algebraic_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/What is Algebraic Geometry.pdf)
 
-[Lattices Quadratic Forms and Ideals](PROMYS/Lattices Quadratic Forms and Ideals/Lattices_Quadratic_Forms_and_Ideals.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Lattices Quadratic Forms and Ideals.pdf)
+2017
 
-[Local-Global Principle for nth Powers](PROMYS/Local-Global Principle for nth Powers/Local-Global_Principle_for_nth_Powers.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Local-Global Principle for nth Powers.pdf)
+[Adjoints](PROMYS/Adjoints/Adjoints.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Adjoints.pdf)
 
-[Morse Theory and Handles](PROMYS/Morse Theory and Handles/Morse_Theory_and_Handles.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Morse Theory and Handles.pdf)
-
-[Natural Transformations](PROMYS/Natural Transformations/Natural_Transformations.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Natural Transformations.pdf)
-
-[Number Fields and the Laplacian](PROMYS/Number Fields and the Laplacian/Number_Fields_and_the_Laplacian.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Number Fields and the Laplacian.pdf)
-
-[Poincare Homology Sphere](PROMYS/Poincare Homology Sphere/Poincare_Homology_Sphere.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Poincare Homology Sphere.pdf)
-
-[Positive Definite Binary Quadratic Forms over Z](PROMYS/Positive Definite Binary Quadratic Forms over Z/Positive_Definite_Binary_Quadratic_Forms_over_Z.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Positive Definite Binary Quadratic Forms over Z.pdf)
-
-[Representable Functors and the Yoneda Lemma](PROMYS/Representable Functors and the Yoneda Lemma/Representable_Functors_and_the_Yoneda_Lemma.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Representable Functors and the Yoneda Lemma.pdf)
+[But Dat Nullstellensatz Tho](PROMYS/But Dat Nullstellensatz Tho/But_Dat_Nullstellensatz_Tho.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/But Dat Nullstellensatz Tho.pdf)
 
 [Some Complex Theorems in Simple Analysis](PROMYS/Some Complex Theorems in Simple Analysis/Some_Complex_Theorems_in_Simple_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Some Complex Theorems in Simple Analysis.pdf)
 
-[The Hilbert Class Field](PROMYS/The Hilbert Class Field/The_Hilbert_Class_Field.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/The Hilbert Class Field.pdf)
+[Categories and Functors](PROMYS/Categories and Functors/Categories_and_Functors.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Categories and Functors.pdf)
 
-[The Seifert Van Kampen Thoerem](PROMYS/The Seifert Van Kampen Thoerem/The_Seifert_Van_Kampen_Theorem.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/The Seifert Van Kampen Thoerem.pdf)
+[Duality and Equivalences](PROMYS/Duality and Equivalences/Duality_and_Equivalences.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Duality and Equivalences.pdf)
+
+[Fundamental Groups and Covering Spaces](PROMYS/Fundamental Groups and Covering Spaces/Fundamental_Groups_and_Covering_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Fundamental Groups and Covering Spaces.pdf)
+
+[Natural Transformations](PROMYS/Natural Transformations/Natural_Transformations.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Natural Transformations.pdf)
+
+[Representable Functors and the Yoneda Lemma](PROMYS/Representable Functors and the Yoneda Lemma/Representable_Functors_and_the_Yoneda_Lemma.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Representable Functors and the Yoneda Lemma.pdf)
 
 [Universals and Limits](PROMYS/Universals and Limits/Universals_and_Limits.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Universals and Limits.pdf)
-
-[What is Algebraic Geometry](PROMYS/What is Algebraic Geometry/What_is_Algebraic_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/What is Algebraic Geometry.pdf)
 
 # Academic Projects
 My senior thesis and junior paper at Princeton, as well as expository notes I have written for classes.

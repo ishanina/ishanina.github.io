@@ -136,9 +136,7 @@ details > summary {
 <details>
 <summary>Theses</summary>
 <br>
-<a href="Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html">3-Manifolds Knots and Homology 3-Spheres (Junior Paper)</a> &nbsp; <a href="https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper.pdf">(pdf)</a> 
-  
-<a href="Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html
+<a href="Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html">3-Manifolds Knots and Homology 3-Spheres (Junior Paper)</a>
 </details>
 
 

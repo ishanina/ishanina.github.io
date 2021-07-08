@@ -123,7 +123,6 @@ Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 [Representable Functors and the Yoneda Lemma](PROMYS/Representable Functors and the Yoneda Lemma/Representable_Functors_and_the_Yoneda_Lemma.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Representable Functors and the Yoneda Lemma.pdf)
 
 [Universals and Limits](PROMYS/Universals and Limits/Universals_and_Limits.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Universals and Limits.pdf)
-</details>
   
 # Academic Projects
 My senior thesis and junior paper at Princeton, as well as expository notes I have written for classes.

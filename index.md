@@ -156,4 +156,3 @@ My senior thesis and junior paper at Princeton, as well as expository notes I ha
 [Resolving Singularities Globally and Locally](Academic Projects/Resolving Singularities Globally and Locally/Resolving_Singularities_Globally_and_Locally.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Resolving Singularities Globally and Locally.pdf)
 
 [Serre Spectral Sequence and the Homology of Loop Spaces](Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces/Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces.pdf)
-</details>

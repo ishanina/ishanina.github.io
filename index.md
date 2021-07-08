@@ -127,10 +127,30 @@ Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 # Academic Projects
 My senior thesis and junior paper at Princeton, as well as expository notes I have written for classes.
 
+<style>
+details > summary {
+  padding: 4px;
+  width: 200px;
+  background-color: #eeeeee;
+  border: none;
+  box-shadow: 1px 1px 2px #bbbbbb;
+  cursor: pointer;
+}
+
+details > p {
+  background-color: #eeeeee;
+  padding: 4px;
+  margin: 0;
+  box-shadow: 1px 1px 2px #bbbbbb;
+}
+</style>
+
 <details>
 <summary>Theses</summary>
 <br>
-<a href="Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html">3-Manifolds Knots and Homology 3-Spheres (Junior Paper)</a> &nbsp <a href="https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper.pdf">(pdf)</a> 
+<a href="Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html">3-Manifolds Knots and Homology 3-Spheres (Junior Paper)</a> &nbsp; <a href="https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper.pdf">(pdf)</a> 
+  
+<a href="Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html
 </details>
 
 

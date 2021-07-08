@@ -129,6 +129,7 @@ My senior thesis and junior paper at Princeton, as well as expository notes I ha
 
 <style>
 details > summary {
+  display: block;
   padding: 4px;
   width: 200px;
   background-color: #eeeeee;

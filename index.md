@@ -1,4 +1,8 @@
 # Preprints
+[The Borel Cohomology of Free Iterated Loop Spaces](https://arxiv.org/abs/2105.13526) (w. Justin Wu)
+
+We compute the SO(n+1)-equivariant mod 2 Borel cohomology of the free iterated loop space ZSn when n is odd and Z is a product of mod 2 Eilenberg Mac Lane spaces. When n=1, this recovers Ottosen and Bökstedt's computation for the free loop space. The highlight of our computation is a construction of cohomology classes using an O(n)-equivariant evaluation map and a pushforward map. We then reinterpret our computation as giving a presentation of the zeroth derived functor of the Borel cohomology of ZSn for arbitrary Z. We also include an appendix where we give formulas for computing the zeroth derived functor of the cohomology of mapping spaces, and study the dependence of such derived functors on the Steenrod operations.
+
 [Eilenberg Mac Lane spectra as p-cyclonic Thom spectra](https://arxiv.org/abs/2103.04457)
 
 Abstract: Hopkins and Mahowald gave a simple description of the mod p Eilenberg Mac Lane spectrum H𝔽<sub>p</sub> as the free 𝔼<sub>2</sub>-algebra with an equivalence of p and 0. We show for each faithful 2-dimensional representation λ of a p-group G that the G-equivariant Eilenberg Mac Lane spectrum H<ins>𝔽</ins><sub>p</sub> is the free 𝔼<sub>λ</sub>-algebra with an equivalence of p and 0. This unifies and simplifies recent work of Behrens, Hahn, and Wilson, and extends it to include the dihedral 2-subgroups of O(2). The main new idea is that H<ins>𝔽</ins><sub>p</sub> has a simple description as a p-cyclonic module over THH(H𝔽<sub>p</sub>). We show our result is the best possible one in that it gives all groups G and representations V such that H<ins>𝔽</ins><sub>p</sub> is the free 𝔼<sub>V</sub>-algebra with an equivalence of p and 0.
@@ -14,6 +18,11 @@ Notes for some expository talks I have given.
 
 # Subjects
 A collection of notes I have written about various subjects. These were not written to be read by anyone but myself. I hope you find them useful, but use at your own risk.
+
+
+<details>
+<summary>Notes</summary>
+<br>
 
 [Analysis](Subjects/Analysis/Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analysis.pdf)
 
@@ -38,10 +47,15 @@ A collection of notes I have written about various subjects. These were not writ
 [Rings Modules Fields](Subjects/Rings Modules Fields/Rings_Modules_Fields.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)
 
 [Simplicial](Subjects/Simplicial/Simplicial.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
+</details>
 
 # Other
 Miscellaneous notes I have written.
 
+<details>
+<summary>Notes</summary>
+<br>
+  
 [Diagonal Argument](Other/Diagonal Argument/Diagonal_Argument.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Diagonal Argument.pdf)
 
 [Embeddings and Duality](Other/Embeddings and Duality/Embeddings_and_Duality.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Embeddings and Duality.pdf)
@@ -52,19 +66,27 @@ Miscellaneous notes I have written.
 
 [Group Extensions](Other/Group Extensions/Group_Extensions.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Group Extensions.pdf)
 
-[Invertibility Hypothesis](Other/Invertibility Hypothesis/Invertibility_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Invertibility Hypothesis.pdf)
-
 [Morita Equivalence](Other/Morita Equivalence/Morita_Equivalence.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Morita Equivalence.pdf)
 
 [Projective Modules over Local Rings](Other/Projective Modules over Local Rings/Projective_Modules_over_Local_Rings.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Projective Modules over Local Rings.pdf)
 
 [Vector Bundles on P1](Other/Vector Bundles on P1/Vector_Bundles_on_P1.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Vector Bundles on P1.pdf)
+</details>
+  
+<details>
+<summary>Original</summary>
+<br>
+
+ [Invertibility Hypothesis](Other/Invertibility Hypothesis/Invertibility_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Invertibility Hypothesis.pdf)
+  
+</details>
 
 # PROMYS
 Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 
-2019
-
+<details>
+<summary>2019</summary>
+<br>
 [Number Fields and the Laplacian](PROMYS/Number Fields and the Laplacian/Number_Fields_and_the_Laplacian.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Number Fields and the Laplacian.pdf)
 
 [Local-Global Principle for nth Powers](PROMYS/Local-Global Principle for nth Powers/Local-Global_Principle_for_nth_Powers.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Local-Global Principle for nth Powers.pdf)
@@ -78,9 +100,11 @@ Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 [Positive Definite Binary Quadratic Forms over Z](PROMYS/Positive Definite Binary Quadratic Forms over Z/Positive_Definite_Binary_Quadratic_Forms_over_Z.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Positive Definite Binary Quadratic Forms over Z.pdf)
 
 [The Seifert Van Kampen Thoerem](PROMYS/The Seifert Van Kampen Thoerem/The_Seifert_Van_Kampen_Theorem.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/The Seifert Van Kampen Thoerem.pdf)
+</details>
 
-2018
-
+<details>
+<summary>2018</summary>
+<br>
 [Poincare Homology Sphere](PROMYS/Poincare Homology Sphere/Poincare_Homology_Sphere.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Poincare Homology Sphere.pdf)
 
 [Crossing Numbers of Alternating Knots](PROMYS/Crossing Numbers of Alternating Knots/Crossing_Numbers_of_Alternating_Knots.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Crossing Numbers of Alternating Knots.pdf)
@@ -98,9 +122,11 @@ Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 [Galois Theory and Riemann Surfaces](PROMYS/Galois Theory and Riemann Surfaces/Galois_Theory_and_Riemann_Surfaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Galois Theory and Riemann Surfaces.pdf)
 
 [What is Algebraic Geometry](PROMYS/What is Algebraic Geometry/What_is_Algebraic_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/What is Algebraic Geometry.pdf)
-
-2017
-
+</details>
+  
+<details>
+<summary>2017</summary>
+<br>
 [Adjoints](PROMYS/Adjoints/Adjoints.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Adjoints.pdf)
 
 [But Dat Nullstellensatz Tho](PROMYS/But Dat Nullstellensatz Tho/But_Dat_Nullstellensatz_Tho.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/But Dat Nullstellensatz Tho.pdf)
@@ -118,13 +144,26 @@ Notes for talks I gave at [PROMYS](https://promys.org/) 2017-2019.
 [Representable Functors and the Yoneda Lemma](PROMYS/Representable Functors and the Yoneda Lemma/Representable_Functors_and_the_Yoneda_Lemma.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Representable Functors and the Yoneda Lemma.pdf)
 
 [Universals and Limits](PROMYS/Universals and Limits/Universals_and_Limits.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/PROMYS/Universals and Limits.pdf)
-
+</details>
+  
 # Academic Projects
 My senior thesis and junior paper at Princeton, as well as expository notes I have written for classes.
 
+<details>
+<summary>Theses</summary>
+<br>
+  
+  [3-Manifolds Knots and Homology 3-Spheres Junior Paper](Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper.pdf)
+
+  [S3 pairs and Dehn surgery on Knots Senior Thesis](Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis.pdf)
+</details>
+
+<details>
+<summary>Notes</summary>
+<br>
+
 [2nd Order Elliptic PDE](Academic Projects/2nd Order Elliptic PDE/2nd_Order_Elliptic_PDE.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/2nd Order Elliptic PDE.pdf)
 
-[3-Manifolds Knots and Homology 3-Spheres Junior Paper](Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper/3-Manifolds_Knots_and_Homology_3-Spheres_Junior_Paper.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/3-Manifolds Knots and Homology 3-Spheres Junior Paper.pdf)
 
 [Bott Periodicity and Clifford Algebras](Academic Projects/Bott Periodicity and Clifford Algebras/Bott_Periodicity_and_Clifford_Algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Bott Periodicity and Clifford Algebras.pdf)
 
@@ -146,6 +185,6 @@ My senior thesis and junior paper at Princeton, as well as expository notes I ha
 
 [Resolving Singularities Globally and Locally](Academic Projects/Resolving Singularities Globally and Locally/Resolving_Singularities_Globally_and_Locally.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Resolving Singularities Globally and Locally.pdf)
 
-[S3 pairs and Dehn surgery on Knots Senior Thesis](Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis/S3_pairs_and_Dehn_surgery_on_Knots_Senior_Thesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/S3 pairs and Dehn surgery on Knots Senior Thesis.pdf)
 
 [Serre Spectral Sequence and the Homology of Loop Spaces](Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces/Serre_Spectral_Sequence_and_the_Homology_of_Loop_Spaces.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Academic Projects/Serre Spectral Sequence and the Homology of Loop Spaces.pdf)
+</details>

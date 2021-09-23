@@ -9,6 +9,8 @@ Abstract: Hopkins and Mahowald gave a simple description of the mod p Eilenberg 
 
 # Talks
 Notes for some expository talks I have given.
+
+[Deformation theory and Lie algebras](Talks/Deformation theory and Lie algebras/Deformation_theory_and_Lie_algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Deformation theory and Lie algebras.pdf)
   
 [Chromatic Homotopy and Telescopic Localization](Talks/Chromatic Homotopy and Telescopic Localization/Chromatic_Homotopy_and_Telescopic_Localization.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Chromatic Homotopy and Telescopic Localization.pdf)
 

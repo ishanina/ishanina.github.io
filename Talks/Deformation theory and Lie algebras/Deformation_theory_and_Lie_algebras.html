@@ -1,0 +1,583 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head> <title>Deformation theory and Lie algebras</title> 
+<meta  charset="UTF-8"" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Deformation_theory_and_Lie_algebras.css" /> 
+<meta name="src" content="Deformation_theory_and_Lie_algebras.tex" /> 
+<script>window.MathJax = { tex: { tags: "ams", inlineMath: [ ["\\\(","\\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true, packages: ['base', 'color', 'ams', 'newcommand'] }, loader: { load: ['[tex]/color', '[tex]/ams', '[tex]/newcommand'] } }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
+</head><body 
+>
+  <p style="display: none;">\( \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\SP}{\mathbb{S}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\cc}{\mf{c}}
+\newcommand{\mg}{\mf{g}}
+\newcommand{\ma}{\mf{a}}
+\newcommand{\mh}{\mf{h}}
+\newcommand{\mn}{\mf{n}}
+\newcommand{\mc}{\mf{c}}
+\newcommand{\ul}{\underline}
+\newcommand{\mz}{\mf{z}}
+\newcommand{\me}{\mf{e}}
+\newcommand{\mff}{\mf{f}}
+\newcommand{\mm}{\mf{m}}
+\newcommand{\mt}{\mf{t}}
+\newcommand{\pp}{\mf{p}}
+\newcommand{\qq}{\mf{q}}
+\newcommand{\gl}{\mf{gl}}
+\newcommand{\msl}{\mf{sl}}
+\newcommand{\so}{\mf{so}}
+\newcommand{\mfu}{\mf{u}}
+\newcommand{\su}{\mf{su}}
+\newcommand{\msp}{\mf{sp}}
+\renewcommand{\aa}{\mf{a}}
+\newcommand{\bb}{\mf{b}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\ff}{\mf{f}}
+\newcommand{\ee}{\epsilon}
+\newcommand{\heart}{\heartsuit}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+
+\newcommand{\pushout}{\arrow[ul, phantom, "\ulcorner", very near start]}
+\newcommand{\pullback}{\arrow[dr, phantom, "\lrcorner", very near start]}
+
+\newcommand{\simp}[1]{#1^{\Delta^{op}}}
+
+\newcommand{\arrowtcupp}[2]{\arrow[bend left=50, ""{name=U, below,inner sep=1}]{#1}\arrow[Rightarrow,from=U,to=MU,"#2"]}
+\newcommand{\arrowtclow}[2]{\arrow[bend right=50, ""{name=L,inner sep=1}]{#1}\arrow[Rightarrow,from=LM,to=L]{}[]{#2}} % if you want to change some parameter of the label.
+\newcommand{\arrowtcmid}[2]{\arrow[""{name=MU,inner sep=1},""{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}
+\newcommand{\dummy}{\textcolor{white}{\bullet}}
+
+
+%for adjunction
+\newcommand{\adjunction}[4]{
+	#1\hspace{2pt}\colon #2	\leftrightharpoons #3 \hspace{2pt}\colon #4
+}
+
+
+%Math operators
+
+\newcommand{\aug}{\mathop{\rm aug}\nolimits}
+\newcommand{\MC}{\mathop{\rm MC}\nolimits}
+\newcommand{\art}{\mathop{\rm art}\nolimits}
+\newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\FMP}{\mathop{\rm FMP}\nolimits}
+\newcommand{\CAlg}{\mathop{\rm CAlg}\nolimits}
+\newcommand{\perf}{\mathop{\rm perf}\nolimits}
+\newcommand{\cof}{\mathop{\rm cof}\nolimits}
+\newcommand{\fib}{\mathop{\rm fib}\nolimits}
+\newcommand{\Thick}{\mathop{\rm Thick}\nolimits}
+\newcommand{\Orb}{\mathop{\rm Orb}\nolimits}
+\newcommand{\ko}{\mathop{\rm ko}\nolimits}
+\newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
+\newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
+\newcommand{\sk}{\mathop{\rm sk}\nolimits}
+\newcommand{\cosk}{\mathop{\rm cosk}\nolimits}
+\newcommand{\holim}{\mathop{\rm holim}\nolimits}
+\newcommand{\hocolim}{\mathop{\rm hocolim}\nolimits}
+\newcommand{\Pre}{\mathop{\rm Pre}\nolimits}
+\newcommand{\THR}{\mathop{\rm THR}\nolimits}
+\newcommand{\THH}{\mathop{\rm THH}\nolimits}
+\newcommand{\Fun}{\mathop{\rm Fun}\nolimits}
+\newcommand{\Loc}{\mathop{\rm Loc}\nolimits}
+\newcommand{\Bord}{\mathop{\rm Bord}\nolimits}
+\newcommand{\Cob}{\mathop{\rm Cob}\nolimits}
+\newcommand{\Set}{\mathop{\rm Set}\nolimits}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\newcommand{\Sind}{\mathop{\rm Sind}\nolimits}
+\newcommand{\Ext}{\mathop{\rm Ext}\nolimits}
+\newcommand{\sd}{\mathop{\rm sd}\nolimits}
+\newcommand{\Ex}{\mathop{\rm Ex}\nolimits}
+\newcommand{\Out}{\mathop{\rm Out}\nolimits}
+\newcommand{\Cyl}{\mathop{\rm Cyl}\nolimits}
+\newcommand{\Path}{\mathop{\rm Path}\nolimits}
+\newcommand{\Ch}{\mathop{\rm Ch}\nolimits}
+\newcommand{\SSet}{\mathop{\rm \Set^{\Delta^{op}}}\nolimits}
+\newcommand{\Sq}{\mathop{\rm Sq}\nolimits}
+\newcommand{\Free}{\mathop{\rm Free}\nolimits}
+\newcommand{\Map}{\mathop{\rm Map}\nolimits}
+\newcommand{\Chain}{\mathop{\rm Ch}\nolimits}
+\newcommand{\LMap}{\mathop{\rm LMap}\nolimits}
+\newcommand{\RMap}{\mathop{\rm RMap}\nolimits}
+\newcommand{\Tot}{\mathop{\rm Tot}\nolimits}
+\newcommand{\MU}{\mathop{\rm MU}\nolimits}
+\newcommand{\MSU}{\mathop{\rm MSU}\nolimits}
+\newcommand{\MSp}{\mathop{\rm MSp}\nolimits}
+\newcommand{\MSO}{\mathop{\rm MSO}\nolimits}
+\newcommand{\MO}{\mathop{\rm MO}\nolimits}
+\newcommand{\BU}{\mathop{\rm BU}\nolimits}
+\newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
+\newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BGL}{\mathop{\rm BGL}\nolimits}
+\newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
+\newcommand{\BO}{\mathop{\rm BO}\nolimits}
+\newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
+\newcommand{\Cotor}{\mathop{\rm Cotor}\nolimits}
+\newcommand{\imag}{\mathop{\rm Im}\nolimits}
+\newcommand{\real}{\mathop{\rm Re}\nolimits}
+\newcommand{\Cat}{\mathop{\rm Cat}\nolimits}
+\newcommand{\Fld}{\mathop{\rm Fld}\nolimits}
+\newcommand{\Frac}{\mathop{\rm Frac}\nolimits}
+\newcommand{\Dom}{\mathop{\rm Dom}\nolimits}
+\newcommand{\Hotc}{\mathop{\rm Hotc}\nolimits}
+\newcommand{\Top}{\mathop{\rm Top}\nolimits}
+\newcommand{\Ring}{\mathop{\rm Ring}\nolimits}
+\newcommand{\CRing}{\mathop{\rm CRing}\nolimits}
+\newcommand{\CGHaus}{\mathop{\rm CGHaus}\nolimits}
+\newcommand{\Alg}{\mathop{\rm Alg}\nolimits}
+\newcommand{\Bool}{\mathop{\rm Bool}\nolimits}
+\newcommand{\hTop}{\mathop{\rm hTop}\nolimits}
+\newcommand{\Nat}{\mathop{\rm Nat}\nolimits}
+\newcommand{\Rel}{\mathop{\rm Rel}\nolimits}
+\newcommand{\Mod}{\mathop{\rm Mod}\nolimits}
+\newcommand{\Space}{\mathop{\rm Space}\nolimits}
+\newcommand{\Vect}{\mathop{\rm Vect}\nolimits}
+\newcommand{\FinVect}{\mathop{\rm FinVect}\nolimits}
+\newcommand{\Matr}{\mathop{\rm Matr}\nolimits}
+\newcommand{\Ab}{\mathop{\rm Ab}\nolimits}
+\newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
+\newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
+\newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
+\newcommand{\Gpd}{\mathop{\rm Gpd}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Gpd}\nolimits}
+\newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
+\newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
+\newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
+\newcommand{\AffSch}{\mathop{\rm AffSch}\nolimits}
+\newcommand{\Idem}{\mathop{\rm Idem}\nolimits}
+\newcommand{\SIdem}{\mathop{\rm SIdem}\nolimits}
+\newcommand{\Aut}{\mathop{\rm Aut}\nolimits}
+\newcommand{\Ord}{\mathop{\rm Ord}\nolimits}
+\newcommand{\coker}{\mathop{\rm coker}\nolimits}
+\newcommand{\ch}{\mathop{\rm char}\nolimits}%characteristic
+\newcommand{\Sym}{\mathop{\rm Sym}\nolimits}
+\newcommand{\adj}{\mathop{\rm adj}\nolimits}
+\newcommand{\dil}{\mathop{\rm dil}\nolimits}
+\newcommand{\Cl}{\mathop{\rm Cl}\nolimits}
+\newcommand{\Diff}{\mathop{\rm Diff}\nolimits}
+\newcommand{\End}{\mathop{\rm End}\nolimits}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}% preferred
+\newcommand{\Gal}{\mathop{\rm Gal}\nolimits}
+\newcommand{\Pos}{\mathop{\rm Pos}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\GL}{\mathop{\rm GL}\nolimits}
+\newcommand{\SL}{\mathop{\rm SL}\nolimits}
+\newcommand{\vol}{\mathop{\rm vol}\nolimits}
+\newcommand{\reg}{\mathop{\rm reg}\nolimits}
+\newcommand{\Or}{\text{O}}
+\newcommand{\U}{\mathop{\rm U}\nolimits}
+\newcommand{\SOr}{\mathop{\rm SO}\nolimits}
+\newcommand{\SU}{\mathop{\rm SU}\nolimits}
+\newcommand{\Spin}{\mathop{\rm Spin}\nolimits}
+\newcommand{\Sp}{\mathop{\rm Sp}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\im}{\mathop{\rm im}\nolimits}
+\newcommand{\dom}{\mathop{\rm dom}\nolimits}
+\newcommand{\di}{\mathop{\rm div}\nolimits}
+\newcommand{\cod}{\mathop{\rm cod}\nolimits}
+\newcommand{\colim}{\mathop{\rm colim}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\PSL}{\mathop{\rm PSL}\nolimits}
+\newcommand{\PGL}{\mathop{\rm PGL}\nolimits}
+\newcommand{\sep}{\mathop{\rm sep}\nolimits}
+\newcommand{\MCG}{\mathop{\rm MCG}\nolimits}
+\newcommand{\oMCG}{\mathop{\rm MCG^+}\nolimits}
+\newcommand{\Spec}{\mathop{\rm Spec}\nolimits}
+\newcommand{\rank}{\mathop{\rm rank}\nolimits}
+\newcommand{\diverg}{\mathop{\rm div}\nolimits}%Divergence
+\newcommand{\disc}{\mathop{\rm disc}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\newcommand{\Arf}{\mathop{\rm Arf}\nolimits}
+\newcommand{\Pic}{\mathop{\rm Pic}\nolimits}
+\newcommand{\Tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\res}{\mathop{\rm res}\nolimits}
+\newcommand{\Proj}{\mathop{\rm Proj}\nolimits}
+\newcommand{\mult}{\mathop{\rm mult}\nolimits}
+\newcommand{\N}{\mathop{\rm N}\nolimits}
+\newcommand{\lk}{\mathop{\rm lk}\nolimits}
+\newcommand{\Pf}{\mathop{\rm Pf}\nolimits}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\newcommand{\lcm}{\mathop{\rm lcm}\nolimits}
+\newcommand{\Ric}{\mathop{\rm Ric}\nolimits}
+\newcommand{\Hess}{\mathop{\rm Hess}\nolimits}
+\newcommand{\sn}{\mathop{\rm sn}\nolimits}
+\newcommand{\cut}{\mathop{\rm cut}\nolimits}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\codim}{\mathop{\rm codim}\nolimits}
+\newcommand{\ind}{\mathop{\rm index}\nolimits}
+\newcommand{\rad}{\mathop{\rm rad}\nolimits}
+\newcommand{\Rep}{\mathop{\rm Rep}\nolimits}
+\newcommand{\Lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\Der}{\mathop{\rm Der}\nolimits}
+\newcommand{\hgt}{\mathop{\rm ht}\nolimits}
+\newcommand{\Ider}{\mathop{\rm Ider}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits} \)</p>
+  <div class="maketitle">
+  <h2 class="titleHead">
+DEFORMATION THEORY AND LIE ALGEBRAS
+  </h2>
+  <div class="authors"><span class="author" >
+<span 
+class="cmr-10">ISHAN LEVY</span>
+  </span></div>
+<div class="submaketitle">
+  <div class="date" >
+<!--l. 8--><p class="indent" >  <span 
+class="cmti-12">Date</span>:&#x00A0;9/22/2021.</p></div></div></div>
+  <h3 class="sectionHead"><a 
+ id="x1-1000"></a>Contents</h3>
+  <div class="tableofcontents"><span class="sectionToc" ><a 
+href="#x1-1000" id="QQ2-1-1">Contents</a></span><br /><span class="sectionToc" >&#x00A0;1.&#x00A0;&#x00A0;<a 
+href="#x1-20001" id="QQ2-1-2">Formal moduli problems</a></span><br /><span class="sectionToc" >&#x00A0;2.&#x00A0;&#x00A0;<a 
+href="#x1-30002" id="QQ2-1-3">Lie algebras and
+FMPs</a></span><br /><span class="sectionToc" >&#x00A0;3.&#x00A0;&#x00A0;<a 
+href="#x1-40003" id="QQ2-1-4">An example</a></span><br />
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
+ id="x1-20001"></a>Formal moduli problems</h3>
+<!--l. 13--><p class="noindent" >The purpose of deformation theory is to study the local behaviour of moduli problems. In a moduli
+problem, one studies smoothly varying families of some kind of geometric object. We focus here on
+moduli problems over a &#xFB01;eld \(k\) of characteristic zero.
+</p><!--l. 15--><p class="indent" >  As a very simple example, one can consider the moduli problem of one dimensional vector spaces
+with n labelled points, not all of which are zero. A family of such objects over a variety \(X\) is the
+same as giving a line bundle on \(X\) with \(n\) sections that don&#x2019;t simultaneously vanish. The
+moduli problem associated to this is the functor \(F:\CAlg ^{\heart } \to \Set \), where \(\CAlg ^{\heart }\) is the category of &#x0028;discrete&#x0029;
+commutative \(k\)-algebras, and the functor takes \(R\) to the set of line bundles with n non
+simultaneously vanishing sections. This moduli problem has an associated moduli space,
+namely \(\PP ^{n-1}\). This means that the functor \(F\) is represented by \(\PP ^{n-1}\), i.e \(F\) is naturally isomorphic to
+\(\Hom (\Spec (R) ,\PP ^{n-1})\).
+</p><!--l. 17--><p class="indent" >  In general, we think of a moduli problem as being represented by some kind of geometric object,
+such as a stack. For example, we can consider the moduli problem of families of elliptic curves. It is
+a bad idea to encode this moduli problem as a \(\Set \)-valued functor, because elliptic curves have
+automorphisms. Instead, we make our functor at least valued in \(\Gpd \), the category of groupoids, which
+in particular allows us to recover the isomorphism classes of elliptic curves as \(\pi _0\). The groupoid
+valued functor is much better behaved: for example it satis&#xFB01;ed descent and is represented by a
+Deligne-Mumford stack. We might as well have our moduli problems be valued in \(\cS \), the category of
+spaces, since this is the category of \(\infty \)-groupoids, and in particular contains \(\Gpd \) and \(\Set \) fully faithfully in
+                                                                                         
+                                                                                         
+it.
+</p><!--l. 19--><p class="indent" >  To motivate how we will study the local behaviour of moduli problems, consider a
+\(k\)-variety \(X\), with functor of points \(X: \CAlg ^{\heart } \to \cS \), and let \(p \in X(k)\). We can form the completion of \(X\) at \(p\),
+i.e the functor \(X^{\wedge }_p :\CAlg ^{\heart } \to \cS \), whose value on \(R\) is the subset of maps \(\Spec (R) \to X\) such that the image on the
+Zariski spectra is contained in \(\{p\}\). This functor sees all of the local behaviour of \(X\) near \(p\).
+Any map in \(X^{\wedge }_p(R)\) is given by a map of rings \(\cO _{X,p} \to R\) that sends the maximal ideal \(m\) to nilpotent
+elements<span class="footnote-mark"><a 
+href="#fn1x0" id="fn1x0-bk">1</a></span><a 
+ id="x1-2001f1"></a>.
+Since \(m\) is &#xFB01;nitely generated, this means that some large power \(m^n\) is sent to zero. Thus the map
+factors through \(\cO _{X,p}/m^n\) for \(n\gg 0\), which is an Artinian local ring that is &#xFB01;nite dimensional with
+residue &#xFB01;eld \(k\). Thus we see in particular that the functor \(X^{\wedge }_p\) is actuallly determined by its
+restriction to the subcategory \(\CAlg ^{\heart }_{\art }\) of Artinian local &#xFB01;nite dimensional rings with residue &#xFB01;eld
+\(k\).
+</p><!--l. 21--><p class="indent" >  To give an example of what kind of results are proven in deformation theory,
+we can consider the moduli problem of deformations of \(X\), some smooth proper
+variety over \(k\). This functor \(F:\CAlg ^{\heart }_{\art } \to \cS \) sends \(R\) to the groupoid of lifts of \(X\) to a smooth proper
+\(R\)-scheme<span class="footnote-mark"><a 
+href="#fn2x0" id="fn2x0-bk">2</a></span><a 
+ id="x1-2002f2"></a>.
+Some facts about this functor are:
+</p><!--l. 24--><p class="indent" >
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+   &#x0028;1&#x0029; </dt><dd 
+class="enumerate-enumitem">\(\pi _0F(\Lambda [\ee _0]) = H^1(X;T_X)\).
+          </dd><dt class="enumerate-enumitem">
+   &#x0028;2&#x0029; </dt><dd 
+class="enumerate-enumitem">\(\pi _1F(\Lambda [\ee _0]) = H^0(X;T_X)\).
+          </dd><dt class="enumerate-enumitem">
+   &#x0028;3&#x0029; </dt><dd 
+class="enumerate-enumitem">Given an object in \(F(\Lambda [\ee _0])\), there is an obstruction in \(H^2(X;T_X)\) that vanishes i&#xFB00; it can be lifted to \(F(k[\ee _0]/\ee ^3)\).</dd></dl>
+<!--l. 29--><p class="indent" >  In other words, isomorphism classes of &#xFB01;rst order deformations of \(X\) correspond to \(H^1(X;T_X)\),
+automorphisms of &#xFB01;rst order deformations correspond to \(H^0(X;T_X)\), and the obstructionn to lifting a &#xFB01;rst
+order deformationn of \(X\) to a second order deformation of \(X\) lies in \(H^2(X;T_X)\).
+</p><!--l. 31--><p class="indent" >  These facts, especially \((3)\), can be explained via spectral algebraic geometry. To do so we need to
+extend the functor \(F\) to the subcategory \(\CAlg _{art}\) of \(\CAlg \) consisting of connective, bounded above
+commutative \(k\)-algebras with \(\pi _i\) &#xFB01;nite dimensional over \(k\), \(\pi _0\) local Artinian with residue &#xFB01;eld
+\(k\).
+</p><!--l. 33--><p class="indent" >  Our functor \(F: \CAlg _{\art } \to \cS \) now sends \(R\) to the space of smooth proper spectral schemes over \(R\) lifting \(X\). \(F\) now
+satis&#xFB01;es the following properties:
+</p><!--l. 35--><p class="indent" >
+          </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+  &#x0028;F1&#x0029; </dt><dd 
+class="enumerate-enumitem">\(F(k) = *\)
+          </dd><dt class="enumerate-enumitem">
+  &#x0028;F2&#x0029; </dt><dd 
+class="enumerate-enumitem">\(F\) preserves pullback diagrams of the form
+       <div class="center" 
+>
+<!--l. 39--><p class="noindent" >
+                                                                                         
+                                                                                         
+</p><!--l. 43--><p class="noindent" >       <img 
+src="Deformation_theory_and_Lie_algebras0x.svg" alt="  R0        R1
+
+
+
+&#x231F;gf R2        R3 "  />
+</p></div>
+     <!--l. 45--><p class="noindent" >with \(f\) and \(g\) surjective on \(\pi _0\).</p></dd></dl>
+<!--l. 48--><p class="indent" >  Via the pullback squares </p>
+<div class="center" 
+>
+<!--l. 49--><p class="noindent" >
+</p><!--l. 53--><p class="noindent" >          <img 
+src="Deformation_theory_and_Lie_algebras1x.svg" alt="&#x039B; &#x005B;&#x1D716;n&#x005D;        k
+
+
+k            &#x039B; &#x005B;&#x1D716;n+1&#x005D; "  />
+</p></div>
+<!--l. 56--><p class="indent" >  where \(\Lambda [\ee _n]\) is the trivial square zero extension in degree \(n\), we learn that \(F(\Lambda [\ee _n]) = \Omega F(\Lambda [\ee _{n+1}])\). Thus \(F(\Lambda [\ee _n])\) &#xFB01;t togehter to form a
+spectrum \(T_F\) satisfying \(\Omega ^{\infty -n}T_F = F(\Lambda [\ee _{n+1}])\). \(T_F\) is the <span 
+class="cmti-12">tangent complex </span>of \(F\).
+</p><!--l. 58--><p class="indent" >  Now, \((1)-(3)\) are all exaplained by the fact that \(\pi _i T_F = H^{1-i}(X;T_X)\). Indeed this immediately explaines \((1)\) and \((2)\) given the
+de&#xFB01;nition of \(T_F\). For \((3)\), there is a pullback square
+</p>
+<div class="center" 
+>
+<!--l. 60--><p class="noindent" >
+</p><!--l. 64--><p class="noindent" >           <img 
+src="Deformation_theory_and_Lie_algebras2x.svg" alt="    k &#x005B;&#x1D716;0&#x005D;&#x2215;&#x1D716;30      &#x039B;&#x005B;&#x1D716;0&#x005D;
+
+
+
+&#x231F;   k             &#x039B;&#x005B;&#x03B4;1&#x005D; "  />
+</p></div>
+<!--l. 66--><p class="noindent" >coming from the fact that \(k[\ee _0]/\ee _0^3\) is a square zero extension of \(\Lambda [\ee _0]\). Applying \(F\) gives the pullback square of
+spaces
+</p>
+<div class="center" 
+>
+<!--l. 68--><p class="noindent" >
+</p><!--l. 72--><p class="noindent" >              <img 
+src="Deformation_theory_and_Lie_algebras3x.svg" alt="F&#x0028;k &#x005B;&#x1D716;0&#x005D;&#x2215;&#x1D716;30&#x0029;      F&#x0028;&#x039B; &#x005B;&#x1D716;0&#x005D;&#x0029;
+
+
+
+&#x2217;                F&#x0028;&#x039B; &#x005B;&#x03B4;1&#x005D;&#x0029; "  />
+</p></div>
+<!--l. 75--><p class="indent" >  So if we have a class in \(\pi _0F(\Lambda [\ee _0])\), we learn from the &#xFB01;bre square above that the obstruction to lifting it
+to \(F(k[\ee _0]/\ee _0^3)\) lies in \(\pi _0F(\Lambda [\delta _1]) = H^2(X;T_X)\), explaining \((3)\). Note to give this explanation we needed to use \(\Lambda [\delta _1]\), which is not
+discrete.
+</p><!--l. 77--><p class="indent" >  The notion of a formal moduli problem axiomitizes the properties of this example.
+                                                                                         
+                                                                                         
+</p>
+  <div class="newtheorem">
+<!--l. 79--><p class="noindent" ><span class="head">
+<a 
+ id="x1-2008r1"></a>
+<span 
+class="cmbx-12">De&#xFB01;nition 1.1.</span>  </span><span 
+class="cmti-12">A </span><span 
+class="cmbxti-10x-x-120">formal moduli problem </span><span 
+class="cmti-12">&#x0028;or FMP&#x0029; is a functor</span> \(F:\CAlg _{\art } \to \cS \) <span 
+class="cmti-12">satisfying</span> \((F1)\) <span 
+class="cmti-12">and</span> \((F2)\) <span 
+class="cmti-12">above.</span>
+</p>
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">2. </span> <a 
+ id="x1-30002"></a>Lie algebras and FMPs</h3>
+<!--l. 85--><p class="noindent" >Let \(\FMP \) be the category of formal moduli problems, and let \(\Lie \) be the category of Lie algebras over \(k\) &#x0028;i.e
+dglas with quasi-isomorphisms inverted&#x0029;. The main result about formal moduli problems is is the
+following:
+</p>
+  <div class="newtheorem">
+<!--l. 88--><p class="noindent" ><span class="head">
+<a 
+ id="x1-3001r1"></a>
+<span 
+class="cmbx-12">Theorem 2.1 </span>&#x0028;Lurie, Pridham&#x0029;<span 
+class="cmbx-12">.</span>  </span><span 
+class="cmti-12">There is an equivalence</span> \(\FMP \simeq \Lie \)<span 
+class="cmti-12">.</span>
+</p>
+  </div>
+<!--l. 91--><p class="indent" >  As currently stated, the equivalence is not explicit, but it can be made explicit in multiple ways,
+as will be explained. Roughly, we&#x2019;d like to think of every formal moduli problem as being
+represented by some kind of pro-Artinian spectral stack, and the above result says that every
+such stack can be recovered from the tangent complex of its loop space, which is a Lie
+algebra.
+</p><!--l. 93--><p class="indent" >  More precisely, we can &#xFB01;rst observe as in the previous section, that given a formal moduli
+problem \(F\), \(F(\Lambda [\ee _n])\) &#xFB01;t together to form the tangent complex \(T_F\). In fact, \(\Sigma ^{-1}T_F\) can be given the structure of a Lie
+algebra, and is the one corresponding to \(F\). We might expect this, since the construction \(F \mapsto T_F\) commutes
+with limits, so \(\Sigma ^{-1}T_F = T_{\Omega F}\), and \(\Omega F\) is a group in the category \(\FMP \), so it&#x2019;s tangent space \(\Sigma ^{-1}T_F\) ought to be a Lie
+algebra.
+</p><!--l. 95--><p class="indent" >  Furthermore, it isn&#x2019;t hard to see that if \(F \to F'\) is a map of formal moduli problems inducing an
+equivalence on \(T_F\), then it is an equivalence. This is because every object in \(\CAlg _{\art }\) is built out of \(k\) from
+&#xFB01;nitely many square zero extensions, which are classi&#xFB01;ed by a pullback square for which we can
+apply \((F2)\). This way we can inductively show that \(F \to F'\) is an equivalence for every \(R \in \CAlg _{\art }\). Thus it makes
+sense that \(T_F\), along with all the extra structure it carries, retains all the information of
+\(F\).
+</p><!--l. 97--><p class="indent" >  One way to construct the functor \(\Lie \to \FMP \), which we suggestively call \(\mg \mapsto B\mg \), is to use Koszul duality.
+</p><!--l. 99--><p class="indent" >  We have a functor
+</p><!--l. 101--><p class="indent" >
+                                                                                         
+                                                                                         
+</p>
+  <center class="math-display" >
+<img 
+src="Deformation_theory_and_Lie_algebras4x.svg" alt="C&#x2217;&#x0028;&#x2212; &#x0029; : Lieop &#x2192; CAlgaug   " class="math-display"  /></center>
+sending \(\mg \) to its Chevalley-Eilenberg cochains, which is canonically augmented because of the map \(\mg \to 0\).
+The inclusion \(\CAlg _{\art } \to \CAlg \) canonically lifts to \(\CAlg _{\art }\), since any augmentation of \(R \in \CAlg _{\art }\) must factor through the
+truncation \(\pi _0R\) which is Artinian local with residue &#xFB01;eld \(k\), so is uniquely augmented over
+\(k\).
+<!--l. 103--><p class="indent" >  \(C^*(-)\) has a left adjoint which we denote \(D:\CAlg ^{\aug } \to \Lie ^{op}\). This adjunction is fairly close to an equivalence: \(\Lie \) is
+equivalent via the bar construction &#x0028;i.e Chevalley-Eilenberg chains&#x0029; to coaugmented
+cocommutative coalgebras over \(k\), and \(D\) is the composite of this equivalence with the functor of
+taking \(k\)-linear duals.
+</p><!--l. 105--><p class="indent" >  Then given \(\mg \in \Lie \), the composite
+</p>
+<div class="center" 
+>
+<!--l. 107--><p class="noindent" >
+</p><!--l. 110--><p class="noindent" >                       <img 
+src="Deformation_theory_and_Lie_algebras5x.svg" alt="D   CAlgart        CAlgaug       Lieop     &#x1D4AE; "  />
+</p></div>
+<!--l. 112--><p class="noindent" >gives the formal moduli problem \(B\mg \).
+</p><!--l. 114--><p class="indent" >  A more explicit way to describe the formal moduli problem is via Maurer-Cartan elements.
+Given a dgla \(\mg \), we can de&#xFB01;ne \(\MC _0(\mg )\) to be the set of elements \(x\in \mg _{-1}\) satisfying the Maurer-Cartan
+equation<span class="footnote-mark"><a 
+href="#fn3x0" id="fn3x0-bk">3</a></span><a 
+ id="x1-3002f3"></a>:
+</p>
+  <center class="math-display" >
+<img 
+src="Deformation_theory_and_Lie_algebras6x.svg" alt="     1
+dx = --&#x005B;x, x&#x005D;
+     2
+" class="math-display"  /></center>
+<!--l. 117--><p class="indent" >  As a warning \(\MC _0(\mg )\) is not a homotopy invariant of \(\mg \)! But we can make a homotopy invariant version of
+it, as we now explain.
+                                                                                         
+                                                                                         
+</p><!--l. 119--><p class="indent" >  Given a dgla \(\mg \) and a &#x0028;possibly nonunital&#x0029; cdga \(R\), \(\mg \otimes R\) inherits the structure of a dgla by viewing
+it as \(\mg \) base changed to a Lie algebra over \(R\). In otherwords, the Lie bracket is given by
+\([x\otimes a,y\otimes b] = (-1)^{|ay|}[x,y]\otimes ab\).
+</p><!--l. 121--><p class="indent" >  Let \(\Omega ^*(\Delta ^n)\) be the polynomial de Rham complex of the \(n\)-simplex: i.e it is the free cdga generated by \(t_0,\dots ,t_n\) in
+degree \(0\) with the equation \(\sum _0^nt_i =1\). \(\Omega ^*(\Delta ^n)\) &#xFB01;t together as \(n\) varies to form a simplicial cdga. Then we can de&#xFB01;ne a
+simplicial set \(\MC _*(\mg )\) as having \(n\)-simplicies given by \(\MC _0(\mg \otimes \Omega ^*(\Delta ^n)\). This is a homotopy invariant functor of
+\(\mg \).
+</p><!--l. 123--><p class="indent" >  Now we can say what the formal moduli problem associated to a dgla \(\mg \) is: it assigns an artinian
+local cdga \(R\) with maximal ideal \(m\) to the simplicial set \(\MC _*(\mg \otimes m)\).
+</p>
+  <h3 class="sectionHead"><span class="titlemark">3. </span> <a 
+ id="x1-40003"></a>An example</h3>
+<!--l. 127--><p class="noindent" >Here we give an example of what Costello-Gwilliam call an elliptic formal moduli problem. This is
+a sheaf of formal moduli problems on a manifold such that the associated Lie algebra can be
+locally presented using a complex of elliptic operators. This example models the free scalar &#xFB01;eld
+theory.
+</p><!--l. 129--><p class="indent" >  Consider a Riemannian manifold \(M\), and consider the complex \(0 \to C^\infty ( M)\xrightarrow{\Delta }C^\infty (M)\), where \(0\) is in degree \(0\), and \(\Delta \) is the
+Laplacian. We make this a dgla by giving it trivial Lie bracket. We claim that this corresponds to
+the formal moduli problem classifying deformations of the function \(0\) as a harmonic function. To see
+this, we will explicitly describe and interpret \(\MC _0(\mg \otimes m)\) and \(\MC _1(\mg \otimes m)\) for \(m\) the maximal ideal of an Artinian local cdga
+\(R\).
+</p><!--l. 131--><p class="indent" >  Because the Lie bracket is trivial, \(\MC _0(g\otimes m)\) is the kernel of the di&#xFB00;erential in degree \(-1\), i.e the
+map
+</p><!--l. 133--><p class="indent" >
+</p>
+  <center class="math-display" >
+<img 
+src="Deformation_theory_and_Lie_algebras7x.svg" alt="  &#x221E;               &#x221E;           &#x0028;&#x2212;dR,&#x0394;&#x0029;   &#x221E;
+C  &#x0028;M  &#x0029; &#x2297; m1 &#x2295; C  &#x0028;M  &#x0029; &#x2297; m0 &#x2212;&#x2212;&#x2212;&#x2212;&#x2212;&#x2192;  C   &#x0028;M  &#x0029; &#x2297; m0
+" class="math-display"  /></center>
+<!--l. 135--><p class="indent" >  In otherwords, we have a function \(f \in C^*(M)\otimes R_0\) that vanishes modulo the maximal ideal &#x0028;i.e a
+deformation of the zero function&#x0029; and a homotopy \(g \in C^*(M)\otimes R_1\) satisfying \(\Delta f= d_Rg\) &#x0028;i.e a witness to \(\Delta f\) being
+nulhomotopic&#x0029;.
+</p><!--l. 137--><p class="indent" >  Next, we consider \(\MC _1(g\otimes m)\). Here there are four pieces of data, which must satisfy three equations.
+</p><!--l. 139--><p class="indent" >
+                                                                                         
+                                                                                         
+</p>
+  <center class="math-display" >
+<img 
+src="Deformation_theory_and_Lie_algebras8x.svg" alt="f&#x0028;t&#x0029; &#x2208; C &#x221E; &#x0028;M &#x0029; &#x2297; m0 &#x005B;t&#x005D;
+" class="math-display"  /></center>
+  <center class="math-display" >
+<img 
+src="Deformation_theory_and_Lie_algebras9x.svg" alt="g&#x0028;t&#x0029; &#x2208; C &#x221E; &#x0028;M &#x0029; &#x2297; m1&#x005B;t&#x005D;
+" class="math-display"  /></center>
+  <center class="math-display" >
+<img 
+src="Deformation_theory_and_Lie_algebras10x.svg" alt="h  &#x2208; C &#x221E; &#x0028;M &#x0029; &#x2297; m  &#x005B;t&#x005D;dt
+  1               1
+" class="math-display"  /></center>
+  <center class="math-display" >
+<img 
+src="Deformation_theory_and_Lie_algebras11x.svg" alt="h  &#x2208; C &#x221E; &#x0028;M &#x0029; &#x2297; m  &#x005B;t&#x005D;dt
+  2               2  " class="math-display"  /></center> The
+&#xFB01;rst equation these satisfy is \(\Delta f(t) = d_Rg(t)\). This is interpreted as above, meaning \(f(t)\) is a family of deformations
+and \(g(t)\) is a family of nulhomotopies of their Laplacians.
+<!--l. 145--><p class="indent" >  The second equation they satisfy is \(d_Rh_1 = \frac{df}{dt}dt\). In otherwords, the homology class of \(f\) remains constant as a
+function of \(t\), as witnessed by \(h_1\).
+                                                                                         
+                                                                                         
+</p><!--l. 147--><p class="indent" >  To understand the last equation, we &#xFB01;rst note that because \(\Delta ,\frac d{dt}dt, d_R\) all commute up to signs, the &#xFB01;rst
+two equations imply that \(d_R(\frac{dg}{dt}dt + \Delta h_1) = 0\). \(h_2\) is a witness of the fact that \(\frac{dg}{dt}dt + \Delta h_1\) is actually exact: the last equation is
+\(\frac{dg}{dt}dt + \Delta h_1 = d_Rh_2\).
+</p><!--l. 149--><p class="indent" >  In general, \(\MC _n(g\otimes m)\) consists of higher homotopies and higher coherence data of deformations.
+</p>
+  <div class="footnotes"><!--l. 19--><p class="indent" >   <span class="footnote-mark"><a 
+href="#fn1x0-bk" id="fn1x0">1</a></span><span 
+class="cmr-10">Indeed, this is equivalent to the image being contained in</span> \(p\) <span 
+class="cmr-10">since</span> \(m\) <span 
+class="cmr-10">consists of functions that vanish at</span> \(p\)<span 
+class="cmr-10">, and the</span>
+<span 
+class="cmr-10">nilpotent elements are those that vanish on all of</span> \(R\)<span 
+class="cmr-10">, so the condition says that if a function vanishes at</span> \(p\)<span 
+class="cmr-10">, its pullback</span>
+<span 
+class="cmr-10">to</span> \(\Spec (R)\) <span 
+class="cmr-10">vanishes everywhere.</span></p>
+<!--l. 21--><p class="indent" >    <span class="footnote-mark"><a 
+href="#fn2x0-bk" id="fn2x0">2</a></span><span 
+class="cmr-10">The lift is equipped with an isomorphism of its reduction to</span> \(k\) <span 
+class="cmr-10">with</span> \(X\)<span 
+class="cmr-10">.</span></p>
+<!--l. 114--><p class="indent" >    <span class="footnote-mark"><a 
+href="#fn3x0-bk" id="fn3x0">3</a></span><span 
+class="cmr-10">The name Mauer-Cartan element is related to the fact that on a Lie group, there is a canonically de&#xFB01;ned</span>
+<span 
+class="cmr-10">Maurer-Cartan form, which is a 1-form with values in the Lie algebra, and satis&#xFB01;es the Maurer-Cartan equation. In</span>
+<span 
+class="cmr-10">other words, the Maurer-Cartan form is a Maurer-Cartan element of the de Rham complex with coe&#xFB03;cients in the</span>
+<span 
+class="cmr-10">Lie algebra.</span></p>                                                                                                                              </div>
+ 
+</body> 
+</html>
+                                                                                         
+                                                                                         
+                                                                                         
+
+

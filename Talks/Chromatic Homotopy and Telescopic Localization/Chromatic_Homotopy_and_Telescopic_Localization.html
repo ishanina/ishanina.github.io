@@ -14,6 +14,7 @@
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cF}{\mathcal{F}}
+\newcommand{\cS}{\mathcal{S}}
 \newcommand{\cK}{\mathcal{K}}
 \newcommand{\cM}{\mathcal{M}}
 \newcommand{\GG}{\mathbb{G}}
@@ -60,6 +61,7 @@
 \newcommand{\rb}{\rangle}
 \newcommand{\ff}{\mf{f}}
 \newcommand{\ee}{\epsilon}
+\newcommand{\heart}{\heartsuit}
 
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
@@ -82,7 +84,19 @@
 
 
 %Math operators
+
+\newcommand{\aug}{\mathop{\rm aug}\nolimits}
+\newcommand{\MC}{\mathop{\rm MC}\nolimits}
+\newcommand{\art}{\mathop{\rm art}\nolimits}
 \newcommand{\DiGrph}{\mathop{\rm DiGrph}\nolimits}
+\newcommand{\FMP}{\mathop{\rm FMP}\nolimits}
+\newcommand{\CAlg}{\mathop{\rm CAlg}\nolimits}
+\newcommand{\perf}{\mathop{\rm perf}\nolimits}
+\newcommand{\cof}{\mathop{\rm cof}\nolimits}
+\newcommand{\fib}{\mathop{\rm fib}\nolimits}
+\newcommand{\Thick}{\mathop{\rm Thick}\nolimits}
+\newcommand{\Orb}{\mathop{\rm Orb}\nolimits}
+\newcommand{\ko}{\mathop{\rm ko}\nolimits}
 \newcommand{\Spf}{\mathop{\rm Spf}\nolimits}
 \newcommand{\Spc}{\mathop{\rm Spc}\nolimits}
 \newcommand{\sk}{\mathop{\rm sk}\nolimits}
@@ -122,6 +136,7 @@
 \newcommand{\BU}{\mathop{\rm BU}\nolimits}
 \newcommand{\BSU}{\mathop{\rm BSU}\nolimits}
 \newcommand{\BSp}{\mathop{\rm BSp}\nolimits}
+\newcommand{\BGL}{\mathop{\rm BGL}\nolimits}
 \newcommand{\BSO}{\mathop{\rm BSO}\nolimits}
 \newcommand{\BO}{\mathop{\rm BO}\nolimits}
 \newcommand{\Tor}{\mathop{\rm Tor}\nolimits}
@@ -151,7 +166,8 @@
 \newcommand{\Gr}{\mathop{\rm Gr}\nolimits}
 \newcommand{\Grp}{\mathop{\rm Grp}\nolimits}
 \newcommand{\Hol}{\mathop{\rm Hol}\nolimits}
-\newcommand{\Grpd}{\mathop{\rm Grpd}\nolimits}
+\newcommand{\Gpd}{\mathop{\rm Gpd}\nolimits}
+\newcommand{\Grpd}{\mathop{\rm Gpd}\nolimits}
 \newcommand{\Mon}{\mathop{\rm Mon}\nolimits}
 \newcommand{\FinSet}{\mathop{\rm FinSet}\nolimits}
 \newcommand{\Sch}{\mathop{\rm Sch}\nolimits}
@@ -176,7 +192,7 @@
 \newcommand{\SL}{\mathop{\rm SL}\nolimits}
 \newcommand{\vol}{\mathop{\rm vol}\nolimits}
 \newcommand{\reg}{\mathop{\rm reg}\nolimits}
-\newcommand{\Or}{\mathop{\rm O}\nolimits}
+\newcommand{\Or}{\text{O}}
 \newcommand{\U}{\mathop{\rm U}\nolimits}
 \newcommand{\SOr}{\mathop{\rm SO}\nolimits}
 \newcommand{\SU}{\mathop{\rm SU}\nolimits}
@@ -251,9 +267,9 @@ and the Bous&#xFB01;eld Kuhn functor</a></span><br />
   <h3 class="sectionHead"><span class="titlemark">1. </span> <a 
  id="x1-20001"></a>MU and \(\cM _{fg}\)</h3>
 <!--l. 12--><p class="noindent" >A ring spectrum \(R\) is <span 
-class="cmbx-12">complex oriented </span>if it is a equipped with a ring map \(MU \to R\). Such a map provides
-the cohomology theory \(R^*\) with Chern classes for complex vector bundles satisfying a Whitney sum
-formula.
+class="cmbx-12">complex oriented </span>if it is a equipped with a ring map from the complex
+bordism spectrum \(MU \to R\). Such a map provides the cohomology theory \(R^*\) with Chern classes for complex
+vector bundles satisfying a Whitney sum formula.
 </p><!--l. 14--><p class="indent" >  Given two line bundles \(L_1,L_2:X \to BU(1)\), there is a universal formula for the Chern class of their tensor
 product:
 </p>
@@ -380,7 +396,7 @@ class="cmti-12">is nilpotent.</span>
   </div>
                                                                                          
                                                                                          
-<!--l. 62--><p class="indent" >  This says that \(MU\) is able to detect nilpotence of rings. An equivalent version of the theorem
+<!--l. 62--><p class="indent" >  This says that \(MU\) is able to detect nilpotence in rings. An equivalent version of the theorem
 is
 </p>
   <div class="newtheorem">
@@ -423,7 +439,7 @@ class="cmti-12">.</span>
  id="x1-3004r1"></a>
 <span 
 class="cmbx-12">Remark 2.3.1.</span>  </span>Every nonzero \(p\)-local &#xFB01;nite spectrum is type \(n\) for some \(n\). This is because for
-\(i&gt;&gt;0\), the \(K(i)\)-based Atiyah-Hirzebruch spectral sequence degenerates for degree reasons for a &#xFB01;xed
+\(i\gg 0\), the \(K(i)\)-based Atiyah-Hirzebruch spectral sequence degenerates for degree reasons for a &#xFB01;xed
 &#xFB01;nite spectrum \(X\), so \(K(i)_*(X) = (H\FF _p)_*(X)\otimes _{(H\FF _p)_*}K(i)_* \neq 0\).
 </p>
   </div>
@@ -614,7 +630,7 @@ class="cmti-12">is a pullback square.</span>
 <span 
 class="cmti-12">Proof.</span> </span>Let \(P = L_EX\times _{L_EL_FX}L_FX\). </p>
           <ul class="itemize1">
-       <li class="itemize">\(P\) is \(E\oplus F\) local. Indeed, if \(Z\) is \(E\oplus F\) acyclic, \(P^Z = 0 \otimes _0 0 = 0\).
+       <li class="itemize">\(P\) is \(E\oplus F\) local. Indeed, if \(Z\) is \(E\oplus F\) acyclic, \(P^Z = 0 \times _0 0 = 0\).
           </li>
        <li class="itemize">\(X \to P\) is an \(E\oplus F\) equivalence. To see it is an \(E\)-equivalence, after tensoring with \(E\) it becomes
           <center class="math-display" >
@@ -794,14 +810,14 @@ class="cmti-12">Proof.</span> </span>Let \(V_n\) be a type \(n\) spectrum that i
 spectrum \(X\) and replace it with its endomorphism ring \(X\otimes DX\). Let \(v_n\) be a central \(v_n\)-self map, so that \(T(n) = V_n[v_n^{-1}]\) is a
 ring. Then \begin{align*} &amp; R\otimes T(n) = 0\\ \iff &amp; \text{the unit of $R\otimes T(n)$ is nilpotent}\\ \iff &amp; \text{the unit of $R\otimes T(n)\otimes K(m)$ is nilpotent for all $m$}\\ \iff &amp; \text{the unit of $R\otimes T(n)\otimes K(n)$ is nilpotent}\\ \iff &amp; R\otimes T(n)\otimes K(n) = 0\\ \iff &amp; R\otimes K(n) = 0 \end{align*}
 </p><!--l. 242--><p class="indent" >  Where in the second step, we use the nilpotence theorem, and in the last step we use the fact
-that \(T(n)\otimes K(n)\) is a free \(K(n)\)-module. <span class="qed"><span 
+that \(T(n)\otimes K(n)\) is a nonzero free \(K(n)\)-module. <span class="qed"><span 
 class="msam-10x-x-120">&#x25A1;</span></span>
 </p>
   </div>
   </div>
   <h3 class="sectionHead"><span class="titlemark">4. </span> <a 
  id="x1-50004"></a>Telescopic Localization and the Bous&#xFB01;eld Kuhn functor</h3>
-<!--l. 247--><p class="noindent" >Now we will look the telescopic localization functors more in depth and see their to
+<!--l. 247--><p class="noindent" >Now we will look the telescopic localization functors more in depth and see their relation to
 unstable homotopy theory. We will set \(n\geq 1\), and let \(V_n\) denote a type n <span 
 class="cmti-12">space </span>with a \(v_n\)-self map
 \(v_n:\Sigma ^dV_n\to V_n\).
@@ -845,7 +861,7 @@ class="cmti-12">is an</span>
 class="cmti-12">equivalence.</span>
 </p>
   </div>
-<!--l. 261--><p class="indent" >  Essentially by the thick subcategory theorem, the notion of \(V_n\)-periodic equivalence only depends
+<!--l. 261--><p class="indent" >  Essentially by the thick subcategory theorem, the notion of \(v_n\)-periodic equivalence only depends
 on \(n\).
 </p>
   <div class="newtheorem">
@@ -1052,7 +1068,7 @@ class="cmti-12">equivalence.</span>
    <span 
 class="cmti-12">&#x0028;3&#x0029;</span> </dt><dd 
 class="enumerate-enumitem">\(\Sigma ^\infty \Omega ^\infty \) <span 
-class="cmti-12">preserbes</span> \(m\)<span 
+class="cmti-12">preserves</span> \(m\)<span 
 class="cmti-12">-connected</span> \(L_n^f\) <span 
 class="cmti-12">equivalences.</span></dd></dl>
   <div class="proof">

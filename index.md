@@ -1,6 +1,5 @@
 
 
-# Preprints
 [The Borel Cohomology of Free Iterated Loop Spaces](https://arxiv.org/abs/2105.13526) (w. Justin Wu)
 
 Abstract: We compute the SO(n+1)-equivariant mod 2 Borel cohomology of the free iterated loop space Z<sup>S<sup>n</sup></sup> when n is odd and Z is a product of mod 2 Eilenberg Mac Lane spaces. When n=1, this recovers Ottosen and Bökstedt's computation for the free loop space. The highlight of our computation is a construction of cohomology classes using an O(n)-equivariant evaluation map and a pushforward map. We then reinterpret our computation as giving a presentation of the zeroth derived functor of the Borel cohomology of Z<sup>S<sup>n</sup></sup> for arbitrary Z. We also include an appendix where we give formulas for computing the zeroth derived functor of the cohomology of mapping spaces, and study the dependence of such derived functors on the Steenrod operations.

@@ -63,8 +63,6 @@ Miscellaneous notes I have written.
 
 [Morita Equivalence](Other/Morita Equivalence/Morita_Equivalence.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Morita Equivalence.pdf)
 
-[Projective Modules over Local Rings](Other/Projective Modules over Local Rings/Projective_Modules_over_Local_Rings.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Projective Modules over Local Rings.pdf)
-
 [Vector Bundles on P1](Other/Vector Bundles on P1/Vector_Bundles_on_P1.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Vector Bundles on P1.pdf)
   
 # PROMYS

@@ -1,4 +1,6 @@
+[On the K-theory of regular coconnective rings](https://arxiv.org/abs/2112.14723) (w. Robert Burklund)
 
+Abstract: We show that for a coconnective ring spectrum satisfying regularity and flatness assumptions, its algebraic K-theory agrees with that of its π<sub>0</sub>. We prove this as a consequence of a more general devissage result for stable infinity categories. Applications of our result include giving general conditions under which K-theory preserves pushouts, generalizations of 𝔸<sup>n</sup>-invariance of K-theory, and an understanding of the K-theory of categories of unipotent local systems.
 
 [The Borel Cohomology of Free Iterated Loop Spaces](https://arxiv.org/abs/2105.13526) (w. Justin Wu)
 

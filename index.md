@@ -2,6 +2,10 @@
 
 Abstract: We show that for a coconnective ring spectrum satisfying regularity and flatness assumptions, its algebraic K-theory agrees with that of its π<sub>0</sub>. We prove this as a consequence of a more general devissage result for stable infinity categories. Applications of our result include giving general conditions under which K-theory preserves pushouts, generalizations of 𝔸<sup>n</sup>-invariance of K-theory, and an understanding of the K-theory of categories of unipotent local systems.
 
+[Some aspects of noncommutative geometry](ncg.pdf) (w. Robert Burklund) [In progress]
+
+Abstract: We develop geometric notions such as regularity, coherence and flatness in the setting of prestable infinity categories. We prove a corrected conjecture of Vladimir Sosnilo about discreteness of weight hearts in the presence of regularity. This is a consequence of a more general result which also implies that a regular bounded above 𝔼<sub>2</sub>-ring is coconnective.
+
 [The Borel Cohomology of Free Iterated Loop Spaces](https://arxiv.org/abs/2105.13526) (w. Justin Wu)
 
 Abstract: We compute the SO(n+1)-equivariant mod 2 Borel cohomology of the free iterated loop space Z<sup>S<sup>n</sup></sup> when n is odd and Z is a product of mod 2 Eilenberg Mac Lane spaces. When n=1, this recovers Ottosen and Bökstedt's computation for the free loop space. The highlight of our computation is a construction of cohomology classes using an O(n)-equivariant evaluation map and a pushforward map. We then reinterpret our computation as giving a presentation of the zeroth derived functor of the Borel cohomology of Z<sup>S<sup>n</sup></sup> for arbitrary Z. We also include an appendix where we give formulas for computing the zeroth derived functor of the cohomology of mapping spaces, and study the dependence of such derived functors on the Steenrod operations.

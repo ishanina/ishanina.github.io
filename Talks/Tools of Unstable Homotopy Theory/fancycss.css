@@ -23,10 +23,10 @@ section.textbody{
 }
 
 nav {
-    font-family: "DejaVu Sans", "Bitstream Vera Sans",
-        Geneva, Verdana, sans-serif ;
+    /*font-family: "DejaVu Sans", "Bitstream Vera Sans",
+        Geneva, Verdana, sans-serif ;*/
     margin-bottom: 4ex ;
-    font-size: 1.5em;
+    font-size: 1.6em;
 }
 
 /*Below is copied from tutorial*/

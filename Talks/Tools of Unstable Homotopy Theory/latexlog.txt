@@ -537,6 +537,6 @@ t/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/
 fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/public/cm-super/sfti1200.pfb>
-Output written on Tools_of_Unstable_Homotopy_Theory_h.pdf (7 pages, 337115 byte
+Output written on Tools_of_Unstable_Homotopy_Theory_h.pdf (7 pages, 337164 byte
 s).
 Transcript written on Tools_of_Unstable_Homotopy_Theory_h.log.

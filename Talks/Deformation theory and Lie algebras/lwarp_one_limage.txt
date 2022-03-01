@@ -1,0 +1,6 @@
+pdfseparate -f %1 -l %1 %4_html.pdf Deformation_theory_and_Lie_algebras_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Deformation_theory_and_Lie_algebras_h-images/lateximagetemp-%1.pdf Deformation_theory_and_Lie_algebras_h-images/%3.pdf
+pdftocairo -svg -noshrink Deformation_theory_and_Lie_algebras_h-images/%3.pdf Deformation_theory_and_Lie_algebras_h-images/%3.svg
+del Deformation_theory_and_Lie_algebras_h-images/%3.pdf
+del Deformation_theory_and_Lie_algebras_h-images/lateximagetemp-%1.pdf
+exit

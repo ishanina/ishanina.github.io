@@ -17,13 +17,15 @@ Abstract: Hopkins and Mahowald gave a simple description of the mod p Eilenberg 
 # Talks
 Notes for some expository talks I have given.
 
-[Deformation theory and Lie algebras](Talks/Deformation theory and Lie algebras/Deformation_theory_and_Lie_algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Deformation theory and Lie algebras.pdf)
+[Tools of Unstable Homotopy Theory](Talks/Tools of Unstable Homotopy Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Tools_of_Unstable_Homotopy_Theory.pdf)
+
+[Deformation theory and Lie algebras](Talks/Deformation theory and Lie algebras/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Deformation theory and Lie algebras.pdf)
   
-[Chromatic Homotopy and Telescopic Localization](Talks/Chromatic Homotopy and Telescopic Localization/Chromatic_Homotopy_and_Telescopic_Localization.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Chromatic Homotopy and Telescopic Localization.pdf)
+[Chromatic Homotopy and Telescopic Localization](Talks/Chromatic Homotopy and Telescopic Localization/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Chromatic Homotopy and Telescopic Localization.pdf)
 
-[Lazards ring and Height](Talks/Lazards ring and Height/Lazards_ring_and_Height.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
+[Lazards ring and Height](Talks/Lazards ring and Height/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Lazards ring and Height.pdf)
 
-[Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/Proof_of_Cobordism_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
+[Proof of Cobordism Hypothesis](Talks/Proof of Cobordism Hypothesis/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Proof of Cobordism Hypothesis.pdf)
 
 # Subjects
 A collection of notes I have written about various subjects. These were not written to be read by anyone but myself. I hope you find them useful, but use at your own risk.

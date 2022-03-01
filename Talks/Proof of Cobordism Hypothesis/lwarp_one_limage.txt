@@ -1,6 +1,0 @@
-pdfseparate -f %1 -l %1 %4_html.pdf Proof_of_Cobordism_Hypothesis_h-images/lateximagetemp-%%d.pdf
-pdfcrop --hires Proof_of_Cobordism_Hypothesis_h-images/lateximagetemp-%1.pdf Proof_of_Cobordism_Hypothesis_h-images/%3.pdf
-pdftocairo -svg -noshrink Proof_of_Cobordism_Hypothesis_h-images/%3.pdf Proof_of_Cobordism_Hypothesis_h-images/%3.svg
-del Proof_of_Cobordism_Hypothesis_h-images/%3.pdf
-del Proof_of_Cobordism_Hypothesis_h-images/lateximagetemp-%1.pdf
-exit

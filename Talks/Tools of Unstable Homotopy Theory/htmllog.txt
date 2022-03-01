@@ -1,12 +1,12 @@
 lwarpmk: v0.70  Automated make for the LaTeX lwarp package.
-lwarpmk: Reading Tools_of_Unstable_Homotopy_theory_h.lwarpmkconf.
-lwarpmk: Compiling with: pdflatex Tools_of_Unstable_Homotopy_theory_h_html
+lwarpmk: Reading Tools_of_Unstable_Homotopy_Theory_h.lwarpmkconf.
+lwarpmk: Compiling with: pdflatex Tools_of_Unstable_Homotopy_Theory_h_html
 This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
-(./Tools_of_Unstable_Homotopy_theory_h_html.tex
+(./Tools_of_Unstable_Homotopy_Theory_h_html.tex
 LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-02-24> (./Tools_of_Unstable_Homotopy_theory_h.tex
+L3 programming layer <2022-02-24> (./Tools_of_Unstable_Homotopy_Theory_h.tex
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/size12.clo))
@@ -541,7 +541,7 @@ Straight input of comment_html.cut. (./comment_html.cut))))
 Package biblatex Warning: Patching footnotes failed.
 (biblatex)                Footnote detection will not work.
 
-(./Tools_of_Unstable_Homotopy_theory_h_html.aux)
+(./Tools_of_Unstable_Homotopy_Theory_h_html.aux)
 
 Package microtype Warning: Unable to apply patch `footnote' on input line 9.
 
@@ -563,7 +563,7 @@ Package lwarp Warning: Lwarp provides emulation for MathJax when used
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
-(./Tools_of_Unstable_Homotopy_theory_h_html.bbl)
+(./Tools_of_Unstable_Homotopy_Theory_h_html.bbl)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmtt.fd)
 ---
@@ -574,12 +574,12 @@ If this takes too long, see the Lwarp manual regarding customizing MathJax.
 Done.
 ---
 [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] (./Tools_of_Unstable_Homotopy_theory_h_html.toc) [3] [4]
-(./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [5] [6] [7] [8]
-(./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [9] [10] [11] [12]
+[2] (./Tools_of_Unstable_Homotopy_Theory_h_html.toc) [3] [4]
+(./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [5] [6] [7] [8]
+(./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [9] [10] [11] [12]
 [13] [14] [15] [16] [17] [18] [19]
-(./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [20] [21] [22] [23]
-[24] [25] (./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [26] [27]
+(./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [20] [21] [22] [23]
+[24] [25] (./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [26] [27]
 [28] (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)
@@ -587,7 +587,7 @@ Done.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd) [29] [30]
 [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45]
 [46] [47] [48] [49] [50] [51] [52]
-(./Tools_of_Unstable_Homotopy_theory_h_html.aux)
+(./Tools_of_Unstable_Homotopy_Theory_h_html.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -617,16 +617,16 @@ e/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/
 21/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2021
 /texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Tools_of_Unstable_Homotopy_theory_h_html.pdf (52 pages, 37596
-8 bytes).
-Transcript written on Tools_of_Unstable_Homotopy_theory_h_html.log.
-lwarpmk: Compiling with: pdflatex Tools_of_Unstable_Homotopy_theory_h_html
+Output written on Tools_of_Unstable_Homotopy_Theory_h_html.pdf (52 pages, 37597
+6 bytes).
+Transcript written on Tools_of_Unstable_Homotopy_Theory_h_html.log.
+lwarpmk: Compiling with: pdflatex Tools_of_Unstable_Homotopy_Theory_h_html
 This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
-(./Tools_of_Unstable_Homotopy_theory_h_html.tex
+(./Tools_of_Unstable_Homotopy_Theory_h_html.tex
 LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-02-24> (./Tools_of_Unstable_Homotopy_theory_h.tex
+L3 programming layer <2022-02-24> (./Tools_of_Unstable_Homotopy_Theory_h.tex
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/size12.clo))
@@ -1161,7 +1161,7 @@ Straight input of comment_html.cut. (./comment_html.cut))))
 Package biblatex Warning: Patching footnotes failed.
 (biblatex)                Footnote detection will not work.
 
-(./Tools_of_Unstable_Homotopy_theory_h_html.aux)
+(./Tools_of_Unstable_Homotopy_Theory_h_html.aux)
 
 Package microtype Warning: Unable to apply patch `footnote' on input line 9.
 
@@ -1183,7 +1183,7 @@ Package lwarp Warning: Lwarp provides emulation for MathJax when used
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
-(./Tools_of_Unstable_Homotopy_theory_h_html.bbl)
+(./Tools_of_Unstable_Homotopy_Theory_h_html.bbl)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmtt.fd)
 ---
@@ -1194,12 +1194,12 @@ If this takes too long, see the Lwarp manual regarding customizing MathJax.
 Done.
 ---
 [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] (./Tools_of_Unstable_Homotopy_theory_h_html.toc) [3] [4]
-(./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [5] [6] [7] [8]
-(./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [9] [10] [11] [12]
+[2] (./Tools_of_Unstable_Homotopy_Theory_h_html.toc) [3] [4]
+(./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [5] [6] [7] [8]
+(./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [9] [10] [11] [12]
 [13] [14] [15] [16] [17] [18] [19]
-(./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [20] [21] [22] [23]
-[24] [25] (./Tools_of_Unstable_Homotopy_theory_h_html.sidetoc) [26] [27]
+(./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [20] [21] [22] [23]
+[24] [25] (./Tools_of_Unstable_Homotopy_Theory_h_html.sidetoc) [26] [27]
 [28] (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)
@@ -1207,7 +1207,7 @@ Done.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd) [29] [30]
 [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45]
 [46] [47] [48] [49] [50] [51] [52]
-(./Tools_of_Unstable_Homotopy_theory_h_html.aux) ) ){/usr/local/texlive/2021/te
+(./Tools_of_Unstable_Homotopy_Theory_h_html.aux) ) ){/usr/local/texlive/2021/te
 xmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texm
 f-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-
@@ -1228,9 +1228,9 @@ lic/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/publi
 c/cm-super/sfti1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/
 cm-super/sftt0800.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm
 -super/sftt1000.pfb>
-Output written on Tools_of_Unstable_Homotopy_theory_h_html.pdf (52 pages, 37586
-0 bytes).
-Transcript written on Tools_of_Unstable_Homotopy_theory_h_html.log.
-lwarpmk: Converting Tools_of_Unstable_Homotopy_theory_h_html.pdf to Tools_of_Unstable_Homotopy_theory_h_html.html
-lwarpmk: Splitting Tools_of_Unstable_Homotopy_theory_h_html.html into index.html
+Output written on Tools_of_Unstable_Homotopy_Theory_h_html.pdf (52 pages, 37586
+5 bytes).
+Transcript written on Tools_of_Unstable_Homotopy_Theory_h_html.log.
+lwarpmk: Converting Tools_of_Unstable_Homotopy_Theory_h_html.pdf to Tools_of_Unstable_Homotopy_Theory_h_html.html
+lwarpmk: Splitting Tools_of_Unstable_Homotopy_Theory_h_html.html into index.html
 lwarpmk: Done.

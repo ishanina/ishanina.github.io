@@ -32,17 +32,17 @@ nav {
 /*Below is copied from tutorial*/
 
 
-A:link {color:#ffaf47 ; text-decoration: none ; }
-A:visited {color:#ff8400 ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
-A:hover {color:#ff0000 ; text-decoration: underline ; /*text-shadow:0px 0px 2px #a0a0a0;*/}
-A:active {color:#b40000 ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
+A:link {color:#47acff ; text-decoration: none ; }
+A:visited {color:#00a2ff ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
+A:hover {color:#06c200 ; text-decoration: underline ; /*text-shadow:0px 0px 2px #a0a0a0;*/}
+A:active {color:#00b46f ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
 
 div.book, h1, h2, h3, h4, h5, h6, span.paragraph, span.subparagraph
 {
-    font-family: "URW Classico", Optima, "Linux Biolinum O",
+    /*font-family: "URW Classico", Optima, "Linux Biolinum O",
         "Linux Libertine O", "Liberation Serif",
         "Nimbus Roman No 9 L",  "FreeSerif",
-        "Hoefler Text", Times, "Times New Roman", serif;
+        "Hoefler Text", Times, "Times New Roman", serif;*/
     /*font-variant: small-caps ;*/
     font-weight: normal ;
     color: #304070 ;
@@ -53,8 +53,7 @@ h1 {    /* title of the entire website, used on each page */
     font-variant: small-caps ;
     color: #304070 ;
     /*text-shadow: 2px 2px 3px #808080;*/
-    background-color: #F7F7F0 ;
-    background-image: linear-gradient(to bottom, #F7F7F0, #ffea4b);
+    background-color: #fffda4 ;
 }
 
 h1 {
@@ -94,9 +93,9 @@ div.abstracttitle{
 }
 
 span.abstractrunintitle{
-    font-family: "URW Classico", Optima, "Linux Biolinum O",
+    /*font-family: "URW Classico", Optima, "Linux Biolinum O",
         "Linux Libertine O", "Liberation Serif", "Nimbus Roman No 9 L",
-        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;
+        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;*/
     font-weight:bold;
 }
 
@@ -116,9 +115,9 @@ div.epigraph, div.dictum {
 }
 
 div.exampletitle{
-    font-family: "URW Classico", Optima, "Linux Biolinum O",
+    /*font-family: "URW Classico", Optima, "Linux Biolinum O",
         "Linux Libertine O", "Liberation Serif", "Nimbus Roman No 9 L",
-        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;
+        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;*/
     font-weight:bold;
     font-variant: small-caps ;
     border-bottom: 1px solid silver ;
@@ -134,9 +133,9 @@ div.exampletitle{
 }
 
 div.sidebartitle{
-    font-family: "URW Classico", Optima, "Linux Biolinum O",
+    /*font-family: "URW Classico", Optima, "Linux Biolinum O",
         "Linux Libertine O", "Liberation Serif", "Nimbus Roman No 9 L",
-        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;
+        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;*/
     font-weight:bold;
     font-variant: small-caps ;
     border-bottom: 1px solid silver ;
@@ -146,9 +145,9 @@ div.sidebartitle{
 }
 
 .fancyvrblabel {
-    font-family: "URW Classico", Optima, "Linux Biolinum O",
+    /*font-family: "URW Classico", Optima, "Linux Biolinum O",
         "Linux Libertine O", "Liberation Serif", "Nimbus Roman No 9 L",
-        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;
+        "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;*/
     font-weight:bold;
     font-variant: small-caps ;
     font-size: 1.5em ;
@@ -238,7 +237,7 @@ footer{
 div.sidetoctitle {color: #202c4e ; }
 
 nav.sidetoc a:hover {
-    color:#006000 ;
+    color:#06c200 ;
     text-decoration: none ;
     /*text-shadow:0px 0px 1px #a0a0a0;*/
 }

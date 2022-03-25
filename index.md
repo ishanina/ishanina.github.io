@@ -1,4 +1,4 @@
-[Adams-type maps are not stable under composition](http://arxiv.org/abs/2202.14004) (w. Robert Burklund and Piotr Pstrągowski
+[Adams-type maps are not stable under composition](http://arxiv.org/abs/2202.14004) (w. Robert Burklund and Piotr Pstrągowski)
 
 We give a simple counterexample to the plausible conjecture that Adams-type maps of ring spectra are stable under composition. We then show that over a field, this failure is quite extreme, as any map of 𝔼<sub>∞</sub>-algebras is a transfinite composition of Adams-type maps.
 

@@ -21,7 +21,7 @@ Abstract: Hopkins and Mahowald gave a simple description of the mod p Eilenberg 
 # Talks
 Notes for some expository talks I have given.
 
-[Tools of Unstable Homotopy Theory](Talks/Tools of Unstable Homotopy Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Tools_of_Unstable_Homotopy_theory.pdf)
+[Tools of Unstable Homotopy Theory](Talks/Tools of Unstable Homotopy Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Tools_of_Unstable_Homotopy_Theory.pdf)
 
 [Deformation theory and Lie algebras](Talks/Deformation theory and Lie algebras/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Deformation theory and Lie algebras.pdf)
   

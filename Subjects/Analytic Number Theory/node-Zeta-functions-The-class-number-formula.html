@@ -1,0 +1,1445 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="generator" content="LaTeX Lwarp package" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Analytic number theory</title>
+<link rel="stylesheet" type="text/css" href="fancycss.css" />
+
+<script>
+// Lwarp MathJax emulation code
+//
+// Based on code by Davide P. Cervone.
+// Equation numbering: https://github.com/mathjax/MathJax/issues/2427
+// Starred and ifnextchar macros: https://github.com/mathjax/MathJax/issues/2428
+// \left, \right delimiters: https://github.com/mathjax/MathJax/issues/2535
+//
+// Modified by Brian Dunn to adjust equation numbering and add subequations.
+//
+// LaTeX can use \seteqnumber{subequations?}{section}{number} before each equation.
+// subequations? is 0 usually, 1 if inside subequations.
+// section is a string printed as-is, or empty.
+// number is auto-incremented by MathJax between equations.
+//
+MathJax = {
+     subequations: "0",
+     section: "",
+     loader: {
+          load: ['[tex]/tagformat', '[tex]/textmacros'],
+     },
+     startup: {
+          ready() {
+              //       These would be replaced by import commands if you wanted to make
+              //       a proper extension.
+              const Configuration = MathJax._.input.tex.Configuration.Configuration;
+              const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+              const Macro = MathJax._.input.tex.Symbol.Macro;
+              const TexError = MathJax._.input.tex.TexError.default;
+              const ParseUtil = MathJax._.input.tex.ParseUtil.default;
+              const expandable = MathJax._.util.Options.expandable;
+
+
+              //       Insert the replacement string into the TeX string, and check
+              //       that there haven't been too many maxro substitutions (prevents
+              //       infinite loops).
+              const useArgument = (parser, text) => {
+                   parser.string = ParseUtil.addArgs(parser, text, parser.string.slice(parser.i));
+                   parser.i = 0;
+                   if (++parser.macroCount > parser.configuration.options.maxMacros) {
+                        throw new TexError('MaxMacroSub1',
+                        'MathJax maximum macro substitution count exceeded; ' +
+                        'is there a recursive macro call?');
+                   }
+              }
+
+
+              //       Create the command map for:
+              //            \ifstar, \ifnextchar, \ifblank, \ifstrequal, \seteqnumber
+              new CommandMap('Lwarp-macros', {
+                   ifstar: 'IfstarFunction',
+                   ifnextchar: 'IfnextcharFunction',
+                   ifblank: 'IfblankFunction',
+                   ifstrequal: 'IfstrequalFunction',
+                   seteqnumber: 'SeteqnumberFunction'
+              }, {
+                   //       This function implements an ifstar macro.
+                   IfstarFunction(parser, name) {
+                        const resultstar = parser.GetArgument(name);
+                        const resultnostar = parser.GetArgument(name);
+                        const star = parser.GetStar();                        // true if there is a *
+                        useArgument(parser, star ? resultstar : resultnostar);
+                   },
+
+
+                   //       This function implements an ifnextchar macro.
+                   IfnextcharFunction(parser, name) {
+                        let whichchar = parser.GetArgument(name);
+                        if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+                            // $ syntax highlighting
+                            whichchar = String.fromCodePoint(parseInt(whichchar));
+                        }
+                        const resultnextchar = parser.GetArgument(name);
+                        const resultnotnextchar = parser.GetArgument(name);
+                        const gotchar = (parser.GetNext() === whichchar);
+                        useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+                   },
+
+
+                   // This function implements an ifblank macro.
+                   IfblankFunction(parser, name) {
+                        const blankarg = parser.GetArgument(name);
+                        const resultblank = parser.GetArgument(name);
+                        const resultnotblank = parser.GetArgument(name);
+                        const isblank = (blankarg.trim() == "");
+                        useArgument(parser, isblank ? resultblank : resultnotblank);
+                   },
+
+
+                   // This function implements an ifstrequal macro.
+                   IfstrequalFunction(parser, name) {
+                        const strequalfirst = parser.GetArgument(name);
+                        const strequalsecond = parser.GetArgument(name);
+                        const resultequal = parser.GetArgument(name);
+                        const resultnotequal = parser.GetArgument(name);
+                        const isequal = (strequalfirst == strequalsecond);
+                        useArgument(parser, isequal ? resultequal : resultnotequal);
+                   },
+
+
+                   //       This function modifies the equation numbers.
+                   SeteqnumberFunction(parser, name) {
+                            //   Get the macro parameters
+                            const star = parser.GetStar();                      // true if there is a *
+                            const optBrackets = parser.GetBrackets(name);        // contents of optional brackets
+                            const newsubequations = parser.GetArgument(name);      // the subequations argument
+                            const neweqsection = parser.GetArgument(name);      // the eq section argument
+                            const neweqnumber = parser.GetArgument(name);        // the eq number argument
+                            MathJax.config.subequations=newsubequations ;       // a string with boolean meaning
+                            MathJax.config.section=neweqsection ;               // a string with numeric meaning
+                            parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+                   }
+
+
+              });
+
+
+              //       Create the Lwarp-macros package
+              Configuration.create('Lwarp-macros', {
+                   handler: {macro: ['Lwarp-macros']}
+              });
+
+
+              MathJax.startup.defaultReady();
+
+
+              // For forward references:
+              MathJax.startup.input[0].preFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            MathJax.config.subequations = math.inputData.recompile.subequations;
+                            MathJax.config.section = math.inputData.recompile.section;
+                   }
+              });
+              MathJax.startup.input[0].postFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            math.inputData.recompile.subequations = MathJax.config.subequations;
+                            math.inputData.recompile.section = MathJax.config.section;
+                   }
+              });
+
+
+                   // For \left, \right with unicode-math:
+                   const {DelimiterMap} = MathJax._.input.tex.SymbolMap;
+                   const {Symbol} = MathJax._.input.tex.Symbol;
+                   const {MapHandler} = MathJax._.input.tex.MapHandler;
+                   const delimiter = MapHandler.getMap('delimiter');
+                   delimiter.add('\\lBrack', new Symbol('\\lBrack', '\u27E6'));
+                   delimiter.add('\\rBrack', new Symbol('\\rBrack', '\u27E7'));
+                   delimiter.add('\\lAngle', new Symbol('\\lAngle', '\u27EA'));
+                   delimiter.add('\\rAngle', new Symbol('\\rAngle', '\u27EB'));
+                   delimiter.add('\\lbrbrak', new Symbol('\\lbrbrak', '\u2772'));
+                   delimiter.add('\\rbrbrak', new Symbol('\\rbrbrak', '\u2773'));
+                   delimiter.add('\\lbag', new Symbol('\\lbag', '\u27C5'));
+                   delimiter.add('\\rbag', new Symbol('\\rbag', '\u27C6'));
+                   delimiter.add('\\llparenthesis', new Symbol('\\llparenthesis', '\u2987'));
+                   delimiter.add('\\rrparenthesis', new Symbol('\\rrparenthesis', '\u2988'));
+                   delimiter.add('\\llangle', new Symbol('\\llangle', '\u2989'));
+                   delimiter.add('\\rrangle', new Symbol('\\rrangle', '\u298A'));
+                   delimiter.add('\\Lbrbrak', new Symbol('\\Lbrbrak', '\u27EC'));
+                   delimiter.add('\\Rbrbrak', new Symbol('\\Rbrbrak', '\u27ED'));
+                   delimiter.add('\\lBrace', new Symbol('\\lBrace', '\u2983'));
+                   delimiter.add('\\rBrace', new Symbol('\\rBrace', '\u2984'));
+                   delimiter.add('\\lParen', new Symbol('\\lParen', '\u2985'));
+                   delimiter.add('\\rParen', new Symbol('\\rParen', '\u2986'));
+                   delimiter.add('\\lbrackubar', new Symbol('\\lbrackubar', '\u298B'));
+                   delimiter.add('\\rbrackubar', new Symbol('\\rbrackubar', '\u298C'));
+                   delimiter.add('\\lbrackultick', new Symbol('\\lbrackultick', '\u298D'));
+                   delimiter.add('\\rbracklrtick', new Symbol('\\rbracklrtick', '\u298E'));
+                   delimiter.add('\\lbracklltick', new Symbol('\\lbracklltick', '\u298F'));
+                   delimiter.add('\\rbrackurtick', new Symbol('\\rbrackurtick', '\u2990'));
+                   delimiter.add('\\langledot', new Symbol('\\langledot', '\u2991'));
+                   delimiter.add('\\rangledot', new Symbol('\\rangledot', '\u2992'));
+                   delimiter.add('\\lparenless', new Symbol('\\lparenless', '\u2993'));
+                   delimiter.add('\\rparengtr', new Symbol('\\rparengtr', '\u2994'));
+                   delimiter.add('\\Lparengtr', new Symbol('\\Lparengtr', '\u2995'));
+                   delimiter.add('\\Rparenless', new Symbol('\\Rparenless', '\u2996'));
+                   delimiter.add('\\lblkbrbrak', new Symbol('\\lblkbrbrak', '\u2997'));
+                   delimiter.add('\\rblkbrbrak', new Symbol('\\rblkbrbrak', '\u2998'));
+                   delimiter.add('\\lvzigzag', new Symbol('\\lvzigzag', '\u29D8'));
+                   delimiter.add('\\rvzigzag', new Symbol('\\rvzigzag', '\u29D9'));
+                   delimiter.add('\\Lvzigzag', new Symbol('\\Lvzigzag', '\u29DA'));
+                   delimiter.add('\\Rvzigzag', new Symbol('\\Rvzigzag', '\u29DB'));
+                   delimiter.add('\\lcurvyangle', new Symbol('\\lcurvyangle', '\u29FC'));
+                   delimiter.add('\\rcurvyangle', new Symbol('\\rcurvyangle', '\u29FD'));
+                   delimiter.add('\\Vvert', new Symbol('\\Vvert', '\u2980'));
+          }       // ready
+     },           // startup
+
+
+     tex: {
+          packages: {'[+]': ['tagformat', 'Lwarp-macros', 'textmacros']},
+          tags: "ams",
+                   tagformat: {
+                            number: function (n) {
+                                 if(MathJax.config.subequations==0)
+                                        return(MathJax.config.section + n);
+                                 else
+                                        return(MathJax.config.section + String.fromCharCode(96+n));
+                            },
+                   },
+     }
+}
+</script>
+
+
+<script
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+
+</head>
+<body>
+
+
+<a id="Analytic_Number_Theory_h-autopage-18"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+<header>
+
+<p>
+<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+</p>
+
+</header>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Analytic number theory</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="node-Asymptotics.html#autosec-5" class="tocsection" >
+<span class="sectionnumber">1</span>&#x2003;Asymptotics</a>
+</p>
+
+
+<p>
+<a href="node-Dirichlet-series-properties.html#autosec-9" class="tocsection" >
+<span class="sectionnumber">2</span>&#x2003;Dirichlet series and properties</a>
+</p>
+
+
+<p>
+<a href="node-Zeta-functions-The-class-number-formula.html#autosec-19" class="tocsection" >
+<span class="sectionnumber">3</span>&#x2003;Zeta functions &amp; The class number formula</a>
+</p>
+
+
+<p>
+<a href="node-Distribution-primes.html#autosec-46" class="tocsection" >
+<span class="sectionnumber">4</span>&#x2003;Distribution of primes</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
+
+
+<main class="bodycontainer">
+
+
+<section class="textbody">
+
+<h1>Analytic number theory</h1>
+
+<!--MathJax customizations:-->
+
+
+<div class="hidden">
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \LWRtensorindicesthreesub #1#2{{_{#2}}\LWRtensorindicesthree }\)
+
+\(\def \LWRtensorindicesthreesup #1#2{{^{#2}}\LWRtensorindicesthree }\)
+
+\(\newcommand {\LWRtensorindicesthreenotsup }{}\)
+
+\(\newcommand {\LWRtensorindicesthreenotsub }{ \ifnextchar ^ \LWRtensorindicesthreesup \LWRtensorindicesthreenotsup }\)
+
+\(\newcommand {\LWRtensorindicesthree }{ \ifnextchar _ \LWRtensorindicesthreesub \LWRtensorindicesthreenotsub }\)
+
+\(\newcommand {\LWRtensorindicestwo }{ \ifstar \LWRtensorindicesthree \LWRtensorindicesthree }\)
+
+\(\newcommand {\indices }[1]{\LWRtensorindicestwo #1}\)
+
+\(\newcommand {\LWRtensortwo }[3][]{{}\indices {#1}{#2}\indices {#3}}\)
+
+\(\newcommand {\tensor }{\ifstar \LWRtensortwo \LWRtensortwo }\)
+
+\(\newcommand {\LWRnuclidetwo }[2][]{{\vphantom {\mathrm {#2}}{}^{\LWRtensornucleonnumber }_{#1}\mathrm {#2}}}\)
+
+\(\newcommand {\nuclide }[1][]{\def \LWRtensornucleonnumber {#1}\LWRnuclidetwo }\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\cO }{\mathcal {O}}\)
+
+\(\newcommand {\cC }{\mathcal {C}}\)
+
+\(\newcommand {\cP }{\mathcal {P}}\)
+
+\(\newcommand {\cF }{\mathcal {F}}\)
+
+\(\newcommand {\cS }{\mathcal {S}}\)
+
+\(\newcommand {\cK }{\mathcal {K}}\)
+
+\(\newcommand {\cM }{\mathcal {M}}\)
+
+\(\newcommand {\GG }{\mathbb {G}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\QQ }{\mathbb {Q}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\LL }{\mathbb {L}}\)
+
+\(\newcommand {\HH }{\mathbb {H}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\SP }{\mathbb {S}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\sF }{\mathscr {F}}\)
+
+\(\newcommand {\sC }{\mathscr {C}}\)
+
+\(\newcommand {\ts }{\textsuperscript }\)
+
+\(\newcommand {\mf }{\mathfrak }\)
+
+\(\newcommand {\cc }{\mf {c}}\)
+
+\(\newcommand {\mg }{\mf {g}}\)
+
+\(\newcommand {\ma }{\mf {a}}\)
+
+\(\newcommand {\mh }{\mf {h}}\)
+
+\(\newcommand {\mn }{\mf {n}}\)
+
+\(\newcommand {\mc }{\mf {c}}\)
+
+\(\newcommand {\ul }{\underline }\)
+
+\(\newcommand {\mz }{\mf {z}}\)
+
+\(\newcommand {\me }{\mf {e}}\)
+
+\(\newcommand {\mff }{\mf {f}}\)
+
+\(\newcommand {\mm }{\mf {m}}\)
+
+\(\newcommand {\mt }{\mf {t}}\)
+
+\(\newcommand {\pp }{\mf {p}}\)
+
+\(\newcommand {\qq }{\mf {q}}\)
+
+\(\newcommand {\gl }{\mf {gl}}\)
+
+\(\newcommand {\msl }{\mf {sl}}\)
+
+\(\newcommand {\so }{\mf {so}}\)
+
+\(\newcommand {\mfu }{\mf {u}}\)
+
+\(\newcommand {\su }{\mf {su}}\)
+
+\(\newcommand {\msp }{\mf {sp}}\)
+
+\(\renewcommand {\aa }{\mf {a}}\)
+
+\(\newcommand {\bb }{\mf {b}}\)
+
+\(\newcommand {\sR }{\mathscr {R}}\)
+
+\(\newcommand {\lb }{\langle }\)
+
+\(\newcommand {\rb }{\rangle }\)
+
+\(\newcommand {\ff }{\mf {f}}\)
+
+\(\newcommand {\ee }{\epsilon }\)
+
+\(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
+\(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
+
+\(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
+
+\(\newcommand {\pushout }{\arrow [ul, phantom, &quot;\ulcorner &quot;, very near start]}\)
+
+\(\newcommand {\pullback }{\arrow [dr, phantom, &quot;\lrcorner &quot;, very near start]}\)
+
+\(\newcommand {\simp }[1]{#1^{\Delta ^{op}}}\)
+
+\(\newcommand {\arrowtcupp }[2]{\arrow [bend left=50, &quot;&quot;{name=U, below,inner sep=1}]{#1}\arrow [Rightarrow,from=U,to=MU,&quot;#2&quot;]}\)
+
+\(\newcommand {\arrowtclow }[2]{\arrow [bend right=50, &quot;&quot;{name=L,inner sep=1}]{#1}\arrow [Rightarrow,from=LM,to=L]{}[]{#2}}\)
+
+\(\newcommand {\arrowtcmid }[2]{\arrow [&quot;&quot;{name=MU,inner sep=1},&quot;&quot;{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}\)
+
+\(\newcommand {\dummy }{\textcolor {white}{\bullet }}\)
+
+\(\newcommand {\adjunction }[4]{ #1\hspace {2pt}\colon #2 \leftrightharpoons #3 \hspace {2pt}\colon #4 }\)
+
+\(\newcommand {\aug }{\mathop {\rm aug}\nolimits }\)
+
+\(\newcommand {\MC }{\mathop {\rm MC}\nolimits }\)
+
+\(\newcommand {\art }{\mathop {\rm art}\nolimits }\)
+
+\(\newcommand {\DiGrph }{\mathop {\rm DiGrph}\nolimits }\)
+
+\(\newcommand {\FMP }{\mathop {\rm FMP}\nolimits }\)
+
+\(\newcommand {\CAlg }{\mathop {\rm CAlg}\nolimits }\)
+
+\(\newcommand {\perf }{\mathop {\rm perf}\nolimits }\)
+
+\(\newcommand {\cof }{\mathop {\rm cof}\nolimits }\)
+
+\(\newcommand {\fib }{\mathop {\rm fib}\nolimits }\)
+
+\(\newcommand {\Thick }{\mathop {\rm Thick}\nolimits }\)
+
+\(\newcommand {\Orb }{\mathop {\rm Orb}\nolimits }\)
+
+\(\newcommand {\ko }{\mathop {\rm ko}\nolimits }\)
+
+\(\newcommand {\Spf }{\mathop {\rm Spf}\nolimits }\)
+
+\(\newcommand {\Spc }{\mathop {\rm Spc}\nolimits }\)
+
+\(\newcommand {\sk }{\mathop {\rm sk}\nolimits }\)
+
+\(\newcommand {\cosk }{\mathop {\rm cosk}\nolimits }\)
+
+\(\newcommand {\holim }{\mathop {\rm holim}\nolimits }\)
+
+\(\newcommand {\hocolim }{\mathop {\rm hocolim}\nolimits }\)
+
+\(\newcommand {\Pre }{\mathop {\rm Pre}\nolimits }\)
+
+\(\newcommand {\THR }{\mathop {\rm THR}\nolimits }\)
+
+\(\newcommand {\THH }{\mathop {\rm THH}\nolimits }\)
+
+\(\newcommand {\Fun }{\mathop {\rm Fun}\nolimits }\)
+
+\(\newcommand {\Loc }{\mathop {\rm Loc}\nolimits }\)
+
+\(\newcommand {\Bord }{\mathop {\rm Bord}\nolimits }\)
+
+\(\newcommand {\Cob }{\mathop {\rm Cob}\nolimits }\)
+
+\(\newcommand {\Set }{\mathop {\rm Set}\nolimits }\)
+
+\(\newcommand {\Ind }{\mathop {\rm Ind}\nolimits }\)
+
+\(\newcommand {\Sind }{\mathop {\rm Sind}\nolimits }\)
+
+\(\newcommand {\Ext }{\mathop {\rm Ext}\nolimits }\)
+
+\(\newcommand {\sd }{\mathop {\rm sd}\nolimits }\)
+
+\(\newcommand {\Ex }{\mathop {\rm Ex}\nolimits }\)
+
+\(\newcommand {\Out }{\mathop {\rm Out}\nolimits }\)
+
+\(\newcommand {\Cyl }{\mathop {\rm Cyl}\nolimits }\)
+
+\(\newcommand {\Path }{\mathop {\rm Path}\nolimits }\)
+
+\(\newcommand {\Ch }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\SSet }{\mathop {\rm \Set ^{\Delta ^{op}}}\nolimits }\)
+
+\(\newcommand {\Sq }{\mathop {\rm Sq}\nolimits }\)
+
+\(\newcommand {\Free }{\mathop {\rm Free}\nolimits }\)
+
+\(\newcommand {\Map }{\mathop {\rm Map}\nolimits }\)
+
+\(\newcommand {\Chain }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\LMap }{\mathop {\rm LMap}\nolimits }\)
+
+\(\newcommand {\RMap }{\mathop {\rm RMap}\nolimits }\)
+
+\(\newcommand {\Tot }{\mathop {\rm Tot}\nolimits }\)
+
+\(\newcommand {\MU }{\mathop {\rm MU}\nolimits }\)
+
+\(\newcommand {\MSU }{\mathop {\rm MSU}\nolimits }\)
+
+\(\newcommand {\MSp }{\mathop {\rm MSp}\nolimits }\)
+
+\(\newcommand {\MSO }{\mathop {\rm MSO}\nolimits }\)
+
+\(\newcommand {\MO }{\mathop {\rm MO}\nolimits }\)
+
+\(\newcommand {\BU }{\mathop {\rm BU}\nolimits }\)
+
+\(\newcommand {\KU }{\mathop {\rm KU}\nolimits }\)
+
+\(\newcommand {\BSU }{\mathop {\rm BSU}\nolimits }\)
+
+\(\newcommand {\BSp }{\mathop {\rm BSp}\nolimits }\)
+
+\(\newcommand {\BGL }{\mathop {\rm BGL}\nolimits }\)
+
+\(\newcommand {\BSO }{\mathop {\rm BSO}\nolimits }\)
+
+\(\newcommand {\BO }{\mathop {\rm BO}\nolimits }\)
+
+\(\newcommand {\KO }{\mathop {\rm KO}\nolimits }\)
+
+\(\newcommand {\Tor }{\mathop {\rm Tor}\nolimits }\)
+
+\(\newcommand {\Cotor }{\mathop {\rm Cotor}\nolimits }\)
+
+\(\newcommand {\imag }{\mathop {\rm Im}\nolimits }\)
+
+\(\newcommand {\real }{\mathop {\rm Re}\nolimits }\)
+
+\(\newcommand {\Cat }{\mathop {\rm Cat}\nolimits }\)
+
+\(\newcommand {\Fld }{\mathop {\rm Fld}\nolimits }\)
+
+\(\newcommand {\Frac }{\mathop {\rm Frac}\nolimits }\)
+
+\(\newcommand {\Dom }{\mathop {\rm Dom}\nolimits }\)
+
+\(\newcommand {\Hotc }{\mathop {\rm Hotc}\nolimits }\)
+
+\(\newcommand {\Top }{\mathop {\rm Top}\nolimits }\)
+
+\(\newcommand {\Ring }{\mathop {\rm Ring}\nolimits }\)
+
+\(\newcommand {\CRing }{\mathop {\rm CRing}\nolimits }\)
+
+\(\newcommand {\CGHaus }{\mathop {\rm CGHaus}\nolimits }\)
+
+\(\newcommand {\Alg }{\mathop {\rm Alg}\nolimits }\)
+
+\(\newcommand {\Bool }{\mathop {\rm Bool}\nolimits }\)
+
+\(\newcommand {\hTop }{\mathop {\rm hTop}\nolimits }\)
+
+\(\newcommand {\Nat }{\mathop {\rm Nat}\nolimits }\)
+
+\(\newcommand {\Rel }{\mathop {\rm Rel}\nolimits }\)
+
+\(\newcommand {\Mod }{\mathop {\rm Mod}\nolimits }\)
+
+\(\newcommand {\Space }{\mathop {\rm Space}\nolimits }\)
+
+\(\newcommand {\Vect }{\mathop {\rm Vect}\nolimits }\)
+
+\(\newcommand {\FinVect }{\mathop {\rm FinVect}\nolimits }\)
+
+\(\newcommand {\Matr }{\mathop {\rm Matr}\nolimits }\)
+
+\(\newcommand {\Ab }{\mathop {\rm Ab}\nolimits }\)
+
+\(\newcommand {\Gr }{\mathop {\rm Gr}\nolimits }\)
+
+\(\newcommand {\Grp }{\mathop {\rm Grp}\nolimits }\)
+
+\(\newcommand {\Hol }{\mathop {\rm Hol}\nolimits }\)
+
+\(\newcommand {\Gpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Grpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Mon }{\mathop {\rm Mon}\nolimits }\)
+
+\(\newcommand {\FinSet }{\mathop {\rm FinSet}\nolimits }\)
+
+\(\newcommand {\Sch }{\mathop {\rm Sch}\nolimits }\)
+
+\(\newcommand {\AffSch }{\mathop {\rm AffSch}\nolimits }\)
+
+\(\newcommand {\Idem }{\mathop {\rm Idem}\nolimits }\)
+
+\(\newcommand {\SIdem }{\mathop {\rm SIdem}\nolimits }\)
+
+\(\newcommand {\Aut }{\mathop {\rm Aut}\nolimits }\)
+
+\(\newcommand {\Ord }{\mathop {\rm Ord}\nolimits }\)
+
+\(\newcommand {\coker }{\mathop {\rm coker}\nolimits }\)
+
+\(\newcommand {\ch }{\mathop {\rm char}\nolimits }\)
+
+\(\newcommand {\Sym }{\mathop {\rm Sym}\nolimits }\)
+
+\(\newcommand {\adj }{\mathop {\rm adj}\nolimits }\)
+
+\(\newcommand {\dil }{\mathop {\rm dil}\nolimits }\)
+
+\(\newcommand {\Cl }{\mathop {\rm Cl}\nolimits }\)
+
+\(\newcommand {\Diff }{\mathop {\rm Diff}\nolimits }\)
+
+\(\newcommand {\End }{\mathop {\rm End}\nolimits }\)
+
+\(\newcommand {\Hom }{\mathop {\rm Hom}\nolimits }\)
+
+\(\newcommand {\Gal }{\mathop {\rm Gal}\nolimits }\)
+
+\(\newcommand {\Pos }{\mathop {\rm Pos}\nolimits }\)
+
+\(\newcommand {\Ad }{\mathop {\rm Ad}\nolimits }\)
+
+\(\newcommand {\GL }{\mathop {\rm GL}\nolimits }\)
+
+\(\newcommand {\SL }{\mathop {\rm SL}\nolimits }\)
+
+\(\newcommand {\vol }{\mathop {\rm vol}\nolimits }\)
+
+\(\newcommand {\reg }{\mathop {\rm reg}\nolimits }\)
+
+\(\newcommand {\Or }{\textnormal {O}}\)
+
+\(\newcommand {\U }{\mathop {\rm U}\nolimits }\)
+
+\(\newcommand {\SOr }{\mathop {\rm SO}\nolimits }\)
+
+\(\newcommand {\SU }{\mathop {\rm SU}\nolimits }\)
+
+\(\newcommand {\Spin }{\mathop {\rm Spin}\nolimits }\)
+
+\(\newcommand {\Sp }{\mathop {\rm Sp}\nolimits }\)
+
+\(\newcommand {\Int }{\mathop {\rm Int}\nolimits }\)
+
+\(\newcommand {\im }{\mathop {\rm im}\nolimits }\)
+
+\(\newcommand {\dom }{\mathop {\rm dom}\nolimits }\)
+
+\(\newcommand {\di }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\cod }{\mathop {\rm cod}\nolimits }\)
+
+\(\newcommand {\colim }{\mathop {\rm colim}\nolimits }\)
+
+\(\newcommand {\ad }{\mathop {\rm ad}\nolimits }\)
+
+\(\newcommand {\PSL }{\mathop {\rm PSL}\nolimits }\)
+
+\(\newcommand {\PGL }{\mathop {\rm PGL}\nolimits }\)
+
+\(\newcommand {\sep }{\mathop {\rm sep}\nolimits }\)
+
+\(\newcommand {\MCG }{\mathop {\rm MCG}\nolimits }\)
+
+\(\newcommand {\oMCG }{\mathop {\rm MCG^+}\nolimits }\)
+
+\(\newcommand {\Spec }{\mathop {\rm Spec}\nolimits }\)
+
+\(\newcommand {\rank }{\mathop {\rm rank}\nolimits }\)
+
+\(\newcommand {\diverg }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\disc }{\mathop {\rm disc}\nolimits }\)
+
+\(\newcommand {\sign }{\mathop {\rm sign}\nolimits }\)
+
+\(\newcommand {\Arf }{\mathop {\rm Arf}\nolimits }\)
+
+\(\newcommand {\Pic }{\mathop {\rm Pic}\nolimits }\)
+
+\(\newcommand {\Tr }{\mathop {\rm Tr}\nolimits }\)
+
+\(\newcommand {\res }{\mathop {\rm res}\nolimits }\)
+
+\(\newcommand {\Proj }{\mathop {\rm Proj}\nolimits }\)
+
+\(\newcommand {\mult }{\mathop {\rm mult}\nolimits }\)
+
+\(\newcommand {\N }{\mathop {\rm N}\nolimits }\)
+
+\(\newcommand {\lk }{\mathop {\rm lk}\nolimits }\)
+
+\(\newcommand {\Pf }{\mathop {\rm Pf}\nolimits }\)
+
+\(\newcommand {\sgn }{\mathop {\rm sgn}\nolimits }\)
+
+\(\newcommand {\grad }{\mathop {\rm grad}\nolimits }\)
+
+\(\newcommand {\lcm }{\mathop {\rm lcm}\nolimits }\)
+
+\(\newcommand {\Ric }{\mathop {\rm Ric}\nolimits }\)
+
+\(\newcommand {\Hess }{\mathop {\rm Hess}\nolimits }\)
+
+\(\newcommand {\sn }{\mathop {\rm sn}\nolimits }\)
+
+\(\newcommand {\cut }{\mathop {\rm cut}\nolimits }\)
+
+\(\newcommand {\tr }{\mathop {\rm tr}\nolimits }\)
+
+\(\newcommand {\codim }{\mathop {\rm codim}\nolimits }\)
+
+\(\newcommand {\ind }{\mathop {\rm index}\nolimits }\)
+
+\(\newcommand {\rad }{\mathop {\rm rad}\nolimits }\)
+
+\(\newcommand {\Rep }{\mathop {\rm Rep}\nolimits }\)
+
+\(\newcommand {\Lie }{\mathop {\rm Lie}\nolimits }\)
+
+\(\newcommand {\Der }{\mathop {\rm Der}\nolimits }\)
+
+\(\newcommand {\hgt }{\mathop {\rm ht}\nolimits }\)
+
+\(\newcommand {\Ider }{\mathop {\rm Ider}\nolimits }\)
+
+\(\newcommand {\id }{\mathop {\rm id}\nolimits }\)
+
+</div>
+
+<p>
+<!--................................-->
+<h4 id="autosec-19"><span class="sectionnumber">3&#x2003;</span>Zeta functions &amp; The class number formula</h4>
+<a id="Analytic_Number_Theory_h-autopage-19"></a>
+<a id="Analytic_Number_Theory_h-autofile-3"></a>
+
+<p>
+Given a number field \(K\), let \(j_K(n)\) be the number of ideals of norm \(n\) in \(\cO _K\). The <b>Dedekind zeta function</b> \(\zeta _K(s)\) is the Dirichlet series for \(j_K(n)\)
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-20"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">3.1</span></span>. \(\zeta _K(s)\) converges for \(\real (s)&gt;1\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-21"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> From the theorem on the distribution of ideals, it follows that \(\sum _{i\leq n}j_K(i)=O(n)\), so that by Lemma <a
+href="node-Dirichlet-series-properties.html#conv">2.2</a> this is true. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We will want to extend \(\zeta _K(s)\) to \(\real (s)&gt;1-\frac {1}{[K:\QQ ]}\), so that we can better study its behavior near \(1\). First \(\zeta (s)\) will be extended. Note that \(\zeta (s)(1-2^{1-s})\) is the
+Dirichlet series for the sequence \((-1)^{n+1}\), which converges for \(\real (s)&gt;0\). This lets us extend \(\zeta (s)\) to \(\real (s)&gt;0\), but it might have some singularities where \(1-2^{1-s}\) is \(0\). To reduce
+the number of possible poles, \(\zeta (s)(1-3^{1-s})\) also converges for \(\real (s)&gt;0\) for the same reason, but the only common zeros of \(1-2^{1-s}\) and \(1-3^{1-s}\) are \(s =1\). Thus \(\zeta (s)\) can only
+have a simple pole at \(s =1\), and indeed it does since \(1-2^{1-s}\) has a simple zero. Now for some \(\kappa \), \(\zeta _K(s)-\kappa \zeta (s)\) is the Dirichlet series for some sequence \(f(n)\) with \(\sum _1^n f(i)
+= O(n^{1-\frac 1{[K:\QQ ]}})\) so we can use this to extend \(\zeta _K(s)\). Note that as a consequence, \(\zeta _K(s)\) also has a simple pole at \(1\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-22"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">3.2</span></span>. \(\zeta _K(s)\) is an analytic function in the region \(\real (s)&gt;1-\frac
+{1}{[K:\QQ ]}\), and has a simple pole with residue \(\frac {h_K2^{r+s}\pi ^s \reg (K)}{\omega _K \sqrt {|\disc (K)|}}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-23"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Because of how we have shown that \(\zeta _K(s)\) is analytic near \(1\), we only need to compute the residue of \(\zeta (s)\) at \(0\). Note that the Dirichlet series for
+\((-1)^{s+1}\) at \(1\) is \(\sum _i \frac {(-1)^{i+1}}{i} = \int _0^1\sum _i (-1)^{i+1}x^{i+1} = \int _0^1\frac {1}{1+x} = \log (2)\). On the other hand, the \(s-1\) term in the series expansion of
+\((1-2^{1-s})\) is \(\frac {1}{\log (2)}\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Now we can write \(\zeta _K(s)\) another way. But first a technical lemma.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-24"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">3.3</span></span>. <a id="prodlemma"></a> Suppose that \(a_i \in \CC \) satisfy \(|a_i|&lt;1\) and
+\(\sum _i |a_i| \leq \infty \). Then \(\prod _1^\infty (1-a_i)^{-1} = \sum _{S \subset \NN \hspace {.1cm}\text {finite}}\prod _S a_i\), where the sum is absolutely convergent.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-25"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Note that \(e^{-\sum _i |a_i|} = \prod _i e^{-|a_i|}\) converges and by Taylor’s theorem is at least \(\prod _i(1-|a_i|)\). Thus the inverse, which is the left hand side,
+absolutely converges, and the partial products show that it converges to the right hand side. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-26"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">3.4</span></span>. For \(\real (s)&gt;1\), \(\zeta _K(s) = \sum _{I \subset \cO _K}\frac
+{1}{N(I)} = \prod _{\pp \subset \cO _K}\frac {1}{1-N(\pp )^{-s}}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-27"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> These follow from Lemma <a href="node-Zeta-functions-The-class-number-formula.html#prodlemma">3.3</a>, the fact that \(\cO _K\) is a Dedekind domain, and the fact
+that \(\zeta _K(s)\) converges in that region. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+For any subset of primes \(S\), we can also consider \(\zeta _{K,S}(s) = \prod _{\pp \subset S}\frac {1}{1-N(\pp )^{-s}}\). Note that it converges for \(\real (s)&gt;1\) as well.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-28"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">3.5</span></span>. <a id="logapprox"></a> Let \(S\) be a set of primes in \(\cO _K\). Then \(|\sum
+_{\pp \in S} \frac {1}{N(\pp )^s} -\log (\zeta _{K,S}(s))| = O(1)\) for \(\real (s)&gt;1\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-29"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(\log (\zeta _K(s))=\sum _{\pp \in S} -\log (1-N(\pp )^s) = \sum _{\pp \in S} \frac {1}{N(\pp ^s)} + \sum _{\pp \in S,m\geq 2} \frac {1}{m\pp
+^{ms}}\).The second term is at most \(\sum _{\pp ,m\geq 2} \frac {1}{N(\pp )^{ms}} = \sum _{\pp \in S} \frac {1}{N(\pp )^{2s}-N(\pp )^{s}} \leq 2\sum _{\pp \in S} N(\pp )^{-2}&lt;\infty \). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The <b>Dirichlet density</b> of a set of primes \(S\) is the limit as \(s \to 1\), if it exists, of \(\frac {\sum _{\pp \subset S} \frac {1}{N(\pp )^s}}{\sum _{\pp } \frac {1}{N(\pp )^s}}\). We can similarly define
+the upper and lower Dirichlet densities using \(\liminf \) and \(\limsup \). It clearly satisfies natural properties one might expect. We say that \(S\) has <b>polar density</b> \(\frac {n}{m}\) if \(\zeta _{K,S}(s)^m\)
+has a pole of order \(n\). Polar density also satisfies natural properties. The following is easy to see because of Lemma <a href="node-Zeta-functions-The-class-number-formula.html#logapprox">3.5</a>.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-30"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">3.6</span></span>. If the polar density exists, so does the Dirichlet density, and the two are equal.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-31"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">3.7</span></span>. Let \(A\) be a set of primes with residual degree \(&gt; 1\) over \(\ZZ \). Then \(\zeta
+_{K,A}(s)\) is holomorphic for \(\real (s)&gt;\frac {1}{2}\) and \(A\) has polar density \(0\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-32"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Split \(A\) up by residual degree \(f\), and note that the terms corresponding zeta function is bounded by \(\zeta _K(fs)^n\), so by Lemma <a
+href="node-Dirichlet-series-properties.html#conv">2.2</a> each is holomorphic on \(\real (s)&gt;\frac {1}{f}\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-33"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">3.8</span></span>. <a id="splitcompletely"></a> The primes in \(K\) that split completely in a Galois
+extension \(L\) have polar density \(\frac {1}{[M:K]}\) where \(M\) is the Galois closure of \(L/K\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-34"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> First assume \(L\) is Galois. WLOG, we can restrict to primes that have residual degree \(1\) over \(\QQ \). But then this is clear, since if \(A\) are the primes of residual degree
+\(1\) in \(L\) and \(B\) are the primes of residual degree \(1\) splitting completely, then \(\zeta _{L,A}(s)\) is the \([L:K]^{th}\) power of the \(\zeta _{K,B}(s)\), so the result follows. Now we can remove the Galois
+assumption by noting that a prime splits completely in \(L\) iff it splits completely in the Galois closure. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-35"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">3.9</span></span>. Let \(H\) be a subgroup of \(\ZZ /m\ZZ ^\times \). Then the primes congruent to \(H\)
+have polar density \(\frac {|H|}{m}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-36"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Apply the previous result to the corresponding abelian extension of \(\QQ \). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+A <b>Dirichlet character</b> mod \(n\) (usually denoted \(\chi \)) is a totally multiplicative function on the natural numbers factoring through \(\ZZ /n\ZZ \), and supported on \(\ZZ /n\ZZ ^\times \). The character
+corresponding to the trivial homomorphism is called the trivial character, and denoted \(1\). We can define \(L(s,\chi ) = \sum _1^\infty \frac {\chi (n)}{n^s}\) to be the Dirichlet \(L\)-series.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-37"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">3.10</span></span>. \(L(s,\chi )\) is holomorphic on \(\real (s)&gt;0\) when \(\chi \) is nontrivial, and
+has a simple pole when \(\chi \) is trivial.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-38"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Note that \(\sum _{\ZZ /n\ZZ } \chi (a) = 0\) for a nontrivial character mod \(n\), so that \(\sum _1^m \chi (a) = O(1)\), giving the first result. \(L(s,1) = \zeta
+(s)\prod _{p|n}(1- p^{-s})\), giving the second result. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+More generally, given an abelian extension \(L\) of a number field \(K\), we can consider characters \(\chi \in \hat {G}\) on the Galois group \(G\), and we can define a corresponding character on the set of ideals via the Artin
+map composed with the character. For simplicity, let \(\chi (I)\) be shorthand for \(\chi ((\frac {L/K}{I}))\). Then \(L_K(s,\chi ) = \prod _{\pp \in \Spec (\cO _K)^{ur}}(1-\frac {\chi (\pp )}{\pp ^{s}}) =
+\sum _{I \in I^{ur}}\frac {\chi (I)}{N(I)^s}\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-39"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">3.11</span></span>. Let \(f_\pp \) be the residual degree of every prime over \(\pp \) in \(L\), and let
+\(r_\pp \) be the number of factors \(\pp \) splits into. \(\zeta _L(s) = \prod _{\pp \not \in \Spec (\cO _K)^{ur}}(1-N(\pp )^{-f_\pp s})^{r_\pp } \prod _{\chi \in \hat {G}}L(s,\chi )\). \(\zeta _K(s,1)
+= \zeta _{K,\Spec (\cO _K)^{ur}}(s)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-40"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The last identity is obvious, so we’ll focus on the first. We can split the factors of \((1-N(\mf {P})^{-s})^{-1}\) on the left hand side into Galois orbits. For each prime \(\pp
+\), we will get \(\prod _{\mf {P}/\pp }(1-\frac {1}{N(\mf {P})^{s}})^{-r_\pp }\), and for the unramified primes, this factors into \(\prod _{\chi \in \hat {G}}(1-\frac {\chi (\pp )}{N(\pp )^{s}})^{-1}\) by
+basic facts about characters of abelian groups, and how Frobenius relates to splitting. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-41"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">3.12</span></span>. <a id="nonvanishing"></a> If \(\chi \) is a nontrivial Dirichlet character, then
+\(L(1,\chi ) \neq 0\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-42"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This follows from the above proposition, the fact that \(L(s,\chi )\) are holomorphic at \(1\) for nontrivial \(\chi \), and the fact that \(L(s,1),\zeta _{\QQ [\zeta
+_m]}(s)\) have a simple pole at \(1\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+From the proposition, it follows that if \(K\) is a subfield of a cyclotomic field (i.e. any abelian extension) where primes dividing \(m\) ramify, then the residue at \(1\) of \(\zeta _K(s)\) is also given by \(\prod _{p\nmid
+m}(1-\frac {1}{p^{f_p}})^{r_p}(1-\frac {1}{p})^{-1} \prod _{1\neq \chi \in \hat {G}}L(1,\chi )\), giving a class number formula. To compute this, we will need to evaluate \(L(1,\chi )\) for nontrivial characters.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Analytic_Number_Theory_h-autopage-43"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">3.13</span></span>. Let \(\chi \) be a nontrivial Dirichlet character mod \(m\). Then \(L(1,\chi ) =
+-\frac {1}{m}\sum _1^{m-1}\tau _k(\chi )\log (1-\omega ^{-k}))\) where \(\tau _k(\chi )\) is the Gauss sum \(\sum _{\ZZ /m\ZZ ^\times }\chi (a)\omega ^{ak}\), and \(\omega \) a primitive \(m^{th}\) root
+of unity.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Analytic_Number_Theory_h-autopage-44"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(L(s,\chi ) = \sum _a \frac {\chi (a)}{a^s} = \sum _{b \in \ZZ /m\ZZ ^\times }\chi (b)\sum _{a \equiv b \pmod m} \frac {\chi (a)}{a^s}\) \(=\frac
+{1}{m}\sum _{b \in \ZZ /m\ZZ ^\times }\chi (b)\sum _{a} \frac {\sum _0^{m-1}\omega ^{(b-a)k}}{a^s} = \frac {1}{m}\sum _1^{m-1}\tau _k(\chi )\sum _{a}\frac {\omega ^{-ak}}{a^s}\), and evaluating at
+\(s = 1\) gives the result. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We can simplify this formula as follows: If \(\chi \) is a character mod \(m\) and is not induced from one mod \(n \neq m\), then it is <b>primitive</b>. If \(\chi \) mod \(m\) is induced from \(\chi &apos;\) mod \(n\),
+then we have the formula \(L(s,\chi ) = L(s,\chi &apos;)\prod _{p|m,p\nmid n}(1-\frac {\chi &apos;(p)}{p^s})\), and every character is induced from a primitive one, so we only need to be able to compute
+\(L(s,\chi )\) for primitive characters. Let \(\tau (\chi ) = \tau _1(\chi )\). Then for any character mod \(m\), if \((k,m) = 1\), it is easy to see \(\tau _k(\chi ) = \overline {\chi }(k)\tau (\chi )\). More
+generally, \(\tau _k(\chi ) = \chi (1+i\frac {m}{(m,k)})\tau _k(\chi )\), and so if \(\chi \) is primitive and \((k,m)&gt;1\), then we have \(\tau _k(\chi ) = 0\).
+</p>
+
+<p>
+Thus \(L(1,\chi ) = -\frac {\tau (\chi )}{m}\sum _{\ZZ /m\ZZ ^\times }\overline {\chi }(k)\log (1-\omega ^{-k}))\).
+</p>
+
+</section>
+
+</main>
+
+</div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+</body>
+</html>

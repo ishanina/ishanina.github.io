@@ -1,3 +1,7 @@
+[Adams-type maps are not stable under composition](http://arxiv.org/abs/2202.14004) (w. Robert Burklund and Piotr Pstrągowski)
+
+Abstract: We give a simple counterexample to the plausible conjecture that Adams-type maps of ring spectra are stable under composition. We then show that over a field, this failure is quite extreme, as any map of 𝔼<sub>∞</sub>-algebras is a transfinite composition of Adams-type maps.
+
 [On the K-theory of regular coconnective rings](https://arxiv.org/abs/2112.14723) (w. Robert Burklund)
 
 Abstract: We show that for a coconnective ring spectrum satisfying regularity and flatness assumptions, its algebraic K-theory agrees with that of its π<sub>0</sub>. We prove this as a consequence of a more general devissage result for stable infinity categories. Applications of our result include giving general conditions under which K-theory preserves pushouts, generalizations of 𝔸<sup>n</sup>-invariance of K-theory, and an understanding of the K-theory of categories of unipotent local systems.
@@ -10,14 +14,14 @@ Abstract: We develop geometric notions such as regularity, coherence and flatnes
 
 Abstract: We compute the SO(n+1)-equivariant mod 2 Borel cohomology of the free iterated loop space Z<sup>S<sup>n</sup></sup> when n is odd and Z is a product of mod 2 Eilenberg Mac Lane spaces. When n=1, this recovers Ottosen and Bökstedt's computation for the free loop space. The highlight of our computation is a construction of cohomology classes using an O(n)-equivariant evaluation map and a pushforward map. We then reinterpret our computation as giving a presentation of the zeroth derived functor of the Borel cohomology of Z<sup>S<sup>n</sup></sup> for arbitrary Z. We also include an appendix where we give formulas for computing the zeroth derived functor of the cohomology of mapping spaces, and study the dependence of such derived functors on the Steenrod operations.
 
-[Eilenberg Mac Lane spectra as p-cyclonic Thom spectra](https://arxiv.org/abs/2103.04457)
+[Eilenberg Mac Lane spectra as p-cyclonic Thom spectra](https://arxiv.org/abs/2103.04457) Accepted at _Journal of Topology_
 
 Abstract: Hopkins and Mahowald gave a simple description of the mod p Eilenberg Mac Lane spectrum 𝔽<sub>p</sub> as the free 𝔼<sub>2</sub>-algebra with an equivalence of p and 0. We show for each faithful 2-dimensional representation λ of a p-group G that the G-equivariant Eilenberg Mac Lane spectrum <ins>𝔽</ins><sub>p</sub> is the free 𝔼<sub>λ</sub>-algebra with an equivalence of p and 0. This unifies and simplifies recent work of Behrens, Hahn, and Wilson, and extends it to include the dihedral 2-subgroups of O(2). The main new idea is that <ins>𝔽</ins><sub>p</sub> has a simple description as a p-cyclonic module over THH(𝔽<sub>p</sub>). We show our result is the best possible one in that it gives all groups G and representations V such that <ins>𝔽</ins><sub>p</sub> is the free 𝔼<sub>V</sub>-algebra with an equivalence of p and 0.
 
 # Talks
 Notes for some expository talks I have given.
 
-[Tools of Unstable Homotopy Theory](Talks/Tools of Unstable Homotopy Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Tools_of_Unstable_Homotopy_theory.pdf)
+[Tools of Unstable Homotopy Theory](Talks/Tools of Unstable Homotopy Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Tools_of_Unstable_Homotopy_Theory.pdf)
 
 [Deformation theory and Lie algebras](Talks/Deformation theory and Lie algebras/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Talks/Deformation theory and Lie algebras.pdf)
   

@@ -46,8 +46,6 @@ A collection of notes I have written about various subjects. These were not writ
 
 [Lie Algebras](Subjects/Lie Algebras/Lie_Algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Lie Algebras.pdf)
 
-[ODEs](Subjects/ODEs/ODEs.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/ODEs.pdf)
-
 [Riemannian Geometry](Subjects/Riemannian Geometry/Riemannian_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Riemannian Geometry.pdf)
 
 [Rings Modules Fields](Subjects/Rings Modules Fields/Rings_Modules_Fields.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)

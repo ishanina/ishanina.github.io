@@ -1,0 +1,2047 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="generator" content="LaTeX Lwarp package" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Simplicial</title>
+<link rel="stylesheet" type="text/css" href="fancycss.css" />
+
+<script>
+// Lwarp MathJax emulation code
+//
+// Based on code by Davide P. Cervone.
+// Equation numbering: https://github.com/mathjax/MathJax/issues/2427
+// Starred and ifnextchar macros: https://github.com/mathjax/MathJax/issues/2428
+// \left, \right delimiters: https://github.com/mathjax/MathJax/issues/2535
+//
+// Modified by Brian Dunn to adjust equation numbering and add subequations.
+//
+// LaTeX can use \seteqnumber{subequations?}{section}{number} before each equation.
+// subequations? is 0 usually, 1 if inside subequations.
+// section is a string printed as-is, or empty.
+// number is auto-incremented by MathJax between equations.
+//
+MathJax = {
+     subequations: "0",
+     section: "",
+     loader: {
+          load: ['[tex]/tagformat', '[tex]/textmacros'],
+     },
+     startup: {
+          ready() {
+              //       These would be replaced by import commands if you wanted to make
+              //       a proper extension.
+              const Configuration = MathJax._.input.tex.Configuration.Configuration;
+              const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+              const Macro = MathJax._.input.tex.Symbol.Macro;
+              const TexError = MathJax._.input.tex.TexError.default;
+              const ParseUtil = MathJax._.input.tex.ParseUtil.default;
+              const expandable = MathJax._.util.Options.expandable;
+
+
+              //       Insert the replacement string into the TeX string, and check
+              //       that there haven't been too many maxro substitutions (prevents
+              //       infinite loops).
+              const useArgument = (parser, text) => {
+                   parser.string = ParseUtil.addArgs(parser, text, parser.string.slice(parser.i));
+                   parser.i = 0;
+                   if (++parser.macroCount > parser.configuration.options.maxMacros) {
+                        throw new TexError('MaxMacroSub1',
+                        'MathJax maximum macro substitution count exceeded; ' +
+                        'is there a recursive macro call?');
+                   }
+              }
+
+
+              //       Create the command map for:
+              //            \ifstar, \ifnextchar, \ifblank, \ifstrequal, \seteqnumber
+              new CommandMap('Lwarp-macros', {
+                   ifstar: 'IfstarFunction',
+                   ifnextchar: 'IfnextcharFunction',
+                   ifblank: 'IfblankFunction',
+                   ifstrequal: 'IfstrequalFunction',
+                   seteqnumber: 'SeteqnumberFunction'
+              }, {
+                   //       This function implements an ifstar macro.
+                   IfstarFunction(parser, name) {
+                        const resultstar = parser.GetArgument(name);
+                        const resultnostar = parser.GetArgument(name);
+                        const star = parser.GetStar();                        // true if there is a *
+                        useArgument(parser, star ? resultstar : resultnostar);
+                   },
+
+
+                   //       This function implements an ifnextchar macro.
+                   IfnextcharFunction(parser, name) {
+                        let whichchar = parser.GetArgument(name);
+                        if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+                            // $ syntax highlighting
+                            whichchar = String.fromCodePoint(parseInt(whichchar));
+                        }
+                        const resultnextchar = parser.GetArgument(name);
+                        const resultnotnextchar = parser.GetArgument(name);
+                        const gotchar = (parser.GetNext() === whichchar);
+                        useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+                   },
+
+
+                   // This function implements an ifblank macro.
+                   IfblankFunction(parser, name) {
+                        const blankarg = parser.GetArgument(name);
+                        const resultblank = parser.GetArgument(name);
+                        const resultnotblank = parser.GetArgument(name);
+                        const isblank = (blankarg.trim() == "");
+                        useArgument(parser, isblank ? resultblank : resultnotblank);
+                   },
+
+
+                   // This function implements an ifstrequal macro.
+                   IfstrequalFunction(parser, name) {
+                        const strequalfirst = parser.GetArgument(name);
+                        const strequalsecond = parser.GetArgument(name);
+                        const resultequal = parser.GetArgument(name);
+                        const resultnotequal = parser.GetArgument(name);
+                        const isequal = (strequalfirst == strequalsecond);
+                        useArgument(parser, isequal ? resultequal : resultnotequal);
+                   },
+
+
+                   //       This function modifies the equation numbers.
+                   SeteqnumberFunction(parser, name) {
+                            //   Get the macro parameters
+                            const star = parser.GetStar();                      // true if there is a *
+                            const optBrackets = parser.GetBrackets(name);        // contents of optional brackets
+                            const newsubequations = parser.GetArgument(name);      // the subequations argument
+                            const neweqsection = parser.GetArgument(name);      // the eq section argument
+                            const neweqnumber = parser.GetArgument(name);        // the eq number argument
+                            MathJax.config.subequations=newsubequations ;       // a string with boolean meaning
+                            MathJax.config.section=neweqsection ;               // a string with numeric meaning
+                            parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+                   }
+
+
+              });
+
+
+              //       Create the Lwarp-macros package
+              Configuration.create('Lwarp-macros', {
+                   handler: {macro: ['Lwarp-macros']}
+              });
+
+
+              MathJax.startup.defaultReady();
+
+
+              // For forward references:
+              MathJax.startup.input[0].preFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            MathJax.config.subequations = math.inputData.recompile.subequations;
+                            MathJax.config.section = math.inputData.recompile.section;
+                   }
+              });
+              MathJax.startup.input[0].postFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            math.inputData.recompile.subequations = MathJax.config.subequations;
+                            math.inputData.recompile.section = MathJax.config.section;
+                   }
+              });
+
+
+                   // For \left, \right with unicode-math:
+                   const {DelimiterMap} = MathJax._.input.tex.SymbolMap;
+                   const {Symbol} = MathJax._.input.tex.Symbol;
+                   const {MapHandler} = MathJax._.input.tex.MapHandler;
+                   const delimiter = MapHandler.getMap('delimiter');
+                   delimiter.add('\\lBrack', new Symbol('\\lBrack', '\u27E6'));
+                   delimiter.add('\\rBrack', new Symbol('\\rBrack', '\u27E7'));
+                   delimiter.add('\\lAngle', new Symbol('\\lAngle', '\u27EA'));
+                   delimiter.add('\\rAngle', new Symbol('\\rAngle', '\u27EB'));
+                   delimiter.add('\\lbrbrak', new Symbol('\\lbrbrak', '\u2772'));
+                   delimiter.add('\\rbrbrak', new Symbol('\\rbrbrak', '\u2773'));
+                   delimiter.add('\\lbag', new Symbol('\\lbag', '\u27C5'));
+                   delimiter.add('\\rbag', new Symbol('\\rbag', '\u27C6'));
+                   delimiter.add('\\llparenthesis', new Symbol('\\llparenthesis', '\u2987'));
+                   delimiter.add('\\rrparenthesis', new Symbol('\\rrparenthesis', '\u2988'));
+                   delimiter.add('\\llangle', new Symbol('\\llangle', '\u2989'));
+                   delimiter.add('\\rrangle', new Symbol('\\rrangle', '\u298A'));
+                   delimiter.add('\\Lbrbrak', new Symbol('\\Lbrbrak', '\u27EC'));
+                   delimiter.add('\\Rbrbrak', new Symbol('\\Rbrbrak', '\u27ED'));
+                   delimiter.add('\\lBrace', new Symbol('\\lBrace', '\u2983'));
+                   delimiter.add('\\rBrace', new Symbol('\\rBrace', '\u2984'));
+                   delimiter.add('\\lParen', new Symbol('\\lParen', '\u2985'));
+                   delimiter.add('\\rParen', new Symbol('\\rParen', '\u2986'));
+                   delimiter.add('\\lbrackubar', new Symbol('\\lbrackubar', '\u298B'));
+                   delimiter.add('\\rbrackubar', new Symbol('\\rbrackubar', '\u298C'));
+                   delimiter.add('\\lbrackultick', new Symbol('\\lbrackultick', '\u298D'));
+                   delimiter.add('\\rbracklrtick', new Symbol('\\rbracklrtick', '\u298E'));
+                   delimiter.add('\\lbracklltick', new Symbol('\\lbracklltick', '\u298F'));
+                   delimiter.add('\\rbrackurtick', new Symbol('\\rbrackurtick', '\u2990'));
+                   delimiter.add('\\langledot', new Symbol('\\langledot', '\u2991'));
+                   delimiter.add('\\rangledot', new Symbol('\\rangledot', '\u2992'));
+                   delimiter.add('\\lparenless', new Symbol('\\lparenless', '\u2993'));
+                   delimiter.add('\\rparengtr', new Symbol('\\rparengtr', '\u2994'));
+                   delimiter.add('\\Lparengtr', new Symbol('\\Lparengtr', '\u2995'));
+                   delimiter.add('\\Rparenless', new Symbol('\\Rparenless', '\u2996'));
+                   delimiter.add('\\lblkbrbrak', new Symbol('\\lblkbrbrak', '\u2997'));
+                   delimiter.add('\\rblkbrbrak', new Symbol('\\rblkbrbrak', '\u2998'));
+                   delimiter.add('\\lvzigzag', new Symbol('\\lvzigzag', '\u29D8'));
+                   delimiter.add('\\rvzigzag', new Symbol('\\rvzigzag', '\u29D9'));
+                   delimiter.add('\\Lvzigzag', new Symbol('\\Lvzigzag', '\u29DA'));
+                   delimiter.add('\\Rvzigzag', new Symbol('\\Rvzigzag', '\u29DB'));
+                   delimiter.add('\\lcurvyangle', new Symbol('\\lcurvyangle', '\u29FC'));
+                   delimiter.add('\\rcurvyangle', new Symbol('\\rcurvyangle', '\u29FD'));
+                   delimiter.add('\\Vvert', new Symbol('\\Vvert', '\u2980'));
+          }       // ready
+     },           // startup
+
+
+     tex: {
+          packages: {'[+]': ['tagformat', 'Lwarp-macros', 'textmacros']},
+          tags: "ams",
+                   tagformat: {
+                            number: function (n) {
+                                 if(MathJax.config.subequations==0)
+                                        return(MathJax.config.section + n);
+                                 else
+                                        return(MathJax.config.section + String.fromCharCode(96+n));
+                            },
+                   },
+     }
+}
+</script>
+
+
+<script
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+
+</head>
+<body>
+
+
+<a id="Simplicial_h-autopage-611"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+<header>
+
+<p>
+<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+</p>
+
+</header>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Simplicial</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="node-Introduction.html#autosec-6" class="tocsection" >
+<span class="sectionnumber">1</span>&#x2003;Introduction</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-9" class="tocsection" >
+<span class="sectionnumber">2</span>&#x2003;Technical Things</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-36" class="tocsubsection" >
+<span class="sectionnumber">2.1</span>&#x2003;Generators of anodyne morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-54" class="tocsubsection" >
+<span class="sectionnumber">2.2</span>&#x2003;Enriched Categories</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-68" class="tocsubsection" >
+<span class="sectionnumber">2.3</span>&#x2003;Basics of Simplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-99" class="tocsubsection" >
+<span class="sectionnumber">2.4</span>&#x2003;Left fibration characterization of Kan fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-127" class="tocsubsection" >
+<span class="sectionnumber">2.5</span>&#x2003;Cartesian Morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-156" class="tocsubsection" >
+<span class="sectionnumber">2.6</span>&#x2003;Minimal Inner Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-173" class="tocsubsection" >
+<span class="sectionnumber">2.7</span>&#x2003;Trees</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-207" class="tocsection" >
+<span class="sectionnumber">3</span>&#x2003;Kan Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-230" class="tocsubsection" >
+<span class="sectionnumber">3.1</span>&#x2003;Minimal fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-243" class="tocsubsection" >
+<span class="sectionnumber">3.2</span>&#x2003;Equivalence of Quillen and Serre model structures</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-262" class="tocsection" >
+<span class="sectionnumber">4</span>&#x2003;Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-313" class="tocsubsection" >
+<span class="sectionnumber">4.1</span>&#x2003;Homotopy category of a model category</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-411" class="tocsubsection" >
+<span class="sectionnumber">4.2</span>&#x2003;Combinatorial Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-443" class="tocsubsection" >
+<span class="sectionnumber">4.3</span>&#x2003;Derived Functors</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-478" class="tocsubsection" >
+<span class="sectionnumber">4.4</span>&#x2003;Enriched and Simplicial model categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-510" class="tocsection" >
+<span class="sectionnumber">5</span>&#x2003;Some Important Model Structures</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-511" class="tocsubsection" >
+<span class="sectionnumber">5.1</span>&#x2003;Model structure on \(S\)-enriched categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-552" class="tocsubsection" >
+<span class="sectionnumber">5.2</span>&#x2003;Diagram model structures and homotopy limits</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-595" class="tocsubsection" >
+<span class="sectionnumber">5.3</span>&#x2003;Reedy model structures</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-613" class="tocsection" >
+<span class="sectionnumber">6</span>&#x2003;\(\Pi _1\) and Simplicial abelian groups</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-614" class="tocsubsection" >
+<span class="sectionnumber">6.1</span>&#x2003;Fundamental Groupoid</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-627" class="tocsubsection" >
+<span class="sectionnumber">6.2</span>&#x2003;Local Systems and Covering Spaces</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-628" class="tocsubsection" >
+<span class="sectionnumber">6.3</span>&#x2003;Simpicial objects in Abelian Categories</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-664" class="tocsection" >
+<span class="sectionnumber">7</span>&#x2003;Bisimplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-681" class="tocsubsection" >
+<span class="sectionnumber">7.1</span>&#x2003;Bisimplicial objects in an abelian category</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-701" class="tocsubsection" >
+<span class="sectionnumber">7.2</span>&#x2003;Model structures</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-727" class="tocsubsection" >
+<span class="sectionnumber">7.3</span>&#x2003;Bousfield-Friedlander</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-763" class="tocsubsection" >
+<span class="sectionnumber">7.4</span>&#x2003;Theorem B and Group Completion</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-787" class="tocsection" >
+<span class="sectionnumber">8</span>&#x2003;Some Classical Homotopy Theory</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-788" class="tocsubsection" >
+<span class="sectionnumber">8.1</span>&#x2003;The Hurewicz Map</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-841" class="tocsection" >
+<span class="sectionnumber">9</span>&#x2003;Models for Homotopy Types</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-842" class="tocsubsection" >
+<span class="sectionnumber">9.1</span>&#x2003;Test Categories</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-875" class="tocsubsection" >
+<span class="sectionnumber">9.2</span>&#x2003;Basics of Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-898" class="tocsubsection" >
+<span class="sectionnumber">9.3</span>&#x2003;Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-971" class="tocsubsection" >
+<span class="sectionnumber">9.4</span>&#x2003;Colimits in Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1010" class="tocsubsection" >
+<span class="sectionnumber">9.5</span>&#x2003;Weak equivalence classes of functors</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1043" class="tocsubsection" >
+<span class="sectionnumber">9.6</span>&#x2003;Model structure on Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1072" class="tocsection" >
+<span class="sectionnumber">10</span>&#x2003;Simplicial localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1073" class="tocsubsection" >
+<span class="sectionnumber">10.1</span>&#x2003;Free Categories and Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1087" class="tocsubsection" >
+<span class="sectionnumber">10.2</span>&#x2003;Dwyer-Kan Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1099" class="tocsubsection" >
+<span class="sectionnumber">10.3</span>&#x2003;Reduction to Cubical Sets</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
+
+
+<main class="bodycontainer">
+
+
+<section class="textbody">
+
+<h1>Simplicial</h1>
+
+<!--MathJax customizations:-->
+
+
+<div class="hidden">
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \LWRtensorindicesthreesub #1#2{{_{#2}}\LWRtensorindicesthree }\)
+
+\(\def \LWRtensorindicesthreesup #1#2{{^{#2}}\LWRtensorindicesthree }\)
+
+\(\newcommand {\LWRtensorindicesthreenotsup }{}\)
+
+\(\newcommand {\LWRtensorindicesthreenotsub }{ \ifnextchar ^ \LWRtensorindicesthreesup \LWRtensorindicesthreenotsup }\)
+
+\(\newcommand {\LWRtensorindicesthree }{ \ifnextchar _ \LWRtensorindicesthreesub \LWRtensorindicesthreenotsub }\)
+
+\(\newcommand {\LWRtensorindicestwo }{ \ifstar \LWRtensorindicesthree \LWRtensorindicesthree }\)
+
+\(\newcommand {\indices }[1]{\LWRtensorindicestwo #1}\)
+
+\(\newcommand {\LWRtensortwo }[3][]{{}\indices {#1}{#2}\indices {#3}}\)
+
+\(\newcommand {\tensor }{\ifstar \LWRtensortwo \LWRtensortwo }\)
+
+\(\newcommand {\LWRnuclidetwo }[2][]{{\vphantom {\mathrm {#2}}{}^{\LWRtensornucleonnumber }_{#1}\mathrm {#2}}}\)
+
+\(\newcommand {\nuclide }[1][]{\def \LWRtensornucleonnumber {#1}\LWRnuclidetwo }\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\cO }{\mathcal {O}}\)
+
+\(\newcommand {\cC }{\mathcal {C}}\)
+
+\(\newcommand {\cP }{\mathcal {P}}\)
+
+\(\newcommand {\cF }{\mathcal {F}}\)
+
+\(\newcommand {\cS }{\mathcal {S}}\)
+
+\(\newcommand {\cK }{\mathcal {K}}\)
+
+\(\newcommand {\cM }{\mathcal {M}}\)
+
+\(\newcommand {\GG }{\mathbb {G}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\QQ }{\mathbb {Q}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\LL }{\mathbb {L}}\)
+
+\(\newcommand {\HH }{\mathbb {H}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\SP }{\mathbb {S}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\sF }{\mathscr {F}}\)
+
+\(\newcommand {\sC }{\mathscr {C}}\)
+
+\(\newcommand {\ts }{\textsuperscript }\)
+
+\(\newcommand {\mf }{\mathfrak }\)
+
+\(\newcommand {\cc }{\mf {c}}\)
+
+\(\newcommand {\mg }{\mf {g}}\)
+
+\(\newcommand {\ma }{\mf {a}}\)
+
+\(\newcommand {\mh }{\mf {h}}\)
+
+\(\newcommand {\mn }{\mf {n}}\)
+
+\(\newcommand {\mc }{\mf {c}}\)
+
+\(\newcommand {\ul }{\underline }\)
+
+\(\newcommand {\mz }{\mf {z}}\)
+
+\(\newcommand {\me }{\mf {e}}\)
+
+\(\newcommand {\mff }{\mf {f}}\)
+
+\(\newcommand {\mm }{\mf {m}}\)
+
+\(\newcommand {\mt }{\mf {t}}\)
+
+\(\newcommand {\pp }{\mf {p}}\)
+
+\(\newcommand {\qq }{\mf {q}}\)
+
+\(\newcommand {\gl }{\mf {gl}}\)
+
+\(\newcommand {\msl }{\mf {sl}}\)
+
+\(\newcommand {\so }{\mf {so}}\)
+
+\(\newcommand {\mfu }{\mf {u}}\)
+
+\(\newcommand {\su }{\mf {su}}\)
+
+\(\newcommand {\msp }{\mf {sp}}\)
+
+\(\renewcommand {\aa }{\mf {a}}\)
+
+\(\newcommand {\bb }{\mf {b}}\)
+
+\(\newcommand {\sR }{\mathscr {R}}\)
+
+\(\newcommand {\lb }{\langle }\)
+
+\(\newcommand {\rb }{\rangle }\)
+
+\(\newcommand {\ff }{\mf {f}}\)
+
+\(\newcommand {\ee }{\epsilon }\)
+
+\(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
+\(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
+
+\(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
+
+\(\newcommand {\pushout }{\arrow [ul, phantom, &quot;\ulcorner &quot;, very near start]}\)
+
+\(\newcommand {\pullback }{\arrow [dr, phantom, &quot;\lrcorner &quot;, very near start]}\)
+
+\(\newcommand {\simp }[1]{#1^{\Delta ^{op}}}\)
+
+\(\newcommand {\arrowtcupp }[2]{\arrow [bend left=50, &quot;&quot;{name=U, below,inner sep=1}]{#1}\arrow [Rightarrow,from=U,to=MU,&quot;#2&quot;]}\)
+
+\(\newcommand {\arrowtclow }[2]{\arrow [bend right=50, &quot;&quot;{name=L,inner sep=1}]{#1}\arrow [Rightarrow,from=LM,to=L]{}[]{#2}}\)
+
+\(\newcommand {\arrowtcmid }[2]{\arrow [&quot;&quot;{name=MU,inner sep=1},&quot;&quot;{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}\)
+
+\(\newcommand {\dummy }{\textcolor {white}{\bullet }}\)
+
+\(\newcommand {\adjunction }[4]{ #1\hspace {2pt}\colon #2 \leftrightharpoons #3 \hspace {2pt}\colon #4 }\)
+
+\(\newcommand {\aug }{\mathop {\rm aug}\nolimits }\)
+
+\(\newcommand {\MC }{\mathop {\rm MC}\nolimits }\)
+
+\(\newcommand {\art }{\mathop {\rm art}\nolimits }\)
+
+\(\newcommand {\DiGrph }{\mathop {\rm DiGrph}\nolimits }\)
+
+\(\newcommand {\FMP }{\mathop {\rm FMP}\nolimits }\)
+
+\(\newcommand {\CAlg }{\mathop {\rm CAlg}\nolimits }\)
+
+\(\newcommand {\perf }{\mathop {\rm perf}\nolimits }\)
+
+\(\newcommand {\cof }{\mathop {\rm cof}\nolimits }\)
+
+\(\newcommand {\fib }{\mathop {\rm fib}\nolimits }\)
+
+\(\newcommand {\Thick }{\mathop {\rm Thick}\nolimits }\)
+
+\(\newcommand {\Orb }{\mathop {\rm Orb}\nolimits }\)
+
+\(\newcommand {\ko }{\mathop {\rm ko}\nolimits }\)
+
+\(\newcommand {\Spf }{\mathop {\rm Spf}\nolimits }\)
+
+\(\newcommand {\Spc }{\mathop {\rm Spc}\nolimits }\)
+
+\(\newcommand {\sk }{\mathop {\rm sk}\nolimits }\)
+
+\(\newcommand {\cosk }{\mathop {\rm cosk}\nolimits }\)
+
+\(\newcommand {\holim }{\mathop {\rm holim}\nolimits }\)
+
+\(\newcommand {\hocolim }{\mathop {\rm hocolim}\nolimits }\)
+
+\(\newcommand {\Pre }{\mathop {\rm Pre}\nolimits }\)
+
+\(\newcommand {\THR }{\mathop {\rm THR}\nolimits }\)
+
+\(\newcommand {\THH }{\mathop {\rm THH}\nolimits }\)
+
+\(\newcommand {\Fun }{\mathop {\rm Fun}\nolimits }\)
+
+\(\newcommand {\Loc }{\mathop {\rm Loc}\nolimits }\)
+
+\(\newcommand {\Bord }{\mathop {\rm Bord}\nolimits }\)
+
+\(\newcommand {\Cob }{\mathop {\rm Cob}\nolimits }\)
+
+\(\newcommand {\Set }{\mathop {\rm Set}\nolimits }\)
+
+\(\newcommand {\Ind }{\mathop {\rm Ind}\nolimits }\)
+
+\(\newcommand {\Sind }{\mathop {\rm Sind}\nolimits }\)
+
+\(\newcommand {\Ext }{\mathop {\rm Ext}\nolimits }\)
+
+\(\newcommand {\sd }{\mathop {\rm sd}\nolimits }\)
+
+\(\newcommand {\Ex }{\mathop {\rm Ex}\nolimits }\)
+
+\(\newcommand {\Out }{\mathop {\rm Out}\nolimits }\)
+
+\(\newcommand {\Cyl }{\mathop {\rm Cyl}\nolimits }\)
+
+\(\newcommand {\Path }{\mathop {\rm Path}\nolimits }\)
+
+\(\newcommand {\Ch }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\SSet }{\mathop {\rm \Set ^{\Delta ^{op}}}\nolimits }\)
+
+\(\newcommand {\Sq }{\mathop {\rm Sq}\nolimits }\)
+
+\(\newcommand {\Free }{\mathop {\rm Free}\nolimits }\)
+
+\(\newcommand {\Map }{\mathop {\rm Map}\nolimits }\)
+
+\(\newcommand {\Chain }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\LMap }{\mathop {\rm LMap}\nolimits }\)
+
+\(\newcommand {\RMap }{\mathop {\rm RMap}\nolimits }\)
+
+\(\newcommand {\Tot }{\mathop {\rm Tot}\nolimits }\)
+
+\(\newcommand {\MU }{\mathop {\rm MU}\nolimits }\)
+
+\(\newcommand {\MSU }{\mathop {\rm MSU}\nolimits }\)
+
+\(\newcommand {\MSp }{\mathop {\rm MSp}\nolimits }\)
+
+\(\newcommand {\MSO }{\mathop {\rm MSO}\nolimits }\)
+
+\(\newcommand {\MO }{\mathop {\rm MO}\nolimits }\)
+
+\(\newcommand {\BU }{\mathop {\rm BU}\nolimits }\)
+
+\(\newcommand {\KU }{\mathop {\rm KU}\nolimits }\)
+
+\(\newcommand {\BSU }{\mathop {\rm BSU}\nolimits }\)
+
+\(\newcommand {\BSp }{\mathop {\rm BSp}\nolimits }\)
+
+\(\newcommand {\BGL }{\mathop {\rm BGL}\nolimits }\)
+
+\(\newcommand {\BSO }{\mathop {\rm BSO}\nolimits }\)
+
+\(\newcommand {\BO }{\mathop {\rm BO}\nolimits }\)
+
+\(\newcommand {\KO }{\mathop {\rm KO}\nolimits }\)
+
+\(\newcommand {\Tor }{\mathop {\rm Tor}\nolimits }\)
+
+\(\newcommand {\Cotor }{\mathop {\rm Cotor}\nolimits }\)
+
+\(\newcommand {\imag }{\mathop {\rm Im}\nolimits }\)
+
+\(\newcommand {\real }{\mathop {\rm Re}\nolimits }\)
+
+\(\newcommand {\Cat }{\mathop {\rm Cat}\nolimits }\)
+
+\(\newcommand {\Fld }{\mathop {\rm Fld}\nolimits }\)
+
+\(\newcommand {\Frac }{\mathop {\rm Frac}\nolimits }\)
+
+\(\newcommand {\Dom }{\mathop {\rm Dom}\nolimits }\)
+
+\(\newcommand {\Hotc }{\mathop {\rm Hotc}\nolimits }\)
+
+\(\newcommand {\Top }{\mathop {\rm Top}\nolimits }\)
+
+\(\newcommand {\Ring }{\mathop {\rm Ring}\nolimits }\)
+
+\(\newcommand {\CRing }{\mathop {\rm CRing}\nolimits }\)
+
+\(\newcommand {\CGHaus }{\mathop {\rm CGHaus}\nolimits }\)
+
+\(\newcommand {\Alg }{\mathop {\rm Alg}\nolimits }\)
+
+\(\newcommand {\Bool }{\mathop {\rm Bool}\nolimits }\)
+
+\(\newcommand {\hTop }{\mathop {\rm hTop}\nolimits }\)
+
+\(\newcommand {\Nat }{\mathop {\rm Nat}\nolimits }\)
+
+\(\newcommand {\Rel }{\mathop {\rm Rel}\nolimits }\)
+
+\(\newcommand {\Mod }{\mathop {\rm Mod}\nolimits }\)
+
+\(\newcommand {\Space }{\mathop {\rm Space}\nolimits }\)
+
+\(\newcommand {\Vect }{\mathop {\rm Vect}\nolimits }\)
+
+\(\newcommand {\FinVect }{\mathop {\rm FinVect}\nolimits }\)
+
+\(\newcommand {\Matr }{\mathop {\rm Matr}\nolimits }\)
+
+\(\newcommand {\Ab }{\mathop {\rm Ab}\nolimits }\)
+
+\(\newcommand {\Gr }{\mathop {\rm Gr}\nolimits }\)
+
+\(\newcommand {\Grp }{\mathop {\rm Grp}\nolimits }\)
+
+\(\newcommand {\Hol }{\mathop {\rm Hol}\nolimits }\)
+
+\(\newcommand {\Gpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Grpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Mon }{\mathop {\rm Mon}\nolimits }\)
+
+\(\newcommand {\FinSet }{\mathop {\rm FinSet}\nolimits }\)
+
+\(\newcommand {\Sch }{\mathop {\rm Sch}\nolimits }\)
+
+\(\newcommand {\AffSch }{\mathop {\rm AffSch}\nolimits }\)
+
+\(\newcommand {\Idem }{\mathop {\rm Idem}\nolimits }\)
+
+\(\newcommand {\SIdem }{\mathop {\rm SIdem}\nolimits }\)
+
+\(\newcommand {\Aut }{\mathop {\rm Aut}\nolimits }\)
+
+\(\newcommand {\Ord }{\mathop {\rm Ord}\nolimits }\)
+
+\(\newcommand {\coker }{\mathop {\rm coker}\nolimits }\)
+
+\(\newcommand {\ch }{\mathop {\rm char}\nolimits }\)
+
+\(\newcommand {\Sym }{\mathop {\rm Sym}\nolimits }\)
+
+\(\newcommand {\adj }{\mathop {\rm adj}\nolimits }\)
+
+\(\newcommand {\dil }{\mathop {\rm dil}\nolimits }\)
+
+\(\newcommand {\Cl }{\mathop {\rm Cl}\nolimits }\)
+
+\(\newcommand {\Diff }{\mathop {\rm Diff}\nolimits }\)
+
+\(\newcommand {\End }{\mathop {\rm End}\nolimits }\)
+
+\(\newcommand {\Hom }{\mathop {\rm Hom}\nolimits }\)
+
+\(\newcommand {\Gal }{\mathop {\rm Gal}\nolimits }\)
+
+\(\newcommand {\Pos }{\mathop {\rm Pos}\nolimits }\)
+
+\(\newcommand {\Ad }{\mathop {\rm Ad}\nolimits }\)
+
+\(\newcommand {\GL }{\mathop {\rm GL}\nolimits }\)
+
+\(\newcommand {\SL }{\mathop {\rm SL}\nolimits }\)
+
+\(\newcommand {\vol }{\mathop {\rm vol}\nolimits }\)
+
+\(\newcommand {\reg }{\mathop {\rm reg}\nolimits }\)
+
+\(\newcommand {\Or }{\textnormal {O}}\)
+
+\(\newcommand {\U }{\mathop {\rm U}\nolimits }\)
+
+\(\newcommand {\SOr }{\mathop {\rm SO}\nolimits }\)
+
+\(\newcommand {\SU }{\mathop {\rm SU}\nolimits }\)
+
+\(\newcommand {\Spin }{\mathop {\rm Spin}\nolimits }\)
+
+\(\newcommand {\Sp }{\mathop {\rm Sp}\nolimits }\)
+
+\(\newcommand {\Int }{\mathop {\rm Int}\nolimits }\)
+
+\(\newcommand {\im }{\mathop {\rm im}\nolimits }\)
+
+\(\newcommand {\dom }{\mathop {\rm dom}\nolimits }\)
+
+\(\newcommand {\di }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\cod }{\mathop {\rm cod}\nolimits }\)
+
+\(\newcommand {\colim }{\mathop {\rm colim}\nolimits }\)
+
+\(\newcommand {\ad }{\mathop {\rm ad}\nolimits }\)
+
+\(\newcommand {\PSL }{\mathop {\rm PSL}\nolimits }\)
+
+\(\newcommand {\PGL }{\mathop {\rm PGL}\nolimits }\)
+
+\(\newcommand {\sep }{\mathop {\rm sep}\nolimits }\)
+
+\(\newcommand {\MCG }{\mathop {\rm MCG}\nolimits }\)
+
+\(\newcommand {\oMCG }{\mathop {\rm MCG^+}\nolimits }\)
+
+\(\newcommand {\Spec }{\mathop {\rm Spec}\nolimits }\)
+
+\(\newcommand {\rank }{\mathop {\rm rank}\nolimits }\)
+
+\(\newcommand {\diverg }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\disc }{\mathop {\rm disc}\nolimits }\)
+
+\(\newcommand {\sign }{\mathop {\rm sign}\nolimits }\)
+
+\(\newcommand {\Arf }{\mathop {\rm Arf}\nolimits }\)
+
+\(\newcommand {\Pic }{\mathop {\rm Pic}\nolimits }\)
+
+\(\newcommand {\Tr }{\mathop {\rm Tr}\nolimits }\)
+
+\(\newcommand {\res }{\mathop {\rm res}\nolimits }\)
+
+\(\newcommand {\Proj }{\mathop {\rm Proj}\nolimits }\)
+
+\(\newcommand {\mult }{\mathop {\rm mult}\nolimits }\)
+
+\(\newcommand {\N }{\mathop {\rm N}\nolimits }\)
+
+\(\newcommand {\lk }{\mathop {\rm lk}\nolimits }\)
+
+\(\newcommand {\Pf }{\mathop {\rm Pf}\nolimits }\)
+
+\(\newcommand {\sgn }{\mathop {\rm sgn}\nolimits }\)
+
+\(\newcommand {\grad }{\mathop {\rm grad}\nolimits }\)
+
+\(\newcommand {\lcm }{\mathop {\rm lcm}\nolimits }\)
+
+\(\newcommand {\Ric }{\mathop {\rm Ric}\nolimits }\)
+
+\(\newcommand {\Hess }{\mathop {\rm Hess}\nolimits }\)
+
+\(\newcommand {\sn }{\mathop {\rm sn}\nolimits }\)
+
+\(\newcommand {\cut }{\mathop {\rm cut}\nolimits }\)
+
+\(\newcommand {\tr }{\mathop {\rm tr}\nolimits }\)
+
+\(\newcommand {\codim }{\mathop {\rm codim}\nolimits }\)
+
+\(\newcommand {\ind }{\mathop {\rm index}\nolimits }\)
+
+\(\newcommand {\rad }{\mathop {\rm rad}\nolimits }\)
+
+\(\newcommand {\Rep }{\mathop {\rm Rep}\nolimits }\)
+
+\(\newcommand {\Lie }{\mathop {\rm Lie}\nolimits }\)
+
+\(\newcommand {\Der }{\mathop {\rm Der}\nolimits }\)
+
+\(\newcommand {\hgt }{\mathop {\rm ht}\nolimits }\)
+
+\(\newcommand {\Ider }{\mathop {\rm Ider}\nolimits }\)
+
+\(\newcommand {\id }{\mathop {\rm id}\nolimits }\)
+</div>
+
+<p>
+<!--................................-->
+<h4 id="autosec-613"><span class="sectionnumber">6&#x2003;</span>\(\Pi _1\) and Simplicial abelian groups</h4>
+<a id="Simplicial_h-autopage-613"></a>
+<a id="Simplicial_h-autofile-6"></a>
+<!--................................-->
+<h5 id="autosec-614"><span class="sectionnumber">6.1&#x2003;</span>Fundamental Groupoid</h5>
+<a id="Simplicial_h-autopage-614"></a>
+
+
+<p>
+For a simplicial set \(X\), there are atleast three natural ways to make sense of the fundamental groupoid. The most obvious is homotopy classes of pointed maps from \(S^1\) to \(X\), which is the same as \(\pi _1|X|\). Another
+model is to consider the path category \(P_*X\) with objects vertices and morphisms \(1\)-simplices with relations given by the \(2\)-simplices. \(G(P_*X)\), the free groupoid generated by this category. Yet another model is
+\(G(X_{\Delta /})\), where \(X_{\Delta /}\) is the category of simplices of \(X\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-615"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">6.1</span></span>. <a id="fundgroupoid"></a> For a simpliciel set \(X\), there is a natural equivalence
+\(\Pi _1|X|\simeq G(X_{\Delta /}) \simeq GP_*X\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-616"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Note that there is a natural <i>isomorphism</i> \(GP_*S|X|\cong \Pi _1|X|\). Since the map \(X\mapsto S|X|\) is an equivalence, for one of the equivalences, it suffices to
+show that \(GP_*\) takes weak equivalences to equivalences. Any weak equivalence factors as a trivial cofibration and a trivial fibration, and the trivial fibration will have a section, which is a trivial cofibration, so it suffices to show
+that \(GP_*\) takes trivial cofibrations to weak equivalences. Every trivial cofibration is a retract of a transfinite pushout of horn inclusions and equivalences of groupoids are closed under filtered colimits and retracts, so it suffices
+to show that a pushout of a horn inclusion is sent to an equivalence in \(GP_*\).
+</p>
+
+<p>
+For a pushout of an inclusion \(\Lambda _i^n \to \Delta ^n\), the induced map on \(GP_*\) is an isomorphism if \(n\geq 2\). If \(n = 1\), we are just adjoining an equivalent object, which is clearly equivalent. Thus
+\(GP_*X\) and \(\Pi _*X\) are equivalent.
+</p>
+
+<p>
+There is a natural functor \(GP_*X \to G(X_{\Delta /})\) given by sending \(h:f \to g\) to the map \((d^0)^{-1}d^1\) below:
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-78"
+      class="lateximagesource"
+><!--
+     d1        d0
+∆0        ∆1        ∆0
+          h
+     f          g
+          X
+--><img
+      src="Simplicial_h-images/image-78.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+There is also a functor in the other direction: it sends a simplex to its last vertex. It is easy to see that one composite is the identity, and the other is naturally isomorphic to the identity. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+There is an adjunction \(\Fun (P_*X,C)\cong \Hom _{\SSet }(X,BC)\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-620"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">6.2</span></span>. If \(C\) is a category, \(\pi _1BC\) is equivalent to \(GC\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-621"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(P_*BC = C\) as a category, so this follows from Proposition <a href="node-Pi-_1-Simplicial-abelian-groups.html#fundgroupoid">6.1</a>. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We note that the map \(S|X| \to BP_*S|X|\to BGP_*S|X|\) induces an isomorphism on \(\pi _1\). It is really the first Postnikov section.
+</p>
+
+<p>
+Recall from Example <a href="node-Some-Important-Model-Structures.html#catof1catsmodelstr">5.8.1</a> that \(\Cat \) has a natural model structure. \(\Grpd \) inherits a model structure as a reflective subcategory
+by Proposition <a href="node-Model-Categories.html#adjunctioninducedmodelstr">4.12</a>. The fibrations are isofibrations, weak equivalences are equivalences, and cofibrations are maps that are injective on objects.
+</p>
+
+<p>
+Let \(\Pi _1\) be the functor \(X\mapsto GP_*(X)\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-622"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">6.3</span></span>. \(\Pi _1:\SSet \to \Grpd \) is a left Quillen functor.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-623"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> We have \(\Hom _{\Grpd }(GP_*(X),Y) \cong \Hom _{\SSet }(X,BY)\), so it is a left adjoint. Weak equivalences are sent to weak equivalences by the proof of Proposition <a
+href="node-Pi-_1-Simplicial-abelian-groups.html#fundgroupoid">6.1</a>, and cofibrations are sent to cofibrations. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The fact that this preserved homotopy pushouts is essentially Van Kampen’s theorem. Indeed, suppose we are given a homotopy pushout diagram of simplicial sets
+</p>
+<div class="center">
+
+<p>
+<span
+    id="lateximage-Simplicial_h-79"
+    class="lateximagesource"
+><!--
+    i
+A          B
+j
+        ⌜
+C        C ∪A B
+--><img
+    src="Simplicial_h-images/image-79.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where \(i,j\) are injective on \(\Pi _0\). Then we can compute \(\Pi _1(C\cup _A B)\) as follows: first choose a cofibrant replacement of the diagram, apply \(\Pi _1\), then replace the diagram again so that each connected
+component has only one object. The pushout is then a pushout of groups, so on each connected component, we get a formula for \(\pi _1(C\cup _AB)\) in terms of a pushout of groups.
+</p>
+
+<p>
+Note that there should be (and is) an \(n\)-truncated version of this result: the \(n\)-truncation functor on the \(\infty \)-category of spaces to \(n\)-truncated spaces = \(n\)-groupoids is a left adjoint, so preserves colimits. I
+think if you want a model category of \(n\)-truncated spaces, there should be a model structure where you add in the inclusions \(\partial \Delta ^m\to \Delta ^m\) for \(m&gt;n\) to the trivial cofibrations.
+</p>
+<!--................................-->
+<h5 id="autosec-627"><span class="sectionnumber">6.2&#x2003;</span>Local Systems and Covering Spaces</h5>
+<a id="Simplicial_h-autopage-627"></a>
+
+
+<p>
+Given a simplicial set \(X\) (considered as a space), a <b>local system</b> on \(X\) valued in a category \(C\) is a
+</p>
+<!--................................-->
+<h5 id="autosec-628"><span class="sectionnumber">6.3&#x2003;</span>Simpicial objects in Abelian Categories</h5>
+<a id="Simplicial_h-autopage-628"></a>
+
+
+<p>
+Let \(B\) be an abelian category and \(A\) be a simplicial object.
+</p>
+
+<p>
+Define \(CA\) to be the chain complex with \(CA_n = A_n\) and differential \(\sum _0^n (-1)^id_i\). This is sometimes called the <b>Moore complex</b>.
+</p>
+
+<p>
+Define \(NA\) to be the subcomplex with \(NA_n=\cap _0^{n-1}\ker (d_i) \subset A_n\). This is sometimes called the <b>normalized chain complex</b>.
+</p>
+
+<p>
+Define \(DA\) be the sum of the images of the degeneracies as a subcomplex of \(CA\). It is a subcomplex because \(d_is_i = d_{i+1}s_i = 1\), so after applying the differential, the terms without degeneracies will cancel.
+</p>
+
+<p>
+In an abelian category, an element will mean a morphism from some (unspecified) object. Alternatively, it can mean an actual element by the Freyd-Mitchell embedding theorem.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-629"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">6.4</span></span>. \(CA = NA\oplus DA\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-630"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Clearly \(NA\cap DA=0\). It suffices to show then that every element \(x\) of \(CA\) is the sum of something in \(NA\) and something in \(DA\). By downward induction we can
+assume that \(d_ix =0\) for \(i&gt;j\). Then \(x+s_jd_jx\) is a modification by something in \(DA\) that has \(d_j=0\) in addition. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-631"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">6.5</span></span>. <a id="moorenormalizedhomotopyeq"></a> The complex \(DA\) is acyclic, and the
+maps \(NA \to A \to A/DA \cong NA\) are naturally homotopy equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-632"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> There is a filtration \(D_pA\) of \(DA\) where we consider the images of the first \(p\) degeneracies. At each level, the filtration is finite, so it suffices to show that the associated
+graded complexes \(D_pA/D_{p-1}A\) are acyclic.
+</p>
+
+<p>
+If we have an element \(s_px\), we can compute \(ds_p^2x-s_{p-1}ds_px=(-1)^{p-1}s_px\), so \(s_px\) is a boundary.
+</p>
+
+<p>
+We can define a complementary filtration \((N_iA)_n = \cap _0^{\min (n-1,i)}\ker (d_i)\). The maps \(f_j:N_jA_n\to N_{j+1}A_n\) sending \(x\mapsto x\) if \(n\leq j+1\) and \(x\mapsto x-s_{i+1}d_{j+1}(x)\)
+otherwise give a retraction \(N_j \to N_{j+1}\).
+</p>
+
+<p>
+We can define \(t_j:N_jA_n\to N_jA_{n+1}\) by \(t_k(x) = (-1)^js_{j+1}\) if \(n\geq j+1\) and \(0\) otherwise, which exhibits \(f_j\) is a deformation retraction. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Note that the proof actually showed that the identity map of \(D_pA/D_{p-1}A\) is nulhomotopic.
+</p>
+
+<p>
+Now we explain how to recover \(A\) from \(NA\). Given a nonnegatively graded chain complex \(C\), we can form \(\Gamma (C)\), a simplicial object defined by \(\Gamma (C)_n = \oplus _{n\twoheadrightarrow k} N_k\).
+Given a map \(m\to n\), we use the map \(\oplus _{n\twoheadrightarrow k} N_k\to \oplus _{m\twoheadrightarrow k} N_k\) that on \(n\twoheadrightarrow k\) is the map \(N_k\xrightarrow {d^*}N_l\) where the
+map \(l \to k\) is the mono in epi-mono factorization of the composite \(m \to n \to k\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-633"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">6.6</span></span><span class="amsthmnoteplain"> (Dold-Kan correspondence)</span>. \(\Gamma
+:\Chain _{\geq 0}B\to B^{\Delta ^{op}}\) is an equivalence of categories with inverse \(N\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-634"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It is easy to see that \(N\Gamma \) is the identity. We can construct a map \(\Gamma NA \to A\) where for \(n \hookrightarrow k\) we sent the corresponding \(NA_k\)
+component of \(\Gamma NA\) to \(A_n\) via the corresponding degeneracies. We will show by induction on \(n\) that in degree \(n\) it is an isomorphism. For \(n=0\), there is nothing to do. Suppose that it is and isomoprhism for
+\(i&lt;n\). Then the map is surjective, since it contains all degeneracies and also \(NA_n\).
+</p>
+
+<p>
+We will show that the map \(\oplus _{n\twoheadrightarrow k} NA_k\to A_n\) is monic by induction on \(n\). Every map \(\sigma :n\twoheadrightarrow k\) has a section \(d_\sigma \) sending an element to the largest
+element in its preimage. We can form a partial ordering on surjective ordinal maps \(n\twoheadrightarrow k\) by declaring \(\sigma \geq \tau \) if \(d_\sigma (i) \geq d_{\tau }(i)\) for all \(i\). If \(\tau \circ
+d_{\sigma } = 1\), then \(\tau \geq \sigma \).
+</p>
+
+<p>
+Suppose that \((x_{\sigma })\) is in the kernel, where \(x_{\sigma }\) is the component corresponding to \(n\twoheadrightarrow k\). If we fix a \(k &lt; n\), then choose a maximal \(\sigma \) for which \(x_{\sigma }\)
+is nonzero. Then choosing the section \(d_\sigma \) and pulling back, the component corresponding to the identity is \(x_\sigma \), so is \(0\) by the inductive hypothesis. Thus we can assume that the only possibly nonzero
+coefficient is \(NA_n\), but \(NA_n\) embeds into \(A_n\), so we are done. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Let \(K(X,n)\) be the simplicial object corresponding to the chain complex that is \(X\) in degree \(n\) and zero elsewhere.
+</p>
+
+<p>
+One can draw a picture of the Dold-Kan correspondence. It says that every simplicial object has its \(n\)-simplices look like a sum of normalized terms on every way to generate \(\Delta ^n\), so we can draw a picture of an
+\(n\)-simplex with degeneracies labeled by which edges they contract. Below is shown the result for \(n=2\).
+</p>
+<div class="center">
+
+<p>
+<span
+    id="lateximage-Simplicial_h-80"
+    class="lateximagesource"
+><!--
+     1
+A1        A1
+     A2
+
+ 0        2
+     A0
+--><img
+    src="Simplicial_h-images/image-80.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+The following Lemma is obvious, since \(D_n \subset A_n\) corresponds to the inclusion \(\Lambda ^n_n \to A_n\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-638"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">6.7</span></span>. \(D_n\) is a cokernel of \(\bigoplus _{0\leq i&lt; j \leq n-1}A_{n-2}\rightarrow
+\bigoplus _{0^{n-1}}A_{n-1}\), where the map is the difference of \(s_i\) and \(s_{j-1}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-639"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">6.8</span></span>. There is a natural isomorphism \(\pi _n(A,0)\cong H_n(NA)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-640"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This is essentially the definition of \(\pi _n(A,0)\), only with a different operation. However, the Eckmann-Hilton argument shows that the two operations agree. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-641"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">6.9</span></span>. <a id="abcatmodelstructure"></a> If \(B\) is a presentable abelian category with
+enough projectives, there is a right proper combinatorial simplicial model structure on \(B^{\Delta ^{op}}\) that has equivalences things inducing isomorphism on \(\pi _*\), fibrations are maps that on the associated normalized
+chain complex are surjective in positive degree, and trivial fibrations are maps that are surjective with acyclic kernel. The generating cofibrations, trivial cofibrations are given by \(M[\partial \Delta ^n]\to M[\Delta ^n]\) and
+\(M[\Lambda ^n_i]\to M[\Delta ^n]\) respectively where \(M\) ranges over a set of projective generators.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-642"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Choose a small set \(X_i\) of \(\kappa \)-compact projective generators, and let \(B&apos;\) be the category consisting of them and their endomorphisms. Then the restricted
+Yoneda embedding gives an adjunction to \((\Ab ^{B&apos;})^{\Delta ^{op}}\), which is a product of module categories. Now we can apply Proposition <a
+href="node-Model-Categories.html#liftingimpliessimpmodelcat">4.64</a>, where we use the model structure on \(R\)-modules in Example <a href="node-Model-Categories.html#algsimpmodelcat">4.66.1</a>. The
+model structure is right proper since every object is fibrant.
+</p>
+
+<p>
+We need only check that in \(B^{\Delta ^{op}}\) where \(B\) is a category of \(R\)-modules, the fibrations are as claimed, as the statement about acyclic fibrations is clear. Lemma <a
+href="node-Kan-Fibrations.html#simplicialgroupsfibrant">3.1</a> says that surjections are fibrations. Being able to lift \(\Lambda ^{n}_n \to \Delta ^n\) implies that the map on normalized chain complex is surjective
+for \(n\geq 1\). Conversely, suppose that \(NX_i\to NY_i\) is surjective for \(i\geq 1\). The map \(K(\pi _0X,0)\to K(\pi _0Y,0)\) is a fibration since it is a map of discrete sets. Pulling back along the map \(Y\to K(\pi
+_0,Y)\), we get the map \(K(\pi _0X,0)\times _{K(\pi _0Y,0)}Y\to Y\) is a fibration, and since the map \(X\to K(\pi _0X,0)\times _{K(\pi _0Y,0)}Y\) is surjective, so is the composite \(X \to Y\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-643"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">6.10</span></span>. On the level of chain complexes, the model structure in Theorem <a
+href="node-Pi-_1-Simplicial-abelian-groups.html#abcatmodelstructure">6.9</a> has as cofibrations the monomorphisms with cokernel degree-wise projective, and are generated by the maps \(M[n] \to M\langle
+n+1\rangle \) for \(n\geq -1\), where \(M[n]\) is the chain complex \(M\) in degree \(n\) and otherwise \(0\) and \(M\langle n+1\rangle \) is the chain complex that is \(M\) in degrees \(n,n+1\) and \(0\) otherwise with
+differential the identity. Note that \(M[-1] = 0\) and \(M\langle 0\rangle = M[0]\).
+</p>
+
+<p>
+Furthermore, the trivial cofibrations are generated by \(0 \to M\langle n\rangle \) for \(n\geq 1\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-644"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> If \(X\to Y\) is a cofibration, the pushout along \(X\to 0\) is the cokernel \(Y/X\), so the cokernel is cofibrant. Suppose that a cofibrant has the left lifting property with respect
+to trivial fibrations. Then in particular it has the left lifting property with respect to any surjection \(M\langle m+1\rangle \to N\langle m+1\rangle \), showing that each term is projective.
+</p>
+
+<p>
+Conversely, suppose \(f:X\to Y\) is injective with a cokernel that is projective. We will show we can produce a lift in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-81"
+      class="lateximagesource"
+><!--
+        g
+X           Z
+    f           w
+
+
+
+
+            ∼
+        h
+Y           W
+--><img
+      src="Simplicial_h-images/image-81.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+First we will produce a lift on the \(n^{th}\) level of the chain complex. We can choose a level-wise splitting \(s\) of the projection \(Y\to X/Y\), and then use projectivity to find a lift of \(hs\) along \(w\), giving the desired lift.
+</p>
+
+<p>
+Next, we need to show that we can modify these lifts to give a chain map that lifts. To do this, suppose that we have modified the maps fo agree on the \(j^{th}\) level for \(j&lt;i\). Then there are two different maps \((X/Y)_i
+\to Z_{i-1}\) that agree after projection to \(W_{i-1}\), so they lift to \(N_{i-1}\), where \(N\) is the kernel of \(Z\to W\). Moreover, it is easy to see that it is a cocycle, so by acyclicity of \(N\) and projectivity of
+\((X/Y)_i\), it lifts to a map. \((X/Y)_i \to N_i\). We can then modify the map on the \(i^{th}\) level by this to make it compatible with the previous ones.
+</p>
+
+<p>
+First we’ll see that \(0 \to M\langle n\rangle \) generate the trivial cofibrations. This is essentially immediate: \(M\langle n\rangle \) corepresents maps from \(M\) to the \(n^{th}\) part of the chain complex. Then since
+\(M\) are projective generators, this is equivalent to surjectivity.
+</p>
+
+<p>
+To see that the maps \(M[n]\to M\langle n+1\rangle \) generate the cofibrations, suppose \(X\to Y\) has the right lifting property with respect to each of them. This means that whenever there is a map from \(M\) to the
+cocycles of \(X\) which is a boundary in \(X\), it is a boundary in \(Y\). This shows that the map \(\pi _*X\to \pi _*Y\) is injective. The pushout of \(M[n]\to M\langle n+1\rangle \) along the map \(M[n] \to 0\) is the
+map \(0 \to M[n+1]\), so it follows that our map is surjective on \(\pi _*\), and since we also have the right lifting property with respect to the composite \(0 \to M[n] \to M\langle n+1\rangle \), it is a fibration. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-648"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">6.11</span></span>. <a id="chainhomotopyvssimplicialhomotopy"></a> Let \(B\) be a projectively
+generated presentable abelian category, \(X\) a cofibrant simplcial object, and \(A\) another simplicial object. Two maps \(X\to A\) are homotopic iff the corresponding maps on chain complexes are chain homotopic.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-649"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It follows essentially from definition that a homotopy is the same data as a chain homotopy on the Moore complexes, so this follows from Proposition <a
+href="node-Pi-_1-Simplicial-abelian-groups.html#moorenormalizedhomotopyeq">6.5</a>, since the Moore complexes are homotopy equivalent to the normalized complexes. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-650"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">6.12</span></span>. <a id="chainvssimphomotopyfree"></a> Let \(R\) be a ring, and \(A\) a simplicial
+\(R\)-module, and \(X\) a simplicial set. Two maps \(X \to A\) are homotopic iff the corresponding maps \(R[X]\to A\) are chain homotopic.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-651"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This follows from Proposition <a href="node-Pi-_1-Simplicial-abelian-groups.html#chainhomotopyvssimplicialhomotopy">6.11</a> and the fact that \(R[X\times
+\Delta ^1] = R[X]\otimes \Delta ^1\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-652"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">6.13</span></span>. Let \(B\) be an abelian category, and \(X,Y\) simplicial objects over \(B\). A homotopy
+\(h:X\otimes \Delta ^1\to Y\) induces a chain homotopy of the associated chain complexes.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-653"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(\theta _j:n\to 1\) be the map of posets with \(\theta _j(i) = 0\) iff \(i \leq j\). Given a map \(h\), we define maps \(h_j:A_{n}\to B_{n+1}\) by
+\(h(s_j(a)\otimes \theta _j)\). Then the alternating sum \(s = \sum _0^n(-1)^ih_i:A_n\to B_{n+1}\) is a chain homotopy. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-654"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">6.14</span></span>. <a id="freepresweakeq"></a> Let \(M\) a projective object in a projectively generated
+presentable abelian category, and \(X\) a simplicial set. The functor \(X \mapsto M[X]\) preserves weak equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-655"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> As usual it suffices to show trivial cofibrations are sent to weak equivalences, as a trivial fibration has a section that is a trivial cofibration. But the right adjoint preserves
+fibrations, so this functor preserves trivial cofibrations. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-656"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">6.15</span></span>. There is a natural isomorphism \(H^n(X;M)\cong [X,K(B,n)]\) for any \(R\)-module
+\(M\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-657"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(H^n(X;M)\) by definition is chain homotopy classes of maps from \(R[X]\) to \(M[n]\), which by Corollary <a
+href="node-Pi-_1-Simplicial-abelian-groups.html#chainvssimphomotopyfree">6.12</a> is the same as \([R[X].M[n]]\). By Lemma <a href="node-Model-Categories.html#homotopicaladjunction">4.6</a> and
+Lemma <a href="node-Pi-_1-Simplicial-abelian-groups.html#freepresweakeq">6.14</a> and the fact that \(R[X]\) is cofibrant, it follows that there is an isomorphism \([R[X],M[n]] = [X,K(M,n)]\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-658"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">6.16</span></span>. Let \(R\) be a hereditary ring (eg: a Dedekind domain). Then every nonnegatively
+graded chain complex \(C\) of \(R\) modules is equivalent to \(\oplus H_n(C)[n] = \prod H_n(C)[n]\). In particular, the underlying simplicial set under the Dold-Kan correspondence is equivalent to \(\prod K(H_n(C),n)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-659"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Choose surjections \(F_n\mapsto Z_n(C)\) where \(F_n\) is free, and \(Z_n(C)\) is the cycles of \(C\). The kernel of the map \(F_n \to Z_n(C) \to H_n(C)\), \(K_n\), is
+projective, and so since the map \(K_n\to Z_n(C)\) factors through \(B_n(C)\), it lifts to \(C_{n+1}\). Thus we have a chain map from a complex of the form \(0 \to K_n \to F_n\to 0\) to \(C\) that induces an isomorphism
+on \(H_n\). Moreover, this comples is clearly quasi-isomorphic to \(0 \to H_n(C)\to 0\). Taking the sum of these, we get the first claim. The second claim follows from the fact that these are all fibrant simplicial sets, so the
+quasi-isomorphisms are equivalences of simplicial sets. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Given an \(R\)-module \(A\), define \(WK(A,n)\) to be the simplicial set corresponding to \(A\langle n+1\rangle \). There is a fibre sequence:
+</p>
+
+<p>
+\[K(A,n) \to WK(A,n) \to K(A,n+1)\]
+</p>
+
+<p>
+induced from the exact sequence of chain complexes
+</p>
+
+<p>
+\[0 \to A[n] \to A\langle n+1\rangle \to A[n+1]\to 0\]
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-660"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">6.17</span></span>. \(K(A,n)\) is a minimal Kan complex and \(WK(A,n) \to K(A,n+1)\) is a minimal Kan
+fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-661"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Suppose \(x\) is a simplex homotopic to \(y\) relative to the boundary. We would like to show that \(x\) is \(y\). By subtracting, we can assume \(y\) is \(0\), but this reduces
+us to thinking about the fibre, which is \(K(A,n)\). If \(x\) is an \(r\)-simplex whose boundary is \(0\), then \(x\) is a normalized \(r\)-chain. There are no nonzero normalized \(r\)-chains unless \(r=n\), so we can assume that
+\(r=n\). If \(z\) is homotopic to \(0\) relative to the boundary, it represents the homotopy class \(0\), so must be \(0\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+</body>
+</html>

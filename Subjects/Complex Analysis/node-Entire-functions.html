@@ -1,0 +1,1290 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="generator" content="LaTeX Lwarp package" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Complex Analysis</title>
+<link rel="stylesheet" type="text/css" href="fancycss.css" />
+
+<script>
+// Lwarp MathJax emulation code
+//
+// Based on code by Davide P. Cervone.
+// Equation numbering: https://github.com/mathjax/MathJax/issues/2427
+// Starred and ifnextchar macros: https://github.com/mathjax/MathJax/issues/2428
+// \left, \right delimiters: https://github.com/mathjax/MathJax/issues/2535
+//
+// Modified by Brian Dunn to adjust equation numbering and add subequations.
+//
+// LaTeX can use \seteqnumber{subequations?}{section}{number} before each equation.
+// subequations? is 0 usually, 1 if inside subequations.
+// section is a string printed as-is, or empty.
+// number is auto-incremented by MathJax between equations.
+//
+MathJax = {
+     subequations: "0",
+     section: "",
+     loader: {
+          load: ['[tex]/tagformat', '[tex]/textmacros'],
+     },
+     startup: {
+          ready() {
+              //       These would be replaced by import commands if you wanted to make
+              //       a proper extension.
+              const Configuration = MathJax._.input.tex.Configuration.Configuration;
+              const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+              const Macro = MathJax._.input.tex.Symbol.Macro;
+              const TexError = MathJax._.input.tex.TexError.default;
+              const ParseUtil = MathJax._.input.tex.ParseUtil.default;
+              const expandable = MathJax._.util.Options.expandable;
+
+
+              //       Insert the replacement string into the TeX string, and check
+              //       that there haven't been too many maxro substitutions (prevents
+              //       infinite loops).
+              const useArgument = (parser, text) => {
+                   parser.string = ParseUtil.addArgs(parser, text, parser.string.slice(parser.i));
+                   parser.i = 0;
+                   if (++parser.macroCount > parser.configuration.options.maxMacros) {
+                        throw new TexError('MaxMacroSub1',
+                        'MathJax maximum macro substitution count exceeded; ' +
+                        'is there a recursive macro call?');
+                   }
+              }
+
+
+              //       Create the command map for:
+              //            \ifstar, \ifnextchar, \ifblank, \ifstrequal, \seteqnumber
+              new CommandMap('Lwarp-macros', {
+                   ifstar: 'IfstarFunction',
+                   ifnextchar: 'IfnextcharFunction',
+                   ifblank: 'IfblankFunction',
+                   ifstrequal: 'IfstrequalFunction',
+                   seteqnumber: 'SeteqnumberFunction'
+              }, {
+                   //       This function implements an ifstar macro.
+                   IfstarFunction(parser, name) {
+                        const resultstar = parser.GetArgument(name);
+                        const resultnostar = parser.GetArgument(name);
+                        const star = parser.GetStar();                        // true if there is a *
+                        useArgument(parser, star ? resultstar : resultnostar);
+                   },
+
+
+                   //       This function implements an ifnextchar macro.
+                   IfnextcharFunction(parser, name) {
+                        let whichchar = parser.GetArgument(name);
+                        if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+                            // $ syntax highlighting
+                            whichchar = String.fromCodePoint(parseInt(whichchar));
+                        }
+                        const resultnextchar = parser.GetArgument(name);
+                        const resultnotnextchar = parser.GetArgument(name);
+                        const gotchar = (parser.GetNext() === whichchar);
+                        useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+                   },
+
+
+                   // This function implements an ifblank macro.
+                   IfblankFunction(parser, name) {
+                        const blankarg = parser.GetArgument(name);
+                        const resultblank = parser.GetArgument(name);
+                        const resultnotblank = parser.GetArgument(name);
+                        const isblank = (blankarg.trim() == "");
+                        useArgument(parser, isblank ? resultblank : resultnotblank);
+                   },
+
+
+                   // This function implements an ifstrequal macro.
+                   IfstrequalFunction(parser, name) {
+                        const strequalfirst = parser.GetArgument(name);
+                        const strequalsecond = parser.GetArgument(name);
+                        const resultequal = parser.GetArgument(name);
+                        const resultnotequal = parser.GetArgument(name);
+                        const isequal = (strequalfirst == strequalsecond);
+                        useArgument(parser, isequal ? resultequal : resultnotequal);
+                   },
+
+
+                   //       This function modifies the equation numbers.
+                   SeteqnumberFunction(parser, name) {
+                            //   Get the macro parameters
+                            const star = parser.GetStar();                      // true if there is a *
+                            const optBrackets = parser.GetBrackets(name);        // contents of optional brackets
+                            const newsubequations = parser.GetArgument(name);      // the subequations argument
+                            const neweqsection = parser.GetArgument(name);      // the eq section argument
+                            const neweqnumber = parser.GetArgument(name);        // the eq number argument
+                            MathJax.config.subequations=newsubequations ;       // a string with boolean meaning
+                            MathJax.config.section=neweqsection ;               // a string with numeric meaning
+                            parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+                   }
+
+
+              });
+
+
+              //       Create the Lwarp-macros package
+              Configuration.create('Lwarp-macros', {
+                   handler: {macro: ['Lwarp-macros']}
+              });
+
+
+              MathJax.startup.defaultReady();
+
+
+              // For forward references:
+              MathJax.startup.input[0].preFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            MathJax.config.subequations = math.inputData.recompile.subequations;
+                            MathJax.config.section = math.inputData.recompile.section;
+                   }
+              });
+              MathJax.startup.input[0].postFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            math.inputData.recompile.subequations = MathJax.config.subequations;
+                            math.inputData.recompile.section = MathJax.config.section;
+                   }
+              });
+
+
+                   // For \left, \right with unicode-math:
+                   const {DelimiterMap} = MathJax._.input.tex.SymbolMap;
+                   const {Symbol} = MathJax._.input.tex.Symbol;
+                   const {MapHandler} = MathJax._.input.tex.MapHandler;
+                   const delimiter = MapHandler.getMap('delimiter');
+                   delimiter.add('\\lBrack', new Symbol('\\lBrack', '\u27E6'));
+                   delimiter.add('\\rBrack', new Symbol('\\rBrack', '\u27E7'));
+                   delimiter.add('\\lAngle', new Symbol('\\lAngle', '\u27EA'));
+                   delimiter.add('\\rAngle', new Symbol('\\rAngle', '\u27EB'));
+                   delimiter.add('\\lbrbrak', new Symbol('\\lbrbrak', '\u2772'));
+                   delimiter.add('\\rbrbrak', new Symbol('\\rbrbrak', '\u2773'));
+                   delimiter.add('\\lbag', new Symbol('\\lbag', '\u27C5'));
+                   delimiter.add('\\rbag', new Symbol('\\rbag', '\u27C6'));
+                   delimiter.add('\\llparenthesis', new Symbol('\\llparenthesis', '\u2987'));
+                   delimiter.add('\\rrparenthesis', new Symbol('\\rrparenthesis', '\u2988'));
+                   delimiter.add('\\llangle', new Symbol('\\llangle', '\u2989'));
+                   delimiter.add('\\rrangle', new Symbol('\\rrangle', '\u298A'));
+                   delimiter.add('\\Lbrbrak', new Symbol('\\Lbrbrak', '\u27EC'));
+                   delimiter.add('\\Rbrbrak', new Symbol('\\Rbrbrak', '\u27ED'));
+                   delimiter.add('\\lBrace', new Symbol('\\lBrace', '\u2983'));
+                   delimiter.add('\\rBrace', new Symbol('\\rBrace', '\u2984'));
+                   delimiter.add('\\lParen', new Symbol('\\lParen', '\u2985'));
+                   delimiter.add('\\rParen', new Symbol('\\rParen', '\u2986'));
+                   delimiter.add('\\lbrackubar', new Symbol('\\lbrackubar', '\u298B'));
+                   delimiter.add('\\rbrackubar', new Symbol('\\rbrackubar', '\u298C'));
+                   delimiter.add('\\lbrackultick', new Symbol('\\lbrackultick', '\u298D'));
+                   delimiter.add('\\rbracklrtick', new Symbol('\\rbracklrtick', '\u298E'));
+                   delimiter.add('\\lbracklltick', new Symbol('\\lbracklltick', '\u298F'));
+                   delimiter.add('\\rbrackurtick', new Symbol('\\rbrackurtick', '\u2990'));
+                   delimiter.add('\\langledot', new Symbol('\\langledot', '\u2991'));
+                   delimiter.add('\\rangledot', new Symbol('\\rangledot', '\u2992'));
+                   delimiter.add('\\lparenless', new Symbol('\\lparenless', '\u2993'));
+                   delimiter.add('\\rparengtr', new Symbol('\\rparengtr', '\u2994'));
+                   delimiter.add('\\Lparengtr', new Symbol('\\Lparengtr', '\u2995'));
+                   delimiter.add('\\Rparenless', new Symbol('\\Rparenless', '\u2996'));
+                   delimiter.add('\\lblkbrbrak', new Symbol('\\lblkbrbrak', '\u2997'));
+                   delimiter.add('\\rblkbrbrak', new Symbol('\\rblkbrbrak', '\u2998'));
+                   delimiter.add('\\lvzigzag', new Symbol('\\lvzigzag', '\u29D8'));
+                   delimiter.add('\\rvzigzag', new Symbol('\\rvzigzag', '\u29D9'));
+                   delimiter.add('\\Lvzigzag', new Symbol('\\Lvzigzag', '\u29DA'));
+                   delimiter.add('\\Rvzigzag', new Symbol('\\Rvzigzag', '\u29DB'));
+                   delimiter.add('\\lcurvyangle', new Symbol('\\lcurvyangle', '\u29FC'));
+                   delimiter.add('\\rcurvyangle', new Symbol('\\rcurvyangle', '\u29FD'));
+                   delimiter.add('\\Vvert', new Symbol('\\Vvert', '\u2980'));
+          }       // ready
+     },           // startup
+
+
+     tex: {
+          packages: {'[+]': ['tagformat', 'Lwarp-macros', 'textmacros']},
+          tags: "ams",
+                   tagformat: {
+                            number: function (n) {
+                                 if(MathJax.config.subequations==0)
+                                        return(MathJax.config.section + n);
+                                 else
+                                        return(MathJax.config.section + String.fromCharCode(96+n));
+                            },
+                   },
+     }
+}
+</script>
+
+
+<script
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+
+</head>
+<body>
+
+
+<a id="Complex_Analysis_h-autopage-50"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+<header>
+
+<p>
+<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+</p>
+
+</header>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Complex Analysis</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="node-Basics-holomorphic-functions.html#autosec-5" class="tocsection" >
+<span class="sectionnumber">1</span>&#x2003;Basics of holomorphic functions</a>
+</p>
+
+
+<p>
+<a href="node-Entire-functions.html#autosec-51" class="tocsection" >
+<span class="sectionnumber">2</span>&#x2003;Entire functions</a>
+</p>
+
+
+<p>
+<a href="node-The-gamma-function.html#autosec-70" class="tocsection" >
+<span class="sectionnumber">3</span>&#x2003;The gamma function</a>
+</p>
+
+
+<p>
+<a href="node-Elliptic-functions.html#autosec-72" class="tocsection" >
+<span class="sectionnumber">4</span>&#x2003;Elliptic functions</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
+
+
+<main class="bodycontainer">
+
+
+<section class="textbody">
+
+<h1>Complex Analysis</h1>
+
+<!--MathJax customizations:-->
+
+
+<div class="hidden">
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \LWRtensorindicesthreesub #1#2{{_{#2}}\LWRtensorindicesthree }\)
+
+\(\def \LWRtensorindicesthreesup #1#2{{^{#2}}\LWRtensorindicesthree }\)
+
+\(\newcommand {\LWRtensorindicesthreenotsup }{}\)
+
+\(\newcommand {\LWRtensorindicesthreenotsub }{ \ifnextchar ^ \LWRtensorindicesthreesup \LWRtensorindicesthreenotsup }\)
+
+\(\newcommand {\LWRtensorindicesthree }{ \ifnextchar _ \LWRtensorindicesthreesub \LWRtensorindicesthreenotsub }\)
+
+\(\newcommand {\LWRtensorindicestwo }{ \ifstar \LWRtensorindicesthree \LWRtensorindicesthree }\)
+
+\(\newcommand {\indices }[1]{\LWRtensorindicestwo #1}\)
+
+\(\newcommand {\LWRtensortwo }[3][]{{}\indices {#1}{#2}\indices {#3}}\)
+
+\(\newcommand {\tensor }{\ifstar \LWRtensortwo \LWRtensortwo }\)
+
+\(\newcommand {\LWRnuclidetwo }[2][]{{\vphantom {\mathrm {#2}}{}^{\LWRtensornucleonnumber }_{#1}\mathrm {#2}}}\)
+
+\(\newcommand {\nuclide }[1][]{\def \LWRtensornucleonnumber {#1}\LWRnuclidetwo }\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\cO }{\mathcal {O}}\)
+
+\(\newcommand {\cC }{\mathcal {C}}\)
+
+\(\newcommand {\cP }{\mathcal {P}}\)
+
+\(\newcommand {\cF }{\mathcal {F}}\)
+
+\(\newcommand {\cS }{\mathcal {S}}\)
+
+\(\newcommand {\cK }{\mathcal {K}}\)
+
+\(\newcommand {\cM }{\mathcal {M}}\)
+
+\(\newcommand {\GG }{\mathbb {G}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\QQ }{\mathbb {Q}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\LL }{\mathbb {L}}\)
+
+\(\newcommand {\HH }{\mathbb {H}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\SP }{\mathbb {S}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\sF }{\mathscr {F}}\)
+
+\(\newcommand {\sC }{\mathscr {C}}\)
+
+\(\newcommand {\ts }{\textsuperscript }\)
+
+\(\newcommand {\mf }{\mathfrak }\)
+
+\(\newcommand {\cc }{\mf {c}}\)
+
+\(\newcommand {\mg }{\mf {g}}\)
+
+\(\newcommand {\ma }{\mf {a}}\)
+
+\(\newcommand {\mh }{\mf {h}}\)
+
+\(\newcommand {\mn }{\mf {n}}\)
+
+\(\newcommand {\mc }{\mf {c}}\)
+
+\(\newcommand {\ul }{\underline }\)
+
+\(\newcommand {\mz }{\mf {z}}\)
+
+\(\newcommand {\me }{\mf {e}}\)
+
+\(\newcommand {\mff }{\mf {f}}\)
+
+\(\newcommand {\mm }{\mf {m}}\)
+
+\(\newcommand {\mt }{\mf {t}}\)
+
+\(\newcommand {\pp }{\mf {p}}\)
+
+\(\newcommand {\qq }{\mf {q}}\)
+
+\(\newcommand {\gl }{\mf {gl}}\)
+
+\(\newcommand {\msl }{\mf {sl}}\)
+
+\(\newcommand {\so }{\mf {so}}\)
+
+\(\newcommand {\mfu }{\mf {u}}\)
+
+\(\newcommand {\su }{\mf {su}}\)
+
+\(\newcommand {\msp }{\mf {sp}}\)
+
+\(\renewcommand {\aa }{\mf {a}}\)
+
+\(\newcommand {\bb }{\mf {b}}\)
+
+\(\newcommand {\sR }{\mathscr {R}}\)
+
+\(\newcommand {\lb }{\langle }\)
+
+\(\newcommand {\rb }{\rangle }\)
+
+\(\newcommand {\ff }{\mf {f}}\)
+
+\(\newcommand {\ee }{\epsilon }\)
+
+\(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
+\(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
+
+\(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
+
+\(\newcommand {\pushout }{\arrow [ul, phantom, &quot;\ulcorner &quot;, very near start]}\)
+
+\(\newcommand {\pullback }{\arrow [dr, phantom, &quot;\lrcorner &quot;, very near start]}\)
+
+\(\newcommand {\simp }[1]{#1^{\Delta ^{op}}}\)
+
+\(\newcommand {\arrowtcupp }[2]{\arrow [bend left=50, &quot;&quot;{name=U, below,inner sep=1}]{#1}\arrow [Rightarrow,from=U,to=MU,&quot;#2&quot;]}\)
+
+\(\newcommand {\arrowtclow }[2]{\arrow [bend right=50, &quot;&quot;{name=L,inner sep=1}]{#1}\arrow [Rightarrow,from=LM,to=L]{}[]{#2}}\)
+
+\(\newcommand {\arrowtcmid }[2]{\arrow [&quot;&quot;{name=MU,inner sep=1},&quot;&quot;{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}\)
+
+\(\newcommand {\dummy }{\textcolor {white}{\bullet }}\)
+
+\(\newcommand {\adjunction }[4]{ #1\hspace {2pt}\colon #2 \leftrightharpoons #3 \hspace {2pt}\colon #4 }\)
+
+\(\newcommand {\aug }{\mathop {\rm aug}\nolimits }\)
+
+\(\newcommand {\MC }{\mathop {\rm MC}\nolimits }\)
+
+\(\newcommand {\art }{\mathop {\rm art}\nolimits }\)
+
+\(\newcommand {\DiGrph }{\mathop {\rm DiGrph}\nolimits }\)
+
+\(\newcommand {\FMP }{\mathop {\rm FMP}\nolimits }\)
+
+\(\newcommand {\CAlg }{\mathop {\rm CAlg}\nolimits }\)
+
+\(\newcommand {\perf }{\mathop {\rm perf}\nolimits }\)
+
+\(\newcommand {\cof }{\mathop {\rm cof}\nolimits }\)
+
+\(\newcommand {\fib }{\mathop {\rm fib}\nolimits }\)
+
+\(\newcommand {\Thick }{\mathop {\rm Thick}\nolimits }\)
+
+\(\newcommand {\Orb }{\mathop {\rm Orb}\nolimits }\)
+
+\(\newcommand {\ko }{\mathop {\rm ko}\nolimits }\)
+
+\(\newcommand {\Spf }{\mathop {\rm Spf}\nolimits }\)
+
+\(\newcommand {\Spc }{\mathop {\rm Spc}\nolimits }\)
+
+\(\newcommand {\sk }{\mathop {\rm sk}\nolimits }\)
+
+\(\newcommand {\cosk }{\mathop {\rm cosk}\nolimits }\)
+
+\(\newcommand {\holim }{\mathop {\rm holim}\nolimits }\)
+
+\(\newcommand {\hocolim }{\mathop {\rm hocolim}\nolimits }\)
+
+\(\newcommand {\Pre }{\mathop {\rm Pre}\nolimits }\)
+
+\(\newcommand {\THR }{\mathop {\rm THR}\nolimits }\)
+
+\(\newcommand {\THH }{\mathop {\rm THH}\nolimits }\)
+
+\(\newcommand {\Fun }{\mathop {\rm Fun}\nolimits }\)
+
+\(\newcommand {\Loc }{\mathop {\rm Loc}\nolimits }\)
+
+\(\newcommand {\Bord }{\mathop {\rm Bord}\nolimits }\)
+
+\(\newcommand {\Cob }{\mathop {\rm Cob}\nolimits }\)
+
+\(\newcommand {\Set }{\mathop {\rm Set}\nolimits }\)
+
+\(\newcommand {\Ind }{\mathop {\rm Ind}\nolimits }\)
+
+\(\newcommand {\Sind }{\mathop {\rm Sind}\nolimits }\)
+
+\(\newcommand {\Ext }{\mathop {\rm Ext}\nolimits }\)
+
+\(\newcommand {\sd }{\mathop {\rm sd}\nolimits }\)
+
+\(\newcommand {\Ex }{\mathop {\rm Ex}\nolimits }\)
+
+\(\newcommand {\Out }{\mathop {\rm Out}\nolimits }\)
+
+\(\newcommand {\Cyl }{\mathop {\rm Cyl}\nolimits }\)
+
+\(\newcommand {\Path }{\mathop {\rm Path}\nolimits }\)
+
+\(\newcommand {\Ch }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\SSet }{\mathop {\rm \Set ^{\Delta ^{op}}}\nolimits }\)
+
+\(\newcommand {\Sq }{\mathop {\rm Sq}\nolimits }\)
+
+\(\newcommand {\Free }{\mathop {\rm Free}\nolimits }\)
+
+\(\newcommand {\Map }{\mathop {\rm Map}\nolimits }\)
+
+\(\newcommand {\Chain }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\LMap }{\mathop {\rm LMap}\nolimits }\)
+
+\(\newcommand {\RMap }{\mathop {\rm RMap}\nolimits }\)
+
+\(\newcommand {\Tot }{\mathop {\rm Tot}\nolimits }\)
+
+\(\newcommand {\MU }{\mathop {\rm MU}\nolimits }\)
+
+\(\newcommand {\MSU }{\mathop {\rm MSU}\nolimits }\)
+
+\(\newcommand {\MSp }{\mathop {\rm MSp}\nolimits }\)
+
+\(\newcommand {\MSO }{\mathop {\rm MSO}\nolimits }\)
+
+\(\newcommand {\MO }{\mathop {\rm MO}\nolimits }\)
+
+\(\newcommand {\BU }{\mathop {\rm BU}\nolimits }\)
+
+\(\newcommand {\KU }{\mathop {\rm KU}\nolimits }\)
+
+\(\newcommand {\BSU }{\mathop {\rm BSU}\nolimits }\)
+
+\(\newcommand {\BSp }{\mathop {\rm BSp}\nolimits }\)
+
+\(\newcommand {\BGL }{\mathop {\rm BGL}\nolimits }\)
+
+\(\newcommand {\BSO }{\mathop {\rm BSO}\nolimits }\)
+
+\(\newcommand {\BO }{\mathop {\rm BO}\nolimits }\)
+
+\(\newcommand {\KO }{\mathop {\rm KO}\nolimits }\)
+
+\(\newcommand {\Tor }{\mathop {\rm Tor}\nolimits }\)
+
+\(\newcommand {\Cotor }{\mathop {\rm Cotor}\nolimits }\)
+
+\(\newcommand {\imag }{\mathop {\rm Im}\nolimits }\)
+
+\(\newcommand {\real }{\mathop {\rm Re}\nolimits }\)
+
+\(\newcommand {\Cat }{\mathop {\rm Cat}\nolimits }\)
+
+\(\newcommand {\Fld }{\mathop {\rm Fld}\nolimits }\)
+
+\(\newcommand {\Frac }{\mathop {\rm Frac}\nolimits }\)
+
+\(\newcommand {\Dom }{\mathop {\rm Dom}\nolimits }\)
+
+\(\newcommand {\Hotc }{\mathop {\rm Hotc}\nolimits }\)
+
+\(\newcommand {\Top }{\mathop {\rm Top}\nolimits }\)
+
+\(\newcommand {\Ring }{\mathop {\rm Ring}\nolimits }\)
+
+\(\newcommand {\CRing }{\mathop {\rm CRing}\nolimits }\)
+
+\(\newcommand {\CGHaus }{\mathop {\rm CGHaus}\nolimits }\)
+
+\(\newcommand {\Alg }{\mathop {\rm Alg}\nolimits }\)
+
+\(\newcommand {\Bool }{\mathop {\rm Bool}\nolimits }\)
+
+\(\newcommand {\hTop }{\mathop {\rm hTop}\nolimits }\)
+
+\(\newcommand {\Nat }{\mathop {\rm Nat}\nolimits }\)
+
+\(\newcommand {\Rel }{\mathop {\rm Rel}\nolimits }\)
+
+\(\newcommand {\Mod }{\mathop {\rm Mod}\nolimits }\)
+
+\(\newcommand {\Space }{\mathop {\rm Space}\nolimits }\)
+
+\(\newcommand {\Vect }{\mathop {\rm Vect}\nolimits }\)
+
+\(\newcommand {\FinVect }{\mathop {\rm FinVect}\nolimits }\)
+
+\(\newcommand {\Matr }{\mathop {\rm Matr}\nolimits }\)
+
+\(\newcommand {\Ab }{\mathop {\rm Ab}\nolimits }\)
+
+\(\newcommand {\Gr }{\mathop {\rm Gr}\nolimits }\)
+
+\(\newcommand {\Grp }{\mathop {\rm Grp}\nolimits }\)
+
+\(\newcommand {\Hol }{\mathop {\rm Hol}\nolimits }\)
+
+\(\newcommand {\Gpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Grpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Mon }{\mathop {\rm Mon}\nolimits }\)
+
+\(\newcommand {\FinSet }{\mathop {\rm FinSet}\nolimits }\)
+
+\(\newcommand {\Sch }{\mathop {\rm Sch}\nolimits }\)
+
+\(\newcommand {\AffSch }{\mathop {\rm AffSch}\nolimits }\)
+
+\(\newcommand {\Idem }{\mathop {\rm Idem}\nolimits }\)
+
+\(\newcommand {\SIdem }{\mathop {\rm SIdem}\nolimits }\)
+
+\(\newcommand {\Aut }{\mathop {\rm Aut}\nolimits }\)
+
+\(\newcommand {\Ord }{\mathop {\rm Ord}\nolimits }\)
+
+\(\newcommand {\coker }{\mathop {\rm coker}\nolimits }\)
+
+\(\newcommand {\ch }{\mathop {\rm char}\nolimits }\)
+
+\(\newcommand {\Sym }{\mathop {\rm Sym}\nolimits }\)
+
+\(\newcommand {\adj }{\mathop {\rm adj}\nolimits }\)
+
+\(\newcommand {\dil }{\mathop {\rm dil}\nolimits }\)
+
+\(\newcommand {\Cl }{\mathop {\rm Cl}\nolimits }\)
+
+\(\newcommand {\Diff }{\mathop {\rm Diff}\nolimits }\)
+
+\(\newcommand {\End }{\mathop {\rm End}\nolimits }\)
+
+\(\newcommand {\Hom }{\mathop {\rm Hom}\nolimits }\)
+
+\(\newcommand {\Gal }{\mathop {\rm Gal}\nolimits }\)
+
+\(\newcommand {\Pos }{\mathop {\rm Pos}\nolimits }\)
+
+\(\newcommand {\Ad }{\mathop {\rm Ad}\nolimits }\)
+
+\(\newcommand {\GL }{\mathop {\rm GL}\nolimits }\)
+
+\(\newcommand {\SL }{\mathop {\rm SL}\nolimits }\)
+
+\(\newcommand {\vol }{\mathop {\rm vol}\nolimits }\)
+
+\(\newcommand {\reg }{\mathop {\rm reg}\nolimits }\)
+
+\(\newcommand {\Or }{\textnormal {O}}\)
+
+\(\newcommand {\U }{\mathop {\rm U}\nolimits }\)
+
+\(\newcommand {\SOr }{\mathop {\rm SO}\nolimits }\)
+
+\(\newcommand {\SU }{\mathop {\rm SU}\nolimits }\)
+
+\(\newcommand {\Spin }{\mathop {\rm Spin}\nolimits }\)
+
+\(\newcommand {\Sp }{\mathop {\rm Sp}\nolimits }\)
+
+\(\newcommand {\Int }{\mathop {\rm Int}\nolimits }\)
+
+\(\newcommand {\im }{\mathop {\rm im}\nolimits }\)
+
+\(\newcommand {\dom }{\mathop {\rm dom}\nolimits }\)
+
+\(\newcommand {\di }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\cod }{\mathop {\rm cod}\nolimits }\)
+
+\(\newcommand {\colim }{\mathop {\rm colim}\nolimits }\)
+
+\(\newcommand {\ad }{\mathop {\rm ad}\nolimits }\)
+
+\(\newcommand {\PSL }{\mathop {\rm PSL}\nolimits }\)
+
+\(\newcommand {\PGL }{\mathop {\rm PGL}\nolimits }\)
+
+\(\newcommand {\sep }{\mathop {\rm sep}\nolimits }\)
+
+\(\newcommand {\MCG }{\mathop {\rm MCG}\nolimits }\)
+
+\(\newcommand {\oMCG }{\mathop {\rm MCG^+}\nolimits }\)
+
+\(\newcommand {\Spec }{\mathop {\rm Spec}\nolimits }\)
+
+\(\newcommand {\rank }{\mathop {\rm rank}\nolimits }\)
+
+\(\newcommand {\diverg }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\disc }{\mathop {\rm disc}\nolimits }\)
+
+\(\newcommand {\sign }{\mathop {\rm sign}\nolimits }\)
+
+\(\newcommand {\Arf }{\mathop {\rm Arf}\nolimits }\)
+
+\(\newcommand {\Pic }{\mathop {\rm Pic}\nolimits }\)
+
+\(\newcommand {\Tr }{\mathop {\rm Tr}\nolimits }\)
+
+\(\newcommand {\res }{\mathop {\rm res}\nolimits }\)
+
+\(\newcommand {\Proj }{\mathop {\rm Proj}\nolimits }\)
+
+\(\newcommand {\mult }{\mathop {\rm mult}\nolimits }\)
+
+\(\newcommand {\N }{\mathop {\rm N}\nolimits }\)
+
+\(\newcommand {\lk }{\mathop {\rm lk}\nolimits }\)
+
+\(\newcommand {\Pf }{\mathop {\rm Pf}\nolimits }\)
+
+\(\newcommand {\sgn }{\mathop {\rm sgn}\nolimits }\)
+
+\(\newcommand {\grad }{\mathop {\rm grad}\nolimits }\)
+
+\(\newcommand {\lcm }{\mathop {\rm lcm}\nolimits }\)
+
+\(\newcommand {\Ric }{\mathop {\rm Ric}\nolimits }\)
+
+\(\newcommand {\Hess }{\mathop {\rm Hess}\nolimits }\)
+
+\(\newcommand {\sn }{\mathop {\rm sn}\nolimits }\)
+
+\(\newcommand {\cut }{\mathop {\rm cut}\nolimits }\)
+
+\(\newcommand {\tr }{\mathop {\rm tr}\nolimits }\)
+
+\(\newcommand {\codim }{\mathop {\rm codim}\nolimits }\)
+
+\(\newcommand {\ind }{\mathop {\rm index}\nolimits }\)
+
+\(\newcommand {\rad }{\mathop {\rm rad}\nolimits }\)
+
+\(\newcommand {\Rep }{\mathop {\rm Rep}\nolimits }\)
+
+\(\newcommand {\Lie }{\mathop {\rm Lie}\nolimits }\)
+
+\(\newcommand {\Der }{\mathop {\rm Der}\nolimits }\)
+
+\(\newcommand {\hgt }{\mathop {\rm ht}\nolimits }\)
+
+\(\newcommand {\Ider }{\mathop {\rm Ider}\nolimits }\)
+
+\(\newcommand {\id }{\mathop {\rm id}\nolimits }\)
+
+</div>
+
+<p>
+<!--................................-->
+<h4 id="autosec-51"><span class="sectionnumber">2&#x2003;</span>Entire functions</h4>
+<a id="Complex_Analysis_h-autopage-51"></a>
+<a id="Complex_Analysis_h-autofile-2"></a> The number of zeroes of an entire function is related to the growth of the function.
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-52"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.1</span></span><span class="amsthmnoteplain"> (Jensen’s Formula)</span>. Let \(f\) be holomorphic
+near the disk of radius \(R\), and nonzero at \(0\). Then if \(z_1,\dots , z_k\) are the zeros of \(f\), \(\log |f(0)| = \sum \log (\frac {|z_i|}{R}) + \frac {1}{2 \pi } \int _0^{2\pi } \log |f(Re^{i\theta
+})|d\theta \).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-53"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Note that if the formula holds for \(f,g\), then it holds for \(fg\). Thus we only need to show it for \(z-z_0\) where \(z_0\) lies in the disk, and non-vanishing holomorphic
+functions. For the latter, note that \(\log |f(z)|\) is the real part of the log of \(f\), so the formula follows from the mean value property. For \(f=z-z_0\), we have \(\frac {1}{2 \pi } \int \log |Re^{i\theta
+}-z_0|d\theta - \log R = \frac {1}{2 \pi } \int \log |e^{i\theta }-\frac {z_0}{R}|d\theta = \frac {1}{2 \pi } \int \log |1-\frac {z_0}{R}e^{i \theta }|d\theta \) by a change of variables \(\theta
+\to -\theta \), which by the mean value property is \(\real (\log (1-\frac {z_0}{R}z))|_{z = 0} = 0\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Given a holomorphic function \(f\) not vanishing at \(0\), let \(n_f(r)\) be the number of zeros with modulus \(\leq R\). Then Jensen’s formula gives
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-54"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.2</span></span>. \(\int _0^R\frac {n_f(r)}{r}dr = \frac {1}{2 \pi }\int _0^{2\pi } \log
+|f(Re^{i \theta })|d\theta - \log |f(0)|\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+As an example, let \(f\) be an <b>entire function of finite order </b>\(\rho \), where \(\rho \) is the infimum of \(r\) such that \(|f(z)| \leq Ce^{A|z|^r}\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-55"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.3</span></span>. <a id="finiteorderzeros"></a> If \(f\) is of finite order \(\leq \rho \), then
+\(n_f(R) = O(|R|^\rho )\). Moreover, if \(z_k\) are the zeros, then \(\sum _{i}|z_k|^{-s}\) converges for \(s &gt; \rho \).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-56"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> WLOG, \(f(0) \neq 0\). Jensen’s formula gives \(n_f(R) \leq 2\int _R^{2R}\frac {n_f(r)}{r}dr \leq \frac {1}{\pi }\int \log |f(2Re^{i\theta })|d\theta -
+\log |f(0)| = O(|R|^\rho )\). This bound generally implies convergence of the series. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-57"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.4</span></span>. Let \(F_i(z)\) be holomorphic functions on \(U\) such that \(|F_i(z)-1|\leq c_n\) for
+some summable sequence \(c_n\). Then \(F(z) = \prod _i F_i(z)\) converges uniformly to a holomorphic function on \(U\) that vanishes iff one of the \(F_i\) does. Moreover, if no \(F_i\) vanishes at a point \(p\), then
+\(\frac {F&apos;(p)}{F(p)} = \sum _i \frac {F_i&apos;(p)}{F_i(p)}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-58"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> WLOG we can assume that \(|F_i(z)-1| \leq \frac {1}{2}\) as \(c_n\) is summable. Then we have \(F(z) = e^{\sum _i\log F_i(z)}\). By the power series for \(\log
+(1+z)\), \(\log F_i(z) \leq 2|F_i(z)-1| \leq 2c_n\), so the sum uniformly converges to a holomorphic function. Note in particular this shows that \(F(z)\) doesn’t vanish as it is the exponential of something finite.
+Moreover, \(\log (F)&apos;(z) = \sum _i\log (F_i)&apos;(z) = \sum _i \frac {F&apos;}{F}(z)\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We will now derive the product formula for \(\sin (z)\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-59"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.5</span></span>. \(\pi \cot (\pi z) = \sum _{k \in \ZZ }\frac {1}{z+k} = \frac {1}{z}+\sum
+_{n&gt;0}\frac {2z}{z^2-n^2}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-60"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> These can be characterized by Liouville’s theorem as the unique \(\ZZ \)-periodic meromorphic function bounded away from a simple pole at \(\ZZ \) of residue \(1\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-61"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.6</span></span>. \(\sin (\pi z) = \pi z \prod _1^\infty (1-\frac {z^2}{n^2})\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-62"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Their logarithmic derivatives agree by the previous two lemmas, and so the two sides agree up to multiplication by a constant. By dividing by \(z\) and taking the limit as \(z
+\to 1\), we get \(1\) on both sides, so they are equal. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Given a sequence \(a_n \in \CC \) approaching \(\infty \), we can produce a function \(F\) vanishing exactly at the \(a_i\). WLOG, the \(a_i\) are nonzero. The function \(\prod (1-\frac {z}{a_i})\) may not converge,
+so we will have to correct for this. The idea is as follows: \((1-z) = e^{\log (1-z)} = e^{-\sum \frac {z^j}{j}}\). Thus \(E_k(z) = (1-z)e^{{\sum _1^k}\frac {z^j}{j}}\). for large \(k\) will not grow as fast, but will
+have the same zeros as \(E_0(z) = (1-z)\). The \(E_k(z)\) are called <b>canonical factors</b>.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-63"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.7</span></span><span class="amsthmnoteplain"> (Weierstrass)</span>. If \(a_i \neq 0\) tend to
+\(\infty \), \(\prod _iE_i(\frac {z}{a_i})\) is entire and has zeroes exactly at the \(a_i\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-64"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> For \(|z| \leq \frac {1}{2}\), \(|E_i(z)-1| = |e^{\sum _{k+1}^\infty \frac {z^j}{j}}-1|\). The sum is bounded above by \(c|z|^{k+1}\), so we get this is \(\leq
+c&apos;|z^{k+1}|\). If we fix some \(r\), then in the ball of radius \(r\), eventually the \(\frac {z}{a_i}\) are within \(\frac {1}{2}\), so the product converges. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Any function \(f\) can be divided by a function constructed as above to get a non-vanishing entire function, which must be of the form \(e^{g(z)}\) for some entire \(g\). This can be refined for \(f\) of finite order \(\rho \).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-65"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.8</span></span>. Let \(g\) be a holomorphic function such that \(\real g(z) \leq c|z|^s\) for values of
+\(|z|\) tending to \(\infty \). Then \(g\) is a polynomial of degree at most \(s\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-66"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(g(z) = \sum _i a_i z^i\). By Lemma <a href="node-Basics-holomorphic-functions.html#fouriercoeff">1.6</a>, we have that \(a_n= \frac {1}{2 \pi
+R^n}\int _0^{2\pi } {g(Re^{i\theta })}{e^{-in\theta }}d\theta \). Conjugating the equation and adding for \(n\) and \(-n\) gives \(a_n= \frac {1}{\pi R^n}\int _0^{2\pi } {\real g(Re^{i\theta
+})}{e^{-in\theta }}d\theta \) for \(n&gt;0\) and \(\real a_0 = \frac {1}{\pi }\int _0^{2\pi } {\real g(e^{i\theta })}d\theta \). Thus we have for \(n&gt;s\), \(|a_n|= \frac {1}{\pi R^n}|\int _0^{2\pi }
+{\real g(Re^{i\theta })}{e^{-in\theta }}d\theta | = \frac {1}{\pi R^n}|\int _0^{2\pi } {\real (cR^s-g(Re^{i\theta }))}{e^{-in\theta }}d\theta | \) \(\leq 2CR^{s-n}-\real a_0 R^{-n} \to 0\) as \(R
+\to \infty \). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Complex_Analysis_h-autopage-67"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.9</span></span><span class="amsthmnoteplain"> (Hadamard factorization theorem)</span>. If \(f\) is
+a holomorphic function of finite order \(\rho \) and \(k = \floor \rho \), then \(f = e^P(z) z^m \prod _i E_k(\frac {z}{a_i})\), where \(P\) is a polynomial of degree \(\leq k\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Complex_Analysis_h-autopage-68"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The product \(E(z) = z^m \prod _i E_k(\frac {z}{a_i})\) converges, where \(m\) is the order of the zero of \(f\), and \(a_i\) the other zeroes, as \(f\) is finite order, so
+\(|E_k(\frac z{a_i})-1|\) is bounded from above by \(c|\frac {z}{a_i}|^{k+1}\), and the series \(\frac {1}{|a_i|^{k+1}}\) converges. Thus \(\frac {f}{E}\) is an entire function with no zeroes, so is \(e^{g(z)}\) for
+some \(g\). If we can produce lower bounds on \(E\) for arbitrarily large \(|z|\), then by the lemma, \(g\) will have to be a polynomial. To do this, for \(\rho &lt;s&lt;k+1\), we would like to show that \(|\prod _k
+E_k(\frac {z}{a_n})| \geq e^{-C|z|^s}\) except maybe in the balls around each \(a_i\) of radius \(|a_i|^{-(k+1)}\). Then since \(R-\sum _{|a_i| \leq R} 2|a_i|^{-k+1} \to \infty \) as \(R \to \infty \), there
+are are arbitrarily large \(R\) such that when \(|z|=R\), it doesn’t intersect any of the balls, and the bound holds. This bound will then be good enough to show that \(g\) is a polynomial of the right degree.
+</p>
+
+<p>
+To obtain the bound, first obtain from the definition of \(E_k(z)\) that when \(|z| \leq \frac {1}{2}\), \(|E_k(z)| \geq e^{-c|z|^{k+1}}\) and \(|E_k(z)| \geq |1-z|e^{-c&apos;|z|^{k}}\) if \(|z| \geq \frac
+{1}{2}\). Then split the product \(|\prod _k E_k(\frac {z}{a_n})|\) into the product when \(|a_n| \leq 2|z|\) and \(|a_n|&gt;2|z|\). For the second product, we have \(\prod _n |E_k(\frac {z}{a_n})| \geq
+e^{-c|\sum _n\frac {|z|^{k+1}}{a_n^{k+1}}}\) \(\geq e^{-c&apos;&apos;|z|^s|\sum _n{a_n^{-s}}} \geq e^{-c&apos;&apos;&apos;|z|^s|} \) as the sum converges. For the first product, \(\prod _n |E_k(\frac
+{z}{a_n})| \geq \prod |1-\frac {z}{a_n}| \prod e^{-c&apos;|\frac {z}{a_n}|^k}\). The first term is \(\prod \frac {|a_n-z|}{|a_n|}\), which is \(\geq \prod \frac {1}{|a_i|^{k+2}} \geq e^{-(k+2)\log
+n_f(2|z|)\log (2|z|)}\), and applying Theorem <a href="node-Entire-functions.html#finiteorderzeros">2.3</a>, this is \(\geq e^{-C&apos;|z|^{s+\ee }}\), where \(\ee &gt;0\) is arbitrary. Note that if we had
+just chosen \(s\) a bit smaller, then \(s+\ee \) can be chosen to be the original real number we wanted. Finally for \(\prod e^{-c&apos;|\frac {z}{a_n}|^k}\), note \(c&apos;\sum |\frac {z}{a_n}|^k \leq
+C&apos;&apos;|z|^s\sum \frac {1}{|a_n|^s}\), so that the overall bound \(|\prod _k E_k(\frac {z}{a_n})| \geq e^{-C|z|^s}\) holds outside the chosen balls. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+</body>
+</html>

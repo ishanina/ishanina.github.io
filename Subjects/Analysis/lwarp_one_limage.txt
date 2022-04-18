@@ -1,0 +1,6 @@
+pdfseparate -f %1 -l %1 %4_html.pdf Analysis_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Analysis_h-images/lateximagetemp-%1.pdf Analysis_h-images/%3.pdf
+pdftocairo -svg -noshrink Analysis_h-images/%3.pdf Analysis_h-images/%3.svg
+del Analysis_h-images/%3.pdf
+del Analysis_h-images/lateximagetemp-%1.pdf
+exit

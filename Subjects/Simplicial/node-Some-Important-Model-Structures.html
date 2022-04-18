@@ -1,0 +1,3126 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="generator" content="LaTeX Lwarp package" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Simplicial</title>
+<link rel="stylesheet" type="text/css" href="fancycss.css" />
+
+<script>
+// Lwarp MathJax emulation code
+//
+// Based on code by Davide P. Cervone.
+// Equation numbering: https://github.com/mathjax/MathJax/issues/2427
+// Starred and ifnextchar macros: https://github.com/mathjax/MathJax/issues/2428
+// \left, \right delimiters: https://github.com/mathjax/MathJax/issues/2535
+//
+// Modified by Brian Dunn to adjust equation numbering and add subequations.
+//
+// LaTeX can use \seteqnumber{subequations?}{section}{number} before each equation.
+// subequations? is 0 usually, 1 if inside subequations.
+// section is a string printed as-is, or empty.
+// number is auto-incremented by MathJax between equations.
+//
+MathJax = {
+     subequations: "0",
+     section: "",
+     loader: {
+          load: ['[tex]/tagformat', '[tex]/textmacros'],
+     },
+     startup: {
+          ready() {
+              //       These would be replaced by import commands if you wanted to make
+              //       a proper extension.
+              const Configuration = MathJax._.input.tex.Configuration.Configuration;
+              const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+              const Macro = MathJax._.input.tex.Symbol.Macro;
+              const TexError = MathJax._.input.tex.TexError.default;
+              const ParseUtil = MathJax._.input.tex.ParseUtil.default;
+              const expandable = MathJax._.util.Options.expandable;
+
+
+              //       Insert the replacement string into the TeX string, and check
+              //       that there haven't been too many maxro substitutions (prevents
+              //       infinite loops).
+              const useArgument = (parser, text) => {
+                   parser.string = ParseUtil.addArgs(parser, text, parser.string.slice(parser.i));
+                   parser.i = 0;
+                   if (++parser.macroCount > parser.configuration.options.maxMacros) {
+                        throw new TexError('MaxMacroSub1',
+                        'MathJax maximum macro substitution count exceeded; ' +
+                        'is there a recursive macro call?');
+                   }
+              }
+
+
+              //       Create the command map for:
+              //            \ifstar, \ifnextchar, \ifblank, \ifstrequal, \seteqnumber
+              new CommandMap('Lwarp-macros', {
+                   ifstar: 'IfstarFunction',
+                   ifnextchar: 'IfnextcharFunction',
+                   ifblank: 'IfblankFunction',
+                   ifstrequal: 'IfstrequalFunction',
+                   seteqnumber: 'SeteqnumberFunction'
+              }, {
+                   //       This function implements an ifstar macro.
+                   IfstarFunction(parser, name) {
+                        const resultstar = parser.GetArgument(name);
+                        const resultnostar = parser.GetArgument(name);
+                        const star = parser.GetStar();                        // true if there is a *
+                        useArgument(parser, star ? resultstar : resultnostar);
+                   },
+
+
+                   //       This function implements an ifnextchar macro.
+                   IfnextcharFunction(parser, name) {
+                        let whichchar = parser.GetArgument(name);
+                        if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+                            // $ syntax highlighting
+                            whichchar = String.fromCodePoint(parseInt(whichchar));
+                        }
+                        const resultnextchar = parser.GetArgument(name);
+                        const resultnotnextchar = parser.GetArgument(name);
+                        const gotchar = (parser.GetNext() === whichchar);
+                        useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+                   },
+
+
+                   // This function implements an ifblank macro.
+                   IfblankFunction(parser, name) {
+                        const blankarg = parser.GetArgument(name);
+                        const resultblank = parser.GetArgument(name);
+                        const resultnotblank = parser.GetArgument(name);
+                        const isblank = (blankarg.trim() == "");
+                        useArgument(parser, isblank ? resultblank : resultnotblank);
+                   },
+
+
+                   // This function implements an ifstrequal macro.
+                   IfstrequalFunction(parser, name) {
+                        const strequalfirst = parser.GetArgument(name);
+                        const strequalsecond = parser.GetArgument(name);
+                        const resultequal = parser.GetArgument(name);
+                        const resultnotequal = parser.GetArgument(name);
+                        const isequal = (strequalfirst == strequalsecond);
+                        useArgument(parser, isequal ? resultequal : resultnotequal);
+                   },
+
+
+                   //       This function modifies the equation numbers.
+                   SeteqnumberFunction(parser, name) {
+                            //   Get the macro parameters
+                            const star = parser.GetStar();                      // true if there is a *
+                            const optBrackets = parser.GetBrackets(name);        // contents of optional brackets
+                            const newsubequations = parser.GetArgument(name);      // the subequations argument
+                            const neweqsection = parser.GetArgument(name);      // the eq section argument
+                            const neweqnumber = parser.GetArgument(name);        // the eq number argument
+                            MathJax.config.subequations=newsubequations ;       // a string with boolean meaning
+                            MathJax.config.section=neweqsection ;               // a string with numeric meaning
+                            parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+                   }
+
+
+              });
+
+
+              //       Create the Lwarp-macros package
+              Configuration.create('Lwarp-macros', {
+                   handler: {macro: ['Lwarp-macros']}
+              });
+
+
+              MathJax.startup.defaultReady();
+
+
+              // For forward references:
+              MathJax.startup.input[0].preFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            MathJax.config.subequations = math.inputData.recompile.subequations;
+                            MathJax.config.section = math.inputData.recompile.section;
+                   }
+              });
+              MathJax.startup.input[0].postFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            math.inputData.recompile.subequations = MathJax.config.subequations;
+                            math.inputData.recompile.section = MathJax.config.section;
+                   }
+              });
+
+
+                   // For \left, \right with unicode-math:
+                   const {DelimiterMap} = MathJax._.input.tex.SymbolMap;
+                   const {Symbol} = MathJax._.input.tex.Symbol;
+                   const {MapHandler} = MathJax._.input.tex.MapHandler;
+                   const delimiter = MapHandler.getMap('delimiter');
+                   delimiter.add('\\lBrack', new Symbol('\\lBrack', '\u27E6'));
+                   delimiter.add('\\rBrack', new Symbol('\\rBrack', '\u27E7'));
+                   delimiter.add('\\lAngle', new Symbol('\\lAngle', '\u27EA'));
+                   delimiter.add('\\rAngle', new Symbol('\\rAngle', '\u27EB'));
+                   delimiter.add('\\lbrbrak', new Symbol('\\lbrbrak', '\u2772'));
+                   delimiter.add('\\rbrbrak', new Symbol('\\rbrbrak', '\u2773'));
+                   delimiter.add('\\lbag', new Symbol('\\lbag', '\u27C5'));
+                   delimiter.add('\\rbag', new Symbol('\\rbag', '\u27C6'));
+                   delimiter.add('\\llparenthesis', new Symbol('\\llparenthesis', '\u2987'));
+                   delimiter.add('\\rrparenthesis', new Symbol('\\rrparenthesis', '\u2988'));
+                   delimiter.add('\\llangle', new Symbol('\\llangle', '\u2989'));
+                   delimiter.add('\\rrangle', new Symbol('\\rrangle', '\u298A'));
+                   delimiter.add('\\Lbrbrak', new Symbol('\\Lbrbrak', '\u27EC'));
+                   delimiter.add('\\Rbrbrak', new Symbol('\\Rbrbrak', '\u27ED'));
+                   delimiter.add('\\lBrace', new Symbol('\\lBrace', '\u2983'));
+                   delimiter.add('\\rBrace', new Symbol('\\rBrace', '\u2984'));
+                   delimiter.add('\\lParen', new Symbol('\\lParen', '\u2985'));
+                   delimiter.add('\\rParen', new Symbol('\\rParen', '\u2986'));
+                   delimiter.add('\\lbrackubar', new Symbol('\\lbrackubar', '\u298B'));
+                   delimiter.add('\\rbrackubar', new Symbol('\\rbrackubar', '\u298C'));
+                   delimiter.add('\\lbrackultick', new Symbol('\\lbrackultick', '\u298D'));
+                   delimiter.add('\\rbracklrtick', new Symbol('\\rbracklrtick', '\u298E'));
+                   delimiter.add('\\lbracklltick', new Symbol('\\lbracklltick', '\u298F'));
+                   delimiter.add('\\rbrackurtick', new Symbol('\\rbrackurtick', '\u2990'));
+                   delimiter.add('\\langledot', new Symbol('\\langledot', '\u2991'));
+                   delimiter.add('\\rangledot', new Symbol('\\rangledot', '\u2992'));
+                   delimiter.add('\\lparenless', new Symbol('\\lparenless', '\u2993'));
+                   delimiter.add('\\rparengtr', new Symbol('\\rparengtr', '\u2994'));
+                   delimiter.add('\\Lparengtr', new Symbol('\\Lparengtr', '\u2995'));
+                   delimiter.add('\\Rparenless', new Symbol('\\Rparenless', '\u2996'));
+                   delimiter.add('\\lblkbrbrak', new Symbol('\\lblkbrbrak', '\u2997'));
+                   delimiter.add('\\rblkbrbrak', new Symbol('\\rblkbrbrak', '\u2998'));
+                   delimiter.add('\\lvzigzag', new Symbol('\\lvzigzag', '\u29D8'));
+                   delimiter.add('\\rvzigzag', new Symbol('\\rvzigzag', '\u29D9'));
+                   delimiter.add('\\Lvzigzag', new Symbol('\\Lvzigzag', '\u29DA'));
+                   delimiter.add('\\Rvzigzag', new Symbol('\\Rvzigzag', '\u29DB'));
+                   delimiter.add('\\lcurvyangle', new Symbol('\\lcurvyangle', '\u29FC'));
+                   delimiter.add('\\rcurvyangle', new Symbol('\\rcurvyangle', '\u29FD'));
+                   delimiter.add('\\Vvert', new Symbol('\\Vvert', '\u2980'));
+          }       // ready
+     },           // startup
+
+
+     tex: {
+          packages: {'[+]': ['tagformat', 'Lwarp-macros', 'textmacros']},
+          tags: "ams",
+                   tagformat: {
+                            number: function (n) {
+                                 if(MathJax.config.subequations==0)
+                                        return(MathJax.config.section + n);
+                                 else
+                                        return(MathJax.config.section + String.fromCharCode(96+n));
+                            },
+                   },
+     }
+}
+</script>
+
+
+<script
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+
+</head>
+<body>
+
+
+<a id="Simplicial_h-autopage-508"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+<header>
+
+<p>
+<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+</p>
+
+</header>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Simplicial</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="node-Introduction.html#autosec-6" class="tocsection" >
+<span class="sectionnumber">1</span>&#x2003;Introduction</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-9" class="tocsection" >
+<span class="sectionnumber">2</span>&#x2003;Technical Things</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-36" class="tocsubsection" >
+<span class="sectionnumber">2.1</span>&#x2003;Generators of anodyne morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-54" class="tocsubsection" >
+<span class="sectionnumber">2.2</span>&#x2003;Enriched Categories</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-68" class="tocsubsection" >
+<span class="sectionnumber">2.3</span>&#x2003;Basics of Simplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-99" class="tocsubsection" >
+<span class="sectionnumber">2.4</span>&#x2003;Left fibration characterization of Kan fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-127" class="tocsubsection" >
+<span class="sectionnumber">2.5</span>&#x2003;Cartesian Morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-156" class="tocsubsection" >
+<span class="sectionnumber">2.6</span>&#x2003;Minimal Inner Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-173" class="tocsubsection" >
+<span class="sectionnumber">2.7</span>&#x2003;Trees</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-207" class="tocsection" >
+<span class="sectionnumber">3</span>&#x2003;Kan Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-230" class="tocsubsection" >
+<span class="sectionnumber">3.1</span>&#x2003;Minimal fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-243" class="tocsubsection" >
+<span class="sectionnumber">3.2</span>&#x2003;Equivalence of Quillen and Serre model structures</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-262" class="tocsection" >
+<span class="sectionnumber">4</span>&#x2003;Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-313" class="tocsubsection" >
+<span class="sectionnumber">4.1</span>&#x2003;Homotopy category of a model category</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-411" class="tocsubsection" >
+<span class="sectionnumber">4.2</span>&#x2003;Combinatorial Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-443" class="tocsubsection" >
+<span class="sectionnumber">4.3</span>&#x2003;Derived Functors</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-478" class="tocsubsection" >
+<span class="sectionnumber">4.4</span>&#x2003;Enriched and Simplicial model categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-510" class="tocsection" >
+<span class="sectionnumber">5</span>&#x2003;Some Important Model Structures</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-511" class="tocsubsection" >
+<span class="sectionnumber">5.1</span>&#x2003;Model structure on \(S\)-enriched categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-552" class="tocsubsection" >
+<span class="sectionnumber">5.2</span>&#x2003;Diagram model structures and homotopy limits</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-595" class="tocsubsection" >
+<span class="sectionnumber">5.3</span>&#x2003;Reedy model structures</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-613" class="tocsection" >
+<span class="sectionnumber">6</span>&#x2003;\(\Pi _1\) and Simplicial abelian groups</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-614" class="tocsubsection" >
+<span class="sectionnumber">6.1</span>&#x2003;Fundamental Groupoid</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-627" class="tocsubsection" >
+<span class="sectionnumber">6.2</span>&#x2003;Local Systems and Covering Spaces</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-628" class="tocsubsection" >
+<span class="sectionnumber">6.3</span>&#x2003;Simpicial objects in Abelian Categories</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-664" class="tocsection" >
+<span class="sectionnumber">7</span>&#x2003;Bisimplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-681" class="tocsubsection" >
+<span class="sectionnumber">7.1</span>&#x2003;Bisimplicial objects in an abelian category</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-701" class="tocsubsection" >
+<span class="sectionnumber">7.2</span>&#x2003;Model structures</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-727" class="tocsubsection" >
+<span class="sectionnumber">7.3</span>&#x2003;Bousfield-Friedlander</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-763" class="tocsubsection" >
+<span class="sectionnumber">7.4</span>&#x2003;Theorem B and Group Completion</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-787" class="tocsection" >
+<span class="sectionnumber">8</span>&#x2003;Some Classical Homotopy Theory</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-788" class="tocsubsection" >
+<span class="sectionnumber">8.1</span>&#x2003;The Hurewicz Map</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-841" class="tocsection" >
+<span class="sectionnumber">9</span>&#x2003;Models for Homotopy Types</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-842" class="tocsubsection" >
+<span class="sectionnumber">9.1</span>&#x2003;Test Categories</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-875" class="tocsubsection" >
+<span class="sectionnumber">9.2</span>&#x2003;Basics of Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-898" class="tocsubsection" >
+<span class="sectionnumber">9.3</span>&#x2003;Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-971" class="tocsubsection" >
+<span class="sectionnumber">9.4</span>&#x2003;Colimits in Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1010" class="tocsubsection" >
+<span class="sectionnumber">9.5</span>&#x2003;Weak equivalence classes of functors</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1043" class="tocsubsection" >
+<span class="sectionnumber">9.6</span>&#x2003;Model structure on Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1072" class="tocsection" >
+<span class="sectionnumber">10</span>&#x2003;Simplicial localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1073" class="tocsubsection" >
+<span class="sectionnumber">10.1</span>&#x2003;Free Categories and Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1087" class="tocsubsection" >
+<span class="sectionnumber">10.2</span>&#x2003;Dwyer-Kan Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1099" class="tocsubsection" >
+<span class="sectionnumber">10.3</span>&#x2003;Reduction to Cubical Sets</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
+
+
+<main class="bodycontainer">
+
+
+<section class="textbody">
+
+<h1>Simplicial</h1>
+
+<!--MathJax customizations:-->
+
+
+<div class="hidden">
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \LWRtensorindicesthreesub #1#2{{_{#2}}\LWRtensorindicesthree }\)
+
+\(\def \LWRtensorindicesthreesup #1#2{{^{#2}}\LWRtensorindicesthree }\)
+
+\(\newcommand {\LWRtensorindicesthreenotsup }{}\)
+
+\(\newcommand {\LWRtensorindicesthreenotsub }{ \ifnextchar ^ \LWRtensorindicesthreesup \LWRtensorindicesthreenotsup }\)
+
+\(\newcommand {\LWRtensorindicesthree }{ \ifnextchar _ \LWRtensorindicesthreesub \LWRtensorindicesthreenotsub }\)
+
+\(\newcommand {\LWRtensorindicestwo }{ \ifstar \LWRtensorindicesthree \LWRtensorindicesthree }\)
+
+\(\newcommand {\indices }[1]{\LWRtensorindicestwo #1}\)
+
+\(\newcommand {\LWRtensortwo }[3][]{{}\indices {#1}{#2}\indices {#3}}\)
+
+\(\newcommand {\tensor }{\ifstar \LWRtensortwo \LWRtensortwo }\)
+
+\(\newcommand {\LWRnuclidetwo }[2][]{{\vphantom {\mathrm {#2}}{}^{\LWRtensornucleonnumber }_{#1}\mathrm {#2}}}\)
+
+\(\newcommand {\nuclide }[1][]{\def \LWRtensornucleonnumber {#1}\LWRnuclidetwo }\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\cO }{\mathcal {O}}\)
+
+\(\newcommand {\cC }{\mathcal {C}}\)
+
+\(\newcommand {\cP }{\mathcal {P}}\)
+
+\(\newcommand {\cF }{\mathcal {F}}\)
+
+\(\newcommand {\cS }{\mathcal {S}}\)
+
+\(\newcommand {\cK }{\mathcal {K}}\)
+
+\(\newcommand {\cM }{\mathcal {M}}\)
+
+\(\newcommand {\GG }{\mathbb {G}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\QQ }{\mathbb {Q}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\LL }{\mathbb {L}}\)
+
+\(\newcommand {\HH }{\mathbb {H}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\SP }{\mathbb {S}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\sF }{\mathscr {F}}\)
+
+\(\newcommand {\sC }{\mathscr {C}}\)
+
+\(\newcommand {\ts }{\textsuperscript }\)
+
+\(\newcommand {\mf }{\mathfrak }\)
+
+\(\newcommand {\cc }{\mf {c}}\)
+
+\(\newcommand {\mg }{\mf {g}}\)
+
+\(\newcommand {\ma }{\mf {a}}\)
+
+\(\newcommand {\mh }{\mf {h}}\)
+
+\(\newcommand {\mn }{\mf {n}}\)
+
+\(\newcommand {\mc }{\mf {c}}\)
+
+\(\newcommand {\ul }{\underline }\)
+
+\(\newcommand {\mz }{\mf {z}}\)
+
+\(\newcommand {\me }{\mf {e}}\)
+
+\(\newcommand {\mff }{\mf {f}}\)
+
+\(\newcommand {\mm }{\mf {m}}\)
+
+\(\newcommand {\mt }{\mf {t}}\)
+
+\(\newcommand {\pp }{\mf {p}}\)
+
+\(\newcommand {\qq }{\mf {q}}\)
+
+\(\newcommand {\gl }{\mf {gl}}\)
+
+\(\newcommand {\msl }{\mf {sl}}\)
+
+\(\newcommand {\so }{\mf {so}}\)
+
+\(\newcommand {\mfu }{\mf {u}}\)
+
+\(\newcommand {\su }{\mf {su}}\)
+
+\(\newcommand {\msp }{\mf {sp}}\)
+
+\(\renewcommand {\aa }{\mf {a}}\)
+
+\(\newcommand {\bb }{\mf {b}}\)
+
+\(\newcommand {\sR }{\mathscr {R}}\)
+
+\(\newcommand {\lb }{\langle }\)
+
+\(\newcommand {\rb }{\rangle }\)
+
+\(\newcommand {\ff }{\mf {f}}\)
+
+\(\newcommand {\ee }{\epsilon }\)
+
+\(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
+\(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
+
+\(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
+
+\(\newcommand {\pushout }{\arrow [ul, phantom, &quot;\ulcorner &quot;, very near start]}\)
+
+\(\newcommand {\pullback }{\arrow [dr, phantom, &quot;\lrcorner &quot;, very near start]}\)
+
+\(\newcommand {\simp }[1]{#1^{\Delta ^{op}}}\)
+
+\(\newcommand {\arrowtcupp }[2]{\arrow [bend left=50, &quot;&quot;{name=U, below,inner sep=1}]{#1}\arrow [Rightarrow,from=U,to=MU,&quot;#2&quot;]}\)
+
+\(\newcommand {\arrowtclow }[2]{\arrow [bend right=50, &quot;&quot;{name=L,inner sep=1}]{#1}\arrow [Rightarrow,from=LM,to=L]{}[]{#2}}\)
+
+\(\newcommand {\arrowtcmid }[2]{\arrow [&quot;&quot;{name=MU,inner sep=1},&quot;&quot;{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}\)
+
+\(\newcommand {\dummy }{\textcolor {white}{\bullet }}\)
+
+\(\newcommand {\adjunction }[4]{ #1\hspace {2pt}\colon #2 \leftrightharpoons #3 \hspace {2pt}\colon #4 }\)
+
+\(\newcommand {\aug }{\mathop {\rm aug}\nolimits }\)
+
+\(\newcommand {\MC }{\mathop {\rm MC}\nolimits }\)
+
+\(\newcommand {\art }{\mathop {\rm art}\nolimits }\)
+
+\(\newcommand {\DiGrph }{\mathop {\rm DiGrph}\nolimits }\)
+
+\(\newcommand {\FMP }{\mathop {\rm FMP}\nolimits }\)
+
+\(\newcommand {\CAlg }{\mathop {\rm CAlg}\nolimits }\)
+
+\(\newcommand {\perf }{\mathop {\rm perf}\nolimits }\)
+
+\(\newcommand {\cof }{\mathop {\rm cof}\nolimits }\)
+
+\(\newcommand {\fib }{\mathop {\rm fib}\nolimits }\)
+
+\(\newcommand {\Thick }{\mathop {\rm Thick}\nolimits }\)
+
+\(\newcommand {\Orb }{\mathop {\rm Orb}\nolimits }\)
+
+\(\newcommand {\ko }{\mathop {\rm ko}\nolimits }\)
+
+\(\newcommand {\Spf }{\mathop {\rm Spf}\nolimits }\)
+
+\(\newcommand {\Spc }{\mathop {\rm Spc}\nolimits }\)
+
+\(\newcommand {\sk }{\mathop {\rm sk}\nolimits }\)
+
+\(\newcommand {\cosk }{\mathop {\rm cosk}\nolimits }\)
+
+\(\newcommand {\holim }{\mathop {\rm holim}\nolimits }\)
+
+\(\newcommand {\hocolim }{\mathop {\rm hocolim}\nolimits }\)
+
+\(\newcommand {\Pre }{\mathop {\rm Pre}\nolimits }\)
+
+\(\newcommand {\THR }{\mathop {\rm THR}\nolimits }\)
+
+\(\newcommand {\THH }{\mathop {\rm THH}\nolimits }\)
+
+\(\newcommand {\Fun }{\mathop {\rm Fun}\nolimits }\)
+
+\(\newcommand {\Loc }{\mathop {\rm Loc}\nolimits }\)
+
+\(\newcommand {\Bord }{\mathop {\rm Bord}\nolimits }\)
+
+\(\newcommand {\Cob }{\mathop {\rm Cob}\nolimits }\)
+
+\(\newcommand {\Set }{\mathop {\rm Set}\nolimits }\)
+
+\(\newcommand {\Ind }{\mathop {\rm Ind}\nolimits }\)
+
+\(\newcommand {\Sind }{\mathop {\rm Sind}\nolimits }\)
+
+\(\newcommand {\Ext }{\mathop {\rm Ext}\nolimits }\)
+
+\(\newcommand {\sd }{\mathop {\rm sd}\nolimits }\)
+
+\(\newcommand {\Ex }{\mathop {\rm Ex}\nolimits }\)
+
+\(\newcommand {\Out }{\mathop {\rm Out}\nolimits }\)
+
+\(\newcommand {\Cyl }{\mathop {\rm Cyl}\nolimits }\)
+
+\(\newcommand {\Path }{\mathop {\rm Path}\nolimits }\)
+
+\(\newcommand {\Ch }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\SSet }{\mathop {\rm \Set ^{\Delta ^{op}}}\nolimits }\)
+
+\(\newcommand {\Sq }{\mathop {\rm Sq}\nolimits }\)
+
+\(\newcommand {\Free }{\mathop {\rm Free}\nolimits }\)
+
+\(\newcommand {\Map }{\mathop {\rm Map}\nolimits }\)
+
+\(\newcommand {\Chain }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\LMap }{\mathop {\rm LMap}\nolimits }\)
+
+\(\newcommand {\RMap }{\mathop {\rm RMap}\nolimits }\)
+
+\(\newcommand {\Tot }{\mathop {\rm Tot}\nolimits }\)
+
+\(\newcommand {\MU }{\mathop {\rm MU}\nolimits }\)
+
+\(\newcommand {\MSU }{\mathop {\rm MSU}\nolimits }\)
+
+\(\newcommand {\MSp }{\mathop {\rm MSp}\nolimits }\)
+
+\(\newcommand {\MSO }{\mathop {\rm MSO}\nolimits }\)
+
+\(\newcommand {\MO }{\mathop {\rm MO}\nolimits }\)
+
+\(\newcommand {\BU }{\mathop {\rm BU}\nolimits }\)
+
+\(\newcommand {\KU }{\mathop {\rm KU}\nolimits }\)
+
+\(\newcommand {\BSU }{\mathop {\rm BSU}\nolimits }\)
+
+\(\newcommand {\BSp }{\mathop {\rm BSp}\nolimits }\)
+
+\(\newcommand {\BGL }{\mathop {\rm BGL}\nolimits }\)
+
+\(\newcommand {\BSO }{\mathop {\rm BSO}\nolimits }\)
+
+\(\newcommand {\BO }{\mathop {\rm BO}\nolimits }\)
+
+\(\newcommand {\KO }{\mathop {\rm KO}\nolimits }\)
+
+\(\newcommand {\Tor }{\mathop {\rm Tor}\nolimits }\)
+
+\(\newcommand {\Cotor }{\mathop {\rm Cotor}\nolimits }\)
+
+\(\newcommand {\imag }{\mathop {\rm Im}\nolimits }\)
+
+\(\newcommand {\real }{\mathop {\rm Re}\nolimits }\)
+
+\(\newcommand {\Cat }{\mathop {\rm Cat}\nolimits }\)
+
+\(\newcommand {\Fld }{\mathop {\rm Fld}\nolimits }\)
+
+\(\newcommand {\Frac }{\mathop {\rm Frac}\nolimits }\)
+
+\(\newcommand {\Dom }{\mathop {\rm Dom}\nolimits }\)
+
+\(\newcommand {\Hotc }{\mathop {\rm Hotc}\nolimits }\)
+
+\(\newcommand {\Top }{\mathop {\rm Top}\nolimits }\)
+
+\(\newcommand {\Ring }{\mathop {\rm Ring}\nolimits }\)
+
+\(\newcommand {\CRing }{\mathop {\rm CRing}\nolimits }\)
+
+\(\newcommand {\CGHaus }{\mathop {\rm CGHaus}\nolimits }\)
+
+\(\newcommand {\Alg }{\mathop {\rm Alg}\nolimits }\)
+
+\(\newcommand {\Bool }{\mathop {\rm Bool}\nolimits }\)
+
+\(\newcommand {\hTop }{\mathop {\rm hTop}\nolimits }\)
+
+\(\newcommand {\Nat }{\mathop {\rm Nat}\nolimits }\)
+
+\(\newcommand {\Rel }{\mathop {\rm Rel}\nolimits }\)
+
+\(\newcommand {\Mod }{\mathop {\rm Mod}\nolimits }\)
+
+\(\newcommand {\Space }{\mathop {\rm Space}\nolimits }\)
+
+\(\newcommand {\Vect }{\mathop {\rm Vect}\nolimits }\)
+
+\(\newcommand {\FinVect }{\mathop {\rm FinVect}\nolimits }\)
+
+\(\newcommand {\Matr }{\mathop {\rm Matr}\nolimits }\)
+
+\(\newcommand {\Ab }{\mathop {\rm Ab}\nolimits }\)
+
+\(\newcommand {\Gr }{\mathop {\rm Gr}\nolimits }\)
+
+\(\newcommand {\Grp }{\mathop {\rm Grp}\nolimits }\)
+
+\(\newcommand {\Hol }{\mathop {\rm Hol}\nolimits }\)
+
+\(\newcommand {\Gpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Grpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Mon }{\mathop {\rm Mon}\nolimits }\)
+
+\(\newcommand {\FinSet }{\mathop {\rm FinSet}\nolimits }\)
+
+\(\newcommand {\Sch }{\mathop {\rm Sch}\nolimits }\)
+
+\(\newcommand {\AffSch }{\mathop {\rm AffSch}\nolimits }\)
+
+\(\newcommand {\Idem }{\mathop {\rm Idem}\nolimits }\)
+
+\(\newcommand {\SIdem }{\mathop {\rm SIdem}\nolimits }\)
+
+\(\newcommand {\Aut }{\mathop {\rm Aut}\nolimits }\)
+
+\(\newcommand {\Ord }{\mathop {\rm Ord}\nolimits }\)
+
+\(\newcommand {\coker }{\mathop {\rm coker}\nolimits }\)
+
+\(\newcommand {\ch }{\mathop {\rm char}\nolimits }\)
+
+\(\newcommand {\Sym }{\mathop {\rm Sym}\nolimits }\)
+
+\(\newcommand {\adj }{\mathop {\rm adj}\nolimits }\)
+
+\(\newcommand {\dil }{\mathop {\rm dil}\nolimits }\)
+
+\(\newcommand {\Cl }{\mathop {\rm Cl}\nolimits }\)
+
+\(\newcommand {\Diff }{\mathop {\rm Diff}\nolimits }\)
+
+\(\newcommand {\End }{\mathop {\rm End}\nolimits }\)
+
+\(\newcommand {\Hom }{\mathop {\rm Hom}\nolimits }\)
+
+\(\newcommand {\Gal }{\mathop {\rm Gal}\nolimits }\)
+
+\(\newcommand {\Pos }{\mathop {\rm Pos}\nolimits }\)
+
+\(\newcommand {\Ad }{\mathop {\rm Ad}\nolimits }\)
+
+\(\newcommand {\GL }{\mathop {\rm GL}\nolimits }\)
+
+\(\newcommand {\SL }{\mathop {\rm SL}\nolimits }\)
+
+\(\newcommand {\vol }{\mathop {\rm vol}\nolimits }\)
+
+\(\newcommand {\reg }{\mathop {\rm reg}\nolimits }\)
+
+\(\newcommand {\Or }{\textnormal {O}}\)
+
+\(\newcommand {\U }{\mathop {\rm U}\nolimits }\)
+
+\(\newcommand {\SOr }{\mathop {\rm SO}\nolimits }\)
+
+\(\newcommand {\SU }{\mathop {\rm SU}\nolimits }\)
+
+\(\newcommand {\Spin }{\mathop {\rm Spin}\nolimits }\)
+
+\(\newcommand {\Sp }{\mathop {\rm Sp}\nolimits }\)
+
+\(\newcommand {\Int }{\mathop {\rm Int}\nolimits }\)
+
+\(\newcommand {\im }{\mathop {\rm im}\nolimits }\)
+
+\(\newcommand {\dom }{\mathop {\rm dom}\nolimits }\)
+
+\(\newcommand {\di }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\cod }{\mathop {\rm cod}\nolimits }\)
+
+\(\newcommand {\colim }{\mathop {\rm colim}\nolimits }\)
+
+\(\newcommand {\ad }{\mathop {\rm ad}\nolimits }\)
+
+\(\newcommand {\PSL }{\mathop {\rm PSL}\nolimits }\)
+
+\(\newcommand {\PGL }{\mathop {\rm PGL}\nolimits }\)
+
+\(\newcommand {\sep }{\mathop {\rm sep}\nolimits }\)
+
+\(\newcommand {\MCG }{\mathop {\rm MCG}\nolimits }\)
+
+\(\newcommand {\oMCG }{\mathop {\rm MCG^+}\nolimits }\)
+
+\(\newcommand {\Spec }{\mathop {\rm Spec}\nolimits }\)
+
+\(\newcommand {\rank }{\mathop {\rm rank}\nolimits }\)
+
+\(\newcommand {\diverg }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\disc }{\mathop {\rm disc}\nolimits }\)
+
+\(\newcommand {\sign }{\mathop {\rm sign}\nolimits }\)
+
+\(\newcommand {\Arf }{\mathop {\rm Arf}\nolimits }\)
+
+\(\newcommand {\Pic }{\mathop {\rm Pic}\nolimits }\)
+
+\(\newcommand {\Tr }{\mathop {\rm Tr}\nolimits }\)
+
+\(\newcommand {\res }{\mathop {\rm res}\nolimits }\)
+
+\(\newcommand {\Proj }{\mathop {\rm Proj}\nolimits }\)
+
+\(\newcommand {\mult }{\mathop {\rm mult}\nolimits }\)
+
+\(\newcommand {\N }{\mathop {\rm N}\nolimits }\)
+
+\(\newcommand {\lk }{\mathop {\rm lk}\nolimits }\)
+
+\(\newcommand {\Pf }{\mathop {\rm Pf}\nolimits }\)
+
+\(\newcommand {\sgn }{\mathop {\rm sgn}\nolimits }\)
+
+\(\newcommand {\grad }{\mathop {\rm grad}\nolimits }\)
+
+\(\newcommand {\lcm }{\mathop {\rm lcm}\nolimits }\)
+
+\(\newcommand {\Ric }{\mathop {\rm Ric}\nolimits }\)
+
+\(\newcommand {\Hess }{\mathop {\rm Hess}\nolimits }\)
+
+\(\newcommand {\sn }{\mathop {\rm sn}\nolimits }\)
+
+\(\newcommand {\cut }{\mathop {\rm cut}\nolimits }\)
+
+\(\newcommand {\tr }{\mathop {\rm tr}\nolimits }\)
+
+\(\newcommand {\codim }{\mathop {\rm codim}\nolimits }\)
+
+\(\newcommand {\ind }{\mathop {\rm index}\nolimits }\)
+
+\(\newcommand {\rad }{\mathop {\rm rad}\nolimits }\)
+
+\(\newcommand {\Rep }{\mathop {\rm Rep}\nolimits }\)
+
+\(\newcommand {\Lie }{\mathop {\rm Lie}\nolimits }\)
+
+\(\newcommand {\Der }{\mathop {\rm Der}\nolimits }\)
+
+\(\newcommand {\hgt }{\mathop {\rm ht}\nolimits }\)
+
+\(\newcommand {\Ider }{\mathop {\rm Ider}\nolimits }\)
+
+\(\newcommand {\id }{\mathop {\rm id}\nolimits }\)
+</div>
+
+<p>
+<!--................................-->
+<h4 id="autosec-510"><span class="sectionnumber">5&#x2003;</span>Some Important Model Structures</h4>
+<a id="Simplicial_h-autopage-510"></a>
+<a id="Simplicial_h-autofile-5"></a>
+<!--................................-->
+<h5 id="autosec-511"><span class="sectionnumber">5.1&#x2003;</span>Model structure on \(S\)-enriched categories</h5>
+<a id="Simplicial_h-autopage-511"></a>
+
+
+<p>
+Let \(S\) be a monoidal model category and let \(\Cat _S\) be tha category of (small) \(S\)-enriched categories. We will introduce a model structure on \(\Cat _S\).
+</p>
+
+<p>
+Since \(S\) is monoidal, we obtain a monoidal structure on \(hS\) by inverting weak equivalences. Given an \(S\)-enriched category \(C\), there is an associated \(hS\)-enriched category which will be called \(hC\).
+</p>
+
+<p>
+We say that \(F:C \to C&apos;\) in \(\Cat _S\) is a <i>weak equivalence</i> if the induced functor \(hC \to hC&apos;\) is an equivalence of \(hS\)-enriched categories. In other words:
+</p>
+
+<ul style="list-style-type:none">
+
+<li>
+<p>
+• For every \(X,Y \in C\), the map \(\Map _C(X,Y) \to \Map (FX,FY)\) is an equivalence.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+• Every object \(Y \in hC&apos;\) is equivalent to some \(F(X)\).
+</p>
+</li>
+</ul>
+
+<p>
+Suppose that the weak equivalences in \(S\) are stable under filtered colimits. Then the same is true for \(\Cat _S\). Moreover if \(S\) is also combinatorial, then the weak equivalences of \(\Cat _S\) are generated under filtered
+colimit by a set. To see this, they are clearly generated by weak equivalences between categories with finitely many objects and \(\kappa \)-compect mapping spaces, which is a small set. Thus in this case the weak equivalences are
+perfect.
+</p>
+
+<p>
+If \(A\) is an object of \(S\), let \([1]_{A}\) denote the \(S\)-enriched category having two objects \(X\) and \(Y\) with the only non identity morphisms being \(A = \Map _{[1]_A}(X,Y)\). Let \([0]_S\) be the terminal
+\(S\)-category.
+</p>
+
+<p>
+Let \(C_0\) denote the collection of morphims in \(S\) of the following types:
+</p>
+
+<ul style="list-style-type:none">
+
+<li>
+<p>
+1. The inclusion \(\phi \to [0]_S\).
+</p>
+
+</li>
+<li>
+
+<p>
+2. The induced maps \([1]_{A} \to [1]_{A&apos;}\) where \(A \to A&apos;\) ranges over a set of generators for the weakly saturated class of cofibrations in \(S\).
+</p>
+</li>
+</ul>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-512"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">5.1</span></span>. <a id="categorymodelstructure"></a> Let \(S\) be a combinatorial monoidal model
+category. Assume that every object of \(S\) is cofibrant and that the collection of weak equivalences in \(S\) is stable under filtered colimits. Then there exists a left proper combinatorial model structure on \(\Cat _S\) with the
+weak equivalences as defined above and the cofibrations generated by \(C_0\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-513"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It suffices to verify the conditions of Proposition <a href="node-Model-Categories.html#combmodelcatconstruct2">4.43</a>. Under the hypotheses, we have already \(W\) is
+perfect. Suppose \(f\) has the right lifting property with respect to everything in \(C_0\). Then because of \(\phi \to [0]_S\), the map is essentially surjective, and because of \([1]_A \to [1]_{A&apos;}\), the map on
+mapping spaces are triival fibrations, in particular weak equivalences.
+</p>
+
+<p>
+Now we must verify the last condition, namely that weak equivalences are stable under being pushed out by pushouts of \(C_0\). So suppose that \(F:C \to D\) is a weak equivalence, and \(G:C \to C&apos;\) is a pushout of a
+morphism in \(C_0\). We would like to show that \(F&apos;:C&apos; \to D&apos; = D \cup _C C&apos;\) is a weak equivalence.
+</p>
+
+<p>
+First consider the case that \(G\) is a pushout of a map \(\emptyset \to [0]_S\). In this case, \(F&apos;\) is just obtained by adding adjoining an object with no nonidentity morphisms, so it is clear that it is an equivalence.
+</p>
+
+<p>
+Now suppose \(G\) is the pushout of a map \([1]_{A} \to [1]_{T}\). First we will construct the pushout, \(C&apos;\). \(C\) is equipped with a map \(h:          S \to \Map (x,y)\), and \(C&apos;\) is the universal \(S\)-enriched
+category with an extension of \(h\) to \(T\).
+</p>
+
+<p>
+We define the objects of \(C&apos;\) are that of \(C\) and the map \(C \to C&apos;\) is the identity on objects. Fix objects \(w,z \in C&apos;\). Let \(M_C^k, k\geq 0\) be the objects in \(S\) given by \(\Map _{C}(y,z)
+\otimes T \otimes (\Map _C(y,x)\otimes T)^{\otimes {n-2}}\otimes \Map _C(w,x)\) for \(n\geq 2\), \(M_C^1= \Map _C(y,z)\otimes T\otimes \Map _C(w,x)\), \(M_C^0 = \Map _C(w,z)\). \(M_C^k\) can be thought
+of as morphisms in \(w \to z\) in \(C&apos;\) with a factorization through an object of \(S\) \(k\) times.
+</p>
+
+<p>
+We can identify morphisms in the different \(M^i_C\) that should be the same in \(C&apos;\). Namely, this means taking a colimit along various restrictions from \(T\) to \(A\) of the composition maps, and we define \(\Map
+_{C&apos;}(w,z)\) to be the result. It is straightforward to verify that this is the pushout category. Note that the object \(\Map _{C&apos;}(w,z)\) comes with a natural filtration via the images of the \(M^i_C\)s. The same
+construction gives a model for \(D&apos;\), where we would like to show that \(C&apos; \to D&apos;\) is an equivalence. To see this it suffices to check that the map is an equivalence on mapping spaces. Since weak equivalences
+behave nicely wrt filtered colimits, it suffices to check this on the filtered pieces.
+</p>
+
+<p>
+This follows from induction on the filtered piece. Let \(N^i_C\) be object mapping to \(M^i_C\) consisting of things in \(M^i_C\) except one morphism in \(A\) instead of \(T\). \(N^I_C\) can be constructed as a pushout of
+cofibrations, which maps into \(M^i_C\) as a cofibration because the tensor product is a left Quillen bifunctor. For \(i=0\), it is an equivalence by assumption. For \(i&gt;0\), it is a pushout of the \((i-1)^{th}\) piece and
+\(M^i_C\) along \(N^{i}_C\). This is a homotopy pushout since \(S\) is left proper, so it suffices to check by the inductive hypothesis that \(M^i_C \to M^i_D\) and \(N^i_C \to N^i_D\) are equivalences. The first follows from
+Lemma <a href="node-Model-Categories.html#homotopicalcofibrant">4.53</a> since our objects are cofibrant, and the second follows from the same Lemma along with a construction of \(N^i_C\) as a homotopy pushout.
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Some remarks about the result above: The model structures are functorial in \(S\) as follows: Suppose that \(S \to S&apos;\) is a monoidal left Quillen functor between model categories satisfying the Proposition. Then it
+induces a Quillen adjunction between \(\Cat _S\) and \(\Cat _{S&apos;}\). If \(f\) is a Quilen equivalence, then so is the induced map. Furthermore, it follows from the proof that in the model structure, a cofibration induces a
+cofibration on mapping spaces.
+</p>
+
+<p>
+Next we will examine the fibrations in this model structure.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-514"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.2</span></span>. A <b>quasi-fibration</b> \(f:C \to D\) is a functor such that for every and every
+isomorphism \(f(X) \to f(Y)\), there is an isomorphism \(X \to \overline {Y}\) lifting it.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We will show later that \(\Cat \) admits a model structure where the fibrations are quasi-fibrations and the weak equivalences are equivalences.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-515"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.3</span></span>. A morphism in an \(S\)-enriched category \(C\) is an <b>equivalence</b> if it is an
+isomorphism in \(hC\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-516"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.4</span></span>. An \(S\)-enriched category is <b>locally fibrant</b> if for every pair of objects \(X,Y
+\in C\), \(\Map (X,Y)\) is fibrant in \(S\). A functor \(F:C \to C&apos;\) is a <b>local fibration</b> if
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. For every pair \(X,Y \in C\), \(\Map (X,Y) \to \Map (FX,FY)\) is a fibration.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. The induced map \(hC \to hC&apos;\) is a quasi-fibration.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-517"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">5.4.1</span></span>. <a id="localfibration"></a> Suppose that condition \((1)\) is satisfied.
+If \(C&apos;\) is locally fibrant, then every isomorphism \([f]:F(X) \to Y\) in \(hC&apos;\) can be represented by an equivalence \(f:F(X) \to Y\) because of Proposition <a
+href="node-Model-Categories.html#modelcathomotopyclasses">4.21</a>. Let \(\overline {Y}\) be an object of \(C\) with \(F(\overline {Y}) = Y\). Then by Proposition <a
+href="node-Model-Categories.html#hClifting">4.25</a>, if \(C&apos;\) is locally fibrant, \((2)\) is equivalent to the condition that for every equivalence \(F(X) \to Y\) in \(C&apos;\), there is an equivalence \(\overline
+{f}:     X \to \overline {Y}\) lifting it.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Let \([1]_S^{\sim }\) be the \(S\)-enriched category with two objects that are isomorphic and have endomorphisms \(1_S\). In otherwords, \(\Hom (X,Y)\) is always \(1_S\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-518"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.5</span></span>. Let \(S\) be a monoidal model category satisfying the hypotheses of Proposition <a
+href="node-Some-Important-Model-Structures.html#categorymodelstructure">5.1</a>. \(S\) satisfies the <b>invertibility hypothesis</b> if the following condistion is satisfied:
+</p>
+
+<p>
+Let \(i:[1]_S \to C\) be a cofibration of \(S\)-enriched categories classifying a morphisms \(f \in C\) which is invertible in the homotopy category \(hC\), and form a pushout
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-62"
+      class="lateximagesource"
+><!--
+       i
+[1]S         C
+               j
+
+
+[1]∼
+   S       C⟨f −1 ⟩
+--><img
+      src="Simplicial_h-images/image-62.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+Then \(j\) is an equivalence of \(S\)-enriched categories.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-522"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">5.5.1</span></span>. <a id="invremark1"></a> Since \(\Cat _S\) is left proper, we can take a
+trivial cofibration \(C \to C&apos;\) where \(C&apos;\) is a fibrant \(S\)-enriched category. By the \(3\) out of \(4\) property, and the fact that trivial cofibrations are stable under pushout, in checking that the invertibility
+hypothesis holds, it suffices to assume that \(C\) is fibrant.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-523"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">5.5.2</span></span>. <a id="invremark2"></a> Also note that in the definition of the invertibiltiy
+hypothesis, since \(i\) is a cofibration and the model structure is left proper, the pushout is a homotopy pushout. More generally we can define \(C[f^{-1}]\) to be the homotopy pushout along a morphism \(f\) of the map
+\([1]_S \to [1]_S^{\sim }\). The invertibility hypothesis is then equivalent to the statement that if \(f\) is an equivalence, then the map \(C \to C[f^{-1}]\) is an equivalence. Since \(\Cat _S\) is left proper, this can be
+computed by factoring the map \([1]_S \to [1]_S^{\sim }\) as a cofibration and a trivial fibration \([1]_S \to E \to [1]_S^{\sim }\), and taking the pushout of the first map.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-524"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">5.5.3</span></span>. <a id="invremark3"></a> Suppose that \(C\) is fibrant \(S\)-enriched, and
+containes an equivalence \(f\). We can observe that the homotopy pushout map \(C \to C[f^{-1}]\) is a trivial cofibration, so it admits a retraction. This induces a map \(E \to C\). Viewing \(E\) as a cylinder for \([0]_S\),
+this map is a homotopy between the maps given by \(X\) and \(Y\).
+</p>
+
+<p>
+More generally, given a fibration \(C \to D\) of \(S\)-enriched categories and \(f:X \to Y\) a morphism in \(C\) lifting an identity in \(D\), the functors from \([0]_S\) to \(C\) classifying \(X\) and \(Y\) are homotopic.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-525"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.6</span></span>. <a id="excellentdef"></a> A model category \(S\) is <b>excellent</b> if it has a
+symmetric monoidal structure and satisfies the following conditions:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+(A1) \(S\) is combinatorial
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(A2) Every monomorphism is a cofibration and the collection of cofibrations is stable under products
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(A3) The collection of weak equivalences is stable under filtered colimits
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(A4) \(S\) is a monoidal model category
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(A5) \(S\) satisfies the invertibility hypothesis.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+\((A5)\) is a consequence of the other axioms, which is a result of Tyler Lawson. For now, it will suffice to observe that a presentable closed monoidal category with the trivial model structure is excellent.
+</p>
+
+<p>
+Let \(S\) be an excellent model category. \(\Cat _S\) is naturally cotensored over \(S\): for \(K \in S\) we can define \(C^K\) to have the same objects but maps \(\Map _C(X,Y)^K\). \(\Cat _S\) is not tensored over \(S\), but
+given a function \(\varphi :C\to D\) only defined on objects, there is an object \(\Map ^{\phi }_{\Cat _S}(C,D)\) such that
+</p>
+
+<p>
+\[\Hom _S(K,\Map ^{\varphi }_{\Cat _S}(C,D)) = \Hom ^\varphi _{\Cat _S}(C,D^K)\]
+</p>
+
+<p>
+where \(\Hom ^{\varphi }\) denotes functors that agree with \(\varphi \) on the object level. This object satisfies the same property that you would expect for a tensoring except with \(\varphi \)s everywhere.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-526"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">5.7</span></span>. <a id="excellentlemma"></a> Let \(S\) be an excellent model category. Fix a diagram in
+\(\Cat _S\)
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-63"
+      class="lateximagesource"
+><!--
+    u
+C        C′
+F         F′
+    u′
+D        D′
+--><img
+      src="Simplicial_h-images/image-63.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+Assume that for every pair of objects \(X,Y \in C\), the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-64"
+      class="lateximagesource"
+><!--
+ Map(X, Y )      Map(F X, F Y )
+
+
+Map(uX, uY )   Map(u′ F X, u′ F Y )
+--><img
+      src="Simplicial_h-images/image-64.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+is a homotopy pullback square involving fibrant objects of \(S\) and the horizontal arrows are fibrations.
+</p>
+
+<p>
+Let \(G:A \to B\) be a functor between \(S\)-enriched categories which is a transfinite composition of pushouts of generating cofibrations in \(\Cat _S\) of the form \([1]_S \to [1]_{S&apos;}\) and let \(\varphi \) be a
+function from the set of objects of \(B\) to that of \(C\).
+</p>
+
+<p>
+Then the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-65"
+      class="lateximagesource"
+><!--
+MapφCatS (B, C)    MapFCat
+                        φ
+                          S
+                            (B, D) ×MapF φ (A,D) MapφCatS (A, C)
+                                           CatS
+
+
+
+
+                        ′
+Mapuφ        ′
+   CatS (B, C )
+                        Fφ
+                  M apuCatS
+                            (B, D′ ) ×Mapu′ F φ (A,D′ ) Mapuφ        ′
+                                                           CatS (A, C )
+                                          CatS
+--><img
+      src="Simplicial_h-images/image-65.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+is a homotopy pullback square between fibrant object of \(S\), and the horizontal arrow are fibrations.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-536"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The set of morphisms \(A \to B\) such that the conclusion holds is weakly saturated, so it suffices to check it for \([1]_S \to [1]_{S&apos;}\). if \(\phi \) has images \(X,Y\)
+the square above becomes
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-66"
+      class="lateximagesource"
+><!--
+                 ′                                                                   ′
+ MapC (X, Y )S                 MapD (F X, F Y )S ×MapD (F X,F Y )S MapC (X, Y )S
+
+
+                     ′                                                                         ′
+MapC ′ (uX, uY )S        MapD′ (u′ F X, u′ F Y )S ×MapD′ (u′ F X,u′ F Y )S MapC ′ (uX, uY )S
+--><img
+      src="Simplicial_h-images/image-66.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+which follows from our assumptions. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-540"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">5.8</span></span>. Let \(S\) be an excellent model category. Then a map \(C \to D\) where \(D\) is fibrant
+is a local fibration iff it is a fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-541"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Suppose that \(F:C \to D\) is a fibration. Then it has the right lifting property with respect to \([1]_S \to [1]_{S&apos;}\) so it follows that for \(X,Y \in C\), the map
+\(\Map _C(X,Y) \to \Map _D(X,Y)\) is a fibration. In particular, \(C\) is locally fibrant.
+</p>
+
+<p>
+It suffices then to verify the condition in Remark <a href="node-Some-Important-Model-Structures.html#localfibration">5.4.1</a>. Suppose that \(f:FX\to Y\) is an equivalence in \(D\). Let \(E, D[f^{-1}]\) be as in
+Remark <a href="node-Some-Important-Model-Structures.html#invremark2">5.5.2</a>. Since \(S\) satisfies the invertibility hypothesis, \(D \to D[f^{-1}]\) is a trivial cofibration. \(D\) is fibrant, so this map admits a
+retraction, which induced a map \(r:E \to D\). Consider the lifting problem below,
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-67"
+      class="lateximagesource"
+><!--
+       X
+[0]S       C
+           F
+
+
+
+
+∼
+       r
+ E         D
+--><img
+      src="Simplicial_h-images/image-67.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+a lift exists, giving the desired lift of \(f\).
+</p>
+
+<p>
+Now assume that \(F\) is a local fibration. Factor \(F\) as \(C\xrightarrow {u}C&apos; \xrightarrow {F&apos;}D\) where \(u\) is a weak equivalence and \(F&apos;\) is a fibration. We will prove:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+• Suppose we are given a commutative diagram in \(\Cat _S\).
+</p>
+<div class="center">
+<p>
+<span
+      id="lateximage-Simplicial_h-68"
+      class="lateximagesource"
+><!--
+    v
+A        C
+G        F
+    v′
+B        D
+--><img
+      src="Simplicial_h-images/image-68.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+<p>
+If there is a lift from \(B\) to \(C&apos;\) making everything commute, then there exists a lift in the diagram above from \(B\) to \(C\).
+</p>
+</li>
+</ul>
+
+<p>
+Since \(F&apos;\) is a fibration, this will prove that \(F\) has the right lifting property with respect to all trivial cofibrations, completing the proof. First, to prove \(\bullet \), it suffices to assume that \(G\) is a transfinite
+pushout of generating cofibrations, since \(G\) is a retract of such a cofibration. We can reorder this transfinite pushout to factor \(G\) into \(A \xrightarrow {G_0} B&apos; \xrightarrow {G_1} B\) where \(G_0\) is obtained
+by adjoining objects \(\{B_i\}_{i\in I}\) and \(G_1\) from pushouts of \([1]_S \to [1]_{S&apos;}\). Since \(u\) is an equivalence, there exist objects \(\{C_i\}_{i\in I}\) and equivalences \(f_i:uC_i \to \alpha B_i\).
+Since \(F\) is a local fibration, we can lift these to equivalences \(f&apos;_i:C_i \to C&apos;&apos;_i\) in \(C\).
+</p>
+
+<p>
+Since \(C&apos; \to D\) is a fibration and \(D\) is fibrant, it follows that \(C&apos;\) is fibrant. Since \(f&apos;\) is an equivalence, the induced map \(\Map (uC&apos;&apos;_i,C&apos;_i) \to \Map (uC_i,C&apos;_i)\) is
+an equivalence. Since both of these are fibrant, they induce an isomorphism on homotopy classes from the unit, so it follows that we can choose morphisms \(f&apos;&apos;_i:uC&apos;&apos;_i \to C&apos;_i\) in \(C&apos;\)
+such that composing with \(uf&apos;_i\) gives something homotopic to \(f_i\). It follows that \(F&apos;(f&apos;&apos;_i)\) is homotopic to the identity. Then since \(\Map (uC_i&apos;&apos;,C_i&apos;) \to \Map
+(FC_i&apos;&apos;,F&apos;C_i&apos;)\) is a fibration, we can lift this homotopy to modify \(f&apos;&apos;_i\) within its homotopy class to lift the identity. Thus by replacing \(C_i\) with \(C&apos;&apos;_i\) we can
+assume that each of the maps \(f_i\) projects to the identity in \(D\).
+</p>
+
+<p>
+Define \(\alpha _0&apos;\) to be the functor \(B&apos;_0 \to C&apos;\) given by sending \(a\mapsto \alpha \circ G_1(A)\) if \(a \in A\) and \(uC_i\) otherwise. By Remark <a
+href="node-Some-Important-Model-Structures.html#invremark3">5.5.3</a>, \(\alpha _0\) is homotopic to \(\alpha \circ G_1\) in \((\Cat _S)_{/D}\). Applying Proposition <a
+href="node-Model-Categories.html#hClifting">4.25</a>, we can replace \(\alpha \) by a map \(\alpha _0\). But then the map determined by \(C_i\) give a lift \(B&apos; \to C\), so we can replace \(A\) with
+\(B&apos;\). We have thus reduced to the case that the map \(A \to B\) is a transfinite composition of pushouts of morphisms \([1]_S \to [1]_{S&apos;}\). Let \(\varphi \) be the map from the objects of \(B\) to the
+objects of \(C\) determined by \(\alpha \). Applying Lemma <a href="node-Some-Important-Model-Structures.html#excellentlemma">5.7</a>, we obtain a homotopy pullback diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-69"
+      class="lateximagesource"
+><!--
+MapφCatS (B, C)    MapFCat
+                        φ
+                          S
+                            (B, D) ×MapF φ (A,D) MapφCatS (A, C)
+                                         CatS
+
+
+
+
+                        ′
+Mapuφ        ′
+   CatS (B, C )
+                        Fφ
+                  M apuCatS
+                            (B, D) ×Mapu′ F φ (A,D) Mapuφ        ′
+                                                       CatS (A, C )
+                                        CatS
+--><img
+      src="Simplicial_h-images/image-69.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+with the horizontal maps fibrations, and all the objects fibrant. Thus we have a weak equivalence
+</p>
+
+<p>
+\[\Map ^{\varphi }_{\Cat _S}(B,C) \to M = \Map ^{u\varphi }_{\Cat _S}(B,C&apos;) \times _{ \Map ^{F\varphi }_{\Cat _S}(B,D)} \Map ^{\varphi }_{\Cat _S}(A,C)\]
+</p>
+
+<p>
+of fibrations over \(N=Map^{u&apos;F\varphi }_{\Cat _S}(B,D) \times _{ \Map ^{u&apos;F\varphi }_{\Cat _S}(A,D)} \Map ^{u\varphi }_{\Cat _S}(A,C&apos;)\). The map \(\alpha \) is given by a morphism \(1_S
+\to M\) lifting the map \(v&apos;,uv&apos;\) to \(N\). Thus by applying Proposition <a href="node-Model-Categories.html#hClifting">4.25</a>, we can produce a lift to \(N\), which gives the desired map. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-551"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">5.8.1</span></span>. <a id="catof1catsmodelstr"></a> Let \(S\) be the category of sets with
+the trivial model structure. Then we have exhibited a left proper combinatorial model structure on \(\Cat \). Cofibrations are functors that are injective on objects, weak equivalences are equivalences, and fibrations are
+<b>isofibrations</b>, meaning that we can always lift isomorphisms. Note that every object is cofibrant fibrant.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-552"><span class="sectionnumber">5.2&#x2003;</span>Diagram model structures and homotopy limits</h5>
+<a id="Simplicial_h-autopage-552"></a>
+
+
+<a id="homotopylimitsdiagrammodelstrs"></a>
+
+<p>
+Here we will explain how to put model structures on functor categories \(\Fun (C,A) = A^C\) where \(A\) is an \(S\)-enriched model category, and \(C\) is a small \(S\)-category. This will yield homotopy limits and colimits.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-553"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.9</span></span>. A morphism in \(A^C\) is an <b>injective cofibration</b> if it is levelwise a
+cofibration, and a <b>projective fibration</b> if it is levelwise a fibration, and a weak equivalence if it is a levelwise weak equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Similarly, injective fibrations and projective cofibrations are defined by the appropriate lifting properties, and weak equivalences are defined pointwise. \(A^C\) is enriched, and pointwise tensored and cotensored over \(S\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-554"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">5.10</span></span>. <a id="funcatsmallsetgen"></a> Let \(A\) be a presentable category which is enriched,
+tensored and cotensored over a presentable category \(S\), and let \(C\) be a small \(S\)-enriched category. Let \(\overline {M}\) be a weakly saturated set of morphisms of \(A\) generated by a set. Let \(\tilde {M}\) be the
+collection of morphisms \(F \to G\) in \(A^C\) such that for every \(c \in C\), the map \(F(c) \to G(c)\) is in \(\overline {M}\). Then \(\tilde {M}\) is generated by a small set of morphisms.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-555"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The proof strategy is analogous to that of Proposition <a href="node-Technical-Things.html#maintree">2.72</a>.
+</p>
+
+<p>
+Choose a regular uncountable cardinal \(\kappa \) satisfying
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+(i) \(C\) has fewer than \(\kappa \) objects.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(ii) Let \(X,Y\in C\) and let \(K = \Map _C(X,Y)\). Then the functor \(x \mapsto x^K\) preserves \(\kappa \)-filtered colimits. This implies that \(\kappa \)-compact objects are stable with respect to \(\otimes K\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(iii) \(A\) is \(\kappa \)-accessible. Then \(A^{C}\) is also \(\kappa \)-accessible, and the \(\kappa \)-compact objects are those which are pointwise \(\kappa \)-compact.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(iv) \(\overline {M}\) is generated by the subset \(M_0\) consisting of maps between \(\kappa \)-compact objects.
+</p>
+</li>
+</ul>
+
+<p>
+Let \(M\) be the collection of morphisms in \(A^C\) that are pointwise in \(M_0\). We would like to show that the saturation of \(M\) is all morphisms \(f\) that are pointwise in \(\overline {M}\). Fix such a morphism \(f:F\to
+G\). Corollary <a href="node-Technical-Things.html#treecorollary">2.73</a> implies for each \(c \in C\) that there is a \(\kappa \)-good \(M_0\)-tree \(\{Y(c)_\alpha \}_{\alpha \in A(c)}\) with root \(F(c)\)
+with colimit \(f(c)\).
+</p>
+
+<p>
+Define a <b>slice</b> to be the following data:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. For each object \(c \in C\), a downward-closed subset \(B(c) \subset A(c)\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. For each object \(c \in C\), a morphism
+</p>
+<p>
+\[\eta _c:\coprod _{c&apos; \in C}Y(c&apos;)_{B(c&apos;)} \otimes \Map _A(c&apos;,c) \to Y(c)_{B(c)}\]
+</p>
+<p>
+making the following diagrams commutative:
+</p>
+<div class="center">
+<p>
+<span
+      id="lateximage-Simplicial_h-70"
+      class="lateximagesource"
+><!--
+                Y (c′′ )B(c′′ ) ⊗ MapA (c′ , c) ⊗ Map(c′ , c)
+                                                    ◦
+                           ηc′
+
+Y (c′ )B(c′ ) ⊗ MapA (c′ , c)                   Y (c′′ )B(c′′ ) ⊗ MapA (c′′ , c)
+                           ηc′′
+                                                   ηc
+
+                                  Y (c)B(c)
+--><img
+    src="Simplicial_h-images/image-70.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span> <span
+    id="lateximage-Simplicial_h-71"
+    class="lateximagesource"
+><!--
+  F (c′ ) ⊗ MapA (c′ , c)             F (c)
+
+                                ηC
+Y (c′ )B(c′ ) ⊗ MapA (c′ , c)        Y (c)B(c)
+
+
+  G(c′ ) ⊗ MapA (c′ , c)              G(c)
+--><img
+      src="Simplicial_h-images/image-71.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+</li>
+</ul>
+
+<p>
+Note that \((2)\) is the data making \(c\mapsto Y(c)_{B(c)}\) into an \(S\)-enriched functor lying between \(F\) and \(G\) in \(A^C\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-561"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">5.11</span></span>. <a id="sliceconstruct1"></a> Suppose we are given a collection of \(\kappa \)-small
+subsets \(\{B_0(c)\subset A(c)\}_{c \in C}\). Then there exists a slice \(\{B(c),\eta _C\}_{c\in C}\) such that each \(B(c)\) is a \(\kappa \)-small subset of \(A(c)\) containing \(B_0(c)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-562"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> WLOG, each \(B_0(c)\) is downward closed. Note by \((ii)\) that \(Y(c&apos;)_{B_0(c&apos;)}\otimes \Map _A(c&apos;,c)\) is \(\kappa \)-compact, so that the map
+\(Y(c&apos;)_{B_0(c&apos;)}\otimes \Map _A(c&apos;,c) \to G(c)\). factors through some map \(Y(c&apos;)_{B_0(c&apos;)}\otimes \Map _A(c&apos;,c) \to Y(c)_{B_1(c)}\) where \(B_1(c)\) is downward closed,
+\(\kappa \)-small, and contains \(B_0(c)\). This way, we can inductively construct \(B_i\) and \((\eta _c)_i\) and use compactness again to ensure that condition \((2)\) of a slice holds (after some shift of indices). Taking
+the union over \(i\), since \(\kappa \) is uncountable, we obtain the desired slice. (See the proof of Lemma <a href="node-Technical-Things.html#compatibleidempotent1">2.68</a>.) <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-563"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">5.12</span></span>. <a id="sliceconstruct2"></a> Let \(M&apos; = \{(A&apos;(c),\theta _c)\}_{c\in
+C}\) be a slice and let \(\{B_0(c) \subset A(c)\}_{c \in C}\) be a collection of \(\kappa \)-small subsets of \(A(c)\). Then there exists a pair of slices \(N = \{(B(c),\eta _c)\}_{c\in C}, N&apos; = \{(B(c)\cap
+A&apos;(c),\eta &apos;_c)\}\) where \(B(c)\) is \(\kappa \)-small and \(N&apos;\) is compatible with both \(N\) and \(M&apos;\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+This proof is essentially that of Lemma <a href="node-Technical-Things.html#compatibleidempotent2">2.69</a>. Namely, by repeatedly using compactness, one inductively constructs \(N_i\) and \(N&apos;_i\) that satisfy
+the desired conditions (up to a shift of indices). Then the union over \(i\) will give the desired slices.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-564"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">5.13</span></span>. <a id="pushoutfunctorlemma"></a> Suppose that \(f:F \to G\) has the property that
+for each \(c \in C\), there exists a pushout diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-72"
+      class="lateximagesource"
+><!--
+         gc
+ Xc                  Yc
+
+        f (c)
+                ⌜
+F (c)               G(c)
+--><img
+      src="Simplicial_h-images/image-72.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where \(g_c \in M_0\). Then \(f\) is a pushout of a morphism in \(M\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-568"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This one is analogous to Lemma <a href="node-Technical-Things.html#treepushout">2.71</a>. Write \(F\) as the colimit of a \(\kappa \)-filtered poset of \(\kappa
+\)-compact objects \(\{F_\lambda \}_{\lambda \in P}\). \(X_C\to F(c)\) factors through some \(F_[\lambda ](c)\). \(C\) has fewer than \(\kappa \) objects so we can choose \(\lambda \) uniformly in \(c\). We can
+replace \(P\) with the poset of things greater than \(\lambda \).
+</p>
+
+<p>
+For each \(c \in C\), the composite map
+</p>
+
+<p>
+\[\coprod _{c&apos;\in C}Y_{c&apos;}\otimes \Map _A(c&apos;,c)\to \coprod _{c&apos;\in C}G(c&apos;)\otimes \Map _A(c&apos;,c)\to G(c) \]
+</p>
+
+<p>
+factors through some \(F_{\lambda &apos;(c)}(c)\coprod _{X_c} Y_c\). since \(G(c)\) is the colimit of \(\{F_\lambda \cup _{X_c} Y_c\}_{\lambda \in P}\). Once again we can choose \(\lambda &apos;\) uniformly and
+WLOG \(\lambda &apos;=\lambda \). By compactness again, we can assume that the diagrams below compute.
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-73"
+      class="lateximagesource"
+><!--
+Xc′ ⊗ MapA (c′ , c)      Fλ (c)
+
+
+Yc′ ⊗ MapA (c′ , c)   Fλ (c) ∪Xc Yc
+--><img
+    src="Simplicial_h-images/image-73.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span> <span
+    id="lateximage-Simplicial_h-74"
+    class="lateximagesource"
+><!--
+Yc′′ ⊗ MapA (c′′ , c′ ) ⊗ Mapa (c′ , c)     Yc′′ ⊗ MapA (c′′ , c)
+
+
+ (Fλ (c′ )                          ′
+             `                                         `
+                 Xc′ Yc′ ) ⊗ MapA (c , c)     Fλ (c)       Xc Yc
+--><img
+      src="Simplicial_h-images/image-74.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+Then we can define \(G_{\lambda }(c) = F_{\lambda }(c)\coprod _{X_c}Y_c\) and it follows that there is a pushout diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-75"
+      class="lateximagesource"
+><!--
+     fλ
+Fλ            Gλ
+
+     f    ⌜
+F             G
+--><img
+      src="Simplicial_h-images/image-75.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+and \(f_{\lambda } \in M\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Now we are ready to complete the proof. Lemmas <a href="node-Some-Important-Model-Structures.html#sliceconstruct1">5.11</a>, <a
+href="node-Some-Important-Model-Structures.html#sliceconstruct2">5.12</a> allow us to inductively construct a transfinite sequence of compatible slices \(\{M(\gamma ) = \{(B(\gamma )(c),\eta (\gamma
+)_c)\}_{c\in C}\}\). Let \(G(\lambda )\) be the enriched functor corresponding to \(M(\lambda )\), so the union of \(G(\lambda )\) is \(G\). It suffices to show that \(\lim _{\gamma &apos;&lt;\gamma }G(\gamma
+&apos;) \to G(\gamma )\) is in \(M\).
+</p>
+
+<p>
+Pointwise, \(f_{\gamma }(c)\) is the map \(Y(c)_{B&apos;(\gamma )(c)} \to Y(c)_{B(\gamma )(c)}\). Since \(B(\gamma )(c)-B&apos;(\gamma )(c)\) is \(\kappa \)-small, Lemma <a
+href="node-Technical-Things.html#weaksaturationstree">2.66</a>, <a href="node-Technical-Things.html#treepushout">2.71</a>, it follosw that \(f_{\gamma }(c)\) is the pushout of a morphism in \(M_0\). Then the
+result follows from Lemma <a href="node-Some-Important-Model-Structures.html#pushoutfunctorlemma">5.13</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-577"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">5.14</span></span>. <a id="projinjmodelstrs"></a> Let \(S\) be an excellent model category and \(A\)
+a combintorial \(S\)-enriched category. Then there exists two combinatorial model structures on the category \(A^{C}\):
+</p>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. The projective model structure, with weak equivalences and fibrations pointwise defined.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. The injective model structure, with weak equivalences and cofibrations pointwise defined.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-578"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> First we consider the projective model structure. For an object \(c \in C\) and \(a \in A\), define \(F_a^c:C \to A \) by \(F_a^c(c&apos;)=A\otimes \Map
+_{c}(C,C&apos;)\). For any functor \(G\), \(\Hom (F_a^c,G) = \Hom (a,G(c))\) by the Yoneda lemma. It then follows that a morphism is a (not) trivial projective fibration iff it has the right lifting property with respect to
+\(F_a^c\to F_{a&apos;}^c\) where \(a \to a&apos;\) ranges over a generating set of (trivial) cofibrations.
+</p>
+
+<p>
+The small object argument Proposition <a href="node-Model-Categories.html#smallobjectargument">4.8</a> shows that the factorization systems we desire exist and that the (trivial) cofibrations are generated by maps of
+the form \(F_a^c\to F_{a&apos;}^c\). The conditions of Lemma <a href="node-Model-Categories.html#checkonemodelstructure">4.11</a> are easily verified, so we obtain a model structure that is combinatorial.
+</p>
+
+<p>
+For the injective model structure, we appeal to Corollary <a href="node-Model-Categories.html#combmodelcatconstruct">4.40</a>. We will check hypotheses \((1)-(5)\).
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. Injective cofibrations are generated by a small set by Lemma <a href="node-Some-Important-Model-Structures.html#funcatsmallsetgen">5.10</a>, and are weakly saturated since cofibrations in \(A\) are.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. Trivial injective cofibrations are also clearly weakly saturated, since trivial cofibrations in \(A\) are weakly saturated.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. It is true that weak equivalences in \(\Fun (C,A)\) are accessible. Indeed weak equivalences are an accessible subcategory of \(A^{[1]}\) and it is generally true that accessible subcategories are stable under exponentiation in
+this way.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+4. \(2\) out of \(3\) for weak equivalences is clear.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+5. If \(f\) has the right lifting property with respect to injective cofibrations, it has the right lifting property with respect to constant functors, so each morphism in \(f\) is a trivial fibration: in particular a weak equivalence.
+</p>
+</li>
+</ul>
+
+<p>
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-579"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">5.14.1</span></span>. If \(A\) is left proper or right proper, then so is \(A^C\) since everything is
+pointwise. It also follows from the proof that a projective cofibration is an injective cofibration, and that an injective fibration is a projective fibration. It isn’t hard to see that these model structures are \(S\)-enriched as well.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The following result is worth noting.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-580"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">5.15</span></span>. Let \(S\) be an excellent model category, \(C\) a small \(S\)-enriched category, and
+\(\adjunction {F}{A}{B}{G}\) an \(S\)-enriched Quillen adjunction between combinatorial \(S\)-enriched model categories. The composition with \(F\) and \(G\) determines another \(S\)-enriched Quillen adjunction
+\(\adjunction {F}{A^C}{B^C}{G}\) with respect to both the projective and injective model structures. If the original adjunction was a Quillen equivalence, then so is this one.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-581"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This is trivial, since everything is computed pointwise. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Note also that the identity functor gives a Quillen equivalence between the projective and injective model structures.
+</p>
+
+<p>
+Now we consider functoriality in the variable \(C\). If \(C \to C&apos;\) is a functor between small categories, then the composition yields a pullback functor \(f^*:A^{C&apos;}\to A^C\), which preserves all limits and colimits.
+If \(A\) admits all limits and colimits (which is true for a presentable category), then there is a right adjoint \(f_*\) and left adjoint \(f_!\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-582"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">5.16</span></span>. Let \(A\) be a combinatorial \(S\)-enriched model category over an excellent model
+category \(S\), and let \(f:C\to C&apos;\) be a functor between small categories. Then
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. The pair \((f_!,f^*)\) determines a Quillen adjunction between the projective model structures on \(A^C,A^{C&apos;}\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. The pair \((f_*,f^*)\) determines a Quillen adjunction between the injective model structures on \(A^C,A^{C&apos;}\).
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-583"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This is clear because \(f^*\) preserves all limits and colimits, as well as weak equivalences, fibrations, and cofibrations. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The left derived functor of \(f_!\) is called the <b>(homotopy) left Kan extension</b> and the right derived functor of \(f_*\) is called the <b>(homotopy) right Kan extension</b>.
+</p>
+
+<p>
+This gives the following notion of a right Kan extension:
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-584"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.17</span></span>. Given a functor \(G\) with a map \(\eta :G \to f_* F\), \(\eta \) <b>exhibits
+\(G\) as th homotopy right Kan extension of \(F\)</b> if for some injectively fibrant replacement of \(F&apos;\), the composite \(G \to f_*F\to f_*F&apos;\) is an equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-585"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.18</span></span>. A <b>homotopy limit</b> is a right Kan extension along the map \(C \to *\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We can reduce homotopy Kan extensions to homotopy limits.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-586"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">5.19</span></span>. <a id="cofibredinsetslimis"></a> Let \(A\) be a combinatorial model category and let
+\(g:C&apos; \to C\) be a functor exhibiting \(C&apos;\) as cofibred in sets over \(C\). Then the pullback functor \(g^*:A^C\to A^{C&apos;}\) preserves injective fibrations.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-587"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It is equivalent to show that the left adjoint \(g_!\) preserves injective trivial fibrations. To see this, we can observe that \(g_!\) is pointwise a coproduct over the fibres, since
+\(C&apos;\) is cofibred in sets over \(C\). Coproducts preserve trivial cofibrations, so we are done. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-588"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">5.20</span></span>. Let \(A\) be a combinatorial model category, let \(f:C \to D\) be a functor between
+small categories, and let \(F:C \to A,G:D\to A\) be diagrams. A natural transformation \(\alpha :f^*(G)\to F\) exhibits \(G\) as a homotopy right Kan extension iff for each \(d \in D\), \(\alpha \) exhibits \(G(d)\) as a
+homotopy limit of the composite diagram \(F_{d/}:C\times _D D_{d/}\to C\xrightarrow {F}A\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-589"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> WLOG \(F\) is injectively fibrant. \(\alpha \) is a homotopy right Kan extension iff the map \(G(d) \to \lim F_{d/}\) is an equivalence by the formula for right Kan
+extensions. Then since the map \(C\times _D D_{d/}\to C\) is cofibred in sets, by Lemma <a href="node-Some-Important-Model-Structures.html#cofibredinsetslimis">5.19</a> the homotopy limit is the ordinary limit
+of \(F_{d/}\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The following is the model categorical version of right adjoints preserve right Kan extensions (limits).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-590"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">5.21</span></span>. Right adjoints preserve homotopy right Kan extensions.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-591"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Simply observe that the preservation of ordinary right Kan extensions is a commutative diagram of right Quillen functors. Then the result follows from Lemma <a
+href="node-Model-Categories.html#derivedcompatibility">4.56</a> <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+There is a dual theory of homotopy colimits.
+</p>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-592"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">5.21.1</span></span>. Let \(A\) be a combinatorial model category and consider a diagram
+</p>
+
+<p>
+\[X&apos;\xleftarrow {f}X\xrightarrow {g}X&apos;&apos;\]
+</p>
+
+<p>
+. This is injectively cofibrant iff \(X\) is cofibrant, and \(f,g\) are cofibrations. Indeed supposing those conditions, one can show the lifing property by first lifting \(X\) and then lifting \(X&apos;&apos;,X&apos;\) using the fact
+that \(f,g\) are cofibrations.
+</p>
+
+<p>
+Conversely, by choosing diagrams to test against, the conditions are necessary. Thus the notion of homotopy pushout in Definition <a href="node-Model-Categories.html#homotopypushoutdef">4.29</a> agrees with this notion.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We can prove as a consequence Quillen’s Theorem A.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-593"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">5.22</span></span>. <a id="quillenthma"></a> Let \(f:C \to D\) be a functor between categories such that
+for each \(d\in D\), the category \(C_{/d}\) is contractible. Then \(N(C)\to N(D)\) is an equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-594"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It is easy to identify \(N(C)\) with the colimit of \(N(C_{/d})\) for \(d \in D\) since the nerve preserves colimits and \(C\) is clearly the colimit of \(C_{/d}\). It suffices then to
+show that the diagram \(D \to \SSet \) given by \(N(C_{/d})\) is a projective cofibration, since homotopy colimits are well defined up to equivalence. Let \(F_i\) be the \(i\)-skeleton of the functor \(N(C_{/d})\). it suffices to
+show that \(F_i\to F_{i+1}\) is a projective fibration.
+</p>
+
+<p>
+From the proof of Proposition <a href="node-Some-Important-Model-Structures.html#projinjmodelstrs">5.14</a>, the generating cofibrations of the projective model structure on \((\SSet )^D\) are \(F_{\partial
+\Delta ^n}^d\to F_{\Delta ^n}^d\) as \(d,n\) varies. For every \(n\)-composable non-identity morphisms in \(C\), there is a map \(F^d_{\partial \Delta ^n}\to F_{n-1}\). Pushing out all of these maps along
+\(F^d_{\Delta ^n}\), one obtains \(F_{n}\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-595"><span class="sectionnumber">5.3&#x2003;</span>Reedy model structures</h5>
+<a id="Simplicial_h-autopage-595"></a>
+
+
+<p>
+There is a useful model structure between the projective and injective model structures on diagram categories when the diagram is nice.
+</p>
+
+<p>
+If \(f \in g^{\oslash }\) and the lifts are unique, \(f\) is said to be <b>right orthogonal</b> to \(g\). Recall that a replete subcategory is one that is closed under isomorphisms, and contains all isomorphisms between its
+objects. In otherwords, the inclusion is an isofibration.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-596"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">5.23</span></span>. <a id="factorizationsysequiv"></a> Let \(J\) be a category and \(L,R\) a class of
+morphisms such that every morphism factors as something in \(L\) and then something in \(R\). The following conditions are equivalent:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(L\) and \(R\) are exactly the classes of morphisms orthogonal with respect to each other (with \(R\) on the right).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. The factorization is unique up to unique isomorphism and \(L,R\) contain isomorphisms and are subcategories.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(L\) and \(R\) are replete subcategories of the arrow category and \(R\) is right orthogonal to \(L\).
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-597"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \((1)\implies (2)\): Given two factorizations, we can lift each of them with respect to eachother, giving a unique isomorphism between them. \(L,R\) are clearly subcategories.
+</p>
+
+<p>
+\((2)\implies (3)\): \(L,R\) are clearly replete. To see that \(R\) is right orthogonal to \(M\), factor the horizontal arrows in the diagram you are trying to lift, and by uniqueness of the factorization, we get the desired lift.
+</p>
+
+<p>
+\((3)\implies (1)\): Suppose that \(f\) is right orthogonal to \(L\). Then create a lift in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-76"
+      class="lateximagesource"
+><!--
+·               ·
+        i
+    g               f
+            h
+·               ·
+--><img
+      src="Simplicial_h-images/image-76.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where we have factor \(f\) into \(g\) in \(L\) and \(h\) in \(R\). We can observed that \(g\circ i\) and the identity are both solutions of the lifting problem
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-77"
+      class="lateximagesource"
+><!--
+        g
+·           ·
+    g           h
+        h
+·           ·
+--><img
+      src="Simplicial_h-images/image-77.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+so they are equal. It follows that \(f \in R\) since it is isomorphic to \(h \in R\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+An (orthogonal) <b>factorization system</b> on a category \(J\) is a pair of subcategories satisfying the conditions of Lemma <a href="node-Some-Important-Model-Structures.html#factorizationsysequiv">5.23</a>.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-604"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.24</span></span>. A <b>Reedy category</b> is a small category \(J\) with a factorization system
+\(J^L,J^R\) satisfying
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+• Every isomorphism in \(J\) is the identity.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+• Write \(X\leq _0 Y\) if there is either a map \(X\to Y \in J^R\) or a map \(Y\to X\in J^L\). \(X&lt;_0Y\) if \(X\leq _0 Y\) and \(X\neq Y\). Then there are no infinite descending chains \(\dots
+&lt;_0X_2&lt;_0X_1&lt;_0X_0\).
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-605"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">5.24.1</span></span>. \(&lt;_0\) is not generally transitive. Define \(&lt;\) to be its transitive
+closure. This is a well-founded partial order on the objects of \(J\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The point of a Reedy category is that functors out of it can be built inductively as we will see. This lets us for example produce a convenient model structure on functors out of it.
+</p>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-606"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">5.24.1</span></span>. <a id="deltareedy"></a> The category \(\Delta \) of simplices is a
+Reedy category with respect to the factorization system \(\Delta ^L,\Delta ^R\) where \(L\) are surjections and \(R\) are injections.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Note if \(J\) is a Reedy category, then so is \(J^{op}\) (with the obvious Reedy structure).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-607"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.25</span></span>. Let \(J\) be a Reedy category and \(C\) a category with small limits and colimits, and
+\(X:J\to C\) a functor. For every object \(j \in J\), we define the <b>latching object</b> \(L_j(X)\) to be the colimit \(\colim _{j&apos; \in J^R_{/j},j&apos;\neq j}X(j&apos;)\). The <b>matching object</b>
+\(M_j(X)\) is the limit \(\lim _{j&apos; \in J^L_{j&apos;/},j&apos;\neq j}X(j&apos;)\). There are canonical maps \(L_j(X) \to X(j)\to M_j(X)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-608"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">5.25.1</span></span>. Let \(X\) be a simplicial set and regard \(\Delta ^{op}\) as a Reedy
+category as in Example <a href="node-Some-Important-Model-Structures.html#deltareedy">5.24.1</a>. Then \(L_{[n]}X\) is the collection of degenerate \(n\)-simplices of \(X\). Given a map \(f:X\to Y\) of simplicial
+sets, if the map \(L_{[n]}(Y)\coprod _{L_{[n]}(X)}X_n\to Y_n\) is an monomorphism for each \(n\), then \(X\to Y\) is a monomorphism. Indeed, it says that the nondegenerate simplices of \(X\) get sent to nondegenerate
+simplices of \(Y\). To see the converse, suppose \(f\) is a monomorphism. If \(f(\sigma )\) is degenerate for some simplex \(\sigma \), Then \(f(\sigma ) = f(\alpha ^*(\sigma ))\) where \(\alpha :[n]\to [n]\) is a
+nonidentity map, so it follows that \(\sigma = \alpha ^*(\sigma )\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-609"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">5.25.1</span></span>. Let \(J \to C\) be a functor from a Reedy category to a bicomplete
+category. \(M_j(X)\) can be identified with \(\lim _{j&apos; \in S}X(j&apos;)\) where \(S\) is any full subcategory of \(J_{/j}\) such that
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. Every non-isomorphism in \(J^{R}\) is in \(S\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. If \(f:j&apos; \to j\) is in \(S\), then \(j\nleq j&apos;\).
+</p>
+</li>
+</ul>
+
+<p>
+This is because these conditions imply that \(S\) is final in the category \(M_j\) is defined as the limit over.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-610"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">5.26</span></span>. Let \(J\) be a Reedy category. A <b>good filtration</b> of \(J\) is a transfinite
+sequence \(\{J_\beta \}_{\beta &lt;\alpha }\) of full subcategories whose union is \(J\), and such that each successor category is obtained by adding a minimal element with respect to \(&lt;\) not already there in the union of
+the ones before it.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Every Reedy category has a good filtration essentially by definition.
+</p>
+
+</section>
+
+</main>
+
+</div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+</body>
+</html>

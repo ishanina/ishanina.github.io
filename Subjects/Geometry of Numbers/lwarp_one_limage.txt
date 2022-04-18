@@ -1,0 +1,6 @@
+pdfseparate -f %1 -l %1 %4_html.pdf Geometry_of_Numbers_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Geometry_of_Numbers_h-images/lateximagetemp-%1.pdf Geometry_of_Numbers_h-images/%3.pdf
+pdftocairo -svg -noshrink Geometry_of_Numbers_h-images/%3.pdf Geometry_of_Numbers_h-images/%3.svg
+del Geometry_of_Numbers_h-images/%3.pdf
+del Geometry_of_Numbers_h-images/lateximagetemp-%1.pdf
+exit

@@ -1,0 +1,4770 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="generator" content="LaTeX Lwarp package" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Simplicial</title>
+<link rel="stylesheet" type="text/css" href="fancycss.css" />
+
+<script>
+// Lwarp MathJax emulation code
+//
+// Based on code by Davide P. Cervone.
+// Equation numbering: https://github.com/mathjax/MathJax/issues/2427
+// Starred and ifnextchar macros: https://github.com/mathjax/MathJax/issues/2428
+// \left, \right delimiters: https://github.com/mathjax/MathJax/issues/2535
+//
+// Modified by Brian Dunn to adjust equation numbering and add subequations.
+//
+// LaTeX can use \seteqnumber{subequations?}{section}{number} before each equation.
+// subequations? is 0 usually, 1 if inside subequations.
+// section is a string printed as-is, or empty.
+// number is auto-incremented by MathJax between equations.
+//
+MathJax = {
+     subequations: "0",
+     section: "",
+     loader: {
+          load: ['[tex]/tagformat', '[tex]/textmacros'],
+     },
+     startup: {
+          ready() {
+              //       These would be replaced by import commands if you wanted to make
+              //       a proper extension.
+              const Configuration = MathJax._.input.tex.Configuration.Configuration;
+              const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+              const Macro = MathJax._.input.tex.Symbol.Macro;
+              const TexError = MathJax._.input.tex.TexError.default;
+              const ParseUtil = MathJax._.input.tex.ParseUtil.default;
+              const expandable = MathJax._.util.Options.expandable;
+
+
+              //       Insert the replacement string into the TeX string, and check
+              //       that there haven't been too many maxro substitutions (prevents
+              //       infinite loops).
+              const useArgument = (parser, text) => {
+                   parser.string = ParseUtil.addArgs(parser, text, parser.string.slice(parser.i));
+                   parser.i = 0;
+                   if (++parser.macroCount > parser.configuration.options.maxMacros) {
+                        throw new TexError('MaxMacroSub1',
+                        'MathJax maximum macro substitution count exceeded; ' +
+                        'is there a recursive macro call?');
+                   }
+              }
+
+
+              //       Create the command map for:
+              //            \ifstar, \ifnextchar, \ifblank, \ifstrequal, \seteqnumber
+              new CommandMap('Lwarp-macros', {
+                   ifstar: 'IfstarFunction',
+                   ifnextchar: 'IfnextcharFunction',
+                   ifblank: 'IfblankFunction',
+                   ifstrequal: 'IfstrequalFunction',
+                   seteqnumber: 'SeteqnumberFunction'
+              }, {
+                   //       This function implements an ifstar macro.
+                   IfstarFunction(parser, name) {
+                        const resultstar = parser.GetArgument(name);
+                        const resultnostar = parser.GetArgument(name);
+                        const star = parser.GetStar();                        // true if there is a *
+                        useArgument(parser, star ? resultstar : resultnostar);
+                   },
+
+
+                   //       This function implements an ifnextchar macro.
+                   IfnextcharFunction(parser, name) {
+                        let whichchar = parser.GetArgument(name);
+                        if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+                            // $ syntax highlighting
+                            whichchar = String.fromCodePoint(parseInt(whichchar));
+                        }
+                        const resultnextchar = parser.GetArgument(name);
+                        const resultnotnextchar = parser.GetArgument(name);
+                        const gotchar = (parser.GetNext() === whichchar);
+                        useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+                   },
+
+
+                   // This function implements an ifblank macro.
+                   IfblankFunction(parser, name) {
+                        const blankarg = parser.GetArgument(name);
+                        const resultblank = parser.GetArgument(name);
+                        const resultnotblank = parser.GetArgument(name);
+                        const isblank = (blankarg.trim() == "");
+                        useArgument(parser, isblank ? resultblank : resultnotblank);
+                   },
+
+
+                   // This function implements an ifstrequal macro.
+                   IfstrequalFunction(parser, name) {
+                        const strequalfirst = parser.GetArgument(name);
+                        const strequalsecond = parser.GetArgument(name);
+                        const resultequal = parser.GetArgument(name);
+                        const resultnotequal = parser.GetArgument(name);
+                        const isequal = (strequalfirst == strequalsecond);
+                        useArgument(parser, isequal ? resultequal : resultnotequal);
+                   },
+
+
+                   //       This function modifies the equation numbers.
+                   SeteqnumberFunction(parser, name) {
+                            //   Get the macro parameters
+                            const star = parser.GetStar();                      // true if there is a *
+                            const optBrackets = parser.GetBrackets(name);        // contents of optional brackets
+                            const newsubequations = parser.GetArgument(name);      // the subequations argument
+                            const neweqsection = parser.GetArgument(name);      // the eq section argument
+                            const neweqnumber = parser.GetArgument(name);        // the eq number argument
+                            MathJax.config.subequations=newsubequations ;       // a string with boolean meaning
+                            MathJax.config.section=neweqsection ;               // a string with numeric meaning
+                            parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+                   }
+
+
+              });
+
+
+              //       Create the Lwarp-macros package
+              Configuration.create('Lwarp-macros', {
+                   handler: {macro: ['Lwarp-macros']}
+              });
+
+
+              MathJax.startup.defaultReady();
+
+
+              // For forward references:
+              MathJax.startup.input[0].preFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            MathJax.config.subequations = math.inputData.recompile.subequations;
+                            MathJax.config.section = math.inputData.recompile.section;
+                   }
+              });
+              MathJax.startup.input[0].postFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            math.inputData.recompile.subequations = MathJax.config.subequations;
+                            math.inputData.recompile.section = MathJax.config.section;
+                   }
+              });
+
+
+                   // For \left, \right with unicode-math:
+                   const {DelimiterMap} = MathJax._.input.tex.SymbolMap;
+                   const {Symbol} = MathJax._.input.tex.Symbol;
+                   const {MapHandler} = MathJax._.input.tex.MapHandler;
+                   const delimiter = MapHandler.getMap('delimiter');
+                   delimiter.add('\\lBrack', new Symbol('\\lBrack', '\u27E6'));
+                   delimiter.add('\\rBrack', new Symbol('\\rBrack', '\u27E7'));
+                   delimiter.add('\\lAngle', new Symbol('\\lAngle', '\u27EA'));
+                   delimiter.add('\\rAngle', new Symbol('\\rAngle', '\u27EB'));
+                   delimiter.add('\\lbrbrak', new Symbol('\\lbrbrak', '\u2772'));
+                   delimiter.add('\\rbrbrak', new Symbol('\\rbrbrak', '\u2773'));
+                   delimiter.add('\\lbag', new Symbol('\\lbag', '\u27C5'));
+                   delimiter.add('\\rbag', new Symbol('\\rbag', '\u27C6'));
+                   delimiter.add('\\llparenthesis', new Symbol('\\llparenthesis', '\u2987'));
+                   delimiter.add('\\rrparenthesis', new Symbol('\\rrparenthesis', '\u2988'));
+                   delimiter.add('\\llangle', new Symbol('\\llangle', '\u2989'));
+                   delimiter.add('\\rrangle', new Symbol('\\rrangle', '\u298A'));
+                   delimiter.add('\\Lbrbrak', new Symbol('\\Lbrbrak', '\u27EC'));
+                   delimiter.add('\\Rbrbrak', new Symbol('\\Rbrbrak', '\u27ED'));
+                   delimiter.add('\\lBrace', new Symbol('\\lBrace', '\u2983'));
+                   delimiter.add('\\rBrace', new Symbol('\\rBrace', '\u2984'));
+                   delimiter.add('\\lParen', new Symbol('\\lParen', '\u2985'));
+                   delimiter.add('\\rParen', new Symbol('\\rParen', '\u2986'));
+                   delimiter.add('\\lbrackubar', new Symbol('\\lbrackubar', '\u298B'));
+                   delimiter.add('\\rbrackubar', new Symbol('\\rbrackubar', '\u298C'));
+                   delimiter.add('\\lbrackultick', new Symbol('\\lbrackultick', '\u298D'));
+                   delimiter.add('\\rbracklrtick', new Symbol('\\rbracklrtick', '\u298E'));
+                   delimiter.add('\\lbracklltick', new Symbol('\\lbracklltick', '\u298F'));
+                   delimiter.add('\\rbrackurtick', new Symbol('\\rbrackurtick', '\u2990'));
+                   delimiter.add('\\langledot', new Symbol('\\langledot', '\u2991'));
+                   delimiter.add('\\rangledot', new Symbol('\\rangledot', '\u2992'));
+                   delimiter.add('\\lparenless', new Symbol('\\lparenless', '\u2993'));
+                   delimiter.add('\\rparengtr', new Symbol('\\rparengtr', '\u2994'));
+                   delimiter.add('\\Lparengtr', new Symbol('\\Lparengtr', '\u2995'));
+                   delimiter.add('\\Rparenless', new Symbol('\\Rparenless', '\u2996'));
+                   delimiter.add('\\lblkbrbrak', new Symbol('\\lblkbrbrak', '\u2997'));
+                   delimiter.add('\\rblkbrbrak', new Symbol('\\rblkbrbrak', '\u2998'));
+                   delimiter.add('\\lvzigzag', new Symbol('\\lvzigzag', '\u29D8'));
+                   delimiter.add('\\rvzigzag', new Symbol('\\rvzigzag', '\u29D9'));
+                   delimiter.add('\\Lvzigzag', new Symbol('\\Lvzigzag', '\u29DA'));
+                   delimiter.add('\\Rvzigzag', new Symbol('\\Rvzigzag', '\u29DB'));
+                   delimiter.add('\\lcurvyangle', new Symbol('\\lcurvyangle', '\u29FC'));
+                   delimiter.add('\\rcurvyangle', new Symbol('\\rcurvyangle', '\u29FD'));
+                   delimiter.add('\\Vvert', new Symbol('\\Vvert', '\u2980'));
+          }       // ready
+     },           // startup
+
+
+     tex: {
+          packages: {'[+]': ['tagformat', 'Lwarp-macros', 'textmacros']},
+          tags: "ams",
+                   tagformat: {
+                            number: function (n) {
+                                 if(MathJax.config.subequations==0)
+                                        return(MathJax.config.section + n);
+                                 else
+                                        return(MathJax.config.section + String.fromCharCode(96+n));
+                            },
+                   },
+     }
+}
+</script>
+
+
+<script
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+
+</head>
+<body>
+
+
+<a id="Simplicial_h-autopage-7"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+<header>
+
+<p>
+<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+</p>
+
+</header>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Simplicial</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="node-Introduction.html#autosec-6" class="tocsection" >
+<span class="sectionnumber">1</span>&#x2003;Introduction</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-9" class="tocsection" >
+<span class="sectionnumber">2</span>&#x2003;Technical Things</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-36" class="tocsubsection" >
+<span class="sectionnumber">2.1</span>&#x2003;Generators of anodyne morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-54" class="tocsubsection" >
+<span class="sectionnumber">2.2</span>&#x2003;Enriched Categories</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-68" class="tocsubsection" >
+<span class="sectionnumber">2.3</span>&#x2003;Basics of Simplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-99" class="tocsubsection" >
+<span class="sectionnumber">2.4</span>&#x2003;Left fibration characterization of Kan fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-127" class="tocsubsection" >
+<span class="sectionnumber">2.5</span>&#x2003;Cartesian Morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-156" class="tocsubsection" >
+<span class="sectionnumber">2.6</span>&#x2003;Minimal Inner Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-173" class="tocsubsection" >
+<span class="sectionnumber">2.7</span>&#x2003;Trees</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-207" class="tocsection" >
+<span class="sectionnumber">3</span>&#x2003;Kan Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-230" class="tocsubsection" >
+<span class="sectionnumber">3.1</span>&#x2003;Minimal fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-243" class="tocsubsection" >
+<span class="sectionnumber">3.2</span>&#x2003;Equivalence of Quillen and Serre model structures</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-262" class="tocsection" >
+<span class="sectionnumber">4</span>&#x2003;Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-313" class="tocsubsection" >
+<span class="sectionnumber">4.1</span>&#x2003;Homotopy category of a model category</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-411" class="tocsubsection" >
+<span class="sectionnumber">4.2</span>&#x2003;Combinatorial Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-443" class="tocsubsection" >
+<span class="sectionnumber">4.3</span>&#x2003;Derived Functors</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-478" class="tocsubsection" >
+<span class="sectionnumber">4.4</span>&#x2003;Enriched and Simplicial model categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-510" class="tocsection" >
+<span class="sectionnumber">5</span>&#x2003;Some Important Model Structures</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-511" class="tocsubsection" >
+<span class="sectionnumber">5.1</span>&#x2003;Model structure on \(S\)-enriched categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-552" class="tocsubsection" >
+<span class="sectionnumber">5.2</span>&#x2003;Diagram model structures and homotopy limits</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-595" class="tocsubsection" >
+<span class="sectionnumber">5.3</span>&#x2003;Reedy model structures</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-613" class="tocsection" >
+<span class="sectionnumber">6</span>&#x2003;\(\Pi _1\) and Simplicial abelian groups</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-614" class="tocsubsection" >
+<span class="sectionnumber">6.1</span>&#x2003;Fundamental Groupoid</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-627" class="tocsubsection" >
+<span class="sectionnumber">6.2</span>&#x2003;Local Systems and Covering Spaces</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-628" class="tocsubsection" >
+<span class="sectionnumber">6.3</span>&#x2003;Simpicial objects in Abelian Categories</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-664" class="tocsection" >
+<span class="sectionnumber">7</span>&#x2003;Bisimplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-681" class="tocsubsection" >
+<span class="sectionnumber">7.1</span>&#x2003;Bisimplicial objects in an abelian category</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-701" class="tocsubsection" >
+<span class="sectionnumber">7.2</span>&#x2003;Model structures</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-727" class="tocsubsection" >
+<span class="sectionnumber">7.3</span>&#x2003;Bousfield-Friedlander</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-763" class="tocsubsection" >
+<span class="sectionnumber">7.4</span>&#x2003;Theorem B and Group Completion</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-787" class="tocsection" >
+<span class="sectionnumber">8</span>&#x2003;Some Classical Homotopy Theory</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-788" class="tocsubsection" >
+<span class="sectionnumber">8.1</span>&#x2003;The Hurewicz Map</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-841" class="tocsection" >
+<span class="sectionnumber">9</span>&#x2003;Models for Homotopy Types</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-842" class="tocsubsection" >
+<span class="sectionnumber">9.1</span>&#x2003;Test Categories</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-875" class="tocsubsection" >
+<span class="sectionnumber">9.2</span>&#x2003;Basics of Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-898" class="tocsubsection" >
+<span class="sectionnumber">9.3</span>&#x2003;Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-971" class="tocsubsection" >
+<span class="sectionnumber">9.4</span>&#x2003;Colimits in Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1010" class="tocsubsection" >
+<span class="sectionnumber">9.5</span>&#x2003;Weak equivalence classes of functors</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1043" class="tocsubsection" >
+<span class="sectionnumber">9.6</span>&#x2003;Model structure on Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1072" class="tocsection" >
+<span class="sectionnumber">10</span>&#x2003;Simplicial localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1073" class="tocsubsection" >
+<span class="sectionnumber">10.1</span>&#x2003;Free Categories and Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1087" class="tocsubsection" >
+<span class="sectionnumber">10.2</span>&#x2003;Dwyer-Kan Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1099" class="tocsubsection" >
+<span class="sectionnumber">10.3</span>&#x2003;Reduction to Cubical Sets</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
+
+
+<main class="bodycontainer">
+
+
+<section class="textbody">
+
+<h1>Simplicial</h1>
+
+<!--MathJax customizations:-->
+
+
+<div class="hidden">
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \LWRtensorindicesthreesub #1#2{{_{#2}}\LWRtensorindicesthree }\)
+
+\(\def \LWRtensorindicesthreesup #1#2{{^{#2}}\LWRtensorindicesthree }\)
+
+\(\newcommand {\LWRtensorindicesthreenotsup }{}\)
+
+\(\newcommand {\LWRtensorindicesthreenotsub }{ \ifnextchar ^ \LWRtensorindicesthreesup \LWRtensorindicesthreenotsup }\)
+
+\(\newcommand {\LWRtensorindicesthree }{ \ifnextchar _ \LWRtensorindicesthreesub \LWRtensorindicesthreenotsub }\)
+
+\(\newcommand {\LWRtensorindicestwo }{ \ifstar \LWRtensorindicesthree \LWRtensorindicesthree }\)
+
+\(\newcommand {\indices }[1]{\LWRtensorindicestwo #1}\)
+
+\(\newcommand {\LWRtensortwo }[3][]{{}\indices {#1}{#2}\indices {#3}}\)
+
+\(\newcommand {\tensor }{\ifstar \LWRtensortwo \LWRtensortwo }\)
+
+\(\newcommand {\LWRnuclidetwo }[2][]{{\vphantom {\mathrm {#2}}{}^{\LWRtensornucleonnumber }_{#1}\mathrm {#2}}}\)
+
+\(\newcommand {\nuclide }[1][]{\def \LWRtensornucleonnumber {#1}\LWRnuclidetwo }\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\cO }{\mathcal {O}}\)
+
+\(\newcommand {\cC }{\mathcal {C}}\)
+
+\(\newcommand {\cP }{\mathcal {P}}\)
+
+\(\newcommand {\cF }{\mathcal {F}}\)
+
+\(\newcommand {\cS }{\mathcal {S}}\)
+
+\(\newcommand {\cK }{\mathcal {K}}\)
+
+\(\newcommand {\cM }{\mathcal {M}}\)
+
+\(\newcommand {\GG }{\mathbb {G}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\QQ }{\mathbb {Q}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\LL }{\mathbb {L}}\)
+
+\(\newcommand {\HH }{\mathbb {H}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\SP }{\mathbb {S}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\sF }{\mathscr {F}}\)
+
+\(\newcommand {\sC }{\mathscr {C}}\)
+
+\(\newcommand {\ts }{\textsuperscript }\)
+
+\(\newcommand {\mf }{\mathfrak }\)
+
+\(\newcommand {\cc }{\mf {c}}\)
+
+\(\newcommand {\mg }{\mf {g}}\)
+
+\(\newcommand {\ma }{\mf {a}}\)
+
+\(\newcommand {\mh }{\mf {h}}\)
+
+\(\newcommand {\mn }{\mf {n}}\)
+
+\(\newcommand {\mc }{\mf {c}}\)
+
+\(\newcommand {\ul }{\underline }\)
+
+\(\newcommand {\mz }{\mf {z}}\)
+
+\(\newcommand {\me }{\mf {e}}\)
+
+\(\newcommand {\mff }{\mf {f}}\)
+
+\(\newcommand {\mm }{\mf {m}}\)
+
+\(\newcommand {\mt }{\mf {t}}\)
+
+\(\newcommand {\pp }{\mf {p}}\)
+
+\(\newcommand {\qq }{\mf {q}}\)
+
+\(\newcommand {\gl }{\mf {gl}}\)
+
+\(\newcommand {\msl }{\mf {sl}}\)
+
+\(\newcommand {\so }{\mf {so}}\)
+
+\(\newcommand {\mfu }{\mf {u}}\)
+
+\(\newcommand {\su }{\mf {su}}\)
+
+\(\newcommand {\msp }{\mf {sp}}\)
+
+\(\renewcommand {\aa }{\mf {a}}\)
+
+\(\newcommand {\bb }{\mf {b}}\)
+
+\(\newcommand {\sR }{\mathscr {R}}\)
+
+\(\newcommand {\lb }{\langle }\)
+
+\(\newcommand {\rb }{\rangle }\)
+
+\(\newcommand {\ff }{\mf {f}}\)
+
+\(\newcommand {\ee }{\epsilon }\)
+
+\(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
+\(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
+
+\(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
+
+\(\newcommand {\pushout }{\arrow [ul, phantom, &quot;\ulcorner &quot;, very near start]}\)
+
+\(\newcommand {\pullback }{\arrow [dr, phantom, &quot;\lrcorner &quot;, very near start]}\)
+
+\(\newcommand {\simp }[1]{#1^{\Delta ^{op}}}\)
+
+\(\newcommand {\arrowtcupp }[2]{\arrow [bend left=50, &quot;&quot;{name=U, below,inner sep=1}]{#1}\arrow [Rightarrow,from=U,to=MU,&quot;#2&quot;]}\)
+
+\(\newcommand {\arrowtclow }[2]{\arrow [bend right=50, &quot;&quot;{name=L,inner sep=1}]{#1}\arrow [Rightarrow,from=LM,to=L]{}[]{#2}}\)
+
+\(\newcommand {\arrowtcmid }[2]{\arrow [&quot;&quot;{name=MU,inner sep=1},&quot;&quot;{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}\)
+
+\(\newcommand {\dummy }{\textcolor {white}{\bullet }}\)
+
+\(\newcommand {\adjunction }[4]{ #1\hspace {2pt}\colon #2 \leftrightharpoons #3 \hspace {2pt}\colon #4 }\)
+
+\(\newcommand {\aug }{\mathop {\rm aug}\nolimits }\)
+
+\(\newcommand {\MC }{\mathop {\rm MC}\nolimits }\)
+
+\(\newcommand {\art }{\mathop {\rm art}\nolimits }\)
+
+\(\newcommand {\DiGrph }{\mathop {\rm DiGrph}\nolimits }\)
+
+\(\newcommand {\FMP }{\mathop {\rm FMP}\nolimits }\)
+
+\(\newcommand {\CAlg }{\mathop {\rm CAlg}\nolimits }\)
+
+\(\newcommand {\perf }{\mathop {\rm perf}\nolimits }\)
+
+\(\newcommand {\cof }{\mathop {\rm cof}\nolimits }\)
+
+\(\newcommand {\fib }{\mathop {\rm fib}\nolimits }\)
+
+\(\newcommand {\Thick }{\mathop {\rm Thick}\nolimits }\)
+
+\(\newcommand {\Orb }{\mathop {\rm Orb}\nolimits }\)
+
+\(\newcommand {\ko }{\mathop {\rm ko}\nolimits }\)
+
+\(\newcommand {\Spf }{\mathop {\rm Spf}\nolimits }\)
+
+\(\newcommand {\Spc }{\mathop {\rm Spc}\nolimits }\)
+
+\(\newcommand {\sk }{\mathop {\rm sk}\nolimits }\)
+
+\(\newcommand {\cosk }{\mathop {\rm cosk}\nolimits }\)
+
+\(\newcommand {\holim }{\mathop {\rm holim}\nolimits }\)
+
+\(\newcommand {\hocolim }{\mathop {\rm hocolim}\nolimits }\)
+
+\(\newcommand {\Pre }{\mathop {\rm Pre}\nolimits }\)
+
+\(\newcommand {\THR }{\mathop {\rm THR}\nolimits }\)
+
+\(\newcommand {\THH }{\mathop {\rm THH}\nolimits }\)
+
+\(\newcommand {\Fun }{\mathop {\rm Fun}\nolimits }\)
+
+\(\newcommand {\Loc }{\mathop {\rm Loc}\nolimits }\)
+
+\(\newcommand {\Bord }{\mathop {\rm Bord}\nolimits }\)
+
+\(\newcommand {\Cob }{\mathop {\rm Cob}\nolimits }\)
+
+\(\newcommand {\Set }{\mathop {\rm Set}\nolimits }\)
+
+\(\newcommand {\Ind }{\mathop {\rm Ind}\nolimits }\)
+
+\(\newcommand {\Sind }{\mathop {\rm Sind}\nolimits }\)
+
+\(\newcommand {\Ext }{\mathop {\rm Ext}\nolimits }\)
+
+\(\newcommand {\sd }{\mathop {\rm sd}\nolimits }\)
+
+\(\newcommand {\Ex }{\mathop {\rm Ex}\nolimits }\)
+
+\(\newcommand {\Out }{\mathop {\rm Out}\nolimits }\)
+
+\(\newcommand {\Cyl }{\mathop {\rm Cyl}\nolimits }\)
+
+\(\newcommand {\Path }{\mathop {\rm Path}\nolimits }\)
+
+\(\newcommand {\Ch }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\SSet }{\mathop {\rm \Set ^{\Delta ^{op}}}\nolimits }\)
+
+\(\newcommand {\Sq }{\mathop {\rm Sq}\nolimits }\)
+
+\(\newcommand {\Free }{\mathop {\rm Free}\nolimits }\)
+
+\(\newcommand {\Map }{\mathop {\rm Map}\nolimits }\)
+
+\(\newcommand {\Chain }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\LMap }{\mathop {\rm LMap}\nolimits }\)
+
+\(\newcommand {\RMap }{\mathop {\rm RMap}\nolimits }\)
+
+\(\newcommand {\Tot }{\mathop {\rm Tot}\nolimits }\)
+
+\(\newcommand {\MU }{\mathop {\rm MU}\nolimits }\)
+
+\(\newcommand {\MSU }{\mathop {\rm MSU}\nolimits }\)
+
+\(\newcommand {\MSp }{\mathop {\rm MSp}\nolimits }\)
+
+\(\newcommand {\MSO }{\mathop {\rm MSO}\nolimits }\)
+
+\(\newcommand {\MO }{\mathop {\rm MO}\nolimits }\)
+
+\(\newcommand {\BU }{\mathop {\rm BU}\nolimits }\)
+
+\(\newcommand {\KU }{\mathop {\rm KU}\nolimits }\)
+
+\(\newcommand {\BSU }{\mathop {\rm BSU}\nolimits }\)
+
+\(\newcommand {\BSp }{\mathop {\rm BSp}\nolimits }\)
+
+\(\newcommand {\BGL }{\mathop {\rm BGL}\nolimits }\)
+
+\(\newcommand {\BSO }{\mathop {\rm BSO}\nolimits }\)
+
+\(\newcommand {\BO }{\mathop {\rm BO}\nolimits }\)
+
+\(\newcommand {\KO }{\mathop {\rm KO}\nolimits }\)
+
+\(\newcommand {\Tor }{\mathop {\rm Tor}\nolimits }\)
+
+\(\newcommand {\Cotor }{\mathop {\rm Cotor}\nolimits }\)
+
+\(\newcommand {\imag }{\mathop {\rm Im}\nolimits }\)
+
+\(\newcommand {\real }{\mathop {\rm Re}\nolimits }\)
+
+\(\newcommand {\Cat }{\mathop {\rm Cat}\nolimits }\)
+
+\(\newcommand {\Fld }{\mathop {\rm Fld}\nolimits }\)
+
+\(\newcommand {\Frac }{\mathop {\rm Frac}\nolimits }\)
+
+\(\newcommand {\Dom }{\mathop {\rm Dom}\nolimits }\)
+
+\(\newcommand {\Hotc }{\mathop {\rm Hotc}\nolimits }\)
+
+\(\newcommand {\Top }{\mathop {\rm Top}\nolimits }\)
+
+\(\newcommand {\Ring }{\mathop {\rm Ring}\nolimits }\)
+
+\(\newcommand {\CRing }{\mathop {\rm CRing}\nolimits }\)
+
+\(\newcommand {\CGHaus }{\mathop {\rm CGHaus}\nolimits }\)
+
+\(\newcommand {\Alg }{\mathop {\rm Alg}\nolimits }\)
+
+\(\newcommand {\Bool }{\mathop {\rm Bool}\nolimits }\)
+
+\(\newcommand {\hTop }{\mathop {\rm hTop}\nolimits }\)
+
+\(\newcommand {\Nat }{\mathop {\rm Nat}\nolimits }\)
+
+\(\newcommand {\Rel }{\mathop {\rm Rel}\nolimits }\)
+
+\(\newcommand {\Mod }{\mathop {\rm Mod}\nolimits }\)
+
+\(\newcommand {\Space }{\mathop {\rm Space}\nolimits }\)
+
+\(\newcommand {\Vect }{\mathop {\rm Vect}\nolimits }\)
+
+\(\newcommand {\FinVect }{\mathop {\rm FinVect}\nolimits }\)
+
+\(\newcommand {\Matr }{\mathop {\rm Matr}\nolimits }\)
+
+\(\newcommand {\Ab }{\mathop {\rm Ab}\nolimits }\)
+
+\(\newcommand {\Gr }{\mathop {\rm Gr}\nolimits }\)
+
+\(\newcommand {\Grp }{\mathop {\rm Grp}\nolimits }\)
+
+\(\newcommand {\Hol }{\mathop {\rm Hol}\nolimits }\)
+
+\(\newcommand {\Gpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Grpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Mon }{\mathop {\rm Mon}\nolimits }\)
+
+\(\newcommand {\FinSet }{\mathop {\rm FinSet}\nolimits }\)
+
+\(\newcommand {\Sch }{\mathop {\rm Sch}\nolimits }\)
+
+\(\newcommand {\AffSch }{\mathop {\rm AffSch}\nolimits }\)
+
+\(\newcommand {\Idem }{\mathop {\rm Idem}\nolimits }\)
+
+\(\newcommand {\SIdem }{\mathop {\rm SIdem}\nolimits }\)
+
+\(\newcommand {\Aut }{\mathop {\rm Aut}\nolimits }\)
+
+\(\newcommand {\Ord }{\mathop {\rm Ord}\nolimits }\)
+
+\(\newcommand {\coker }{\mathop {\rm coker}\nolimits }\)
+
+\(\newcommand {\ch }{\mathop {\rm char}\nolimits }\)
+
+\(\newcommand {\Sym }{\mathop {\rm Sym}\nolimits }\)
+
+\(\newcommand {\adj }{\mathop {\rm adj}\nolimits }\)
+
+\(\newcommand {\dil }{\mathop {\rm dil}\nolimits }\)
+
+\(\newcommand {\Cl }{\mathop {\rm Cl}\nolimits }\)
+
+\(\newcommand {\Diff }{\mathop {\rm Diff}\nolimits }\)
+
+\(\newcommand {\End }{\mathop {\rm End}\nolimits }\)
+
+\(\newcommand {\Hom }{\mathop {\rm Hom}\nolimits }\)
+
+\(\newcommand {\Gal }{\mathop {\rm Gal}\nolimits }\)
+
+\(\newcommand {\Pos }{\mathop {\rm Pos}\nolimits }\)
+
+\(\newcommand {\Ad }{\mathop {\rm Ad}\nolimits }\)
+
+\(\newcommand {\GL }{\mathop {\rm GL}\nolimits }\)
+
+\(\newcommand {\SL }{\mathop {\rm SL}\nolimits }\)
+
+\(\newcommand {\vol }{\mathop {\rm vol}\nolimits }\)
+
+\(\newcommand {\reg }{\mathop {\rm reg}\nolimits }\)
+
+\(\newcommand {\Or }{\textnormal {O}}\)
+
+\(\newcommand {\U }{\mathop {\rm U}\nolimits }\)
+
+\(\newcommand {\SOr }{\mathop {\rm SO}\nolimits }\)
+
+\(\newcommand {\SU }{\mathop {\rm SU}\nolimits }\)
+
+\(\newcommand {\Spin }{\mathop {\rm Spin}\nolimits }\)
+
+\(\newcommand {\Sp }{\mathop {\rm Sp}\nolimits }\)
+
+\(\newcommand {\Int }{\mathop {\rm Int}\nolimits }\)
+
+\(\newcommand {\im }{\mathop {\rm im}\nolimits }\)
+
+\(\newcommand {\dom }{\mathop {\rm dom}\nolimits }\)
+
+\(\newcommand {\di }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\cod }{\mathop {\rm cod}\nolimits }\)
+
+\(\newcommand {\colim }{\mathop {\rm colim}\nolimits }\)
+
+\(\newcommand {\ad }{\mathop {\rm ad}\nolimits }\)
+
+\(\newcommand {\PSL }{\mathop {\rm PSL}\nolimits }\)
+
+\(\newcommand {\PGL }{\mathop {\rm PGL}\nolimits }\)
+
+\(\newcommand {\sep }{\mathop {\rm sep}\nolimits }\)
+
+\(\newcommand {\MCG }{\mathop {\rm MCG}\nolimits }\)
+
+\(\newcommand {\oMCG }{\mathop {\rm MCG^+}\nolimits }\)
+
+\(\newcommand {\Spec }{\mathop {\rm Spec}\nolimits }\)
+
+\(\newcommand {\rank }{\mathop {\rm rank}\nolimits }\)
+
+\(\newcommand {\diverg }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\disc }{\mathop {\rm disc}\nolimits }\)
+
+\(\newcommand {\sign }{\mathop {\rm sign}\nolimits }\)
+
+\(\newcommand {\Arf }{\mathop {\rm Arf}\nolimits }\)
+
+\(\newcommand {\Pic }{\mathop {\rm Pic}\nolimits }\)
+
+\(\newcommand {\Tr }{\mathop {\rm Tr}\nolimits }\)
+
+\(\newcommand {\res }{\mathop {\rm res}\nolimits }\)
+
+\(\newcommand {\Proj }{\mathop {\rm Proj}\nolimits }\)
+
+\(\newcommand {\mult }{\mathop {\rm mult}\nolimits }\)
+
+\(\newcommand {\N }{\mathop {\rm N}\nolimits }\)
+
+\(\newcommand {\lk }{\mathop {\rm lk}\nolimits }\)
+
+\(\newcommand {\Pf }{\mathop {\rm Pf}\nolimits }\)
+
+\(\newcommand {\sgn }{\mathop {\rm sgn}\nolimits }\)
+
+\(\newcommand {\grad }{\mathop {\rm grad}\nolimits }\)
+
+\(\newcommand {\lcm }{\mathop {\rm lcm}\nolimits }\)
+
+\(\newcommand {\Ric }{\mathop {\rm Ric}\nolimits }\)
+
+\(\newcommand {\Hess }{\mathop {\rm Hess}\nolimits }\)
+
+\(\newcommand {\sn }{\mathop {\rm sn}\nolimits }\)
+
+\(\newcommand {\cut }{\mathop {\rm cut}\nolimits }\)
+
+\(\newcommand {\tr }{\mathop {\rm tr}\nolimits }\)
+
+\(\newcommand {\codim }{\mathop {\rm codim}\nolimits }\)
+
+\(\newcommand {\ind }{\mathop {\rm index}\nolimits }\)
+
+\(\newcommand {\rad }{\mathop {\rm rad}\nolimits }\)
+
+\(\newcommand {\Rep }{\mathop {\rm Rep}\nolimits }\)
+
+\(\newcommand {\Lie }{\mathop {\rm Lie}\nolimits }\)
+
+\(\newcommand {\Der }{\mathop {\rm Der}\nolimits }\)
+
+\(\newcommand {\hgt }{\mathop {\rm ht}\nolimits }\)
+
+\(\newcommand {\Ider }{\mathop {\rm Ider}\nolimits }\)
+
+\(\newcommand {\id }{\mathop {\rm id}\nolimits }\)
+</div>
+
+<p>
+<!--................................-->
+<h4 id="autosec-9"><span class="sectionnumber">2&#x2003;</span>Technical Things</h4>
+<a id="Simplicial_h-autopage-9"></a>
+<a id="Simplicial_h-autofile-2"></a>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-10"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.1</span></span>. A category \(C\) is presentable if it satisfies:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(C\) is cocomplete
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(C\) is generated under colimits by a set of objects
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. Objects in \(C\) are small (equivalently the generators are small)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+4. \(C\) is locally small
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-11"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.2</span></span>. A category \(C\) is \(\kappa \)-accessible if it satisfies:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(C\) has \(\kappa \)-filtered colimits
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(C\) is generated under \(\kappa \)-filtered colimits by a set of objects
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. Objects in \(C\) are \(\kappa \)-small (equivalently the generators are small)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+4. \(C\) is locally small
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+For regular cardinals \(\tau \gg \kappa \) if \(\tau _0 &lt; \tau , \kappa _0 &lt; \kappa \implies \tau _0^{\kappa _0} &lt; \tau \)
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-12"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.3</span></span>. <a id="accessiblecompacts"></a> A \(\kappa \)-accessible category has a small set of
+\(\kappa \)-compact objects.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-13"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(S\) be the generating set of \(\kappa \)-compact objects, and let \(X\) be a \(\kappa \)-compact object. Presenting \(X\) as a \(\kappa \)-filtered colimit of objects in
+\(S\), we learn that \(1_X\) must factor through one of the objects of \(S\). Thus, \(X\) is a retract of an object of \(S\). but any object of \(S\) has a set of subobjects since the \(S\)-Yoneda embedding is faithful, so there is a
+set of such \(X\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-14"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.4</span></span>. \(\Delta ^{op}\) is sifted.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-15"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(\Delta \) can be thought of as the full subcategory of categories generated by digraphs that are finite paths. Thus we need to show the category of objects over \(\Delta
+^n\times \Delta ^m\) is connected. But given an object in this over category, we can adjoin a terminal object, which is sent to the terminal object of \(\Delta ^n\times \Delta ^m\), But then any two such maps over \(\Delta
+^n\times \Delta ^m\) are connected via the inclusion of the terminal object. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+There is an involutions of \(\Delta \) given by reversing the arrows of the partial orders. The action of this on simplicial objects is called the <b>opposite</b>.
+</p>
+
+<p>
+Let \(\Delta _n\) be the subcategory of \(\Delta \) of ordinals of size \(\leq n\), and call a functor \(\Delta _n^{op}\to C\) a \(n\)-truncated simplicial object in \(C\). \((\SSet )_n\) will denote the category of
+\(n\)-truncated simplicial sets. Let \(C\) be complete and cocomplete. The left and right Kan extensions \(C^{\Delta ^{op}_n} \to C^{\Delta ^{op}}\) of the inclusion \(i_n:\Delta _n\to \Delta ^{op}\) are given by
+\((i_n)_!X= \colim _{n\geq k \to m}X_k, (i_n)_*X = \lim _{m\to k\leq n}X_k\). \((i_n)^*(i_n)_* = 1=(i_n)^*(i_n)_!\).
+</p>
+
+<p>
+The other unit/counits are called the <b>skeleta/coskeleta</b>. \((i_n)_!(i_n)^*\to 1\) is the \(n\)-skeleton \(\sk _n\), and \(1\to (i_n)_*(i_n)\) is the \(n\)-coskeleton \(\cosk _n\).
+</p>
+
+<p>
+Let \(S,J\) be classes of arrows.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-16"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.5</span></span>. \(J\) satisfies the \(2\) out of \(3\) property with respect to \(S\) if in \(\Delta
+^2\)-shaped diagram where the edges are in \(S\), if two of the arrows are in \(J\), the third is.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-17"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.6</span></span>. \(J\) satisfies the \(3\) out of \(4\) property with respect to \(S\) if in a \(\Delta
+^1\times \Delta ^1\)-shaped diagram where the boundary edges are in \(S\), if three of the arrows on the boundary are in \(J\), the fourth is.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-18"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.7</span></span>. \(J\) satisfies the \(2\) out of \(6\) property with respect to \(S\) if in a \(\Delta
+^3\)-shaped diagram where the boundary edges are in \(S\), if the arrows \(0 \to 2,1\to 3\) are in \(J\), the rest are.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+If \(S\) is all the arrows, we supress it from the terminology. In this case, \(2\) out of \(6\) implies \(2\) out of \(3\) which implies \(3\) out of \(4\). \(2\) out of \(6\) is satisfied by isomorphisms.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-19"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.8</span></span>. A <b>weakly saturated class</b> of morphisms is one containing isomorphism that is
+closed under transfinite composition, coproducts retracts, and pushouts.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-20"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.9</span></span>. The class of <b>(left, right, inner) anodyne extensions</b> is the weakly saturated
+class of morphisms generated from the inclusions of (left, right, inner) horns \(\Lambda ^n_i \to \Delta ^n\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The adjective <b>\(n\)-trivial</b> will mean that we add \(\partial \Delta ^m\to \Delta ^m, m&lt;n\) to the generators of the saturated set. When \(n=\infty \), we can just say trivial, and when \(n=-2\), this doesn’t
+mean anything.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-21"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.10</span></span>. A map \(f\) has the <b>right lifing property</b> with respect to a morphism \(g\)
+denoted \(f\oslash g\), if we can always find lifts in the diagrams
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-1"
+      class="lateximagesource"
+><!--
+U       Y
+    g       f
+
+V       Z
+--><img
+    src="Simplicial_h-images/image-1.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+If \(L\) is a class of morphisms in \(C\), define \(L^{\oslash }\) to be the class of morphisms \(\{ f| L\oslash f \}\). Dually define \(\phantom {}^{\oslash }J\). \(\phantom {}^{\oslash }J\) is always weakly saturated.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-25"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.11</span></span>. <a id="factorizationsystemsaturation"></a> \(\phantom {}^{\oslash
+}(J^{\oslash })^{\oslash } = J^{\oslash }\)
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-26"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By definition \(\phantom {}^{\oslash }(J^{\oslash })\oslash J^{\oslash }\), showing \(J^{\oslash } \subset \phantom {}^{\oslash }(J^{\oslash })^{\oslash
+}\). But \(J \oslash \phantom {}^{\oslash }(J^{\oslash })^{\oslash }\) since \(J \subset \phantom {}^{\oslash }(J^{\oslash })\) giving the other inclusion (this works for any binary relation). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+\(\phantom {}^{\oslash }(J^{\oslash })\) is like a saturation of \(J\), and often agrees with the weak saturation of \(J\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-27"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.12</span></span>. \(f\oslash f\) iff \(f\) is an isomorphism.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-28"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Find a lift for the square \(1\times f\) to get an inverse. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-29"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.13</span></span>. <a id="adjunctionlifting"></a> Let \(F\dashv G\) be an adjunction. Then \(FX
+\oslash Y\) iff \(X \oslash GY\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-30"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This is immediate from the definition. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-31"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.14</span></span>. A map is a <b>(left, right, inner) \(n\)-connected fibration</b> if it satisfies the
+right lifting property with respect to \(n\)-trivial (left, right, inner) fibrations.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+A fibrant simplicial set is sometimes called a <b>Kan complex</b>, and an inner fibrant simplicial set is sometimes called an <b>\(\infty \)-category</b> or <b>\((\infty ,1)\)-categor</b>y or <b>quasicategory</b>.
+</p>
+
+<p>
+As \(\SSet \) is a presheaf category, we can get natural adjunctions by left Kan extension whenever we have a cosimplicial object in some cocomplete category \(C\). For example, the cosimiplicial category where \(\Delta ^n\)
+gets sent to the category generated by \(n\) morphisms in a row (also denoted \(\Delta ^n\)) gives the nerve functor with adjoint the homotopy category. The standard simplices in \(\Top \) or \(\CGHaus \) give geometric
+realization \(|\cdot |\) and the singular set \(S\). Another example is a cosimplicial object in \(\SSet \) given by taking an ordered set to the nerve its poset of subset. This extends to a functor \(\sd :\SSet \to \SSet \),
+which is essentially barycentric subdivision, and its right adjoint is denoted \(\Ex \). The study of this functor is due to Kan I believe. There is a natural map \(h: \sd X \to X\) called the last vertex map that sends a vertex in
+\(\sd \Delta ^n\) to the last vertex of the subset it corresponds to. The adjoint of this is a map \(X \to \Ex X\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-32"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.15</span></span>. Geometric realization of simplicial sets preserves finite limits in \(\CGHaus \), the
+category of compactly generated spaces.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-33"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> First let’s think about products. We can reduce to the case of simplices as follows. Let \(K,L\) be simplicial sets. Since products distribute over colimits, we have
+</p>
+
+<p>
+\[|K \times L| =|\int ^mK_m\cdot \Delta ^m \times \int ^nL_n\cdot \Delta ^n| = |\int ^{m,n}K_m\cdot L_n\cdot \Delta ^m\times \Delta ^n| \]
+</p>
+
+<p>
+\[= \int ^{m,n}K_m\cdot L_n \cdot |\Delta ^m\times \Delta ^n| = \int ^{m,n}K_m\cdot L_n \cdot |\Delta ^m|\times |\Delta ^n| = \int ^mK_m \cdot |\Delta ^m| \int ^n L_n \cdot |\Delta ^n|\]
+</p>
+
+<p>
+\[ = |K|\times |L|\]
+</p>
+
+<p>
+Now the natural map \(|\Delta ^n \times \Delta ^m|\to |\Delta ^n|\times |\Delta ^m|\) is a continuous map of compact Hausdorff spaces, so it a homeomorphism iff it is a bijection. Suppose we have an element of
+\(|\Delta ^n|\times |\Delta ^m|\), given by a sequence of numbers \(c_i,d_j\), which are the components for the standard embedding of a simplex. Define \(c_i&apos; = \sum _{k\leq i} c_i\) and similarly for
+\(d&apos;_j\), and order the set consisting of \(c_i&apos;,d_j&apos;\). Now define a simplex on vertices by going through the ordering and everytime you run into a number that is one of the \(c&apos;_i\), increment the index
+of the \(\Delta ^n\) vertex, and similarly for the \(d&apos;_i\) and the \(\Delta ^m\) vertex. It is easy to see that this is the unique nondegenerate simplex hitting \(c_i,d_j\), and it hits it in a unique point by taking the
+linear combination that is the incremental differences of the ordered set of numbers.
+</p>
+
+<p>
+Equalizers are easier. First observe that an inclusion of simplicial sets induces an inclusion of a closed set upon realizing. This implies that the comparison map is an inclusion. For surjectivity one has to observe that for any point
+equalized in the realization, the nondegenerate simplex whose interior it is in is equalized, so it is in the image. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-34"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.16</span></span>. <a id="barycentricsubdivisionhomeomorphic"></a> There is a homeomorphism
+\(|\sd \Delta ^n| \to |\Delta ^n|\), which realizes \(|\sd \Delta ^n|\) as the barycentric subdivision of \(|\Delta ^n|\). Moreover, this is naturally homotopic to \(|h|\) where \(h\) is the last vertex map.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-35"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> A zero simplex of \(\sd \Delta ^n\) is given by a subset of the vertices \(v_i\) of \(\Delta ^n\), which we can send to the barycenter of that set in \(|\Delta ^n|\). We can
+then extend to \(\sd \Delta ^n\) by linear interpolation. Rewrite \(\sum _i \alpha _i v_i = \sum _j t_j X_j\), where the \(t_j\) are in increasing order and \(X_j\) is a sum of \(v_i\)s, so we have just regrouped the
+\(v_i\)s with the same coefficient into one \(X_j\). Define \(N_j = \sum _{k\geq j} (n_j+1)\) where \(n_j\) is the number of \(v_i\) in \(X_j\).
+</p>
+
+<p>
+Then \(\sum _j t_jX_j = \sum _j (t_j-t_{j-1})N_j(\frac {1}{N_j}\sum _{k\geq j} X_k)\). \((\frac {1}{N_j}\sum _{k\geq j} X_k)\) is a barycenter, and \(\sum _j (t_j-t_{j-1})N_j = 1\) so we have written
+(uniquely) any element of \(\Delta ^n\) as an element of \(|\sd X|\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-36"><span class="sectionnumber">2.1&#x2003;</span>Generators of anodyne morphisms</h5>
+<a id="Simplicial_h-autopage-36"></a>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-37"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.17</span></span><span class="amsthmnoteplain"> (Generators of \(n\)-trivial inclusions)</span>. <a
+id="genincl"></a> The \(n\)-trivial maps are those inclusions \(X\to Y\), where \(Y/X\) has nondegenerate cells in dimensions \(\leq n\). .In particular the saturation of the inclusions \(\partial \Delta ^n \subset
+\Delta ^n\) is all inclusions of simplicial sets.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-38"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It is easy to see the sets described are saturated. Given any inclusion \(X \subset Y\), let \(Y_n(X)\) denote the preimage of the n-skelaton of \(Y/X\) as a pointed simplicial set.
+Then since \(Y_{-1}(X) = X, Y_n(X) \subset Y_{n+1}(X), \cup _i Y_{i}(X)=Y\), it suffices to show that the inclusion \(Y_{n-1}(X) \to Y_{n}(X)\) is generated by \(\partial \Delta ^n \subset \Delta ^n\). But
+there is a pushout diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-2"
+      class="lateximagesource"
+><!--
+∪α ∂∆nα   Yn−1 (X)
+
+
+∪α ∆nα     Yn (X)
+--><img
+      src="Simplicial_h-images/image-2.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where alpha runs over all nondegenerate \(n\)-cells in \(Y/X\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+<b>Note: the inclusions \(\partial \Delta ^n\times \Delta ^m \cup \Delta ^n \times \partial \Delta ^m \subset \Delta ^n\times \Delta ^m\) should also generate inclusions.</b>
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-42"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.18</span></span><span class="amsthmnoteplain"> (Generators of left anodyne extensions)</span>. <a
+id="genleftanod"></a> The three classes of maps below generate the left anodyne extensions:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(\Lambda _i^n \subset \Delta ^n\), \(0 \leq i &lt;n\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(\Delta ^1\times \partial \Delta ^n \cup \Lambda _1^1 \times \Delta ^n \subset \Delta ^1\times \Delta ^n\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(\Delta ^1\times X \cup \Lambda _1^1 \times Y \subset \Delta ^1\times Y\) for all \(X \subset Y\)
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-43"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \((2) \iff (3)\): This follows from Lemma <a href="node-Technical-Things.html#genincl">2.17</a> after observing that the class of inclusions \(X \to Y\) for which
+\((3)\) is true is saturated.
+</p>
+
+<p>
+\((2) \implies (1)\): Let \(X_n\) be \(\Delta ^1\times \partial \Delta ^n \cup \Lambda _1^1 \times \Delta ^n\), and consider the map \(X_n \to \Lambda _i^{n+1}\) induced by the endomorphism of \(X_n\)
+determined on vertices by sending \((1,j)\) to \((0,j)\) for \(j \neq i\). The pushout along this map of the inclusion \(X \to \Delta ^1\times \Delta ^n\) contains \(\Delta ^{n+1}\) as a retract relative to \(\Lambda
+_i^{n+1}\).
+</p>
+
+<p>
+\((1)\implies (2)\): First notice that the \(n-1\) skeleta agree, so there is only need to add \(n+1\)-simplices. Let \(\sigma _i\) denote the \(n+1\) simplex of \(\Delta ^1\times \Delta ^n\) where the \(\Delta ^1\)
+component starts being \(1\) on the \(i^{th}\) vertex. Then in decreasing order of \(i\), extend along \(\Lambda _i^n\) to \(\sigma _i\) to build up \(\Delta ^1\times \Delta ^n\) out of \(\Delta ^1\times \partial
+\Delta ^n \cup \Lambda _1^1 \times \Delta ^n\) <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-44"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.19</span></span><span class="amsthmnoteplain"> (Generators of anodyne extensions)</span>. <a
+id="genanod"></a> The three classes of maps below generate the anodyne extensions:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(\Lambda _i^n \subset \Delta ^n\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(\Delta ^1\times \partial \Delta ^n \cup \Lambda _i^1 \times \Delta ^n \subset \Delta ^1\times \Delta ^n\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(\Delta ^1\times X \cup \Lambda _i^1 \times Y \subset \Delta ^1\times Y\) for all \(X \subset Y\)
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-45"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.20</span></span><span class="amsthmnoteplain"> (Generators of inner anodyne extensions)</span>.
+<a id="geninneranod"></a> The classes of maps below generate the inner anodyne extensions:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(\Lambda _i^n \subset \Delta ^n\), \(0&lt;i&lt;n\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(\Delta ^2\times \partial \Delta ^n \cup \Lambda _1^2 \times \Delta ^n \subset \Delta ^2\times \Delta ^n\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(\Delta ^2\times X \cup \Lambda _1^2 \times Y \subset \Delta ^2\times Y\) for all \(X \subset Y\)
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-46"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \((1) \implies (2)\): First observe that the \(n-1\)-skeleton agrees with that of \(\Delta ^2\times \Delta ^n\). Let \(\sigma &apos;_i,i&gt;0\) be the nondegenerate
+\(n+1\)-simplices projecting onto \(s_i\Delta ^n\), that switches from \(0\) to \(2\) in \(\Delta ^2\) at the \(i^{th}\) vertex. Let \(\sigma _{i,0}\) be the nondegenerate \(n+2\)-simplex projecting to \(s_is_i\Delta
+^n\), and let \(\sigma _{i,1},i&gt;0\) be the nondegenerate \(n+2\)-simplex projecting to \(s_{i}s_{i-1}\Delta ^n\). Then in descending order of \(i\), we can attach \(\sigma &apos;_i\), then \(\sigma _{i,0}\), then
+\(\sigma _{i,1}\) until we have build up \(\Delta ^2\times \Delta ^n\).
+</p>
+
+<p>
+\((2) \iff (3)\): This follows from Lemma <a href="node-Technical-Things.html#genincl">2.17</a> after observing that the class of inclusions \(X \to Y\) for which \((3)\) is true is saturated.
+</p>
+
+<p>
+\((2) \implies (1)\): Fix \(0&lt;i&lt;n\), and consider the endomorphism of \(\Delta ^2\times \partial \Delta ^n \cup \Lambda _1^2 \times \Delta ^n \subset \Delta ^2\times \Delta ^n\), with image
+consisting of the vertices \((0,j), j&lt;i\), \((1,i-1)\), and \((2,j)\), for \(j\geq i\), where all the other vertices are sent to \((1,i-1)\). The image is \(\Lambda _i^n\), and the pushout of the inclusion into \(\Delta
+^2\times \Delta ^n\) along this endomorphism retracts onto the inclusion \(\Lambda _i^n \to \Delta ^n\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-47"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.21</span></span>. A simplicial set is an \(\infty \)-category iff the map \(\Fun (\Delta ^2,C)\to \Fun
+(\Lambda ^2_1,C)\) is a trivial fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-48"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This follows from Lemma <a href="node-Technical-Things.html#geninneranod">2.20</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-49"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.22</span></span>. <a id="anodgeneral"></a> If \(K\subset L\) is (left, right, inner) anodyne and \(Y
+\subset X\), then \(K\times X \cup L\times Y \to L\times X\) is (left, right, inner) anodyne.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-50"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let us do the proof for left anodyne extensions, the proofs in other cases are similar. Since the inclusions \(K\subset L\) for which the lemma is true are saturated, we reduce to
+the case when it is \(\Delta ^1\times \partial \Delta ^n \cup \Lambda _1^1 \times \Delta ^n \subset \Delta ^1\times \Delta ^n\). But now there is a commutative square:
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-3"
+      class="lateximagesource"
+><!--
+(∆1 × ∂∆n ∪ Λ11 × ∆n ) × X ∪ ∆1 × ∆n × Y   ∆1 × ∆n × X
+
+
+∆1 × (∆n × Y ∪ ∂∆n × X) ∪ Λ11 × (∆n × X)   ∆1 × (∆n × X)
+--><img
+      src="Simplicial_h-images/image-3.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+The lower map by \((3)\) of Corollary <a href="node-Technical-Things.html#genanod">2.19</a> is anodyne. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-54"><span class="sectionnumber">2.2&#x2003;</span>Enriched Categories</h5>
+<a id="Simplicial_h-autopage-54"></a>
+
+
+<p>
+A <b>closed monoidal category</b> is one where there are internal homs that are right adjoint to tensoring. This makes the category self-enriched. A \(V\)-enriched category with a (left) lax monoidal functor to \(C\) has an
+underlying \(C\)-enriched category, and in this case of self enrichment, the underlying category is the original, and one can use an enriched Yoneda lemma to upgrade the internal hom adjunction to an enriched adjunction. In a
+\(V\) enriched category \(C\) we can use an underline such as \(\ul {\Hom }(a,b)\) or \(\ul {C}(a,b)\) to denote \(V\)-homs. We say <b>cartesian closed</b> if the monoidal structure comes from products. The presheaf
+category of a category \(C\) is always a cartesian closed symmetric monoidal category by the formula \(\Map (X,Y)_Z = \Hom (X\times Z,Y)\), where \(Z \in C\). In particular this works in \(\SSet \). Moreover, there is a
+natural \(2\)-equivalence between \(\Set ^{C^{op}}\)-enriched categories and functors \(C^{op} \to \Cat \). The internal hom is also denoted \(Y^X\).
+</p>
+
+<p>
+For every monoidal cateogory \(V\), the functor \(X \mapsto \Hom (1,X)\) is right lax monoidal, so there is an underlying category. We will use \(\Hom (a,b)\) to talk about the morphisms in the underlying category.
+</p>
+
+<p>
+Given a complete and cocomplete cartesial closed symmetric monoidal category \(C\) we can form a symmetric monoidal category \(C_+\) of based objects with a map from the terminal object. The monoidal structure is the smash
+product, and the functor of adding a disjoint basepoint is strongly symmetric monoidal.
+</p>
+
+<p>
+Now suppose \(C,D\) are \(V\)-enriched, where \(V\) is concrete, and suppose that we have an adjunction \(\adjunction {F}{C}{D}{G}\) on the underlying categories. We would like a situation where this can be upgraded to an
+enriched adjunction.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-55"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.23</span></span>. Let \(\ul {C}\) be \(V\)-enriched. \(\ul {C}\) is <b>tensored</b> if there is an
+isomorphism natural in all \(3\) variables: \(\ul {C}(a\otimes b,c) \cong \ul {V}(a,\ul {C}(b,c))\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In other words, there is an enriched left adjoint of \(\ul {C}(b,-)\) for every \(b\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-56"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.24</span></span>. Let \(\ul {C}\) be \(V\)-enriched. \(\ul {C}\) is <b>cotensored</b> if there is an
+isomorphism natural in all \(3\) variables: \(\ul {C}(b,\hom (a,c)) \cong \ul {V} (a,\ul {C}(b,c))\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In other words, there is an enriched right adjoint of \(\ul {C}(-,c)\) for every \(b\).
+</p>
+
+<p>
+Sometimes people also say copower and power instead of tensor and cotensor.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-57"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.25</span></span>. A <b>two-variable adjunction</b> is a triple of functors \(F: M\times N \to P\),
+\(G:M^{op}\times P \to N\), \(H: N^{op}\times P \to M\) so that there are natural isomorphisms \(\Hom (F(a,b),c) = \Hom (b,G(a,c)) = \Hom (a,H(b,c))\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We can think of this as a family of adjunctions parameterized by \(a\) (or symmetrically in \(b,c\)). If \(\ul {C}\) is tensored and cotensored, there is a two-variable enriched adjunction \(\ul {C}(b,\hom (a,c)) \cong \ul
+{C}(a\otimes b,c) \). Moreover \(\otimes \) is unital and associative, essentially giving an action of \(\ul {V}\) on \(\ul {C}\).
+</p>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-58"></a>
+<span class="amsthmnamedefinition">Construction</span><span class="amsthmnumberdefinition"> <span class="textup">2.25.1</span></span>. <a id="leibnizconstruction"></a>[Liebniz Construction] Suppose
+that \(F:M\times N \to P\) is a functor, and \(P\) has pushouts. Then the <b>pushout-product</b> denoted \(\hat {F}\) is a functor on the arrow categories defined on arrows \(i,j\) by the diagram below.
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-4"
+      class="lateximagesource"
+><!--
+F (a, b)     F (i,1)
+                         F (a′ , b)
+     F (j,1)
+                       ⌜                   F (j,1)
+F (a, b′ )                  Xij
+                                      F̂ (i,j)
+                       F (i,1)
+                                                 F (a′ , b′
+--><img
+    src="Simplicial_h-images/image-4.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The pushout-product of the initial map to \(a\) with a map \(b \to c\) is just the map \(F(a,b) \to F(a,c)\). Suppose that there is a two-variable adjunction \(F,G,H\) between \(M,N,P\), and suppose that \(M\) has
+pushouts and \(N,P\) have pullbacks. Then Construction <a href="node-Technical-Things.html#leibnizconstruction">2.25.1</a> applied to \(F,G^{op},H^{op}\) give an induced \(2\)-variable adjunction \(\hat {F},\hat
+{G},\hat {H}\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-62"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.26</span></span>. <a id="twovaradjunctionlifting"></a> If \(F,G,H\) are a two-variable adjunction,
+then \(\hat {F}(f,g)\oslash h\) iff \(g \oslash \hat G(f,h)\) iff \(f \oslash H(g,h)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-63"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This follows from construction and Lemma <a href="node-Technical-Things.html#adjunctionlifting">2.13</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-64"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.27</span></span>. <a id="enrichadjunction"></a> Suppose that \(C,D\) are tensored and cotensored over
+\(V\), and there is an adjunction \(\adjunction {F}{C}{D}{G}\) of functors on the underlying categories. Then the following data determine each other:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. An enrichment of the functors and the adjunction
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. An enrichment of \(F\) and natural isomorphisms \(F(v\otimes m) \cong v\otimes F(m)\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. An enrichment of \(G\) and natural isomorphisms \(G(m^v)\cong G(m)^v\).
+</p>
+</li>
+</ul>
+
+<p>
+Moreover, in this case, \(G\) preserves the cotensoring and \(F\) preserves the tensoring.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-65"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It suffices to show \((1) \iff (2)\) as \((3)\) is dual to \((2)\). The point is to use the Yoneda lemma. For clarity, \(\ul {F}\) will denote enriched functors. If the adjunction
+is enriched, then \(\ul {D}(v\otimes \ul {F}m,n) = \ul {V}(v,\ul {D}(Fm,n)) = \ul {V}(v,\ul {C}(m,\ul {G}(n)) )= \ul {C}(v\otimes m,\ul {G}(n)) = \ul {D}(\ul {F}(v\otimes m),n)\). Conversely, if
+\((2)\) is satisfied, and \(U\) denoted the forgetful functor on \(\ul V\), then we can produce the counit via \(V(c,\ul C(Ga,Ga)) = C(c\otimes Ga,Ga) = D(F(c\otimes Ga),a) = D(c\otimes FGa,a) = V(c,\ul
+D(FGa,a))\) and the unit via \(V(a,\ul D(Fb,Fb)) = D(a\otimes Fb,Fb) = D(F(a\otimes b),Fb) = D(a\otimes b, GFb) = V(a,\ul D(b,GFb))\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We can transport enrichments and the property of being cotensored or tensored over \(V\) to \(V&apos;\) provided we have an adjunction \(\adjunction {F}{V}{V&apos;}{G}\) where the left adjoint is strongly monoidal.
+Moreover the \(V&apos;\) enrichments on \(V,V&apos;\) are compatible with the adjunction in this case.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-66"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.28</span></span>. <a id="simplicialobjectssimplicialcat"></a> \(C^{D^{op]}}\) is enriched over
+\(\Set ^{D^{op}}\) and is tensored if \(C\) is cocomplete and cotensored if \(C\) is additionally complete.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-67"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> If \(A \in \Set ^{D^{op}}, B \in C^{D^{op}}, d \in D\), define \((A\otimes B)_d = A_d\cdot B_d\), where \(\cdot \) is the copower, and observe that it is the
+tensoring, if the enrichment is given by \(\ul {\Hom }(B,C)_d = \Hom (d\otimes B,C)\). If \(C\) is complete and \(A=\colim _J d_j\), then define \(B^A\) by \(\lim _J B^{d_j}\), where \(B^{d_j}\) is given by the power
+\(B^{d_j}_{d} = \prod _{\Hom (d,d_j)}B\). This is a right adjoint of \(A\otimes (-)\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-68"><span class="sectionnumber">2.3&#x2003;</span>Basics of Simplicial Sets</h5>
+<a id="Simplicial_h-autopage-68"></a>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-69"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.29</span></span>. <a id="mapsfibration"></a> Let \(K \subset L\) be an inclusion, and \(X \to Y\) a
+(left, right, inner) fibration. Then the natural map \(\Map (L,X) \to \Map (K,X)\times _{\Map (K,Y)}\Map (L,Y)\) is a (left, right, inner) fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-70"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By definition \(A \to B\) has the left lifting property with respect to the map above iff \(A\times L \cup B \times K \subset B\times L\) has the left lifting property with
+respect to \(X \to Y\). Thus this follows from Corollary <a href="node-Technical-Things.html#anodgeneral">2.22</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-71"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.30</span></span>. <a id="mapstrivfibration"></a> Let \(K \subset L\) be a (left, right, inner)
+anodyne extension, and \(X \to Y\) a (left, right, inner) fibration. Then the natural map \(\Map (L,X) \to \Map (K,X)\times _{\Map (K,Y)}\Map (L,Y)\) is a trivial fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-72"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This has the same proof as Corollary <a href="node-Technical-Things.html#mapsfibration">2.29</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-73"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.31</span></span>. <a id="homotopyeqrelation"></a> For a (left, right) fibrant simplicial set, simplicial
+homotopy of verticies is an equivalence relations.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-74"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> If \(g\) is a homotopy \(x\to y\), then \((g,1_y,\cdot ) = \Lambda _0^2\) can be filled into \(\Delta ^2\), giving a homotopy \(y \to x\). \(s_0x\) gives reflexivity, and if
+\(f:x \to y\) and \(g:y \to z\) are homotopies, then by extending \((g,\cdot ,f)\) to \(\Delta ^2\), we get a homotopy \(x \to z\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-75"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.32</span></span>. <a id="homotopyofmapseqrelation"></a> Let \(X\to Y\) be a (left, right) fibration,
+and let \(K \to L\) be a cofibration. Then homotopies of maps from \(L\) to \(X\) covering \(Y\) relative to \(K\) is an equivalence relation.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-76"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This follows from Lemma <a href="node-Technical-Things.html#homotopyeqrelation">2.31</a> and Corollary <a
+href="node-Technical-Things.html#mapsfibration">2.29</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Define \(\pi _0(X)\) to be the connected components of \(X\).
+</p>
+
+<p>
+Simplicial sets generalize categories.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-77"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.33</span></span>. The nerve is fully faithful on \(1\)-categories. It’s essential image is
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(2\)-coskelatal \(\infty \)-categories
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. Simplicial sets with unique lifts from inner horns
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. Simplicial sets satisfying the Segal condition \(X_n \xrightarrow {\sim } X_1\times _{X_0} X_1\times _{X_0}\dots \times _{X_0}X_1\) from the inclusion of the spine.
+</p>
+<p>
+
+
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-78"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> First we will show that the first two descriptions of the essential image are the same. Suppowe we have a \(2\)-coskeletal \(\infty \)-category. Then we immediately get that
+there is a unique lift for inner horns when \(n&gt;3\), since the inclusions of those horns are identities on the \(2\)-skelaton. If we have two composites of \(g\circ f\), \(\sigma ,\sigma &apos;\) lifting both \(\Lambda _1^3 =
+(s_0 g,\cdot ,\sigma ,s_1f)\) and \(\partial \Delta ^3 = (s_0g, \sigma ,\sigma &apos;, s_1f)\) to \(\Delta ^3\), we see by uniqueness of the lift on \(\Lambda _1^3\) that \(\sigma = \sigma &apos;\).
+</p>
+
+<p>
+Conversely given a simplicial set with unique lifts on inner horns, it is certainly an \(\infty \)-category, so it suffices to show it is \(2\)-coskelatal. To do this, it suffices to show that for \(n&gt;2\), we can always extend maps
+along \(\partial \Delta ^n \subset \Delta ^n\). Uniqueness will follow from the fact that it extends an inner horn. This can be done inductivly on \(n\). Since \(n&gt;2\), we can restrict to two different inner horns and
+extend to \(\Delta ^n\). Then the uniqueness of lifts for smaller \(n\) will show that the two extensions agree on the boundary, and are in particular extensions on \(\partial \Delta ^n\).
+</p>
+
+<p>
+Now given such a simplicial set, rebuild the category in the obvious way. Namely, the verticies are objects, the \(1\)-simplices arrows (with the identity as the degenerate ones). The unique lifting on inner \(2\) horns gives a unique
+composition, the \(3\)-skelaton gives associativity, and the \(2\)-coskelativity says that maps between such simplicial sets are determined by preserving \(1\)-categorical structure.
+</p>
+
+<p>
+Being a category implies the Segal condition, which in turn implies unique lifting of inner horns. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-79"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.34</span></span>. A category is a Kan complex iff it is a groupoid.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-80"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(n\)-horns for \(n&gt;2\) can always be extended for a category, and \(1\)-horns can be extended for any simplicial set. Moreover, we see easily see that extending \(\Lambda
+_2^2\) and \(\Lambda _0^2\) is equivalent to every map having (left and right) inverses. Of course, if every map has a left inverse, it is already a groupoid by associativity. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+There is an explicit description of the homotopy \(1\)-category of an \(\infty \)-category. Namely, we call the \(0\)-simplices objects, \(1\)-simplices arrows. Given simplicial sets \(X,Y\), the join \(X\star Y\) is the simplicial
+set where its \(n\)-simplices start in \(X\) and end in \(Y\).
+</p>
+
+<p>
+Let \(x,y\) be objects in an \(\infty \)-category. Then the <b>left mapping space</b> from \(\LMap (x,y)\) is the simplicial set whose \(n\)-simplices are the maps \(\Delta ^n\star \Delta ^0\) sending \(\Delta ^n\) to
+\(x\) and \(\Delta ^0\) to \(y\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-81"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.35</span></span>. <a id="Mapsleftrightfibrant"></a> \(\LMap (x,y)\) is right fibrant.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-82"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Extending \(\Lambda _i^n \to \LMap (x,y)\) to \(\Delta ^n\) is the same as extending \(\Lambda _i^{n+1} = \Lambda _i^n \star \Delta ^0 \to X\) to \(\Delta
+^{n+1}=\Delta ^n\star \Delta ^0\), which is possible when \(0 &lt; i \leq n\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Being left fibrant will be later shown to be equivalent to being a Kan complex. Two maps are <b>left homotopic</b> if they are the same in \(\pi _0(\LMap (x,y))\). This is an equivalence relation. They are
+<b>homotopic</b> if there is a map \(\Delta ^1\times \Delta ^1\) restricting to identities on \(\partial \Delta ^1\times \Delta ^1\) and \(f,g\) on \(\Delta ^1\times \partial \Delta ^1\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-83"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.36</span></span>. <a id="leftrightmiddlehomotopy"></a> Two maps in an \(\infty \)-category are left
+homotopic iff they are right homotopic iff they are homotopic.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-84"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(\sigma \) be a left homotopy from \(f \to g\), meaning \(\partial \sigma = (g,f,1)\). Then extend the horn \((\sigma ,s_0g,\cdot ,s_0s_0d_1f)\) to \(\Delta
+^3\), \(d_2\) of which is a right homotopy. Left homotopy clearly implies homotopy by having one of the \(2\)-cells be degenerate. Conversely, if \(g,f\) are homotopic, they are both either left or right homotopic to the third map
+in the homotopy, and so by transitivity an the fact that left and right homotopies agree, \(g,f\) are left homotopic. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-85"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.37</span></span><span class="amsthmnoteplain"> (Homotopy \(1\)-category of an \(\infty
+\)-category)</span>. <a id="inftyhtycat"></a> For an \(\infty \)-category \(C\), the homotopy \(1\)-category is given by the same objects, where \(\pi _0(\LMap (x,y))\) is the homotopy classes of maps from \(x\) to
+\(y\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-86"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> A map to a \(1\)-category certainly factors through \(\pi _0\LMap (x,y)\). We will show we can build a \(1\)-category out of \(\pi _0(\LMap (x,y))\) as the Hom sets. By
+Lemma <a href="node-Technical-Things.html#leftrightmiddlehomotopy">2.36</a> we can use any notion of homotopy. Since \(\Map (\Delta ^2,X) \to \Map (\Lambda _2^1)\) is a trivial Kan fibration by Corollary <a
+href="node-Technical-Things.html#mapstrivfibration">2.30</a>, any two composites are homotopic, so there is a well-defined composite up to homotopy. For associativity, if \(f\) realizes a composite \(a \circ b\), \(g\)
+realizes \(a\circ (b\circ c)\), \(f&apos;\) realizes \(b\circ c\), then consider the map from \(\Lambda _{2}^{3}\) given by \((f,g,\cdot ,f&apos;)\). Extending to \(\Delta ^{n+1}\) and taking \(d_{n+1}\), we see that
+\(a\circ (b\circ c)\) is a realized as a composite of \((a\circ b)\circ c\). Any map to a \(1\)-category then factors uniquely through this category, so it is \(h(C)\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We define the homotopy \(1\)-category of spaces, denoted \(h(\Space )\) to be the category of Kan complexes and homotopy classes of maps between them. This will later be shown to be the homotopy \(1\)-category of a
+suitable \(\infty \)-category of spaces, \(\Space \). Similarly we can define \(h(\Space _*)\) using pointed Kan complexes.
+</p>
+
+<p>
+There is a homotopy category of an \(\infty \)-category that is enriched over \(h(\Space )\), which is a better one.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-87"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.38</span></span>. \(f:X \to Y\), \(g:   X&apos; \to Y&apos;\) are inner fibrations iff \(f\star g\) is as
+well.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-88"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> If we are trying to lift the inclusion \(\Lambda ^n_i \to \Delta ^n\) along \(f\star g\), if \(\Lambda ^n_i\) lands in either \(Y\) or \(Y&apos;\), then this lifts iff \(f,g\) are
+inner fibrations. Otherwise, we decompose \(\Delta ^n\) along where it splits between \(Y\) and \(Y&apos;\) as \(\Delta ^i\) and \(\Delta ^{n-i-1}\), and the map \(\Delta ^i\star \Delta ^{n-i-1}\) gives the desired
+lift. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We define the <b>left cone</b> of a simplicial set \(K\) to be \(\Delta ^0\star K\), denoted \(K^{\triangleright }\), and similarly \(K^{\triangleleft } = K\star \Delta ^0\) is the <b>right cone</b>. The <b>cone
+point</b> is the \(\Delta ^0\) inside of it.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-89"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.39</span></span><span class="amsthmnoteplain"> (Overcategories)</span>. Let \(p:K \to S\) be a map
+of simplicial sets. Then There is a simplicial set \(S_{/p}\) with the universal property \(\Hom _{\SSet }(Y, S_{/p}) = \Hom _{p}(Y\star K, S)\). \(\Hom _{p}\) denotes maps extending \(p\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-90"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> One can define \(S_{/p}\) by \((S_{/p})_n = \Hom _{p}(\Delta ^n\star K, S)\) and note that \(\star \) commutes with colimits in each variable to deduce the universal
+property. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Dually the under category is defined by the same universal property except with \(K \star Y\) instead of \(Y \star K\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-91"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.40</span></span>. <a id="joininneranod"></a> Suppose \(f:A_0\subset A, g:B_0 \subset B\). and
+either \(f\) is right anodyne or \(g\) is left anodyne. Then the inclusion \((A_0\star B)\coprod _{A_0\star B_0} (A\star B_0) \subset A\star B\) is inner anodyne.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-92"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Assume \(f\) is right anodyne, as the other case is dual. Then the class of \(g,f\) such that the lemma is true is saturated, so it suffices to assume \(f\) is \(\Lambda ^n_i \to
+\Delta ^n\) and \(g\) is \(\partial \Delta ^m \to \Delta ^m\). Then \(h\) is just the inclusion of \(\Lambda ^{n+m+1}_i \subset \Delta ^{n+m+1}\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The same proof yields
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-93"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.41</span></span>. <a id="joinleftanod"></a> Suppose \(f:A_0\subset A, g:B_0 \subset B\). and
+\(f\) is left anodyne. Then the inclusion \((A_0\star B)\coprod _{A_0\star B_0} (A\star B_0) \subset A\star B\) is left anodyne.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-94"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.42</span></span>. <a id="overcatgeneral1"></a> Suppose we are given a diagram of simplicial sets \(A
+\subset B \xrightarrow {p} X \xrightarrow {q} S\) where \(q\) is an inner fibration. Let \(r = q \circ p\), and \(p_0, q_0, r_0\) be the restrictions to \(A\) of \(p,q,r\). Then the induced map \(X_{p/} \to
+X_{p_0/}\times _{S_{r_0/}}S_{r/}\) is a left fibration. If in addition, \(q\) is a left fibration, then the map \(X_{/p} \to X_{/p_0}\times _{S_{/r_0}}S_{/r}\) is as well.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-95"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By the universal properties of the overcategories, the lifting problems are equivalent to maps given in Lemma <a href="node-Technical-Things.html#joininneranod">2.40</a>
+and Lemma <a href="node-Technical-Things.html#joinleftanod">2.41</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-96"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.43</span></span>. <a id="overcatleftfibration"></a> The map \(X_{p/} \to X_{p_0/}\) is a left
+fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-97"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(S = \Delta ^0\) in Proposition <a href="node-Technical-Things.html#overcatgeneral1">2.42</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Similarly, we can obtain
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-98"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.44</span></span>. <a id="overcatgeneral2"></a> Suppose we are given a diagram of simplicial sets \(A
+\subset B \xrightarrow {p} X \xrightarrow {q} S\) where either \(A \subset B\) is right anodyne and \(q\) is an inner fibration or \(A\subset B\) is anodyne and \(q\) is a left fibration. Let \(r = q \circ p\), and
+\(p_0, q_0, r_0\) be the restrictions to \(A\) of \(p,q,r\). Then the induced map \(X_{p/} \to X_{p_0/}\times _{S_{r_0/}}S_{r/}\) is a trivial fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-99"><span class="sectionnumber">2.4&#x2003;</span>Left fibration characterization of Kan fibrations</h5>
+<a id="Simplicial_h-autopage-99"></a>
+
+
+<p>
+Kan fibrations are left fibrations where the pushforward map on fibres are equivalences. This takes some effort to prove (can be viewed as a coherence type result), and as a special case includes the fact that left fibrant simplicial
+sets are Kan complexes. The main result is Proposition <a href="node-Technical-Things.html#kanfibrationcharacterization">2.53</a>.
+</p>
+
+<p>
+Left anodyne maps can be given by ‘left deformation retracts’:
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-100"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.45</span></span>. Let \(p:X \to S\) be a map with a section \(s\) and a fibrewise homotopy \(h\) from
+\(s\circ p\) to \(1\). Then \(s\) is left anodyne.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-101"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> There is a retraction
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-5"
+      class="lateximagesource"
+><!--
+S × Λ10   (S × ∆1 ) ×S×Λ11 (X × Λ11 )   S
+
+
+X × Λ10            X × ∆1               X
+--><img
+      src="Simplicial_h-images/image-5.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where the middle vertical map is left anodyne by Corollary <a href="node-Technical-Things.html#anodgeneral">2.22</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The following lemma is a \(1\)-categorical version of the type of coherence we are looking for. By using it in families, we will build our way to the result.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-105"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.46</span></span>. <a id="1catleftfibration"></a> If \(p:C \to D\) is a left fibration of \(\infty
+\)-categories and \(f\) is a morphism in \(C\) such that \(pf\) is an equivalence in \(D\), then \(f\) is an equivalence. Furthermore, given an equivalence \(x \to p(y)\), there is a lift to an equivalence \(\tilde {x} \to
+p(y)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-106"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> If \(pf\) has a left inverse \(g\), we can lift \(g\) to a left inverse \(\tilde {g}\) in \(C\) of \(f\). But \(g\) has a left inverse in \(D\), \(f&apos;\), which we can lift to see
+that \(\tilde {g}\) is left invertible. But \(C\) is an \(\infty \)-category, so \(g\) being left invertible is equivalent to \(f\) being right invertible.
+</p>
+
+<p>
+If \(a:x \to p(y)\) is an equivalence, we can choose a homotopy inverse \(b\) and a lift of \(b\) \(\tilde {b}\) from \(y\) to an object \(\tilde {x}\). Then we can lift a \(2\)-simplex exhibiting \(a\) as a left inverse of \(b\)
+to obtain the desired lift of \(a\), which is an equivalence by the first part. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The following consequence is quite important.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-107"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.47</span></span>. <a id="equivalenceinftycat"></a> Let \(C\) be an \(\infty \)-category and \(f\)
+a morphism. \(f\) is an equivalence iff for every \(n \geq 2\) and every map \(f_0:   \Lambda ^n_0 \to C\) that sends \(\Lambda ^{\{0,1\}}\) to \(f\), there exists an extension to \(\Delta ^n\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-108"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The lifting problem is equivalent to a lifting problem for the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-6"
+      class="lateximagesource"
+><!--
+Λ11   C/∆n−2
+
+
+∆1    C/∂∆n−2
+--><img
+      src="Simplicial_h-images/image-6.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+Because \(f\) is an equivalence and \(C_{\partial \Delta ^{n-2}} \to C\) is a left fibration by Corollary <a href="node-Technical-Things.html#overcatleftfibration">2.43</a>, the morphism in the diagram is an
+equivalence in \(C_{\partial \Delta ^{n-2}}\) by Lemma <a href="node-Technical-Things.html#1catleftfibration">2.46</a>. By the same lemma, we can produce the desired lift since the right vertical map is a right
+fibration.
+</p>
+
+<p>
+For the converse, if the extensions exist, then \(f\) has a left inverse by extending \((\cdot ,1,f)\) along \(\Lambda ^2_0 \subset \Delta ^2\), giving a \(2\)-simplex \(a\) with \(d_0a = f^{-1}\). By extending \((\cdot
+,s_0 f,s_1 f^{-1},a)\) along \(\Lambda ^3_0 \subset \Delta ^2\), we obtain a right inverse of \(f\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-112"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.48</span></span>. TFAE for an \(\infty \)-category \(C\):
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(hC\) is a groupoid
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(C\) is a Kan complex
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(C\) is left fibrant
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+This is the starting point for an analogous statement for left fibrations, namely the Grothendieck construction/straightening unstraightening equivalence.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-113"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.49</span></span>. <a id="largestinftysubgroupoid"></a> The subcomplex of an \(\infty \)-category
+consisting of simplices whose edges are equivalences is a Kan complex, and is the universal Kan complex mapping into the \(\infty \)-category.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We will need to construct the inverse on the \(1\)-categorical level. Let \(X \to S\) be a left fibration, and \(f:s \to t\) an arrow in \(S\). Then if \(X_s\) i the fibre of \(s\), by creating a lift as in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+    id="lateximage-Simplicial_h-7"
+    class="lateximagesource"
+><!--
+Λ11 × Xs           X
+
+           f ◦π1
+∆1 × Xs            S
+--><img
+    src="Simplicial_h-images/image-7.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+we obtain a map from \(X_s \to X_{t}\). Moreover the map
+</p>
+
+<p>
+\[\Map (\Delta ^1\times X_s,X) \to \Map (\Lambda ^1_1\times X_s,X)\times _{\Map (\Lambda ^1_1\times X_s,S)}\Map (\Delta ^1\times X_s, S)\]
+</p>
+
+<p>
+is a trivial fibration by Corollary <a href="node-Technical-Things.html#mapstrivfibration">2.30</a>, so in particular, there is a unique lift in the homotopy category of spaces, which will be denoted \(f_!\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-117"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.50</span></span>. <a id="1catunstraightening"></a> Given a left fibration \(X \to S\), the assignment
+\(s \to X_s\), \(f \to f_!\) defines a functor \(hS \to h(\Space )\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-118"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Because \(X \to S\) is an inner fibration, composition lifts along it, showing that \(f_!\) preserves composition. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-119"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.51</span></span>. <a id="kanleftlemma"></a> Suppose \(p:S \to T\) is a left fibration and \(T\) is a
+Kan complex. Then \(p\) is a Kan fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-120"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(S\) is also a Kan complex, since \(S\) is left fibrant. We need to show that for any anodyne inclusion \(A \subset B\), the map \(S^B \to S^{A} \times _{T^A} T^B\) is
+surjective on vertices. But it is a homotopy equivalence and a left fibration by Corollary <a href="node-Technical-Things.html#mapsfibration">2.29</a>, so is surjective since the functor from Lemma <a
+href="node-Technical-Things.html#1catunstraightening">2.50</a> must land in nonempty spaces. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-121"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.52</span></span>. <a id="trivkanleftlemma"></a> Suppose \(p:S \to T\) is a left fibration and for each
+\(t \in T\), \(S_t\) is contractible. Then \(p\) is a trivial Kan fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-122"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> We would like to show the inclusion \(\partial \Delta ^n \subset \Delta ^n\) has the left lifting property with respect to \(p\). When \(n=0\), the lifting property clearly
+holds. By pulling back along the simplex we are trying to lift, we can assume \(T\) is \(\Delta ^n\), in particular, \(S,T\) are \(\infty \)-categories. Choose a homotopy \(h\) from the inclusion \(\partial \Delta ^n \subset
+T\) to the terminal object of \(T\), and create a lift \(h&apos;\) in \(S\). We would like to extend \(h&apos;\) from \(\partial \Delta ^n\times \Delta ^1\) to \(\Delta ^n\times \Delta ^1\). We can extend \(\partial
+\Delta ^n\times 1\) to \(\Delta ^n\) by using the fact that the fibres are contractible. The rest of the cells that need to be added are inner horns (see Lemma <a href="node-Technical-Things.html#genleftanod">2.18</a>)
+except for the last cell. But this can be filled in since its restriction to the initial edge lies in a fibre, so we can use Proposition <a href="node-Technical-Things.html#equivalenceinftycat">2.47</a>. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We come to the main result.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-123"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.53</span></span>. <a id="kanfibrationcharacterization"></a> TFAE for a left fibration \(p:S \to
+T\):
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(p\) is a Kan fibration
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. For every edge \(f \in T\), the map \(f_!\) is an equivalence.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-124"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> For \(1 \implies 2\), since \(p\) is a left and right fibration, every morphism \(f\) induces a covariant \(f_!\) and contravariant \(f^*\), which are inverse to each other in the
+homotopy category of spaces.
+</p>
+
+<p>
+For \(2 \implies 1\), it suffices to show that \(p\) is a right fibration. It suffices to show that the map \(q:S^{\Delta ^1}\to S^{\Lambda ^1_0}\times _{T^{\Lambda ^1_0}}T^{\Delta ^1}\) is a trivial Kan fibration. We
+already know it is a left fibration, so by Lemma <a href="node-Technical-Things.html#trivkanleftlemma">2.52</a>, we just need to show that the fibres are contractible. For an edge \(f:     t \to t&apos;\) in \(T\), we can
+pullback \(q\) along the map \(S_{t&apos;} \to S^{\Lambda ^1_0}\times _{T^{\Lambda ^1_0}}T^{\Delta ^1}\) given by picking \(f\) , and it will suffice to show the fibres of the pullback \(X \to S_{t&apos;}\) are
+contractible for each \(f\). But the natural map \(X \to S_{t}\) is a trivial Kan fibration since \(p\) is a left fibration. In particular \(X\) is a Kan complex. By Lemma <a
+href="node-Technical-Things.html#kanleftlemma">2.51</a>, \(X \to S_{t&apos;}\) is a Kan fibration. The map \(f_!\) is obtained by taking a section of the map \(X \to S_{t}\) and composing with the map \(X \to
+S_{t&apos;}\), so in particular we learn that the map \(X \to S_{t&apos;}\) is an equivalence. Since it is an equivalence and a Kan fibration, it is a trivial Kan fibration. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-125"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.54</span></span>. <a id="compositetrivkanfib"></a> Let \(f\) be a left fibration, and \(g\) a trivial
+Kan fibration. Then \(g\circ f\) is a trivial Kan fibration iff \(f\) is.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-126"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> If \(f\) is, \(g\circ f\) is by composition. Conversely, if \(g\circ f\) is, by Proposition <a href="node-Technical-Things.html#kanfibrationcharacterization">2.53</a>
+it suffices to show that the fibres of \(f\) are contractible. Given \(x \in \cod f\), the map \(g\circ f^{-1}(x)\to g^{-1}(g(x))\) are is a left Kan fibration of contractible Kan complexes. It follows from Lemma <a
+href="node-Technical-Things.html#kanleftlemma">2.51</a> that it is a Kan fibration, and since both are contractible, the fibres are too, including \(f^{-1}(x)\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-127"><span class="sectionnumber">2.5&#x2003;</span>Cartesian Morphisms</h5>
+<a id="Simplicial_h-autopage-127"></a>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-128"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.55</span></span>. Let \(p:X\to S\) be an inner fibration. Let \(x \to y\) be an edge in \(X\). \(f\) is
+<b>\(p\)-Cartesian</b> if the map \(X_{/f}\to X_{/y}\times _{S_{/p(y)}}S_{/p(f)}\) is a trivial Kan fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In other words, giving a map \(a \to x\) is essentially the data of giving a map \(a \to y\) and a compaitble map \(p(a) \to p(x)\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-129"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.56</span></span>. <a id="cartesianmorphismproperties"></a>
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. Every edge of an isomorphism of simplicial sets is Cartesian.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. If \(p&apos;:X&apos; \to S&apos;\) is a pullback of \(p:X \to S\), a morphism in \(X&apos;\) is \(p&apos;\)-Cartesian iff its image in \(X\) is \(p\)-Cartesian.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. If \(p:X \to Y\) and \(q:Y \to Z\) are inner fibrations and \(f\) is an edge of \(X\) such that \(p(f)\) is \(q\)-Cartesian, \(f\) is \(p\)-Cartesian iff it is \(p\circ q\)-Cartesian.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-130"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \((1),(2)\) follow from the definition. To see \((3)\), consider the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-8"
+      class="lateximagesource"
+><!--
+X/f                             X/x ×Z/(q◦p)(x) Z/(q◦p)(f )
+      h                     g
+
+
+      X/x ×Y/p(x) Y/p(f )
+--><img
+      src="Simplicial_h-images/image-8.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+The map \(g\) is a pullback of the map that is a trivial fibration since \(p(f)\) is a \(q\)-Cartesian edge. By Proposition <a href="node-Technical-Things.html#overcatgeneral1">2.42</a>, \(h\) is a right fibration, so by
+Corollary <a href="node-Technical-Things.html#compositetrivkanfib">2.54</a> it follows that \(h\) is a trivial Kan fibration iff \(g\circ h\) is. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-134"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">2.56.1</span></span>. An edge being \(p\)-Cartesian is equivalent to lifts always existing in
+diagrams of the form
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-9"
+      class="lateximagesource"
+><!--
+∆{n−1,n}
+           f
+
+
+  Λnn          X
+
+
+  ∆n           S
+--><img
+      src="Simplicial_h-images/image-9.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+In particular in Proposition <a href="node-Technical-Things.html#equivalenceinftycat">2.47</a>, the condition on \(f\) being an equivalence is exactly that it is \(p\)-Cartesian for \(p\) the projection to a point.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-138"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.57</span></span>. <a id="equivalencecartesian"></a> Let \(p:C \to D\) be an inner fibration
+between \(\infty \)-categories. A morphism \(f \in C\) is an equivalence iff \(pf\) is an equivalence and \(f\) is \(p\)-Cartesian.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-139"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(q:D \to *\) be the projection to a point. \(p(f)\) being an equivalence is equivalent by Proposition <a
+href="node-Technical-Things.html#equivalenceinftycat">2.47</a> to \(f\) being \(q\circ p\)-Cartesian. Then the result follows from Lemma <a
+href="node-Technical-Things.html#cartesianmorphismproperties">2.56</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-140"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.58</span></span>. <a id="cartesianmorphismcomposition"></a> Suppose \(p:C \to D\) is an inner
+fibration between \(\infty \)-categories, there is a composite \(f\circ g = h\) from \(x\to y \to z\), and \(g\) is \(p\)-Cartesian. Then \(f\) is \(p\)-Cartesian iff \(h\) is.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-141"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> We are trying to show that one of the right fibrations (Proposition <a href="node-Technical-Things.html#overcatgeneral1">2.42</a>) \(i_0:C_{/f}\to C_{/y}\times
+_{D_{/p(y)}}D_{/p(f)}, i_1:C_{/h}\to C_{/z}\times _{D_{/p(z)}}D_{/p(h)}\)s a trivial Kan fibration iff the other is. Being a trivial Kan fibration is equivalent to the fibres being contractible. For simplicial subsets
+\(A\subset B \subset \Delta ^2\), if we define \(X_B = C_{/\sigma |B}\times _{D_{/\sigma |B}}D_{/\sigma }\), then there is a natural map \(j_{A,B}:X_B \to X_A\), which is a right fibration as it is a pullback of a
+map that is a right fibration by Proposition <a href="node-Technical-Things.html#overcatgeneral1">2.42</a>.
+</p>
+
+<p>
+The map \(j_{\Delta ^{\{2\}},\Delta ^{\{0,2\}}}\) is base changed from \(i_0\) by the map \(D_{/\sigma }\to D_{/p(f)}\) which is surjective on objects, and similarly \(j_{\Delta ^{\{2\}},\Delta ^{\{0,2\}}}\) is
+base changed from \(i_1\). Thus it suffices to show that \(j_{\Delta ^{\{2\}},\Delta ^{\{0,2\}}}\) has contractible fibres iff \(j_{\Delta ^{\{2\}},\Delta ^{\{0,1\}}}\) does.
+</p>
+
+<p>
+By Proposition <a href="node-Technical-Things.html#overcatgeneral2">2.44</a>, \(j_{A,B}\) is a trivial Kan fibration for any left anodyne inclusion. The inclusion \(\Delta ^{\{2\}}\to \Delta ^2\) factors as both
+\(\Delta ^{\{2\}}\to \Delta ^{\{0,2\}}\to \Delta ^2\) and \(\Delta ^{\{2\}}\to \Delta ^{\{1,2\}}\to \Delta ^{\Lambda ^2_1} \to \Delta ^2\), so by Corollary <a
+href="node-Technical-Things.html#compositetrivkanfib">2.54</a>, it follows that \(j_{\Delta ^{\{2\}},\Delta ^{\{0,2\}}}\) is a trivial fibration iff \(j_{\Delta ^{\{1,2\}},\Lambda ^2_1}\) is. \(j_{\Delta
+^{\{1,2\}},\Lambda ^2_1}\) is a pullback of \(j_{\Delta ^{\{2\}},\Delta ^{\{0,1\}}}\) by a map that is surjective on vertices (in fact, a trivial fibration) since the inclusion \(\{1\} \to \Delta ^{\{1,2\}}\) is left
+anodyne. Thus the result we want holds. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The dual notion of Cartesian is coCartesian. The following is the essential point of being coCartesian. Its relation with the definition can be compared to Proposition <a
+href="node-Technical-Things.html#genleftanod">2.18</a>.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-142"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.59</span></span>. <a id="cartesianlifteq"></a> Let \(p:Y\to S\) be an inner fibration of simplicial
+sets and let \(e:\Delta ^1\to Y\) be an edge. \(e\) is \(p\)-coCartesian iff the indicated lifts exist in all diagrams of the form
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-10"
+      class="lateximagesource"
+><!--
+             {0} × ∆1
+                                 e
+
+
+(∆n × {0})                   n   1
+             `
+                 ∂∆n ×{0} (∂∆ × ∆ )   Y
+
+
+             ∆n × ∆1                  S
+--><img
+   src="Simplicial_h-images/image-10.svg"
+   alt="(-tikz-&nbsp;diagram)"
+   style=""
+   class="lateximage"
+></span>
+</p>
+</div>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-146"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> For one direction, observe that the inclusion above is inner anodyne except for the attachment of one cell, for which the extension exists because \(f\) is coCartesian.
+</p>
+
+<p>
+Conversely, if the lifting property holds, then first we can pull back \(p\) along the map \(\Delta ^n \to S\) to reduce to the case where \(S = \Delta ^n\), so that \(Y\) is an \(\infty \)-category. We are then trying to lift
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-11"
+      class="lateximagesource"
+><!--
+∆{0,1}
+         e
+
+
+ Λn0         Y
+
+
+ ∆n          ∆n
+--><img
+      src="Simplicial_h-images/image-11.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+By the proof of Proposition <a href="node-Technical-Things.html#genleftanod">2.18</a>, there is a retraction of the inclusion \(\Lambda ^n_0\times \Delta ^1\coprod _{\Lambda ^n_0\times \{0\}}\Delta ^n\times
+\{0\}\) to the inclusion \(\Lambda ^n_0 \to \Delta ^n\). Letting \(K = \Delta ^{\{1,2,\dots n\}}\), via the retraction, we can restrict to \(\partial K\times \Delta ^1\coprod _{\partial K\times \{0\}}K\times
+\{0\}\). \(\{1\}\times \Delta ^1\) is send to \(e\), so it follows that we can extend to \(K\times \Delta ^1\). Then we will have a map on \((\Delta ^n\times \{0\})\coprod _{\partial \Delta ^n\times
+\{0\}}(\partial \Delta ^n\times \Delta ^1)\) where the first edge is degenerate and in particular coCartesian, so we can extend to \(\Delta ^n\times \Delta ^1\), and then restrict to \(\Delta ^n\) to get our desired lift.
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-150"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.60</span></span>. <a id="cartesianliftgeneral"></a> Let \(p:Y\to S\) be an inner fibration of
+simplicial sets and let \(e:\Delta ^1\to Y\) be a \(p\)-Cartesian edge. Then the indicated lifts exist in all diagrams of the form
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-12"
+      class="lateximagesource"
+><!--
+        {m} × ∆{n−1,n}
+                              e
+
+(∆m × Λnn ) ∂∆m ×Λnn (∂∆m × ∆n )
+           `
+                                   Y
+
+
+           ∆m × ∆n                 S
+--><img
+   src="Simplicial_h-images/image-12.svg"
+   alt="(-tikz-&nbsp;diagram)"
+   style=""
+   class="lateximage"
+></span>
+</p>
+</div>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-154"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Similarly to the proofs Proposition <a href="node-Technical-Things.html#cartesianlifteq">2.59</a> and Proposition <a
+href="node-Technical-Things.html#genleftanod">2.18</a>, there is a canonical way to build the inclusion from filling in horns. The only horn which is not inner is the last one, which we can fill because \(e\) is
+\(p\)-Cartesian. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-155"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.61</span></span>. Suppose \(p:X\to S\) is an inner fibration and \(e:\Delta ^1\to X\) an edge. Then
+\(e\) is a <b>locally \(p\)-Cartesian</b> edge if it is Cartesian with respect to the pullbback of \(p\) along \(p(e)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The benefit of this definition is that given a pullback diagram, an edge is locally \(p\)-Cartesian iff its image is.
+</p>
+<!--................................-->
+<h5 id="autosec-156"><span class="sectionnumber">2.6&#x2003;</span>Minimal Inner Fibrations</h5>
+<a id="Simplicial_h-autopage-156"></a>
+
+
+<p>
+The purpose of this section is to produce a theory of minimal inner fibrations generalizing that in Section <a href="node-Kan-Fibrations.html#secminfib">3.1</a>. Given a diagram
+</p>
+<div class="center">
+
+<p>
+<span
+    id="lateximage-Simplicial_h-13"
+    class="lateximagesource"
+><!--
+A   X
+    p
+
+B   S
+--><img
+    src="Simplicial_h-images/image-13.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where \(p\) is an inner fibration, we say that \(f,f&apos;:B\to X\) are homotopic relative to \(A\) over \(S\) if they are equivalent in the \(\infty \)-category that is the fibre of the map \(X^B\to X^{A}\times _{S^A}S^B\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-160"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.62</span></span>. A map in a fibre of \(X^B \to X^{A}\times _{S^A}S^B\) for an inner fibration \(X\to
+S\) and an inclusion \(A \to B\) is an equivalence iff it is a pointwise equivalence for each \(b \in B\) in each fibre of \(X \to S\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-161"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> content... <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-162"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">2.62.1</span></span>. The composite of two minimal inner fibrations is again a minimal inner
+fibration, and the pullback of a minimal fibration is too. Any functor of ordinary categories is a minimal inner fibration on nerves. In particular \(\Delta ^n\) is minimal inner fibrant. If \(f\) is an inner fibration and \(g\) is a
+minimal inner fibration, then \(g \circ f\) is minimal iff \(f\) is.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-163"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">2.62.2</span></span>. \(p:X\to S\) is a minimal fibration iff for every simplex of \(S\), the fibre is
+a minimal \(\infty \)-category.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-164"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.63</span></span>. <a id="homotopyidmininfcat"></a> Let \(C\) be a minimal \(\infty \)-category and
+let \(f:C\to C\) be a functor that is homotopic to the identity. Then \(f\) is an isomorphism.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-165"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Choose a homotopy \(h:1\to f\). By induction on \(n\), we prove that \(f\) is an injection on simplices. Let \(\sigma ,\sigma &apos;\) be \(n\)-simplices such that
+\(f(\sigma ) = f(\sigma &apos;)\). By induction we know that \(f\) agrees on the boundary of the simplices.
+</p>
+
+<p>
+By pasting the homotopies from \(\sigma ,\sigma &apos;\) to \(f(\sigma )\) and the homotopy on the boundary together, we produce the diagram below and use Proposition <a
+href="node-Technical-Things.html#cartesianliftgeneral">2.60</a> to find a lift.
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-14"
+      class="lateximagesource"
+><!--
+(∆2 × ∂∆n )                  2    n
+              `
+                  Λ22 ×∂∆n (Λ2 × ∆ )   C
+
+
+          ∆2 × ∆n
+--><img
+      src="Simplicial_h-images/image-14.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+We thus obtain a homotopy relative to the boundary from \(\sigma \) to \(\sigma &apos;\), showing they agree.
+</p>
+
+<p>
+To see surjectivity, choose an \(n\)-simplex \(\sigma \) in \(C\). By the inductive hypothesis and injectivity, we can assume that \(\partial \sigma \) is in the image of \(f\). By Proposition <a
+href="node-Technical-Things.html#cartesianlifteq">2.59</a>, we can extend the homotopy \(h\) backwards along \(\sigma \) to obtain a simplex \(\sigma &apos;\). The claim is that \(f(\sigma &apos;) = \sigma \)
+to see this, we can use Proposition <a href="node-Technical-Things.html#cartesianliftgeneral">2.60</a> to produce a lift in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-15"
+      class="lateximagesource"
+><!--
+(∆2 × ∂∆n )                  2    n
+              `
+                  Λ20 ×∂∆n (Λ0 × ∆ )   C
+
+
+          ∆2 × ∆n
+--><img
+      src="Simplicial_h-images/image-15.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where one of the edges is \(h_{|\sigma &apos;}\) and the other is our homotopy from \(\sigma \) to \(\sigma &apos;\). This produces a relative homotopy from \(\sigma \) to \(f(\sigma &apos;)\), so indeed \(\sigma \)
+is in the image. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-172"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.64</span></span>. Let \(p:X\to S\) be an inner fibration. Then there exists a retraction \(X \to X\)
+onto a simplicial subset \(X&apos; \subset X\) such that
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(p_{|X&apos;}\) is a minimal inner fibration.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(p \circ r = p\)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(r\) is homotopic to \(S\)
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-173"><span class="sectionnumber">2.7&#x2003;</span>Trees</h5>
+<a id="Simplicial_h-autopage-173"></a>
+
+
+<p>
+Let \(C\) be a presentable category and \(S\) a set of morphisms. The weak saturation of \(S\) is obtained from \(S\) via pushouts, transfinite compositions, and retracts. Here we prove that after possibly enlarging \(S\), the
+weak saturation is generated by a small set of morphisms just from pushouts and transfinite compositions.
+</p>
+
+<p>
+The following is a generalization of a transfinite chain of morphisms.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-174"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.65</span></span>. Let \(C\) be a presentable category and \(S\) be a collection of morphisms in \(C\). An
+<b>\(S\)-tree in \(C\) </b>is the following data:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. An object \(X \in C\) called the <b>root</b>.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. A partially ordered set \(A\) which is <b>well-founded</b> (ie any nonempty set has a minimal element)
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. A diagram \(A \to C_{X/}\), which will be denoted \(\alpha \mapsto Y_{\alpha }\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+4. for each \(\alpha \in A\), a pushout diagram
+</p>
+<div class="center">
+<p>
+<span
+      id="lateximage-Simplicial_h-16"
+      class="lateximagesource"
+><!--
+            f
+   C            D
+
+
+limβ<α Yα       Yα
+--><img
+      src="Simplicial_h-images/image-16.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+<p>
+where \(f \in S\).
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We will often use just \(\{Y_a\}_{a \in A}\) to denote an \(S\)-tree. Suppose that \(B \subset A\) is a downward closed subset. Then \(\{Y_a\}_{a \in B}\) is an \(S\)-tree. We can also let \(B_{\alpha } = B \cup
+\{\beta \in A | \beta \leq \alpha \}\), and \(\{(Y_{B_\alpha })_{\alpha \in A-B}\}\) is an \(S\)-tree.
+</p>
+
+<p>
+\(Y_B\) denotes the colimit \(\lim _{\alpha \in B}Y_{\alpha }\) in \(C_{/X}\). In particular \(Y_{\phi } = X\).
+</p>
+
+<p>
+Let \(\kappa \) be a regular cardinal. An \(S\)-tree is \(\kappa \)-good if the diagram consists of \(\kappa \)-compact objects and for each \(\alpha \in A\), the set \(\{\beta \in A| \beta &lt;\alpha \}\) is \(\kappa
+\)-small.
+</p>
+
+<p>
+Given an \(S\)-tree for \(X\), we can pushout along a map \(f:X \to X&apos;\) to get an \(S\)-tree for \(X&apos;\) called the <b>associated \(S\)-tree</b>. Note that \(S\)-trees naturally arise from transfinite sequences of
+morphisms \(X \to Y_0 \to Y_1 \to \dots \).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-178"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.66</span></span>. <a id="weaksaturationstree"></a> Given a presentable category \(C\), \(S\) a set of
+morphisms, and \(\{Y_\alpha \}_{a \in A}\) an \(S\)-tree. then for any \(A&apos;&apos; \subset A&apos; \subset A\) downward closed, the map \(Y_{A&apos;&apos;} \to Y_{A&apos;}\) is a morphism in the weak
+saturation of \(S\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-179"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It suffices by the earlier observations to assume that \(A&apos;&apos; = \phi \) and \(A = A&apos;\). Write \(A\) as the union of a transfinite sequence of downward closed
+subsets obtained by adding one minimal element not already there at a time. The colimit of each of these is obtained from the previous one by a pushout along a morphism in \(S\), so the map is a transfinite composition of these.
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We can modify our \(S\)-trees to become \(\kappa \)-good under reasonable hypotheses. The following lemma is the whole reason we need the notion of an \(S\)-tree: it is not true that the modification is totally ordered if the
+original tree is.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-180"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.67</span></span>. <a id="kappagood"></a> Let \(C\) be a presentable caegory, \(\kappa \) a regular
+cardinal, and let \(S\) be a collection of morphisms between \(\kappa \)-compact objects. Suppose that \(\{Y_{\alpha }\}_{\alpha \in A}\) is an \(S\)-tree in \(C\). Then there exists the following:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. A new ordering \(A&apos;\) refining the order on \(A\) (ie there is a map \(A&apos; \to A\))
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. A \(\kappa \)-good \(S\)-tree \(\{Y_{\alpha }\}_{\alpha \in A&apos;}\) having the same root as before.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. A natural transformation from the dagrams for \(A&apos;\) to that for \(A\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+4. For any subset \(B \subset A\), the map \(Y&apos;_B \to Y_B\) is an isomorphism where \(Y_B\) denotes the colimit for the new \(S\)-tree.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-181"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Write \(A\) as a transfinite union of posets indexed on some ordinal so that at limit ordinals, you take the union, and on successor ordinals you add a minimal element not already
+in the set. We will construct the new ordering satisfying the properties one at a time in compatible ways for each of these. At limit ordinals there is nothing to do. At a successor ordinal, suppose that we adjoin a map \(f \in S\)
+as in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-17"
+      class="lateximagesource"
+><!--
+     f
+C        D
+
+
+YB       Yα
+--><img
+      src="Simplicial_h-images/image-17.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+Then the map \(C \to Y_B\) factors through some \(\kappa \)-small subdiagram \(Y_B&apos;\) which agrees with the colimit already constructed so far. Enlarge \(B&apos;\) to be downward closed, and then modify the partial
+ordering on \(\alpha \) so that \(\beta \leq \alpha \) iff \(\beta \in B&apos;\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-185"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.68</span></span>. <a id="compatibleidempotent1"></a> Let \(C\) be a presentable category, \(\kappa \)
+an uncountable regular cardinal, and \(S\) a collection of morphisms in \(C\). Let \(\{Y_{\alpha }\}_{\alpha \in A}\) be a \(\kappa \)-good \(S\)-tree with root \(X\) and let \(T_{A}:Y_{A} \to T_A\) be an idempotent
+endomorphism of \(Y_A\) in the category \(C_{X/}\). Let \(B_0\) be an arbitrary \(\kappa \)-small subset of \(A\). Then there is a \(\kappa \)-small downward closed enlargement \(B\) of \(B_0\) and an idempotent
+endomorphism \(T_B\) of \(Y_{B}\) such that the following diagram commutes:
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-18"
+      class="lateximagesource"
+><!--
+X   YB    YA
+     TB    TA
+
+X   YB    YA
+--><img
+   src="Simplicial_h-images/image-18.svg"
+   alt="(-tikz-&nbsp;diagram)"
+   style=""
+   class="lateximage"
+></span>
+</p>
+</div>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-189"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Assume WLOG that \(B_0\) is downward closed. We will inductively construct \(\kappa \)-small downward closed subsets \(B_i\) of \(A\) and morphisms \(Y_{B_i} \to
+Y_{B_{i+1}}\) extending compatible with \(T_{A}\). Taking the union of the \(B_i\), we will be done. To construct the \(B_i\), note that the map \(T_A\) composed with the inclusion of \(Y_{B_{i-1}}\) factors through a
+\(\kappa \)-small subset since \(Y_{B_{i-1}}\) is \(\kappa \)-small. WLOG we can assume this is downward closed and contains \(B_{i-1}\), and call it \(B_i\). This gives the desired map. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-190"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.69</span></span>. <a id="compatibleidempotent2"></a> Let \(C\) be a presentable category, \(\kappa \)
+an uncountable regular cardinal, and \(S\) a collection of morphisms in \(C\). Let \(\{Y_{\alpha }\}_{\alpha \in A}\) be a \(\kappa \)-good \(S\)-tree with root \(X\), \(B\) a \(\kappa \)-small downward closed subset of
+\(A\) and let \(T_{A},T_B\) be compatible idempotent endomorphisms of \(Y_A,Y_B\) in the category \(C_{X/}\). Let \(C_0\) be an arbitrary \(\kappa \)-small subset of \(A\). Then there is a \(\kappa \)-small downward
+closed enlargement \(C\) of \(C_0\) and a idempotent endomorphisms \(T_C\) and \(T_{C\cap B}\) of \(Y_{C},Y_{C\cap B}\) compatible with each other and the endomorphisms for \(B\) and \(A\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-191"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> WLOG, \(C_0\) is downward closed. We will construct sequences of \(\kappa \)-small downward closed subsets \(C_i \subset A, i\geq 0\) and \(D_i \subset B, i &gt;0\)
+along with idempotent endomorphisms on \(T_{C_i}\) and \(T_{D_i}\) such that
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(D_i\) contains \(B\cap C_{i-1}\) and \(C_i\) contains \(D_i\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(T_{C_i}\) is compatible with \(T_{A}\) and \(T_{D_i}\) is compatible with \(T_{B}\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. The diagrams below commute.
+</p>
+<div class="center">
+<p>
+<span
+      id="lateximage-Simplicial_h-19"
+      class="lateximagesource"
+><!--
+YDi−2      YDi−1      YCi−2      YCi−1      YDi−1      YCi−1
+   TDi−2      TDi−1      TCi−2      TCi−1      TDi−1      TCi−1
+
+YDi−2      YDi−1      YCi−2      YCi−1      YDi−1      YCi−1
+   TDi−2      TDi−1      TCi−2      TCi−1      TDi−1      TCi−1
+
+YDi        YDi        YCi        YCi        YDi        YCi
+--><img
+      src="Simplicial_h-images/image-19.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+</li>
+</ul>
+
+<p>
+These are constructed by induction. By compactness, the third condition follows from the second if \(C_i, D_i\) are chosed large enough. By Lemma <a href="node-Technical-Things.html#compatibleidempotent1">2.68</a>
+we can then construct the desired \(C_i\). Taking the union over \(i\), we are done. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-195"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.70</span></span>. <a id="pushoutweaksaturationtrees"></a> Let \(A\) be a \(\kappa \)-accessible
+presentible category. Let \(f:C \to D\) be a morophism between \(\kappa \)-compact objects of \(A\), let \(g:X \to Y\) be a pushout of \(f\) along some morphism, and let \(g&apos;:X&apos; \to Y&apos;\) be a retract of
+\(g\) in the category of morphisms of \(A\). Then there exists a morphism \(f&apos;:C&apos; \to D&apos;\) with the following properties:
+</p>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(C&apos;, D&apos;\) are \(\kappa \)-compact.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. \(g&apos;\) is a pushout of \(f&apos;\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(f&apos;\) is in the weakly saturated class of morphisms generated by \(f\).
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-196"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By pushing out \(g\) along the map \(X \to X&apos;\) in the retraction from \(g\) to \(g&apos;\), we can assume that in that retraction, \(X\) is just identified with
+\(X&apos;\). In particular, the retraction is given by an idempotent \(e\) on \(Y\) with image \(Y&apos;\).
+</p>
+
+<p>
+Now \(X\) is a \(\kappa \)-filtered colimit of \(X_{\lambda }\), and since \(C\) is compact, \(C\) factors through some \(X_{\lambda }\), and taking all the things that \(X_{\lambda }\) maps to, we can refine this as a filtered
+colimit in \(A_{/C}\). Then \(Y\) is a filtered colimit of pushouts of \(X_{\lambda }\) and \(D\) along \(C\). Then the composition of \(D \to Y\) with \(e\) factors through some mape \(D \xrightarrow {j} X_{\lambda }
+\cup _C D\) since \(D\) is \(\kappa \)-compact. After possibly enlarging \(\lambda \), by compactness of \(C\), the map \(j \circ f\) agrees with the map canonical map \(C \to X_{\lambda }\cup _CD = Y_{\lambda }\).
+Thus \(j\) and \(id_X\) yield a map \(e&apos;\) from \(Y_{\lambda }\) to itself. By possibly enlarging \(\lambda \), we can assume that \(e&apos;\) is idempotent and that \(e&apos;\) is compatible with the idempotent on
+\(Y\). Let \(Y&apos;_{\lambda }\) be the image of \(e&apos;\) (this can is the colimit of the endomorphism \(e&apos;\)). We have a canonical map \(f&apos;:X_{\lambda } \to Y&apos;_{\lambda }\), which is a retract of
+the map \(X_{\lambda } \to Y_{\lambda }\), which is a pushout of \(f\). Thus \((1)\) and \((3)\) are satisfied. To check \((2)\), we observe that the pushout square for \(X\cup _{X_{\lambda }}Y_{\lambda }\cong Y\)
+retracts onto the analogous square for \(Y&apos;_{\lambda }\) and \(Y&apos;\), showing that \(g&apos;\) is a pushout of \(f&apos;\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-197"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.71</span></span>. <a id="treepushout"></a> Let \(C\) be a presentable category, \(\kappa \) a regular
+cardinal such that \(C\) is \(\kappa \)-accessible, and \(S = \{f_s|C_s \to D_s\}\) a collection of morphisms of \(C\) such that each \(C_s\) is \(\kappa \)-compact. Let \(\{Y_\alpha \}_{\alpha \in A}\) be an \(S\)-tree
+in \(C\) with root \(X\) and suppose that \(A\) is \(\kappa \)-small. Then \(\{Y_\alpha \}_{\alpha \in A}\) is isomorphic as an \(S\)-tree to one of the form \(\{Y&apos;_\alpha \cup _{X&apos;}X\}_{\alpha \in A}\)
+where \(X\) is \(\kappa \)-compact.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-198"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> If the conclusion holds, we will say that the \(S\)-tree is pushed out from \(X&apos;\). Write \(X\) as a \(\kappa \)-filtered colimit of \(\kappa \)-compact \(X_i, i \in I\).
+Choose a way to write \(A\) as a union of \(A(\lambda ),\lambda &lt;\beta \), where each \(A(\lambda )\) is obtained form the ones before it by adding a minimal element not already there if \(\lambda \) is a successor, and
+by taking the union if \(\lambda \) is a limit ordinal.
+</p>
+
+<p>
+We will inductively construct a (not strictly) increasing transfinite sequence of elements \(\{i_\lambda \in I\}_{\lambda \geq \beta }\) such that \(\{Y_\alpha \}_{\alpha \in A(\gamma )}\) is pushed out from
+\(X_{i_\gamma }\) in a way compatible for all \(\gamma \). Then we will be done since \(I\) is \(\kappa \)-filtered, there will be some \(X_i\) from which the original \(S\)-tree is pushed out from.
+</p>
+
+<p>
+At limit ordinals, we can just take the limit. At a successor ordinal, we know \(A(\gamma +1)\) is obtained from \(A(\gamma )\) by adding on some element \(a_\gamma \). If \(B\) is all the things less than \(\gamma \), we have
+a pushout diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-20"
+      class="lateximagesource"
+><!--
+     fs
+Cs        Ds
+ g
+
+YB        Yα .
+--><img
+      src="Simplicial_h-images/image-20.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+We have assumed that \(Y_B\) is a pushout \(Y^{\gamma }_B \cup _{X_i}X\) (where \(\{Y^{\gamma }_\alpha \}_{\alpha \in A(\gamma )}\) is the \(S\)-tree in the inductive hypothesis. Using \(\kappa \)-compactness of
+\(C_s\), \(g\) factors as through some \(Y_B^\gamma \cup _{X_i}X_j\). Let \(i_{\gamma +1} = j\), and define \(\{Y^{\gamma +1}_\alpha \}_{\alpha \in A(\gamma )}\) by having \(Y^{\gamma +1}\) being the pushout of
+\(f_s\) along \(C_s \to Y^{\gamma }_B\cup _{X_i}X_j\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-202"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.72</span></span>. <a id="maintree"></a> Let \(C\) be a presentable \(\kappa \)-accessible category,
+\(\kappa \) an uncountable regular cardinal, and \(\overline {S}\) a weakly saturated class of morphisms in \(C\) generated by \(S\), the subcollection of morphisms between \(\kappa \)-compact objects.
+</p>
+
+<p>
+Then for every morphism \(f:X \to Y\) in \(\overline {S}\), there exists a transfinite sequence of objects in \(C_{/X}\) \(\{Z_{\lambda }\}_{\lambda &lt; \beta }\) such that each is obtained as a pushout along a
+morphism in \(S\) from the limit of the ones before it, and \(Y\) is the last one.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-203"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By the small object argument, there is such a sequence \(\{Y_{\alpha }\}_{\alpha &lt; \beta }\) with \(\beta \) \(\kappa \)-small such that \(Y\) is a retract of the last
+one \(Y_{\beta }\). We can view this as an \(S\)-tree with root \(X\). By Lemma <a href="node-Technical-Things.html#kappagood">2.67</a> we can replace this with a \(\kappa \)-good \(S\)-tree \(A&apos;\) with the
+same colimits at every step. Choose an idempotent map \(e\) on \(Y_{\beta }\) with image \(Y\). We will define a transfinite sequence \(B(\gamma )\) indexed by some ordinals less than \(\beta \) and compatible systems of
+idempotent maps \(T_{B(\gamma )}\) on \(Y_{B(\gamma )}\). On limit ordinals, we can define the limit \(T_{B(\gamma )}\) to be the union of the \(T_{B(\gamma )}\). If we reach the ordinal \(\beta \) with some \(B(\gamma
+)\), we can stop the construction. At limit ordinals \(B(\gamma )\) is defined by taking the colimit, and at successors, it is defined by taking a minimal element of \(A&apos;-B(\gamma )\), applying Lemma <a
+href="node-Technical-Things.html#compatibleidempotent2">2.69</a>. and defining the successor idempotent as the glued together idempotent for each piece. By Lemma <a
+href="node-Technical-Things.html#treepushout">2.71</a>, we learn that \(Y_{B(\gamma )}\) is obtained from the colimit over all the things before it by a pushout of a morphism in \(S\). Define \(Z_{\lambda }\) to be the
+image of the idempotent \(T_{B(\gamma )}\). The colimit of \(Z_{\lambda }\) is \(Y\), and by Lemma <a href="node-Technical-Things.html#pushoutweaksaturationtrees">2.70</a> each successive \(Z_{\lambda }\) is
+obtained from the previous by pushing out along a morphim in \(S\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-204"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">2.73</span></span>. <a id="treecorollary"></a> Under the hypotheses of Proposition <a
+href="node-Technical-Things.html#maintree">2.72</a>, there is a \(\kappa \)-good \(S\)-tree \(\{Y_{a}\}_{a \in A}\) such that \(Y_A \cong Y\) in \(C_{/X}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+</body>
+</html>

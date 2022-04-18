@@ -34,27 +34,27 @@ Notes for some expository talks I have given.
 # Subjects
 A collection of notes I have written about various subjects. These were not written to be read by anyone but myself. I hope you find them useful, but use at your own risk.
 
-[Analysis](Subjects/Analysis/Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analysis.pdf)
+[Analysis](Subjects/Analysis/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analysis.pdf)
 
-[Analytic Number Theory](Subjects/Analytic Number Theory/Analytic_Number_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analytic Number Theory.pdf)
+[Analytic Number Theory](Subjects/Analytic Number Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Analytic Number Theory.pdf)
 
-[Chromatic Homotopy Theory](Subjects/Chromatic Homotopy Theory/Chromatic_Homotopy_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Chromatic Homotopy Theory.pdf)
+[Chromatic Homotopy Theory](Subjects/Chromatic Homotopy Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Chromatic Homotopy Theory.pdf)
 
-[Complex Analysis](Subjects/Complex Analysis/Complex_Analysis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Complex Analysis.pdf)
+[Complex Analysis](Subjects/Complex Analysis/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Complex Analysis.pdf)
 
-[Continued Fractions](Subjects/Continued Fractions/Continued_Fractions.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Continued Fractions.pdf)
+[Continued Fractions](Subjects/Continued Fractions/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Continued Fractions.pdf)
 
-[Geometry of Numbers](Subjects/Geometry of Numbers/Geometry_of_Numbers.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Geometry of Numbers.pdf)
+[Geometry of Numbers](Subjects/Geometry of Numbers/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Geometry of Numbers.pdf)
 
-[Group Theory](Subjects/Group Theory/Group_Theory.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Group Theory.pdf)
+[Group Theory](Subjects/Group Theory/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Group Theory.pdf)
 
-[Lie Algebras](Subjects/Lie Algebras/Lie_Algebras.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Lie Algebras.pdf)
+[Lie Algebras](Subjects/Lie Algebras/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Lie Algebras.pdf)
 
-[Riemannian Geometry](Subjects/Riemannian Geometry/Riemannian_Geometry.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Riemannian Geometry.pdf)
+[Riemannian Geometry](Subjects/Riemannian Geometry/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Riemannian Geometry.pdf)
 
-[Rings Modules Fields](Subjects/Rings Modules Fields/Rings_Modules_Fields.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)
+[Rings Modules Fields](Subjects/Rings Modules Fields/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Rings Modules Fields.pdf)
 
-[Simplicial](Subjects/Simplicial/Simplicial.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
+[Simplicial](Subjects/Simplicial/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Subjects/Simplicial.pdf)
 
 # Other
 Miscellaneous notes I have written.

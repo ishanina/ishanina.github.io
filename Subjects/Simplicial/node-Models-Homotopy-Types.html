@@ -1,0 +1,4886 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="generator" content="LaTeX Lwarp package" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Simplicial</title>
+<link rel="stylesheet" type="text/css" href="fancycss.css" />
+
+<script>
+// Lwarp MathJax emulation code
+//
+// Based on code by Davide P. Cervone.
+// Equation numbering: https://github.com/mathjax/MathJax/issues/2427
+// Starred and ifnextchar macros: https://github.com/mathjax/MathJax/issues/2428
+// \left, \right delimiters: https://github.com/mathjax/MathJax/issues/2535
+//
+// Modified by Brian Dunn to adjust equation numbering and add subequations.
+//
+// LaTeX can use \seteqnumber{subequations?}{section}{number} before each equation.
+// subequations? is 0 usually, 1 if inside subequations.
+// section is a string printed as-is, or empty.
+// number is auto-incremented by MathJax between equations.
+//
+MathJax = {
+     subequations: "0",
+     section: "",
+     loader: {
+          load: ['[tex]/tagformat', '[tex]/textmacros'],
+     },
+     startup: {
+          ready() {
+              //       These would be replaced by import commands if you wanted to make
+              //       a proper extension.
+              const Configuration = MathJax._.input.tex.Configuration.Configuration;
+              const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+              const Macro = MathJax._.input.tex.Symbol.Macro;
+              const TexError = MathJax._.input.tex.TexError.default;
+              const ParseUtil = MathJax._.input.tex.ParseUtil.default;
+              const expandable = MathJax._.util.Options.expandable;
+
+
+              //       Insert the replacement string into the TeX string, and check
+              //       that there haven't been too many maxro substitutions (prevents
+              //       infinite loops).
+              const useArgument = (parser, text) => {
+                   parser.string = ParseUtil.addArgs(parser, text, parser.string.slice(parser.i));
+                   parser.i = 0;
+                   if (++parser.macroCount > parser.configuration.options.maxMacros) {
+                        throw new TexError('MaxMacroSub1',
+                        'MathJax maximum macro substitution count exceeded; ' +
+                        'is there a recursive macro call?');
+                   }
+              }
+
+
+              //       Create the command map for:
+              //            \ifstar, \ifnextchar, \ifblank, \ifstrequal, \seteqnumber
+              new CommandMap('Lwarp-macros', {
+                   ifstar: 'IfstarFunction',
+                   ifnextchar: 'IfnextcharFunction',
+                   ifblank: 'IfblankFunction',
+                   ifstrequal: 'IfstrequalFunction',
+                   seteqnumber: 'SeteqnumberFunction'
+              }, {
+                   //       This function implements an ifstar macro.
+                   IfstarFunction(parser, name) {
+                        const resultstar = parser.GetArgument(name);
+                        const resultnostar = parser.GetArgument(name);
+                        const star = parser.GetStar();                        // true if there is a *
+                        useArgument(parser, star ? resultstar : resultnostar);
+                   },
+
+
+                   //       This function implements an ifnextchar macro.
+                   IfnextcharFunction(parser, name) {
+                        let whichchar = parser.GetArgument(name);
+                        if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+                            // $ syntax highlighting
+                            whichchar = String.fromCodePoint(parseInt(whichchar));
+                        }
+                        const resultnextchar = parser.GetArgument(name);
+                        const resultnotnextchar = parser.GetArgument(name);
+                        const gotchar = (parser.GetNext() === whichchar);
+                        useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+                   },
+
+
+                   // This function implements an ifblank macro.
+                   IfblankFunction(parser, name) {
+                        const blankarg = parser.GetArgument(name);
+                        const resultblank = parser.GetArgument(name);
+                        const resultnotblank = parser.GetArgument(name);
+                        const isblank = (blankarg.trim() == "");
+                        useArgument(parser, isblank ? resultblank : resultnotblank);
+                   },
+
+
+                   // This function implements an ifstrequal macro.
+                   IfstrequalFunction(parser, name) {
+                        const strequalfirst = parser.GetArgument(name);
+                        const strequalsecond = parser.GetArgument(name);
+                        const resultequal = parser.GetArgument(name);
+                        const resultnotequal = parser.GetArgument(name);
+                        const isequal = (strequalfirst == strequalsecond);
+                        useArgument(parser, isequal ? resultequal : resultnotequal);
+                   },
+
+
+                   //       This function modifies the equation numbers.
+                   SeteqnumberFunction(parser, name) {
+                            //   Get the macro parameters
+                            const star = parser.GetStar();                      // true if there is a *
+                            const optBrackets = parser.GetBrackets(name);        // contents of optional brackets
+                            const newsubequations = parser.GetArgument(name);      // the subequations argument
+                            const neweqsection = parser.GetArgument(name);      // the eq section argument
+                            const neweqnumber = parser.GetArgument(name);        // the eq number argument
+                            MathJax.config.subequations=newsubequations ;       // a string with boolean meaning
+                            MathJax.config.section=neweqsection ;               // a string with numeric meaning
+                            parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+                   }
+
+
+              });
+
+
+              //       Create the Lwarp-macros package
+              Configuration.create('Lwarp-macros', {
+                   handler: {macro: ['Lwarp-macros']}
+              });
+
+
+              MathJax.startup.defaultReady();
+
+
+              // For forward references:
+              MathJax.startup.input[0].preFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            MathJax.config.subequations = math.inputData.recompile.subequations;
+                            MathJax.config.section = math.inputData.recompile.section;
+                   }
+              });
+              MathJax.startup.input[0].postFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            math.inputData.recompile.subequations = MathJax.config.subequations;
+                            math.inputData.recompile.section = MathJax.config.section;
+                   }
+              });
+
+
+                   // For \left, \right with unicode-math:
+                   const {DelimiterMap} = MathJax._.input.tex.SymbolMap;
+                   const {Symbol} = MathJax._.input.tex.Symbol;
+                   const {MapHandler} = MathJax._.input.tex.MapHandler;
+                   const delimiter = MapHandler.getMap('delimiter');
+                   delimiter.add('\\lBrack', new Symbol('\\lBrack', '\u27E6'));
+                   delimiter.add('\\rBrack', new Symbol('\\rBrack', '\u27E7'));
+                   delimiter.add('\\lAngle', new Symbol('\\lAngle', '\u27EA'));
+                   delimiter.add('\\rAngle', new Symbol('\\rAngle', '\u27EB'));
+                   delimiter.add('\\lbrbrak', new Symbol('\\lbrbrak', '\u2772'));
+                   delimiter.add('\\rbrbrak', new Symbol('\\rbrbrak', '\u2773'));
+                   delimiter.add('\\lbag', new Symbol('\\lbag', '\u27C5'));
+                   delimiter.add('\\rbag', new Symbol('\\rbag', '\u27C6'));
+                   delimiter.add('\\llparenthesis', new Symbol('\\llparenthesis', '\u2987'));
+                   delimiter.add('\\rrparenthesis', new Symbol('\\rrparenthesis', '\u2988'));
+                   delimiter.add('\\llangle', new Symbol('\\llangle', '\u2989'));
+                   delimiter.add('\\rrangle', new Symbol('\\rrangle', '\u298A'));
+                   delimiter.add('\\Lbrbrak', new Symbol('\\Lbrbrak', '\u27EC'));
+                   delimiter.add('\\Rbrbrak', new Symbol('\\Rbrbrak', '\u27ED'));
+                   delimiter.add('\\lBrace', new Symbol('\\lBrace', '\u2983'));
+                   delimiter.add('\\rBrace', new Symbol('\\rBrace', '\u2984'));
+                   delimiter.add('\\lParen', new Symbol('\\lParen', '\u2985'));
+                   delimiter.add('\\rParen', new Symbol('\\rParen', '\u2986'));
+                   delimiter.add('\\lbrackubar', new Symbol('\\lbrackubar', '\u298B'));
+                   delimiter.add('\\rbrackubar', new Symbol('\\rbrackubar', '\u298C'));
+                   delimiter.add('\\lbrackultick', new Symbol('\\lbrackultick', '\u298D'));
+                   delimiter.add('\\rbracklrtick', new Symbol('\\rbracklrtick', '\u298E'));
+                   delimiter.add('\\lbracklltick', new Symbol('\\lbracklltick', '\u298F'));
+                   delimiter.add('\\rbrackurtick', new Symbol('\\rbrackurtick', '\u2990'));
+                   delimiter.add('\\langledot', new Symbol('\\langledot', '\u2991'));
+                   delimiter.add('\\rangledot', new Symbol('\\rangledot', '\u2992'));
+                   delimiter.add('\\lparenless', new Symbol('\\lparenless', '\u2993'));
+                   delimiter.add('\\rparengtr', new Symbol('\\rparengtr', '\u2994'));
+                   delimiter.add('\\Lparengtr', new Symbol('\\Lparengtr', '\u2995'));
+                   delimiter.add('\\Rparenless', new Symbol('\\Rparenless', '\u2996'));
+                   delimiter.add('\\lblkbrbrak', new Symbol('\\lblkbrbrak', '\u2997'));
+                   delimiter.add('\\rblkbrbrak', new Symbol('\\rblkbrbrak', '\u2998'));
+                   delimiter.add('\\lvzigzag', new Symbol('\\lvzigzag', '\u29D8'));
+                   delimiter.add('\\rvzigzag', new Symbol('\\rvzigzag', '\u29D9'));
+                   delimiter.add('\\Lvzigzag', new Symbol('\\Lvzigzag', '\u29DA'));
+                   delimiter.add('\\Rvzigzag', new Symbol('\\Rvzigzag', '\u29DB'));
+                   delimiter.add('\\lcurvyangle', new Symbol('\\lcurvyangle', '\u29FC'));
+                   delimiter.add('\\rcurvyangle', new Symbol('\\rcurvyangle', '\u29FD'));
+                   delimiter.add('\\Vvert', new Symbol('\\Vvert', '\u2980'));
+          }       // ready
+     },           // startup
+
+
+     tex: {
+          packages: {'[+]': ['tagformat', 'Lwarp-macros', 'textmacros']},
+          tags: "ams",
+                   tagformat: {
+                            number: function (n) {
+                                 if(MathJax.config.subequations==0)
+                                        return(MathJax.config.section + n);
+                                 else
+                                        return(MathJax.config.section + String.fromCharCode(96+n));
+                            },
+                   },
+     }
+}
+</script>
+
+
+<script
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+
+</head>
+<body>
+
+
+<a id="Simplicial_h-autopage-839"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+<header>
+
+<p>
+<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+</p>
+
+</header>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Simplicial</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="node-Introduction.html#autosec-6" class="tocsection" >
+<span class="sectionnumber">1</span>&#x2003;Introduction</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-9" class="tocsection" >
+<span class="sectionnumber">2</span>&#x2003;Technical Things</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-36" class="tocsubsection" >
+<span class="sectionnumber">2.1</span>&#x2003;Generators of anodyne morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-54" class="tocsubsection" >
+<span class="sectionnumber">2.2</span>&#x2003;Enriched Categories</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-68" class="tocsubsection" >
+<span class="sectionnumber">2.3</span>&#x2003;Basics of Simplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-99" class="tocsubsection" >
+<span class="sectionnumber">2.4</span>&#x2003;Left fibration characterization of Kan fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-127" class="tocsubsection" >
+<span class="sectionnumber">2.5</span>&#x2003;Cartesian Morphisms</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-156" class="tocsubsection" >
+<span class="sectionnumber">2.6</span>&#x2003;Minimal Inner Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Technical-Things.html#autosec-173" class="tocsubsection" >
+<span class="sectionnumber">2.7</span>&#x2003;Trees</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-207" class="tocsection" >
+<span class="sectionnumber">3</span>&#x2003;Kan Fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-230" class="tocsubsection" >
+<span class="sectionnumber">3.1</span>&#x2003;Minimal fibrations</a>
+</p>
+
+
+<p>
+<a href="node-Kan-Fibrations.html#autosec-243" class="tocsubsection" >
+<span class="sectionnumber">3.2</span>&#x2003;Equivalence of Quillen and Serre model structures</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-262" class="tocsection" >
+<span class="sectionnumber">4</span>&#x2003;Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-313" class="tocsubsection" >
+<span class="sectionnumber">4.1</span>&#x2003;Homotopy category of a model category</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-411" class="tocsubsection" >
+<span class="sectionnumber">4.2</span>&#x2003;Combinatorial Model Categories</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-443" class="tocsubsection" >
+<span class="sectionnumber">4.3</span>&#x2003;Derived Functors</a>
+</p>
+
+
+<p>
+<a href="node-Model-Categories.html#autosec-478" class="tocsubsection" >
+<span class="sectionnumber">4.4</span>&#x2003;Enriched and Simplicial model categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-510" class="tocsection" >
+<span class="sectionnumber">5</span>&#x2003;Some Important Model Structures</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-511" class="tocsubsection" >
+<span class="sectionnumber">5.1</span>&#x2003;Model structure on \(S\)-enriched categories</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-552" class="tocsubsection" >
+<span class="sectionnumber">5.2</span>&#x2003;Diagram model structures and homotopy limits</a>
+</p>
+
+
+<p>
+<a href="node-Some-Important-Model-Structures.html#autosec-595" class="tocsubsection" >
+<span class="sectionnumber">5.3</span>&#x2003;Reedy model structures</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-613" class="tocsection" >
+<span class="sectionnumber">6</span>&#x2003;\(\Pi _1\) and Simplicial abelian groups</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-614" class="tocsubsection" >
+<span class="sectionnumber">6.1</span>&#x2003;Fundamental Groupoid</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-627" class="tocsubsection" >
+<span class="sectionnumber">6.2</span>&#x2003;Local Systems and Covering Spaces</a>
+</p>
+
+
+<p>
+<a href="node-Pi-_1-Simplicial-abelian-groups.html#autosec-628" class="tocsubsection" >
+<span class="sectionnumber">6.3</span>&#x2003;Simpicial objects in Abelian Categories</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-664" class="tocsection" >
+<span class="sectionnumber">7</span>&#x2003;Bisimplicial Sets</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-681" class="tocsubsection" >
+<span class="sectionnumber">7.1</span>&#x2003;Bisimplicial objects in an abelian category</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-701" class="tocsubsection" >
+<span class="sectionnumber">7.2</span>&#x2003;Model structures</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-727" class="tocsubsection" >
+<span class="sectionnumber">7.3</span>&#x2003;Bousfield-Friedlander</a>
+</p>
+
+
+<p>
+<a href="node-Bisimplicial-Sets.html#autosec-763" class="tocsubsection" >
+<span class="sectionnumber">7.4</span>&#x2003;Theorem B and Group Completion</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-787" class="tocsection" >
+<span class="sectionnumber">8</span>&#x2003;Some Classical Homotopy Theory</a>
+</p>
+
+
+<p>
+<a href="node-Some-Classical-Homotopy-Theory.html#autosec-788" class="tocsubsection" >
+<span class="sectionnumber">8.1</span>&#x2003;The Hurewicz Map</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-841" class="tocsection" >
+<span class="sectionnumber">9</span>&#x2003;Models for Homotopy Types</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-842" class="tocsubsection" >
+<span class="sectionnumber">9.1</span>&#x2003;Test Categories</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-875" class="tocsubsection" >
+<span class="sectionnumber">9.2</span>&#x2003;Basics of Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-898" class="tocsubsection" >
+<span class="sectionnumber">9.3</span>&#x2003;Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-971" class="tocsubsection" >
+<span class="sectionnumber">9.4</span>&#x2003;Colimits in Cisinski model structures</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1010" class="tocsubsection" >
+<span class="sectionnumber">9.5</span>&#x2003;Weak equivalence classes of functors</a>
+</p>
+
+
+<p>
+<a href="node-Models-Homotopy-Types.html#autosec-1043" class="tocsubsection" >
+<span class="sectionnumber">9.6</span>&#x2003;Model structure on Cubical Sets</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1072" class="tocsection" >
+<span class="sectionnumber">10</span>&#x2003;Simplicial localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1073" class="tocsubsection" >
+<span class="sectionnumber">10.1</span>&#x2003;Free Categories and Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1087" class="tocsubsection" >
+<span class="sectionnumber">10.2</span>&#x2003;Dwyer-Kan Localization</a>
+</p>
+
+
+<p>
+<a href="node-Simplicial-localization.html#autosec-1099" class="tocsubsection" >
+<span class="sectionnumber">10.3</span>&#x2003;Reduction to Cubical Sets</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
+
+
+<main class="bodycontainer">
+
+
+<section class="textbody">
+
+<h1>Simplicial</h1>
+
+<!--MathJax customizations:-->
+
+
+<div class="hidden">
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \LWRtensorindicesthreesub #1#2{{_{#2}}\LWRtensorindicesthree }\)
+
+\(\def \LWRtensorindicesthreesup #1#2{{^{#2}}\LWRtensorindicesthree }\)
+
+\(\newcommand {\LWRtensorindicesthreenotsup }{}\)
+
+\(\newcommand {\LWRtensorindicesthreenotsub }{ \ifnextchar ^ \LWRtensorindicesthreesup \LWRtensorindicesthreenotsup }\)
+
+\(\newcommand {\LWRtensorindicesthree }{ \ifnextchar _ \LWRtensorindicesthreesub \LWRtensorindicesthreenotsub }\)
+
+\(\newcommand {\LWRtensorindicestwo }{ \ifstar \LWRtensorindicesthree \LWRtensorindicesthree }\)
+
+\(\newcommand {\indices }[1]{\LWRtensorindicestwo #1}\)
+
+\(\newcommand {\LWRtensortwo }[3][]{{}\indices {#1}{#2}\indices {#3}}\)
+
+\(\newcommand {\tensor }{\ifstar \LWRtensortwo \LWRtensortwo }\)
+
+\(\newcommand {\LWRnuclidetwo }[2][]{{\vphantom {\mathrm {#2}}{}^{\LWRtensornucleonnumber }_{#1}\mathrm {#2}}}\)
+
+\(\newcommand {\nuclide }[1][]{\def \LWRtensornucleonnumber {#1}\LWRnuclidetwo }\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\cO }{\mathcal {O}}\)
+
+\(\newcommand {\cC }{\mathcal {C}}\)
+
+\(\newcommand {\cP }{\mathcal {P}}\)
+
+\(\newcommand {\cF }{\mathcal {F}}\)
+
+\(\newcommand {\cS }{\mathcal {S}}\)
+
+\(\newcommand {\cK }{\mathcal {K}}\)
+
+\(\newcommand {\cM }{\mathcal {M}}\)
+
+\(\newcommand {\GG }{\mathbb {G}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\QQ }{\mathbb {Q}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\LL }{\mathbb {L}}\)
+
+\(\newcommand {\HH }{\mathbb {H}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\SP }{\mathbb {S}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\sF }{\mathscr {F}}\)
+
+\(\newcommand {\sC }{\mathscr {C}}\)
+
+\(\newcommand {\ts }{\textsuperscript }\)
+
+\(\newcommand {\mf }{\mathfrak }\)
+
+\(\newcommand {\cc }{\mf {c}}\)
+
+\(\newcommand {\mg }{\mf {g}}\)
+
+\(\newcommand {\ma }{\mf {a}}\)
+
+\(\newcommand {\mh }{\mf {h}}\)
+
+\(\newcommand {\mn }{\mf {n}}\)
+
+\(\newcommand {\mc }{\mf {c}}\)
+
+\(\newcommand {\ul }{\underline }\)
+
+\(\newcommand {\mz }{\mf {z}}\)
+
+\(\newcommand {\me }{\mf {e}}\)
+
+\(\newcommand {\mff }{\mf {f}}\)
+
+\(\newcommand {\mm }{\mf {m}}\)
+
+\(\newcommand {\mt }{\mf {t}}\)
+
+\(\newcommand {\pp }{\mf {p}}\)
+
+\(\newcommand {\qq }{\mf {q}}\)
+
+\(\newcommand {\gl }{\mf {gl}}\)
+
+\(\newcommand {\msl }{\mf {sl}}\)
+
+\(\newcommand {\so }{\mf {so}}\)
+
+\(\newcommand {\mfu }{\mf {u}}\)
+
+\(\newcommand {\su }{\mf {su}}\)
+
+\(\newcommand {\msp }{\mf {sp}}\)
+
+\(\renewcommand {\aa }{\mf {a}}\)
+
+\(\newcommand {\bb }{\mf {b}}\)
+
+\(\newcommand {\sR }{\mathscr {R}}\)
+
+\(\newcommand {\lb }{\langle }\)
+
+\(\newcommand {\rb }{\rangle }\)
+
+\(\newcommand {\ff }{\mf {f}}\)
+
+\(\newcommand {\ee }{\epsilon }\)
+
+\(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
+\(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
+
+\(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
+
+\(\newcommand {\pushout }{\arrow [ul, phantom, &quot;\ulcorner &quot;, very near start]}\)
+
+\(\newcommand {\pullback }{\arrow [dr, phantom, &quot;\lrcorner &quot;, very near start]}\)
+
+\(\newcommand {\simp }[1]{#1^{\Delta ^{op}}}\)
+
+\(\newcommand {\arrowtcupp }[2]{\arrow [bend left=50, &quot;&quot;{name=U, below,inner sep=1}]{#1}\arrow [Rightarrow,from=U,to=MU,&quot;#2&quot;]}\)
+
+\(\newcommand {\arrowtclow }[2]{\arrow [bend right=50, &quot;&quot;{name=L,inner sep=1}]{#1}\arrow [Rightarrow,from=LM,to=L]{}[]{#2}}\)
+
+\(\newcommand {\arrowtcmid }[2]{\arrow [&quot;&quot;{name=MU,inner sep=1},&quot;&quot;{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}\)
+
+\(\newcommand {\dummy }{\textcolor {white}{\bullet }}\)
+
+\(\newcommand {\adjunction }[4]{ #1\hspace {2pt}\colon #2 \leftrightharpoons #3 \hspace {2pt}\colon #4 }\)
+
+\(\newcommand {\aug }{\mathop {\rm aug}\nolimits }\)
+
+\(\newcommand {\MC }{\mathop {\rm MC}\nolimits }\)
+
+\(\newcommand {\art }{\mathop {\rm art}\nolimits }\)
+
+\(\newcommand {\DiGrph }{\mathop {\rm DiGrph}\nolimits }\)
+
+\(\newcommand {\FMP }{\mathop {\rm FMP}\nolimits }\)
+
+\(\newcommand {\CAlg }{\mathop {\rm CAlg}\nolimits }\)
+
+\(\newcommand {\perf }{\mathop {\rm perf}\nolimits }\)
+
+\(\newcommand {\cof }{\mathop {\rm cof}\nolimits }\)
+
+\(\newcommand {\fib }{\mathop {\rm fib}\nolimits }\)
+
+\(\newcommand {\Thick }{\mathop {\rm Thick}\nolimits }\)
+
+\(\newcommand {\Orb }{\mathop {\rm Orb}\nolimits }\)
+
+\(\newcommand {\ko }{\mathop {\rm ko}\nolimits }\)
+
+\(\newcommand {\Spf }{\mathop {\rm Spf}\nolimits }\)
+
+\(\newcommand {\Spc }{\mathop {\rm Spc}\nolimits }\)
+
+\(\newcommand {\sk }{\mathop {\rm sk}\nolimits }\)
+
+\(\newcommand {\cosk }{\mathop {\rm cosk}\nolimits }\)
+
+\(\newcommand {\holim }{\mathop {\rm holim}\nolimits }\)
+
+\(\newcommand {\hocolim }{\mathop {\rm hocolim}\nolimits }\)
+
+\(\newcommand {\Pre }{\mathop {\rm Pre}\nolimits }\)
+
+\(\newcommand {\THR }{\mathop {\rm THR}\nolimits }\)
+
+\(\newcommand {\THH }{\mathop {\rm THH}\nolimits }\)
+
+\(\newcommand {\Fun }{\mathop {\rm Fun}\nolimits }\)
+
+\(\newcommand {\Loc }{\mathop {\rm Loc}\nolimits }\)
+
+\(\newcommand {\Bord }{\mathop {\rm Bord}\nolimits }\)
+
+\(\newcommand {\Cob }{\mathop {\rm Cob}\nolimits }\)
+
+\(\newcommand {\Set }{\mathop {\rm Set}\nolimits }\)
+
+\(\newcommand {\Ind }{\mathop {\rm Ind}\nolimits }\)
+
+\(\newcommand {\Sind }{\mathop {\rm Sind}\nolimits }\)
+
+\(\newcommand {\Ext }{\mathop {\rm Ext}\nolimits }\)
+
+\(\newcommand {\sd }{\mathop {\rm sd}\nolimits }\)
+
+\(\newcommand {\Ex }{\mathop {\rm Ex}\nolimits }\)
+
+\(\newcommand {\Out }{\mathop {\rm Out}\nolimits }\)
+
+\(\newcommand {\Cyl }{\mathop {\rm Cyl}\nolimits }\)
+
+\(\newcommand {\Path }{\mathop {\rm Path}\nolimits }\)
+
+\(\newcommand {\Ch }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\SSet }{\mathop {\rm \Set ^{\Delta ^{op}}}\nolimits }\)
+
+\(\newcommand {\Sq }{\mathop {\rm Sq}\nolimits }\)
+
+\(\newcommand {\Free }{\mathop {\rm Free}\nolimits }\)
+
+\(\newcommand {\Map }{\mathop {\rm Map}\nolimits }\)
+
+\(\newcommand {\Chain }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\LMap }{\mathop {\rm LMap}\nolimits }\)
+
+\(\newcommand {\RMap }{\mathop {\rm RMap}\nolimits }\)
+
+\(\newcommand {\Tot }{\mathop {\rm Tot}\nolimits }\)
+
+\(\newcommand {\MU }{\mathop {\rm MU}\nolimits }\)
+
+\(\newcommand {\MSU }{\mathop {\rm MSU}\nolimits }\)
+
+\(\newcommand {\MSp }{\mathop {\rm MSp}\nolimits }\)
+
+\(\newcommand {\MSO }{\mathop {\rm MSO}\nolimits }\)
+
+\(\newcommand {\MO }{\mathop {\rm MO}\nolimits }\)
+
+\(\newcommand {\BU }{\mathop {\rm BU}\nolimits }\)
+
+\(\newcommand {\KU }{\mathop {\rm KU}\nolimits }\)
+
+\(\newcommand {\BSU }{\mathop {\rm BSU}\nolimits }\)
+
+\(\newcommand {\BSp }{\mathop {\rm BSp}\nolimits }\)
+
+\(\newcommand {\BGL }{\mathop {\rm BGL}\nolimits }\)
+
+\(\newcommand {\BSO }{\mathop {\rm BSO}\nolimits }\)
+
+\(\newcommand {\BO }{\mathop {\rm BO}\nolimits }\)
+
+\(\newcommand {\KO }{\mathop {\rm KO}\nolimits }\)
+
+\(\newcommand {\Tor }{\mathop {\rm Tor}\nolimits }\)
+
+\(\newcommand {\Cotor }{\mathop {\rm Cotor}\nolimits }\)
+
+\(\newcommand {\imag }{\mathop {\rm Im}\nolimits }\)
+
+\(\newcommand {\real }{\mathop {\rm Re}\nolimits }\)
+
+\(\newcommand {\Cat }{\mathop {\rm Cat}\nolimits }\)
+
+\(\newcommand {\Fld }{\mathop {\rm Fld}\nolimits }\)
+
+\(\newcommand {\Frac }{\mathop {\rm Frac}\nolimits }\)
+
+\(\newcommand {\Dom }{\mathop {\rm Dom}\nolimits }\)
+
+\(\newcommand {\Hotc }{\mathop {\rm Hotc}\nolimits }\)
+
+\(\newcommand {\Top }{\mathop {\rm Top}\nolimits }\)
+
+\(\newcommand {\Ring }{\mathop {\rm Ring}\nolimits }\)
+
+\(\newcommand {\CRing }{\mathop {\rm CRing}\nolimits }\)
+
+\(\newcommand {\CGHaus }{\mathop {\rm CGHaus}\nolimits }\)
+
+\(\newcommand {\Alg }{\mathop {\rm Alg}\nolimits }\)
+
+\(\newcommand {\Bool }{\mathop {\rm Bool}\nolimits }\)
+
+\(\newcommand {\hTop }{\mathop {\rm hTop}\nolimits }\)
+
+\(\newcommand {\Nat }{\mathop {\rm Nat}\nolimits }\)
+
+\(\newcommand {\Rel }{\mathop {\rm Rel}\nolimits }\)
+
+\(\newcommand {\Mod }{\mathop {\rm Mod}\nolimits }\)
+
+\(\newcommand {\Space }{\mathop {\rm Space}\nolimits }\)
+
+\(\newcommand {\Vect }{\mathop {\rm Vect}\nolimits }\)
+
+\(\newcommand {\FinVect }{\mathop {\rm FinVect}\nolimits }\)
+
+\(\newcommand {\Matr }{\mathop {\rm Matr}\nolimits }\)
+
+\(\newcommand {\Ab }{\mathop {\rm Ab}\nolimits }\)
+
+\(\newcommand {\Gr }{\mathop {\rm Gr}\nolimits }\)
+
+\(\newcommand {\Grp }{\mathop {\rm Grp}\nolimits }\)
+
+\(\newcommand {\Hol }{\mathop {\rm Hol}\nolimits }\)
+
+\(\newcommand {\Gpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Grpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Mon }{\mathop {\rm Mon}\nolimits }\)
+
+\(\newcommand {\FinSet }{\mathop {\rm FinSet}\nolimits }\)
+
+\(\newcommand {\Sch }{\mathop {\rm Sch}\nolimits }\)
+
+\(\newcommand {\AffSch }{\mathop {\rm AffSch}\nolimits }\)
+
+\(\newcommand {\Idem }{\mathop {\rm Idem}\nolimits }\)
+
+\(\newcommand {\SIdem }{\mathop {\rm SIdem}\nolimits }\)
+
+\(\newcommand {\Aut }{\mathop {\rm Aut}\nolimits }\)
+
+\(\newcommand {\Ord }{\mathop {\rm Ord}\nolimits }\)
+
+\(\newcommand {\coker }{\mathop {\rm coker}\nolimits }\)
+
+\(\newcommand {\ch }{\mathop {\rm char}\nolimits }\)
+
+\(\newcommand {\Sym }{\mathop {\rm Sym}\nolimits }\)
+
+\(\newcommand {\adj }{\mathop {\rm adj}\nolimits }\)
+
+\(\newcommand {\dil }{\mathop {\rm dil}\nolimits }\)
+
+\(\newcommand {\Cl }{\mathop {\rm Cl}\nolimits }\)
+
+\(\newcommand {\Diff }{\mathop {\rm Diff}\nolimits }\)
+
+\(\newcommand {\End }{\mathop {\rm End}\nolimits }\)
+
+\(\newcommand {\Hom }{\mathop {\rm Hom}\nolimits }\)
+
+\(\newcommand {\Gal }{\mathop {\rm Gal}\nolimits }\)
+
+\(\newcommand {\Pos }{\mathop {\rm Pos}\nolimits }\)
+
+\(\newcommand {\Ad }{\mathop {\rm Ad}\nolimits }\)
+
+\(\newcommand {\GL }{\mathop {\rm GL}\nolimits }\)
+
+\(\newcommand {\SL }{\mathop {\rm SL}\nolimits }\)
+
+\(\newcommand {\vol }{\mathop {\rm vol}\nolimits }\)
+
+\(\newcommand {\reg }{\mathop {\rm reg}\nolimits }\)
+
+\(\newcommand {\Or }{\textnormal {O}}\)
+
+\(\newcommand {\U }{\mathop {\rm U}\nolimits }\)
+
+\(\newcommand {\SOr }{\mathop {\rm SO}\nolimits }\)
+
+\(\newcommand {\SU }{\mathop {\rm SU}\nolimits }\)
+
+\(\newcommand {\Spin }{\mathop {\rm Spin}\nolimits }\)
+
+\(\newcommand {\Sp }{\mathop {\rm Sp}\nolimits }\)
+
+\(\newcommand {\Int }{\mathop {\rm Int}\nolimits }\)
+
+\(\newcommand {\im }{\mathop {\rm im}\nolimits }\)
+
+\(\newcommand {\dom }{\mathop {\rm dom}\nolimits }\)
+
+\(\newcommand {\di }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\cod }{\mathop {\rm cod}\nolimits }\)
+
+\(\newcommand {\colim }{\mathop {\rm colim}\nolimits }\)
+
+\(\newcommand {\ad }{\mathop {\rm ad}\nolimits }\)
+
+\(\newcommand {\PSL }{\mathop {\rm PSL}\nolimits }\)
+
+\(\newcommand {\PGL }{\mathop {\rm PGL}\nolimits }\)
+
+\(\newcommand {\sep }{\mathop {\rm sep}\nolimits }\)
+
+\(\newcommand {\MCG }{\mathop {\rm MCG}\nolimits }\)
+
+\(\newcommand {\oMCG }{\mathop {\rm MCG^+}\nolimits }\)
+
+\(\newcommand {\Spec }{\mathop {\rm Spec}\nolimits }\)
+
+\(\newcommand {\rank }{\mathop {\rm rank}\nolimits }\)
+
+\(\newcommand {\diverg }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\disc }{\mathop {\rm disc}\nolimits }\)
+
+\(\newcommand {\sign }{\mathop {\rm sign}\nolimits }\)
+
+\(\newcommand {\Arf }{\mathop {\rm Arf}\nolimits }\)
+
+\(\newcommand {\Pic }{\mathop {\rm Pic}\nolimits }\)
+
+\(\newcommand {\Tr }{\mathop {\rm Tr}\nolimits }\)
+
+\(\newcommand {\res }{\mathop {\rm res}\nolimits }\)
+
+\(\newcommand {\Proj }{\mathop {\rm Proj}\nolimits }\)
+
+\(\newcommand {\mult }{\mathop {\rm mult}\nolimits }\)
+
+\(\newcommand {\N }{\mathop {\rm N}\nolimits }\)
+
+\(\newcommand {\lk }{\mathop {\rm lk}\nolimits }\)
+
+\(\newcommand {\Pf }{\mathop {\rm Pf}\nolimits }\)
+
+\(\newcommand {\sgn }{\mathop {\rm sgn}\nolimits }\)
+
+\(\newcommand {\grad }{\mathop {\rm grad}\nolimits }\)
+
+\(\newcommand {\lcm }{\mathop {\rm lcm}\nolimits }\)
+
+\(\newcommand {\Ric }{\mathop {\rm Ric}\nolimits }\)
+
+\(\newcommand {\Hess }{\mathop {\rm Hess}\nolimits }\)
+
+\(\newcommand {\sn }{\mathop {\rm sn}\nolimits }\)
+
+\(\newcommand {\cut }{\mathop {\rm cut}\nolimits }\)
+
+\(\newcommand {\tr }{\mathop {\rm tr}\nolimits }\)
+
+\(\newcommand {\codim }{\mathop {\rm codim}\nolimits }\)
+
+\(\newcommand {\ind }{\mathop {\rm index}\nolimits }\)
+
+\(\newcommand {\rad }{\mathop {\rm rad}\nolimits }\)
+
+\(\newcommand {\Rep }{\mathop {\rm Rep}\nolimits }\)
+
+\(\newcommand {\Lie }{\mathop {\rm Lie}\nolimits }\)
+
+\(\newcommand {\Der }{\mathop {\rm Der}\nolimits }\)
+
+\(\newcommand {\hgt }{\mathop {\rm ht}\nolimits }\)
+
+\(\newcommand {\Ider }{\mathop {\rm Ider}\nolimits }\)
+
+\(\newcommand {\id }{\mathop {\rm id}\nolimits }\)
+</div>
+
+<p>
+<!--................................-->
+<h4 id="autosec-841"><span class="sectionnumber">9&#x2003;</span>Models for Homotopy Types</h4>
+<a id="Simplicial_h-autopage-841"></a>
+<a id="Simplicial_h-autofile-9"></a>
+<!--................................-->
+<h5 id="autosec-842"><span class="sectionnumber">9.1&#x2003;</span>Test Categories</h5>
+<a id="Simplicial_h-autopage-842"></a>
+
+
+<p>
+Let \(X\) be a simplicial set. We can put a homotopical structure on the \(\Cat \) by declaring \(C \to D\) to be an equivalence if \(BC \to BD\) is. By Corollary <a
+href="node-Bisimplicial-Sets.html#hocolimsimplices">7.24</a>, the map \(X \to B(X_{\Delta /})\) is an equivalence. It follows that the homotopy \(1\)-category of \(\Cat \) agrees with that of simplicial sets.
+</p>
+
+<p>
+This construction can be attempted on any small category. Let \(A\) be a small category, and \(X \in \Set ^{A^{op}}\), which we will call an \(A\)-set. We can then construct the category \(X_{A/}\) and declare the weak
+equivalences of \(A\)-sets to be those such that \(B(-)_{A/}\) is a weak equivalence. Then it was asked by Grothendieck in Pursuing stacks, when does the map \(i_A:X \to X_{A/}\) induce an equivalence on homotopy
+\(1\)-categories?
+</p>
+
+<p>
+\(i_A\) has a right adjoint \(i_A^*\), sending \(C\) to \(a \mapsto \Hom (A_{/a},C)\). \(i_A^*i_A(C)\) is the category with objects functors \(A_{/a} \to C\) for some \(a \in A\). The counit \(\epsilon :i_A^*i_A(C)
+\to C\) of the adjunction sends such a functor \(F\) to \(F(1_A)\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-843"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.1</span></span>. <a id="testcatlemma1"></a> There is an isomoprhism \(\ee _{/c} \cong
+i_A^*i_A(C_{/c})\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-844"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> An object of \(i_A^*i_A(C_{/c})\) is a functor \(A_{/a} \to C_{/c}\). But a functor \(A_{/a} \to C_{/c}\) is the same as a functor \(A_{/a} \to C\) sending \(1_A\) to
+\(C\), which is an object of \(\ee _{/c}\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We would like to have conditions so that \(\ee \) is a natural weak equivalence. The triangle identity will then show that the unit map is also a natural weak equivalence, and we will get the equivalence of homotopy categories.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-845"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">9.2</span></span>. A <b>weak test category</b> \(A\) is a small category such that \(\ee \) is a weak
+equivalence for all small categories \(C\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-846"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">9.3</span></span>. A functor \(f:C \to D\) is <b>aspherical</b> if \(B(f_{/d})\) is contractible for all
+\(d \in D\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+A category is aspherical if the map to the terminal category is, meaning it is contractible. From Quillen’s Theorem A (Theorem <a href="node-Some-Important-Model-Structures.html#quillenthma">5.22</a>), it follows that
+an aspherical map is a weak equivalence. We say that a map of \(A\)-sets is aspherical if after applying \(i_A\), it is aspherical. An \(A\)-set \(X\) is itself aspherical if the map to a point is aspherical, which is the same as saying
+that the map \(X_{A/} \to A\) is aspherical.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-847"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.4</span></span>. <a id="weaktestcateq"></a> TFAE:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(A\) is a weak test category.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. If \(D\) is a category with a terminal object, \(i^*_A(D)\) is equivalent to a point.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. If \(C\) is aspherical, then \(i^*_A(C)\) is equivalent to a point.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-848"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \((1)\implies (3)\implies (2)\) is clear since they are just special cases. \((2) \implies (1)\) follows from Quillen’s Theorem A and Lemma <a
+href="node-Models-Homotopy-Types.html#testcatlemma1">9.1</a> <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-849"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">9.5</span></span>. A <b>local test category</b> \(A\) is a category such that \(A_{/a}\) is a weak test
+category for all \(a\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-850"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.6</span></span>. <a id="localtestcateq"></a> TFAE:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(A\) is a local test category.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. If \(D\) is a category with a terminal object, \(i^*_A(D)\) is aspherical.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. If \(C\) is aspherical, then \(i^*_A(C)\) is aspherical.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-851"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This follows from Lemma <a href="node-Models-Homotopy-Types.html#weaktestcateq">9.4</a> and the fact that
+</p>
+
+<p>
+\[i_Ai_{A}^*(C)_{/a} \cong i_{A/a}i_{A/a}^*(C)\]
+</p>
+
+<p>
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-852"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">9.7</span></span>. A <b>test category</b> is a weak test category that is also a local test category.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-853"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.8</span></span>. <a id="testcateq"></a> A category is a test category iff it is a local test category and is
+aspherical.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-854"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This is because aspherical maps are weak equivalences, and the \(2\) out of \(3\) property, and the characterizations in Lemma <a
+href="node-Models-Homotopy-Types.html#localtestcateq">9.6</a> and Lemma <a href="node-Models-Homotopy-Types.html#weaktestcateq">9.4</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Observe that \(i_A(X)_{/a} = i_A(X\times a)\). This is the key to the next example.
+</p>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-855"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.8.1</span></span>. The simplex category \(\Delta \) is a test category. We already know it is a
+weak test category, and to see it is a local test category, we just need to observe that \(i_\Delta (X)_{/\Delta ^n} = i_{\Delta }(X\times \Delta ^n)\), so that if \(C\) is aspherical, then \(i_{\Delta /\Delta
+^n}i^*_{\Delta /\Delta ^n}(C)\) is too since it is equivalent to \(i^*_\Delta (C)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-856"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.9</span></span>. <a id="producttestcatweakeq"></a> Suppose that \(A,B\) are small categories and that
+\(f:X \to Y\) is a morphism of \(A\times B\)-sets. If \(f\) induces weak equivalences of \(B\)-sets for each \(a \in A\), then \(f\) is a weak equivalence of \(A\times B\)-sets.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-857"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Consider the composite \(i_{A\times B}X\xrightarrow {\pi _X}A\times B\xrightarrow {p}A\). There is a functor \(\omega _a:i_BX(a,-) \to p\pi _X/_{a}\) sending a
+object \(x \in X(a,b)\) to the object given by \(1_a,x\). There is a functor \(\gamma _a\) in the other direction sending \(f:a \to a&apos;,x \in X(a&apos;,b)\) in \(p\pi _X/_{a}\) to \((f,1)^*x\) in \(X(a&apos;,b)\).
+\(\gamma _a\omega _a\) is the identity, and there is a natural transformation \(\omega _a \gamma _a \to 1\) given by \((f,1):(1_a,(f,1)^*(x)) \to (f,x)\). Thus we get a canonical homotopy equivalence \(i_BX(a,-)
+\simeq (p\pi _X)_{/a}\).
+</p>
+
+<p>
+Thus by the assumption, we get weak equivalences \((p\pi _X)_{/a}\to (p\pi _X)_{/a}\) for each \(a \in A\). By taking (diagonal) homotopy colimits over \(A\), we get that \(Bi_{A\times B}(X) \to Bi_{A\times
+B}(Y)\) is an equivalence. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-858"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">9.10</span></span>. <a id="productweaktestcat"></a> Suppose \(A\) is a local test category and \(B\)
+is a small category. Then \(A\times B\) is a local test category.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-859"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(C\) be a category with a terminal object \(t\). It suffices to show that \(i*_{A\times B}C_{/(a,b)}\) is equivalent to a point. To see this, we first observe that
+\({A\times B}_{/(a,b)} = A_{/a}\times B_{/b}\).
+</p>
+
+<p>
+Thus \(i^*_{A_{/a}\times B_{/b}}C(a&apos;,b&apos;) = Hom((A_{/a})_{/a&apos;}\times (B_{/b})_{/b&apos;},C) = \Hom ((A_{/a})_{/a&apos;},C^{(B_{/b})_{/b&apos;}})\). \(C^{(B_{/b})_{/b&apos;}}\) has a
+terminal object, so all the \(A_{/a}\)-sets are pointwise equivalent to a point, and by Lemma <a href="node-Models-Homotopy-Types.html#producttestcatweakeq">9.9</a>, we are done. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-860"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.11</span></span>. Suppose \(A\) is a test category and \(B\) is an aspherical category. Then \(A\times
+B\) is a test category.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-861"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(A\times B\) is aspherical because \(A\) and \(B\) are, and \(A\times B\) is a local test category by Proposition <a
+href="node-Models-Homotopy-Types.html#productweaktestcat">9.10</a> <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-862"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.12</span></span>. <a id="pullbackreflecttestcat"></a> Suppose that \(A,B\) are small categories and
+\(B\) is aspherical. Let \(p^*\) be the pullback functor from \(A\)-sets to \(A\times B\) sets. then \(p^*\) reflects weak equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-863"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(i_{A\times B}p^*X= i_AX\times B\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Let \(A\) be a category. Let \(p\) be the projection as in the lemma above, let \(i\) be the cocontinuous map from \(A\)-sets to \(\SSet \) sending \(a\) to \(B(A_{/a})\), and let \(i^*\) be its right adjoint. Let \(j\) be the
+cocontinuous functor from \(A\times \Delta \)-sets to \(\SSet \) sending \(a,n\) to \(B(A_{/a})\times \Delta ^n\). This has a right adjoint \(j^*\). Let \(q^*\) be the pullback functor from \(\SSet \) to \(A\times
+\Delta \)-sets.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-864"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.13</span></span>. <a id="zigzagtestcat"></a> Suppose \(A\) is a local test category. Then there are
+natural weak equivalences of \(A\times \Delta \)-sets
+</p>
+
+<p>
+\[p^*i^*X \to j^*X\leftarrow q^*X\]
+</p>
+
+<p>
+for any simplicial set \(X\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-865"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> There is a map \(q^*X(a,*) \to j^*X(a,*)\) sending \(X \to X^{B(A_{/a})}\) via the terminal object. Since this is an equivalence for each \(a\), by Lemma <a
+href="node-Models-Homotopy-Types.html#producttestcatweakeq">9.9</a> it is an equivalence.
+</p>
+
+<p>
+The map \(p^*i^*X \to j^*X\) in simplicial degree \(n\) is a map of \(A\)-sets \(X^{B(A_{/a}}\to (X^{\Delta ^{n}})^{B(A_{/a})}\). But this is a componentwise weak equivalence because \(\Delta ^n\) is contractible, so
+again by Lemma <a href="node-Models-Homotopy-Types.html#producttestcatweakeq">9.9</a> it is an equivalence. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-866"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.14</span></span>. The functor \(i^*\) preserves weak equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-867"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(q^*\) preserves weak equivalences by Lemma <a href="node-Models-Homotopy-Types.html#producttestcatweakeq">9.9</a>, so \(p^*i^*\) does too by Lemma <a
+href="node-Models-Homotopy-Types.html#zigzagtestcat">9.13</a>. Since \(p^*\) reflects weak equivalences by Lemma <a href="node-Models-Homotopy-Types.html#pullbackreflecttestcat">9.12</a>, \(i^*\)
+preserves weak equivalences. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The proof of Lemma <a href="node-Models-Homotopy-Types.html#zigzagtestcat">9.13</a> shows:
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-868"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.15</span></span>. <a id="generalzigzagtestcat"></a> Suppose \(A\) is a small category such that
+\(i_A(a)\) has a terminal object for all \(a\) and \(i^*(\Delta ^1)\) is aspherical. Then there is a natural weak equivalence of \(A\times \Delta \)-sets
+</p>
+
+<p>
+\[p^*i^*X \to j^*X\leftarrow q^*X\]
+</p>
+
+<p>
+for any simplicial set \(X\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-869"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.16</span></span>. <a id="generalzigzagtestcat2"></a> Suppose that in addition to the assumptions of
+Lemma <a href="node-Models-Homotopy-Types.html#generalzigzagtestcat">9.15</a>, \(A\) is aspherical, so it is a test category. Then \(i^*\) preserves and reflects weak equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-870"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> From Lemma <a href="node-Models-Homotopy-Types.html#producttestcatweakeq">9.9</a>, \(q^*\) preserves and reflects weak equivalences, so \(p^*i^*\) does too by
+Lemma <a href="node-Models-Homotopy-Types.html#generalzigzagtestcat">9.15</a>. \(p^*\) does as well by Lemma <a href="node-Models-Homotopy-Types.html#pullbackreflecttestcat">9.12</a>, so \(i^*\) does
+too. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The following gives a way of producing local test categories.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-871"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.17</span></span>. <a id="overcattestcat"></a>
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. Suppose that \(A\) is a local test category and \(X\) is an \(A\)-set. Then \(i_AX\) is a local test category.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. The category of \(i_AX\)-sets is equivalent to \(A\)-sets over \(X\).
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-872"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The second claim is straightforward, and for the first, we use the natural isomorphism \(i_AX_{/a} \cong A_{/a}\) for any map \(a \to X\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-873"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.18</span></span>. <a id="presweakeqprod"></a> Suppose \(A\) is a local test category and \(Y\) is an
+\(A\)-set. Then the functor \(\SSet \) to \(A\)-sets defined by \(X\mapsto Y\times i^*X\) preserves weak equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-874"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Write \(i^*_{[A]}X\) for \(i^*X\) to emphasize the dependence on \(A\). There is an isomorphism \(i^*_{[i_AY]}X\cong Y\times i^*_{[A]}X\), so the result follows from
+Lemma <a href="node-Models-Homotopy-Types.html#overcattestcat">9.17</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+\(i_{\square }(B_{\square }C\times \square ^n)\)
+</p>
+<!--................................-->
+<h5 id="autosec-875"><span class="sectionnumber">9.2&#x2003;</span>Basics of Cubical Sets</h5>
+<a id="Simplicial_h-autopage-875"></a>
+
+
+<p>
+The category \(\square \) has the \(n\)-cubes \(\square ^n\) as objects for \(n\geq 0\). The maps \(\square ^n \to \square ^m\) can be identified with functors \((\Delta ^1)^n \to (\Delta ^1)^m\) which are
+composites of coordinate projections and face inclusions.
+</p>
+
+<p>
+There is a monoidal product \(\otimes :   \square \otimes \square \to \square \) corresponding to the isomorphism \((\Delta ^1)^n \times (\Delta ^1)^m = (\Delta ^1)^{n+m}\). This is not symmetric monoidal.
+</p>
+
+<p>
+Let \(\square ^{\leq 1}\) be the full subcategory of \(\square ^0\) and \(\square ^1\). Here is the universal property of \(\square \):
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-876"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">9.19</span></span>. Let \(C\) be a monoidal category. For any functor \(F:\square ^{\leq 1} \to C\),
+there is a unique (up to natural isomorphism) extension to a functor \(\tilde {F}:\square \to C\) which is monoidal.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-877"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.20</span></span>. Let \(C\) be a cocomplete monoidal category. For any functor \(F:\square ^{\leq 1}
+\to C\), there is a unique (up to natural isomorphism) extension to a cocontinuous functor \(\tilde {F}:\Set _{\square } \to C\) which is lax monoidal, and monoidal if the tensor product on \(C\) preserves colimits. It has a
+left adjoint, the singular cubical set of the cocubical object given by \(X \mapsto \Hom _C(F(\square ^i),X)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The monoidal structure on \(\square \) gives rise to a Day convolution product \(\otimes \) on \(\Set _\square \). For \(X,Y \in \Set _\square \), this is given as the left Kan extension of \(X\times Y:\square
+^{op}\times \square ^{op} \to \Set \) along the tensor product map. Explicitly, \(X\otimes Y = \colim _{\square ^n \to X,\square ^m \to Y} \square ^{n+m}\). Furthermore, \(\Set _{\square }\) is closed: we
+can define \(\hom (C,D)_n = \hom (C\otimes \square ^n,D)\).
+</p>
+
+<p>
+The category \(\square \) has an orthogonal factorization system into epis, called degeneracy maps, and monos, called face maps.
+</p>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-878"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.20.1</span></span>. The objects \((\Delta ^1)^n\) form a cocubical object \(\square \to
+\SSet \). This gives a pair of adjoint functors \(\adjunction {|\cdot |}{\Set _\square }{\SSet }{S}\), the singular cubical set and simplcial realization. This is monoidal with respect to the product structure on \(\SSet \).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The functor \(\square \to \SSet \) factors through \(\Cat \). The right adjoint of the extension of this map to \(\Set _\square \) is the cubical nerve functor \(B_{\square }(C)\).
+</p>
+
+<p>
+Similarly to simplicial sets, we can make sense of degenerate simplices and \(n\)-skeleta. An \(n\)-skeleton is left Kan extended from \(\square ^{\leq n}\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-879"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.21</span></span>. <a id="cubicaldegen"></a> If \(x,y\) are generate \(n\)-cells of a cubical set \(X\)
+whose boundaries agree, then \(x = y\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-880"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The proof is basically that of Lemma <a href="node-Kan-Fibrations.html#degen">3.11</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Define \(\partial \square ^n\) the way you would expect. The following lemma then holds, analogously to Lemma <a href="node-Technical-Things.html#genincl">2.17</a>.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-881"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.22</span></span>. The saturation of the inclusions \(\partial \square ^n \to \square ^n\) are all
+inclusions.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The analogs of the horns are \(\sqcap ^n_{\ee ,i}\), which are defined by removing the \(\ee ,i\) face from \(\partial \square ^n\), where \(\ee \in \{0,1\}, 0\leq i \leq n\). \(|\partial \square ^n| \to
+|\square ^n|\) is an anodyne extension since it is an inclusion and both are contractible.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-882"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.23</span></span>. Suppose \(x,y\) are \(n\)-cells of a cubical set \(X\) such that the induced maps of
+simplicial sets \(x_*,y_*:|\square ^n|\to |X|\) agree. Then \(x,y\) agree.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-883"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> From induction on \(n\) and Lemma <a href="node-Models-Homotopy-Types.html#cubicaldegen">9.21</a>, we can assume \(y\) is nondegenerate, and that the boundaries of
+\(x,y\) agree. We can also replace \(X\) by the subcomplex generated by the \(n-1\)-skeleton, \(x\), and \(y\).
+</p>
+
+<p>
+If \(x \neq y\), let \(X_0\) be the subcomplex generated by the \(n-1\)-skeleton and \(x\). \(X\) is obtained from \(X_0\) by adjoining an \(n\)-cell. The fact that \(x_*=y_*\) gives a lift in the pushout diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-112"
+      class="lateximagesource"
+><!--
+|∂□n |             |X0 |
+         x∗
+
+              y∗
+|□n |              |X|
+--><img
+      src="Simplicial_h-images/image-112.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+This shows that \(|X_0| \to |X|\) must be surjective, which is a contradiction.
+</p>
+
+<p>
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-887"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.24</span></span>. <a id="triangulationofcubes"></a> If \(X \to Y\) is a map of cubical sets such that
+\(f_*:|X| \to |Y|\) is a monomorphism, then \(X \to Y\) is a monomorphism. If it is an isomorphism of cubical sets, then so is \(X\to Y\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-888"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> For the second statement, if an inclusion \(X\to Y\) is not an isomorphism, it is obtained by adjoining cells, which would give nontrivial inclusions after applying \(|\cdot |\).
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-889"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.25</span></span>. <a id="cubicaltestcatlemma"></a> Suppose that \(C\) has a terminal object. Then the
+functor \(i_{\square }B_{\square }C \to \square \) is aspherical.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-890"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This amounts to showing that for each \(n\), \(i_{\square }(B_{\square }C\times \square ^n)\) is contractible. its objects consist of a functor \(f:\square ^k \to C\) and
+a map \(\sigma :\square ^k \to \square ^n\).
+</p>
+
+<p>
+Since \(C\) has a terminal object \(t\), there is a natural homotopy to the constant map to the terminal object:
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-113"
+      class="lateximagesource"
+><!--
+ □k
+           f
+d0
+           hf
+□k+1            C
+       t
+d1
+
+ □k
+--><img
+      src="Simplicial_h-images/image-113.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+This gives a deformation retraction from \(i_{\square }(B_{\square }C\times \square ^n)\) to \(i_{\square }\square ^n\), which is aspherical since it has a terminal object, the identity. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-894"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">9.26</span></span>. <a id="constructtestcat"></a> Suppose that \(i:A \to \Cat \) is functor on a
+small category. Let \(i^*\) be the left adjoint of the extension to \(A\)-sets, and suppose that
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(i(a)\) has a terminal object for each \(a\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. If \(D\) has a terminal object, then \(i^*D\) is aspherical.
+</p>
+</li>
+</ul>
+
+<p>
+Then \(A\) is a local test category.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-895"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(D\) be a category with a terminal object. By Lemma <a href="node-Models-Homotopy-Types.html#localtestcateq">9.6</a>, it suffices to check that
+\(i_{A}(i_{A}^*D\times a)\) is aspherical for each \(a \in A\). Picking a terminal object for each \(i(a)\), there is a functor \(\square _{/a} \to i(a)\) sending a map \(\theta :a&apos; \to a\) to \(\theta \) applied
+to the terminal object of \(i(a&apos;)\). This induces an \(A\)-set map \(i^*C \to i^*_AC\).
+</p>
+
+<p>
+Suppose that \(h\) is a contracting homotopy of \(D\), and consider the composite
+</p>
+
+<p>
+\[ i^*_A(D)\times B_A(\Delta ^1)\xrightarrow {1\times \alpha } i^*_AD\times i^*_A\Delta ^1\cong i^*_A (D\times \Delta ^1) \xrightarrow {h} i^*_A(D)\]
+</p>
+
+<p>
+This provides a nulhomotopy from \(i^*_A(D)\) to the point, where we use \((2)\) to see that it is really a weak equivalence of \(A\)-sets. The nulhomotopy multiplied with an object \(a\) shows that in fact \(i^*_A(D)\times a
+\to a\) is an equivalence, so that \(i_A(i_A^*D\times a)\) is aspherical. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-896"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.27</span></span>. \(\square \) is a test category.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-897"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By Proposition <a href="node-Models-Homotopy-Types.html#constructtestcat">9.26</a> and Lemma <a
+href="node-Models-Homotopy-Types.html#cubicaltestcatlemma">9.25</a>, it is a local test category, and it has a terminal object, so is aspherical. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-898"><span class="sectionnumber">9.3&#x2003;</span>Cisinski model structures</h5>
+<a id="Simplicial_h-autopage-898"></a>
+
+
+<p>
+Let \(A\) be a small category. Let \(\Set _A\) denote the category of \(A\)-sets, and let \(C\) be a set of monomorphisms of \(\Set _A\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-899"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">9.28</span></span>. An <b>interval theory</b> is an action on the category \(\Set _A\) by the monoidal
+category \(\square \), subject to the conditions:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+(I1) \((-)\otimes \square ^1\) preserves monomorphisms and filtered colimits.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(I2) For every monomorphism \(i:X \to Y\) and coface \(d:\square ^{n-1} \to \square ^n\), the square
+</p>
+<div class="center">
+<p>
+<span
+      id="lateximage-Simplicial_h-114"
+      class="lateximagesource"
+><!--
+X ⊗ □n−1   Y ⊗ □n−1
+       ⌟
+
+X ⊗ □n     Y ⊗ □n
+--><img
+      src="Simplicial_h-images/image-114.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+<p>
+is a pullback.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+(I3) For \(1\leq i \leq n\), the square
+</p>
+<div class="center">
+<p>
+<span
+      id="lateximage-Simplicial_h-115"
+      class="lateximagesource"
+><!--
+  ϕ       Y ⊗ □n−1
+      ⌟
+
+X ⊗ □n    Y ⊗ □n
+--><img
+      src="Simplicial_h-images/image-115.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+<p>
+is a pullback.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The interval theory makes \(\Set _A\) tensored over \(\Set _\square \). Moreover, there is a cubical function space \(\hom _{\square }(X,Y)_n = \hom (X\otimes \square ^n,Y)\), giving an adjunction \(\hom (X\otimes
+K,Y) = \hom (K,\hom _{\square }(X,Y))\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-906"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.29</span></span>. The map \(X\otimes \partial \square ^n \to X\otimes \square ^n\) is an
+inclusion.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-907"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By induction on the number of cells using \((I2),(I3)\), we can show that the canonical map \(X\otimes \partial \square ^n \to \cup _{i,\ee }X\otimes \square
+^{n-1}\) is an isomorphism (\(\cup \) denotes the not disjoint union). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+It follows that for any monomorphism \(K \to L\), the map \(X\otimes K \to X\otimes L\) is an monomorphism.
+</p>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-908"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.29.1</span></span>. If \(I\) is an \(A\)-presheaf equipped with a monomorphism
+\((d_0,d_1):* \coprod *\to I\), then the assignment \(X\otimes \square ^n = X\times I^n\) gives an action that is an interval theory.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-909"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.29.2</span></span>. The tensor product gives \(\Set _{\square }\) the structure of an interval
+theory. \((I1),(I3)\) are easy, and \((I2)\) can be proven by using Corollary <a href="node-Models-Homotopy-Types.html#triangulationofcubes">9.24</a>.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-910"></a>
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">9.29.1</span></span>. For any inclusion \(K \subset L\) in \(\Set _{\square }\) and inclusion
+\(X\to Y\) of \(A\)-sets, the map \(Y\otimes K\cup _{X\otimes K}X\otimes L \to Y\otimes K\cup X\otimes L\) is an isomorphism, where the latter is the union as subobjects of \(Y\otimes L\). This essentially follows
+from \((I2)\) and the fact that it suffices to prove it for the inclusions \(\partial \square ^n\to \square ^n\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The <b>anodyne \((\otimes ,S)\)-cofibrations</b> (or just anodyne cofibrations) are the saturated class of morphisms generated by the inclusions
+</p>
+<ul style="list-style-type:none">
+
+<li>
+<p>
+(A1) \((Y\otimes \square ^n)\cup (a\otimes \sqcap ^n_{\ee ,i}) \to a\otimes \square ^n\) for all subobjects \(Y\) of \(a\in A\)
+</p>
+
+</li>
+<li>
+
+<p>
+(A2) \(A\otimes \square ^n\cup B\otimes \partial \square ^n \to B\otimes \square ^n\) for all monomorphisms \(A \to B\) in \(S\).
+</p>
+</li>
+</ul>
+
+<p>
+We define the <b>naive fibrations</b> to be the maps that have the left lifting property with respect to all anodyne cofibrations. A cofibration is an inclusion. Notice that since the category is presheaves on a small category, the
+inclusions are generated by a small set under filtered colimits.
+</p>
+
+<p>
+A <b>naive homotopy</b> between two maps \(X \to Y\) is a map \(X\otimes \square ^1\to Y\) restricting to the two maps. If \(Y\) is a naively fibrant object, then this is an equivalence relation by using the anodyne
+extensions \(X\otimes \sqcap ^n_{\ee ,i} \to X\otimes \square ^n\).
+</p>
+
+<p>
+We say that \(X \to Y\) is a weak equivalence iff it induces a bijection on naive homotopy classes of maps to any naively fibrant object. Our model category on \(A\)-set valued presheaves will be defined using cofibrations and
+weak equivalences.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-911"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.30</span></span>. <a id="tensorcardinalcisinski"></a> There is a cardinal \(\kappa \) such that
+\(|X\otimes \square ^n|&lt;\lambda \) if \(|X|&lt;\lambda \) for all \(\lambda &gt;\kappa \).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-912"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Choose an infinite cardinal \(\beta \) such that \(|A|&lt;\beta \). Choose \(\kappa \) sot hat \(|A\otimes \square ^n| &lt;\kappa \) when \(|A|&lt;\beta \). Then
+\(\kappa \) works. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-913"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.31</span></span>. <a id="homotopyextensionpropertycisinski"></a> If \(C \to D\) is an anodyne
+cofibration, then so is \(C\otimes \square ^1\cup D\otimes \partial \square ^1 \to D\otimes \square ^1\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-914"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Use essentially the proof of Corollary <a href="node-Technical-Things.html#anodgeneral">2.22</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-915"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.32</span></span>. <a id="anodweakeqcisinski"></a> An anodyne cofibration is a weak equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-916"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Suppose that \(C \to D\) is an anodyne cofibration. Then it induces a surjection on maps to a naively fibrant object by the lifting property. It is an injection on homotopy classes
+by Lemma <a href="node-Models-Homotopy-Types.html#homotopyextensionpropertycisinski">9.31</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-917"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.33</span></span>. <a id="equivaperfectcisinski"></a> For all sufficiently large cardinals \(\kappa \),
+given a diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-116"
+      class="lateximagesource"
+><!--
+    X
+        i
+
+Z   Y
+--><img
+      src="Simplicial_h-images/image-116.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+of cofibrations of \(A\)-sets such that \(i\) is an equivalence and \(|Z|&lt;\kappa \), there is a subobject \(B \subset Y\) with \(A\subset B\) such that \(|B| &lt;\kappa \) and \(B\cap X \to B\) is an equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-921"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(F\) be the naive fibrant replacement functor coming from the small object argument. \(FX \to FY\) is a weak equivalence by the \(3\) out of \(4\) property and the fact
+that \(X \to FX\) is by Lemma <a href="node-Models-Homotopy-Types.html#anodweakeqcisinski">9.32</a>. Thus it is a naive homotopy equivalence. By the homotopy extension property, we can assume that the homotopy
+inverse \(\sigma \) of \(Fi\) is a left inverse. Let \(h\) be a homotopy from \(Fi \circ \sigma \) to the identity. Let \(\kappa \) be sufficiently large. If \(Z\) is a subobject of \(Y\) such that \(Z\) is \(\kappa \)-small, by
+Lemma <a href="node-Models-Homotopy-Types.html#tensorcardinalcisinski">9.30</a> and the fact that \(F\) preserves \(\kappa \)-filtered colimits, the homotopy \(H\) restricted to \(FZ\otimes \square ^1\) factors
+through \(FZ&apos;\) for some \(\kappa \)-small \(FZ&apos;\). By repeating this, we form a sequence of \(\kappa \)-small subobjects \(Z_i\) such that the homotopy restricted to \(Z_i\) factors through \(Z_{i+1}\). Then
+\(\cup Z_i\) has the property that \(F(\cup Z_i\cap X) \to FZ\) is a naive homotopy equivalence, so by the \(3\) out of \(4\) property, we get the desired result. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-922"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.34</span></span>. <a id="naivehomotopypushoutcisinski"></a> Suppose given a diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-117"
+      class="lateximagesource"
+><!--
+    f,g
+C         E
+i
+
+D
+--><img
+      src="Simplicial_h-images/image-117.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+that \(i\) is a cofibration and \(f,g\) are naively homotopic. Then the map \(D \to D\cup _fE\) is an equivalence iff \(D\to D\cup _gE\) is.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-926"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Considering the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-118"
+      class="lateximagesource"
+><!--
+    ∼
+D       D ∪C (C ⊗ □1 )      D ∪f E
+
+
+
+
+             ∼
+
+
+
+
+                              ∼
+           D ⊗ □1        (D ⊗ □1 ) ∪h E
+--><img
+      src="Simplicial_h-images/image-118.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where the indicated maps are anodyne, we see that the map for \(f\) is an equivalence iff the lower map is. The same is true for \(g\), giving the result. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-930"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.35</span></span>. <a id="pushouteqcisinski"></a>Suppose that \(i:C\to D\) is an inclusion that is an
+equivalence. Then the cofibration \(C\otimes \square ^1\cup D\otimes \partial \square ^1 \to D\otimes \square ^1\) is an equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-931"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(F\) be the naive fibrant replacement functor from the small object argument. using the \(3\) out of \(4\) property, we can replace \(D\) with \(FD\). Similarly, we can factor
+\(C\to D\) through an anodyne map and a naive fibration that is an equivalence. But then it is a homotopy equivalence, so by Lemma <a href="node-Models-Homotopy-Types.html#naivehomotopypushoutcisinski">9.34</a>,
+we can reduce to when \(C \to D\) is an anodyne cofibration, when this follows by Lemma <a href="node-Models-Homotopy-Types.html#homotopyextensionpropertycisinski">9.31</a>. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-932"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.36</span></span>. <a id="cisinskitrivcofpushout"></a> The inclusions which are weak equivalences are
+closed under pushouts.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-933"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Suppose we are givne a pushout
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-119"
+      class="lateximagesource"
+><!--
+C       C′
+j        j′
+    ⌜
+D       D′
+--><img
+      src="Simplicial_h-images/image-119.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+with \(j\) a weak equivalence and an inclusion. Then any map from \(C&apos;\) into an fibrant object \(Z\) can be extended to \(D&apos;\). On the other hand by Lemma <a
+href="node-Models-Homotopy-Types.html#pushouteqcisinski">9.35</a>, in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-120"
+      class="lateximagesource"
+><!--
+C ⊗ □1 ∪ D ⊗ ∂□1   C ′ ⊗ □1 ∪ D′ ⊗ ∂□1
+
+
+    D ⊗ □1              D ′ ⊗ □1
+--><img
+      src="Simplicial_h-images/image-120.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+the left vertical map is an equivalence and an inclusion, so homotopies from \(C&apos;\) to \(Z\) can be extended to \(D&apos;\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-940"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.37</span></span>. <a id="naivenotsonaivecisinski"></a> Suppose \(p:X \to Y\) is a naive fibration of
+naively fibrant objects. Then \(p\) is a fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-941"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Suppose then that we have a square
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-121"
+      class="lateximagesource"
+><!--
+    α
+A       X
+i           p
+    β
+B       Y
+--><img
+      src="Simplicial_h-images/image-121.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where \(i\) is a cofibration and an equivalence. Then there is a map \(\theta :B \to X\) making the upper right triangle commute since \(i\) is an equivalence there is a homotopy extension property from \(A\) to \(B\), and
+\(X\) is naively fibrant. The commutative square for \(\theta \) is homotopic to the original diagram, and by finding a lift in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-122"
+      class="lateximagesource"
+><!--
+A ⊗ □1 ∪ B   X
+
+
+ B ⊗ □1      Y
+--><img
+      src="Simplicial_h-images/image-122.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+we can produced the originally desired lift. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-948"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.38</span></span>. <a id="naivefibrant"></a> The notions fibrant and naively fibrant coincide.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+More generally, naive fibrations and fibrations to a fibrant object coincide.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-949"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.39</span></span>. <a id="cisinskimodelstr"></a> Suppose \(A\) is a small category with an interval
+theory, and \(S\) a set of morphisms in \(A\)-sets. Then the cofibrations, fibrations and weak equivalences as defined give a combinatorial left proper model structure on \(A\)-sets.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-950"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> From Lemma <a href="node-Models-Homotopy-Types.html#equivaperfectcisinski">9.33</a> and Lemma <a
+href="node-Models-Homotopy-Types.html#cisinskitrivcofpushout">9.36</a>, the cofibrations that are weak equivalences are generated by a small set, and the cofibrations are clearly generated by a small set. These then give
+two factorization systems. By Lemma <a href="node-Model-Categories.html#checkonemodelstructure">4.11</a>, it suffices to check that trivial fibrations are weak equivalences.
+</p>
+
+<p>
+Given a map \(f:X \to Y\), there is a section \(s\). \(sf\) is homotopic to the identity because of the lifting property, so \(f\) is a homotopy equivalence. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+When the model structure is defined by an interval object \(I\), then we call it the \((I,S)\)-model structure.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-951"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.40</span></span>. <a id="propernesscisinskiinterval"></a> Let the interval theory on \(A\)-sets be
+defined by an interval object \(I\). Suppose that for any diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-123"
+      class="lateximagesource"
+><!--
+         f∗
+U ×Y X        V ×Y X   X
+                           p
+         f
+  U             V      Y
+--><img
+      src="Simplicial_h-images/image-123.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where \(p\) is a fibration, \(Y\) fibrant, \(f \in S\), the map \(f_*\) is a weak equivalence.
+</p>
+
+<p>
+Then the \((I,S)\) model structure on \(A\)-sets is proper.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-955"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(W\) be the class of maps \(U \to V\) satisfying the condition on \(f\) in the statement of the theorem. \(W\) is closed under transfinite composition and retracts. The
+cofibrations in \(W\) are closed under pushout by an arbitrary morphism, because a basechange of a pushout square of sets where one map is an injection is a still a pushout square, and trivial cofibrations are stable under cobase
+change. Furthermore, \(W\) satisfies a weak \(2\) out of \(3\) property: if \(g\circ f\) and \(f\) are in \(W\), then \(g\) is too. This follows from the \(2\) out of \(3\) property.
+</p>
+
+<p>
+By assumption \(W\) contains \(S\), and it is easy to see that \(W\) contains all projections \(K\otimes \square ^n \to K\). Next, we see that \(W\) contains all the standard inclusions \(K \to K \otimes \square ^1\).
+Indeed, Let \(Y\) be an object with a fibration to \(K\otimes \square ^1\) and \(Y&apos;\) be the pullback to \(K\). Then by creating a lift in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-124"
+      class="lateximagesource"
+><!--
+  Y            Y
+         H
+
+
+
+
+ ∼
+         h
+Y ⊗ □1       Z ⊗ □1
+--><img
+      src="Simplicial_h-images/image-124.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where \(h\) is the homotopy contracting the image of \(Y\) to the copy of \(Z\) over which \(Y&apos;\) lives, we get a map \(g:Y\to Y\) that factors through \(Y&apos;\) by the universal property of pullback. By construction,
+the composite \(f_*\circ g\) is homotopic to the identity via \(H\). By the universal property of pullback again, the homotopy \(H_{|Y&apos;}\) factors through \(Y&apos;\), giving a homotopy between \(f_*\circ g\) and the
+identity.
+</p>
+
+<p>
+It follows that whether a map is in \(W\) depends only on its naive homotopy class (or rather the equivalence relation generated by naive homotopy). It follows that the maps \(K\otimes \sqcap ^n_{i,\ee } \to K\otimes
+\square ^n\) are in \(W\).
+</p>
+
+<p>
+By considering the factorization
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-125"
+      class="lateximagesource"
+><!--
+a ⊗ ⊓n(i,ϵ)                              a ⊗ □n
+                                     i
+
+
+              a ⊗ ⊓n(i,ϵ) ∪ Y ⊗ □n
+--><img
+      src="Simplicial_h-images/image-125.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+and using the weak \(2\) out of \(3\) property and the fact that \(W\) is closed under pushouts of monomorphisms, we see that the generating cofibrations labelled \(i\) are in \(W\). We know that \(S \in W\) by assumption. By
+induction on \(n\) and comparing the pushout diagrams
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-126"
+      class="lateximagesource"
+><!--
+C ⊗ ∂□n−1   C ⊗ ⊓n(i,ϵ)
+
+
+C ⊗ □n−1    C ⊗ ∂□n
+--><img
+      src="Simplicial_h-images/image-126.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+it follows that \(f\otimes \partial \square ^n\) is in \(W\) for each \(f \in S\).
+</p>
+
+<p>
+Then, by considering the factorization
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-127"
+      class="lateximagesource"
+><!--
+A ⊗ □n                          B ⊗ □n
+                            i
+
+
+         A ⊗ □n ∪ B ⊗ ∂□n
+--><img
+      src="Simplicial_h-images/image-127.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+and using the weak \(2\) out of \(3\) property, we see that all the generating anodyne cofibrations are in \(W\).
+</p>
+
+<p>
+Now given a fibration \(p:X \to Y\) with \(Y\) fibrant, and an equivalence \(Z \to Y\), we can factor \(Z\to Y&apos; \to Y\), where \(Z \to Y&apos;\) is an anodyne cofibration, and by Lemma <a
+href="node-Models-Homotopy-Types.html#naivenotsonaivecisinski">9.37</a> the map \(Y&apos; \to Y\), which is apriori a naive fibration, is actually a trivial fibration. Then the pullback of \(Z \to Y\) along \(p\) is an
+equivalence, because we know that this is true for anodyne cofibrations and trivial fibrations. Thus by Lemma <a href="node-Model-Categories.html#rightproperfibrantobjects">4.57</a>, the model structure is proper.
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-968"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.40.1</span></span>. Let \(C\) be a small category, and \(A = C\times \Delta \). Then \(\Set
+_A = \SSet ^{A}\). We can take \(I\) to be the constant simplicial presheaf \(\Delta ^1\), so this gives a way of constructing standard model structures on simplicial presheaves.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-969"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.40.2</span></span>. The Quillen model structure on simplicial sets is an example with \(A =
+\Delta \) and \(I = \Delta ^1\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-970"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.40.3</span></span>. When \(A = \square \), we get a model structure on cubical sets. It will
+be proven later, but it turns out that the weak equivalences are those that topologically are weak equivalences, and that the cofibrations are anodyne maps in this case.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-971"><span class="sectionnumber">9.4&#x2003;</span>Colimits in Cisinski model structures</h5>
+<a id="Simplicial_h-autopage-971"></a>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-972"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.41</span></span>. <a id="trivfibcisinskilemma"></a> Suppose \(A\) is a small category, and \(C\) is a
+small category with a terminal obeject. Then the \(A\)-set \(i^*_A(C) \to *\) has the right lifting property with respect to all inclusions.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-973"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It suffices to show that for any inclusion \(X \to Y\) of \(A\)-sets, \(C \to *\) has the right lifting property with respect to \(i_A(X) \to i_A(Y)\). However, if \(f:x\to y\) is
+a map in \(i_A(Y)\) such that \(y \in i_A(X)\), then \(f \in i_A(X)\). Thus, we can just send anything in \(i_A(Y)-i_A(X)\) to the terminal object, giving the lift. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+It follows that in a Cisinski model structure, the projection \(i^*_A(C) \to *\) is a trivial fibration. We say that a model structure on \(A\)-sets (or its weak equivalences) is <b>regular</b> if the map \(\hocolim _{a \to X}a
+\to X\) is a weak equivalence for any \(X\), where \(\hocolim \) is the homotopy colimit in the projective model structure.
+</p>
+
+<p>
+Throughout this subsection, we will view the category \(\Set _A\) as coming with a Cisinski model structure for some interval theory and inclusions \(S\).
+</p>
+
+<p>
+We define the internal nerve \(B_{h}C\) of a category \(C\) to be \(\hocolim _{C}*\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-974"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.42</span></span>. <a id="setnervecisinski"></a> Suppose that \(X\) is a set, thought of as a discrete
+category. Then the natural map \(B_hX\to X\) is an equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-975"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The constant diargam to \(*\) is projectively cofibrant, and its colimit is \(X\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-976"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.43</span></span>. <a id="factorkanextncisinski"></a> Suppose \(f:C \to D\) is a functor between
+small categories. There is a canonical weak equivalence \(\hocolim _{d\in D}B_h(f/c) \to B_h(C)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-977"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This amounts to factoring the homotopy left Kan extension from \(C \to *\) through \(D\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-978"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.44</span></span>. <a id="fibresofsimplicescisinski"></a> Suppose that \(f:X \to Y\) is an
+\(A\)-set morphism. Then there is a canonical weak equivalence \(\hocolim _{a \to Y}B_h(i_A(a\times _YX)) \to B_h(i_AX)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-979"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Apply Lemma <a href="node-Models-Homotopy-Types.html#factorkanextncisinski">9.43</a> to the map \(i_AX\to i_AY\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-980"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.45</span></span>. <a id="homotopyequivalencecisinskiB"></a> Suppose \(f:C \to D\) and \(g:D \to
+C\) define a homotopy equivalence of categories in the sense that there are natural transformations between the composites and the identity. Then the induced maps \(B_hC \to B_hD\) are weak equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-981"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Suppose \(E\) has a terminal object and consider the projection \(\pi :C\times E \to C\). \(\pi _{/c} \cong C_{/c}\times E\) for each \(c\), which has a terminal object
+for each \(c\). Thus the map \(B_h(C\times E)\to B_h(C)\) is an equivalence. Thus it follows that the maps \(f\) and \(g\) induce after applying \(B_h\) are homotopy inverses, so \(B_hC \to B_hD\) is a weak equivalence.
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-982"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">9.46</span></span>. Say that the model structure satisfies \(M1\) if the maps \(a \to *\) are weak
+equivalences for each \(a \in \Set _A\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-983"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.47</span></span>. Suppose that \(M1\) is satisfied and the model structure is regular. Suppose that \(X \to
+Y\) is a map of \(A\)-sets. Then the canonical map \(\hocolim _{a \to Y}\Delta ^a\times _YX \to X\) is a weak equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-984"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Apply Corollary <a href="node-Models-Homotopy-Types.html#fibresofsimplicescisinski">9.44</a>, using regularity and \(M1\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-985"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.48</span></span>. Suppose that \(M1\) is satisfied and the model structure is regular. Then there are natural
+weak equivaelnces
+</p>
+
+<p>
+\[i^*_A(C)\xleftarrow {\sim }\hocolim _{a \to i^*_A(C)}a \xrightarrow {\sim } B_h(i_Ai^*_AC)\xrightarrow {\sim } B_h(C)\]
+</p>
+
+<p>
+for any small category \(C\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-986"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The fibres of the map \(\ee :i_Ai^*_AC \to C\) are \(\ee /c \cong i_Ai^*_A(C/c)\), and the map \(i^*(C/c) \to *\) is a weak equivalence by Lemma <a
+href="node-Models-Homotopy-Types.html#trivfibcisinskilemma">9.41</a>. This gives the last equivalence. The other two follow from regularity, \(M1\), and comparing colimits. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Recall the classical Grothendieck construction, which takes a functor \(I \to \Cat \) to a category \(\int _IF\) with objects \(i \in I, x \in F(i)\). This functor naturally lives over \(I\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-987"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.49</span></span>. <a id="grothconstcisinski1"></a> Let \(F:C \to D\) be a functor. Then there is a
+natural homotopy equivalence \(\int _DF_{/d}\to C\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-988"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> There is clearly a forgetful functor \(Q:\int _DF_{/d}\to C\). We construct a homotopy inverse by having \(i(c)\) be the pair \(c, 1_{f(c)}\). \(Q\circ i = 1\) and there is
+a natural transformation \(iQ \to 1\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Quite similarly, we obtain:
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-989"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.50</span></span>. <a id="grothconstcisinski2"></a> For a diagram \(I \to \Cat \), there is a natural
+homotopy equivalence \(g_i:F(i) \to \pi _{/i}\) where \(\pi :\int _IF \to I\) is the natural map.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-990"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.51</span></span>. <a id="grothconstcisinskinerve"></a> For any diagram \(F:I \to \Cat \), there
+is a weak equivalence
+</p>
+
+<p>
+\[\hocolim _{i \in I} B_hF(i) \to B_h(\int _IF)\]
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-991"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> There is a weak equivalence \(\hocolim _{i \in I} B_h\pi _{/i} \to B_h(\int _IF)\) by Lemma <a
+href="node-Models-Homotopy-Types.html#factorkanextncisinski">9.43</a>. Thus by Lemma <a href="node-Models-Homotopy-Types.html#homotopyequivalencecisinskiB">9.45</a> and Lemma <a
+href="node-Models-Homotopy-Types.html#grothconstcisinski2">9.50</a>, it is an equivalent to the stated homotopy colimit. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-992"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.52</span></span>. <a id="pointwisecisinskinerveeq"></a> Suppose \(F \to G\) is a natural
+transformation of \(I\)-diagrams of small categories such that \(B_hF(i) \to B_hG(i)\) is an equivalence for each \(i\). Then \(B_h(\int _IF) \to B_h(\int _IG)\) is an equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+If \(F: I \to \Set _A\) is a diagram, then composing with \(i_A\) gives a functor to \(\Cat \). Observe that there is an isomorphism of Grothendieck constructions \(\int _{I}i_A(F) \cong \int _{A}\hom (a,F)\), where
+\(\hom (a,F)\) is the functor \(A \to \Cat \) sending \(a\) to the catrgory with objects a map \(a \to F(i)\) for some \(i\).
+</p>
+
+<p>
+The maps \(\hom (a,F) \to \lim _iF(i)(a)\) where the latter is viewed as a discrete category assemble into a map \(\int _{i \in I}i_AF(i) \to i_A\colim _i(F(i))\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-993"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.53</span></span>. <a id="commutecolimcisinski"></a> The map \(B_h(\int _Ii_AF(i)) \to
+B_h(i_A(\colim _i(F(i))))\) is a weak equivalene if \(\hocolim F \simeq \colim F\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-994"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span>
+</p>
+
+<p>
+By Corollary <a href="node-Models-Homotopy-Types.html#pointwisecisinskinerveeq">9.52</a> and Lemma <a href="node-Models-Homotopy-Types.html#setnervecisinski">9.42</a>, it suffices to show that \(F(i)(a)
+\to \colim _iF(i)(a)\) induces a weak equivalence \(B_h(\int _iF(i)(a)) \to B_h(\colim _iF(i)(a))\cong \colim _iF(i)(a)\) in both cases. By Lemma <a
+href="node-Models-Homotopy-Types.html#grothconstcisinskinerve">9.51</a>, there is an equivalence \(\hocolim _I B_hF(i)(a) \to B_h(\int _iF(i)(a))\) and each \(B_h(\int _iF(i)(a))\) is equivalent to the
+discrete \(A\)-set \(F(i)(a)\) by Lemma <a href="node-Models-Homotopy-Types.html#setnervecisinski">9.42</a>, so this follows from the fact that \(\hocolim = \colim \). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+An \(A\)-set \(X\) is <b>regular</b> if the map \(\hocolim _{a \in X} a \to X\) is an equivalence.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-995"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.54</span></span>. <a id="regularchecking"></a> If a diagram \(F:I \to \Set _A\) is component-wise
+regular, and has colimit computing the homotopy colimit, then the colimit is also regular.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-996"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By Lemma <a href="node-Models-Homotopy-Types.html#commutecolimcisinski">9.53</a> and Corollary <a
+href="node-Models-Homotopy-Types.html#grothconstcisinskinerve">9.51</a>, the map \(\hocolim (B_hi_AF) \to B_hi_A\colim F\) is an equivalence. But each of \(B_hi_AF\) is computed as a colimit of its maps from
+\(A\), so by exchanging the order of taking colimits, we see \(\colim F\) is regular. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Finally, we will construct a natural Cisinski model structure on test categories with the right weak equivalences.
+</p>
+
+<p>
+Let \(C,A\) be small categories, and \(\Set _{A\times C}\) the category of presheaves of \(C\) with values in \(A\)-sets. If \(A\) is a test category, let the pullback of \(I = i^*_A(1)\) to \(\Set _{A\times C}\) define an
+interval theory. Let \(\Delta ^1\) denote the interval theory on \(\Set _{\Delta \times C}\) given by \(\Delta ^1\) pulled back, and let \(S\) be a set of cofibrations of simplicial presheaves. The \((\Delta ^1,S)\) model
+structure is the Cisinski model structure on \(\Set _{\Delta \times C}\) coming from this data. A map \(X \to Y\) is an <b>S-equivalence</b> in \(\Set _{A\times C}\) if the induced map after applying \(i^*_\Delta
+i_A\) is an equivalence in the \((\Delta ^1,S)\)-model structure.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-997"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.55</span></span>. <a id="sufflargecardinalcisinskitest"></a> For all sufficiently large cardinals
+\(\kappa \), given a diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-128"
+      class="lateximagesource"
+><!--
+    X
+        i
+
+Z   Y
+--><img
+      src="Simplicial_h-images/image-128.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+of inclusions of \(A\)-sets such that \(i\) is an equivalence and \(|Z|&lt;\kappa \), there is a subobject \(B \subset Y\) with \(A\subset B\) such that \(|B| &lt;\kappa \) and \(B\cap X \to B\) is an equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1001"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> There is an induced diagram of inclusions of simplicial sets
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-129"
+      class="lateximagesource"
+><!--
+           i∗∆ iA X
+                i
+
+i∗∆ iA Z   i∗∆ iA Y
+--><img
+      src="Simplicial_h-images/image-129.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+such that \(i\) is an a weak equivalence, satisfying the conditions of Lemma <a href="node-Models-Homotopy-Types.html#equivaperfectcisinski">9.33</a>. Thus we can apply that lemma to find a small subobject \(A_0\)
+of \(i^*_\Delta i_AY\) satisfying its conclusion. This small subobject will be a subobject of \(i^*_\Delta i_AB_0\) for some small \(B_0\). We can then replace \(Z\) with \(B_0\), and iteratively construct a sequence
+\(B_i,A_i\). Since \(i^*_\Delta i_A\) preserves filtered colimits, \(\colim _i i^*_\Delta i_AB_i = \colim A_i\) shows that \(\cup _i B_i\) works. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1005"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.56</span></span>. <a id="cisinskitestcatmodelstr"></a> Suppose that \(A\) is a test category and
+\(C\) a small category. Then there is a combinatorial model structure on the category \(\Set _{A\times C}\) such that the weak equivalences are the \(S\)-equivalences, and the cofibrations are the monomorphisms. \(Bi_A\) gives
+a Quillen equivalence with \(\Set _{\Delta \times C}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1006"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> That \(Bi_A\) gives a Quillen equivalence is clear since it is a left adjoint, and preserves monomorphisms and gives an equivalence on homotopy \(1\)-categories. Combinatoriality
+follows from Lemma <a href="node-Models-Homotopy-Types.html#sufflargecardinalcisinskitest">9.55</a>. So it suffices to show the existence of the model structure.
+</p>
+
+<p>
+We can use the dual of Proposition <a href="node-Model-Categories.html#adjunctioninducedmodelstr">4.12</a> for tha adjunction coming from \(Bi_A\): we only need to show that if \(p:X \to Y\) has the right lifting
+property with respect to all inclusions, it is an equivalence. But the lifting property implies that \(p\) has a section \(\sigma \). Moreover letting \(I = i^*_A(1)\), by choosing a lift in the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-130"
+      class="lateximagesource"
+><!--
+    `       1,σp
+X       X          X
+
+
+X ×I               Y
+--><img
+      src="Simplicial_h-images/image-130.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+and applying \(Bi_A\), we see that \(p\) is a homotopy equivalence. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+When \(A\) is a test category, and \(C = *,S = \phi \), the model structure arising here is called the <b>standard model structure</b> for the test category.
+</p>
+<!--................................-->
+<h5 id="autosec-1010"><span class="sectionnumber">9.5&#x2003;</span>Weak equivalence classes of functors</h5>
+<a id="Simplicial_h-autopage-1010"></a>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1011"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">9.57</span></span>. A <b>weak equivalence class</b> \(W\) of functors between small categories is a class
+such that the following hold:
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+LF1 \(W\) is weakly saturated (bad terminology), meaning that:
+</p>
+<p>
+<span style="width:20pt; display:inline-block"><!----></span>\(W\) containes isomorphisms
+</p>
+<p>
+<span style="width:20pt; display:inline-block"><!----></span>\(W\) satisfies \(2\) out of \(3\).
+</p>
+<p>
+<span style="width:20pt; display:inline-block"><!----></span>if \(i \circ r \in W\) and \(r \circ i = 1\), then \(r \in W\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+LF2 If \(C\) has a terminal object, then \(C \to *\) is in \(W\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+LF3 Given a commutative triangle \(\alpha = \beta \circ u\), if all the functors \(\alpha _{/c} \to \beta _{/c}, c \in \cod \beta =\cod \alpha \) are in \(W\), then \(u\) is.
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Grothendieck called these fundamental localizers.
+</p>
+<div class="amsthmbodydefinition">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1012"></a>
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">9.57.1</span></span>. Let \(W_{\infty }\) denote the class of functors such that they are
+equivalent as simplicial sets. Then this is a weak equivalence class.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+If \(W\) is a weak equivalence class and \(C\times D\to C\) is a projection where \(D\) has a terminal object, then \(C\times D \to C\) is in \(W\), essentially by \(LF3\). It follows that given a natural transformation \(f \to
+g\), \(f \in W\) iff \(g\) is.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1013"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.58</span></span>. <a id="pushoutweakeqclass"></a> Given a diagram of categories
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-131"
+      class="lateximagesource"
+><!--
+     f
+C0       C2
+ g
+
+C1
+--><img
+      src="Simplicial_h-images/image-131.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+such that \(g \in W\), then the map \(C_2 \to \int _iC_i\) is in \(W\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1017"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By comparing with the case when \(f = 1\) and using \(LF3\), we can reduce to the case \(f=1\). In this case, there is a canonical map \(r:\int _iC_i \to C_0 \cup _{C_1}
+C_2 = C_2\), which has an obvious section \(j\). There is a zig zag of natural transformations between \(1\) and \(jr\) , so \(jr\) is in \(W\). Thus by \(LF1\), \(r,j\) are in \(W\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Note that \(W\) is closed under small disjoint unions by \(LF3\).
+</p>
+
+<p>
+Suppose that \(A\) is a test category.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1018"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.59</span></span>. <a id="asetcolimitweakeqclass"></a>
+</p>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. Suppose given a diagram of \(A\)-sets
+</p>
+<div class="center">
+<p>
+<span
+      id="lateximage-Simplicial_h-132"
+      class="lateximagesource"
+><!--
+     i
+X0       X2
+
+
+X1
+--><img
+      src="Simplicial_h-images/image-132.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+<p>
+where \(i\) is a monomorphism. Then the induced map \(\int _{i}i_AX_i \to i_A(X_1\cup _{X_0}X_2)\) is in \(W\).
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. Suppose given a diagram \(Y\) in \(A\)-sets index by an ordinal number \(\alpha \), and such that all morphisms \(Y_i \to Y_j\) are monomorphisms. Then the induced map
+</p>
+<p>
+\[\int _ii_AY_i \to i_A(\colim _iY(i))\]
+</p>
+<p>
+is in \(W\).
+</p>
+</li>
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1022"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By \(LF3\), it suffices to show that the diagrams of discrete categories \(F(i)(a) \to \colim _iF(i)(a)\) is an equivalence, reducing to the case of a discrete diagram.
+</p>
+
+<p>
+In the first case, the diagram is a union of diagrams of either form:
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-133"
+      class="lateximagesource"
+><!--
+ϕ   ϕ
+
+
+∗   ∗
+--><img
+    src="Simplicial_h-images/image-133.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span> <span
+    id="lateximage-Simplicial_h-134"
+    class="lateximagesource"
+><!--
+X0   ∗
+
+
+X1   ∗
+--><img
+      src="Simplicial_h-images/image-134.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+for which we can apply Lemma <a href="node-Models-Homotopy-Types.html#pushoutweakeqclass">9.58</a>.
+</p>
+
+<p>
+In the second case, given \(y \in \lim Y_i\), the category \(\pi _{/y}\) has an initial object given by the smallest \(i\) such that \(y \in Y_i\). Thus applying \(LF3\) again, we are done. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The following follows immediately from Lemma <a href="node-Models-Homotopy-Types.html#pushoutweakeqclass">9.58</a> and Lemma <a href="node-Models-Homotopy-Types.html#asetcolimitweakeqclass">9.59</a>.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1028"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.60</span></span>. <a id="asetcolimitweakeqclass2"></a> Suppose given a pushout diagram of
+\(A\)-sets
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-135"
+      class="lateximagesource"
+><!--
+X0      X2
+ i
+     ⌜
+X1   X1 ∪X0 X2
+--><img
+      src="Simplicial_h-images/image-135.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+where \(i\) is an inclusion. If the functor \(i_AX_0 \to i_AX_2\) is in \(W\), then the functor \(i_AX_1 \to i_AX_1\cup _{X_0}X_2\) is in \(W\). Similarly with \(X_1,X_2\) reversed.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1032"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.61</span></span>. <a id="simplexcatweakeqclass"></a> Suppose \(W\) is a weak equivalence class of
+functors, and \(X \to Y\) is a weak equivalence of simplicial sets. Then the functor \(i_{\Delta }X \to i_{\Delta }Y\) is in \(W\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1033"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Every weak equivalence factors as a trivial fibration which admits a section and a trivial cofibration, so if suffices to prove it for trivial cofibrations, which then reduces via
+retractions from anodyne maps. These are filtered colimits of pushouts of the generating anodyne inclusions \(\Lambda ^n_k \to \Delta ^n\), so by Corollary <a
+href="node-Models-Homotopy-Types.html#asetcolimitweakeqclass2">9.60</a>, it suffices to show it for these inclusions.
+</p>
+
+<p>
+\(i_{\Delta }\Delta ^n\) has a terminal object, so its map to the terminal object is in \(W\). It follows that all the maps \(i_{\Delta }\Delta ^n \to i_{\Delta }\Delta ^m\) are in \(W\). By constructing the horns as
+iterated pushouts of cells, this can be shown again using Corollary <a href="node-Models-Homotopy-Types.html#asetcolimitweakeqclass2">9.60</a> and induction. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The following result is a conjecture of Grothendieck, proved by Cisinski.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1034"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.62</span></span>. <a id="grothendieckconja"></a> Suppose \(W\) is a weak equivalence class and \(C
+\to D\) is a functor between small categories such that \(f_*:BC \to BD\) is a weak equivalence of simplicial sets. Then \(f \in W\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1035"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By \(LF2\) and \(LF3\), the map \(i_\Delta i^*_{\Delta }C \to C\) is in \(W\), and so by Theorem <a
+href="node-Models-Homotopy-Types.html#simplexcatweakeqclass">9.61</a> and the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-136"
+      class="lateximagesource"
+><!--
+i∆ i∗∆ C   i∆ i∗∆ D
+
+
+  C          D
+--><img
+      src="Simplicial_h-images/image-136.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+the map is in \(W\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1039"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.63</span></span>. <a id="testweakeqcheck"></a> Suppose that \(A\) is a test category, and \(M\) is a
+Cisinski model structure on \(A\)-sets satisfying \(M1\) and is regular. \(M\) contains all the test weak equivalences.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1040"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The class \(F(M)\) of all functors \(f:C \to D\) which induce weak equivalences on \(B_h\) is a weak equiavlence class. \(LF1,LF2\) are easy, and \(LF3\) follows from Lemma <a
+href="node-Models-Homotopy-Types.html#factorkanextncisinski">9.43</a>.
+</p>
+
+<p>
+Suppose \(X \to Y\) is a test weak equivalence. Then \(Bi_A\) applied to it is a weak equivalence, and since \(F(M)\) is a weak equivalence class, by Corollary <a
+href="node-Models-Homotopy-Types.html#grothendieckconja">9.62</a>, \(B_hi_A\) applied to it is a weak equivalence of \(M\). By the regularity assumption, this implies the map is a weak equivalence. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1041"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.64</span></span>. <a id="testcatproperhomotopical"></a> Let \(A\) be a test category, and suppose that
+\(Y\) is a fibrant object in the standard model structure. Then the functor \(X \mapsto X\times Y\) is homotopical.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1042"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Let \(i^*:\SSet \to \Set _A\) be the functor defined by \(i^*X(a) = X^{BA_{/a}}\), the right adjoint to \(i\), which sends \(Z\) to \(Bi_AZ\). The unit map \(Z \to
+i^*Bi_AZ\) is an equivalence, so \(Bi_AZ\) preserves trivial cofibrations, and \(i^*\) preserves fibrations.
+</p>
+
+<p>
+Let \(j:Bi_AY \to Z\) be a trivial cofibration with \(Z\) Kan complex. Then the composite \(X\times Y \to X\times i^*Bi_AY \to X\times i^*Z\) is the product of \(1_X\) with a homotopy equivalence so we can replace
+\(Y\) by \(i^*Z\). By Corollary <a href="node-Models-Homotopy-Types.html#presweakeqprod">9.18</a>, we can replace \(Z\) with \(BC\) for a category \(C\).
+</p>
+
+<p>
+Observe \(i^*BC = i^*_AC\). Write \(\pi \) for the composite
+</p>
+
+<p>
+\[i_A(X\times i^*_AC) \to i_Ai^*C \xrightarrow {\ee } C\]
+</p>
+
+<p>
+There are isomorphisms \(\pi _{/c} \cong i_AX\times \ee _{/c} \cong i_AX\times i_Ai^*_A(C_{/c})\) by Lemma <a href="node-Models-Homotopy-Types.html#testcatlemma1">9.1</a>. The functor \(X\mapsto
+X\times i^*_A(D)\) preserves weak equivalences if \(D\) has a terminal object, and there are natural weak equivalences \(\hocolim _C B(\pi _{/c}) \to Bi_A(X\times i^*_A(C))\) so the result follows. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--................................-->
+<h5 id="autosec-1043"><span class="sectionnumber">9.6&#x2003;</span>Model structure on Cubical Sets</h5>
+<a id="Simplicial_h-autopage-1043"></a>
+
+
+<p>
+We define the <b>canonical interval</b> model structure on cubical sets by taking the interval theory defined by the object \(I = i^*_{\square }(1)\) and letting \(S\) be the set of vertex maps \(* \to \square ^n\), and
+using the Cisinski model structure.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1044"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.65</span></span>. <a id="twomodelstructuresagreecubicalsets"></a> The canonical interval model
+structure on cubical sets agrees with the standard model structure.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1045"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The cofibrations agree, so it suffices to show that the weak equivalences agree. The weak equivalences of the canonical interval model structure are test weak equivalences. One way
+to see this is to take a fibrant replacement via anodyne maps using Corollary <a href="node-Models-Homotopy-Types.html#naivefibrant">9.38</a> which are in particular test weak equivalences, and observe that equivalences
+between fibrant objects are homotopy equivalences, which are test weak equivalences.
+</p>
+
+<p>
+For the converse, by Theorem <a href="node-Models-Homotopy-Types.html#testweakeqcheck">9.63</a>, it suffices to check regularity on the canonical interval model structure (\(M1\) is satisfied by construction). By Lemma
+<a href="node-Models-Homotopy-Types.html#regularchecking">9.54</a>, it suffices to check this on \(\square ^n\). but \(B_hi_{\square }\square ^n\) is the homotopy colimit of a diagram with a terminal object, so it
+contractible, but so is equivalent \(\square ^n\), which is contractible by construction. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1046"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.66</span></span>. <a id="propercubicalsets"></a> The standard model structure on cubical sets is
+proper.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1047"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It suffices to show that the maps \(* \to \square ^n\) satisfy the criterion in Theorem <a
+href="node-Models-Homotopy-Types.html#propernesscisinskiinterval">9.40</a>. To see this, recall that in the proof of that theorem, the criterion was shown to be naively homotopy invariant. Any map \(\square ^n \to
+Y\) for any fibrant \(Y\) is naively nulhomotopic because \(*\to \square ^n\) is an anodyne inclusion. Thus we can assume that the map is null, so the relevant diagram is
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-137"
+      class="lateximagesource"
+><!--
+    v∗
+F        F ⊗ □n   F   X
+
+     v
+∗         □n      ∗   Y
+--><img
+      src="Simplicial_h-images/image-137.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+and \(v_*\) is an equivalence by Lemma <a href="node-Models-Homotopy-Types.html#testcatproperhomotopical">9.64</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1051"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.67</span></span>. <a id="bestmodelstrcubicalsets"></a> Suppose that \(A\) is the test category
+\(i_{\square }\square ^k\) and \(M\) is the Cisinski model structure with the interval theory given by tensoring and \(S = \phi \). then every weak equivalence of the standard model structure is a weak equivalence of \(M\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1052"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> We use Theorem <a href="node-Models-Homotopy-Types.html#testweakeqcheck">9.63</a>, so it suffices to check \(M1\) and regularity.
+</p>
+
+<p>
+All the vertex maps \(* \to \square ^n \to \square ^k\) are trivial cofibrations, so that all the morphisms \(\square ^n \to \square ^m \to \square ^k\) are weak equivalences. In particular, \(M\) satisfies \(M1\).
+</p>
+
+<p>
+As in Theorem <a href="node-Models-Homotopy-Types.html#twomodelstructuresagreecubicalsets">9.65</a>, it suffices to check regularity on the \(n\)-cubes. This can be done by observing that there are equivalences
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-138"
+      class="lateximagesource"
+><!--
+hocolim□r →□n □r       □n
+
+
+
+
+                       ∼
+      ∼
+hocolim□r →□n □k       □k
+
+
+
+
+                   ∼
+--><img
+      src="Simplicial_h-images/image-138.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1056"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">9.68</span></span>. <a id="eqofbestandstandardmodelstrcubical"></a> The standard model structure
+coincides with the model structure in Lemma <a href="node-Models-Homotopy-Types.html#bestmodelstrcubicalsets">9.67</a>.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1057"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Use Lemma <a href="node-Models-Homotopy-Types.html#bestmodelstrcubicalsets">9.67</a> to see that the weak equivalences are the same, and the cofibrations are clearly
+the same. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+A map is an naive fibration in the model structure on cubical sets if it has the right lifting property with respect to the inclusions \(\sqcap _{(i,\ee )} \subset \square ^n\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1058"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">9.69</span></span>. <a id="squarefibrationlemma"></a> Every naive fibration \(X \to \square ^k\) is a
+fibration.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1059"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This follows from Lemma <a href="node-Models-Homotopy-Types.html#bestmodelstrcubicalsets">9.67</a> and Corollary <a
+href="node-Models-Homotopy-Types.html#naivefibrant">9.38</a>. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1060"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.70</span></span>. <a id="bestgeneratorscubicalsets"></a> Every naive fibration of cubical sets is a
+fibration. In particular, the anodyne maps \(\sqcap ^n_{(i,\ee )} \to \square ^n\) generate the trivial cofibrations.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1061"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> First we will show that a naive fibration that is a weak equivalence is a trivial fibration. So let \(V \to W\) be such a map. We can form the diagram
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-139"
+      class="lateximagesource"
+><!--
+          τ∗
+□m ×W V        □n ×W V   V
+    q0             q1
+
+          τ
+  □m             □n      W
+--><img
+      src="Simplicial_h-images/image-139.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+\(q_0,q_1\) are fibrations by Lemma <a href="node-Models-Homotopy-Types.html#squarefibrationlemma">9.69</a>. By right properness, \(\tau _*\) is an equivalence. It follows from Quillen’s Theorem B (Theorem <a
+href="node-Bisimplicial-Sets.html#quillenthmb">7.26</a>) that the diagram of simplicial sets
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-Simplicial_h-140"
+      class="lateximagesource"
+><!--
+Bi□ (□n ×W V )   Bi□ V
+
+
+   Bi□ (□n )     Bi□ W
+--><img
+      src="Simplicial_h-images/image-140.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+is homotopy cartesian. Since the right vertical map is an equivalence, the left vertical map is too. Thus \(q_1,q_0\) are trivial fibrations, so \(V \to W\) has the right lifting property with respect to all inclusions \(\partial
+\square ^n \to \square ^n\).
+</p>
+
+<p>
+Now suppose that \(f:X \to Y\) is a naive fibration. Choose a fibrant replacement \(Y \to RY\), and factor \(X \to RY\) through an object \(U\) as an anodyne map and a fibration using Lemma <a
+href="node-Models-Homotopy-Types.html#naivenotsonaivecisinski">9.37</a>. By properness (Theorem <a href="node-Models-Homotopy-Types.html#propercubicalsets">9.66</a>), the map \(X \to Y\times
+_{RY}U\) is an equivalence, so it factors as an anodyne map \(i:X \to W\) and a naive fibration \(q:W \to Y\times _{RY}U\) that is an equivalence. \(q\) is trivial fibration by what was already proven. \(f\) is a retract of the
+composite \(W \to Y\times _{RY}U \to Y\) so is a fibration. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Recall there is a triangulation functor \(|\cdot |:\Set _{\square } \to \SSet \). Since \(|\square ^n|\) is contractible, the canonical map \(\hocolim _{\square ^n \to X}|\square ^n| \to Bi_{\square }X\) is an
+equivalence. There is also a canonical map \(\hocolim _{\square ^n \to X}|\square ^n|\to |X|\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Simplicial_h-autopage-1068"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">9.71</span></span>. <a id="geometricrealizationofcubicalset"></a> \(|\cdot |:\Set _{\square }
+\to \SSet \) is the left adjoint in a Quillen equivalence.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Simplicial_h-autopage-1069"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> It is a left adjoint, preserves monomorphisms, and trivial cofibrations, since they are generated by \(\sqcap ^n_{(i,\ee )}\to \square ^n\) by Theorem <a
+href="node-Models-Homotopy-Types.html#bestgeneratorscubicalsets">9.70</a>, which are clearly sent to equivalences. By Theorem <a
+href="node-Models-Homotopy-Types.html#twomodelstructuresagreecubicalsets">9.65</a>, cubical sets is regular, so the map \(\hocolim _{\square ^n \to X}\square ^n\to X\) is an equivalence, and as a left Quillen
+functor, after applying \(|\cdot |\), we get an equivalence too. It follows that there is a zigzag of natural equivalences
+</p>
+
+<p>
+\[|X|\leftarrow \hocolim _{\square ^n \to X}|\square ^n| \to Bi_{\square }X\]
+</p>
+
+<p>
+and we know \(Bi_{\square }X\) induces an equivalence on homotopy categories since \(\square \) is a test category, so \(|X|\) does too. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+</body>
+</html>

@@ -1,0 +1,1811 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="generator" content="LaTeX Lwarp package" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Lie Algebras</title>
+<link rel="stylesheet" type="text/css" href="fancycss.css" />
+
+<script>
+// Lwarp MathJax emulation code
+//
+// Based on code by Davide P. Cervone.
+// Equation numbering: https://github.com/mathjax/MathJax/issues/2427
+// Starred and ifnextchar macros: https://github.com/mathjax/MathJax/issues/2428
+// \left, \right delimiters: https://github.com/mathjax/MathJax/issues/2535
+//
+// Modified by Brian Dunn to adjust equation numbering and add subequations.
+//
+// LaTeX can use \seteqnumber{subequations?}{section}{number} before each equation.
+// subequations? is 0 usually, 1 if inside subequations.
+// section is a string printed as-is, or empty.
+// number is auto-incremented by MathJax between equations.
+//
+MathJax = {
+     subequations: "0",
+     section: "",
+     loader: {
+          load: ['[tex]/tagformat', '[tex]/textmacros'],
+     },
+     startup: {
+          ready() {
+              //       These would be replaced by import commands if you wanted to make
+              //       a proper extension.
+              const Configuration = MathJax._.input.tex.Configuration.Configuration;
+              const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+              const Macro = MathJax._.input.tex.Symbol.Macro;
+              const TexError = MathJax._.input.tex.TexError.default;
+              const ParseUtil = MathJax._.input.tex.ParseUtil.default;
+              const expandable = MathJax._.util.Options.expandable;
+
+
+              //       Insert the replacement string into the TeX string, and check
+              //       that there haven't been too many maxro substitutions (prevents
+              //       infinite loops).
+              const useArgument = (parser, text) => {
+                   parser.string = ParseUtil.addArgs(parser, text, parser.string.slice(parser.i));
+                   parser.i = 0;
+                   if (++parser.macroCount > parser.configuration.options.maxMacros) {
+                        throw new TexError('MaxMacroSub1',
+                        'MathJax maximum macro substitution count exceeded; ' +
+                        'is there a recursive macro call?');
+                   }
+              }
+
+
+              //       Create the command map for:
+              //            \ifstar, \ifnextchar, \ifblank, \ifstrequal, \seteqnumber
+              new CommandMap('Lwarp-macros', {
+                   ifstar: 'IfstarFunction',
+                   ifnextchar: 'IfnextcharFunction',
+                   ifblank: 'IfblankFunction',
+                   ifstrequal: 'IfstrequalFunction',
+                   seteqnumber: 'SeteqnumberFunction'
+              }, {
+                   //       This function implements an ifstar macro.
+                   IfstarFunction(parser, name) {
+                        const resultstar = parser.GetArgument(name);
+                        const resultnostar = parser.GetArgument(name);
+                        const star = parser.GetStar();                        // true if there is a *
+                        useArgument(parser, star ? resultstar : resultnostar);
+                   },
+
+
+                   //       This function implements an ifnextchar macro.
+                   IfnextcharFunction(parser, name) {
+                        let whichchar = parser.GetArgument(name);
+                        if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+                            // $ syntax highlighting
+                            whichchar = String.fromCodePoint(parseInt(whichchar));
+                        }
+                        const resultnextchar = parser.GetArgument(name);
+                        const resultnotnextchar = parser.GetArgument(name);
+                        const gotchar = (parser.GetNext() === whichchar);
+                        useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+                   },
+
+
+                   // This function implements an ifblank macro.
+                   IfblankFunction(parser, name) {
+                        const blankarg = parser.GetArgument(name);
+                        const resultblank = parser.GetArgument(name);
+                        const resultnotblank = parser.GetArgument(name);
+                        const isblank = (blankarg.trim() == "");
+                        useArgument(parser, isblank ? resultblank : resultnotblank);
+                   },
+
+
+                   // This function implements an ifstrequal macro.
+                   IfstrequalFunction(parser, name) {
+                        const strequalfirst = parser.GetArgument(name);
+                        const strequalsecond = parser.GetArgument(name);
+                        const resultequal = parser.GetArgument(name);
+                        const resultnotequal = parser.GetArgument(name);
+                        const isequal = (strequalfirst == strequalsecond);
+                        useArgument(parser, isequal ? resultequal : resultnotequal);
+                   },
+
+
+                   //       This function modifies the equation numbers.
+                   SeteqnumberFunction(parser, name) {
+                            //   Get the macro parameters
+                            const star = parser.GetStar();                      // true if there is a *
+                            const optBrackets = parser.GetBrackets(name);        // contents of optional brackets
+                            const newsubequations = parser.GetArgument(name);      // the subequations argument
+                            const neweqsection = parser.GetArgument(name);      // the eq section argument
+                            const neweqnumber = parser.GetArgument(name);        // the eq number argument
+                            MathJax.config.subequations=newsubequations ;       // a string with boolean meaning
+                            MathJax.config.section=neweqsection ;               // a string with numeric meaning
+                            parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+                   }
+
+
+              });
+
+
+              //       Create the Lwarp-macros package
+              Configuration.create('Lwarp-macros', {
+                   handler: {macro: ['Lwarp-macros']}
+              });
+
+
+              MathJax.startup.defaultReady();
+
+
+              // For forward references:
+              MathJax.startup.input[0].preFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            MathJax.config.subequations = math.inputData.recompile.subequations;
+                            MathJax.config.section = math.inputData.recompile.section;
+                   }
+              });
+              MathJax.startup.input[0].postFilters.add(({math}) => {
+                   if (math.inputData.recompile){
+                            math.inputData.recompile.subequations = MathJax.config.subequations;
+                            math.inputData.recompile.section = MathJax.config.section;
+                   }
+              });
+
+
+                   // For \left, \right with unicode-math:
+                   const {DelimiterMap} = MathJax._.input.tex.SymbolMap;
+                   const {Symbol} = MathJax._.input.tex.Symbol;
+                   const {MapHandler} = MathJax._.input.tex.MapHandler;
+                   const delimiter = MapHandler.getMap('delimiter');
+                   delimiter.add('\\lBrack', new Symbol('\\lBrack', '\u27E6'));
+                   delimiter.add('\\rBrack', new Symbol('\\rBrack', '\u27E7'));
+                   delimiter.add('\\lAngle', new Symbol('\\lAngle', '\u27EA'));
+                   delimiter.add('\\rAngle', new Symbol('\\rAngle', '\u27EB'));
+                   delimiter.add('\\lbrbrak', new Symbol('\\lbrbrak', '\u2772'));
+                   delimiter.add('\\rbrbrak', new Symbol('\\rbrbrak', '\u2773'));
+                   delimiter.add('\\lbag', new Symbol('\\lbag', '\u27C5'));
+                   delimiter.add('\\rbag', new Symbol('\\rbag', '\u27C6'));
+                   delimiter.add('\\llparenthesis', new Symbol('\\llparenthesis', '\u2987'));
+                   delimiter.add('\\rrparenthesis', new Symbol('\\rrparenthesis', '\u2988'));
+                   delimiter.add('\\llangle', new Symbol('\\llangle', '\u2989'));
+                   delimiter.add('\\rrangle', new Symbol('\\rrangle', '\u298A'));
+                   delimiter.add('\\Lbrbrak', new Symbol('\\Lbrbrak', '\u27EC'));
+                   delimiter.add('\\Rbrbrak', new Symbol('\\Rbrbrak', '\u27ED'));
+                   delimiter.add('\\lBrace', new Symbol('\\lBrace', '\u2983'));
+                   delimiter.add('\\rBrace', new Symbol('\\rBrace', '\u2984'));
+                   delimiter.add('\\lParen', new Symbol('\\lParen', '\u2985'));
+                   delimiter.add('\\rParen', new Symbol('\\rParen', '\u2986'));
+                   delimiter.add('\\lbrackubar', new Symbol('\\lbrackubar', '\u298B'));
+                   delimiter.add('\\rbrackubar', new Symbol('\\rbrackubar', '\u298C'));
+                   delimiter.add('\\lbrackultick', new Symbol('\\lbrackultick', '\u298D'));
+                   delimiter.add('\\rbracklrtick', new Symbol('\\rbracklrtick', '\u298E'));
+                   delimiter.add('\\lbracklltick', new Symbol('\\lbracklltick', '\u298F'));
+                   delimiter.add('\\rbrackurtick', new Symbol('\\rbrackurtick', '\u2990'));
+                   delimiter.add('\\langledot', new Symbol('\\langledot', '\u2991'));
+                   delimiter.add('\\rangledot', new Symbol('\\rangledot', '\u2992'));
+                   delimiter.add('\\lparenless', new Symbol('\\lparenless', '\u2993'));
+                   delimiter.add('\\rparengtr', new Symbol('\\rparengtr', '\u2994'));
+                   delimiter.add('\\Lparengtr', new Symbol('\\Lparengtr', '\u2995'));
+                   delimiter.add('\\Rparenless', new Symbol('\\Rparenless', '\u2996'));
+                   delimiter.add('\\lblkbrbrak', new Symbol('\\lblkbrbrak', '\u2997'));
+                   delimiter.add('\\rblkbrbrak', new Symbol('\\rblkbrbrak', '\u2998'));
+                   delimiter.add('\\lvzigzag', new Symbol('\\lvzigzag', '\u29D8'));
+                   delimiter.add('\\rvzigzag', new Symbol('\\rvzigzag', '\u29D9'));
+                   delimiter.add('\\Lvzigzag', new Symbol('\\Lvzigzag', '\u29DA'));
+                   delimiter.add('\\Rvzigzag', new Symbol('\\Rvzigzag', '\u29DB'));
+                   delimiter.add('\\lcurvyangle', new Symbol('\\lcurvyangle', '\u29FC'));
+                   delimiter.add('\\rcurvyangle', new Symbol('\\rcurvyangle', '\u29FD'));
+                   delimiter.add('\\Vvert', new Symbol('\\Vvert', '\u2980'));
+          }       // ready
+     },           // startup
+
+
+     tex: {
+          packages: {'[+]': ['tagformat', 'Lwarp-macros', 'textmacros']},
+          tags: "ams",
+                   tagformat: {
+                            number: function (n) {
+                                 if(MathJax.config.subequations==0)
+                                        return(MathJax.config.section + n);
+                                 else
+                                        return(MathJax.config.section + String.fromCharCode(96+n));
+                            },
+                   },
+     }
+}
+</script>
+
+
+<script
+          id="MathJax-script"
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+
+</head>
+<body>
+
+
+<a id="Lie_Algebras_h-autopage-182"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+<header>
+
+<p>
+<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+</p>
+
+</header>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Lie Algebras</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="node-Nilpotent-Solvable-Lie-Algebras.html#autosec-5" class="tocsection" >
+<span class="sectionnumber">1</span>&#x2003;Nilpotent and Solvable Lie Algebras</a>
+</p>
+
+
+<p>
+<a href="node-Semisimple-Lie-Algebras.html#autosec-36" class="tocsection" >
+<span class="sectionnumber">2</span>&#x2003;Semisimple Lie Algebras</a>
+</p>
+
+
+<p>
+<a href="node-Poincare-Birkhoff-Witt.html#autosec-71" class="tocsection" >
+<span class="sectionnumber">3</span>&#x2003;Poincare&#x0301;-Birkhoff-Witt</a>
+</p>
+
+
+<p>
+<a href="node-sl2k.html#autosec-81" class="tocsection" >
+<span class="sectionnumber">4</span>&#x2003;\(\mathfrak {sl}_2k\)</a>
+</p>
+
+
+<p>
+<a href="node-Root-Systems.html#autosec-90" class="tocsection" >
+<span class="sectionnumber">5</span>&#x2003;Root Systems</a>
+</p>
+
+
+<p>
+<a href="node-Classification.html#autosec-118" class="tocsection" >
+<span class="sectionnumber">6</span>&#x2003;Classification</a>
+</p>
+
+
+<p>
+<a href="node-Homological-Methods.html#autosec-183" class="tocsection" >
+<span class="sectionnumber">7</span>&#x2003;Homological Methods</a>
+</p>
+
+
+<p>
+<a href="node-To-add.html#autosec-219" class="tocsection" >
+<span class="sectionnumber">8</span>&#x2003;To add</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
+
+
+<main class="bodycontainer">
+
+
+<section class="textbody">
+
+<h1>Lie Algebras</h1>
+
+<!--MathJax customizations:-->
+
+
+<div class="hidden">
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \LWRtensorindicesthreesub #1#2{{_{#2}}\LWRtensorindicesthree }\)
+
+\(\def \LWRtensorindicesthreesup #1#2{{^{#2}}\LWRtensorindicesthree }\)
+
+\(\newcommand {\LWRtensorindicesthreenotsup }{}\)
+
+\(\newcommand {\LWRtensorindicesthreenotsub }{ \ifnextchar ^ \LWRtensorindicesthreesup \LWRtensorindicesthreenotsup }\)
+
+\(\newcommand {\LWRtensorindicesthree }{ \ifnextchar _ \LWRtensorindicesthreesub \LWRtensorindicesthreenotsub }\)
+
+\(\newcommand {\LWRtensorindicestwo }{ \ifstar \LWRtensorindicesthree \LWRtensorindicesthree }\)
+
+\(\newcommand {\indices }[1]{\LWRtensorindicestwo #1}\)
+
+\(\newcommand {\LWRtensortwo }[3][]{{}\indices {#1}{#2}\indices {#3}}\)
+
+\(\newcommand {\tensor }{\ifstar \LWRtensortwo \LWRtensortwo }\)
+
+\(\newcommand {\LWRnuclidetwo }[2][]{{\vphantom {\mathrm {#2}}{}^{\LWRtensornucleonnumber }_{#1}\mathrm {#2}}}\)
+
+\(\newcommand {\nuclide }[1][]{\def \LWRtensornucleonnumber {#1}\LWRnuclidetwo }\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\cO }{\mathcal {O}}\)
+
+\(\newcommand {\cC }{\mathcal {C}}\)
+
+\(\newcommand {\cP }{\mathcal {P}}\)
+
+\(\newcommand {\cF }{\mathcal {F}}\)
+
+\(\newcommand {\cS }{\mathcal {S}}\)
+
+\(\newcommand {\cK }{\mathcal {K}}\)
+
+\(\newcommand {\cM }{\mathcal {M}}\)
+
+\(\newcommand {\GG }{\mathbb {G}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\QQ }{\mathbb {Q}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\LL }{\mathbb {L}}\)
+
+\(\newcommand {\HH }{\mathbb {H}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\SP }{\mathbb {S}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\sF }{\mathscr {F}}\)
+
+\(\newcommand {\sC }{\mathscr {C}}\)
+
+\(\newcommand {\ts }{\textsuperscript }\)
+
+\(\newcommand {\mf }{\mathfrak }\)
+
+\(\newcommand {\cc }{\mf {c}}\)
+
+\(\newcommand {\mg }{\mf {g}}\)
+
+\(\newcommand {\ma }{\mf {a}}\)
+
+\(\newcommand {\mh }{\mf {h}}\)
+
+\(\newcommand {\mn }{\mf {n}}\)
+
+\(\newcommand {\mc }{\mf {c}}\)
+
+\(\newcommand {\ul }{\underline }\)
+
+\(\newcommand {\mz }{\mf {z}}\)
+
+\(\newcommand {\me }{\mf {e}}\)
+
+\(\newcommand {\mff }{\mf {f}}\)
+
+\(\newcommand {\mm }{\mf {m}}\)
+
+\(\newcommand {\mt }{\mf {t}}\)
+
+\(\newcommand {\pp }{\mf {p}}\)
+
+\(\newcommand {\qq }{\mf {q}}\)
+
+\(\newcommand {\gl }{\mf {gl}}\)
+
+\(\newcommand {\msl }{\mf {sl}}\)
+
+\(\newcommand {\so }{\mf {so}}\)
+
+\(\newcommand {\mfu }{\mf {u}}\)
+
+\(\newcommand {\su }{\mf {su}}\)
+
+\(\newcommand {\msp }{\mf {sp}}\)
+
+\(\renewcommand {\aa }{\mf {a}}\)
+
+\(\newcommand {\bb }{\mf {b}}\)
+
+\(\newcommand {\sR }{\mathscr {R}}\)
+
+\(\newcommand {\lb }{\langle }\)
+
+\(\newcommand {\rb }{\rangle }\)
+
+\(\newcommand {\ff }{\mf {f}}\)
+
+\(\newcommand {\ee }{\epsilon }\)
+
+\(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
+\(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
+
+\(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
+
+\(\newcommand {\pushout }{\arrow [ul, phantom, &quot;\ulcorner &quot;, very near start]}\)
+
+\(\newcommand {\pullback }{\arrow [dr, phantom, &quot;\lrcorner &quot;, very near start]}\)
+
+\(\newcommand {\simp }[1]{#1^{\Delta ^{op}}}\)
+
+\(\newcommand {\arrowtcupp }[2]{\arrow [bend left=50, &quot;&quot;{name=U, below,inner sep=1}]{#1}\arrow [Rightarrow,from=U,to=MU,&quot;#2&quot;]}\)
+
+\(\newcommand {\arrowtclow }[2]{\arrow [bend right=50, &quot;&quot;{name=L,inner sep=1}]{#1}\arrow [Rightarrow,from=LM,to=L]{}[]{#2}}\)
+
+\(\newcommand {\arrowtcmid }[2]{\arrow [&quot;&quot;{name=MU,inner sep=1},&quot;&quot;{name=LM,below,inner sep=1}]{#1}[pos=.1]{#2}}\)
+
+\(\newcommand {\dummy }{\textcolor {white}{\bullet }}\)
+
+\(\newcommand {\adjunction }[4]{ #1\hspace {2pt}\colon #2 \leftrightharpoons #3 \hspace {2pt}\colon #4 }\)
+
+\(\newcommand {\aug }{\mathop {\rm aug}\nolimits }\)
+
+\(\newcommand {\MC }{\mathop {\rm MC}\nolimits }\)
+
+\(\newcommand {\art }{\mathop {\rm art}\nolimits }\)
+
+\(\newcommand {\DiGrph }{\mathop {\rm DiGrph}\nolimits }\)
+
+\(\newcommand {\FMP }{\mathop {\rm FMP}\nolimits }\)
+
+\(\newcommand {\CAlg }{\mathop {\rm CAlg}\nolimits }\)
+
+\(\newcommand {\perf }{\mathop {\rm perf}\nolimits }\)
+
+\(\newcommand {\cof }{\mathop {\rm cof}\nolimits }\)
+
+\(\newcommand {\fib }{\mathop {\rm fib}\nolimits }\)
+
+\(\newcommand {\Thick }{\mathop {\rm Thick}\nolimits }\)
+
+\(\newcommand {\Orb }{\mathop {\rm Orb}\nolimits }\)
+
+\(\newcommand {\ko }{\mathop {\rm ko}\nolimits }\)
+
+\(\newcommand {\Spf }{\mathop {\rm Spf}\nolimits }\)
+
+\(\newcommand {\Spc }{\mathop {\rm Spc}\nolimits }\)
+
+\(\newcommand {\sk }{\mathop {\rm sk}\nolimits }\)
+
+\(\newcommand {\cosk }{\mathop {\rm cosk}\nolimits }\)
+
+\(\newcommand {\holim }{\mathop {\rm holim}\nolimits }\)
+
+\(\newcommand {\hocolim }{\mathop {\rm hocolim}\nolimits }\)
+
+\(\newcommand {\Pre }{\mathop {\rm Pre}\nolimits }\)
+
+\(\newcommand {\THR }{\mathop {\rm THR}\nolimits }\)
+
+\(\newcommand {\THH }{\mathop {\rm THH}\nolimits }\)
+
+\(\newcommand {\Fun }{\mathop {\rm Fun}\nolimits }\)
+
+\(\newcommand {\Loc }{\mathop {\rm Loc}\nolimits }\)
+
+\(\newcommand {\Bord }{\mathop {\rm Bord}\nolimits }\)
+
+\(\newcommand {\Cob }{\mathop {\rm Cob}\nolimits }\)
+
+\(\newcommand {\Set }{\mathop {\rm Set}\nolimits }\)
+
+\(\newcommand {\Ind }{\mathop {\rm Ind}\nolimits }\)
+
+\(\newcommand {\Sind }{\mathop {\rm Sind}\nolimits }\)
+
+\(\newcommand {\Ext }{\mathop {\rm Ext}\nolimits }\)
+
+\(\newcommand {\sd }{\mathop {\rm sd}\nolimits }\)
+
+\(\newcommand {\Ex }{\mathop {\rm Ex}\nolimits }\)
+
+\(\newcommand {\Out }{\mathop {\rm Out}\nolimits }\)
+
+\(\newcommand {\Cyl }{\mathop {\rm Cyl}\nolimits }\)
+
+\(\newcommand {\Path }{\mathop {\rm Path}\nolimits }\)
+
+\(\newcommand {\Ch }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\SSet }{\mathop {\rm \Set ^{\Delta ^{op}}}\nolimits }\)
+
+\(\newcommand {\Sq }{\mathop {\rm Sq}\nolimits }\)
+
+\(\newcommand {\Free }{\mathop {\rm Free}\nolimits }\)
+
+\(\newcommand {\Map }{\mathop {\rm Map}\nolimits }\)
+
+\(\newcommand {\Chain }{\mathop {\rm Ch}\nolimits }\)
+
+\(\newcommand {\LMap }{\mathop {\rm LMap}\nolimits }\)
+
+\(\newcommand {\RMap }{\mathop {\rm RMap}\nolimits }\)
+
+\(\newcommand {\Tot }{\mathop {\rm Tot}\nolimits }\)
+
+\(\newcommand {\MU }{\mathop {\rm MU}\nolimits }\)
+
+\(\newcommand {\MSU }{\mathop {\rm MSU}\nolimits }\)
+
+\(\newcommand {\MSp }{\mathop {\rm MSp}\nolimits }\)
+
+\(\newcommand {\MSO }{\mathop {\rm MSO}\nolimits }\)
+
+\(\newcommand {\MO }{\mathop {\rm MO}\nolimits }\)
+
+\(\newcommand {\BU }{\mathop {\rm BU}\nolimits }\)
+
+\(\newcommand {\KU }{\mathop {\rm KU}\nolimits }\)
+
+\(\newcommand {\BSU }{\mathop {\rm BSU}\nolimits }\)
+
+\(\newcommand {\BSp }{\mathop {\rm BSp}\nolimits }\)
+
+\(\newcommand {\BGL }{\mathop {\rm BGL}\nolimits }\)
+
+\(\newcommand {\BSO }{\mathop {\rm BSO}\nolimits }\)
+
+\(\newcommand {\BO }{\mathop {\rm BO}\nolimits }\)
+
+\(\newcommand {\KO }{\mathop {\rm KO}\nolimits }\)
+
+\(\newcommand {\Tor }{\mathop {\rm Tor}\nolimits }\)
+
+\(\newcommand {\Cotor }{\mathop {\rm Cotor}\nolimits }\)
+
+\(\newcommand {\imag }{\mathop {\rm Im}\nolimits }\)
+
+\(\newcommand {\real }{\mathop {\rm Re}\nolimits }\)
+
+\(\newcommand {\Cat }{\mathop {\rm Cat}\nolimits }\)
+
+\(\newcommand {\Fld }{\mathop {\rm Fld}\nolimits }\)
+
+\(\newcommand {\Frac }{\mathop {\rm Frac}\nolimits }\)
+
+\(\newcommand {\Dom }{\mathop {\rm Dom}\nolimits }\)
+
+\(\newcommand {\Hotc }{\mathop {\rm Hotc}\nolimits }\)
+
+\(\newcommand {\Top }{\mathop {\rm Top}\nolimits }\)
+
+\(\newcommand {\Ring }{\mathop {\rm Ring}\nolimits }\)
+
+\(\newcommand {\CRing }{\mathop {\rm CRing}\nolimits }\)
+
+\(\newcommand {\CGHaus }{\mathop {\rm CGHaus}\nolimits }\)
+
+\(\newcommand {\Alg }{\mathop {\rm Alg}\nolimits }\)
+
+\(\newcommand {\Bool }{\mathop {\rm Bool}\nolimits }\)
+
+\(\newcommand {\hTop }{\mathop {\rm hTop}\nolimits }\)
+
+\(\newcommand {\Nat }{\mathop {\rm Nat}\nolimits }\)
+
+\(\newcommand {\Rel }{\mathop {\rm Rel}\nolimits }\)
+
+\(\newcommand {\Mod }{\mathop {\rm Mod}\nolimits }\)
+
+\(\newcommand {\Space }{\mathop {\rm Space}\nolimits }\)
+
+\(\newcommand {\Vect }{\mathop {\rm Vect}\nolimits }\)
+
+\(\newcommand {\FinVect }{\mathop {\rm FinVect}\nolimits }\)
+
+\(\newcommand {\Matr }{\mathop {\rm Matr}\nolimits }\)
+
+\(\newcommand {\Ab }{\mathop {\rm Ab}\nolimits }\)
+
+\(\newcommand {\Gr }{\mathop {\rm Gr}\nolimits }\)
+
+\(\newcommand {\Grp }{\mathop {\rm Grp}\nolimits }\)
+
+\(\newcommand {\Hol }{\mathop {\rm Hol}\nolimits }\)
+
+\(\newcommand {\Gpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Grpd }{\mathop {\rm Gpd}\nolimits }\)
+
+\(\newcommand {\Mon }{\mathop {\rm Mon}\nolimits }\)
+
+\(\newcommand {\FinSet }{\mathop {\rm FinSet}\nolimits }\)
+
+\(\newcommand {\Sch }{\mathop {\rm Sch}\nolimits }\)
+
+\(\newcommand {\AffSch }{\mathop {\rm AffSch}\nolimits }\)
+
+\(\newcommand {\Idem }{\mathop {\rm Idem}\nolimits }\)
+
+\(\newcommand {\SIdem }{\mathop {\rm SIdem}\nolimits }\)
+
+\(\newcommand {\Aut }{\mathop {\rm Aut}\nolimits }\)
+
+\(\newcommand {\Ord }{\mathop {\rm Ord}\nolimits }\)
+
+\(\newcommand {\coker }{\mathop {\rm coker}\nolimits }\)
+
+\(\newcommand {\ch }{\mathop {\rm char}\nolimits }\)
+
+\(\newcommand {\Sym }{\mathop {\rm Sym}\nolimits }\)
+
+\(\newcommand {\adj }{\mathop {\rm adj}\nolimits }\)
+
+\(\newcommand {\dil }{\mathop {\rm dil}\nolimits }\)
+
+\(\newcommand {\Cl }{\mathop {\rm Cl}\nolimits }\)
+
+\(\newcommand {\Diff }{\mathop {\rm Diff}\nolimits }\)
+
+\(\newcommand {\End }{\mathop {\rm End}\nolimits }\)
+
+\(\newcommand {\Hom }{\mathop {\rm Hom}\nolimits }\)
+
+\(\newcommand {\Gal }{\mathop {\rm Gal}\nolimits }\)
+
+\(\newcommand {\Pos }{\mathop {\rm Pos}\nolimits }\)
+
+\(\newcommand {\Ad }{\mathop {\rm Ad}\nolimits }\)
+
+\(\newcommand {\GL }{\mathop {\rm GL}\nolimits }\)
+
+\(\newcommand {\SL }{\mathop {\rm SL}\nolimits }\)
+
+\(\newcommand {\vol }{\mathop {\rm vol}\nolimits }\)
+
+\(\newcommand {\reg }{\mathop {\rm reg}\nolimits }\)
+
+\(\newcommand {\Or }{\textnormal {O}}\)
+
+\(\newcommand {\U }{\mathop {\rm U}\nolimits }\)
+
+\(\newcommand {\SOr }{\mathop {\rm SO}\nolimits }\)
+
+\(\newcommand {\SU }{\mathop {\rm SU}\nolimits }\)
+
+\(\newcommand {\Spin }{\mathop {\rm Spin}\nolimits }\)
+
+\(\newcommand {\Sp }{\mathop {\rm Sp}\nolimits }\)
+
+\(\newcommand {\Int }{\mathop {\rm Int}\nolimits }\)
+
+\(\newcommand {\im }{\mathop {\rm im}\nolimits }\)
+
+\(\newcommand {\dom }{\mathop {\rm dom}\nolimits }\)
+
+\(\newcommand {\di }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\cod }{\mathop {\rm cod}\nolimits }\)
+
+\(\newcommand {\colim }{\mathop {\rm colim}\nolimits }\)
+
+\(\newcommand {\ad }{\mathop {\rm ad}\nolimits }\)
+
+\(\newcommand {\PSL }{\mathop {\rm PSL}\nolimits }\)
+
+\(\newcommand {\PGL }{\mathop {\rm PGL}\nolimits }\)
+
+\(\newcommand {\sep }{\mathop {\rm sep}\nolimits }\)
+
+\(\newcommand {\MCG }{\mathop {\rm MCG}\nolimits }\)
+
+\(\newcommand {\oMCG }{\mathop {\rm MCG^+}\nolimits }\)
+
+\(\newcommand {\Spec }{\mathop {\rm Spec}\nolimits }\)
+
+\(\newcommand {\rank }{\mathop {\rm rank}\nolimits }\)
+
+\(\newcommand {\diverg }{\mathop {\rm div}\nolimits }\)
+
+\(\newcommand {\disc }{\mathop {\rm disc}\nolimits }\)
+
+\(\newcommand {\sign }{\mathop {\rm sign}\nolimits }\)
+
+\(\newcommand {\Arf }{\mathop {\rm Arf}\nolimits }\)
+
+\(\newcommand {\Pic }{\mathop {\rm Pic}\nolimits }\)
+
+\(\newcommand {\Tr }{\mathop {\rm Tr}\nolimits }\)
+
+\(\newcommand {\res }{\mathop {\rm res}\nolimits }\)
+
+\(\newcommand {\Proj }{\mathop {\rm Proj}\nolimits }\)
+
+\(\newcommand {\mult }{\mathop {\rm mult}\nolimits }\)
+
+\(\newcommand {\N }{\mathop {\rm N}\nolimits }\)
+
+\(\newcommand {\lk }{\mathop {\rm lk}\nolimits }\)
+
+\(\newcommand {\Pf }{\mathop {\rm Pf}\nolimits }\)
+
+\(\newcommand {\sgn }{\mathop {\rm sgn}\nolimits }\)
+
+\(\newcommand {\grad }{\mathop {\rm grad}\nolimits }\)
+
+\(\newcommand {\lcm }{\mathop {\rm lcm}\nolimits }\)
+
+\(\newcommand {\Ric }{\mathop {\rm Ric}\nolimits }\)
+
+\(\newcommand {\Hess }{\mathop {\rm Hess}\nolimits }\)
+
+\(\newcommand {\sn }{\mathop {\rm sn}\nolimits }\)
+
+\(\newcommand {\cut }{\mathop {\rm cut}\nolimits }\)
+
+\(\newcommand {\tr }{\mathop {\rm tr}\nolimits }\)
+
+\(\newcommand {\codim }{\mathop {\rm codim}\nolimits }\)
+
+\(\newcommand {\ind }{\mathop {\rm index}\nolimits }\)
+
+\(\newcommand {\rad }{\mathop {\rm rad}\nolimits }\)
+
+\(\newcommand {\Rep }{\mathop {\rm Rep}\nolimits }\)
+
+\(\newcommand {\Lie }{\mathop {\rm Lie}\nolimits }\)
+
+\(\newcommand {\Der }{\mathop {\rm Der}\nolimits }\)
+
+\(\newcommand {\hgt }{\mathop {\rm ht}\nolimits }\)
+
+\(\newcommand {\Ider }{\mathop {\rm Ider}\nolimits }\)
+
+\(\newcommand {\id }{\mathop {\rm id}\nolimits }\)
+
+</div>
+
+<p>
+<!--................................-->
+<h4 id="autosec-183"><span class="sectionnumber">7&#x2003;</span>Homological Methods</h4>
+<a id="Lie_Algebras_h-autopage-183"></a>
+<a id="Lie_Algebras_h-autofile-7"></a>
+
+<p>
+Lets expand on homological methods, which were first mentioned in the proof of Weyl’s theorem that a semisimple Lie algebra has semisimple finite dimensional representations.
+</p>
+
+<p>
+Usually \(\Ext \) and \(\Tor \) are the main tools of studying representations of algebras but for a Hopf algebra, we can do with a bit less. First observe that the antipode makes left and right modules canonically equivalent, so
+we can drop the lefts and rights.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-184"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">7.1</span></span>. \(H_*(\mg ,M)\) is \(\Tor _*^{U(\mg )}(k,M)\), \(H^*(\mg ,M)\) is \(\Ext
+^*_{U(\mg )}(k,M)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In otherwords, \(H_*\), the homology, is the left derived functors of the coinvariants and \(H^*\), cohomology, is the right derived functors of invariants. The \(\mg \) will be dropped if unambiguous. The homology, cohomology
+should be thought of as sheaf cohomology on the associated Lie group (the sheaf being trivial for the module \(k\)). When the module is \(k\) itself, we can also refer to it as cohomology and homology of the Lie algebra. \(M\)
+should correspond to a right invariant trivial vector bundle such that differentiating the \(\Ad \) action gives the actiono of \(\mg \) on the fibre. Indeed this construction coincides with the construction of \(\ad \). The reason
+these are well equipped to replace \(\Ext \) and \(\Tor \) is the following:
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-185"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">7.2</span></span>. \(\Ext ^*(M,N) = H^*(\Hom (M,N))\), \(\Tor ^*(M,N) = H_*(\Hom (M,N)))\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-186"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(\Hom _{\mg }(M,N) \cong \Hom _{\mg }(k,\Hom (M,N))\). Take right derived functors in \(N\). On the right hand side, \(\Hom (M,-)\) is exact and sends injectives to
+injectives by the tensor hom adjunction since tensor products are exact, so the edge homomorphism in the Grothendieck spectral sequence is an isomorphism.
+</p>
+
+<p>
+The same argument works for \(\Tor \) since \(M\otimes _{\mg } N \cong k \otimes _{\mg } (M \otimes N)\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Since \(U(\mg ) \otimes _k U(\mg &apos;)\) = \(U(\mg \oplus \mg &apos;)\) we get Kunneth isomorphisms:
+</p>
+
+<p>
+\[\bigoplus _{p+q=n} H_p(\mg ,k)\otimes H_p(\mg &apos;,k) = H_n(\mg \oplus \mg &apos;,k)\]
+</p>
+
+<p>
+\[\bigoplus _{p+q=n} H^p(\mg ,k)\otimes H^p(\mg &apos;,k) =H^n(\mg \oplus \mg &apos;,k)\]
+</p>
+
+<p>
+Using the diagonal \(\mg \to \mg \oplus \mg \) we get a coalgebra structure and an algebra structure on the homology and cohomology of \(\mg \).
+</p>
+
+<p>
+\(H_1,H^1\) are easy to interpret. Let \(J\) denote the augementation ideal of \(U(\mg )\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-187"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">7.3</span></span>. \(H_1(k) = \mg /[\mg ,\mg ]\)
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-188"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> \(0 \to J \to U(\mg ) \to k \to 0\), so taking the long exact sequence in homology, we get \(H_1(k) = H_0(J) = \mg /[\mg ,\mg ]\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-189"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">7.4</span></span>. \(H^1(M) = \Der (M)/\Ider (M)\)
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-190"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Again look at the long exact sequence for \(0 \to J \to U(\mg ) \to k \to 0\) after taking \(\Hom \) into \(M\). We get \(0 \to \Hom (k,M) \to \Hom (U(\mg ),M) \to
+\Hom (J,M) \to H^1(M) \to 0\). \(\Hom (J,M)\) is the derivations, and the image of \(\Hom (U(\mg )),M\) is the inner derivations. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+If \(M\) is trivial, then \(\Ider (M)\) is trivial, and \(\Der (M)\) is \(\Hom _{\Lie }(\mg ,M)\). Suppose we have a short exact sequence \(0 \to \mh \to \mg \to \mg /\mh \to 0\). The forgerful functor from \(\mg /\mh
+\) modules to \(\mg \) modules has left adjoint \(\mh \)-coinvariants and right adjoint \(\mh \)-invariants. Taking \(\mg \)-invariants is the composite of taking \(\mh \)-invariants and then taking \(\mg /\mh \)-invariants, and
+similarly for coinvariants so we get Grothendieck spectral sequences:
+</p>
+
+<p>
+\[E_2^{p,q} = H^p(\mg /\mh ,H^q(\mh ,M)) \Rightarrow H^{p+q}(\mg , M) \]
+</p>
+
+<p>
+\[E_{p,q}^2 = H_p(\mg /\mh ,H_q(\mh ,M)) \Rightarrow H_{p+q}(\mg , M) \]
+</p>
+
+<p>
+These are also called the <b>Hochschild-Serre spectral sequences</b>.
+</p>
+
+<p>
+\(H^2(M)\) has a simple interpretation: it is extensions of \(\mg \) by the abelian Lie algebra \(M\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-191"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">7.5</span></span>. \(\Ext (\mg ,M) = H^2(\mg ,M)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Given an extension \(0 \to M \to \me \to \mg \to 0\), we can look at low dimenisonal exact sequence of the spectral sequence in cohomology:
+</p>
+
+<p>
+\[0 \to H^1(\mg ,M) \to H^1(\me ,M) \to H^1(M,M)^{\mg } \to H^2(\mg ,M) \to H^2(\me ,M)\]
+</p>
+
+<p>
+The image of the identity in \(H^1(M,M)^{\mg } = \Hom _{\mg }(M,M)\) is the class corresponding to the extension. This gives a map \(\Ext (\mg ,M) \xrightarrow {d^2} H^2(\mg ,M)\). To go in the other direction, we can
+use a presentation of \(\mg \).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-192"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">7.6</span></span>. For a free Lie algebra on the set \(X\), \(J\) is a free module on the set \(X\). Thus
+\(H^i(M),H_i(M) = 0\) for \(i&gt;1\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-193"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> This is because it is the augmentation ideal of a tensor algebra. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Now consider a presentation \(0 \to \ma \to \mff \to \mg \to 0\), where \(\mff \) is free, and mod out by the ideal generated by \([\ma ,\ma ]\) so that it is an extension of \(\mg \) by \(\mg _{ab}\) which is abelian.
+This is actually the unversal extension in that \(\Hom (\ma _{ab}, M) = H^2(\mg ,M)\) classifies extensions by \(M\).
+</p>
+
+<p>
+Given any extension \(\me \), we can form the diagram below since \(\mff \) is free and \(M\) is abelian:
+</p>
+<div class="center">
+
+<p>
+<span
+    id="lateximage-Lie_Algebras_h-17"
+    class="lateximagesource"
+><!--
+0   a        f       g   0
+
+
+0   aab   f/[a, a]   g   0
+
+
+0   M        e       g   0
+--><img
+    src="Lie_Algebras_h-images/image-17.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+Now the map producing the class in \(H^2\) corresponding to \(\me \) factors as
+</p>
+
+<p>
+\[\Hom _{\mg }(M,M) \to \Hom _{\mg }(\ma _{ab}, M) = H^1(\ma _{ab},M)^{\mg } \xrightarrow {d^2} H^2(\mg ,M)\]
+</p>
+
+<p>
+By naturality the extension class in \(H^2(\mg ,\ma _{ab})\) gets sent to the corresponding class in \(H^2(\mg ,M)\). Since \(H^2(\mff ,M)\) vanishes, the restriction of any class in \(H^2(\mg ,M)\) to \(\mff \) vanishes.
+From the low-dimensional exact sequence, this means that there is an element of \(H^1(\ma ,M)^\mg = \Hom _{\mg }(\ma _{ab},M)\) lifting \(H^2(\mg ,M)\). One can then from the semidirect product \(M\ltimes \mff \)
+over \(\ma \) to get an extension of \(\mg \) by \(M\) realizing the class.
+</p>
+
+<p>
+It suffices to show that the cohomology class determines the extension. But suppose there were two extensions \(\me _1,\me _2\) coming from the same class. They are classified by some maps \(\phi _1,\phi _2 \in H^1(\ma
+_{ab},M)^{\mg }\). By assumption their image via \(d^2\) is the same, so there is some element in \(H^1(\mff /[a,a],M)=\Der (\mff ,M)\) whose image is \(\phi _1-\phi _2\). WLOG, the map \(\mff \to \me _1,\me
+_2\) is surjective, and it is then easy to see that \(\phi _2+(\phi _1-\phi _2)\) descends to an isomorphism of extensions from \(\me _1\) to \(\me _2\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-197"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">7.7</span></span>. If \(H^2(\mg ,M)\) vanishes for all \(M\), then \(\mg \) is free.
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-198"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Choose a presentation \(\mg =\mff /\ma \) that is minimal in the sense that \(\ma \subset [\mff ,\mff ]\). Mod out by \([\mff ,\ma ]\) to see that \(\mff /[\mff ,\ma
+] = \mg \oplus \ma /[\mff ,\ma ]\) since extensions by abelian things are trivial. But \(f\) is minimal, so taking the commutator of that equation, we see \(\ma /[\mff ,\ma ]=0\), but any subalgebra of a free algebra
+satisfying that is trivial. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+There is a canonical and efficient complex called the Chevalley-Eilenberg complex that computes Lie algebra homology and cohomology. It is a free resolution of \(k\), and is essentially the de Rham complex.
+</p>
+
+<p>
+Consider the chain complex where \(V_n(\mg ) = U\mg \otimes _k \Lambda ^n\mg \), and \(d(g \otimes w_1 \dots \wedge w_n)= \sum _{i}(-1)^{i+1}ux_i \otimes w_1 \dots \wedge \hat {w_i} \dots \wedge
+w_n\) \(+ \sum _{i &lt;j}(-1)^{i+j}u\otimes [w_i,w_j]\otimes w_1 \dots \wedge \hat {w_i} \dots \wedge \hat {w_j} \dots \wedge w_n\). There is an obvious augmentation \(V_*(\mg ) \to k\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-199"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">7.8</span></span>. \(V_*(\mg )\) is a free resolution of \(k\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-200"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> There is a filtration on \(V_*\) coming from the tensor products of the filtrations on \(U(\mg ),\Lambda ^*(\mg )\). The associated graded by PBW is \(k[\mg ]\otimes
+_k\Lambda ^*(\mg )\), and differential is the Koszul differential. Thus the spectral sequence for the filtration degenerates at \(E^1\) to the expected cohomology.
+</p>
+
+<p>
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-201"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">7.9</span></span>. For an \(\mg \)-module \(M\),
+</p>
+
+<p>
+\[H_*(M) = H_*(M\otimes \Lambda ^*(\mg )), H^*(M) = H^*(\Hom (\Lambda ^*(\mg ),M)\]
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+This complex can give explicit proofs of the interpretations of \(H^1,H^2\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-202"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">7.10</span></span>. If \(\mg \) has dimension \(n\), its cohomological dimension is \(n\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-203"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> The Chevalley-Eilenberg complex shows it is at most \(n\). But it also shows that \(H^n(\Lambda ^n\mg )= k \neq 0\). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The Chevalley-Eilenberg complex for the Lie algebra of a Lie group can be used to show that cohomology and homology of the Lie algebra agree with homology and cohomology of a compact connected Lie group (over \(k\)).
+Namely, one can choose a bi-invariant metric, and use Hodge theory to show the harmonic forms are invariant and correspond to the cohomology of the Chevalley-Eilenberg complex. Using this we can see why we should expect
+\(H^3(\msl _2)=k\), since \(\msl _2\CC \) is the complexification of the lie algebra of \(\su (2)\), and \(\SU (2)\) is a \(3\)-sphere. Indeed, the Chevalley-Eilenberg complex verifies this.
+</p>
+
+<p>
+We already showed \(H^1(\mg ,M)\) vanishes for a semisimple Lie algebra, but the same is true for \(H^2\). First we can upgrade Weyl’s theorem.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-204"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">7.11</span></span>. Let \(M\) be a finite-dimensional nontrivial irreducible \(\mg \) module in
+characteristic \(0\). Then \(H^i(\mg ,M) = H_i(\mg ,M)=0\) for any \(I\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-205"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Over \(\bar {k}\), \(L\), the Casimir element, acts by a scalar on \(M\) and by \(0\) on \(k\), hence it acts on the homology and cohomology, and the two actions coming from
+\(M\) and \(k\) coincide since \(L\) is central. Thus a nonzero scalar is equal to zero, so the cohomology and homology vanish. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Thus all the interesting (finite-dimensional) cohomological information is in the trivial sheaf.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-206"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">7.12</span></span><span class="amsthmnoteplain"> (Second Whitehead Lemma)</span>. If \(\mg \) is
+semisimple over characteristic \(0\) and \(M\) is finite-dimensional, then \(H^2(\mg ,M)=0\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-207"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> By the previous proposition, it suffices to show \(H^2(\mg )\) vanishes, which is equivalent to any saying any extension \(k \to \me \to \mg \) splits. To see that is true, simply
+observe that the \([\me ,\me ]\) gives a splitting since \(k\) commutes with everything and \([\mg ,\mg ]= \mg \). <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+This is analogous to (and partially proves) a fact in Lie groups, that \(\pi _2\) vanishes for any Lie group. Perhaps one complete the proof for compact Lie groups by proving that \(H_2\) is the kernel of the universal central
+extension, so there can’t be any torsion as it would give a nontrivial cover.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-208"></a>
+<span class="amsthmnameplain">Corollary</span><span class="amsthmnumberplain"> <span class="textup">7.13</span></span><span class="amsthmnoteplain"> (Levi Decomposition)</span>. In characteristic
+\(0\), any Lie group splits as a semidirect product \(\ma \ltimes \mg \) where \(\ma \) is solvable and \(\mg \) is semisimple.
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-209"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Note that \(\ma \) is really the radical, so we want to show that \(\rad (\mg ) \to \mg \to \mg /\rad (\mg )\) splits. We can do this by induction on the length of the
+derived series. Mod out by \([\rad (\mg ),\rad (\mg )]\) to get an extension by an abelian Lie algebra, for which there is a splitting by the second Whitehead lemma. The preimage of this splitting is an ideal \(\mh \) such
+that there is an extension \([\ma ,\ma ] \to \mh \to \mg \), at which point we can induct. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-210"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">7.14</span></span><span class="amsthmnoteplain"> (Hopf)</span>. Let \(\mff /\ma \) be a presentation
+of \(\mg \). Then \(H_2(\mg ) = \frac {\ma \cap [\mff ,\mff ]}{[\mff ,\ma ]}\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-211"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Consider the low term exact sequence from the homology spectral sequence for \(0 \to \ma \to \mff \to \mg \to 0\) and the trivial module:
+</p>
+
+<p>
+\[0 \to H_2(\mg ,k) \to \ma /[\ma ,\ma ]_\mg \to \mff /[\mff ,\mff ] \to \mg /[\mg ,\mg ] \to 0\]
+</p>
+
+<p>
+The second term is \(\ma /[\mff ,\ma ]\), giving the result. <span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-212"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">7.15</span></span>. <a id="uniquemapcentextn"></a> If \(\me ,\me &apos;\) are central extensions of
+\(\mg \), and \(\me \) is perfect there is at most one homomorphism of extensions \(\me \to \me &apos;\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-213"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Any two homomorphisms differ by something in the kernel of \(\me \), and \(\me &apos;\) is perfect and the kernel is central, it has to be \(0\). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-214"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">7.16</span></span>. \(\mg \) has a universal central extension iff \(\mg \) is perfect, and it is a central
+extension by \(H_2(\mg ,k)\).
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-215"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Suppose \(\mg \) has a universal central extension \(\me \), it must have a unique map to the trivial central extension, which implies that \(\mg \) has to be perfect. Conversely
+let \(\mg \) be perfect. Choose a presentation \(\mg = \mff /\ma \), for \(\mff \) free. Then \(\mh = [\mff ,\mff ]/[\mff ,\ma ]\) will be shown to be the universal central extension. By the previous lemma, it is an
+extension by \(H_2(\mg )\). Moreover, one can see it is perfect. Since \(\mg \) is perfect, any \(x \in \mff \) decomposes as \(x&apos;+r\) where \(x&apos; \in \mff , r \in \ma \). Then choosing such a decomposition for
+\(x =x&apos;+r,y =x&apos;+r\) Then \([x,y] = [x&apos;,y&apos;]\) modulo \([\mff ,\ma ]\). This gives uniqueness of a map to any extension.
+</p>
+
+<p>
+Now let \(\me \) be any other central extension. There is a map from \(\mff \) to \(\me \) lifting the projection to \(\mg \), and since \(\me \) is central, it induces a map from \(\mh \). <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Here is a recognition criterion for universal central extensions.
+</p>
+<div class="amsthmbodyplain">
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<a id="Lie_Algebras_h-autopage-216"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">7.17</span></span>. TFAE for a central extension \(\me \to \mg \):
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+1. \(\me \) is a universal central extension.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+2. Any central extension of \(\me \) splits in a unique way.
+</p>
+
+
+</li>
+<li>
+
+
+<p>
+3. \(H_1(\me )=H_2(\me ) = 0\).
+</p>
+<p>
+
+
+</p>
+</li>
+</ul>
+
+<p>
+Moreover the universal central extension is idempotent.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="Lie_Algebras_h-autopage-217"></a>
+
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="amsthmproofname">Proof.</span> Consider \(\me &apos;\), the universal central extension of the universal central extension, and let \(x\) be in its kernel to \(\mg \). Since \(\me &apos;\) is perfect, for any
+\(a\), there is some \(a&apos;,a&apos;&apos;\) so that \([x,a] = [x,[a&apos;,a&apos;]]\). But by the Jacobi identity this is zero since \(\me &apos;,\me \) are central extensions. Thus \(\me &apos;\) is a central
+extension so it splits, and must be \(\me \).
+</p>
+
+<p>
+\((1) \implies (2)\): Any central extension \(\me &apos;\) of \(\me \) splits. \(\me &apos;\) is thus also a central extension of \(\mg \) and since \(\me \) is perfect, this splitting is unique by Lemma <a
+href="node-Homological-Methods.html#uniquemapcentextn">7.15</a>.
+</p>
+
+<p>
+\((2) \implies (3)\): Since the a trivial \(k\) extension splits in a unique way, we see \(H_1(\me )=0\). Moreover since any extension splits, the universal central extension splits, so it must be trivial, showing \(H_2(\me )=0\).
+</p>
+
+<p>
+\((3) \implies (1)\): Given any central extension of \(\mg \), we can pull it back to a central extension of \(\me \) which splits, giving a map to the central extension. Uniqueness follows from perfectness. <span
+class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+</body>
+</html>

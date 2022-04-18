@@ -267,7 +267,8 @@ ul{
 
 img.lateximage{
     padding: 0pt ;
-    margin: 0pt ;
+    margin-left: 60pt ;
+    margin-right: 60pt ;
     box-shadow: none ;
     border: none ;
     background: none ;

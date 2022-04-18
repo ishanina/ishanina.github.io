@@ -31,11 +31,10 @@ nav {
 
 /*Below is copied from tutorial*/
 
-
-A:link {color:#47acff ; text-decoration: none ; }
-A:visited {color:#00a2ff ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
-A:hover {color:#06c200 ; text-decoration: underline ; /*text-shadow:0px 0px 2px #a0a0a0;*/}
-A:active {color:#00b46f ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
+A:link {color:#80a9f0 ; text-decoration: none ; }
+A:visited {color:#b17ef3 ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
+A:hover {color:#91b5f2 ; text-decoration: underline ; /*text-shadow:0px 0px 2px #a0a0a0;*/}
+A:active {color:#91b5f2 ; /*text-shadow:1px 1px 2px #a0a0a0;*/}
 
 div.book, h1, h2, h3, h4, h5, h6, span.paragraph, span.subparagraph
 {
@@ -111,10 +110,10 @@ div.epigraph, div.dictum {
 .example {
     background-color: #f5f5eb ;
     background-image: linear-gradient(to bottom, #f5f5eb, #C8C8B8);
-
 }
 
 div.exampletitle{
+
     /*font-family: "URW Classico", Optima, "Linux Biolinum O",
         "Linux Libertine O", "Liberation Serif", "Nimbus Roman No 9 L",
         "FreeSerif", "Hoefler Text", Times, "Times New Roman", serif;*/
@@ -237,11 +236,31 @@ footer{
 div.sidetoctitle {color: #202c4e ; }
 
 nav.sidetoc a:hover {
-    color:#06c200 ;
+    color:#91b5f2 ;
     text-decoration: none ;
     /*text-shadow:0px 0px 1px #a0a0a0;*/
 }
+a.tocsection {display: inline-block ; margin-left: 1em ;
+    text-indent: -.5em ; font-weight: 400 ; }
 
 @media screen and (max-width: 45em) {
     div.sidetoccontainer { border-radius: 0 ; }
 }
+
+body {
+    font-family: "DejaVu Serif", "Bitstream Vera Serif",
+        "Lucida Bright", Georgia, serif;
+    background: #FAF7F4 ;
+    color: black ;
+    margin:0em ;
+    padding:0em ;
+    font-size: 120% ;
+}
+
+html body {
+    margin: 0 ;
+    line-height: 1.8;
+  }
+ul{
+    line-height: 1.8;
+  }

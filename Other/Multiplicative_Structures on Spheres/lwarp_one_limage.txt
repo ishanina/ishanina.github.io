@@ -1,0 +1,6 @@
+pdfseparate -f %1 -l %1 %4_html.pdf Multiplicative_Structures_on_Spheres_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Multiplicative_Structures_on_Spheres_h-images/lateximagetemp-%1.pdf Multiplicative_Structures_on_Spheres_h-images/%3.pdf
+pdftocairo -svg -noshrink Multiplicative_Structures_on_Spheres_h-images/%3.pdf Multiplicative_Structures_on_Spheres_h-images/%3.svg
+del Multiplicative_Structures_on_Spheres_h-images/%3.pdf
+del Multiplicative_Structures_on_Spheres_h-images/lateximagetemp-%1.pdf
+exit

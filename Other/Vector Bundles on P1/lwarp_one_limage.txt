@@ -1,0 +1,6 @@
+pdfseparate -f %1 -l %1 %4_html.pdf Vector_Bundles_on_P1_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Vector_Bundles_on_P1_h-images/lateximagetemp-%1.pdf Vector_Bundles_on_P1_h-images/%3.pdf
+pdftocairo -svg -noshrink Vector_Bundles_on_P1_h-images/%3.pdf Vector_Bundles_on_P1_h-images/%3.svg
+del Vector_Bundles_on_P1_h-images/%3.pdf
+del Vector_Bundles_on_P1_h-images/lateximagetemp-%1.pdf
+exit

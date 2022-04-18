@@ -1,0 +1,6 @@
+pdfseparate -f %1 -l %1 %4_html.pdf Grobner_Bases_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Grobner_Bases_h-images/lateximagetemp-%1.pdf Grobner_Bases_h-images/%3.pdf
+pdftocairo -svg -noshrink Grobner_Bases_h-images/%3.pdf Grobner_Bases_h-images/%3.svg
+del Grobner_Bases_h-images/%3.pdf
+del Grobner_Bases_h-images/lateximagetemp-%1.pdf
+exit

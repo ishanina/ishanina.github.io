@@ -59,21 +59,23 @@ A collection of notes I have written about various subjects. These were not writ
 # Other
 Miscellaneous notes I have written.
 
-[Invertibility Hypothesis](Other/Invertibility Hypothesis/Invertibility_Hypothesis.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Invertibility Hypothesis.pdf)
+[Multiplicative Structures on Spheres](Other/Multiplicative Structures on Spheres/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Multiplicative Structures on Spheres.pdf)
+
+[Invertibility Hypothesis](Other/Invertibility Hypothesis/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Invertibility Hypothesis.pdf)
   
-[Diagonal Argument](Other/Diagonal Argument/Diagonal_Argument.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Diagonal Argument.pdf)
+[Diagonal Argument](Other/Diagonal Argument/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Diagonal Argument.pdf)
 
-[Embeddings and Duality](Other/Embeddings and Duality/Embeddings_and_Duality.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Embeddings and Duality.pdf)
+[Embeddings and Duality](Other/Embeddings and Duality/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Embeddings and Duality.pdf)
 
-[Eulers Descent](Other/Eulers Descent/Eulers_Descent.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Eulers Descent.pdf)
+[Eulers Descent](Other/Eulers Descent/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Eulers Descent.pdf)
 
-[Grobner Bases](Other/Grobner Bases/Grobner_Bases.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Grobner Bases.pdf)
+[Grobner Bases](Other/Grobner Bases/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Grobner Bases.pdf)
 
-[Group Extensions](Other/Group Extensions/Group_Extensions.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Group Extensions.pdf)
+[Group Extensions](Other/Group Extensions/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Group Extensions.pdf)
 
-[Morita Equivalence](Other/Morita Equivalence/Morita_Equivalence.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Morita Equivalence.pdf)
+[Morita Equivalence](Other/Morita Equivalence/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Morita Equivalence.pdf)
 
-[Vector Bundles on P1](Other/Vector Bundles on P1/Vector_Bundles_on_P1.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Vector Bundles on P1.pdf)
+[Vector Bundles on P1](Other/Vector Bundles on P1/index.html) [(pdf)](https://github.com/ishanina/PublicWritings/blob/master/Other/Vector Bundles on P1.pdf)
   
 # PROMYS
 

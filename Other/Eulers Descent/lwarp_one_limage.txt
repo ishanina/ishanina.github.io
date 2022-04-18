@@ -1,0 +1,6 @@
+pdfseparate -f %1 -l %1 %4_html.pdf Eulers_Descent_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Eulers_Descent_h-images/lateximagetemp-%1.pdf Eulers_Descent_h-images/%3.pdf
+pdftocairo -svg -noshrink Eulers_Descent_h-images/%3.pdf Eulers_Descent_h-images/%3.svg
+del Eulers_Descent_h-images/%3.pdf
+del Eulers_Descent_h-images/lateximagetemp-%1.pdf
+exit

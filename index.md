@@ -1,3 +1,8 @@
+[The algebraic K-theory of the K(1)-local sphere via TC](https://arxiv.org/abs/2209.05314)
+
+Abstract: We describe the algebraic K-theory of the K(1)-local sphere and the category of type 2 finite spectra in terms of K-theory of discrete rings and topological cyclic homology. We find an infinite family of 2-torsion classes in the K<sub>0</sub> of type 2 spectra at the prime 2, and explain how to construct representatives of these K<sub>0</sub> classes.
+
+
 [Adams-type maps are not stable under composition](http://arxiv.org/abs/2202.14004) (w. Robert Burklund and Piotr Pstrągowski) Accepted at _Proceedings of the AMS_
 
 Abstract: We give a simple counterexample to the plausible conjecture that Adams-type maps of ring spectra are stable under composition. We then show that over a field, this failure is quite extreme, as any map of 𝔼<sub>∞</sub>-algebras is a transfinite composition of Adams-type maps.

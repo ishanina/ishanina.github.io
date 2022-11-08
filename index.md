@@ -3,7 +3,7 @@
 Abstract: We describe the algebraic K-theory of the K(1)-local sphere and the category of type 2 finite spectra in terms of K-theory of discrete rings and topological cyclic homology. We find an infinite family of 2-torsion classes in the K<sub>0</sub> of type 2 spectra at the prime 2, and explain how to construct representatives of these K<sub>0</sub> classes.
 
 
-[Adams-type maps are not stable under composition](http://arxiv.org/abs/2202.14004) (w. Robert Burklund and Piotr Pstrągowski) Accepted at _Proceedings of the AMS_
+[Adams-type maps are not stable under composition](http://arxiv.org/abs/2202.14004) (w. Robert Burklund and Piotr Pstrągowski) [_Proceedings of the AMS_](https://www.ams.org/journals/bproc/2022-09-35/S2330-1511-2022-00137-8/viewer/)
 
 Abstract: We give a simple counterexample to the plausible conjecture that Adams-type maps of ring spectra are stable under composition. We then show that over a field, this failure is quite extreme, as any map of 𝔼<sub>∞</sub>-algebras is a transfinite composition of Adams-type maps.
 

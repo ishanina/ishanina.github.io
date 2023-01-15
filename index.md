@@ -7,7 +7,7 @@ Abstract: We describe the algebraic K-theory of the K(1)-local sphere and the ca
 
 Abstract: We give a simple counterexample to the plausible conjecture that Adams-type maps of ring spectra are stable under composition. We then show that over a field, this failure is quite extreme, as any map of 𝔼<sub>∞</sub>-algebras is a transfinite composition of Adams-type maps.
 
-[On the K-theory of regular coconnective rings](https://arxiv.org/abs/2112.14723) (w. Robert Burklund)
+[On the K-theory of regular coconnective rings](https://arxiv.org/abs/2112.14723) (w. Robert Burklund) Accepted at Selecta Mathematica
 
 Abstract: We show that for a coconnective ring spectrum satisfying regularity and flatness assumptions, its algebraic K-theory agrees with that of its π<sub>0</sub>. We prove this as a consequence of a more general devissage result for stable infinity categories. Applications of our result include giving general conditions under which K-theory preserves pushouts, generalizations of 𝔸<sup>n</sup>-invariance of K-theory, and an understanding of the K-theory of categories of unipotent local systems.
 

@@ -283,15 +283,13 @@ Excluding 'warpHTML' comment. Excluding 'warpHTML' comment.)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/todonotes/todonotes.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -316,8 +314,7 @@ df.def)))
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
-code.tex)) (/usr/local/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+code.tex))
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
@@ -401,6 +398,17 @@ dlers.code.tex)
 e.tex)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
 (/usr/local/texlive/2021/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarymatrix.code.tex)
@@ -408,6 +416,8 @@ s/tikzlibrarymatrix.code.tex)
 s/tikzlibraryquotes.code.tex)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
 meta.code.tex)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/bbm.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/preprint/fullpage.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/grfext/grfext.sty
@@ -444,23 +454,6 @@ meta.code.tex)))
 (/usr/local/texlive/2021/texmf-dist/tex/generic/babel/babel.sty
 (/usr/local/texlive/2021/texmf-dist/tex/generic/babel/txtbabel.def)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/biblatex.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/logreq/logreq.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/logreq/logreq.def))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/blx-dm.def)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/blx-compat.def)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/blx-bibtex.def
-
-Package biblatex Warning: Using fall-back BibTeX(8) backend:
-(biblatex)                functionality may be reduced/unavailable.
-
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/biblatex.def)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/bbx/standard.bbx))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/biblatex.cfg)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty))
 (../../Settings/mymacros.sty
 
 LaTeX Warning: You have requested package `../../Settings/mymacros',
@@ -472,14 +465,20 @@ LaTeX Warning: You have requested package `../../Settings/mymacros',
 *geometry* detected driver: pdftex
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+)
+
+Package todonotes Warning: The length marginparwidth is less than 2cm and will 
+most likely cause issues with the appearance of inserted todonotes. The issue c
+an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
+loading the todonotes package. on input line 7.
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
 ty)) (./Continued_Fractions_h.out) (./Continued_Fractions_h.out)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
-No file Continued_Fractions_h.bbl.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd)
 (./Continued_Fractions_h.toc) [1{/usr/local/texlive/2021/texmf-var/fonts/map/pd
 ftex/updmap/pdftex.map}] [2] [3] [4]
@@ -523,5 +522,5 @@ pe1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
 1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
 public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sfti1200.pfb>
-Output written on Continued_Fractions_h.pdf (8 pages, 281460 bytes).
+Output written on Continued_Fractions_h.pdf (8 pages, 281314 bytes).
 Transcript written on Continued_Fractions_h.log.

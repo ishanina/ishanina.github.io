@@ -54,6 +54,12 @@
 \CustomizeMathJax{\newcommand{\ee}{\epsilon}}
 \CustomizeMathJax{\newcommand{\heart}{\heartsuit}}
 
+\CustomizeMathJax{\newcommand{\Mloc}{\mathcal{M}_{\text{loc}}}}
+\CustomizeMathJax{\newcommand{\Mnilpnil}{\mathcal{M}_{\text{nil}}^{\text{pnil}}}}
+\CustomizeMathJax{\newcommand{\Uloc}{\mathcal{U}_{\text{loc}}}}
+\CustomizeMathJax{\newcommand{\Mnil}{\mathcal{M}_{\text{nil}}}}
+\CustomizeMathJax{\newcommand{\Unil}{\mathcal{U}_{\text{nil}}}}
+
 \CustomizeMathJax{\newcommand{\floor}[1]{\lfloor #1 \rfloor}}
 \CustomizeMathJax{\newcommand{\ceil}[1]{\lceil #1 \rceil}}
 

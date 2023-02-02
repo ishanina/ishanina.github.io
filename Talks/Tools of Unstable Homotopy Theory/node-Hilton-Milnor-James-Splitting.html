@@ -225,14 +225,14 @@ MathJax = {
 <body>
 
 
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-8"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-8"></a>
 <nav class="topnavigation"><a href="index.html" class="linkhome" >
 Home</a></nav>
 
 <header>
 
 <p>
-<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+<a href="http://ishanina.github.io" title="Ishan Levy’s website">Back to Ishan Levy’s website</a>
 </p>
 
 </header>
@@ -583,6 +583,16 @@ Home</a>
 
 \(\newcommand {\heart }{\heartsuit }\)
 
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
+
 \(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
 
 \(\newcommand {\ceil }[1]{\lceil #1 \rceil }\)
@@ -924,8 +934,8 @@ Home</a>
 <p>
 <!--................................-->
 <h4 id="autosec-9"><span class="sectionnumber">2&#x2003;</span>Hilton–Milnor and James Splitting</h4>
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-9"></a>
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autofile-2"></a> It turns out that iterated Whitehead/Samelson products, along with the homotopy groups of spheres, account for all \(n\)-ary natural operations on homotopy
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-9"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autofile-2"></a> It turns out that iterated Whitehead/Samelson products, along with the homotopy groups of spheres, account for all \(n\)-ary natural operations on homotopy
 groups with coefficients in some spaces \(X_1\dots X_n\). The precise result along these lines is the Hilton–Milnor theorem, which describes a decomposition of the free \(\EE _1\)-group on a wedge sum of connected spaces.
 <div class="amsthmbodyplain">
 
@@ -934,7 +944,7 @@ groups with coefficients in some spaces \(X_1\dots X_n\). The precise result alo
 
 <li>
 <p>
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-10"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-10"></a>
 <span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.1</span></span><span class="amsthmnoteplain"> (Hilton–Milnor)</span>. <a id="hiltonmilnor"></a>
 Let \(n\geq 1\), and \(X_i\) connected. There is a natural equivalence \(\prod _{w_I}\Omega \Sigma X^{\wedge w_I} \xrightarrow {\sim } \Omega \Sigma \vee _1^n X_i \), where \(w_I\) is a basis for the free Lie
 algebra<sup>3</sup> on \(X_i, 1\leq i \leq n\).
@@ -945,7 +955,7 @@ algebra<sup>3</sup> on \(X_i, 1\leq i \leq n\).
 </ul>
 <div role="note" class="footnotes">
 
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-11"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-11"></a>
 
 <p>
 <sup>3</sup>&nbsp;Note that the free Lie algebra appearing Theorem <a href="node-Hilton-Milnor-James-Splitting.html#hiltonmilnor">2.1</a> is alternating rather than antisymmetric, in that \([x,x] =0\). This does
@@ -969,15 +979,14 @@ generator is nilpotent. But nevertheless, as long the space over which one takes
 </p>
 
 <p>
-Two approachs to proving Theorem <a href="node-Hilton-Milnor-James-Splitting.html#hiltonmilnor">2.1</a> are to either use Mather’s second cube theorem (see for example [<a
-href="node-James-torsion-bound.html#LWR-ht-cite.0@sanathpeter">DH19</a>]), or to use facts about free groups, and geometrically realize these to say something about free \(\EE _1\)-algebras. Ultimately these are proofs
-doing the same thing but the former is more axiomatic and so works in a bit more generality.
+Two approachs to proving Theorem <a href="node-Hilton-Milnor-James-Splitting.html#hiltonmilnor">2.1</a> are to either use Mather’s second cube theorem (see for example [sanathpeter]), or to use facts about free
+groups, and geometrically realize these to say something about free \(\EE _1\)-algebras. Ultimately these are proofs doing the same thing but the former is more axiomatic and so works in a bit more generality.
 </p>
 
 <p>
-\(\Omega \Sigma \) commutes with geometric realizations, so whatever we say about it reduces to the case of discrete sets, in which case it coincides with the free group functor. It is a result of Milnor [<a
-href="node-James-torsion-bound.html#LWR-ht-cite.0@milnorfk">Mil72</a>] that the free simplicial group on \(X\), denoted \(FX\), is a model for \(\Omega \Sigma X\). He used this model to prove the results below, but all
-one really needs is that the functor \(\Omega \Sigma \) preserves geometric realizations (which is model independent, and follows from Milnor’s result).
+\(\Omega \Sigma \) commutes with geometric realizations, so whatever we say about it reduces to the case of discrete sets, in which case it coincides with the free group functor. It is a result of Milnor [milnorfk] that the free
+simplicial group on \(X\), denoted \(FX\), is a model for \(\Omega \Sigma X\). He used this model to prove the results below, but all one really needs is that the functor \(\Omega \Sigma \) preserves geometric realizations (which
+is model independent, and follows from Milnor’s result).
 </p>
 <div class="amsthmbodyplain">
 
@@ -986,7 +995,7 @@ one really needs is that the functor \(\Omega \Sigma \) preserves geometric real
 
 <li>
 <p>
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-12"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-12"></a>
 <span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.2</span></span>. <a id="lemhiltonmilnor1"></a> There is a split exact sequence of groups
 </p>
 
@@ -1006,7 +1015,7 @@ one really needs is that the functor \(\Omega \Sigma \) preserves geometric real
 </div>
 <div class="amsthmproof">
 
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-13"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-13"></a>
 
 <ul style="list-style-type:none">
 
@@ -1029,7 +1038,7 @@ class="theoremendmark">&#x25A1;</span>
 
 <li>
 <p>
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-14"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-14"></a>
 <span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">2.3</span></span>. <a id="lemhiltonmilnor2"></a> There is an equivalence of groups
 </p>
 
@@ -1049,7 +1058,7 @@ class="theoremendmark">&#x25A1;</span>
 </div>
 <div class="amsthmproof">
 
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-15"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-15"></a>
 
 <ul style="list-style-type:none">
 
@@ -1080,7 +1089,7 @@ The lemma above, as a statement at the level of groups, can be delooped to get t
 
 <li>
 <p>
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-16"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-16"></a>
 <span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">2.4</span></span>. <a id="prophiltonmilnor1"></a> Let \(A\) be connected. Then there is a split exact
 sequence of \(\EE _1\)-algebras
 </p>
@@ -1101,7 +1110,7 @@ sequence of \(\EE _1\)-algebras
 </div>
 <div class="amsthmproof">
 
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-17"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-17"></a>
 
 <ul style="list-style-type:none">
 
@@ -1129,7 +1138,7 @@ Similarly, the James splitting can be iterated to obtain:
 
 <li>
 <p>
-<a id="Tools_of_Unstable_Homotopy_Theory_h-autopage-18"></a>
+<a id="Tools_of_Unstable_Homotopy_theory_h-autopage-18"></a>
 <span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.5</span></span>. (James) If \(X\) is connected, there is an equivalence \(\vee _0^{\infty }\Sigma
 X^{\wedge i} \simeq \Sigma \Omega \Sigma X\).
 </p>

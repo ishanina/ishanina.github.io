@@ -1,6 +1,6 @@
-pdfseparate -f %1 -l %1 %4_html.pdf Tools_of_Unstable_Homotopy_Theory_h-images/lateximagetemp-%%d.pdf
-pdfcrop --hires Tools_of_Unstable_Homotopy_Theory_h-images/lateximagetemp-%1.pdf Tools_of_Unstable_Homotopy_Theory_h-images/%3.pdf
-pdftocairo -svg -noshrink Tools_of_Unstable_Homotopy_Theory_h-images/%3.pdf Tools_of_Unstable_Homotopy_Theory_h-images/%3.svg
-del Tools_of_Unstable_Homotopy_Theory_h-images/%3.pdf
-del Tools_of_Unstable_Homotopy_Theory_h-images/lateximagetemp-%1.pdf
+pdfseparate -f %1 -l %1 %4_html.pdf Tools_of_Unstable_Homotopy_theory_h-images/lateximagetemp-%%d.pdf
+pdfcrop --hires Tools_of_Unstable_Homotopy_theory_h-images/lateximagetemp-%1.pdf Tools_of_Unstable_Homotopy_theory_h-images/%3.pdf
+pdftocairo -svg -noshrink Tools_of_Unstable_Homotopy_theory_h-images/%3.pdf Tools_of_Unstable_Homotopy_theory_h-images/%3.svg
+del Tools_of_Unstable_Homotopy_theory_h-images/%3.pdf
+del Tools_of_Unstable_Homotopy_theory_h-images/lateximagetemp-%1.pdf
 exit

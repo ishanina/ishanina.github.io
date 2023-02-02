@@ -99,7 +99,7 @@ span.abstractrunintitle{
 }
 
 div.epigraph, div.dictum {
-    background: #f5f5eb ;
+    background: #ffffff ;
     background-image: linear-gradient(to bottom, #f5f5eb, #C8C8B8);
 
     border: 1px solid silver ;
@@ -223,9 +223,9 @@ nav.botnavigation{
 }
 
 header{
-    color: #d8d8d8;
-    background-color: #F7F7F0 ;
-    background-image: linear-gradient(to right, #235b90, #358e64);
+    color: #ffffff;
+    background-color: #ffffff ;
+    /*background-image: linear-gradient(to right, #235b90, #358e64);*/
 }
 
 footer{
@@ -250,7 +250,7 @@ a.tocsection {display: inline-block ; margin-left: 1em ;
 body {
     font-family: "DejaVu Serif", "Bitstream Vera Serif",
         "Lucida Bright", Georgia, serif;
-    background: #FAF7F4 ;
+    background: #ffffff ;
     color: black ;
     margin:0em ;
     padding:0em ;

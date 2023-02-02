@@ -232,7 +232,7 @@ Home</a></nav>
 <header>
 
 <p>
-<a href="http://ishanina.github.io" title="Ishan Levy’s Writings">Back to Ishan Levy’s Writings</a>
+<a href="http://ishanina.github.io" title="Ishan Levy’s website">Back to Ishan Levy’s website</a>
 </p>
 
 </header>
@@ -582,6 +582,16 @@ Home</a>
 \(\newcommand {\ee }{\epsilon }\)
 
 \(\newcommand {\heart }{\heartsuit }\)
+
+\(\newcommand {\Mloc }{\mathcal {M}_{\text {loc}}}\)
+
+\(\newcommand {\Mnilpnil }{\mathcal {M}_{\text {nil}}^{\text {pnil}}}\)
+
+\(\newcommand {\Uloc }{\mathcal {U}_{\text {loc}}}\)
+
+\(\newcommand {\Mnil }{\mathcal {M}_{\text {nil}}}\)
+
+\(\newcommand {\Unil }{\mathcal {U}_{\text {nil}}}\)
 
 \(\newcommand {\floor }[1]{\lfloor #1 \rfloor }\)
 
@@ -1021,7 +1031,7 @@ This formulation emphasizes the fact that \(MU\) detects nilpotence phenomena fo
 <li>
 <p>
 <a id="Chromatic_Homotopy_and_Telescopic_Localization_h-autopage-13"></a>
-<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">2.3.1</span></span>. Every nonzero \(p\)-local finite spectrum is type \(n\) for some \(n\). This is
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">2.4</span></span>. Every nonzero \(p\)-local finite spectrum is type \(n\) for some \(n\). This is
 because for \(i\gg 0\), the \(K(i)\)-based Atiyah-Hirzebruch spectral sequence degenerates for degree reasons for a fixed finite spectrum \(X\), so \(K(i)_*(X) = (H\FF _p)_*(X)\otimes _{(H\FF _p)_*}K(i)_* \neq 0\).
 </p>
 
@@ -1038,7 +1048,7 @@ because for \(i\gg 0\), the \(K(i)\)-based Atiyah-Hirzebruch spectral sequence d
 <li>
 <p>
 <a id="Chromatic_Homotopy_and_Telescopic_Localization_h-autopage-14"></a>
-<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">2.3.2</span></span>. For a finite spectrum \(X\), \(K(m)_*X = 0 \implies K(m-1)_*(X) = 0\).
+<span class="amsthmnamedefinition">Remark</span><span class="amsthmnumberdefinition"> <span class="textup">2.5</span></span>. For a finite spectrum \(X\), \(K(m)_*X = 0 \implies K(m-1)_*(X) = 0\).
 This is essentially because its \(MU\)-homology is a <i>coherent</i> sheaf over \(\cM _{fg}\), so has closed support. This shows that for a type \(n\) spectrum \(X\), \(K(m)_*(X) \neq 0\) for \(m\geq n\).
 </p>
 
@@ -1055,7 +1065,7 @@ This is essentially because its \(MU\)-homology is a <i>coherent</i> sheaf over 
 <li>
 <p>
 <a id="Chromatic_Homotopy_and_Telescopic_Localization_h-autopage-15"></a>
-<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.4</span></span>. Let \(C\) be a stable \(\infty \)-category. A <b>thick subcategory</b> \(C&apos;
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.6</span></span>. Let \(C\) be a stable \(\infty \)-category. A <b>thick subcategory</b> \(C&apos;
 \to C\) is a stable subcategory closed under retracts.
 </p>
 
@@ -1072,7 +1082,7 @@ This is essentially because its \(MU\)-homology is a <i>coherent</i> sheaf over 
 <li>
 <p>
 <a id="Chromatic_Homotopy_and_Telescopic_Localization_h-autopage-16"></a>
-<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">2.4.1</span></span>. Let \(\Sp ^{\omega }_{(p)}\) be the category of \(p\)-local finite spectra,
+<span class="amsthmnamedefinition">Example</span><span class="amsthmnumberdefinition"> <span class="textup">2.7</span></span>. Let \(\Sp ^{\omega }_{(p)}\) be the category of \(p\)-local finite spectra,
 and let \(\Sp _{\geq n}\) be the category of type \(\geq n\) spectra. Then \(\Sp _{\geq n} \to \Sp ^{\omega }_{(p)}\) is a thick subcategory.
 </p>
 
@@ -1093,7 +1103,7 @@ It turns out these are all the examples. This is the content of the following re
 <li>
 <p>
 <a id="Chromatic_Homotopy_and_Telescopic_Localization_h-autopage-17"></a>
-<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.5</span></span><span class="amsthmnoteplain"> (Thick subcategory Theorem)</span>. Let \(C
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.8</span></span><span class="amsthmnoteplain"> (Thick subcategory Theorem)</span>. Let \(C
 \subset \Sp ^\omega _{(p)}\) be a nonzero thick subcategory. Then \(C = \Sp _{\geq n}\) for some \(n\).
 </p>
 
@@ -1114,7 +1124,7 @@ It is true that \(\Sp _{\geq n}\) are distinct as \(n\) varies, but showing this
 <li>
 <p>
 <a id="Chromatic_Homotopy_and_Telescopic_Localization_h-autopage-18"></a>
-<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.6</span></span>. Let \(X\) be a finite complex/spectrum. A <b>\(v_n\)-self map</b> \(v_n:\Sigma ^d
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2.9</span></span>. Let \(X\) be a finite complex/spectrum. A <b>\(v_n\)-self map</b> \(v_n:\Sigma ^d
 X \to X\) is a map that
 </p>
 <ul style="list-style-type:none">
@@ -1157,7 +1167,7 @@ Using a construction due to Smith, Hopkins and Smith proved the following result
 <li>
 <p>
 <a id="Chromatic_Homotopy_and_Telescopic_Localization_h-autopage-19"></a>
-<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.7</span></span><span class="amsthmnoteplain"> (Periodicity Theorem)</span>. Every type \(n\)
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.10</span></span><span class="amsthmnoteplain"> (Periodicity Theorem)</span>. Every type \(n\)
 spectrum admits a \(v_n\)-self map.
 </p>
 

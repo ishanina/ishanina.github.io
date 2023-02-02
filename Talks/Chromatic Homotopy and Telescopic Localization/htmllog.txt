@@ -344,18 +344,14 @@ Straight input of comment_html.cut. (./comment_html.cut))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def)))))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-amsmath.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
-Including 'warpMathJax' comment. Straight input of comment_mathjax.cut.
-(./comment_mathjax.cut))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-todonotes.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/todonotes/todonotes.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-xcolor.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-tikz.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
@@ -381,9 +377,7 @@ df.def)))
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
-code.tex)) (/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-xcolor.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)))
+code.tex))
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
@@ -469,6 +463,20 @@ e.tex)
 s/tikzlibrarytopaths.code.tex)))
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarybabel.code.tex))
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-amsmath.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
+Including 'warpMathJax' comment. Straight input of comment_mathjax.cut.
+(./comment_mathjax.cut))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
 (/usr/local/texlive/2021/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarymatrix.code.tex)
@@ -476,6 +484,8 @@ s/tikzlibrarymatrix.code.tex)
 s/tikzlibraryquotes.code.tex)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
 meta.code.tex)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/bbm.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-fullpage.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/lwarp/lwarp-epstopdf.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf.sty
@@ -520,12 +530,7 @@ Including 'warpMathJax' comment. Straight input of comment_mathjax.cut.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/url/url.sty))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/blx-dm.def)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/blx-compat.def)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/blx-bibtex.def
-
-Package biblatex Warning: Using fall-back BibTeX(8) backend:
-(biblatex)                functionality may be reduced/unavailable.
-
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/biblatex.def)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/biblatex.def)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
 (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/bbx/standard.bbx))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx)
@@ -563,7 +568,14 @@ Package lwarp Warning: Lwarp provides emulation for MathJax when used
 
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
+)
+
+Package todonotes Warning: The length marginparwidth is less than 2cm and will 
+most likely cause issues with the appearance of inserted todonotes. The issue c
+an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
+loading the todonotes package. on input line 7.
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
 (./Chromatic_Homotopy_and_Telescopic_Localization_h_html.bbl)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmtt.fd)
@@ -583,6 +595,7 @@ Done.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd) [21] [22]
 [23] (./Chromatic_Homotopy_and_Telescopic_Localization_h_html.sidetoc) [24]
 [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
@@ -611,7 +624,7 @@ s/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/
 type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
 pe1/public/cm-super/sftt1000.pfb>
 Output written on Chromatic_Homotopy_and_Telescopic_Localization_h_html.pdf (64
- pages, 411793 bytes).
+ pages, 412602 bytes).
 Transcript written on Chromatic_Homotopy_and_Telescopic_Localization_h_html.log
 .
 lwarpmk: Converting Chromatic_Homotopy_and_Telescopic_Localization_h_html.pdf to Chromatic_Homotopy_and_Telescopic_Localization_h_html.html

@@ -2271,3 +2271,24 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+/*
+	Stuff for superscript and subscript at the same time after this point
+*/
+
+.supsub {
+    display: inline-block;
+}
+
+.supsub sup,
+.supsub sub {
+    position: relative;
+    display: block;
+    font-size: .5em;
+    line-height: 1.2;
+}
+
+.supsub sub {
+    top: .3em;
+}
+

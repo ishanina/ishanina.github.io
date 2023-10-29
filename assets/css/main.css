@@ -2285,7 +2285,7 @@ button,
     position: relative;
     display: block;
     font-size: .5em;
-    line-height: 1.2;
+    line-height: 1.0;
 }
 
 .supsub sub {
